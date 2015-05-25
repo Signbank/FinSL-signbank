@@ -88,5 +88,6 @@ XALLOWED_TAGS = [ '',
                  'phonology:two handed',
                 ]
 
-DATABASE_NAME = '/www2/signbank/live/repo/signbank/signbank.db';
+DATABASE_NAME = '/home/heilniem/signbank-master/signbank.db';
+#TODO: Fix where this points at
 WSGI_FILE = '/var/www2/signbank/live/virtualenv/signbank/lib/python2.7/site-packages/signbank/wsgi.py'

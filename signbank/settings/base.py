@@ -20,11 +20,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/var/www2/signbank/live/writable/database/signbank.db',
+        'NAME': '/home/heilniem/signbank-master/signbank.db',
     }
 }
 
-TIME_ZONE = 'Australia/Sydney'
+TIME_ZONE = 'Finland/Helsinki'
 
 LANGUAGE_CODE = 'en-us'
 

@@ -711,8 +711,9 @@ def build_choice_list(field):
 
     choice_list = [('0','-'),('1','N/A')];
 
-    for choice in FieldChoice.objects.filter(field=field):
-        choice_list.append((str(choice.machine_value),choice.english_name));
+    # TODO: Fix this, when running develop.py for the first time, this needs to be commented
+    """for choice in FieldChoice.objects.filter(field=field):
+        choice_list.append((str(choice.machine_value),choice.english_name));"""
 
     return choice_list
 
