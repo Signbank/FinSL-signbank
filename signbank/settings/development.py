@@ -36,6 +36,11 @@ SIGN_NAVIGATION = False
 
 #ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss']
 
+# fix the problem with merge
+SOUTH_MIGRATION_MODULES = {
+'tagging': 'tagging.south_migrations',
+}
+
 
 GLOSS_VIDEO_DIRECTORY = 'glossvideo'
 
