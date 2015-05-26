@@ -12,7 +12,7 @@ TEMPLATE_DEBUG = DEBUG
 EMAIL_HOST = ""
 
 ADMINS = (
-     ('Wessel Stoop', 'w.stoop@let.ru.nl'),
+     ('Henri Nieminen', 'henri.nieminen@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -24,7 +24,7 @@ DATABASES = {
     }
 }
 
-TIME_ZONE = 'Finland/Helsinki'
+TIME_ZONE = 'Europe/Helsinki'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -67,7 +67,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '^g=q21r_nnmbz49d!vs*2gvpll-y9b@&amp;t3k2r3c$*u&amp;2la5!%s'
+SECRET_KEY = '%dd0=4%@nrpp9x9%fav*ss*%&opf-amp!ytgd?lek0_^$opds%feer413kl'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

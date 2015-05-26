@@ -18,8 +18,8 @@ PRIMARY_CSS = "bootstrap_css/ngt.css"
 
 
 # what do we call this signbank?
-LANGUAGE_NAME = "NGT"
-COUNTRY_NAME = "the Netherlands"
+LANGUAGE_NAME = "FIN"
+COUNTRY_NAME = "Finland"
 
 # show/don't show sign navigation
 SIGN_NAVIGATION = False
@@ -36,7 +36,7 @@ SIGN_NAVIGATION = False
 
 #ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss']
 
-# fix the problem with merge
+# Fixes the problem with merge
 SOUTH_MIGRATION_MODULES = {
 'tagging': 'tagging.south_migrations',
 }
@@ -52,7 +52,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/wessel/log/debug.log',
+            'filename': '/home/heilniem/log/debug.log',
         },
     },
     'loggers': {
