@@ -6,7 +6,6 @@ from django.db import models
 
 
 class Migration(SchemaMigration):
-
     def forwards(self, orm):
         # Deleting field 'Gloss.qualitytf'
         db.delete_column('dictionary_gloss', 'qualitytf')
@@ -262,7 +261,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Gloss.bodyloctf'
         db.delete_column('dictionary_gloss', 'bodyloctf')
-
 
     def backwards(self, orm):
         # Adding field 'Gloss.qualitytf'
@@ -690,7 +688,6 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
                       keep_default=False)
 
-
     models = {
         'dictionary.definition': {
             'Meta': {'ordering': "['gloss']", 'object_name': 'Definition'},
@@ -710,7 +707,8 @@ class Migration(SchemaMigration):
         'dictionary.gloss': {
             'BookProb': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
             'InMainBook': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'InMedLex': ('django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True', 'blank': 'True'}),
+            'InMedLex': (
+                'django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True', 'blank': 'True'}),
             'InSuppBook': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
             'Meta': {'ordering': "['idgloss']", 'object_name': 'Gloss'},
             'NotBkDBOnly': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
@@ -729,18 +727,22 @@ class Migration(SchemaMigration):
             'comp': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
             'compound': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
             'comptf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'dialect': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['dictionary.Dialect']", 'symmetrical': 'False'}),
+            'dialect': ('django.db.models.fields.related.ManyToManyField', [],
+                        {'to': "orm['dictionary.Dialect']", 'symmetrical': 'False'}),
             'domhndsh': ('django.db.models.fields.CharField', [], {'max_length': '5', 'blank': 'True'}),
             'handedness': ('django.db.models.fields.CharField', [], {'max_length': '10', 'blank': 'True'}),
             'healthtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'idgloss': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'inCD': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'inWeb': ('django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True', 'blank': 'True'}),
+            'inWeb': (
+                'django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True', 'blank': 'True'}),
             'inittext': ('django.db.models.fields.CharField', [], {'max_length': "'50'", 'blank': 'True'}),
             'inittf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'isNew': ('django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True', 'blank': 'True'}),
-            'language': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['dictionary.Language']", 'symmetrical': 'False'}),
+            'isNew': (
+                'django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True', 'blank': 'True'}),
+            'language': ('django.db.models.fields.related.ManyToManyField', [],
+                         {'to': "orm['dictionary.Language']", 'symmetrical': 'False'}),
             'locprim': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'locsecond': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'morph': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
@@ -768,8 +770,10 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "['source']", 'object_name': 'Relation'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'role': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'source': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'relation_sources'", 'to': "orm['dictionary.Gloss']"}),
-            'target': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'relation_targets'", 'to': "orm['dictionary.Gloss']"})
+            'source': ('django.db.models.fields.related.ForeignKey', [],
+                       {'related_name': "'relation_sources'", 'to': "orm['dictionary.Gloss']"}),
+            'target': ('django.db.models.fields.related.ForeignKey', [],
+                       {'related_name': "'relation_targets'", 'to': "orm['dictionary.Gloss']"})
         },
         'dictionary.translation': {
             'Meta': {'ordering': "['gloss', 'index']", 'object_name': 'Translation'},

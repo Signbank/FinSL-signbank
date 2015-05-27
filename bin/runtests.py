@@ -12,6 +12,6 @@ if __name__ == "__main__":
     applen = len('signbank.apps.')
 
     apps_for_testing = [app[applen:] for app in settings.INSTALLED_APPS
-            if app.startswith("signbank.apps")]
+                        if app.startswith("signbank.apps")]
 
     call_command("test", *apps_for_testing)
