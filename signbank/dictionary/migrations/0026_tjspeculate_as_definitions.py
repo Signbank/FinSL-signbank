@@ -4,20 +4,22 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         """Move notes from the tjspeculate fields to definitions with role 'Private Note'"""
-        
+
         for gloss in orm.Gloss.objects.filter(tjspeculate__isnull=False).exclude(tjspeculate__exact=""):
             comment = gloss.tjspeculate
-            defn = orm.Definition(gloss=gloss, text=comment, role="privatenote", count=1)
+            defn = orm.Definition(
+                gloss=gloss, text=comment, role="privatenote", count=1)
             defn.save()
             print "Converting comment for ", gloss.idgloss, "as", comment
-            
+
     def backwards(self, orm):
         """Add tjspeculate field back from 'Private Note' definitions"""
-         
+
         for defn in orm.Definition.objects.filter(role='privatenote'):
             comment = defn.text
             defn.gloss.tjspeculate = defn.text

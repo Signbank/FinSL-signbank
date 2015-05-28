@@ -2,6 +2,7 @@ from django.template import Library
 
 register = Library()
 
+
 @register.simple_tag
 def primary_css():
     """
@@ -13,9 +14,8 @@ def primary_css():
         return settings.PRIMARY_CSS
     except:
         return ''
- 
- 
- 
+
+
 @register.simple_tag
 def value(value):
     """
@@ -25,4 +25,3 @@ def value(value):
         return '-'
     else:
         return value
- 

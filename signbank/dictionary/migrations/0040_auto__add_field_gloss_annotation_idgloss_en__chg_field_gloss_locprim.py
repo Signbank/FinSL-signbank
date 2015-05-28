@@ -10,20 +10,21 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.annotation_idgloss_en'
         db.add_column(u'dictionary_gloss', 'annotation_idgloss_en',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=30, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=30, blank=True),
                       keep_default=False)
 
-
         # Changing field 'Gloss.locprim'
-        db.alter_column(u'dictionary_gloss', 'locprim', self.gf('django.db.models.fields.CharField')(max_length=20, null=True))
+        db.alter_column(u'dictionary_gloss', 'locprim', self.gf(
+            'django.db.models.fields.CharField')(max_length=20, null=True))
 
     def backwards(self, orm):
         # Deleting field 'Gloss.annotation_idgloss_en'
         db.delete_column(u'dictionary_gloss', 'annotation_idgloss_en')
 
-
         # Changing field 'Gloss.locprim'
-        db.alter_column(u'dictionary_gloss', 'locprim', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'locprim', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
     models = {
         u'dictionary.definition': {

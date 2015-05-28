@@ -4,10 +4,11 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Deleting field 'Gloss.nswtf'
         db.delete_column('dictionary_gloss', 'nswtf')
 
@@ -35,36 +36,43 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.tastf'
         db.delete_column('dictionary_gloss', 'tastf')
 
-
     def backwards(self, orm):
-        
+
         # Adding field 'Gloss.nswtf'
-        db.add_column('dictionary_gloss', 'nswtf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'nswtf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.qldtf'
-        db.add_column('dictionary_gloss', 'qldtf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'qldtf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.victf'
-        db.add_column('dictionary_gloss', 'victf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'victf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.auslextf'
-        db.add_column('dictionary_gloss', 'auslextf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'auslextf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.satf'
-        db.add_column('dictionary_gloss', 'satf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'satf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.nthtf'
-        db.add_column('dictionary_gloss', 'nthtf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'nthtf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.sthtf'
-        db.add_column('dictionary_gloss', 'sthtf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'sthtf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.watf'
-        db.add_column('dictionary_gloss', 'watf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
+        db.add_column('dictionary_gloss', 'watf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Gloss.tastf'
-        db.add_column('dictionary_gloss', 'tastf', self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
-
+        db.add_column('dictionary_gloss', 'tastf', self.gf(
+            'django.db.models.fields.NullBooleanField')(null=True, blank=True), keep_default=False)
 
     models = {
         'dictionary.definition': {

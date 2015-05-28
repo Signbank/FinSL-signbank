@@ -4,19 +4,21 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         "Write your forwards methods here."
-        
+
         # make our languages
-        auslan = orm.Language(name="Auslan", description="Auslan is the sign language of Australia")
+        auslan = orm.Language(
+            name="Auslan", description="Auslan is the sign language of Australia")
         auslan.save()
         bsl = orm.Language(name="BSL", description="British Sign Language")
         bsl.save()
         asl = orm.Language(name="ASL", description="American Sign Language")
         asl.save()
-        
+
         for gloss in orm.Gloss.objects.all():
             # all glosses are Auslan
             gloss.language.add(auslan)
@@ -26,14 +28,12 @@ class Migration(DataMigration):
             if gloss.asltf:
                 gloss.language.add(asl)
             gloss.save()
-            
 
     def backwards(self, orm):
         "Write your backwards methods here."
 
         # delete all the languages
         orm.Language.objects.all().delete()
-        
 
     models = {
         'dictionary.definition': {

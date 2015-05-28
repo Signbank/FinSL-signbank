@@ -4,6 +4,7 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
@@ -12,60 +13,57 @@ class Migration(DataMigration):
         # if a gloss has all Auslan dialects, make it AusWide instead
         tas = orm.Dialect.objects.get(name="Tasmania")
         vic = orm.Dialect.objects.get(name="Victoria")
-        wa =  orm.Dialect.objects.get(name="Western Australia")
-        sa =  orm.Dialect.objects.get(name="South Australia")
+        wa = orm.Dialect.objects.get(name="Western Australia")
+        sa = orm.Dialect.objects.get(name="South Australia")
         qld = orm.Dialect.objects.get(name="Queensland")
         nsw = orm.Dialect.objects.get(name="New South Wales")
         nth = orm.Dialect.objects.get(name="Northern Dialect")
         sth = orm.Dialect.objects.get(name="Southern Dialect")
-        
-        
+
         auslan = orm.Language.objects.get(name="Auslan")
         auswide = orm.Dialect(name="Australia Wide", language=auslan)
         auswide.save()
-        
+
         allstates = [tas, vic, wa, sa, qld, nsw, nth, sth]
-        
-        
+
         for gloss in orm.Gloss.objects.all():
             dialects = gloss.dialect.filter(language__exact=auslan)
-            
+
             if all([d in dialects for d in allstates]):
                 print gloss.idgloss
                 # remove current dialects
                 gloss.dialect.clear()
                 gloss.dialect.add(auswide)
                 gloss.save()
-                
 
     def backwards(self, orm):
         "Write your backwards methods here."
-        
+
         # if a gloss has all Auslan dialects, make it AusWide instead
         tas = orm.Dialect.objects.get(name="Tasmania")
         vic = orm.Dialect.objects.get(name="Victoria")
-        wa =  orm.Dialect.objects.get(name="Western Australia")
-        sa =  orm.Dialect.objects.get(name="South Australia")
+        wa = orm.Dialect.objects.get(name="Western Australia")
+        sa = orm.Dialect.objects.get(name="South Australia")
         qld = orm.Dialect.objects.get(name="Queensland")
         nsw = orm.Dialect.objects.get(name="New South Wales")
         nth = orm.Dialect.objects.get(name="Northern Dialect")
         sth = orm.Dialect.objects.get(name="Southern Dialect")
-        
+
         auswide = orm.Dialect.objects.get(name="Australia Wide")
-        
+
         allstates = [tas, vic, wa, sa, qld, nsw, nth, sth]
-        
+
         auslan = orm.Language.objects.get(name="Auslan")
-        
+
         for gloss in orm.Gloss.objects.all():
             dialects = gloss.dialect.filter(language__exact=auslan)
-            
+
             if auswide in dialects:
                 print gloss.idgloss
                 for d in allstates:
                     gloss.dialect.add(d)
                 gloss.save()
-        
+
         auswide.delete()
 
     models = {

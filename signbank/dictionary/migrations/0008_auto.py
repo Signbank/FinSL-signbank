@@ -4,23 +4,26 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding M2M table for field language on 'Gloss'
         db.create_table('dictionary_gloss_language', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('id', models.AutoField(
+                verbose_name='ID', primary_key=True, auto_created=True)),
             ('gloss', models.ForeignKey(orm['dictionary.gloss'], null=False)),
-            ('language', models.ForeignKey(orm['dictionary.language'], null=False))
+            ('language', models.ForeignKey(
+                orm['dictionary.language'], null=False))
         ))
-        db.create_unique('dictionary_gloss_language', ['gloss_id', 'language_id'])
+        db.create_unique(
+            'dictionary_gloss_language', ['gloss_id', 'language_id'])
 
     def backwards(self, orm):
-        
+
         # Removing M2M table for field language on 'Gloss'
         db.delete_table('dictionary_gloss_language')
-
 
     models = {
         'dictionary.definition': {

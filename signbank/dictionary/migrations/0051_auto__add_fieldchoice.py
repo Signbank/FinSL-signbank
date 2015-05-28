@@ -10,18 +10,20 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'FieldChoice'
         db.create_table(u'dictionary_fieldchoice', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('field', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('english_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('machine_value', self.gf('django.db.models.fields.IntegerField')()),
+            (u'id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('field', self.gf('django.db.models.fields.CharField')
+             (max_length=50)),
+            ('english_name', self.gf(
+                'django.db.models.fields.CharField')(max_length=50)),
+            ('machine_value', self.gf(
+                'django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal(u'dictionary', ['FieldChoice'])
-
 
     def backwards(self, orm):
         # Deleting model 'FieldChoice'
         db.delete_table(u'dictionary_fieldchoice')
-
 
     models = {
         u'dictionary.definition': {

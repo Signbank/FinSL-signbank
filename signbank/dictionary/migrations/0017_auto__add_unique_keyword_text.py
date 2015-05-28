@@ -11,11 +11,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'Keyword', fields ['text']
         db.create_unique('dictionary_keyword', ['text'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'Keyword', fields ['text']
         db.delete_unique('dictionary_keyword', ['text'])
-
 
     models = {
         'dictionary.definition': {

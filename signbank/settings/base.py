@@ -12,7 +12,7 @@ TEMPLATE_DEBUG = DEBUG
 EMAIL_HOST = ""
 
 ADMINS = (
-     ('Henri Nieminen', 'henri.nieminen@gmail.com'),
+    ('Henri Nieminen', 'henri.nieminen@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -55,7 +55,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-        os.path.join(PROJECT_DIR, "media"),
+    os.path.join(PROJECT_DIR, "media"),
 )
 
 # List of finder classes that know how to find static files in
@@ -63,7 +63,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -74,7 +74,7 @@ TEMPLATE_LOADERS = (
     'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,7 +87,7 @@ MIDDLEWARE_CLASSES = (
     'signbank.pages.middleware.PageFallbackMiddleware',
     'django_mobile.middleware.MobileDetectionMiddleware',
     'django_mobile.middleware.SetFlavourMiddleware',
-#    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'reversion.middleware.RevisionMiddleware',
 )
 
@@ -182,10 +182,10 @@ LOG_FILENAME = "debug.log"
 SOUTH_TESTS_MIGRATE = False
 
 
-## Application settings for signbank
+# Application settings for signbank
 
 
-## Settings controlling page contents
+# Settings controlling page contents
 
 # what do we call this signbank?
 LANGUAGE_NAME = "NGT"
@@ -200,13 +200,16 @@ ANON_SAFE_SEARCH = False
 ANON_TAG_SEARCH = False
 
 
-# do we display the previous/next links to signs, requires gloss.sn to be used consistently
+# do we display the previous/next links to signs, requires gloss.sn to be
+# used consistently
 SIGN_NAVIGATION = False
 
 # which definition fields do we show and in what order?
-DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact', 'deictic', 'modifier', 'question', 'augment', 'note']
+DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
+                     'deictic', 'modifier', 'question', 'augment', 'note']
 
-ADMIN_RESULT_FIELDS = ['annotation_idgloss', 'annotation_idgloss_en', 'handedness', 'domhndsh', 'subhndsh', 'locprim']
+ADMIN_RESULT_FIELDS = ['annotation_idgloss', 'annotation_idgloss_en',
+                       'handedness', 'domhndsh', 'subhndsh', 'locprim']
 
 
 # location and URL for uploaded files
@@ -228,7 +231,8 @@ ATTACHMENT_LOCATION = 'attachments'
 # within MEDIA_ROOT we store newly uploaded videos in this directory
 GLOSS_VIDEO_DIRECTORY = "video"
 
-# which fields from the Gloss model should be included in the quick update form on the sign view
+# which fields from the Gloss model should be included in the quick update
+# form on the sign view
 QUICK_UPDATE_GLOSS_FIELDS = ['language', 'dialect']
 
 # should we always require a login for viewing dictionary content
@@ -244,7 +248,6 @@ ALLOW_REGISTRATION = True
 ACCOUNT_ACTIVATION_DAYS = 7
 
 
-
 # show the number signs page or an under construction page?
 SHOW_NUMBERSIGNS = True
 
@@ -258,8 +261,7 @@ FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
 
 # defines the aspect ratio for videos
-VIDEO_ASPECT_RATIO = 3.0/4.0
-
+VIDEO_ASPECT_RATIO = 3.0 / 4.0
 
 
 # settings for django-tagging
@@ -267,10 +269,8 @@ VIDEO_ASPECT_RATIO = 3.0/4.0
 FORCE_LOWERCASE_TAGS = True
 
 # a list of tags we're allowed to use
-ALLOWED_TAGS = [ '', 
-                 'workflow:needs video',
-                 'workflow:redo video',
-                 'workflow:problematic',
-                 ]
-
-
+ALLOWED_TAGS = ['',
+                'workflow:needs video',
+                'workflow:redo video',
+                'workflow:problematic',
+                ]

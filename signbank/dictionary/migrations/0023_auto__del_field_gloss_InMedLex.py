@@ -11,13 +11,12 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.InMedLex'
         db.delete_column('dictionary_gloss', 'InMedLex')
 
-
     def backwards(self, orm):
         # Adding field 'Gloss.InMedLex'
         db.add_column('dictionary_gloss', 'InMedLex',
-                      self.gf('django.db.models.fields.NullBooleanField')(default=False, null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          default=False, null=True, blank=True),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

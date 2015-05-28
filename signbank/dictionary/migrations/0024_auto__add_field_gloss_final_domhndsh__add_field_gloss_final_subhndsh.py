@@ -10,14 +10,15 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.final_domhndsh'
         db.add_column('dictionary_gloss', 'final_domhndsh',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=5, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=5, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.final_subhndsh'
         db.add_column('dictionary_gloss', 'final_subhndsh',
-                      self.gf('django.db.models.fields.CharField')(max_length=5, null=True, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          max_length=5, null=True, blank=True),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Gloss.final_domhndsh'
@@ -25,7 +26,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Gloss.final_subhndsh'
         db.delete_column('dictionary_gloss', 'final_subhndsh')
-
 
     models = {
         'dictionary.definition': {

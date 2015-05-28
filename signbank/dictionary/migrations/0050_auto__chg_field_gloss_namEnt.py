@@ -10,12 +10,14 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Gloss.namEnt'
-        db.alter_column(u'dictionary_gloss', 'namEnt', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'namEnt', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
     def backwards(self, orm):
 
         # Changing field 'Gloss.namEnt'
-        db.alter_column(u'dictionary_gloss', 'namEnt', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'namEnt', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
     models = {
         u'dictionary.definition': {

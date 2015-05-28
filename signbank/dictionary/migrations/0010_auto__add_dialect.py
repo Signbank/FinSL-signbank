@@ -4,36 +4,41 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'Dialect'
         db.create_table('dictionary_dialect', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('language', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dictionary.Language'])),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=20)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('language', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['dictionary.Language'])),
+            ('name', self.gf('django.db.models.fields.CharField')
+             (max_length=20)),
             ('description', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal('dictionary', ['Dialect'])
 
         # Adding M2M table for field dialect on 'Gloss'
         db.create_table('dictionary_gloss_dialect', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('id', models.AutoField(
+                verbose_name='ID', primary_key=True, auto_created=True)),
             ('gloss', models.ForeignKey(orm['dictionary.gloss'], null=False)),
-            ('dialect', models.ForeignKey(orm['dictionary.dialect'], null=False))
+            ('dialect', models.ForeignKey(
+                orm['dictionary.dialect'], null=False))
         ))
-        db.create_unique('dictionary_gloss_dialect', ['gloss_id', 'dialect_id'])
-
+        db.create_unique(
+            'dictionary_gloss_dialect', ['gloss_id', 'dialect_id'])
 
     def backwards(self, orm):
-        
+
         # Deleting model 'Dialect'
         db.delete_table('dictionary_dialect')
 
         # Removing M2M table for field dialect on 'Gloss'
         db.delete_table('dictionary_gloss_dialect')
-
 
     models = {
         'dictionary.definition': {

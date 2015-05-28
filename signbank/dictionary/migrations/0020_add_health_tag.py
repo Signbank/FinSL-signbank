@@ -6,25 +6,25 @@ from django.db import models
 
 from tagging.models import Tag
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         "Write your forwards methods here."
-        # Note: Don't use "from appname.models import ModelName". 
+        # Note: Don't use "from appname.models import ModelName".
         # Use orm.ModelName to refer to models in this application,
         # and orm['appname.ModelName'] for models in other applications.
-        
+
         for gloss in orm.Gloss.objects.all():
             if gloss.healthtf:
-                 Tag.objects.add_tag(gloss, 'semantic:health')
-        
+                Tag.objects.add_tag(gloss, 'semantic:health')
 
     def backwards(self, orm):
         "Write your backwards methods here."
-    
-        for gloss in orm.Gloss.objects.all():
-            Tag.objects.get_for_object(gloss).filter(name='semantic:health').delete()
 
+        for gloss in orm.Gloss.objects.all():
+            Tag.objects.get_for_object(gloss).filter(
+                name='semantic:health').delete()
 
     models = {
         'dictionary.definition': {

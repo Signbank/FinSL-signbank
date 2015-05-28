@@ -11,13 +11,12 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.tjspeculate'
         db.delete_column('dictionary_gloss', 'tjspeculate')
 
-
     def backwards(self, orm):
         # Adding field 'Gloss.tjspeculate'
         db.add_column('dictionary_gloss', 'tjspeculate',
-                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.TextField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

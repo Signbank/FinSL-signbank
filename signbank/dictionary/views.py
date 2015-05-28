@@ -137,7 +137,8 @@ def word(request, keyword, n):
             glossposn = Gloss.objects.filter(sn__lt=gloss.sn).count() + 1
         else:
             glosscount = Gloss.objects.filter(inWeb__exact=True).count()
-            glossposn = Gloss.objects.filter(inWeb__exact=True, sn__lt=gloss.sn).count() + 1
+            glossposn = Gloss.objects.filter(
+                inWeb__exact=True, sn__lt=gloss.sn).count() + 1
     else:
         glosscount = 0
         glossposn = 0
@@ -168,7 +169,8 @@ def word(request, keyword, n):
                                'dialect_image': map_image_for_dialects(gloss.dialect.all()),
                                # lastmatch is a construction of the url for this word
                                # view that we use to pass to gloss pages
-                               # could do with being a fn call to generate this name here and elsewhere
+                               # could do with being a fn call to generate this
+                               # name here and elsewhere
                                'lastmatch': trans.translation.text.encode('utf-8') + "-" + str(n),
                                'videofile': videourl,
                                'update_form': update_form,
@@ -222,7 +224,8 @@ def gloss(request, idgloss):
             glossposn = Gloss.objects.filter(sn__lt=gloss.sn).count() + 1
         else:
             glosscount = Gloss.objects.filter(inWeb__exact=True).count()
-            glossposn = Gloss.objects.filter(inWeb__exact=True, sn__lt=gloss.sn).count() + 1
+            glossposn = Gloss.objects.filter(
+                inWeb__exact=True, sn__lt=gloss.sn).count() + 1
     else:
         glosscount = 0
         glossposn = 0
@@ -241,9 +244,8 @@ def gloss(request, idgloss):
         update_form = None
         video_form = None
 
-
-
-    # get the last match keyword if there is one passed along as a form variable
+    # get the last match keyword if there is one passed along as a form
+    # variable
     if request.GET.has_key('lastmatch'):
         lastmatch = request.GET['lastmatch']
         if lastmatch == "None":
@@ -289,14 +291,15 @@ def search(request):
         glossQuery = form.cleaned_data['glossQuery']
 
         if glossQuery != '':
-            return HttpResponseRedirect('../../signs/search/?search=' + glossQuery);
+            return HttpResponseRedirect('../../signs/search/?search=' + glossQuery)
 
         # need to transcode the query to our encoding
         term = form.cleaned_data['query']
         category = form.cleaned_data['category']
 
         # safe search for authenticated users if the setting says so
-        safe = (not request.user.is_authenticated()) and settings.ANON_SAFE_SEARCH
+        safe = (not request.user.is_authenticated()
+                ) and settings.ANON_SAFE_SEARCH
 
         try:
             term = smart_unicode(term)
@@ -308,7 +311,8 @@ def search(request):
 
         if request.user.has_perm('dictionary.search_gloss'):
             # staff get to see all the words that have at least one translation
-            words = Keyword.objects.filter(text__icontains=term, translation__isnull=False).distinct()
+            words = Keyword.objects.filter(
+                text__icontains=term, translation__isnull=False).distinct()
         else:
             # regular users see either everything that's published
             words = Keyword.objects.filter(text__icontains=term,
@@ -326,7 +330,8 @@ def search(request):
 
             result = []
             for w in words:
-                # remove word if all glosses for any translation are tagged crude
+                # remove word if all glosses for any translation are tagged
+                # crude
                 trans = w.translation_set.all()
                 glosses = [t.gloss for t in trans]
 
@@ -348,11 +353,9 @@ def search(request):
                         result.append(w)
             words = result
 
-
     else:
         term = ''
         words = []
-
 
     # display the keyword page if there's only one hit and it is an exact match
     if len(words) == 1 and words[0].text == term:
@@ -418,99 +421,101 @@ def missing_video_view(request):
 
 
 def import_videos(request):
-    video_folder = '/var/www2/signbank/live/writable/import_videos/';
+    video_folder = '/var/www2/signbank/live/writable/import_videos/'
 
-    out = '<p>Imported</p><ul>';
-    overwritten_files = '<p>Overwritten</p><ul>';
+    out = '<p>Imported</p><ul>'
+    overwritten_files = '<p>Overwritten</p><ul>'
 
     for filename in os.listdir(video_folder):
 
-        parts = filename.split('.');
-        idgloss = '.'.join(parts[:-1]);
-        extension = parts[-1];
+        parts = filename.split('.')
+        idgloss = '.'.join(parts[:-1])
+        extension = parts[-1]
 
         try:
-            gloss = Gloss.objects.get(annotation_idgloss=idgloss);
+            gloss = Gloss.objects.get(annotation_idgloss=idgloss)
         except ObjectDoesNotExist:
-            return HttpResponse('Failed at ' + filename + '. Could not find ' + idgloss + '.');
+            return HttpResponse('Failed at ' + filename + '. Could not find ' + idgloss + '.')
 
-        overwritten, was_allowed = video_to_signbank(video_folder, gloss, extension);
+        overwritten, was_allowed = video_to_signbank(
+            video_folder, gloss, extension)
 
         if not was_allowed:
             return HttpResponse(
-                'Failed two overwrite ' + gloss.annotation_idgloss + '. Maybe this file is not owned by the webserver?');
+                'Failed two overwrite ' + gloss.annotation_idgloss + '. Maybe this file is not owned by the webserver?')
 
-        out += '<li>' + filename + '</li>';
+        out += '<li>' + filename + '</li>'
 
         if overwritten:
-            overwritten_files += '<li>' + filename + '</li>';
+            overwritten_files += '<li>' + filename + '</li>'
 
-    out += '</ul>';
-    overwritten_files += '</ul>';
+    out += '</ul>'
+    overwritten_files += '</ul>'
 
-    return HttpResponse(out + overwritten_files);
+    return HttpResponse(out + overwritten_files)
 
 
 def try_code(request):
-    """A view for the developer to try out things""";
+    """A view for the developer to try out things"""
 
-    choicedict = {};
+    choicedict = {}
 
     for key, choices in choicedict.items():
 
         for machine_value, english_name in choices:
-            FieldChoice(english_name=english_name, field=key, machine_value=machine_value).save();
+            FieldChoice(
+                english_name=english_name, field=key, machine_value=machine_value).save()
 
-    return HttpResponse('OK');
+    return HttpResponse('OK')
 
 
 def add_new_sign(request):
     return render_to_response('dictionary/add_gloss.html', {'add_gloss_form': GlossCreateForm()},
-                              context_instance=RequestContext(request));
+                              context_instance=RequestContext(request))
 
 
 def import_csv(request):
     if not (request.user.is_staff) and len(request.user.groups.filter(name="Publisher")) == 0:
         return HttpResponse('You are not allowed to see this page.')
 
-    uploadform = forms.CSVUploadForm;
-    changes = [];
+    uploadform = forms.CSVUploadForm
+    changes = []
 
     # Propose changes
     if len(request.FILES) > 0:
 
-        changes = [];
-        csv_lines = request.FILES['file'].read().split('\n');
+        changes = []
+        csv_lines = request.FILES['file'].read().split('\n')
 
         for nl, line in enumerate(csv_lines):
 
             # The first line contains the keys
             if nl == 0:
-                keys = line.strip().split(',');
-                continue;
+                keys = line.strip().split(',')
+                continue
             elif len(line) == 0:
-                continue;
+                continue
 
-            values = csv.reader([line]).next();
-            value_dict = {};
+            values = csv.reader([line]).next()
+            value_dict = {}
 
             for nv, value in enumerate(values):
 
                 try:
-                    value_dict[keys[nv]] = value;
+                    value_dict[keys[nv]] = value
                 except IndexError:
-                    pass;
+                    pass
 
             try:
-                pk = int(value_dict['Signbank ID']);
+                pk = int(value_dict['Signbank ID'])
             except ValueError:
-                continue;
+                continue
 
-            gloss = Gloss.objects.get(pk=pk);
+            gloss = Gloss.objects.get(pk=pk)
 
-            changes += compare_valuedict_to_gloss(value_dict, gloss);
+            changes += compare_valuedict_to_gloss(value_dict, gloss)
 
-        stage = 1;
+        stage = 1
 
     # Do changes
     elif len(request.POST) > 0:
@@ -518,38 +523,40 @@ def import_csv(request):
         for key, new_value in request.POST.items():
 
             try:
-                pk, fieldname = key.split('.');
+                pk, fieldname = key.split('.')
 
-            # In case there's no dot, this is not a value we set at the previous page
+            # In case there's no dot, this is not a value we set at the
+            # previous page
             except ValueError:
-                continue;
+                continue
 
-            gloss = Gloss.objects.get(pk=pk);
+            gloss = Gloss.objects.get(pk=pk)
 
-            # Updating the keywords is a special procedure, because it has relations to other parts of the database
+            # Updating the keywords is a special procedure, because it has
+            # relations to other parts of the database
             if fieldname == 'Keywords':
-                update_keywords(gloss, None, new_value);
-                gloss.save();
-                continue;
+                update_keywords(gloss, None, new_value)
+                gloss.save()
+                continue
 
             # Replace the value for bools
             if gloss._meta.get_field_by_name(fieldname)[0].__class__.__name__ == 'NullBooleanField':
 
                 if new_value in ['true', 'True']:
-                    new_value = True;
+                    new_value = True
                 else:
-                    new_value = False;
+                    new_value = False
 
             # The normal change and save procedure
-            setattr(gloss, fieldname, new_value);
-            gloss.save();
+            setattr(gloss, fieldname, new_value)
+            gloss.save()
 
-        stage = 2;
+        stage = 2
 
     # Show uploadform
     else:
 
-        stage = 0;
+        stage = 0
 
     return render_to_response('dictionary/import_csv.html', {'form': uploadform, 'stage': stage, 'changes': changes},
-                              context_instance=RequestContext(request));
+                              context_instance=RequestContext(request))

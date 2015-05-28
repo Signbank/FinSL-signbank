@@ -4,26 +4,30 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'Attachment'
         db.create_table('attachments_attachment', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('date', self.gf('django.db.models.fields.DateField')(auto_now=True, blank=True)),
-            ('uploader', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('file', self.gf('django.db.models.fields.files.FileField')
+             (max_length=100)),
+            ('description', self.gf(
+                'django.db.models.fields.TextField')(blank=True)),
+            ('date', self.gf('django.db.models.fields.DateField')
+             (auto_now=True, blank=True)),
+            ('uploader', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'])),
         ))
         db.send_create_signal('attachments', ['Attachment'])
 
-
     def backwards(self, orm):
-        
+
         # Deleting model 'Attachment'
         db.delete_table('attachments_attachment')
-
 
     models = {
         'attachments.attachment': {

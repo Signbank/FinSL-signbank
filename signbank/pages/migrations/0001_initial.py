@@ -4,43 +4,56 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'Page'
         db.create_table('pages_page', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('url', self.gf('django.db.models.fields.CharField')(max_length=100, db_index=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('content', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('template_name', self.gf('django.db.models.fields.CharField')(max_length=70, blank=True)),
-            ('publish', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
-            ('parent', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['pages.Page'], null=True, blank=True)),
-            ('index', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('group_required', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.Group'], null=True, blank=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('url', self.gf('django.db.models.fields.CharField')
+             (max_length=100, db_index=True)),
+            ('title', self.gf('django.db.models.fields.CharField')
+             (max_length=200)),
+            ('content', self.gf(
+                'django.db.models.fields.TextField')(blank=True)),
+            ('template_name', self.gf('django.db.models.fields.CharField')
+             (max_length=70, blank=True)),
+            ('publish', self.gf('django.db.models.fields.BooleanField')
+             (default=False, blank=True)),
+            ('parent', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['pages.Page'], null=True, blank=True)),
+            ('index', self.gf(
+                'django.db.models.fields.IntegerField')(default=0)),
+            ('group_required', self.gf('django.db.models.fields.related.ForeignKey')(
+                to=orm['auth.Group'], null=True, blank=True)),
         ))
         db.send_create_signal('pages', ['Page'])
 
         # Adding model 'PageVideo'
         db.create_table('pages_pagevideo', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('page', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['pages.Page'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('number', self.gf('django.db.models.fields.PositiveIntegerField')()),
-            ('video', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('page', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['pages.Page'])),
+            ('title', self.gf('django.db.models.fields.CharField')
+             (max_length=200)),
+            ('number', self.gf(
+                'django.db.models.fields.PositiveIntegerField')()),
+            ('video', self.gf('django.db.models.fields.files.FileField')
+             (max_length=100, blank=True)),
         ))
         db.send_create_signal('pages', ['PageVideo'])
 
-
     def backwards(self, orm):
-        
+
         # Deleting model 'Page'
         db.delete_table('pages_page')
 
         # Deleting model 'PageVideo'
         db.delete_table('pages_pagevideo')
-
 
     models = {
         'auth.group': {

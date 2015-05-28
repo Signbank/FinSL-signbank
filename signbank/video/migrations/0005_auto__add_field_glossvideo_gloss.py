@@ -10,14 +10,13 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'GlossVideo.gloss'
         db.add_column(u'video_glossvideo', 'gloss',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['dictionary.Gloss']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(
+                          default=1, to=orm['dictionary.Gloss']),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'GlossVideo.gloss'
         db.delete_column(u'video_glossvideo', 'gloss_id')
-
 
     models = {
         u'dictionary.dialect': {

@@ -4,19 +4,19 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
-        # Adding field 'Translation.index'
-        db.add_column('dictionary_translation', 'index', self.gf('django.db.models.fields.IntegerField')(default=1), keep_default=False)
 
+        # Adding field 'Translation.index'
+        db.add_column('dictionary_translation', 'index', self.gf(
+            'django.db.models.fields.IntegerField')(default=1), keep_default=False)
 
     def backwards(self, orm):
-        
+
         # Deleting field 'Translation.index'
         db.delete_column('dictionary_translation', 'index')
-
 
     models = {
         'dictionary.definition': {

@@ -1,10 +1,12 @@
 #!/usr/bin/env python
-import os, sys
+import os
+import sys
 
 if __name__ == "__main__":
     sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "signbank.settings.testing")
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE", "signbank.settings.testing")
 
     from django.core.management import call_command
     from django.conf import settings

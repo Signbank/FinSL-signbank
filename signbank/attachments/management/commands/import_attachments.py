@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 import os
 
+
 class Command(BaseCommand):
 
     help = 'import any files in the attachments folder that we don\'t already have'
@@ -24,7 +25,8 @@ class Command(BaseCommand):
             print "unknown user", user
             return
 
-        dirname = os.path.join(settings.MEDIA_ROOT, settings.ATTACHMENT_LOCATION)
+        dirname = os.path.join(
+            settings.MEDIA_ROOT, settings.ATTACHMENT_LOCATION)
         for f in os.listdir(dirname):
             if not os.path.isdir(f):
                 path = os.path.join(settings.ATTACHMENT_LOCATION, f)

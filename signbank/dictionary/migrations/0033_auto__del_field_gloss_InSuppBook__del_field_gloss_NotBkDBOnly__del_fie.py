@@ -26,38 +26,42 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.inittf'
         db.delete_column('dictionary_gloss', 'inittf')
 
-
     def backwards(self, orm):
         # Adding field 'Gloss.InSuppBook'
         db.add_column('dictionary_gloss', 'InSuppBook',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.NotBkDBOnly'
         db.add_column('dictionary_gloss', 'NotBkDBOnly',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.inCD'
         db.add_column('dictionary_gloss', 'inCD',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.BookProb'
         db.add_column('dictionary_gloss', 'BookProb',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.InMainBook'
         db.add_column('dictionary_gloss', 'InMainBook',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.inittf'
         db.add_column('dictionary_gloss', 'inittf',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

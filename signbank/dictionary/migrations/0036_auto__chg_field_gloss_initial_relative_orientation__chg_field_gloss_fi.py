@@ -10,30 +10,38 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Gloss.initial_relative_orientation'
-        db.alter_column(u'dictionary_gloss', 'initial_relative_orientation', self.gf('django.db.models.fields.CharField')(max_length=20))
+        db.alter_column(u'dictionary_gloss', 'initial_relative_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=20))
 
         # Changing field 'Gloss.final_relative_orientation'
-        db.alter_column(u'dictionary_gloss', 'final_relative_orientation', self.gf('django.db.models.fields.CharField')(max_length=20))
+        db.alter_column(u'dictionary_gloss', 'final_relative_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=20))
 
         # Changing field 'Gloss.initial_palm_orientation'
-        db.alter_column(u'dictionary_gloss', 'initial_palm_orientation', self.gf('django.db.models.fields.CharField')(max_length=20))
+        db.alter_column(u'dictionary_gloss', 'initial_palm_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=20))
 
         # Changing field 'Gloss.final_palm_orientation'
-        db.alter_column(u'dictionary_gloss', 'final_palm_orientation', self.gf('django.db.models.fields.CharField')(max_length=20))
+        db.alter_column(u'dictionary_gloss', 'final_palm_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=20))
 
     def backwards(self, orm):
 
         # Changing field 'Gloss.initial_relative_orientation'
-        db.alter_column(u'dictionary_gloss', 'initial_relative_orientation', self.gf('django.db.models.fields.CharField')(max_length=10))
+        db.alter_column(u'dictionary_gloss', 'initial_relative_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=10))
 
         # Changing field 'Gloss.final_relative_orientation'
-        db.alter_column(u'dictionary_gloss', 'final_relative_orientation', self.gf('django.db.models.fields.CharField')(max_length=10))
+        db.alter_column(u'dictionary_gloss', 'final_relative_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=10))
 
         # Changing field 'Gloss.initial_palm_orientation'
-        db.alter_column(u'dictionary_gloss', 'initial_palm_orientation', self.gf('django.db.models.fields.CharField')(max_length=10))
+        db.alter_column(u'dictionary_gloss', 'initial_palm_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=10))
 
         # Changing field 'Gloss.final_palm_orientation'
-        db.alter_column(u'dictionary_gloss', 'final_palm_orientation', self.gf('django.db.models.fields.CharField')(max_length=10))
+        db.alter_column(u'dictionary_gloss', 'final_palm_orientation', self.gf(
+            'django.db.models.fields.CharField')(max_length=10))
 
     models = {
         u'dictionary.definition': {

@@ -9,7 +9,9 @@ from django.db.models.fields import NullBooleanField
 
 from signbank.log import debug
 from tagging.models import TaggedItem, Tag
-import os, shutil, re
+import os
+import shutil
+import re
 
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
@@ -65,9 +67,10 @@ def update_gloss(request, glossid):
             value = ' '
 
         elif value[0] == '_':
-            value = value[1:];
+            value = value[1:]
 
-        values = request.POST.getlist('value[]')  # in case we need multiple values
+        # in case we need multiple values
+        values = request.POST.getlist('value[]')
 
         # validate
         # field is a valid field
@@ -121,12 +124,13 @@ def update_gloss(request, glossid):
                     lang = Dialect.objects.get(name=value)
                     gloss.dialect.add(lang)
                 gloss.save()
-                newvalue = ", ".join([str(g.name) for g in gloss.dialect.all()])
+                newvalue = ", ".join([str(g.name)
+                                      for g in gloss.dialect.all()])
             except:
                 return HttpResponseBadRequest("Unknown Dialect %s" % values, {'content-type': 'text/plain'})
 
         elif field == "sn":
-            # sign number must be unique, return error message if this SN is 
+            # sign number must be unique, return error message if this SN is
             # already taken
 
             if value == '':
@@ -149,7 +153,6 @@ def update_gloss(request, glossid):
                     gloss.save()
                     newvalue = value
 
-
         elif field == 'inWeb':
             # only modify if we have publish permission
             if request.user.has_perm('dictionary.can_publish'):
@@ -166,7 +169,7 @@ def update_gloss(request, glossid):
             if not field in Gloss._meta.get_all_field_names():
                 return HttpResponseBadRequest("Unknown field", {'content-type': 'text/plain'})
 
-            # special cases 
+            # special cases
             # - Foreign Key fields (Language, Dialect)
             # - keywords
             # - videos
@@ -174,7 +177,7 @@ def update_gloss(request, glossid):
 
             # Translate the value if a boolean
             if isinstance(gloss._meta.get_field_by_name(field)[0], NullBooleanField):
-                newvalue = value;
+                newvalue = value
                 value = (value == 'Yes')
 
             # special value of 'notset' or -1 means remove the value
@@ -210,7 +213,7 @@ def update_keywords(gloss, field, value):
     """Update the keyword field"""
 
     kwds = [k.strip() for k in value.split(',')]
-    # remove current keywords 
+    # remove current keywords
     current_trans = gloss.translation_set.all()
     # current_kwds = [t.translation for t in current_trans]
     current_trans.delete()
@@ -220,7 +223,8 @@ def update_keywords(gloss, field, value):
         trans = Translation(gloss=gloss, translation=kobj, index=i)
         trans.save()
 
-    newvalue = ", ".join([t.translation.text for t in gloss.translation_set.all()])
+    newvalue = ", ".join(
+        [t.translation.text for t in gloss.translation_set.all()])
 
     return HttpResponse(newvalue, {'content-type': 'text/plain'})
 
@@ -229,7 +233,7 @@ def update_relation(gloss, field, value):
     """Update one of the relations for this gloss"""
 
     (what, relid) = field.split('_')
-    what = what.replace('-', '_');
+    what = what.replace('-', '_')
 
     try:
         rel = Relation.objects.get(id=relid)
@@ -267,7 +271,7 @@ def update_relationtoforeignsign(gloss, field, value):
     """Update one of the relations for this gloss"""
 
     (what, relid) = field.split('_')
-    what = what.replace('-', '_');
+    what = what.replace('-', '_')
 
     try:
         rel = RelationToForeignSign.objects.get(id=relid)
@@ -282,16 +286,16 @@ def update_relationtoforeignsign(gloss, field, value):
         rel.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'relationforeign_loan':
-        rel.loan = value == 'YES';
-        rel.save();
+        rel.loan = value == 'YES'
+        rel.save()
 
     elif what == 'relationforeign_other_lang':
-        rel.other_lang = value;
-        rel.save();
+        rel.other_lang = value
+        rel.save()
 
     elif what == 'relationforeign_other_lang_gloss':
-        rel.other_lang_gloss = value;
-        rel.save();
+        rel.other_lang_gloss = value
+        rel.save()
 
     else:
 
@@ -444,7 +448,8 @@ def add_definition(request, glossid):
             text = form.cleaned_data['text']
 
             # create definition, default to not published
-            defn = Definition(gloss=thisgloss, count=count, role=role, text=text, published=published)
+            defn = Definition(
+                gloss=thisgloss, count=count, role=role, text=text, published=published)
             defn.save()
 
     return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': thisgloss.id}) + '?editdef')
@@ -463,20 +468,21 @@ def add_morphology_definition(request):
             thisgloss = get_object_or_404(Gloss, pk=parent_gloss)
 
             # create definition, default to not published
-            morphdef = MorphologyDefinition(parent_gloss=thisgloss, role=role, morpheme=morpheme)
+            morphdef = MorphologyDefinition(
+                parent_gloss=thisgloss, role=role, morpheme=morpheme)
             morphdef.save()
 
             return HttpResponseRedirect(
                 reverse('dictionary:admin_gloss_view', kwargs={'pk': thisgloss.id}) + '?editmorphdef')
 
-    raise Http404('Incorrect request');
+    raise Http404('Incorrect request')
 
 
 def update_morphology_definition(gloss, field, value):
     """Update one of the relations for this gloss"""
 
     (what, morph_def_id) = field.split('_')
-    what = what.replace('-', '_');
+    what = what.replace('-', '_')
 
     try:
         morph_def = MorphologyDefinition.objects.get(id=morph_def_id)
@@ -528,11 +534,14 @@ def add_tag(request, glossid):
 
             if form.cleaned_data['delete']:
                 # get the relevant TaggedItem
-                ti = get_object_or_404(TaggedItem, object_id=thisgloss.id, tag__name=tag)
+                ti = get_object_or_404(
+                    TaggedItem, object_id=thisgloss.id, tag__name=tag)
                 ti.delete()
-                response = HttpResponse('deleted', {'content-type': 'text/plain'})
+                response = HttpResponse(
+                    'deleted', {'content-type': 'text/plain'})
             else:
-                # we need to wrap the tag name in quotes since it might contain spaces
+                # we need to wrap the tag name in quotes since it might contain
+                # spaces
                 Tag.objects.add_tag(thisgloss, '"%s"' % tag)
                 # response is new HTML for the tag list and form
                 response = render_to_response('dictionary/glosstags.html',

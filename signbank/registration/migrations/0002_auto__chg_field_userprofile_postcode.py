@@ -10,12 +10,14 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'UserProfile.postcode'
-        db.alter_column(u'registration_userprofile', 'postcode', self.gf('django.db.models.fields.CharField')(default='', max_length=20))
+        db.alter_column(u'registration_userprofile', 'postcode', self.gf(
+            'django.db.models.fields.CharField')(default='', max_length=20))
 
     def backwards(self, orm):
 
         # Changing field 'UserProfile.postcode'
-        db.alter_column(u'registration_userprofile', 'postcode', self.gf('django.db.models.fields.PositiveIntegerField')(null=True))
+        db.alter_column(u'registration_userprofile', 'postcode', self.gf(
+            'django.db.models.fields.PositiveIntegerField')(null=True))
 
     models = {
         u'auth.group': {

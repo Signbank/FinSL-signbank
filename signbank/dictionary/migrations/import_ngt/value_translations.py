@@ -4,7 +4,7 @@ handednessChoices = (('0', 'No Value Set'),
                      ('3', '2'),
                      ('4', '2a'),
                      ('5', '2s'),
-                     ('6', 'X'));
+                     ('6', 'X'))
 
 handshapeChoices = ((0, 'No Value Set'),
                     (1, 'N/A'),
@@ -88,7 +88,7 @@ handshapeChoices = ((0, 'No Value Set'),
                     (79, 'O + k'),
                     (80, 'Middle finger'),
                     (81, '1 + m'),
-                    (82, 'S + i'));
+                    (82, 'S + i'))
 
 locationChoices = (('0', 'No Value Set'),
                    ('1', 'N/A'),
@@ -179,7 +179,8 @@ locationChoices = (('0', 'No Value Set'),
                    ('86', 'Shoulder contra > shoulder ipsi'),
                    ('87', 'Mouth + cheek'))
 
-# these are values for prim2ndloc fin2ndloc introduced for BSL, the names might change
+# these are values for prim2ndloc fin2ndloc introduced for BSL, the names
+# might change
 BSLsecondLocationChoices = (
     ('notset', 'No Value Set'),
     ('0', 'N/A'),

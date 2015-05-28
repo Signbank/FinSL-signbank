@@ -11,13 +11,12 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.handedness'
         db.delete_column('dictionary_gloss', 'handedness')
 
-
     def backwards(self, orm):
         # Adding field 'Gloss.handedness'
         db.add_column('dictionary_gloss', 'handedness',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=10, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=10, blank=True),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

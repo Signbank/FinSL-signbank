@@ -14,8 +14,9 @@ from signbank.attachments.models import Attachment
 # TODO: deal with uploading duplicate files - offer to replace
 
 class UploadFileForm(forms.Form):
-    file  = forms.FileField()
+    file = forms.FileField()
     description = forms.CharField()
+
 
 @permission_required('attachments.add_attachment')
 def upload_file(request):
@@ -23,13 +24,14 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             description = form.cleaned_data['description']
-            attachment = Attachment(file=request.FILES['file'], description=description, uploader=request.user)
+            attachment = Attachment(
+                file=request.FILES['file'], description=description, uploader=request.user)
             attachment.save()
             return HttpResponseRedirect('/attachments/')
     return HttpResponseRedirect('/attachments/')
 
 
 class AttachmentListView(ListView):
-    
+
     model = Attachment
     template_name = "list.html"

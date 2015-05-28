@@ -11,13 +11,12 @@ class Migration(SchemaMigration):
         # Deleting field 'GlossVideo.gloss_sn'
         db.delete_column(u'video_glossvideo', 'gloss_sn')
 
-
     def backwards(self, orm):
         # Adding field 'GlossVideo.gloss_sn'
         db.add_column(u'video_glossvideo', 'gloss_sn',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=20),
+                      self.gf('django.db.models.fields.CharField')(
+                          default=1, max_length=20),
                       keep_default=False)
-
 
     models = {
         u'dictionary.dialect': {

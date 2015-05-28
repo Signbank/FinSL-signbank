@@ -10,12 +10,14 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Keyword.text'
-        db.alter_column(u'dictionary_keyword', 'text', self.gf('django.db.models.fields.CharField')(unique=True, max_length=100))
+        db.alter_column(u'dictionary_keyword', 'text', self.gf(
+            'django.db.models.fields.CharField')(unique=True, max_length=100))
 
     def backwards(self, orm):
 
         # Changing field 'Keyword.text'
-        db.alter_column(u'dictionary_keyword', 'text', self.gf('django.db.models.fields.CharField')(max_length=50, unique=True))
+        db.alter_column(u'dictionary_keyword', 'text', self.gf(
+            'django.db.models.fields.CharField')(max_length=50, unique=True))
 
     models = {
         u'dictionary.definition': {

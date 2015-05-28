@@ -3,18 +3,19 @@ from signbank.pages.models import Page
 
 def menu(request):
     """Generate a menu hierarchy from the current set of pages
-    
+
     Returns a list of toplevel menu entries
     which are lists of dictionaries each with
     keys 'url', 'title' and 'children', the value of 'children'
     is a similar list of dictionaries.
     """
-    
+
     # find toplevel pages, with no parent and thier children
-    (menu, ignore) = find_children(None, request.META['PATH_INFO'],request.user)
+    (menu, ignore) = find_children(
+        None, request.META['PATH_INFO'], request.user)
     # return a dictionary to be merged with the request context
     return {'menu': menu}
-    
+
 
 def find_children(page, currentURL, user):
     """Find the child pages of a given page,
@@ -26,7 +27,7 @@ def find_children(page, currentURL, user):
     result = []
     for page in Page.objects.filter(parent=page, publish=True).order_by('index'):
 
-        #Find out if the player is allowed to see this page in the menu
+        # Find out if the player is allowed to see this page in the menu
         user_can_see_this_page = False
         required_groups = page.group_required.all()
         groups_the_user_is_in = user.groups.all()
@@ -42,15 +43,14 @@ def find_children(page, currentURL, user):
         if not user_can_see_this_page:
             continue
 
-        (children, childCurrent) = find_children(page, currentURL,user)
+        (children, childCurrent) = find_children(page, currentURL, user)
         # we're the current page if any of our children are the current page
-        # or if we're the current page        
-        isCurrent = ((page.url==currentURL) or childCurrent)
-        
+        # or if we're the current page
+        isCurrent = ((page.url == currentURL) or childCurrent)
+
         # remember if any of the children are the current page
         anyCurrent = (isCurrent or anyCurrent)
-        result.append({'url': page.url, 'title': page.title, 'children': children, 'current': isCurrent})
+        result.append(
+            {'url': page.url, 'title': page.title, 'children': children, 'current': isCurrent})
 
     return (result, anyCurrent)
-    
-    

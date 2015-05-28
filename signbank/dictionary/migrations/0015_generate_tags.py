@@ -4,21 +4,22 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         "Convert some xxxtf fields to tags"
 
         fields = {'religiontf': 'religion:religion',
-                  'catholictf': 'religion:catholic', 
-                  'cathschtf':  'religion:catholic school', 
-                  'angcongtf':  'religion:anglican', 
-                  'jwtf':       'religion:jehovas witness', 
-                  'otherreltf': 'religion:other', 
-                  'crudetf': 'lexis:crude', 
+                  'catholictf': 'religion:catholic',
+                  'cathschtf':  'religion:catholic school',
+                  'angcongtf':  'religion:anglican',
+                  'jwtf':       'religion:jehovas witness',
+                  'otherreltf': 'religion:other',
+                  'crudetf': 'lexis:crude',
                   'daystf': 'semantic:day',
                   'deaftf': 'semantic:deaf',
-                  'alternate': 'phonology:alternating', 
+                  'alternate': 'phonology:alternating',
                   'animalstf': 'semantic:animal',
                   'arithmetictf': 'semantic:arithmetic',
                   'artstf': 'semantic:arts',
@@ -45,8 +46,8 @@ class Migration(DataMigration):
                   'furntf': 'semantic:furniture',
                   'gensigntf': 'lexis:gensign',
                   'govtf': 'semantic:government',
-                  'groomtf': 'semantic:groom', 
-                #  'healthtf': 'semantic:health',    including this implies changing medical sign bank logic
+                  'groomtf': 'semantic:groom',
+                  #  'healthtf': 'semantic:health',    including this implies changing medical sign bank logic
                   'judgetf': 'semantic:judge',
                   'langactstf': 'semantic:language act',
                   'lawtf': 'semantic:law',
@@ -96,29 +97,28 @@ class Migration(DataMigration):
                   'varlextf': 'lexis:varlex',
                   'weathertf': 'semantic:weather',
                   'worktf': 'semantic:work',
-                   }
-        
+                  }
+
         for gloss in orm.Gloss.objects.all():
             tags = []
             for field in fields.keys():
                 if gloss.__dict__[field] == True:
                     tags.append(fields[field])
-                    
+
             gloss.tags = ",".join(tags)
             gloss.save()
-            if tags != []: 
+            if tags != []:
                 print gloss.idgloss, tags, gloss.tags
 
     def backwards(self, orm):
         "Delete all tags"
 
-        
         for gloss in orm.Gloss.objects.all():
             gloss.tags = ''
             gloss.save()
-            
+
         # we leave behind some Tag objects
-        
+
     models = {
         'dictionary.definition': {
             'Meta': {'ordering': "['gloss']", 'object_name': 'Definition'},

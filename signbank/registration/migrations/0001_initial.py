@@ -10,29 +10,36 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'RegistrationProfile'
         db.create_table(u'registration_registrationprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], unique=True)),
-            ('activation_key', self.gf('django.db.models.fields.CharField')(max_length=40)),
+            (u'id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'], unique=True)),
+            ('activation_key', self.gf(
+                'django.db.models.fields.CharField')(max_length=40)),
         ))
         db.send_create_signal(u'registration', ['RegistrationProfile'])
 
         # Adding model 'UserProfile'
         db.create_table(u'registration_userprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], unique=True)),
+            (u'id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'], unique=True)),
             ('yob', self.gf('django.db.models.fields.IntegerField')()),
             ('australian', self.gf('django.db.models.fields.BooleanField')()),
-            ('postcode', self.gf('django.db.models.fields.PositiveIntegerField')(null=True, blank=True)),
-            ('background', self.gf('django.db.models.fields.CommaSeparatedIntegerField')(max_length=20)),
+            ('postcode', self.gf('django.db.models.fields.PositiveIntegerField')(
+                null=True, blank=True)),
+            ('background', self.gf(
+                'django.db.models.fields.CommaSeparatedIntegerField')(max_length=20)),
             ('auslan_user', self.gf('django.db.models.fields.BooleanField')()),
             ('learned', self.gf('django.db.models.fields.IntegerField')()),
             ('deaf', self.gf('django.db.models.fields.BooleanField')()),
             ('schooltype', self.gf('django.db.models.fields.IntegerField')()),
-            ('school', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('school', self.gf('django.db.models.fields.CharField')
+             (max_length=50, blank=True)),
             ('teachercomm', self.gf('django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal(u'registration', ['UserProfile'])
-
 
     def backwards(self, orm):
         # Deleting model 'RegistrationProfile'
@@ -40,7 +47,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'UserProfile'
         db.delete_table(u'registration_userprofile')
-
 
     models = {
         u'auth.group': {

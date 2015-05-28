@@ -4,27 +4,27 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         "Convert the queries field to a definition of type private note prefixed by 'Query'."
-        
+
         for gloss in orm.Gloss.objects.filter(queries__isnull=False).exclude(queries__exact=""):
             comment = "Query: " + gloss.queries
-            defn = orm.Definition(gloss=gloss, text=comment, role="privatenote", count=1)
+            defn = orm.Definition(
+                gloss=gloss, text=comment, role="privatenote", count=1)
             defn.save()
-            print "Converting queries for ", gloss.idgloss, "as", comment        
-        
+            print "Converting queries for ", gloss.idgloss, "as", comment
 
     def backwards(self, orm):
         "Write your backwards methods here."
-        
+
         for defn in orm.Definition.objects.filter(role='privatenote', text__startswith="Query: "):
             comment = defn.text[7:]
             defn.gloss.queries = comment
             defn.delete()
-            print "Reverting comment for ", defn.gloss.idgloss, "as", comment        
-        
+            print "Reverting comment for ", defn.gloss.idgloss, "as", comment
 
     models = {
         'dictionary.definition': {

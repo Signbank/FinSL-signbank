@@ -4,7 +4,10 @@ keep track of uploaded videos and converted versions
 
 from django.db import models
 from django.conf import settings
-import sys, os, time, shutil
+import sys
+import os
+import time
+import shutil
 
 from convertvideo import extract_frame, convert_video, ffmpeg
 
@@ -13,6 +16,7 @@ from signbank.dictionary.models import Gloss
 
 
 class VideoPosterMixin:
+
     """Base class for video models that adds a method
     for generating poster images
 
@@ -25,8 +29,7 @@ class VideoPosterMixin:
         the poster image"""
 
         self.poster_path()
-        #self.ensure_mp4()
-
+        # self.ensure_mp4()
 
     def poster_path(self, create=True):
         """Return the path of the poster image for this
@@ -69,14 +72,13 @@ class VideoPosterMixin:
         # create a temporary copy in the new format
         # then move it into place
 
-        #print "ENSURE: ", self.videofile.path
-        
+        # print "ENSURE: ", self.videofile.path
+
         (basename, ext) = os.path.splitext(self.videofile.path)
         tmploc = basename + "-conv.mp4"
         err = convert_video(self.videofile.path, tmploc, force=True)
-        #print tmploc
+        # print tmploc
         shutil.move(tmploc, self.videofile.path)
-
 
     def delete_files(self):
         """Delete the files associated with this object"""
@@ -91,10 +93,12 @@ class VideoPosterMixin:
 
 
 class Video(models.Model, VideoPosterMixin):
+
     """A video file stored on the site"""
 
     # video file name relative to MEDIA_ROOT
-    videofile = models.FileField("Video file in h264 mp4 format", upload_to=settings.VIDEO_UPLOAD_LOCATION)
+    videofile = models.FileField(
+        "Video file in h264 mp4 format", upload_to=settings.VIDEO_UPLOAD_LOCATION)
 
     def __unicode__(self):
         return self.videofile.name
@@ -102,19 +106,20 @@ class Video(models.Model, VideoPosterMixin):
 
 import shutil
 
+
 class GlossVideoStorage(FileSystemStorage):
+
     """Implement our shadowing video storage system"""
 
     def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
         super(GlossVideoStorage, self).__init__(location, base_url)
-
 
     def get_valid_name(self, name):
         """Generate a valid name, we use directories named for the
         first two digits in the filename to partition the videos"""
 
         (targetdir, basename) = os.path.split(name)
-        
+
         path = os.path.join(str(basename)[:2], str(basename))
 
         result = os.path.join(targetdir, path)
@@ -124,15 +129,16 @@ class GlossVideoStorage(FileSystemStorage):
 
 storage = GlossVideoStorage()
 
+
 class GlossVideo(models.Model, VideoPosterMixin):
+
     """A video that represents a particular idgloss"""
 
-    videofile = models.FileField("video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
+    videofile = models.FileField(
+        "video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
     gloss = models.ForeignKey(Gloss)
-    
-    
-    
-    ## video version, version = 0 is always the one that will be displayed
+
+    # video version, version = 0 is always the one that will be displayed
     # we will increment the version (via reversion) if a new video is added
     # for this gloss
     version = models.IntegerField("Version", default=0)
@@ -145,7 +151,6 @@ class GlossVideo(models.Model, VideoPosterMixin):
         url = self.get_absolute_url()
         return url.replace(settings.MEDIA_URL, settings.MEDIA_MOBILE_URL)
 
-
     def reversion(self, revert=False):
         """We have a new version of this video so increase
         the version count here and rename the video
@@ -155,10 +160,9 @@ class GlossVideo(models.Model, VideoPosterMixin):
         way and decrease the version number, if version=0
         we delete ourselves"""
 
-
         if revert:
             print "REVERT VIDEO", self.videofile.name, self.version
-            if self.version==0:
+            if self.version == 0:
                 print "DELETE VIDEO VIA REVERSION", self.videofile.name
                 self.delete_files()
                 self.delete()
@@ -178,8 +182,9 @@ class GlossVideo(models.Model, VideoPosterMixin):
                 newname = newname + ".bak"
 
         # now do the renaming
-        
-        os.rename(os.path.join(storage.location, self.videofile.name), os.path.join(storage.location, newname))
+
+        os.rename(os.path.join(storage.location, self.videofile.name),
+                  os.path.join(storage.location, newname))
         # also remove the post image if present, it will be regenerated
         poster = self.poster_path(create=False)
         if poster != None:
@@ -187,10 +192,5 @@ class GlossVideo(models.Model, VideoPosterMixin):
         self.videofile.name = newname
         self.save()
 
-
     def __unicode__(self):
         return self.videofile.name
-
-
-
-

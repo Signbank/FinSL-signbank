@@ -4,19 +4,19 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
-        # Adding field 'Gloss.tags'
-        db.add_column('dictionary_gloss', 'tags', self.gf('tagging.fields.TagField')(default=''), keep_default=False)
 
+        # Adding field 'Gloss.tags'
+        db.add_column('dictionary_gloss', 'tags', self.gf(
+            'tagging.fields.TagField')(default=''), keep_default=False)
 
     def backwards(self, orm):
-        
+
         # Deleting field 'Gloss.tags'
         db.delete_column('dictionary_gloss', 'tags')
-
 
     models = {
         'dictionary.definition': {

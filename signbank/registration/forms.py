@@ -19,10 +19,12 @@ alnum_re = re.compile(r'^\w+$')
 # on them with CSS or JavaScript if they have a class of "required"
 # in the HTML. Your mileage may vary. If/when Django ticket #3515
 # lands in trunk, this will no longer be necessary.
-attrs_reqd = { 'class': 'required form-control' }
+attrs_reqd = {'class': 'required form-control'}
 attrs_default = {'class': 'form-control'}
 
+
 class RegistrationForm(forms.Form):
+
     """
     Form for registering a new user account.
 
@@ -41,7 +43,7 @@ class RegistrationForm(forms.Form):
                                label=_(u'Username'))
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_reqd,
                                                                maxlength=75)
-                                                    
+
                                                     ),
                              label=_(u'Your Email Address'))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_reqd),
@@ -56,10 +58,12 @@ class RegistrationForm(forms.Form):
 
         """
         try:
-            user = User.objects.get(username__exact=self.cleaned_data['username'])
+            user = User.objects.get(
+                username__exact=self.cleaned_data['username'])
         except User.DoesNotExist:
             return self.cleaned_data['username']
-        raise forms.ValidationError(_(u'This username is already taken. Please choose another.'))
+        raise forms.ValidationError(
+            _(u'This username is already taken. Please choose another.'))
 
     def clean_password2(self):
         """
@@ -69,7 +73,8 @@ class RegistrationForm(forms.Form):
         if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data:
             if self.cleaned_data['password1'] == self.cleaned_data['password2']:
                 return self.cleaned_data['password2']
-            raise forms.ValidationError(_(u'You must type the same password each time'))
+            raise forms.ValidationError(
+                _(u'You must type the same password each time'))
 
     def save(self, profile_callback=None):
         """
@@ -84,14 +89,17 @@ class RegistrationForm(forms.Form):
 
         """
         new_user = RegistrationProfile.objects.create_inactive_user(username=self.cleaned_data['username'],
-                                                                    password=self.cleaned_data['password1'],
-                                                                    email=self.cleaned_data['email'],
+                                                                    password=self.cleaned_data[
+                                                                        'password1'],
+                                                                    email=self.cleaned_data[
+                                                                        'email'],
                                                                     profile_callback=profile_callback)
         barf
         return new_user
 
 
 class RegistrationFormTermsOfService(RegistrationForm):
+
     """
     Subclass of ``RegistrationForm`` which adds a required checkbox
     for agreeing to a site's Terms of Service.
@@ -107,15 +115,18 @@ class RegistrationFormTermsOfService(RegistrationForm):
         """
         if self.cleaned_data.get('tos', False):
             return self.cleaned_data['tos']
-        raise forms.ValidationError(_(u'You must agree to the terms to register'))
+        raise forms.ValidationError(
+            _(u'You must agree to the terms to register'))
 
 
 class RegistrationFormUniqueEmail(RegistrationForm):
+
     """
     Subclass of ``RegistrationForm`` which enforces uniqueness of
     email addresses.
 
     """
+
     def clean_email(self):
         """
         Validates that the supplied email address is unique for the
@@ -126,10 +137,12 @@ class RegistrationFormUniqueEmail(RegistrationForm):
             user = User.objects.get(email__exact=self.cleaned_data['email'])
         except User.DoesNotExist:
             return self.cleaned_data['email']
-        raise forms.ValidationError(_(u'This email address is already in use. Please supply a different email address.'))
+        raise forms.ValidationError(
+            _(u'This email address is already in use. Please supply a different email address.'))
 
 
 class RegistrationFormNoFreeEmail(RegistrationForm):
+
     """
     Subclass of ``RegistrationForm`` which disallows registration with
     email addresses from popular free webmail services; moderately
@@ -151,13 +164,16 @@ class RegistrationFormNoFreeEmail(RegistrationForm):
         """
         email_domain = self.cleaned_data['email'].split('@')[1]
         if email_domain in self.bad_domains:
-            raise forms.ValidationError(_(u'Registration using free email addresses is prohibited. Please supply a different email address.'))
+            raise forms.ValidationError(
+                _(u'Registration using free email addresses is prohibited. Please supply a different email address.'))
         return self.cleaned_data['email']
 
 import re
 import time
 
+
 class BirthYearField(forms.Field):
+
     """A form field for entry of a year of birth,
      must be before this year and not more than 110 years ago"""
 
@@ -168,15 +184,17 @@ class BirthYearField(forms.Field):
             raise forms.ValidationError('Enter a four digit year, eg. 1984.')
 
         if not self.year_re.match(str(value)):
-            raise forms.ValidationError('%s is not a valid year.' % value   )
+            raise forms.ValidationError('%s is not a valid year.' % value)
         year = int(value)
         # check not after this year
         thisyear = time.localtime()[0]
         if year > thisyear:
-            raise forms.ValidationError("%s is in the future, please enter your year of birth." % value )
+            raise forms.ValidationError(
+                "%s is in the future, please enter your year of birth." % value)
         # or that this person isn't over 110
-        if year < thisyear-110:
-            raise forms.ValidationError("If you were born in %s you are now %s years old! Please enter your real birth year." % (year, thisyear-year))
+        if year < thisyear - 110:
+            raise forms.ValidationError(
+                "If you were born in %s you are now %s years old! Please enter your real birth year." % (year, thisyear - year))
         return year
 
 
@@ -186,38 +204,43 @@ yesnoChoices = ((1, 'yes'), (0, 'no'))
 
 import string
 
+
 def t(message):
     """Replace $country and $language in message with dat from settings"""
-    
+
     tpl = string.Template(message)
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
 
 class RegistrationFormAuslan(RegistrationFormUniqueEmail):
+
     """
     Registration form for the site
     """
     username = forms.CharField(widget=forms.HiddenInput, required=False)
     firstname = forms.CharField(label=t("Firstname"), max_length=50)
-    
+
     lastname = forms.CharField(label=t("Lastname"), max_length=50)
-    
+
     yob = BirthYearField(label=t("What year were you born?"))
-    
-    australian = forms.ChoiceField(yesnoChoices, label=t("Do you live in ${country}?"))
-    
-    postcode = forms.CharField(label=t("If you live in $country, what is your postcode?"), 
+
+    australian = forms.ChoiceField(
+        yesnoChoices, label=t("Do you live in ${country}?"))
+
+    postcode = forms.CharField(label=t("If you live in $country, what is your postcode?"),
                                max_length=20, required=False)
-    
-    background = forms.MultipleChoiceField(backgroundChoices, label=_("What is your background?"))
-    
-    auslan_user = forms.ChoiceField(yesnoChoices, label=t("Do you use $language?"), required=False)
-    
+
+    background = forms.MultipleChoiceField(
+        backgroundChoices, label=_("What is your background?"))
+
+    auslan_user = forms.ChoiceField(
+        yesnoChoices, label=t("Do you use $language?"), required=False)
+
     learned = forms.ChoiceField(label=t("If you use $language, when did you learn sign language?"),
-                                  choices=learnedChoices, required=False)
-    
+                                choices=learnedChoices, required=False)
+
     deaf = forms.ChoiceField(yesnoChoices, label=t("Are you a deaf person?"))
-    
+
     schooltype = forms.ChoiceField(label=t("What sort of school do you (or did you) attend?"),
                                    choices=schoolChoices, required=False)
     school = forms.CharField(label=t("Which school do you (or did you) attend?"),
@@ -225,8 +248,6 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
     teachercomm = forms.ChoiceField(label=t("How do (or did) your teachers communicate with you?"),
                                     choices=teachercommChoices,
                                     required=False)
-
-
 
     def save(self, profile_callback=None):
         """
@@ -240,26 +261,29 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
 
         # construct a username based on the email address
         # need to truncate to 30 chars
-        username = self.cleaned_data['email'].replace('@','').replace('.','')
+        username = self.cleaned_data['email'].replace('@', '').replace('.', '')
         username = username[:30]
 
         new_user = RegistrationProfile.objects.create_inactive_user(username=username,
-                                                                    password=self.cleaned_data['password1'],
-                                                                    email=self.cleaned_data['email'],
-                                                                    firstname=self.cleaned_data['firstname'],
-                                                                    lastname=self.cleaned_data['lastname'],
+                                                                    password=self.cleaned_data[
+                                                                        'password1'],
+                                                                    email=self.cleaned_data[
+                                                                        'email'],
+                                                                    firstname=self.cleaned_data[
+                                                                        'firstname'],
+                                                                    lastname=self.cleaned_data[
+                                                                        'lastname'],
                                                                     profile_callback=profile_callback)
-
-
 
         # now also create the userprofile for this user with
         # the extra information from the form
-        
+
         profile = UserProfile(user=new_user,
                               yob=self.cleaned_data['yob'],
                               australian=self.cleaned_data['australian'],
                               postcode=self.cleaned_data['postcode'],
-                              background=",".join(self.cleaned_data['background']),
+                              background=",".join(
+                                  self.cleaned_data['background']),
                               auslan_user=self.cleaned_data['auslan_user'],
                               learned=self.cleaned_data['learned'],
                               deaf=self.cleaned_data['deaf'],
@@ -275,7 +299,9 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
 from django.views.decorators.cache import never_cache
 from django.contrib.auth import authenticate
 
+
 class EmailAuthenticationForm(forms.Form):
+
     """
     Base class for authenticating users. Extend this to get a form that accepts
     username/password logins.
@@ -301,17 +327,18 @@ class EmailAuthenticationForm(forms.Form):
         if email and password:
             self.user_cache = authenticate(username=email, password=password)
             if self.user_cache is None:
-                raise forms.ValidationError(_("Please enter a correct email and password. Note that password is case-sensitive."))
+                raise forms.ValidationError(
+                    _("Please enter a correct email and password. Note that password is case-sensitive."))
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(_("This account is inactive."))
 
         # TODO: determine whether this should move to its own method.
         if self.request:
             if not self.request.session.test_cookie_worked():
-                raise forms.ValidationError(_("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in."))
+                raise forms.ValidationError(
+                    _("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in."))
 
         return self.cleaned_data
-
 
     def get_user_id(self):
         if self.user_cache:
@@ -320,4 +347,3 @@ class EmailAuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user_cache
-

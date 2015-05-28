@@ -10,18 +10,22 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Gloss.absOriPalm'
-        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.absOriFing'
-        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
     def backwards(self, orm):
 
         # Changing field 'Gloss.absOriPalm'
-        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf('django.db.models.fields.CharField')(default='', max_length=50))
+        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf(
+            'django.db.models.fields.CharField')(default='', max_length=50))
 
         # Changing field 'Gloss.absOriFing'
-        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf('django.db.models.fields.CharField')(default='', max_length=50))
+        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf(
+            'django.db.models.fields.CharField')(default='', max_length=50))
 
     models = {
         u'dictionary.definition': {

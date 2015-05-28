@@ -12,7 +12,8 @@ from django.conf import settings
 from django.http import Http404
 import tagging
 
-import sys, os
+import sys
+import os
 import json
 from collections import OrderedDict
 
@@ -22,6 +23,7 @@ from collections import OrderedDict
 
 
 class Translation(models.Model):
+
     """A Dutch translation of NGT signs"""
 
     gloss = models.ForeignKey("Gloss")
@@ -29,7 +31,8 @@ class Translation(models.Model):
     index = models.IntegerField("Index")
 
     def __str__(self):
-        # return unicode(self.gloss).encode('ascii','ignore')+"-"+unicode(self.translation).encode('ascii','ignore')
+        # return
+        # unicode(self.gloss).encode('ascii','ignore')+"-"+unicode(self.translation).encode('ascii','ignore')
         return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
 
     def get_absolute_url(self):
@@ -52,6 +55,7 @@ class Translation(models.Model):
 
 
 class Keyword(models.Model):
+
     """A Dutch keyword that is a possible translation equivalent of a sign"""
 
     def __str__(self):
@@ -82,15 +86,18 @@ class Keyword(models.Model):
         else:
             alltrans = self.translation_set.filter(gloss__inWeb__exact=True)
 
-        # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is on
+        # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is
+        # on
         try:
             crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
         except:
             crudetag = None
 
-        safe = (not request.user.is_authenticated()) and settings.ANON_SAFE_SEARCH
+        safe = (not request.user.is_authenticated()
+                ) and settings.ANON_SAFE_SEARCH
         if safe and crudetag:
-            alltrans = [tr for tr in alltrans if not crudetag in tagging.models.Tag.objects.get_for_object(tr.gloss)]
+            alltrans = [
+                tr for tr in alltrans if not crudetag in tagging.models.Tag.objects.get_for_object(tr.gloss)]
 
         # if there are no translations, generate a 404
         if len(alltrans) == 0:
@@ -115,6 +122,7 @@ DEFN_ROLE_CHOICES = (('note', 'Note'),
 
 
 class Definition(models.Model):
+
     """An English text associated with a gloss. It's called a note in the web interface"""
 
     def __str__(self):
@@ -136,6 +144,7 @@ class Definition(models.Model):
 
 
 class Language(models.Model):
+
     """A sign language name"""
 
     class Meta:
@@ -149,6 +158,7 @@ class Language(models.Model):
 
 
 class Dialect(models.Model):
+
     """A dialect name - a regional dialect of a given Language"""
 
     class Meta:
@@ -163,6 +173,7 @@ class Dialect(models.Model):
 
 
 class RelationToForeignSign(models.Model):
+
     """Defines a relationship to another sign in another language (often a loan)"""
 
     def __str__(self):
@@ -171,7 +182,8 @@ class RelationToForeignSign(models.Model):
     gloss = models.ForeignKey("Gloss")
     loan = models.BooleanField("Loan Sign", default=False)
     other_lang = models.CharField("Related Language", max_length=20)
-    other_lang_gloss = models.CharField("Gloss in related language", max_length=50)
+    other_lang_gloss = models.CharField(
+        "Gloss in related language", max_length=50)
 
     class Meta:
         ordering = ['gloss', 'loan', 'other_lang', 'other_lang_gloss']
@@ -363,7 +375,8 @@ locationChoices = (('0', 'No Value Set'),
                    ('86', 'Shoulder contra > shoulder ipsi'),
                    ('87', 'Mouth + cheek'))
 
-# these are values for prim2ndloc fin2ndloc introduced for BSL, the names might change
+# these are values for prim2ndloc fin2ndloc introduced for BSL, the names
+# might change
 BSLsecondLocationChoices = (
     ('notset', 'No Value Set'),
     ('0', 'N/A'),
@@ -707,10 +720,13 @@ class FieldChoice(models.Model):
         ordering = ['field', 'machine_value']
 
 # Lets see if this is needed, it is a bad way to check it from the db
+
+
 def build_choice_list(field):
     choice_list = [('0', '-'), ('1', 'N/A')]
 
-    # TODO: There is a query here that happens before migration, find a solution
+    # TODO: There is a query here that happens before migration, find a
+    # solution
     for choice in FieldChoice.objects.filter(field=field):
         choice_list.append((str(choice.machine_value), choice.english_name))
 
@@ -718,6 +734,7 @@ def build_choice_list(field):
 
 
 class Gloss(models.Model):
+
     class Meta:
         verbose_name_plural = "Glosses"
         ordering = ['idgloss']
@@ -725,9 +742,12 @@ class Gloss(models.Model):
                        ('search_gloss', 'Can Search/View Full Gloss Details'),
                        ('export_csv', 'Can export sign details as CSV'),
                        ('can_publish', 'Can publish signs and definitions'),
-                       ('can_delete_unpublished', 'Can delete unpub signs or defs'),
-                       ('can_delete_published', 'Can delete pub signs and defs'),
-                       ('view_advanced_properties', 'Include all properties in sign detail view'),
+                       ('can_delete_unpublished',
+                        'Can delete unpub signs or defs'),
+                       ('can_delete_published',
+                        'Can delete pub signs and defs'),
+                       ('view_advanced_properties',
+                        'Include all properties in sign detail view'),
                        )
 
     def __str__(self):
@@ -755,7 +775,8 @@ class Gloss(models.Model):
 
             # First, try to give the human readable choice value back
             try:
-                result.append((fname, getattr(self, 'get_' + field + '_display')()))
+                result.append(
+                    (fname, getattr(self, 'get_' + field + '_display')()))
 
             # If that doesn't work, give the raw value back
             except AttributeError:
@@ -791,14 +812,16 @@ minor or insignificant ways that can be ignored.""")
     asltf = models.NullBooleanField("ASL sign", null=True, blank=True)
 
     # these fields should be reviewed - do we put them in another class too?
-    aslgloss = models.CharField("ASL gloss", blank=True, max_length=50)  # American Sign Language gloss
+    # American Sign Language gloss
+    aslgloss = models.CharField("ASL gloss", blank=True, max_length=50)
     asloantf = models.NullBooleanField("ASL loan sign", null=True, blank=True)
 
     # loans from british sign language
     bslgloss = models.CharField("BSL gloss", max_length=50, blank=True)
     bslloantf = models.NullBooleanField("BSL loan sign", null=True, blank=True)
 
-    useInstr = models.CharField("Annotation instructions", max_length=50, blank=True)
+    useInstr = models.CharField(
+        "Annotation instructions", max_length=50, blank=True)
     rmrks = models.CharField("Remarks", max_length=50, blank=True)
 
     ########
@@ -806,12 +829,13 @@ minor or insignificant ways that can be ignored.""")
     # one or more regional dialects that this gloss is used in
     dialect = models.ManyToManyField(Dialect)
 
-    blend = models.CharField("Blend of", max_length=100, null=True, blank=True)  # This field type is a guess.
+    # This field type is a guess.
+    blend = models.CharField("Blend of", max_length=100, null=True, blank=True)
     blendtf = models.NullBooleanField("Blend", null=True, blank=True)
 
-    compound = models.CharField("Compound of", max_length=100, blank=True)  # This field type is a guess.
+    # This field type is a guess.
+    compound = models.CharField("Compound of", max_length=100, blank=True)
     comptf = models.NullBooleanField("Compound", null=True, blank=True)
-
 
     # Phonology fields
     handedness = models.CharField("Handedness", blank=True, null=True, choices=handednessChoices,
@@ -827,12 +851,15 @@ minor or insignificant ways that can be ignored.""")
     final_subhndsh = models.CharField("Final Subordinate Handshape", null=True, choices=handshapeChoices,
                                       blank=True, max_length=5)
 
-    locprim = models.CharField("Location", choices=locationChoices, null=True, blank=True, max_length=20)
+    locprim = models.CharField(
+        "Location", choices=locationChoices, null=True, blank=True, max_length=20)
     final_loc = models.IntegerField("Final Primary Location", choices=locationChoices, null=True,
                                     blank=True)
-    locVirtObj = models.CharField("Virtual Object", blank=True, null=True, max_length=50)
+    locVirtObj = models.CharField(
+        "Virtual Object", blank=True, null=True, max_length=50)
 
-    locsecond = models.IntegerField("Secondary Location", choices=locationChoices, null=True, blank=True)
+    locsecond = models.IntegerField(
+        "Secondary Location", choices=locationChoices, null=True, blank=True)
 
     initial_secondary_loc = models.CharField("Initial Subordinate Location", max_length=20,
                                              choices=BSLsecondLocationChoices, null=True, blank=True)
@@ -850,7 +877,8 @@ minor or insignificant ways that can be ignored.""")
                                                   blank=True, choices=relOrientationChoices)
 
     inWeb = models.NullBooleanField("In the Web dictionary", default=False)
-    isNew = models.NullBooleanField("Is this a proposed new sign?", null=True, default=False)
+    isNew = models.NullBooleanField(
+        "Is this a proposed new sign?", null=True, default=False)
 
     inittext = models.CharField(max_length="50", blank=True)
 
@@ -858,7 +886,8 @@ minor or insignificant ways that can be ignored.""")
 
     sedefinetf = models.TextField("Signed English definition available", null=True,
                                   blank=True)  # TODO: should be boolean
-    segloss = models.CharField("Signed English gloss", max_length=50, blank=True, null=True)
+    segloss = models.CharField(
+        "Signed English gloss", max_length=50, blank=True, null=True)
 
     sense = models.IntegerField("Sense Number", null=True, blank=True,
                                 help_text="If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1")
@@ -892,8 +921,10 @@ minor or insignificant ways that can be ignored.""")
     handCh = models.CharField("Handshape Change", choices=handChChoices, null=True, blank=True,
                               max_length=5)
 
-    repeat = models.NullBooleanField("Repeated Movement", null=True, default=False)
-    altern = models.NullBooleanField("Alternating Movement", null=True, default=False)
+    repeat = models.NullBooleanField(
+        "Repeated Movement", null=True, default=False)
+    altern = models.NullBooleanField(
+        "Alternating Movement", null=True, default=False)
 
     movSh = models.CharField("Movement Shape", choices=movShapeChoices, null=True, blank=True,
                              max_length=5)
@@ -908,7 +939,8 @@ minor or insignificant ways that can be ignored.""")
 
     mouthG = models.CharField("Mouth Gesture", max_length=50, blank=True)
     mouthing = models.CharField("Mouthing", max_length=50, blank=True)
-    phonetVar = models.CharField("Phonetic Variation", max_length=50, blank=True, )
+    phonetVar = models.CharField(
+        "Phonetic Variation", max_length=50, blank=True, )
 
     # Semantic fields
 
@@ -921,21 +953,35 @@ minor or insignificant ways that can be ignored.""")
 
     # Frequency fields
 
-    tokNo = models.IntegerField("Total Number of Occurrences", null=True, blank=True)
-    tokNoSgnr = models.IntegerField("Total Number of Signers Using this Sign", null=True, blank=True)
-    tokNoA = models.IntegerField("Number of Occurrences in Amsterdam", null=True, blank=True)
-    tokNoV = models.IntegerField("Number of Occurrences in Voorburg", null=True, blank=True)
-    tokNoR = models.IntegerField("Number of Occurrences in Rotterdam", null=True, blank=True)
-    tokNoGe = models.IntegerField("Number of Occurrences in Gestel", null=True, blank=True)
-    tokNoGr = models.IntegerField("Number of Occurrences in Groningen", null=True, blank=True)
-    tokNoO = models.IntegerField("Number of Occurrences in Other Regions", null=True, blank=True)
+    tokNo = models.IntegerField(
+        "Total Number of Occurrences", null=True, blank=True)
+    tokNoSgnr = models.IntegerField(
+        "Total Number of Signers Using this Sign", null=True, blank=True)
+    tokNoA = models.IntegerField(
+        "Number of Occurrences in Amsterdam", null=True, blank=True)
+    tokNoV = models.IntegerField(
+        "Number of Occurrences in Voorburg", null=True, blank=True)
+    tokNoR = models.IntegerField(
+        "Number of Occurrences in Rotterdam", null=True, blank=True)
+    tokNoGe = models.IntegerField(
+        "Number of Occurrences in Gestel", null=True, blank=True)
+    tokNoGr = models.IntegerField(
+        "Number of Occurrences in Groningen", null=True, blank=True)
+    tokNoO = models.IntegerField(
+        "Number of Occurrences in Other Regions", null=True, blank=True)
 
-    tokNoSgnrA = models.IntegerField("Number of Amsterdam Signers", null=True, blank=True)
-    tokNoSgnrV = models.IntegerField("Number of Voorburg Signers", null=True, blank=True)
-    tokNoSgnrR = models.IntegerField("Number of Rotterdam Signers", null=True, blank=True)
-    tokNoSgnrGe = models.IntegerField("Number of Gestel Signers", null=True, blank=True)
-    tokNoSgnrGr = models.IntegerField("Number of Groningen Signers", null=True, blank=True)
-    tokNoSgnrO = models.IntegerField("Number of Other Region Signers", null=True, blank=True)
+    tokNoSgnrA = models.IntegerField(
+        "Number of Amsterdam Signers", null=True, blank=True)
+    tokNoSgnrV = models.IntegerField(
+        "Number of Voorburg Signers", null=True, blank=True)
+    tokNoSgnrR = models.IntegerField(
+        "Number of Rotterdam Signers", null=True, blank=True)
+    tokNoSgnrGe = models.IntegerField(
+        "Number of Gestel Signers", null=True, blank=True)
+    tokNoSgnrGr = models.IntegerField(
+        "Number of Groningen Signers", null=True, blank=True)
+    tokNoSgnrO = models.IntegerField(
+        "Number of Other Region Signers", null=True, blank=True)
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
@@ -966,7 +1012,8 @@ minor or insignificant ways that can be ignored.""")
         elif staff:
             set = Gloss.objects.filter(sn__gt=self.sn).order_by('sn')
         else:
-            set = Gloss.objects.filter(sn__gt=self.sn, inWeb__exact=True).order_by('sn')
+            set = Gloss.objects.filter(
+                sn__gt=self.sn, inWeb__exact=True).order_by('sn')
         if set:
             return set[0]
         else:
@@ -979,7 +1026,8 @@ minor or insignificant ways that can be ignored.""")
         elif staff:
             set = Gloss.objects.filter(sn__lt=self.sn).order_by('-sn')
         else:
-            set = Gloss.objects.filter(sn__lt=self.sn, inWeb__exact=True).order_by('-sn')
+            set = Gloss.objects.filter(
+                sn__lt=self.sn, inWeb__exact=True).order_by('-sn')
         if set:
             return set[0]
         else:
@@ -992,13 +1040,15 @@ minor or insignificant ways that can be ignored.""")
         """Return the set of homophones for this gloss ordered by sense number"""
 
         if self.sense == 1:
-            relations = Relation.objects.filter(role="homophone", target__exact=self).order_by('source__sense')
+            relations = Relation.objects.filter(
+                role="homophone", target__exact=self).order_by('source__sense')
             homophones = [rel.source for rel in relations]
             homophones.insert(0, self)
             return homophones
         elif self.sense > 1:
             # need to find the root and see how many senses it has
-            homophones = self.relation_sources.filter(role='homophone', target__sense__exact=1)
+            homophones = self.relation_sources.filter(
+                role='homophone', target__sense__exact=1)
             if len(homophones) > 0:
                 root = homophones[0].target
                 return root.homophones()
@@ -1010,7 +1060,8 @@ minor or insignificant ways that can be ignored.""")
         Return the gloss instance."""
 
         if self.sense > 1:
-            homophones = self.relation_sources.filter(role='homophone', target__sense__exact=1)
+            homophones = self.relation_sources.filter(
+                role='homophone', target__sense__exact=1)
             # should be only zero or one of these
             if len(homophones) > 0:
                 return homophones[0].target
@@ -1019,7 +1070,8 @@ minor or insignificant ways that can be ignored.""")
     def get_video(self):
         """Return the video object for this gloss or None if no video available"""
 
-        video_path = 'glossvideo/' + self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
+        video_path = 'glossvideo/' + \
+            self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
 
         if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
             return video_path
@@ -1045,7 +1097,7 @@ minor or insignificant ways that can be ignored.""")
     def get_video_url(self):
         """return  the url of the video for this gloss which may be that of a homophone"""
 
-        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4';
+        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'
 
         video = self.get_video()
         if video != None:
@@ -1155,7 +1207,8 @@ minor or insignificant ways that can be ignored.""")
             sorted_li = sorted(li, key=lambda x: x[1])
 
             # Put it in another format
-            reformatted_li = [('_' + str(value), text) for value, text in sorted_li]
+            reformatted_li = [('_' + str(value), text)
+                              for value, text in sorted_li]
             choice_lists[fieldname] = OrderedDict(reformatted_li)
         # TODO: This needs fixing, it used the build_choice_list method. Cannot know the choice values.
         # Choice lists for other models
@@ -1181,6 +1234,7 @@ RELATION_ROLE_CHOICES = (('homonym', 'Homonym'),
 
 
 class Relation(models.Model):
+
     """A relation between two glosses"""
 
     source = models.ForeignKey(Gloss, related_name="relation_sources")
@@ -1198,6 +1252,7 @@ class Relation(models.Model):
 
 
 class MorphologyDefinition(models.Model):
+
     """Tells something about morphology of a gloss"""
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")

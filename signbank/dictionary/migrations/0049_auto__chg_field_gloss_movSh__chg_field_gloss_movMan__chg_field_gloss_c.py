@@ -10,30 +10,38 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Gloss.movSh'
-        db.alter_column(u'dictionary_gloss', 'movSh', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'movSh', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.movMan'
-        db.alter_column(u'dictionary_gloss', 'movMan', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'movMan', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.contType'
-        db.alter_column(u'dictionary_gloss', 'contType', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'contType', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.movDir'
-        db.alter_column(u'dictionary_gloss', 'movDir', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'movDir', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
     def backwards(self, orm):
 
         # Changing field 'Gloss.movSh'
-        db.alter_column(u'dictionary_gloss', 'movSh', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'movSh', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.movMan'
-        db.alter_column(u'dictionary_gloss', 'movMan', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'movMan', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.contType'
-        db.alter_column(u'dictionary_gloss', 'contType', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'contType', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.movDir'
-        db.alter_column(u'dictionary_gloss', 'movDir', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'movDir', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
     models = {
         u'dictionary.definition': {

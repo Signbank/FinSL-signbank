@@ -10,14 +10,15 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.initial_secondary_loc'
         db.add_column('dictionary_gloss', 'initial_secondary_loc',
-                      self.gf('django.db.models.fields.CharField')(null=True, blank=True, max_length=20),
+                      self.gf('django.db.models.fields.CharField')(
+                          null=True, blank=True, max_length=20),
                       keep_default=False)
 
         # Adding field 'Gloss.final_secondary_loc'
         db.add_column('dictionary_gloss', 'final_secondary_loc',
-                      self.gf('django.db.models.fields.CharField')(null=True, blank=True, max_length=20),
+                      self.gf('django.db.models.fields.CharField')(
+                          null=True, blank=True, max_length=20),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Gloss.initial_secondary_loc'
@@ -25,7 +26,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Gloss.final_secondary_loc'
         db.delete_column('dictionary_gloss', 'final_secondary_loc')
-
 
     models = {
         'dictionary.definition': {

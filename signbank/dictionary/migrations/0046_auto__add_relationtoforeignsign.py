@@ -10,19 +10,22 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'RelationToForeignSign'
         db.create_table(u'dictionary_relationtoforeignsign', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('gloss', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dictionary.Gloss'])),
-            ('loan', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('other_lang', self.gf('django.db.models.fields.CharField')(max_length=20)),
-            ('other_lang_gloss', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            (u'id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('gloss', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['dictionary.Gloss'])),
+            ('loan', self.gf('django.db.models.fields.BooleanField')
+             (default=False)),
+            ('other_lang', self.gf(
+                'django.db.models.fields.CharField')(max_length=20)),
+            ('other_lang_gloss', self.gf(
+                'django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'dictionary', ['RelationToForeignSign'])
-
 
     def backwards(self, orm):
         # Deleting model 'RelationToForeignSign'
         db.delete_table(u'dictionary_relationtoforeignsign')
-
 
     models = {
         u'dictionary.definition': {

@@ -10,14 +10,13 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.final_loc'
         db.add_column('dictionary_gloss', 'final_loc',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Gloss.final_loc'
         db.delete_column('dictionary_gloss', 'final_loc')
-
 
     models = {
         'dictionary.definition': {

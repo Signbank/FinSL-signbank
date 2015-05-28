@@ -10,20 +10,23 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'InterpreterFeedback'
         db.create_table(u'feedback_interpreterfeedback', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('gloss', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dictionary.Gloss'])),
+            (u'id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('gloss', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['dictionary.Gloss'])),
             ('comment', self.gf('django.db.models.fields.TextField')()),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('status', self.gf('django.db.models.fields.CharField')(default='unread', max_length=10)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'])),
+            ('date', self.gf('django.db.models.fields.DateTimeField')
+             (auto_now_add=True, blank=True)),
+            ('status', self.gf('django.db.models.fields.CharField')
+             (default='unread', max_length=10)),
         ))
         db.send_create_signal(u'feedback', ['InterpreterFeedback'])
-
 
     def backwards(self, orm):
         # Deleting model 'InterpreterFeedback'
         db.delete_table(u'feedback_interpreterfeedback')
-
 
     models = {
         u'auth.group': {

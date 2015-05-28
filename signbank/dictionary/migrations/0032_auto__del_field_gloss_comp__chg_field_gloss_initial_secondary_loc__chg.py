@@ -11,25 +11,28 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.comp'
         db.delete_column('dictionary_gloss', 'comp')
 
-
         # Changing field 'Gloss.initial_secondary_loc'
-        db.alter_column('dictionary_gloss', 'initial_secondary_loc', self.gf('django.db.models.fields.CharField')(max_length=20, null=True))
+        db.alter_column('dictionary_gloss', 'initial_secondary_loc', self.gf(
+            'django.db.models.fields.CharField')(max_length=20, null=True))
 
         # Changing field 'Gloss.final_secondary_loc'
-        db.alter_column('dictionary_gloss', 'final_secondary_loc', self.gf('django.db.models.fields.CharField')(max_length=20, null=True))
+        db.alter_column('dictionary_gloss', 'final_secondary_loc', self.gf(
+            'django.db.models.fields.CharField')(max_length=20, null=True))
 
     def backwards(self, orm):
         # Adding field 'Gloss.comp'
         db.add_column('dictionary_gloss', 'comp',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
 
-
         # Changing field 'Gloss.initial_secondary_loc'
-        db.alter_column('dictionary_gloss', 'initial_secondary_loc', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column('dictionary_gloss', 'initial_secondary_loc', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.final_secondary_loc'
-        db.alter_column('dictionary_gloss', 'final_secondary_loc', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column('dictionary_gloss', 'final_secondary_loc', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
     models = {
         'dictionary.definition': {

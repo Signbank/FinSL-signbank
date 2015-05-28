@@ -15,15 +15,14 @@ class Migration(DataMigration):
 
         for gloss in orm.Gloss.objects.all():
             if gloss.InMedLex:
-                 Tag.objects.add_tag(gloss, 'workflow:problematic')
+                Tag.objects.add_tag(gloss, 'workflow:problematic')
 
     def backwards(self, orm):
         "Write your backwards methods here."
 
         for gloss in orm.Gloss.objects.all():
-            Tag.objects.get_for_object(gloss).filter(name='workflow:problematic').delete()
-
-
+            Tag.objects.get_for_object(gloss).filter(
+                name='workflow:problematic').delete()
 
     models = {
         'dictionary.definition': {

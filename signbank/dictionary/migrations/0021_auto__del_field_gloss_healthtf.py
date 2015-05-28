@@ -8,17 +8,16 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Deleting field 'Gloss.healthtf'
         db.delete_column('dictionary_gloss', 'healthtf')
-
 
     def backwards(self, orm):
         # Adding field 'Gloss.healthtf'
         db.add_column('dictionary_gloss', 'healthtf',
-                      self.gf('django.db.models.fields.NullBooleanField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

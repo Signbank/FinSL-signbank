@@ -14,18 +14,18 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.queries'
         db.delete_column('dictionary_gloss', 'queries')
 
-
     def backwards(self, orm):
         # Adding field 'Gloss.SpecialCore'
         db.add_column('dictionary_gloss', 'SpecialCore',
-                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.TextField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.queries'
         db.add_column('dictionary_gloss', 'queries',
-                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.TextField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

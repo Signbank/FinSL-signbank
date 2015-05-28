@@ -10,14 +10,15 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.initial_palm_orientation'
         db.add_column('dictionary_gloss', 'initial_palm_orientation',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=10, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=10, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.final_palm_orientation'
         db.add_column('dictionary_gloss', 'final_palm_orientation',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=10, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=10, blank=True),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Gloss.initial_palm_orientation'
@@ -25,7 +26,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Gloss.final_palm_orientation'
         db.delete_column('dictionary_gloss', 'final_palm_orientation')
-
 
     models = {
         'dictionary.definition': {

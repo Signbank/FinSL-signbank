@@ -10,49 +10,57 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.relatArtic'
         db.add_column(u'dictionary_gloss', 'relatArtic',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.relOriMov'
         db.add_column(u'dictionary_gloss', 'relOriMov',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.relOriLoc'
         db.add_column(u'dictionary_gloss', 'relOriLoc',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.handCh'
         db.add_column(u'dictionary_gloss', 'handCh',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.movSh'
         db.add_column(u'dictionary_gloss', 'movSh',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.movDir'
         db.add_column(u'dictionary_gloss', 'movDir',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.movMan'
         db.add_column(u'dictionary_gloss', 'movMan',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.contType'
         db.add_column(u'dictionary_gloss', 'contType',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.namEnt'
         db.add_column(u'dictionary_gloss', 'namEnt',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Gloss.relatArtic'
@@ -81,7 +89,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Gloss.namEnt'
         db.delete_column(u'dictionary_gloss', 'namEnt')
-
 
     models = {
         u'dictionary.definition': {

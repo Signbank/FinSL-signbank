@@ -9,23 +9,26 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from signbank.log import debug
 
+
 class PageForm(forms.ModelForm):
     url = forms.RegexField(label=_("URL"), max_length=100, regex=r'^[-\w/]+$',
-        help_text = _("Example: '/about/contact/'. Make sure to have leading"
-                      " and trailing slashes."),
-        error_message = _("This value must contain only letters, numbers,"
-                          " underscores, dashes or slashes."))
+                           help_text=_("Example: '/about/contact/'. Make sure to have leading"
+                                       " and trailing slashes."),
+                           error_message=_("This value must contain only letters, numbers,"
+                                           " underscores, dashes or slashes."))
 
     class Meta:
         model = Page
 
-   
+
 class PageVideoForm(forms.ModelForm):
     video = VideoUploadToFLVField(label='Video',
-                            required=True,
-                            prefix='pages',
-                            help_text = _("Uploaded video will be converted to Flash"),
-                            widget = admin.widgets.AdminFileWidget)
+                                  required=True,
+                                  prefix='pages',
+                                  help_text=_(
+                                      "Uploaded video will be converted to Flash"),
+                                  widget=admin.widgets.AdminFileWidget)
+
     class Meta:
         model = PageVideo
 
@@ -37,16 +40,20 @@ class PageVideoForm(forms.ModelForm):
         debug("Instance video: %s" % instance.video)
         return instance
 
+
 class PageVideoInline(admin.TabularInline):
     form = PageVideoForm
-    model = PageVideo  
+    model = PageVideo
     extra = 1
+
 
 class PageAdmin(SummernoteModelAdmin):
     form = PageForm
     fieldsets = (
-        (None, {'fields': ('url', 'title', 'parent', 'index', 'publish', 'content' )}),
-        (_('Advanced options'), {'classes': ('collapse',), 'fields': ('group_required', 'template_name')}),
+        (None, {
+         'fields': ('url', 'title', 'parent', 'index', 'publish', 'content')}),
+        (_('Advanced options'), {
+         'classes': ('collapse',), 'fields': ('group_required', 'template_name')}),
     )
     list_display = ('url', 'title', 'parent', 'index')
     list_filter = ('publish', 'group_required')
@@ -54,5 +61,3 @@ class PageAdmin(SummernoteModelAdmin):
     inlines = [PageVideoInline]
 
 admin.site.register(Page, PageAdmin)
-
-

@@ -38,7 +38,7 @@ SIGN_NAVIGATION = False
 
 # Fixes the problem with merge
 SOUTH_MIGRATION_MODULES = {
-'tagging': 'tagging.south_migrations',
+    'tagging': 'tagging.south_migrations',
 }
 
 
@@ -67,11 +67,10 @@ LOGGING = {
 
 import mimetypes
 mimetypes.add_type("video/mp4", ".mov", True)
-    
 
 
 # a list of tags we're allowed to use
-XALLOWED_TAGS = [ '', 
+XALLOWED_TAGS = ['',
                  'workflow:needs video',
                  'workflow:redo video',
                  'workflow:problematic',
@@ -86,8 +85,8 @@ XALLOWED_TAGS = [ '',
                  'phonology:parallel',
                  'phonology:symmetrical',
                  'phonology:two handed',
-                ]
+                 ]
 
-DATABASE_NAME = '/home/heilniem/signbank-master/signbank.db';
-#TODO: Fix where this points at
+DATABASE_NAME = '/home/heilniem/signbank-master/signbank.db'
+# TODO: Fix where this points at
 WSGI_FILE = '/var/www2/signbank/live/virtualenv/signbank/lib/python2.7/site-packages/signbank/wsgi.py'

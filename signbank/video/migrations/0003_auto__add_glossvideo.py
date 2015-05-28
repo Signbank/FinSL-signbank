@@ -10,17 +10,18 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'GlossVideo'
         db.create_table('video_glossvideo', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('videofile', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('gloss_sn', self.gf('django.db.models.fields.CharField')(max_length=20)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('videofile', self.gf(
+                'django.db.models.fields.files.FileField')(max_length=100)),
+            ('gloss_sn', self.gf(
+                'django.db.models.fields.CharField')(max_length=20)),
         ))
         db.send_create_signal('video', ['GlossVideo'])
-
 
     def backwards(self, orm):
         # Deleting model 'GlossVideo'
         db.delete_table('video_glossvideo')
-
 
     models = {
         'video.glossvideo': {

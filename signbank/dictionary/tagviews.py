@@ -11,16 +11,14 @@ from signbank.dictionary.models import Gloss
 
 def taglist_json(request):
     """Return a list of tags as JSON"""
-    
+
     tags = [t.name for t in Tag.objects.all()]
-    
+
     return HttpResponse(json.dumps(tags), {'content-type': 'application/json'})
-    
-    
+
 
 def taglist(request, tag=None):
     """View of a list of tags or a list of signs with a given tag"""
-
 
     if tag:
         # get the glosses with this tag
@@ -32,11 +30,10 @@ def taglist(request, tag=None):
         else:
             taginfo = ('None', tag)
 
-
         paginator = Paginator(gloss_list, 50)
-        
+
         if request.GET.has_key('page'):
-            
+
             page = request.GET['page']
             try:
                 result_page = paginator.page(page)
@@ -44,23 +41,21 @@ def taglist(request, tag=None):
                 result_page = paginator.page(1)
             except EmptyPage:
                 result_page = paginator.page(paginator.num_pages)
-    
+
         else:
             result_page = paginator.page(1)
-        
-        
 
         return render_to_response('dictionary/gloss_list.html',
                                   {'paginator': paginator,
                                    'page': result_page,
                                    'thistag': taginfo,
                                    'tagdict': tag_dict()},
-                                   context_instance=RequestContext(request) )
+                                  context_instance=RequestContext(request))
     else:
         return render_to_response('dictionary/gloss_list.html',
                                   {'tagdict': tag_dict(),
                                    },
-                                   context_instance=RequestContext(request))
+                                  context_instance=RequestContext(request))
 
 
 def tag_dict():

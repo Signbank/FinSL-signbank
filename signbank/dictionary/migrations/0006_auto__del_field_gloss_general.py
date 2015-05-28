@@ -4,19 +4,19 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Deleting field 'Gloss.general'
         db.delete_column('dictionary_gloss', 'general')
 
-
     def backwards(self, orm):
-        
-        # Adding field 'Gloss.general'
-        db.add_column('dictionary_gloss', 'general', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
+        # Adding field 'Gloss.general'
+        db.add_column('dictionary_gloss', 'general', self.gf(
+            'django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
     models = {
         'dictionary.definition': {

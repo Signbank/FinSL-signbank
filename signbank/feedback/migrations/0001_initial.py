@@ -4,65 +4,97 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'GeneralFeedback'
         db.create_table('feedback_generalfeedback', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('comment', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('video', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('status', self.gf('django.db.models.fields.CharField')(default='unread', max_length=10)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('comment', self.gf(
+                'django.db.models.fields.TextField')(blank=True)),
+            ('video', self.gf('django.db.models.fields.files.FileField')
+             (max_length=100, blank=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'])),
+            ('date', self.gf('django.db.models.fields.DateTimeField')
+             (auto_now_add=True, blank=True)),
+            ('status', self.gf('django.db.models.fields.CharField')
+             (default='unread', max_length=10)),
         ))
         db.send_create_signal('feedback', ['GeneralFeedback'])
 
         # Adding model 'SignFeedback'
         db.create_table('feedback_signfeedback', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('translation', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dictionary.Translation'])),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'])),
+            ('date', self.gf('django.db.models.fields.DateTimeField')
+             (auto_now_add=True, blank=True)),
+            ('translation', self.gf('django.db.models.fields.related.ForeignKey')(
+                to=orm['dictionary.Translation'])),
             ('isAuslan', self.gf('django.db.models.fields.IntegerField')()),
-            ('whereused', self.gf('django.db.models.fields.CharField')(max_length=10)),
+            ('whereused', self.gf(
+                'django.db.models.fields.CharField')(max_length=10)),
             ('like', self.gf('django.db.models.fields.IntegerField')()),
             ('use', self.gf('django.db.models.fields.IntegerField')()),
-            ('suggested', self.gf('django.db.models.fields.IntegerField')(default=3)),
+            ('suggested', self.gf(
+                'django.db.models.fields.IntegerField')(default=3)),
             ('correct', self.gf('django.db.models.fields.IntegerField')()),
-            ('kwnotbelong', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('comment', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('status', self.gf('django.db.models.fields.CharField')(default='unread', max_length=10)),
+            ('kwnotbelong', self.gf(
+                'django.db.models.fields.TextField')(blank=True)),
+            ('comment', self.gf(
+                'django.db.models.fields.TextField')(blank=True)),
+            ('status', self.gf('django.db.models.fields.CharField')
+             (default='unread', max_length=10)),
         ))
         db.send_create_signal('feedback', ['SignFeedback'])
 
         # Adding model 'MissingSignFeedback'
         db.create_table('feedback_missingsignfeedback', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('handform', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('handshape', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('althandshape', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('location', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('relativelocation', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('handbodycontact', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('handinteraction', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('direction', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('movementtype', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('smallmovement', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('repetition', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')
+             (to=orm['auth.User'])),
+            ('date', self.gf('django.db.models.fields.DateTimeField')
+             (auto_now_add=True, blank=True)),
+            ('handform', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('handshape', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('althandshape', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('location', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('relativelocation', self.gf(
+                'django.db.models.fields.IntegerField')(default=0, blank=True)),
+            ('handbodycontact', self.gf(
+                'django.db.models.fields.IntegerField')(default=0, blank=True)),
+            ('handinteraction', self.gf(
+                'django.db.models.fields.IntegerField')(default=0, blank=True)),
+            ('direction', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('movementtype', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('smallmovement', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
+            ('repetition', self.gf('django.db.models.fields.IntegerField')
+             (default=0, blank=True)),
             ('meaning', self.gf('django.db.models.fields.TextField')()),
-            ('comments', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('video', self.gf('django.db.models.fields.files.FileField')(default='', max_length=100, blank=True)),
-            ('status', self.gf('django.db.models.fields.CharField')(default='unread', max_length=10)),
+            ('comments', self.gf(
+                'django.db.models.fields.TextField')(blank=True)),
+            ('video', self.gf('django.db.models.fields.files.FileField')
+             (default='', max_length=100, blank=True)),
+            ('status', self.gf('django.db.models.fields.CharField')
+             (default='unread', max_length=10)),
         ))
         db.send_create_signal('feedback', ['MissingSignFeedback'])
 
-
     def backwards(self, orm):
-        
+
         # Deleting model 'GeneralFeedback'
         db.delete_table('feedback_generalfeedback')
 
@@ -71,7 +103,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'MissingSignFeedback'
         db.delete_table('feedback_missingsignfeedback')
-
 
     models = {
         'auth.group': {

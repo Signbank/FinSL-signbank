@@ -45,7 +45,7 @@ urlpatterns = patterns('',
                        url(r'^password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
                            auth_views.password_reset_confirm,
                            name='password_reset_confirm'),
-                       
+
                        url(r'^password/reset/complete/$',
                            auth_views.password_reset_complete,
                            name='password_reset_complete'),
@@ -54,17 +54,18 @@ urlpatterns = patterns('',
                            auth_views.password_reset_done,
                            name='password_reset_done'),
 
-                       
+
                        url(r'^register/$',
                            register,
                            name='registration_register',
-                           kwargs = {
-                               'form_class': RegistrationFormAuslan, 
-                             },
+                           kwargs={
+                               'form_class': RegistrationFormAuslan,
+                           },
                            ),
 
-                           
+
                        url(r'^register/complete/$',
-                           TemplateView.as_view(template_name='registration/registration_complete.html'),
+                           TemplateView.as_view(
+                               template_name='registration/registration_complete.html'),
                            name='registration_complete'),
                        )

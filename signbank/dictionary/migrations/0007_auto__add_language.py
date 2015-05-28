@@ -4,24 +4,25 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'Language'
         db.create_table('dictionary_language', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=20)),
+            ('id', self.gf('django.db.models.fields.AutoField')
+             (primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')
+             (max_length=20)),
             ('description', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal('dictionary', ['Language'])
 
-
     def backwards(self, orm):
-        
+
         # Deleting model 'Language'
         db.delete_table('dictionary_language')
-
 
     models = {
         'dictionary.definition': {

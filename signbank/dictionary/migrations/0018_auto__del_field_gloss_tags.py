@@ -11,13 +11,11 @@ class Migration(SchemaMigration):
         # Deleting field 'Gloss.tags'
         db.delete_column('dictionary_gloss', 'tags')
 
-
     def backwards(self, orm):
         # Adding field 'Gloss.tags'
         db.add_column('dictionary_gloss', 'tags',
                       self.gf('tagging.fields.TagField')(default=''),
                       keep_default=False)
-
 
     models = {
         'dictionary.definition': {

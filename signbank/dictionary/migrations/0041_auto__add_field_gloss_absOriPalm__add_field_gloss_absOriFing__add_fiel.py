@@ -10,119 +10,141 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Gloss.absOriPalm'
         db.add_column(u'dictionary_gloss', 'absOriPalm',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=50, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.absOriFing'
         db.add_column(u'dictionary_gloss', 'absOriFing',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=50, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.repeat'
         db.add_column(u'dictionary_gloss', 'repeat',
-                      self.gf('django.db.models.fields.NullBooleanField')(default=False, null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          default=False, null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.altern'
         db.add_column(u'dictionary_gloss', 'altern',
-                      self.gf('django.db.models.fields.NullBooleanField')(default=False, null=True, blank=True),
+                      self.gf('django.db.models.fields.NullBooleanField')(
+                          default=False, null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.phonOth'
         db.add_column(u'dictionary_gloss', 'phonOth',
-                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.TextField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.mouthG'
         db.add_column(u'dictionary_gloss', 'mouthG',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=50, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.mouthing'
         db.add_column(u'dictionary_gloss', 'mouthing',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=50, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.phonetVar'
         db.add_column(u'dictionary_gloss', 'phonetVar',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=50, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.iconImg'
         db.add_column(u'dictionary_gloss', 'iconImg',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      self.gf('django.db.models.fields.CharField')(
+                          default='', max_length=50, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNo'
         db.add_column(u'dictionary_gloss', 'tokNo',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnr'
         db.add_column(u'dictionary_gloss', 'tokNoSgnr',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoA'
         db.add_column(u'dictionary_gloss', 'tokNoA',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoV'
         db.add_column(u'dictionary_gloss', 'tokNoV',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoR'
         db.add_column(u'dictionary_gloss', 'tokNoR',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoGe'
         db.add_column(u'dictionary_gloss', 'tokNoGe',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoGr'
         db.add_column(u'dictionary_gloss', 'tokNoGr',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoO'
         db.add_column(u'dictionary_gloss', 'tokNoO',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnrA'
         db.add_column(u'dictionary_gloss', 'tokNoSgnrA',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnrV'
         db.add_column(u'dictionary_gloss', 'tokNoSgnrV',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnrR'
         db.add_column(u'dictionary_gloss', 'tokNoSgnrR',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnrGe'
         db.add_column(u'dictionary_gloss', 'tokNoSgnrGe',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnrGr'
         db.add_column(u'dictionary_gloss', 'tokNoSgnrGr',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Gloss.tokNoSgnrO'
         db.add_column(u'dictionary_gloss', 'tokNoSgnrO',
-                      self.gf('django.db.models.fields.IntegerField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          null=True, blank=True),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Gloss.absOriPalm'
@@ -193,7 +215,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Gloss.tokNoSgnrO'
         db.delete_column(u'dictionary_gloss', 'tokNoSgnrO')
-
 
     models = {
         u'dictionary.definition': {

@@ -10,14 +10,13 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Definition.published'
         db.add_column(u'dictionary_definition', 'published',
-                      self.gf('django.db.models.fields.BooleanField')(default=True),
+                      self.gf('django.db.models.fields.BooleanField')(
+                          default=True),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'Definition.published'
         db.delete_column(u'dictionary_definition', 'published')
-
 
     models = {
         u'dictionary.definition': {

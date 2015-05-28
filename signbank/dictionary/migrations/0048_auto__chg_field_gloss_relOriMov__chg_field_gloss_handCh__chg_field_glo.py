@@ -10,42 +10,54 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Gloss.relOriMov'
-        db.alter_column(u'dictionary_gloss', 'relOriMov', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'relOriMov', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.handCh'
-        db.alter_column(u'dictionary_gloss', 'handCh', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'handCh', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.relatArtic'
-        db.alter_column(u'dictionary_gloss', 'relatArtic', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'relatArtic', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.absOriPalm'
-        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.absOriFing'
-        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
         # Changing field 'Gloss.relOriLoc'
-        db.alter_column(u'dictionary_gloss', 'relOriLoc', self.gf('django.db.models.fields.CharField')(max_length=5, null=True))
+        db.alter_column(u'dictionary_gloss', 'relOriLoc', self.gf(
+            'django.db.models.fields.CharField')(max_length=5, null=True))
 
     def backwards(self, orm):
 
         # Changing field 'Gloss.relOriMov'
-        db.alter_column(u'dictionary_gloss', 'relOriMov', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'relOriMov', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.handCh'
-        db.alter_column(u'dictionary_gloss', 'handCh', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'handCh', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.relatArtic'
-        db.alter_column(u'dictionary_gloss', 'relatArtic', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'relatArtic', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.absOriPalm'
-        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'absOriPalm', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.absOriFing'
-        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'absOriFing', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
         # Changing field 'Gloss.relOriLoc'
-        db.alter_column(u'dictionary_gloss', 'relOriLoc', self.gf('django.db.models.fields.IntegerField')(null=True))
+        db.alter_column(u'dictionary_gloss', 'relOriLoc', self.gf(
+            'django.db.models.fields.IntegerField')(null=True))
 
     models = {
         u'dictionary.definition': {

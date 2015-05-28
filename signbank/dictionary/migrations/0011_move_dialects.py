@@ -4,11 +4,12 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         """Move any dialect flags from the model to Dialect objects"""
-        
+
         auslan = orm.Language.objects.get(name="Auslan")
         if not auslan:
             auslan = orm.Language(name="Auslan")
@@ -17,9 +18,9 @@ class Migration(DataMigration):
         tas.save()
         vic = orm.Dialect(name="Victoria", language=auslan)
         vic.save()
-        wa =  orm.Dialect(name="Western Australia", language=auslan)
+        wa = orm.Dialect(name="Western Australia", language=auslan)
         wa.save()
-        sa =  orm.Dialect(name="South Australia", language=auslan)
+        sa = orm.Dialect(name="South Australia", language=auslan)
         sa.save()
         qld = orm.Dialect(name="Queensland", language=auslan)
         qld.save()
@@ -30,10 +31,8 @@ class Migration(DataMigration):
         sth = orm.Dialect(name="Southern Dialect", language=auslan)
         sth.save()
 
-        
-        
         for gloss in orm.Gloss.objects.all():
-            
+
             if gloss.tastf:
                 gloss.dialect.add(tas)
             if gloss.victf:
@@ -41,19 +40,19 @@ class Migration(DataMigration):
             if gloss.watf:
                 gloss.dialect.add(wa)
             if gloss.satf:
-                gloss.dialect.add(sa)  
+                gloss.dialect.add(sa)
             if gloss.qldtf:
-                gloss.dialect.add(qld)  
+                gloss.dialect.add(qld)
             if gloss.nswtf:
-                gloss.dialect.add(nsw)  
+                gloss.dialect.add(nsw)
             if gloss.nthtf:
-                gloss.dialect.add(nth)     
+                gloss.dialect.add(nth)
             if gloss.sthtf:
                 gloss.dialect.add(sth)
             if gloss.auslextf:
                 # this is all dialects
                 for d in [tas, vic, wa, sa, qld, nsw, nth, sth]:
-                    gloss.dialect.add(d)     
+                    gloss.dialect.add(d)
 
             gloss.save()
             print gloss.idgloss, ":", gloss.dialect.all()
@@ -63,7 +62,6 @@ class Migration(DataMigration):
 
         for gloss in orm.Gloss.objects.all():
             gloss.dialect.all().delete()
-
 
     models = {
         'dictionary.definition': {

@@ -4,25 +4,26 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
         """Move content from the general field to definitions with role 'General Definition'"""
-        
+
         for gloss in orm.Gloss.objects.filter(general__isnull=False).exclude(general__exact=""):
             text = gloss.general
-            defn = orm.Definition(gloss=gloss, text=text, role="general", count=1)
+            defn = orm.Definition(
+                gloss=gloss, text=text, role="general", count=1)
             defn.save()
             print "Converting general definition for ", gloss.idgloss, ":", text
-            
+
     def backwards(self, orm):
         """Add general field back from 'General Definition' definitions"""
-         
+
         for defn in orm.Definition.objects.filter(role='privatenote'):
             defn.gloss.general = defn.text
             defn.delete()
             print "Reverting general definition for ", defn.gloss.idgloss
-
 
     models = {
         'dictionary.definition': {

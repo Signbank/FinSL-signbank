@@ -10,14 +10,13 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'GlossVideo.version'
         db.add_column('video_glossvideo', 'version',
-                      self.gf('django.db.models.fields.IntegerField')(default=0),
+                      self.gf('django.db.models.fields.IntegerField')(
+                          default=0),
                       keep_default=False)
-
 
     def backwards(self, orm):
         # Deleting field 'GlossVideo.version'
         db.delete_column('video_glossvideo', 'version')
-
 
     models = {
         'video.glossvideo': {
