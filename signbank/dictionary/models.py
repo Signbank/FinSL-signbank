@@ -7,7 +7,7 @@ manageable.
 """
 
 from django.db.models import Q
-from django.db import models
+from django.db import models, OperationalError
 from django.conf import settings
 from django.http import Http404
 import tagging
@@ -725,12 +725,19 @@ class FieldChoice(models.Model):
 def build_choice_list(field):
     choice_list = [('0', '-'), ('1', 'N/A')]
 
-    # TODO: There is a query here that happens before migration, find a
-    # solution
-    for choice in FieldChoice.objects.filter(field=field):
-        choice_list.append((str(choice.machine_value), choice.english_name))
+    # TODO: Is this try a good enough solution for first syncdb/migrate problem where migrate tries to access db before it is created due to this method trying to access it
 
-    return choice_list
+    # Try to look for fields in FieldName and chooce choices from there
+    try:
+        for choice in FieldChoice.objects.filter(field=field):
+            choice_list.append((str(choice.machine_value), choice.english_name))
+
+        return choice_list
+
+    # Enter this exception if the db has no data yet
+    except OperationalError:
+        pass
+
 
 
 class Gloss(models.Model):
@@ -838,28 +845,28 @@ minor or insignificant ways that can be ignored.""")
     comptf = models.NullBooleanField("Compound", null=True, blank=True)
 
     # Phonology fields
-    handedness = models.CharField("Handedness", blank=True, null=True, choices=handednessChoices,
-                                  max_length=5)
+    handedness = models.CharField("Handedness", blank=True, null=True, choices=build_choice_list("Handedness"),
+                                  max_length=5) #handednessChoices <- use this if you want static
 
-    domhndsh = models.CharField("Strong Hand", blank=True, null=True, choices=handshapeChoices,
+    domhndsh = models.CharField("Strong Hand", blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
-    subhndsh = models.CharField("Weak Hand", null=True, choices=handshapeChoices, blank=True,
+    subhndsh = models.CharField("Weak Hand", null=True, choices=build_choice_list("Handshape"), blank=True,
                                 max_length=5)
 
     final_domhndsh = models.CharField("Final Dominant Handshape", blank=True, null=True,
-                                      choices=handshapeChoices, max_length=5)
-    final_subhndsh = models.CharField("Final Subordinate Handshape", null=True, choices=handshapeChoices,
+                                      choices=build_choice_list("Handshape"), max_length=5)
+    final_subhndsh = models.CharField("Final Subordinate Handshape", null=True, choices=build_choice_list("Handshape"),
                                       blank=True, max_length=5)
 
     locprim = models.CharField(
         "Location", choices=locationChoices, null=True, blank=True, max_length=20)
-    final_loc = models.IntegerField("Final Primary Location", choices=locationChoices, null=True,
+    final_loc = models.IntegerField("Final Primary Location", choices=build_choice_list("Location"), null=True,
                                     blank=True)
     locVirtObj = models.CharField(
         "Virtual Object", blank=True, null=True, max_length=50)
 
     locsecond = models.IntegerField(
-        "Secondary Location", choices=locationChoices, null=True, blank=True)
+        "Secondary Location", choices=build_choice_list("Location"), null=True, blank=True)
 
     initial_secondary_loc = models.CharField("Initial Subordinate Location", max_length=20,
                                              choices=BSLsecondLocationChoices, null=True, blank=True)
@@ -902,23 +909,22 @@ minor or insignificant ways that can be ignored.""")
 
     StemSN = models.IntegerField(null=True, blank=True)
 
-    relatArtic = models.CharField("Relation between Articulators", choices=relatArticChoices, null=True,
+    relatArtic = models.CharField("Relation between Articulators", choices=build_choice_list("RelatArtic"), null=True,
                                   blank=True, max_length=5)
 
-    absOriPalm = models.CharField("Absolute Orientation: Palm", choices=absOriPalmChoices, null=True,
+    absOriPalm = models.CharField("Absolute Orientation: Palm", choices=build_choice_list("RelatArtic"), null=True,
                                   blank=True, max_length=5)
-    absOriFing = models.CharField("Absolute Orientation: Fingers", choices=absOriFingChoices, null=True,
+    absOriFing = models.CharField("Absolute Orientation: Fingers", choices=build_choice_list("AbsOriFing"), null=True,
                                   blank=True, max_length=5)
 
-    relOriMov = models.CharField("Relative Orientation: Movement", choices=relOriMovChoices, null=True,
+    relOriMov = models.CharField("Relative Orientation: Movement", choices=build_choice_list("RelOriMov"), null=True,
                                  blank=True, max_length=5)
-    relOriLoc = models.CharField("Relative Orientation: Location", choices=relOriLocChoices, null=True,
+    relOriLoc = models.CharField("Relative Orientation: Location", choices=build_choice_list("RelOriLoc"), null=True,
                                  blank=True, max_length=5)
-    # TODO: OriChange choices!
-    oriCh = models.CharField("Orientation Change", choices=(('0', '-'), ('1', 'N/A')), null=True, blank=True,
+    oriCh = models.CharField("Orientation Change", choices=build_choice_list("OriChange"), null=True, blank=True,
                              max_length=5)
 
-    handCh = models.CharField("Handshape Change", choices=handChChoices, null=True, blank=True,
+    handCh = models.CharField("Handshape Change", choices=build_choice_list("HandshapeChange"), null=True, blank=True,
                               max_length=5)
 
     repeat = models.NullBooleanField(
@@ -926,13 +932,13 @@ minor or insignificant ways that can be ignored.""")
     altern = models.NullBooleanField(
         "Alternating Movement", null=True, default=False)
 
-    movSh = models.CharField("Movement Shape", choices=movShapeChoices, null=True, blank=True,
+    movSh = models.CharField("Movement Shape", choices=build_choice_list("MovementShape"), null=True, blank=True,
                              max_length=5)
-    movDir = models.CharField("Movement Direction", choices=movDirChoices, null=True, blank=True,
+    movDir = models.CharField("Movement Direction", choices=build_choice_list("MovementDir"), null=True, blank=True,
                               max_length=5)
-    movMan = models.CharField("Movement Manner", choices=movManChoices, null=True, blank=True,
+    movMan = models.CharField("Movement Manner", choices=build_choice_list("MovementMan"), null=True, blank=True,
                               max_length=5)
-    contType = models.CharField("Contact Type", choices=contTypeChoices, null=True, blank=True,
+    contType = models.CharField("Contact Type", choices=build_choice_list("ContactType"), null=True, blank=True,
                                 max_length=5)
 
     phonOth = models.TextField("Phonology Other", null=True, blank=True)
@@ -945,10 +951,9 @@ minor or insignificant ways that can be ignored.""")
     # Semantic fields
 
     iconImg = models.CharField("Iconic Image", max_length=50, blank=True)
-    namEnt = models.CharField("Named Entity", choices=namedEntChoices, null=True, blank=True,
+    namEnt = models.CharField("Named Entity", choices=build_choice_list("NamedEntity"), null=True, blank=True,
                               max_length=5)
-    # TODO: SemField Choices!
-    semField = models.CharField("Semantic Field", choices=(('0', '-'), ('1', 'N/A')), null=True, blank=True,
+    semField = models.CharField("Semantic Field", choices=build_choice_list("SemField"), null=True, blank=True,
                                 max_length=5)
 
     # Frequency fields
@@ -1213,7 +1218,7 @@ minor or insignificant ways that can be ignored.""")
         # TODO: This needs fixing, it used the build_choice_list method. Cannot know the choice values.
         # Choice lists for other models
         choice_lists['morphology_role'] = [human_value for machine_value, human_value in
-                                           (('0', '-'), ('1', 'N/A'))]
+                                           build_choice_list('MorphologyType')]
 
         return json.dumps(choice_lists)
 
@@ -1239,7 +1244,7 @@ class Relation(models.Model):
 
     source = models.ForeignKey(Gloss, related_name="relation_sources")
     target = models.ForeignKey(Gloss, related_name="relation_targets")
-    role = models.CharField(max_length=20, choices=RELATION_ROLE_CHOICES)
+    role = models.CharField(max_length=20, choices=build_choice_list('MorphologyType'))
     # antonym, synonym, cf (what's this? - see also), var[b-f]
     # (what's this - variant (XXXa is the stem, XXXb is a variant)
 
