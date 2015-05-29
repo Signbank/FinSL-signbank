@@ -727,7 +727,7 @@ def build_choice_list(field):
 
     # TODO: Is this try a good enough solution for first syncdb/migrate problem where migrate tries to access db before it is created due to this method trying to access it
 
-    # Try to look for fields in FieldName and chooce choices from there
+    # Try to look for fields in FieldName and choose choices from there
     try:
         for choice in FieldChoice.objects.filter(field=field):
             choice_list.append((str(choice.machine_value), choice.english_name))
@@ -796,7 +796,8 @@ class Gloss(models.Model):
 database. No two Sign Entry Names can be exactly the same, but a "Sign
 Entry Name" can be (and often is) the same as the Annotation Idgloss.""")
 
-    annotation_idgloss = models.CharField("Annotation ID Gloss: Dutch", blank=True, max_length=30, help_text="""
+    # Changed this Gloss to be for the University of Jyvaskyla folks
+    annotation_idgloss = models.CharField("Annotation ID Gloss: JYU", blank=True, max_length=30, help_text="""
     This is the Dutch name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
@@ -804,7 +805,8 @@ have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored.""")
     # the idgloss used in transcription, may be shared between many signs
 
-    annotation_idgloss_en = models.CharField("Annotation ID Gloss: English", blank=True, max_length=30, help_text="""
+    # Changed this Gloss to be for the Helsinki folks
+    annotation_idgloss_en = models.CharField("Annotation ID Gloss: Helsinki", blank=True, max_length=30, help_text="""
     This is the English name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries

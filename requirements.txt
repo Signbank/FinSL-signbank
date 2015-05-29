@@ -1,4 +1,4 @@
-django==1.6.1
+django==1.6.11
 south
 django-tagging
 django-mobile

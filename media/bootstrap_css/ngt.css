@@ -2,19 +2,19 @@
 
 
 html { 
-  background-image: url(images/ngt/black_02.gif); 
+  /* background-image: url(images/ngt/black_02.gif); */
 } 
 
 #leftcontentborder {
-  background-image: url(images/ngt/black_03.gif);
+  /* background-image: url(images/ngt/black_03.gif); */
 }
 
 #rightcontentborder {
-  background-image: url(images/ngt/black_05.gif);
+  /* background-image: url(images/ngt/black_05.gif); */
 }
 
  #header {
-		background-image: url(images/ngt/black_02.gif); 
+		/* background-image: url(images/ngt/black_02.gif); */
         padding:0;
         background:#B82B22;
         height:110px;
@@ -26,18 +26,20 @@ html {
 #header h1 {
         height: 110px;
         width: 759px;
-        background-image: url(./images/ngt/ngt-header.png);
+        /* background-image: url(./images/ngt/ngt-header.png); */
         background-position: 20px 20px;
         background-repeat: no-repeat;   
-        text-indent: -9000px;
+        /* text-indent: -9000px; */
         margin: 0px;
         
 }
 
 #logoholder {
-    background-image: url(./images/ngt/ru-logo.png);
+    background-image: url(./images/ngt/jy_text_500.png);
     background-repeat: no-repeat;
-    background-position: 20px 20px;
+    /*background-position: 20px 20px;*/
+    /* Added background size*/
+    background-size: 166px 95px;
 	width: 265px;
     height: 110px;
     position: absolute;
