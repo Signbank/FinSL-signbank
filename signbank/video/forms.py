@@ -8,6 +8,7 @@ class VideoUploadForm(forms.ModelForm):
 
     class Meta:
         model = GlossVideo
+        exclude = ()
 
 
 class VideoUploadForGlossForm(forms.Form):

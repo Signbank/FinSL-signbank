@@ -1,5 +1,4 @@
-django==1.6.11
-south
+django==1.8.2
 django-tagging
 django-mobile
 django-reversion

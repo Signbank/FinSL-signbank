@@ -34,7 +34,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-MEDIA_ROOT = '/var/www2/signbank/live/repo/signbank/media'
+MEDIA_ROOT = '/home/heilniem/temp/'
 MEDIA_URL = '/media/'
 MEDIA_MOBILE_URL = MEDIA_URL
 
@@ -138,7 +138,6 @@ INSTALLED_APPS = (
     'signbank.pages',
     'signbank.attachments',
     'signbank.video',
-    'south',
     'reversion',
     'django_mobile',
     'tagging',
@@ -179,17 +178,14 @@ DO_LOGGING = False
 LOG_FILENAME = "debug.log"
 
 
-SOUTH_TESTS_MIGRATE = False
-
-
 # Application settings for signbank
 
 
 # Settings controlling page contents
 
 # what do we call this signbank?
-LANGUAGE_NAME = "NGT"
-COUNTRY_NAME = "Netherlands"
+LANGUAGE_NAME = "FSE"
+COUNTRY_NAME = "Finland"
 
 # do we implement safe search for anonymous users?
 # if True, any gloss that is tagged lexis:crude will be removed from

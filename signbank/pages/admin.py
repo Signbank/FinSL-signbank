@@ -19,6 +19,7 @@ class PageForm(forms.ModelForm):
 
     class Meta:
         model = Page
+        fields = "__all__"
 
 
 class PageVideoForm(forms.ModelForm):
@@ -31,6 +32,7 @@ class PageVideoForm(forms.ModelForm):
 
     class Meta:
         model = PageVideo
+        fields = "__all__"
 
     def save(self, commit=True):
         debug("Saving a video form")
