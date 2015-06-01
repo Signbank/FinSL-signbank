@@ -34,7 +34,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-MEDIA_ROOT = '/home/heilniem/temp/'
+MEDIA_ROOT = '/home/heilniem/signbank-master/media'
 MEDIA_URL = '/media/'
 MEDIA_MOBILE_URL = MEDIA_URL
 
@@ -57,6 +57,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, "media"),
 )
+
 
 # List of finder classes that know how to find static files in
 # various locations.
