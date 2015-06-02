@@ -13,6 +13,7 @@ EMAIL_HOST = ""
 
 ADMINS = (
     ('Henri Nieminen', 'henri.nieminen@gmail.com'),
+    ('Anna Puupponen', 'anna.puupponen@jyu.fi'),
 )
 
 MANAGERS = ADMINS
@@ -26,7 +27,8 @@ DATABASES = {
 
 TIME_ZONE = 'Europe/Helsinki'
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fi-fi'
 
 SITE_ID = 1
 USE_I18N = True

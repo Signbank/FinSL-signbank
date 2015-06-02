@@ -820,7 +820,7 @@ minor or insignificant ways that can be ignored.""")
     bsltf = models.NullBooleanField("BSL sign", null=True, blank=True)
     asltf = models.NullBooleanField("ASL sign", null=True, blank=True)
 
-    # these fields should be reviewed - do we put them in another class too?
+    # TODO: these fields should be reviewed - do we put them in another class too?
     # American Sign Language gloss
     aslgloss = models.CharField("ASL gloss", blank=True, max_length=50)
     asloantf = models.NullBooleanField("ASL loan sign", null=True, blank=True)
