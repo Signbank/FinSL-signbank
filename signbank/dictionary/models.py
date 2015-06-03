@@ -30,10 +30,11 @@ class Translation(models.Model):
     translation = models.ForeignKey("Keyword")
     index = models.IntegerField("Index")
 
-    def __str__(self):
-        # return
-        # unicode(self.gloss).encode('ascii','ignore')+"-"+unicode(self.translation).encode('ascii','ignore')
-        return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
+    # TODO: 1. Check if __unicode__ is better than __str__ implementation
+    # TODO: 2. See if the return works better than the previous (now commented)
+    def __unicode__(self):
+        return unicode(self.gloss).encode('ascii','ignore')+"-"+unicode(self.translation).encode('ascii','ignore')
+        #return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
 
     def get_absolute_url(self):
         """Return a URL for a view of this translation."""
@@ -58,7 +59,7 @@ class Keyword(models.Model):
 
     """A Dutch keyword that is a possible translation equivalent of a sign"""
 
-    def __str__(self):
+    def __unicode__(self):
         return self.text.encode('utf-8')
 
     text = models.CharField(max_length=100, unique=True)
@@ -125,7 +126,7 @@ class Definition(models.Model):
 
     """An English text associated with a gloss. It's called a note in the web interface"""
 
-    def __str__(self):
+    def __unicode__(self):
         return str(self.gloss) + "/" + self.role
 
     gloss = models.ForeignKey("Gloss")
@@ -153,7 +154,7 @@ class Language(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -168,7 +169,7 @@ class Dialect(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.language.name + "/" + self.name
 
 
@@ -176,7 +177,7 @@ class RelationToForeignSign(models.Model):
 
     """Defines a relationship to another sign in another language (often a loan)"""
 
-    def __str__(self):
+    def __unicode__(self):
         return str(self.gloss) + "/" + self.other_lang + ',' + self.other_lang_gloss
 
     gloss = models.ForeignKey("Gloss")
@@ -713,7 +714,7 @@ class FieldChoice(models.Model):
     english_name = models.CharField(max_length=50)
     machine_value = models.IntegerField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
 
     class Meta:
@@ -757,7 +758,7 @@ class Gloss(models.Model):
                         'Include all properties in sign detail view'),
                        )
 
-    def __str__(self):
+    def __unicode__(self):
         return "%s" % (self.idgloss)
 
     def field_labels(self):
@@ -1267,5 +1268,5 @@ class MorphologyDefinition(models.Model):
     role = models.CharField(max_length=5, choices=(('0', '-'), ('1', 'N/A')))
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
-    def __str__(self):
+    def __unicode__(self):
         return self.morpheme.idgloss + ' is ' + self.get_role_display() + ' of ' + self.parent_gloss.idgloss
