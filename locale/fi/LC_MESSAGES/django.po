@@ -1,0 +1,2074 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-03 10:18+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Translators: Title for error page 403
+#: bootstrap_templates/403.html:7
+msgid "Permission Denied"
+msgstr ""
+
+#. Translators: Text for error page 403
+#: bootstrap_templates/403.html:9
+msgid "You do not have permission to view the requested page."
+msgstr ""
+
+#. Translators: Error 404 page
+#: bootstrap_templates/404.html:7
+msgid ""
+"The requested page was not found on the server. Please use\n"
+"the menu above to navigate to another part of the site. \n"
+"If you continue to experience problems, please contact\n"
+"the webmaster at "
+msgstr ""
+
+#. Translators: Title of page - error 500
+#: bootstrap_templates/500.html:10
+msgid "Server Error"
+msgstr ""
+
+#. Translators: Information about error 500
+#: bootstrap_templates/500.html:12
+msgid ""
+"There's been an error. It's been reported to the site administrators\n"
+"via e-mail and should be fixed shortly. Thanks for your patience. "
+msgstr ""
+
+#: bootstrap_templates/baselayout.html:45
+msgid "The FSE Signbank"
+msgstr ""
+
+#. Translators: This is located in the footer of the site
+#: bootstrap_templates/baselayout.html:48
+msgid "Provide feedback on the site"
+msgstr ""
+
+#. Translators: Error message
+#: bootstrap_templates/compat.html:9
+msgid ""
+"The requested page was not found on the server due to a server upgrade.\n"
+"Please navigate the site using the links above. If you have bookmarks \n"
+"referring to pages on this server you will \n"
+"need to renew them using the new site structure."
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:33
+#: bootstrap_templates/mobile/numbersigns/numbersigns.html:123
+msgid "REPLAY"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:40
+msgid "Enter Text"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:49
+msgid "Playback Speed"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:51
+msgid "Slow"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:53
+msgid "Medium"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:55
+msgid "Fast"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:101
+msgid "Click on images to view."
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:108
+msgid ""
+"This is the American Sign Language one-handed manual alphabet which is used "
+"in the United States and Canada. It is also used in many other countries and "
+"regions of the world, but usually with local variations and additions."
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:114
+msgid "Return to"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingonehanded.html:114
+msgid "two handed finger spelling"
+msgstr ""
+
+#. Translators: Text sign in - login form
+#: bootstrap_templates/loginform.html:12
+#: bootstrap_templates/mobile/loginform.html:10
+msgid "Sign In"
+msgstr ""
+
+#. Translators: Email - in login form
+#: bootstrap_templates/loginform.html:15
+#: bootstrap_templates/mobile/loginform.html:23
+#: bootstrap_templates/mobile/loginform.html:58
+msgid "Email"
+msgstr ""
+
+#. Translators: Password text - in login form
+#: bootstrap_templates/loginform.html:25
+#: bootstrap_templates/mobile/loginform.html:29
+msgid "Password"
+msgstr ""
+
+#. Translators: Sign in button in login form
+#: bootstrap_templates/loginform.html:37
+msgid "Sign in"
+msgstr ""
+
+#. Translators: Text register - in login form
+#. Translators: Register link
+#: bootstrap_templates/loginform.html:50 bootstrap_templates/loginform.html:55
+#: bootstrap_templates/mobile/loginform.html:45
+msgid "Register"
+msgstr ""
+
+#. Translators: Text in login form
+#: bootstrap_templates/loginform.html:53
+msgid "Register for free to provide feedback on the Signbank."
+msgstr ""
+
+#. Translators: Title lost password - in login form
+#: bootstrap_templates/loginform.html:62
+#: bootstrap_templates/mobile/loginform.html:50
+msgid "Lost Password"
+msgstr ""
+
+#. Translators: Request password button
+#: bootstrap_templates/loginform.html:80
+msgid "Request Password"
+msgstr ""
+
+#. Translators: Button to toggle navigation
+#: bootstrap_templates/menu.html:9
+msgid "Toggle navigation"
+msgstr ""
+
+#. Translators: Logout link
+#: bootstrap_templates/menu.html:104
+msgid "Logout"
+msgstr ""
+
+#. Translators: Numbersigns page header/title | mobile
+#: bootstrap_templates/mobile/baselayout.html:10
+#: bootstrap_templates/mobile/baselayout.html:67
+msgid "Signbank"
+msgstr ""
+
+#. Translators: Link to homepage | mobile
+#: bootstrap_templates/mobile/baselayout.html:65
+#: bootstrap_templates/registration/password_reset_form.html:4
+msgid "Home"
+msgstr ""
+
+#. Translators: menu items | mobile
+#: bootstrap_templates/mobile/baselayout.html:74
+#, python-format
+msgid "%(item.title)s"
+msgstr ""
+
+#. Translators: Search link | mobile
+#: bootstrap_templates/mobile/baselayout.html:80
+msgid "Search"
+msgstr ""
+
+#. Translators: Content block | mobile
+#: bootstrap_templates/mobile/baselayout.html:85
+msgid "Content"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:97
+#, python-format
+msgid "%(subitem.title)s"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:114
+msgid "The NGT Signbank"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:114
+msgid "is licensed under a"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:114
+msgid "Creative Commons BY-NC-SA 4.0 International License"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:118
+msgid "View the"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:118
+msgid "Full Version"
+msgstr ""
+
+#: bootstrap_templates/mobile/baselayout.html:118
+msgid "of this site."
+msgstr ""
+
+#: bootstrap_templates/mobile/loginform.html:17
+msgid "Login Error"
+msgstr ""
+
+#: bootstrap_templates/mobile/loginform.html:33
+msgid "Log In"
+msgstr ""
+
+#. Translators: Header for register | mobile
+#: bootstrap_templates/mobile/loginform.html:39
+msgid "Register "
+msgstr ""
+
+#: bootstrap_templates/mobile/loginform.html:43
+msgid ""
+"Register for free to provide feedback on the Auslan dictionary of signs."
+msgstr ""
+
+#: bootstrap_templates/mobile/loginform.html:53
+msgid ""
+"If you've lost or forgotten your password, enter your email address here and "
+"we'll reset it and send you a reminder."
+msgstr ""
+
+#: bootstrap_templates/mobile/loginform.html:61
+msgid "Reset Password"
+msgstr ""
+
+#. Translators: Numbersign page information text
+#: bootstrap_templates/mobile/numbersigns/numbersigns.html:111
+#: bootstrap_templates/numbersigns/numbersigns.html:34
+msgid ""
+"To view signs used to express numbers from ten to one billion, click a sign "
+"in the table, the corresponding video will then play."
+msgstr ""
+
+#. Translators: Alert for number signs page, if the page is under construction
+#: bootstrap_templates/numbersigns/underconstruction.html:27
+msgid "The number signs page is under construction."
+msgstr ""
+
+#. Translators: Edit page button in baselayout
+#: bootstrap_templates/pages/default.html:10
+msgid "Edit Page"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_complete.html:5
+#: bootstrap_templates/registration/password_reset_complete.html:9
+msgid "Password reset complete"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_complete.html:11
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_complete.html:13
+msgid "Log in"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:5
+#: bootstrap_templates/registration/password_reset_form.html:4
+#: bootstrap_templates/registration/password_reset_form.html:6
+#: bootstrap_templates/registration/password_reset_form.html:10
+msgid "Password reset"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:13
+msgid "Enter new password"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:15
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:19
+msgid "New password:"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:22
+msgid "Confirm password:"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:29
+msgid "Password reset unsuccessful"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_confirm.html:31
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_email.html:9
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_email.html:11
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_form.html:12
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll reset "
+"your password and e-mail the new one to you."
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_form.html:17
+msgid "E-mail address:"
+msgstr ""
+
+#: bootstrap_templates/registration/password_reset_form.html:17
+msgid "Reset my password"
+msgstr ""
+
+#. Translators: Heading for searchlayout
+#: bootstrap_templates/searchlayout.html:8
+msgid "English words matching"
+msgstr ""
+
+#. Translators: Text search content in searchlayout
+#: bootstrap_templates/searchlayout.html:14
+msgid "SEARCH CONTENT"
+msgstr ""
+
+#: doc/usage.html:4
+msgid "Signbank User Guide"
+msgstr ""
+
+#: doc/usage.html:7
+msgid ""
+"This page gives a brief overview of the functionality of the Signbank "
+"website."
+msgstr ""
+
+#. Translators: Public view (mode?)
+#: doc/usage.html:10
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:70
+msgid "Public View"
+msgstr ""
+
+#: doc/usage.html:14
+msgid ""
+"A user who is not logged in will be able to perform a keyword search and "
+"will see pages that match a given keyword; each page represents one sign and "
+"links are provided to other matches for that keyword.  Keyword searches are "
+"based on the start of the word, so a search for 'ab' will find all keywords "
+"starting with those letters."
+msgstr ""
+
+#: doc/usage.html:22
+msgid ""
+"The view shown to a public user includes the video for the sign (if any), "
+"the keywords associated with the sign, and a list of definitions (noun, verb "
+"etc). The definitions that are shown on this page can be customised for a "
+"given Signbank site; for example, it is possible to show no definitions at "
+"all, even if they have been entered into the database."
+msgstr ""
+
+#: doc/usage.html:31
+msgid ""
+"This page can be configured to show links to the next/previous sign in the "
+"dictionary. These links will only work reliably if sign numbers have been "
+"used consistently in the dictionary since these define the order of signs.  "
+"These links can be turned off for a particular Signbank."
+msgstr ""
+
+#: doc/usage.html:38
+msgid "Logged In Public View"
+msgstr ""
+
+#: doc/usage.html:42
+msgid ""
+"A member of the public can register for the site and is then given the "
+"option of providing feedback on individual signs.  Feedback can include "
+"uploading a video. The feedback and any video is only ever visible to staff "
+"and is never made publicly available."
+msgstr ""
+
+#: doc/usage.html:49
+msgid "Staff Access"
+msgstr ""
+
+#: doc/usage.html:53
+msgid ""
+"A number of different levels of staff access are possible, the different "
+"capabilities are summarised later.  This section gives a summary of all of "
+"the different staff capabilities."
+msgstr ""
+
+#: doc/usage.html:59
+msgid ""
+"At present, a user can only be given staff status by the administrator "
+"(Steve Cassidy), in the future some level of control over this may be added "
+"to the normal site owner capabilities. For now, please send a request to "
+"change a user's status to me."
+msgstr ""
+
+#: doc/usage.html:66
+msgid ""
+"Once a staff user is logged in they will see an additional menu containing "
+"links to staff only options. Other pages (such as this one) can also be "
+"limited to certain groups of users."
+msgstr ""
+
+#: doc/usage.html:71
+msgid "Sign Search"
+msgstr ""
+
+#: doc/usage.html:75
+msgid ""
+"Staff have access to a more advanced search page for signs that includes all "
+"fields associated with signs and associated tags.  The search form is shown "
+"at the top of the page, by default only the SN/Gloss and keyword search "
+"boxes are visible. There is an \"Advanced Search\" bar which will show more "
+"search options when clicked. Below the search from there is also an option "
+"to add a new sign."
+msgstr ""
+
+#: doc/usage.html:84
+msgid ""
+"The Search Gloss/SN field allows a search on either the sign number (SN), ID "
+"Gloss or Annotation ID Gloss.  The search is on the first characters of "
+"these fields so entering 'ab' will show all signs with an ID Gloss or "
+"Annotation ID Gloss starting with these letters; entering '12' will show "
+"signs with a sign number starting with these digits. The keyword field "
+"allows search on the keywords associated with a sign in the same manner as "
+"the public search option, however this version is not limited to published "
+"signs. The user can just hit Enter or click on the Search button to perform "
+"the search."
+msgstr ""
+
+#: doc/usage.html:95
+msgid ""
+"Searches in the form use an implicit AND between fields - that is, if you "
+"enter 'ab' in the Gloss field and 'dry' in the keyword field you would see "
+"signs with an ID Gloss starting with 'ab' which also have a keyword "
+"'dry' (eg. ABSORB in BSL Signbank)."
+msgstr ""
+
+#: doc/usage.html:102
+msgid ""
+"Search results are shown in the list below the form, a summary of the number "
+"of matches to the search term is also shown.  The results are shown in a "
+"table which lists the Sign Number, ID Gloss, Annotation ID Gloss, Morphology "
+"and tags associated with each matching sign. The sign number (which may be "
+"None if no sign number is set) is a link to a page that displays the full "
+"details of the sign."
+msgstr ""
+
+#: doc/usage.html:111
+msgid ""
+"Another option from this page is to export a version of the search results "
+"as a CSV (spreadsheet) file.   If you click on this button instead of the "
+"Search button the results will be downloaded as <code>dictionary-export.csv</"
+"code>.  This file contains all of the fields stored with each sign as well "
+"as the keywords and tags.  No definitions or notes are included in the CSV "
+"file."
+msgstr ""
+
+#: doc/usage.html:119
+msgid "Sign Detail View"
+msgstr ""
+
+#: doc/usage.html:123
+msgid ""
+"If you click on a sign in the search results you will be taken to a detailed "
+"view of that sign, this is a variation on the view shown to the public but "
+"has much more detail. It includes all fields in the database and allows a "
+"user with the required permissions to edit the sign entry."
+msgstr ""
+
+#: doc/usage.html:130
+msgid ""
+"The sign detail page shows a video if one has been uploaded for this sign. "
+"Below the video is a list of  <strong>tags</strong> that have been "
+"associated with the sign.  Tags encode binary properties of a sign and each "
+"tag has a prefix that groups them together. For example <code>semantic:"
+"education</code> or <code>phonology:two handed</code>.  New tags can only be "
+"added by the site administrator (but adding them is straightforward)."
+msgstr ""
+
+#: doc/usage.html:138
+msgid ""
+"On the right of the page the properties of the sign are listed. These are "
+"grouped together and by default only the basic properties are shown. "
+"Clicking on the grey title bars show the fields for 'Publication Status', "
+"'Phonology', 'Relations to Other Signs' or 'Definitions/Notes'.  In the case "
+"that there is no value in the database for a field 'No Value Set' is shown.  "
+"Most fields also have a special value 'N/A' which can be used to signify "
+"'Not Applicable'; the intention is to be able to tell the difference between "
+"'value not yet entered' and 'this field does not apply to this sign'."
+msgstr ""
+
+#: doc/usage.html:146
+msgid "Editing"
+msgstr ""
+
+#: doc/usage.html:148
+msgid ""
+"If the user has the required permission, a blue \"Enable Edit\" button shows "
+"at the top right of the page.  When clicked, this will turn red and enable "
+"editing of all fields for the sign.  A new \"Delete Sign\" button will "
+"appear and all editable fields will turn red. To modify a field, click on "
+"the red text and make the required change (this will either be a text entry, "
+"a checkbox or a selection from a list).  Buttons for OK and Cancel will "
+"appear, clicking Ok will save the change and Cancel will revert to the "
+"previous value.  All changes take effect immediately."
+msgstr ""
+
+#: doc/usage.html:157
+msgid ""
+"The \"Delete Sign\" button will show a dialogue box that asks the user to "
+"confirm the deletion of the sign entry.  Clicking on \"Confirm Delete\" will "
+"delete the entry and return to the sign search page.  Clicking on \"Cancel\" "
+"will return to the sign page."
+msgstr ""
+
+#: doc/usage.html:162
+msgid "Relations"
+msgstr ""
+
+#: doc/usage.html:164
+msgid ""
+"In the \"Relations to Other Signs\" tab, any relations such as Synonyn, "
+"Homonym etc are show. The target sign is shown as the sign number followed "
+"by the ID Gloss, eg. 10620-about2a. In edit mode the text of the role "
+"(Synonym) and target sign are shown red and can be edited. When editing the "
+"target sign, enter either the ID Gloss, Annotation ID Gloss or Sign Number "
+"of the sign you want to link to, you will see a list of possible completions "
+"as you type. Click on the required sign once you see it in the list.  The "
+"text box will show the sign ID Gloss followed by a number in brackets. This "
+"number is an internal identifier, not the sign number. When you click \"OK\" "
+"the change will be made and the SN-ID Gloss form will be shown. A relation "
+"can also be deleted by clicking on the trashcan icon at the start of each "
+"line."
+msgstr ""
+
+#: doc/usage.html:176
+msgid ""
+"Below the list of relations in edit mode is a form to create a new relation. "
+"Select the role from the drop down list and enter the target sign as above.  "
+"When you click \"Add Relation\" the page will refresh, you will need to "
+"click on the \"Relations to Other Signs\" tab to see the new entry."
+msgstr ""
+
+#: doc/usage.html:181
+msgid "Definitions and Notes"
+msgstr ""
+
+#: doc/usage.html:183
+msgid ""
+"In the \"Definitions/Notes\" tab a list of defnitions or notes is shown. "
+"Each of these has a \"Role\" label such as \"As a Noun\", \"Private Note\" "
+"etc.  and an integer \"Index\" that defines the order within the category "
+"when they are listed on the public pages.   Each entry also has a \"Published"
+"\" field which controls whether the definition or note can be shown in the "
+"public view.  A definition/note can also be deleted by clicking on the "
+"trashcan icon at the start of each row."
+msgstr ""
+
+#: doc/usage.html:192
+msgid ""
+"Below the list of definitions/notes in edit mode is a form to create a new "
+"entry.  As with the relation form, the page will refresh when you submit "
+"this form and you will need to click on the \"Definitions/Notes\" tab again "
+"to view the change.  By default, new definitions have the Published field "
+"set to No."
+msgstr ""
+
+#: doc/usage.html:198
+msgid "Video"
+msgstr ""
+
+#: doc/usage.html:201
+msgid ""
+"In edit mode, a form to allow upload of video will be shown below the video "
+"for the sign. Select a file and click \"Upload Video\" and the page will "
+"refresh and the new video should be show. In edit mode, a count of the "
+"number of videos for this sign is shown.  Each time you upload a new video, "
+"the old one is retained but the new one is shown in preference.  If there is "
+"at least one video for a sign, a button is shown below the upload form to "
+"allow deletion of the current video. Clicking this button will delete the "
+"current video and revert to an earlier version if present.  If there is only "
+"one video then no video will be shown for the sign."
+msgstr ""
+
+#: doc/usage.html:211
+msgid ""
+"Videos uploaded should be saved in a web friendly format. Technically this "
+"is H264 encoded video, but most programs that save video for the web will "
+"use this format. There is no requirement on the name of the video file, "
+"whatever file you upload will be associated with this sign. Videos are "
+"displayed in 320x240 pixels and so you should save them at this size for "
+"best performance, however higher resolution videos will be ok (but will be "
+"slower to play, eg. on the mobile version of the site)."
+msgstr ""
+
+#: doc/usage.html:220
+msgid "Tags"
+msgstr ""
+
+#: doc/usage.html:223
+msgid ""
+"Below the video forms is a list of tags associated with this sign.  In edit "
+"mode a small red cross will appear in each tag. Clicking on this cross will "
+"delete the tag.  New tags can be added via the dropdown menu below the tags."
+msgstr ""
+
+#: doc/usage.html:229
+msgid "Permissions"
+msgstr ""
+
+#: doc/usage.html:232
+msgid ""
+"It will be possible to finely control the level of access for different "
+"groups of users. At present we have three groups:"
+msgstr ""
+
+#: doc/usage.html:238
+msgid ""
+"Editor: full edit access, can change anything, upload and delete videos etc."
+msgstr ""
+
+#: doc/usage.html:240
+msgid ""
+"Researcher: full search access to see the detailed view of signs, no edit "
+"access."
+msgstr ""
+
+#: doc/usage.html:242
+msgid "Public: only keyword search and the ability to leave feedback on signs."
+msgstr ""
+
+#: doc/usage.html:247
+msgid ""
+"In future we will develop a richer set of user levels, we've had some "
+"discussion about this and will make a proposal for feedback."
+msgstr ""
+
+#. Translators: Header
+#: signbank/attachments/templates/list.html:7
+msgid "File Attachments"
+msgstr ""
+
+#. Translators: Text on page
+#: signbank/attachments/templates/list.html:9
+msgid ""
+"This page allows you to upload files of any kind to be hosted on the site. "
+"The files are listed below once uploaded and can be referenced by their URL "
+"in any page.  The URL is listed after the file link below."
+msgstr ""
+
+#. Translators: Form text
+#: signbank/attachments/templates/list.html:19
+msgid "Upload File"
+msgstr ""
+
+#. Translators: Form text
+#: signbank/attachments/templates/list.html:23
+msgid "Description"
+msgstr ""
+
+#: signbank/attachments/templates/list.html:31 signbank/pages/admin.py:14
+#: signbank/pages/models.py:9
+msgid "URL"
+msgstr ""
+
+#: signbank/dictionary/admin.py:48
+msgid "number of senses"
+msgstr ""
+
+#: signbank/dictionary/admin.py:61
+msgid "No Senses"
+msgstr ""
+
+#: signbank/dictionary/admin.py:62
+msgid "More than one"
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/add_gloss.html:18
+msgid "Please provide some initial data"
+msgstr ""
+
+#. Translators: Field label
+#: signbank/dictionary/templates/dictionary/add_gloss.html:25
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:348
+msgid "ID Gloss"
+msgstr ""
+
+#. Translators: Annotation ID Gloss - add gloss form title
+#. Translators: Field label
+#: signbank/dictionary/templates/dictionary/add_gloss.html:29
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:350
+msgid "Annotation ID Gloss"
+msgstr ""
+
+#. Translators: Annotation ID Gloss (English) - add gloss form title
+#. Translators: Field label
+#: signbank/dictionary/templates/dictionary/add_gloss.html:33
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:25
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:352
+msgid "Annotation ID Gloss (English)"
+msgstr ""
+
+#. Translators: Button
+#. Translators: Button
+#: signbank/dictionary/templates/dictionary/add_gloss.html:37
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:33
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:340
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:360
+msgid "Add New Sign"
+msgstr ""
+
+#. Translators: ID Gloss - add gloss form title
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:21
+msgid "Lemma ID Gloss"
+msgstr ""
+
+#. Translators: Title
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:40
+msgid "Error"
+msgstr ""
+
+#. Translators: Error message
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:42
+msgid ""
+"A sign with that Sign Number already exists. Please choose a different Sign "
+"Number."
+msgstr ""
+
+#. Translators: Title for sign search page
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:5
+msgid "Signbank: Search Signs"
+msgstr ""
+
+#. Translators: Search by language
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:103
+msgid "Search by Language and Basic Properties"
+msgstr ""
+
+#. Translators: Search by morphology
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:133
+msgid "Search by Morphology"
+msgstr ""
+
+#. Translators: Search by phonology
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:153
+msgid "Search by Phonology"
+msgstr ""
+
+#. Translators: Search by semantics
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:198
+msgid "Search by Semantics"
+msgstr ""
+
+#. Translators: Search by relation
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:220
+msgid "Search by Relation"
+msgstr ""
+
+#. Translators: Search by publication status and notes
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:266
+msgid "Search by Publication Status and Notes"
+msgstr ""
+
+#. Translators: How many results to fit per page
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:319
+msgid "Results per page"
+msgstr ""
+
+#. Translators: How many matches out of possible
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:374
+#, python-format
+msgid "Number of matches: %(page_obj.paginator.count)s out of %(glosscount)s"
+msgstr ""
+
+#. Translators: Navigation - previous
+#. Translators: Navigation
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:52
+#: signbank/dictionary/templates/dictionary/word.html:39
+msgid "Previous Sign"
+msgstr ""
+
+#. Translators: Sign x of n(amount)
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:56
+#, python-format
+msgid "Sign %(glossposn)s of %(glosscount)s in the NGT Dictionary"
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:61
+#: signbank/dictionary/templates/dictionary/word.html:48
+msgid "Next Sign"
+msgstr ""
+
+#. Translators: Button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:78
+msgid "Delete Sign"
+msgstr ""
+
+#. Translators: Button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:80
+msgid "Edit"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:87
+msgid "Delete This Sign"
+msgstr ""
+
+#. Translators: Text in Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:91
+msgid ""
+"This action will delete this sign and all associated records. It cannot be "
+"undone."
+msgstr ""
+
+#. Translators: Button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:100
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:380
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:493
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:574
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:707
+#: signbank/dictionary/templates/dictionary/update_video.html:90
+msgid "Cancel"
+msgstr ""
+
+#. Translators: Confirmation button
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:102
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:382
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:495
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:576
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:709
+msgid "Confirm Delete"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:142
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:145
+#: signbank/dictionary/templates/dictionary/word.html:116
+#: signbank/dictionary/templates/dictionary/word.html:119
+msgid "Provide feedback about this sign"
+msgstr ""
+
+#. Translators:
+#. Translators: If sign is missing, report it
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:149
+#: signbank/dictionary/templates/dictionary/word.html:123
+msgid "Report a missing sign"
+msgstr ""
+
+#. Translators:
+#. Translators: Provide feedback about the site in general
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:151
+#: signbank/dictionary/templates/dictionary/word.html:125
+msgid "Provide general site feedback"
+msgstr ""
+
+#. Translators: Upload/Add new video to Signbank
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:161
+msgid "Upload New Video"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:163
+#, python-format
+msgid "We have %(gloss.count_videos)s videos for this sign."
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:174
+#: signbank/dictionary/templates/dictionary/update_video.html:106
+msgid "Upload Video"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:183
+msgid "Delete/Revert Video"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:187
+msgid ""
+"This will delete the most recent upload and restore the most recent earlier "
+"version."
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:189
+msgid "Delete/Revert this video"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:301
+msgid "ID Gloss:"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:303
+msgid "Annotation ID Gloss:"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:305
+msgid "Annotation ID Gloss: English"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:307
+msgid "Translation equivalents in Dutch"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:309
+msgid "Annotation Instructions"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:311
+msgid "Language"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:313
+msgid "Dialect"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:342
+msgid "Morphology"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:351
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:676
+msgid "Type"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:353
+msgid "Morpheme"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:368
+msgid "Delete This Morphology"
+msgstr ""
+
+#. Translators: Question
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:372
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:566
+msgid "Are you sure you want to delete this? This cannot be undone."
+msgstr ""
+
+#. Translators: Placeholder
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:408
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:520
+msgid "SN/ID Gloss/Annotation ID Gloss"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:410
+msgid "Add Morphology Definition"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:429
+msgid "Phonology"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:448
+msgid "Semantics"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:465
+msgid "Relations to Other Signs"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:480
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:562
+msgid "Delete This Relation"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:484
+#, python-format
+msgid ""
+"This action will delete the <strong>%(rel.get_role_display)s</strong> "
+"relation between %(rel.source)s and %(rel.target)s. It cannot be undone."
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:522
+msgid "Add Relation"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:538
+msgid "Relations to Foreign Signs"
+msgstr ""
+
+#. Translators: Loan from another language(?)
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:545
+msgid "Loan"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:547
+msgid "Related Language"
+msgstr ""
+
+#. Translators: Equivalent Gloss in related language
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:549
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:602
+msgid "Gloss in related language"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:600
+msgid "Related language"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:604
+msgid "Add Relation to Foreign Sign"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:622
+msgid "Frequency"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:639
+msgid "Publication Status"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:648
+msgid "In Web Dictionary"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:650
+msgid "Proposed New Sign"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:661
+msgid "Notes"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:672
+msgid "Published"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:674
+msgid "Index"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:694
+msgid "Delete This Note"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:699
+msgid "This action will delete this note. It cannot be undone."
+msgstr ""
+
+#. Translators: Placeholder
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:742
+msgid "Enter new note"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:750
+msgid "Save New"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/gloss_list.html:18
+msgid ""
+"Items marked * below are not in the web version of the dictionary and would "
+"not appear in a regular (non staff) search."
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/glosstags.html:35
+msgid "Add Tag"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/import_csv.html:10
+msgid "Upload your changed CSV here:"
+msgstr ""
+
+#. Translators: Submit button
+#. Translators:
+#. Translators:
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/import_csv.html:16
+#: signbank/dictionary/templates/dictionary/search_result.html:22
+#: signbank/feedback/templates/feedback/generalfeedback.html:44
+#: signbank/feedback/templates/feedback/signfeedback.html:33
+#: signbank/feedback/templates/feedback/signfeedback.html:73
+msgid "Submit"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/import_csv.html:24
+msgid "The following changes were detected:"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/import_csv.html:29
+#, python-format
+msgid ""
+"For %(change.idgloss)s, <em>%(change.human_key)s</em> changes from "
+"%(change.original_human_value)s (%(change.original_machine_value)s) to "
+"%(change.new_human_value)s (%(change.new_machine_value)s)."
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/import_csv.html:35
+msgid "Make changes"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/import_csv.html:41
+msgid "Changes are live."
+msgstr ""
+
+#. Translators: Welcome message
+#: signbank/dictionary/templates/dictionary/index.html:7
+#, python-format
+msgid ""
+"Welcome to the Sign Search section of the %(langauge)s SignBank. Here you "
+"can search for a sign using a Dutch translation in the search box above, or "
+"browse words starting with any letter below."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:7
+#, python-format
+msgid ""
+"Welcome to the Sign Search section of the %(language)s SignBank. Here\n"
+"     you can search for a sign using a Dutch translation in the search box\n"
+"     above, or browse words starting with any letter below."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:30
+msgid "There is no exact match to the word you typed."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:33
+msgid "There are"
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/search_result.html:34
+msgid "three"
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/search_result.html:34
+msgid "two"
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/search_result.html:35
+msgid "main reasons why there may be no match:"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:38
+#, python-format
+msgid ""
+"There really is no %(language)s sign in the database for which that word is "
+"an good translation"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:41
+msgid ""
+"You have mis-typed the word or you have added unnecessary word endings. "
+"Follow these search tips:"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:44
+msgid "type only the first few letters of a word"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:47
+msgid "type words with no word endings like ‘-en’, ‘-end’, or ‘-t’."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:51
+#, python-format
+msgid ""
+"The match is blocked in the public view of %(language)s Signbank because the "
+"word/sign is\n"
+"            obscene or offensive in Dutch or %(language)s, or both."
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/search_result.html:52
+msgid ""
+"(Schools and parents have repeatedly\n"
+"            requested that these type of words/signs be only visible to "
+"registered users.)"
+msgstr ""
+
+#: signbank/dictionary/templates/dictionary/search_result.html:53
+#, python-format
+msgid ""
+"If you\n"
+"            <a href=\"/accounts/login/\">login or register\n"
+"            with %(langauge)s Signbank</a>,  you will then be able to find "
+"these\n"
+"            matching words/signs if they exist in %(language)s."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:66
+msgid ""
+"There is one word that fully or partially match your query. Please select "
+"the word below."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:69
+#, python-format
+msgid "There are %(wordcount)s words that fully or partially match your query."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:76
+msgid ""
+"Items marked * below are not in the web version of the dictionary and would "
+"not\n"
+"        appear in a regular (non staff) search."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/search_result.html:103
+msgid "Jump to results page:"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_result.html:11
+#, python-format
+msgid "The update to the gloss %(gloss)s was successful."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_result.html:14
+#, python-format
+msgid "Return to <a href=\"%(referer)s\">the gloss page"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_result.html:18
+msgid "Errors in the update form:"
+msgstr ""
+
+#. Translators: Page title
+#: signbank/dictionary/templates/dictionary/update_video.html:5
+msgid "Auslan Update Video for Gloss"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/dictionary/update_video.html:45
+msgid "Update Video for Gloss"
+msgstr ""
+
+#. Translators: When replacing video and cancelling replacement
+#: signbank/dictionary/templates/dictionary/update_video.html:49
+msgid "Replacement of video cancelled."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_video.html:52
+#: signbank/dictionary/templates/dictionary/update_video.html:60
+msgid "Close Window"
+msgstr ""
+
+#. Translators: When replacing video and replacement is completed
+#: signbank/dictionary/templates/dictionary/update_video.html:57
+msgid "Replacement of video completed."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_video.html:70
+msgid "Existing Video"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_video.html:72
+msgid "New Video"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_video.html:86
+msgid "Confirm update of this video:"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/dictionary/templates/dictionary/update_video.html:88
+msgid "Confirm"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_video.html:110
+msgid ""
+"When you upload a video it will first be converted to the video format used "
+"on the site. you will get a chance to preview the video before any permanent "
+"change is made to the site."
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/templates/dictionary/update_video.html:116
+msgid ""
+"For optimum results, please save your video in a Web format (technically, "
+"h264 encoded mp4 files)."
+msgstr ""
+
+#. Translators: Page title
+#: signbank/dictionary/templates/dictionary/word.html:5
+#, python-format
+msgid "NGT: sign for %(translation)s"
+msgstr ""
+
+#. Translators: Sign x of n(signs)
+#: signbank/dictionary/templates/dictionary/word.html:43
+#, python-format
+msgid ""
+"Sign %(glossposn)s of %(glosscount)s <span class='hidden-xs'>in the NGT "
+"Dictionary"
+msgstr ""
+
+#. Translators: Navbar text
+#: signbank/dictionary/templates/dictionary/word.html:59
+#, python-format
+msgid "Matches for the word <em>%(translation|safe)s"
+msgstr ""
+
+#. Translators: Navigation
+#: signbank/dictionary/templates/dictionary/word.html:72
+msgid "Return to Matches"
+msgstr ""
+
+#. Translators: Navigation detailed view
+#: signbank/dictionary/templates/dictionary/word.html:81
+msgid "Detail View"
+msgstr ""
+
+#. Translators: Keywords
+#: signbank/dictionary/templates/dictionary/word.html:105
+msgid "Keywords:"
+msgstr ""
+
+#. Translators: Alternative for image (when image is not shown it shows this text), dialect_image
+#: signbank/dictionary/templates/dictionary/word.html:133
+msgid "States"
+msgstr ""
+
+#. Translators: Header4
+#: signbank/dictionary/templates/dictionary/word.html:141
+msgid "Sign Distribution"
+msgstr ""
+
+#. Translators: Dialect states?
+#: signbank/dictionary/templates/dictionary/word.html:145
+msgid "All States"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/dictionary/word.html:159
+msgid "Sign Definition"
+msgstr ""
+
+#: signbank/feedback/templates/feedback/generalfeedback.html:11
+msgid "Thanks for your comment. We value your contribution."
+msgstr ""
+
+#. Translators: Feedback
+#. Translators: Header3
+#. Translators: Header3
+#: signbank/feedback/templates/feedback/generalfeedback.html:16
+#: signbank/feedback/templates/feedback/index.html:30
+#: signbank/feedback/templates/feedback/interpreter.html:25
+#: signbank/feedback/templates/feedback/show.html:48
+msgid "General Feedback"
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/generalfeedback.html:19
+msgid ""
+"Please enter any comments you may have about this site and click \"submit\" "
+"to send your feedback to us. We value your contributions and comments."
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/generalfeedback.html:26
+msgid "General comments, suggestions, or anything you feel like telling us."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/generalfeedback.html:33
+msgid "Upload your feedback as a video."
+msgstr ""
+
+#. Translators: Note about sending feedback as a video
+#. Translators:
+#: signbank/feedback/templates/feedback/generalfeedback.html:37
+#: signbank/feedback/templates/feedback/missingsign.html:90
+msgid ""
+"NOTE: Video files can be quite large, and may take a long time to send. "
+"Please be patient when submitting this feedback."
+msgstr ""
+
+#. Translators: Header1
+#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:18
+msgid "General feedback summary"
+msgstr ""
+
+#. Translators: Feedback summary
+#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:23
+msgid "Date"
+msgstr ""
+
+#. Translators: Feedback summary
+#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:25
+msgid "User"
+msgstr ""
+
+#. Translators: Feedback summary
+#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:27
+msgid "Comment"
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:6
+#, python-format
+msgid ""
+"%(language)s is always evolving, but thanks to the feedback we receive from "
+"the %(language)s-using community through Signbank, you will be able to help "
+"shape the language. We invite you to pass on any comments you may have, or "
+"to suggest corrections and additions to Signbank."
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:12
+#, python-format
+msgid ""
+"All comments are welcome and any information you give us about %(language)s "
+"will be taken into consideration and properly evaluated. However, due to the "
+"large number of registered users, we do not acknowledge receipt of comments, "
+"nor are we able to provide answers to specific questions about %(language)s."
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:19
+#, python-format
+msgid ""
+"Please consult the <a href=\"/about/help/\">help page</a> for system "
+"requirements for viewing this site. However, because access to %(language)s "
+"Signbank is free, we do not have the resources to offer you individual "
+"technical support regarding your computer or its operating system, your "
+"internet connection, or your browser."
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:27
+msgid "We thank you in advance for your contribution and cooperation."
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:33
+#, python-format
+msgid ""
+"Want to tell us what you think of the %(language)s Signbank website or any "
+"other signed language related issues? The <a href=\"generalfeedback.html"
+"\">General Feedback</a> form is just the place to do it."
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:38
+msgid "Report a Missing Sign"
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/index.html:41
+msgid ""
+"If you know of a sign that isn't in Signbank, you can use the <a href="
+"\"missingsign.html\">Report a Missing Sign</a> form to describe it to us. We "
+"will attempt to add as many of your new or missing signs as possible to "
+"Signbank. If an addition you suggest is accepted, other visitors to Signbank "
+"will then also be able to provide feedback on your sign."
+msgstr ""
+
+#. Translators: Header1
+#: signbank/feedback/templates/feedback/interpreter.html:6
+msgid "Interpreter Feedback Summary"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:10
+msgid "A list of signs that have at least one Interpreter Note"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:35
+#: signbank/feedback/templates/feedback/interpreter.html:74
+#: signbank/feedback/templates/feedback/interpreter.html:122
+#: signbank/feedback/templates/feedback/show.html:57
+#: signbank/feedback/templates/feedback/show.html:100
+#: signbank/feedback/templates/feedback/show.html:146
+msgid "View"
+msgstr ""
+
+#. Translators:  Submit button
+#. Translators: Submit button
+#. Translators: Submit button
+#: signbank/feedback/templates/feedback/interpreter.html:52
+#: signbank/feedback/templates/feedback/interpreter.html:99
+#: signbank/feedback/templates/feedback/interpreter.html:172
+#: signbank/feedback/templates/feedback/show.html:82
+#: signbank/feedback/templates/feedback/show.html:127
+#: signbank/feedback/templates/feedback/show.html:198
+msgid "Delete Comment"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:60
+msgid "No general feedback posted"
+msgstr ""
+
+#. Translators: Header3
+#. Translators: Header3
+#. Translators: Heading2
+#. Translators: View sign feedback, row
+#: signbank/feedback/templates/feedback/interpreter.html:64
+#: signbank/feedback/templates/feedback/show.html:91
+#: signbank/feedback/templates/feedback/signfeedback.html:8
+#: signbank/feedback/templates/feedback/viewsignfeedback.html:5
+msgid "Sign Feedback"
+msgstr ""
+
+#. Translators:
+#. Translators: Link to a sign
+#: signbank/feedback/templates/feedback/interpreter.html:80
+#: signbank/feedback/templates/feedback/show.html:107
+msgid "Sign:"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:82
+#: signbank/feedback/templates/feedback/show.html:110
+msgid "Comment:"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:84
+#: signbank/feedback/templates/feedback/show.html:112
+msgid "Don't Belong:"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:108
+#: signbank/feedback/templates/feedback/interpreter.html:182
+msgid "No feedback posted"
+msgstr ""
+
+#. Translators: Header3
+#. Translators: Heading2
+#. Translators: Header3
+#: signbank/feedback/templates/feedback/interpreter.html:112
+#: signbank/feedback/templates/feedback/missingsign.html:49
+#: signbank/feedback/templates/feedback/show.html:137
+msgid "Missing Sign Feedback"
+msgstr ""
+
+#. Translators:
+#. Translators: Preceding an email address
+#: signbank/feedback/templates/feedback/interpreter.html:129
+#: signbank/feedback/templates/feedback/show.html:153
+msgid "Email:"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:135
+msgid ""
+"Download video</a><br> (if video does not play here you may be able to play "
+"by downloading)"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:142
+#: signbank/feedback/templates/feedback/show.html:168
+msgid "Handform"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:144
+#: signbank/feedback/templates/feedback/show.html:170
+msgid "Handshape"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:146
+#: signbank/feedback/templates/feedback/show.html:172
+msgid "Alternate Handshape"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:148
+#: signbank/feedback/templates/feedback/show.html:174
+msgid "Location"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:150
+#: signbank/feedback/templates/feedback/show.html:176
+msgid "Relative Location"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:152
+#: signbank/feedback/templates/feedback/show.html:178
+msgid "Hand Body Contact"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:154
+#: signbank/feedback/templates/feedback/show.html:180
+msgid "Hand Interaction"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:156
+#: signbank/feedback/templates/feedback/show.html:182
+msgid "Direction"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:158
+#: signbank/feedback/templates/feedback/show.html:184
+msgid "Movement Type"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:160
+#: signbank/feedback/templates/feedback/show.html:186
+msgid "Small Movement"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:162
+#: signbank/feedback/templates/feedback/show.html:188
+msgid "Repetition"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:164
+#: signbank/feedback/templates/feedback/show.html:190
+msgid "Meaning"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/feedback/templates/feedback/interpreter.html:166
+#: signbank/feedback/templates/feedback/show.html:192
+msgid "Comments"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/interpreter.html:190
+msgid "You do not have permission to view this page"
+msgstr ""
+
+#: signbank/feedback/templates/feedback/missingsign.html:55
+msgid "Thank you for your feedback."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:60
+#, python-format
+msgid ""
+"Please fill out the required questions opposite and then click 'Submit' to "
+"report a missing sign to the %(language)s signbank."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:63
+msgid ""
+"If verified, the site will be updated to include the new sign.  Note that "
+"this may take some time depending on the level of requests."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:70
+msgid ""
+"You may either upload a video that shows the missing sign or fill in details "
+"in a form.  In either case, you should enter a meaning and any comments you "
+"might have in the text boxes at the bottom of the form."
+msgstr ""
+
+#. Translators: Button
+#: signbank/feedback/templates/feedback/missingsign.html:76
+msgid "Video Comment"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:80
+msgid "Video Upload"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:85
+msgid "Upload a video of the sign."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:98
+msgid "Sign Description"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:109
+#: signbank/feedback/templates/feedback/missingsign.html:116
+#: signbank/feedback/templates/feedback/missingsign.html:125
+#: signbank/feedback/templates/feedback/missingsign.html:133
+msgid "Show Guide"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:140
+msgid ""
+"Using the guide, select the movement symbol/word that best describes this "
+"sign. Please choose either: one only (chosen from any category), or a choice "
+"from every category."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:191
+msgid ""
+"Please explain the meaning of the new or missing sign, or enter individual "
+"English words that have the same meaning as this sign (i.e. keywords)."
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/templates/feedback/missingsign.html:198
+msgid ""
+"Are there any other comments you would like to give about this sign? For "
+"example, do you think there are other or extra keyword/s that belong with "
+"this sign? If so, please include your comments below."
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/feedback/templates/feedback/missingsign.html:207
+msgid "Submit Feedback"
+msgstr ""
+
+#. Translators: Link
+#. Translators: Download link
+#: signbank/feedback/templates/feedback/show.html:70
+#: signbank/feedback/templates/feedback/show.html:161
+msgid "Download video"
+msgstr ""
+
+#. Translators:
+#. Translators: Instructions if video does not play
+#: signbank/feedback/templates/feedback/show.html:71
+#: signbank/feedback/templates/feedback/show.html:162
+msgid "(if video does not play here you may be able to play by downloading)"
+msgstr ""
+
+#. Translators: Sign feedback instructions
+#: signbank/feedback/templates/feedback/signfeedback.html:17
+msgid ""
+"Please give us your comments about this sign. For example: do you think "
+"there are other keywords that belong with this sign? Please write your "
+"comments or new keyword/s below."
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:25
+msgid "Is there a keyword or keyword/s that DO NOT belong with this sign?"
+msgstr ""
+
+#. Translators: Feedback instruction
+#: signbank/feedback/templates/feedback/signfeedback.html:28
+msgid "Please provide the list of keywords below"
+msgstr ""
+
+#. Translators: Header3 feedback questions
+#: signbank/feedback/templates/feedback/signfeedback.html:36
+msgid "Optional Questions"
+msgstr ""
+
+#. Translators: Question considering if sign is from x sign language
+#: signbank/feedback/templates/feedback/signfeedback.html:38
+#, python-format
+msgid "Is this sign an %(language)s Sign?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:44
+msgid "Where is this sign used?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:49
+msgid "Do you like this sign?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:54
+msgid "Do you use this sign?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:60
+msgid "If this sign is a suggested new sign, would you use it?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:65
+msgid "Is the information about the sign correct?"
+msgstr ""
+
+#. Translators: Feedback
+#: signbank/feedback/templates/feedback/viewsignfeedback.html:11
+msgid ""
+"There is currently insufficient feedback stored for this sign to generate a\n"
+" summary according to user groups. Unless a certain number of responses "
+"have\n"
+" been received about any particular sign, percentage displays would be\n"
+" misleading."
+msgstr ""
+
+#: signbank/pages/admin.py:15
+msgid ""
+"Example: '/about/contact/'. Make sure to have leading and trailing slashes."
+msgstr ""
+
+#: signbank/pages/admin.py:17
+msgid ""
+"This value must contain only letters, numbers, underscores, dashes or "
+"slashes."
+msgstr ""
+
+#: signbank/pages/admin.py:30
+msgid "Uploaded video will be converted to Flash"
+msgstr ""
+
+#: signbank/pages/admin.py:57
+msgid "Advanced options"
+msgstr ""
+
+#: signbank/pages/models.py:10 signbank/pages/models.py:37
+msgid "title"
+msgstr ""
+
+#: signbank/pages/models.py:11
+msgid "content"
+msgstr ""
+
+#: signbank/pages/models.py:12
+msgid "template name"
+msgstr ""
+
+#: signbank/pages/models.py:13
+msgid ""
+"Example: 'pages/contact_page.html'. If this isn't provided, the system will "
+"use 'pages/default.html'."
+msgstr ""
+
+#: signbank/pages/models.py:14
+msgid "publish"
+msgstr ""
+
+#: signbank/pages/models.py:15
+msgid "If this is checked, the page will be included in the site menus."
+msgstr ""
+
+#: signbank/pages/models.py:17
+msgid ""
+"Leave blank for a top level menu entry.  Top level entries that have sub-"
+"pages should be empty as they will not be linked in the menu."
+msgstr ""
+
+#: signbank/pages/models.py:19
+msgid "ordering index"
+msgstr ""
+
+#: signbank/pages/models.py:19
+msgid "Used to order pages in the menu"
+msgstr ""
+
+#: signbank/pages/models.py:21
+msgid ""
+"This page will only be visible to members of these groups, leave blank to "
+"allow anyone to access."
+msgstr ""
+
+#: signbank/pages/models.py:24
+msgid "page"
+msgstr ""
+
+#: signbank/pages/models.py:25
+msgid "pages"
+msgstr ""
+
+#: signbank/pages/models.py:38
+msgid "number"
+msgstr ""
+
+#. Translators: Link title
+#: signbank/pages/templates/mobile/pages/mainpage.html:9
+#: signbank/pages/templates/pages/mainpage.html:9
+#: signbank/pages/templates/pages/medical.html:10
+msgid "Search the SignBank Dictionary"
+msgstr ""
+
+#. Translators: Linkt title
+#. Translators: Link text
+#. Translators: Link text
+#: signbank/pages/templates/mobile/pages/mainpage.html:11
+#: signbank/pages/templates/pages/mainpage.html:11
+#: signbank/pages/templates/pages/medical.html:12
+msgid "SignBank"
+msgstr ""
+
+#. Translators: Link title
+#: signbank/pages/templates/mobile/pages/mainpage.html:13
+#: signbank/pages/templates/pages/mainpage.html:17
+msgid "Explore Finger Spelling Signs"
+msgstr ""
+
+#. Translators: Link title
+#: signbank/pages/templates/mobile/pages/mainpage.html:15
+msgid "Finger Spelling"
+msgstr ""
+
+#. Translators: Link title
+#: signbank/pages/templates/mobile/pages/mainpage.html:17
+#: signbank/pages/templates/pages/mainpage.html:21
+msgid "Explore Number Signs"
+msgstr ""
+
+#. Translators: Link title
+#: signbank/pages/templates/mobile/pages/mainpage.html:19
+msgid "Number Signs"
+msgstr ""
+
+#. Translators: Edit button
+#: signbank/pages/templates/pages/default.html:49
+#: signbank/pages/templates/pages/howhelp.html:44
+msgid "[Edit]"
+msgstr ""
+
+#. Translators: Link title
+#: signbank/pages/templates/pages/mainpage.html:13
+#: signbank/pages/templates/pages/medical.html:14
+msgid "Search the Medical SignBank"
+msgstr ""
+
+#. Translators: Link text
+#: signbank/pages/templates/pages/mainpage.html:15
+#: signbank/pages/templates/pages/medical.html:16
+msgid "Medical SignBank"
+msgstr ""
+
+#. Translators: Link text
+#: signbank/pages/templates/pages/mainpage.html:19
+msgid "Finger<br> Spelling"
+msgstr ""
+
+#. Translators: Link text
+#: signbank/pages/templates/pages/mainpage.html:23
+msgid "Number<br>Signs"
+msgstr ""
+
+#. Translators: Submit button
+#: signbank/video/templates/addvideo.html:15
+msgid "submit"
+msgstr ""
+
+#. Translators: Text preceding file url
+#: signbank/video/templates/addvideo.html:21
+msgid "File:"
+msgstr ""
+
+#. Translators: Text preceding error message
+#: signbank/video/templates/addvideo.html:31
+msgid "Error:"
+msgstr ""
+
+#: templates_notused/admin/dictionary/gloss/change_form.html:15
+msgid "History"
+msgstr ""
+
+#: templates_notused/admin/dictionary/gloss/change_form.html:18
+msgid "View on site"
+msgstr ""
