@@ -1,4 +1,5 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 
 {% block pagetitle %}Auslan Update Gloss{% endblock %}
@@ -6,13 +7,15 @@
 {% block content %}
 
 {% if update_form.is_valid %}
-  <p>The update to the gloss {{ gloss }} was successful.</p>
+  {# Translators:  #}
+  <p>{% blocktrans %}The update to the gloss {{ gloss }} was successful.{% endblocktrans %}</p>
 
-
-  <p>Return to <a href="{{referer}}">the gloss page</a></p>
+  {# Translators:  #}
+  <p>{% blocktrans %}Return to <a href="{{referer}}">the gloss page{% endblocktrans %}</a></p>
   
 {% else %}
-    <p>Errors in the update form: </p>
+    {# Translators:  #}
+    <p>{% blocktrans %}Errors in the update form:{% endblocktrans %} </p>
     {{update_form}}
 {% endif %}
 

@@ -1,12 +1,15 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block content %}
 
 
 <div style="margin-left: 2em; width: 580px;">
 
-<h1>Server Error <em>(500)</em></h1>
-<p>There's been an error. It's been reported to the site administrators 
-via e-mail and should be fixed shortly. Thanks for your patience.</p>
+{# Translators: Title of page - error 500 #}
+<h1>{% trans "Server Error" noop %} <em>(500)</em></h1>
+{# Translators: Information about error 500 #}
+<p>{% blocktrans %}There's been an error. It's been reported to the site administrators
+via e-mail and should be fixed shortly. Thanks for your patience. {% endblocktrans %}</p>
 </div>
 {% endblock %}

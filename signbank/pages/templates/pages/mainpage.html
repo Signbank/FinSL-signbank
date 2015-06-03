@@ -1,14 +1,26 @@
 {% extends "pages/default.html" %}
-
+{% load i18n %}
 
 {% block bottomcontent %}
 <div id="mainlinks">
     <table>
         <tr>
-           <td id="sigbanklink"><a title="Search the SignBank Dictionary" href="/dictionary/"><span>SignBank</span></a></td>
-           <td id="medicallink"><a title="Search the Medical SignBank" href="/medical/"><span>Medical SignBank</span></a></td>
-           <td id="fingerspelllink"><a title="Explore Finger Spelling Signs" href="/spell/twohanded.html"><span>Finger<br> Spelling</span></a></td> 
-           <td id="numsignlink"><a title="Explore Number Signs" href="/numbersigns.html"><span>Number<br>Signs</span></a></td>
+           {# Translators: Link title #}
+           <td id="sigbanklink"><a title="{% blocktrans %}Search the SignBank Dictionary{% endblocktrans %}" href="/dictionary/">
+           {# Translators: Link text #}
+           <span>{% blocktrans %}SignBank{% endblocktrans %}</span></a></td>
+           {# Translators: Link title #}
+           <td id="medicallink"><a title="{% blocktrans %}Search the Medical SignBank{% endblocktrans %}" href="/medical/">
+           {# Translators: Link text#}
+           <span>{% blocktrans %}Medical SignBank{% endblocktrans %}</span></a></td>
+           {# Translators: Link title #}
+           <td id="fingerspelllink"><a title="{% blocktrans %}Explore Finger Spelling Signs{% endblocktrans %}" href="/spell/twohanded.html">
+           {# Translators: Link text #}
+           <span>{% blocktrans %}Finger<br> Spelling{% endblocktrans %}</span></a></td>
+           {# Translators: Link title #}
+           <td id="numsignlink"><a title="{% blocktrans %}Explore Number Signs{% endblocktrans %}" href="/numbersigns.html">
+           {# Translators: Link text #}
+           <span>{% blocktrans %}Number<br>Signs{% endblocktrans %}</span></a></td>
         </tr>
     </table>
 </div>

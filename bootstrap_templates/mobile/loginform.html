@@ -1,51 +1,64 @@
+{% load i18n %}
+
 {# login form should be shown when not logged in #}
 
 {% if not user.is_authenticated %}
 
   <div id="loginforms">
 
-	<h2>Sign In</h2>
+    {# Translator: Sign in header | mobile #}
+	<h2>{% blocktrans %}Sign In{% endblocktrans %}</h2>
 <div class="ui-body ui-body-c">
   
   <form id="loginform" name="login" method="post" action="/accounts/login/">
     {% if form.errors %} 
       <div class="ui-body ui-body-e">
-        <h3>Login Error</h3>
+        {# Translator: Header3 for login error | mobile #}
+        <h3>{% blocktrans %}Login Error{% endblocktrans %}</h3>
         <p>{{form.errors}}</p>
       </div>
     {% endif %}
     <div data-role="fieldcontain">
-    <label for="email" class="ui-input-text">Email:</label>
+    {# Translator: Login form | mobile #}
+    <label for="email" class="ui-input-text">{% blocktrans %}Email{% endblocktrans %}:</label>
     <input class="boxed" type="text" name="email" />
     </div>
 
     <div data-role="fieldcontain">
-    <label for="password" class="ui-input-text">Password:</label>
+    {# Translator: Login form #}
+    <label for="password" class="ui-input-text">{% blocktrans %}Password{% endblocktrans %}:</label>
     <input class="boxed" type="password" name="password" />
     </div>
-
-    <button type="submit" name="submit">Log In</button></div>
+    {# Translator: Login form - button to log in | mobile #}
+    <button type="submit" name="submit">{% blocktrans %}Log In{% endblocktrans %}</button></div>
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
 {% if allow_registration %}
-    <h2>Register</h2>
+    {# Translators: Header for register | mobile #}
+    <h2>{% blocktrans %}Register {% endblocktrans %}</h2>
      
     <div class="ui-body ui-body-c">
-    <p>Register for free to provide feedback on the Auslan dictionary of signs.</p>
-    <a data-role="button" href="/accounts/register/">Register</a>
+    {# Translator: Text that tells to register for free | mobile #}
+    <p>{% blocktrans %}Register for free to provide feedback on the Auslan dictionary of signs.{% endblocktrans %}</p>
+    {# Translator: Button to register | mobile #}
+    <a data-role="button" href="/accounts/register/">{% blocktrans %}Register{% endblocktrans %}</a>
     </div>
 {% endif %}
-    
-      <h2>Lost Password</h2>
+
+      {# Translator: Header2 lost password | mobile #}
+      <h2>{% blocktrans %}Lost Password{% endblocktrans %}</h2>
 <div class="ui-body ui-body-c">
-      <p>If you've lost or forgotten your password, enter your email 
-      address here and we'll reset it and send you a reminder.</p>
+      {# Translator: What to do when lost password | mobile #}
+      <p>{% blocktrans trimmed %}If you've lost or forgotten your password, enter your email
+      address here and we'll reset it and send you a reminder.{% endblocktrans %}</p>
 
       <form id="passwordresetform" action="/accounts/password/reset/" method="POST">
-      <label for="email" class="ui-input-text">Email:</label>
+      {# Translator: in front of email field in a form | mobile #}
+      <label for="email" class="ui-input-text">{% blocktrans %}Email{% endblocktrans %}:</label>
       <input class="boxed" type="text" name="email" /></p>
-      <button type="submit">Reset Password</button></div>
+      {# Translator: Reset password button in a form | mobile #}
+      <button type="submit">{% blocktrans %}Reset Password{% endblocktrans %}</button></div>
       </form>
     </div>
 

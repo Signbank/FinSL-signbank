@@ -1,7 +1,6 @@
-
-
 {% extends "baselayout.html" %}
 {% load bootstrap3 %}
+{% load i18n %}
 
 {% block extrajs %}
 <script type='text/javascript'>
@@ -46,49 +45,57 @@ $(document).ready(function(){
 
 {% block content %}
   <div class="col-md-6 col-md-offset-3">
-      
-      <h2>Missing Sign Feedback</h2>
+      {# Translators: Heading2 #}
+      <h2>{% blocktrans %}Missing Sign Feedback{% endblocktrans %}</h2>
       
   {% if posted %}
 <div id="feedbackmessage">
+    {# Translators:  #}
     <p class='alert alert-info'>
-        Thank you for your feedback. 
+        {% blocktrans %}Thank you for your feedback.{% endblocktrans %}
     </p>
 </div>    
   {% else %}
-   
-    <p>Please fill out the required questions opposite and then
-    click 'Submit' to report a missing sign to the {{language}} signbank.</p>
-    
-    <p>If verified, the site will be updated 
+    {# Translators:  #}
+    <p>{% blocktrans trimmed %}Please fill out the required questions opposite and then
+    click 'Submit' to report a missing sign to the {{language}} signbank.{% endblocktrans %}</p>
+    {# Translators:  #}
+    <p>{% blocktrans trimmed %}If verified, the site will be updated
          to include the new sign.  Note that this may take some time depending 
-         on the level of requests.</p>
+         on the level of requests.{% endblocktrans %}</p>
 
 <form method="post" enctype="multipart/form-data" name="missingsign">
    {% csrf_token %}
-    <p>You may either upload a video that shows the missing sign or
+    {# Translators:  #}
+    <p>{% blocktrans trimmed %}You may either upload a video that shows the missing sign or
     fill in details in a form.  In either case, you should
     enter a meaning and any comments you might have in the text 
-    boxes at the bottom of the form. <p>
+    boxes at the bottom of the form.{% endblocktrans %} <p>
 
-    <button class='btn btn-default' id="togglevideobutton">Video Comment</button>
+    {# Translators: Button #}
+    <button class='btn btn-default' id="togglevideobutton">{% blocktrans %}Video Comment{% endblocktrans %}</button>
     
  <fieldset id="videoupload">
-  <legend>Video Upload</legend>
+   {# Translators: #}
+  <legend>{% blocktrans %}Video Upload{% endblocktrans %}</legend>
   <div id="{{form.video.name}}div">
     {% bootstrap_label form.video.label %}
-    <p>Upload a video of the sign.</p>
+
+    {# Translators:  #}
+    <p>{% blocktrans %}Upload a video of the sign.{% endblocktrans %}</p>
     {%if form.video.errors %}{{form.video.errors}}{% endif %}
     {% bootstrap_field form.video show_label=False %}
-       
-    <p>NOTE: Video files can be quite large, and may take a long time to send. 
-    Please be patient when submitting this feedback.</p>
+
+    {# Translators:  #}
+    <p>{% blocktrans trimmed %}NOTE: Video files can be quite large, and may take a long time to send.
+    Please be patient when submitting this feedback.{% endblocktrans %}</p>
   </div>
 </fieldset>
  
 {# this part of the form only shown if we're not uploading a video #}
 <fieldset id="signdescriptioninput">
-    <legend>Sign Description</legend>
+    {# Translators:  #}
+    <legend>{% blocktrans %}Sign Description{% endblocktrans %}</legend>
     
     
     <div id="{{form.handform.name}}div">
@@ -98,13 +105,15 @@ $(document).ready(function(){
     
     <div id="{{form.handshape.name}}div">
         {%if form.handshape.errors %}{{form.handshape.errors}}{% endif %}
-        {% bootstrap_label form.handshape.label %} <a href="{{ STATIC_URL }}images/feedback/guide_handshapes.gif" target="guide">Show Guide</a>
+        {# Translators:  #}
+        {% bootstrap_label form.handshape.label %} <a href="{{ STATIC_URL }}images/feedback/guide_handshapes.gif" target="guide">{% blocktrans %}Show Guide{% endblocktrans %}</a>
         {% bootstrap_field form.handshape show_label=False %}
     </div>
     
     <div id="{{form.althandshape.name}}div">
-        {% bootstrap_label form.althandshape.label %}  
-          <a href="{{ STATIC_URL }}images/feedback/guide_handshapes.gif" target="guide">Show Guide</a>
+        {% bootstrap_label form.althandshape.label %}
+          {# Translators:  #}
+          <a href="{{ STATIC_URL }}images/feedback/guide_handshapes.gif" target="guide">{% blocktrans %}Show Guide{% endblocktrans %}</a>
 
         {%if form.althandshape.errors %}{{form.althandshape.errors}}{% endif %}
         {% bootstrap_field form.althandshape show_label=False %}
@@ -112,22 +121,25 @@ $(document).ready(function(){
     
     <div id="{{form.location.name}}div">
          {% bootstrap_label form.location.label %}
-         <a href="{{ STATIC_URL }}images/feedback/guide_signpos.gif" target="guide">Show Guide</a>
+         {# Translators:  #}
+         <a href="{{ STATIC_URL }}images/feedback/guide_signpos.gif" target="guide">{% blocktrans %}Show Guide{% endblocktrans %}</a>
         {%if form.location.errors %}{{form.location.errors}}{% endif %}
         {% bootstrap_field form.location show_label=False %}
     </div>
     
     <div id="{{form.relativelocation.name}}div">
         <label>{{form.relativelocation.label}} *
-         <a href="{{ STATIC_URL }}images/feedback/guide_relativesignpos.gif" target="guide">Show Guide</a>
+         {# Translators:  #}
+         <a href="{{ STATIC_URL }}images/feedback/guide_relativesignpos.gif" target="guide">{% blocktrans %}Show Guide{% endblocktrans %}</a>
         </label>
         {%if form.relativelocation.errors %}{{form.relativelocation.errors}}{% endif %}
         {% bootstrap_field form.relativelocation show_label=False %}
     </div>
-    
-    <p id="movementmessagep">Using the guide, select the movement symbol/word that 
+
+    {# Translators:  #}
+    <p id="movementmessagep">{% blocktrans trimmed %}Using the guide, select the movement symbol/word that
       best describes this sign. Please choose either: one only (chosen from any category), 
-      or a choice from every category.</p>
+      or a choice from every category.{% endblocktrans %}</p>
     
     <div id="{{form.handbodycontact.name}}div">
       {% bootstrap_label form.handbodycontact.label %}
@@ -175,13 +187,15 @@ $(document).ready(function(){
 <fieldset id="meaninginput">
   <legend>Details</legend>
     <div id="{{form.meaning.name}}div">
-        <p>Please explain the meaning of the new or missing sign, or enter individual English words that have the same meaning as this sign (i.e. keywords).</p>
+        {# Translators:  #}
+        <p>{% blocktrans %}Please explain the meaning of the new or missing sign, or enter individual English words that have the same meaning as this sign (i.e. keywords).{% endblocktrans %}</p>
         {%if form.meaning.errors %}{{form.meaning.errors}}{% endif %}
         {% bootstrap_field form.meaning show_label=False %}
     </div>
 
     <div id="{{form.comments.name}}div">
-        <p>Are there any other comments you would like to give about this sign? For example, do you think there are other or extra keyword/s that belong with this sign? If so, please include your comments below.</p>
+        {# Translators:  #}
+        <p>{% blocktrans %}Are there any other comments you would like to give about this sign? For example, do you think there are other or extra keyword/s that belong with this sign? If so, please include your comments below.{% endblocktrans %}</p>
         {%if form.comments.errors %}{{form.comments.errors}}{% endif %}
         {% bootstrap_field form.comments show_label=False %}
     </div>
@@ -189,7 +203,8 @@ $(document).ready(function(){
  
 <hr>
 <div class="formbuttons">
-  <input class='btn btn-primary' type="submit" value="Submit Feedback" class="submit" />
+  {# Translators: Submit button #}
+  <input class='btn btn-primary' type="submit" value="{% blocktrans %}Submit Feedback{% endblocktrans %}" class="submit" />
 </div>
 <hr>
 </form>

@@ -1,13 +1,27 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
+
 {% block extrajs %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/fingerspelling.js"></script>
 
-    <script type="text/javascript">        $(document).ready(function() {
-      $('#inputarea').submit( function() {         fingerspell_play("{{ STATIC_URL }}images/", onehanded);         return false;        });             $('#replay').click( function() { fingerspell_play("{{ STATIC_URL }}images/", onehanded);} );            /* fill out the table of signs */      $("#fstable td").fingerspellimage("{{ STATIC_URL }}images/", onehanded);
-   });   </script>
+    <script type="text/javascript">
+    
+    $(document).ready(function() {
+      $('#inputarea').submit( function() { 
+        fingerspell_play("{{ STATIC_URL }}images/", onehanded); 
+        return false; 
+       });
+       
+      $('#replay').click( function() { fingerspell_play("{{ STATIC_URL }}images/", onehanded);} );
+      
+      /* fill out the table of signs */
+      $("#fstable td").fingerspellimage("{{ STATIC_URL }}images/", onehanded);
+   });
+   </script>
 {% endblock %}
 
-
+
+
 {% block content %} 
 <div id="fingerspellblock">
 <div id="leftblock"> 
@@ -15,12 +29,32 @@
     <div id="handimage">
       <img id="mainimg" src="{{ STATIC_URL }}images/twohanded/transition.jpg" alt=""> 
     </div>
-    <div id="replay">REPLAY</div>
+    {# Translator: REPLAY in fingerspell #}
+    <div id="replay">{% blocktrans %}REPLAY{% endblocktrans %}</div>
   </div>
     
-  <div id="fsinput" data-role="collapsible">   <form class='inline-form' id="inputarea" role='form'>            <div class='form-group'>            <label class='sr-only' for='text'>Enter Text</label>            <input class='form-control' type="text" id="text" placeholder="Enter Text" size="20"/>        </div>        <input class='btn btn-primary' type='submit' value='Show'/>     </form>
+  <div id="fsinput" data-role="collapsible">
+   <form class='inline-form' id="inputarea" role='form'>    
+        <div class='form-group'>
+            {# Translator: Text inside text field, help text #}
+            <label class='sr-only' for='text'>{% blocktrans %}Enter Text{% endblocktrans %}</label>
+            <input class='form-control' type="text" id="text" placeholder="Enter Text" size="20"/>
+        </div>
+        <input class='btn btn-primary' type='submit' value='Show'/> 
+    </form>
 
-<form name='speedform'>   <fieldset data-role="controlgroup" data-type="horizontal" >   <legend>Playback Speed</legend>      <input type='radio' name='speed' id='speed-slow' value='1500'><label for='speed-slow'>Slow</label>      <input type='radio' name='speed' id='speed-medium' value='1000' checked><label for='speed-medium'>Medium</label>      <input type='radio' name='speed' id='speed-fast' value='500'><label for='speed-fast'>Fast</label>         </fieldset>   </form>
+<form name='speedform'>
+   <fieldset data-role="controlgroup" data-type="horizontal" >
+   {# Translator: Speedform title text #}
+   <legend>{% blocktrans %}Playback Speed{% endblocktrans %}</legend>
+       {# Translator: Speedform option #}
+      <input type='radio' name='speed' id='speed-slow' value='1500'><label for='speed-slow'>{% blocktrans %}Slow{% endblocktrans %}</label>
+       {# Translator: Speedform option #}
+      <input type='radio' name='speed' id='speed-medium' value='1000' checked><label for='speed-medium'>{% blocktrans %}Medium{% endblocktrans %}</label>
+       {# Translator: Speedform option #}
+      <input type='radio' name='speed' id='speed-fast' value='500'><label for='speed-fast'>{% blocktrans %}Fast{% endblocktrans %}</label>
+   </fieldset>
+   </form>
   </div>
 </div> 
 
@@ -63,22 +97,29 @@
  </tr>
  <tr>
    <td class='blank'></td>
-   <td colspan='3' class='blank'><p>Click on images to view.</p></td>
+   {# Translator: Information on what to do in fingerspell page #}
+   <td colspan='3' class='blank'><p>{% blocktrans %}Click on images to view.{% endblocktrans %}</p></td>
    <td id="Z"></td>
  </tr>
 </table>
 
   <div id="info">
-    <p>This is the American Sign Language
+    {# Translator: Information about sign language alphabet #}
+    <p>{% blocktrans trimmed %}This is the American Sign Language
     one-handed manual alphabet which is used in the United States and Canada. It
     is also used in many other countries and regions of the world, but usually
-    with local variations and additions.</p>
-    
-    <p>Return to <a href="twohanded.html" data-ajax='false'>two handed finger spelling</a></p>
+    with local variations and additions.{% endblocktrans %}</p>
+
+      {# Translator: Return link and text #}
+    <p>{% blocktrans %}Return to{% endblocktrans %} <a href="twohanded.html" data-ajax='false'>{% blocktrans %}two handed finger spelling{% endblocktrans %}</a></p>
   </div>
 </div>
 
-</div>
-{% endblock %}
-
-
+</div>
+
+{% endblock %}
+
+
+
+
+

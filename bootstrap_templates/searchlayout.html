@@ -1,14 +1,17 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block content %}
 
-{% ifnotequal query '' %}           
-  <h2>English words matching "{{ query }}"</h2>
+{% ifnotequal query '' %}
+  {# Translators: Heading for searchlayout #}
+  <h2>{% blocktrans %}English words matching{% endblocktrans %} "{{ query }}"</h2>
 {% endifnotequal %}       
 
 {% block pagecontent %}
 
-<p>SEARCH CONTENT</p>
+{# Translators: Text search content in searchlayout #}
+<p>{% blocktrans %}SEARCH CONTENT{% endblocktrans %}</p>
 
 {% endblock %} 
 

@@ -1,4 +1,5 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block content %}
  
@@ -13,9 +14,9 @@
     {% endfor %}
   {% endfor %}
 </div>
- 
-        <p>Items marked * below are not in the web version of the dictionary and would not
-        appear in a regular (non staff) search.</p>
+        {# Translators:  #}
+        <p>{% blocktrans trimmed %}Items marked * below are not in the web version of the dictionary and would not
+        appear in a regular (non staff) search.{% endblocktrans %}</p>
  
         
       <div id="searchresults">

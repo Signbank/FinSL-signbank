@@ -1,3 +1,4 @@
+{% load i18n %}
     <div id='tags'>
         <fieldset>
       <legend>Tags</legend>
@@ -30,7 +31,8 @@
                 method="post" enctype="multipart/form-data">
            {% csrf_token %}
            <table>
-           <tr><td>{{tagform.tag}}</td><td><input class='btn btn-primary' type='submit' value='Add Tag'></td></tr>
+           {# Translators: Submit button #}
+           <tr><td>{{tagform.tag}}</td><td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tag{% endblocktrans %}'></td></tr>
            </table>
           </form>
       </div>

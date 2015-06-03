@@ -1,4 +1,5 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block script %}
 
@@ -10,13 +11,14 @@
 <form action="/video/upload/" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{form}}
-<input type='submit' value='submit'/>
+{# Translators: Submit button #}
+<input type='submit' value='{% blocktrans %}submit{% endblocktrans %}'/>
 </form>
 
 
 {% if video %}
-
-<p>File: {{video.videofile.url}}</p>
+{# Translators: Text preceding file url #}
+<p>{% blocktrans %}File:{% endblocktrans %} {{video.videofile.url}}</p>
 
 <video src="{{video.videofile.url}}"/>
 
@@ -25,7 +27,8 @@
 
 
 {% if error %}
-<p>Error: {{error}}</p>
+{# Translators: Text preceding error message #}
+<p>{% blocktrans %}Error:{% endblocktrans %} {{error}}</p>
 {% endif %}
 
 {% endblock %}

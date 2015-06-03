@@ -1,6 +1,5 @@
-
-
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block extrahead %}
 
@@ -31,10 +30,11 @@
           </div>
         </div>
              <p>
-        To view signs used to express numbers from ten to 
+        {# Translators: Numbersign page information text #}
+        {% blocktrans trimmed %}To view signs used to express numbers from ten to
         one billion, click a sign          
         in the table, the corresponding video will 
-        then play.
+        then play. {% endblocktrans %}
       </p>
       
 	</div>

@@ -5,6 +5,7 @@
 {#   The title of the page, appears in horizontal span above content. #}
 
 {% extends "standardlayout.html" %}
+{% load i18n %}
 
 {% block sideuppercontent %}
 {% endblock %}
@@ -13,10 +14,12 @@
 {% endblock %}
 
 {% block pagecontent %}
-    <h1>General feedback summary</h1>
+    {# Translators: Header1 #}
+    <h1>{% blocktrans %}General feedback summary{% endblocktrans %}</h1>
     
     <table>
-      <tr><th>Date</th><th>User</th><th>Comment</th></tr>
+
+      <tr>{# Translators: Feedback summary #}<th>{% blocktrans %}Date{% endblocktrans %}</th>{# Translators: Feedback summary #}<th>{% blocktrans %}User{% endblocktrans %}</th>{# Translators: Feedback summary #}<th>{% blocktrans %}Comment{% endblocktrans %}</th></tr>
 
       {% for feedback in feedbacklist %}
       <tr>

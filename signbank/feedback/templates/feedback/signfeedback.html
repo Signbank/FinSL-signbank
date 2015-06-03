@@ -1,65 +1,78 @@
 {% extends "baselayout.html" %}
 {% load bootstrap3 %}
+{% load i18n %}
 
 {% block content %}
 <div class="col-md-6 col-md-offset-3">
-    <h2>Sign Feedback</h2>
-  
+    {# Translators: Heading2 #}
+    <h2>{% blocktrans %}Sign Feedback{% endblocktrans %}</h2>
+
   <form id="signfeedback" method="post">
   {% csrf_token %}
 
   <input type='hidden' name='sourcepage' value='{{sourcepage}}'>
 
   {% csrf_token %}
-  <p> <span class="feedbackQuestion"> Please give us your comments about this sign. For example:
+  {# Translators: Sign feedback instructions #}
+  <p> <span class="feedbackQuestion"> {% blocktrans trimmed %}Please give us your comments about this sign. For example:
   do you think there are other keywords that belong with this sign?
-  Please write your comments or new keyword/s below. </span> <br/>
+  Please write your comments or new keyword/s below.{% endblocktrans %} </span> <br/>
   </p>
 
   {% if feedback_form.comment.errors %}<ul class="errorlist">{{ feedback_form.comment.errors }}</ul>{% endif %}
-    {% bootstrap_field feedback_form.comment show_label=False %} 
-    
-  <p> <span class="feedbackQuestion">Is there a keyword or keyword/s 
-  that DO NOT belong with this sign?</span>
-  <br /> Please provide the list of keywords below  </p>
+    {% bootstrap_field feedback_form.comment show_label=False %}
+  {# Translators: Feedback question #}
+  <p> <span class="feedbackQuestion">{% blocktrans trimmed %}Is there a keyword or keyword/s
+  that DO NOT belong with this sign?{% endblocktrans %}</span>
+  {# Translators: Feedback instruction #}
+  <br /> {% blocktrans %}Please provide the list of keywords below{% endblocktrans %}  </p>
   {% if feedback_form.kwnotbelong.errors %}<ul class="errorlist">{{ feedback_form.kwnotbelong.errors }}</ul>{% endif %}
-      {% bootstrap_field feedback_form.kwnotbelong show_label=False %}  
+      {% bootstrap_field feedback_form.kwnotbelong show_label=False %}
 
-  <p><input class='btn btn-primary' type="submit" value="Submit"/></p>
+  {# Translators: Submit button #}
+  <p><input class='btn btn-primary' type="submit" value="{% blocktrans %}Submit{% endblocktrans %}"/></p>
 
-  <h3>Optional Questions</h3>
-  <p class="feedbackQuestion">Is this sign an {{language}} Sign?</p>
-  
+  {# Translators: Header3 feedback questions #}
+  <h3>{% blocktrans %}Optional Questions{% endblocktrans %}</h3>
+  {# Translators: Question considering if sign is from x sign language #}
+  <p class="feedbackQuestion">{% blocktrans %}Is this sign an {{language}} Sign?{% endblocktrans %}</p>
+
   {% if feedback_form.isAuslan.errors %}<ul class="errorlist">{{ feedback_form.isAuslan.errors }}</ul>{% endif %}
-  {{ feedback_form.isAuslan }}  
-  
-  <p class="feedbackQuestion">Where is this sign used? </p>
+  {{ feedback_form.isAuslan }}
+
+  {# Translators: Feedback question #}
+  <p class="feedbackQuestion">{% blocktrans %}Where is this sign used?{% endblocktrans %} </p>
   <p> {{ feedback_form.whereused }}</p>
   {% if feedback_form.whereused.errors %}<ul class="errorlist">{{ feedback_form.whereused.errors }}</ul>{% endif %}
-  
-  <p class="feedbackQuestion">Do you like this sign?</p>
+
+  {# Translators: Feedback question #}
+  <p class="feedbackQuestion">{% blocktrans %}Do you like this sign?{% endblocktrans %}</p>
   {% if feedback_form.like.errors %}<ul class="errorlist">{{ feedback_form.like.errors }}</ul>{% endif %}
       {{ feedback_form.like }}
- 
-  <p class="feedbackQuestion">Do you use this sign?</p>
+
+  {# Translators: Feedback question #}
+  <p class="feedbackQuestion">{% blocktrans %}Do you use this sign?{% endblocktrans %}</p>
 
    {% if feedback_form.use.errors %}<ul class="errorlist">{{ feedback_form.use.errors }}</ul>{% endif %}
    {{ feedback_form.use }}
-      
-  <p class="feedbackQuestion">If this sign is a suggested new sign, would you use it?</p>
+
+  {# Translators: Feedback question #}
+  <p class="feedbackQuestion">{% blocktrans %}If this sign is a suggested new sign, would you use it?{% endblocktrans %}</p>
   {% if feedback_form.suggested.errors %}<ul class="errorlist">{{ feedback_form.suggested.errors }}</ul>{% endif %}
       {{ feedback_form.suggested }}
-      
-  <p class="feedbackQuestion">Is the information about the sign correct?</p>
+
+  {# Translators: Feedback question #}
+  <p class="feedbackQuestion">{% blocktrans %}Is the information about the sign correct?{% endblocktrans %}</p>
   {% if feedback_form.correct.errors %}<ul class="errorlist">{{ feedback_form.correct.errors }}</ul>{% endif %}
-      {{ feedback_form.correct }}  
-    
+      {{ feedback_form.correct }}
+
   <input type="hidden" name="translation_id" value="{{translation.id}}" />
   <hr/>
 
-  <p><input class='btn btn-primary' type="submit" value="Submit"></p>
+  {# Translators: Submit button #}
+  <p><input class='btn btn-primary' type="submit" value="{% blocktrans %}Submit{% endblocktrans %}"></p>
 
-  
+
 </form>
 
 </div>

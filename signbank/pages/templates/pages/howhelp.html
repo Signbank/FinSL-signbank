@@ -1,4 +1,5 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block jqueryready %}
 
@@ -39,7 +40,8 @@
 {# show the edit button if the user has permission to change pages #}
 {% if perms.pages.change %}
 <div id="editbutton">
-    <a href="/admin/pages/page/{{page.id}}/">[Edit]</a>
+    {# Translators: Edit button #}
+    <a href="/admin/pages/page/{{page.id}}/">{% blocktrans %}[Edit]{% endblocktrans %}</a>
 </div>
 {% endif %}
  

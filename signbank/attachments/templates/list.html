@@ -1,24 +1,26 @@
-
 {% extends "baselayout.html" %}
-
+{% load i18n %}
 
 {% block content %}
 
-    <h1>File Attachments</h1>
-    
-    <p>This page allows you to upload files of any kind to be hosted on the site.
+    {# Translators: Header #}
+    <h1>{% blocktrans %}File Attachments{% endblocktrans %}</h1>
+    {# Translators: Text on page #}
+    <p>{% blocktrans trimmed %}This page allows you to upload files of any kind to be hosted on the site.
     The files are listed below once uploaded and can be referenced by their URL
-    in any page.  The URL is listed after the file link below.</p>
+    in any page.  The URL is listed after the file link below.{% endblocktrans %}</p>
 
 
 
         <form enctype="multipart/form-data" method="post" action="/attachments/upload/">
          {% csrf_token %}
             <fieldset id="attachmentform">
-                <legend>Upload File</legend>
+                {# Translators: Form text #}
+                <legend>{% blocktrans %}Upload File{% endblocktrans %}</legend>
             <table>
                 <tr><td></td><td><input type="file" name="file"></td></tr>
-                <tr><td>Description:</td><td><input type="text" name="description"></td></tr>
+                {# Translators: Form text #}
+                <tr><td>{% blocktrans %}Description{% endblocktrans %}:</td><td><input type="text" name="description"></td></tr>
                 <tr><td colspan='2' style="text-align: right"><input type="submit" value="Upload File"></td></tr>
             </table>
             </fieldset>
@@ -26,7 +28,7 @@
 
         <ul>
         {% for o in object_list %}
-          <li><a href="{{o.file.url}}">{{o.description}}</a> URL: {{o.file.url}}</li>
+          <li><a href="{{o.file.url}}">{{o.description}}</a> {% blocktrans %}URL{% endblocktrans %}: {{o.file.url}}</li>
         {% endfor %}
         </ul>
         

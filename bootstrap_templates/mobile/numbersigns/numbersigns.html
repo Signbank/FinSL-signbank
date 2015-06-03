@@ -1,7 +1,7 @@
-
-
 {% extends "baselayout.html" %}
-{% block extrahead %} 
+{% load i18n %}
+
+{% block extrahead %}
 <script type="text/javascript" src="{{ STATIC_URL }}projekktor/projekktor-1.0.29r105.min.js"></script>
 <link rel="stylesheet" href="{{ STATIC_URL }}projekktor/theme/style.css" type="text/css" media="screen" />
 <style type='text/css'>
@@ -106,11 +106,12 @@ function replay() {
       </table>
 
       <div id="leftblock">
+        {% Translator: Infotext on numbersigns | mobile %}
                    <p>
-        To view signs used to express numbers from ten to 
+        {% blocktrans trimmed %}To view signs used to express numbers from ten to
         one billion, click a sign          
         in the table, the corresponding video will 
-        then play.
+        then play.{% endblocktrans %}
       </p>
       
         <div id="videocontainer">
@@ -118,7 +119,8 @@ function replay() {
             <div id="projekktor"></div>  
           </div>          
             <div id="replay" onclick="replay()">
-               REPLAY
+               {# Translator: REPLAY? #}
+               {% blocktrans %}REPLAY{% endblocktrans%}
             </div>
         </div>
 

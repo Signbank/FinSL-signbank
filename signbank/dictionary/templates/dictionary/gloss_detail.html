@@ -1,6 +1,7 @@
 {% extends 'baselayout.html' %}
 {% load stylesheet %}
 {% load bootstrap3 %}
+{% load i18n %}
 
 {% block extrahead %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/tagmanager.css">
@@ -47,15 +48,17 @@
         {% if SIGN_NAVIGATION %}
         
             {% if navigation.prev %}
-            <a class='btn navbar-btn btn-default' href="{% url 'dictionary:admin_gloss_view' pk=navigation.prev.id %}">&laquo; Previous Sign
+            {# Translators: Navigation - previous #}
+            <a class='btn navbar-btn btn-default' href="{% url 'dictionary:admin_gloss_view' pk=navigation.prev.id %}">&laquo; {% blocktrans %}Previous Sign{% endblocktrans %}
             </a>
             {% endif %}
-            
-            <button class='btn navbar-btn'>Sign {{glossposn}} of {{glosscount}} in the NGT Dictionary</button>
+            {# Translators: Sign x of n(amount) #}
+            <button class='btn navbar-btn'>{% blocktrans %}Sign {{glossposn}} of {{glosscount}} in the NGT Dictionary{% endblocktrans %}</button>
             
             {% if navigation.next %}
+            {# Translators: Navigation - next #}
             <a class="btn navbar-btn btn-default"
-               href="{% url 'dictionary:admin_gloss_view' pk=navigation.next.id %}">Next Sign &raquo;</a>
+               href="{% url 'dictionary:admin_gloss_view' pk=navigation.next.id %}">{% blocktrans %}Next Sign{% endblocktrans %} &raquo;</a>
             {% endif %}
          {% else %}
            
@@ -63,33 +66,40 @@
     </div>
 
     {% if gloss.idgloss %}
-    <a class='btn btn-default navbar-btn' href="{% url 'root_page' %}dictionary/gloss/{{gloss.idgloss}}.html">Public View</a>
+    {# Translators: Public view (mode?) #}
+    <a class='btn btn-default navbar-btn' href="{% url 'root_page' %}dictionary/gloss/{{gloss.idgloss}}.html">{% blocktrans %}Public View{% endblocktrans %}</a>
     {% endif %}
     
     {% if perms.dictionary.change_gloss %}
     
     <div class='pull-right'>
          <span id='edit_message'></span>&nbsp;
-         <button id='delete_gloss_btn' class='btn btn-default navbar-btn' data-toggle='modal' data-target='#delete_gloss_modal'>Delete Sign</button>
-         <button id='enable_edit' class='btn btn-default navbar-btn'>Edit</button>
+         {# Translators: Button #}
+         <button id='delete_gloss_btn' class='btn btn-default navbar-btn' data-toggle='modal' data-target='#delete_gloss_modal'>{% blocktrans %}Delete Sign{% endblocktrans %}</button>
+         {# Translators: Button #}
+         <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Edit{% endblocktrans %}</button>
          
          <div class="modal fade" id="delete_gloss_modal" tabindex="-1" role="dialog" aria-labelledby="#modalTitle" aria-hidden="true">
              <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class='modal-header'>
-                        <h2 id='modalTitle'>Delete This Sign</h2>
+                        {# Translators: Header2 #}
+                        <h2 id='modalTitle'>{% blocktrans %}Delete This Sign{% endblocktrans %}</h2>
                     </div>
                     <div class='modal-body'>
-                        <p>This action will delete this sign and all
-                        associated records. It cannot be undone.</p>
+                        {# Translators: Text in Gloss #}
+                        <p>{% blocktrans trimmed %}This action will delete this sign and all
+                        associated records. It cannot be undone.{% endblocktrans %}</p>
                      </div>
                   <form action='{% url 'dictionary:update_gloss' gloss.id %}' method='post'>
                       {% csrf_token %}
                       <input type='hidden' name='id' value='deletegloss'>
                       <input type='hidden' name='value' value='confirmed'>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <input type="submit" class="btn btn-primary" value='Confirm Delete'>
+                         {# Translators: Button #}
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}</button>
+                         {# Translators: Confirmation button #}
+                        <input type="submit" class="btn btn-primary" value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
                       </div>
                   </form>
                       
@@ -128,13 +138,17 @@
     <div id="feedback">
         <ul>
             {% ifequal viewname "words" %}
-            <li><a href="{% url 'root_page' %}feedback/sign/{{translation.translation}}-{{n}}.html?return=/dictionary/words/{{translation.translation}}-{{n}}.html">Provide feedback about this sign</a></li>
+            {# Translators:  #}
+            <li><a href="{% url 'root_page' %}feedback/sign/{{translation.translation}}-{{n}}.html?return=/dictionary/words/{{translation.translation}}-{{n}}.html">{% blocktrans %}Provide feedback about this sign{% endblocktrans %}</a></li>
             {% else %}
-            <li><a href="{% url 'root_page' %}feedback/gloss/{{gloss.idgloss}}.html?return=/dictionary/gloss/{{gloss.idgloss}}.html&lastmatch={{lastmatch}}">Provide feedback about this sign</a></li>
+            {# Translators:  #}
+            <li><a href="{% url 'root_page' %}feedback/gloss/{{gloss.idgloss}}.html?return=/dictionary/gloss/{{gloss.idgloss}}.html&lastmatch={{lastmatch}}">{% blocktrans %}Provide feedback about this sign{% endblocktrans %}</a></li>
             {% endifequal %}
 
-            <li><a href="{% url 'root_page' %}feedback/missingsign.html">Report a missing sign</a></li>
-            <li><a href="{% url 'root_page' %}feedback/generalfeedback.html">Provide general site feedback</a></li>
+            {# Translators:  #}
+            <li><a href="{% url 'root_page' %}feedback/missingsign.html">{% blocktrans %}Report a missing sign{% endblocktrans %}</a></li>
+            {# Translators:  #}
+            <li><a href="{% url 'root_page' %}feedback/generalfeedback.html">{% blocktrans %}Provide general site feedback{% endblocktrans %}</a></li>
         </ul>
     </div>
     
@@ -143,8 +157,10 @@
     {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
     <div class='editform'>
         <fieldset>
-            <legend>Upload New Video</legend>
-            <p>We have {{gloss.count_videos}} videos for this sign.</p>
+            {# Translators: Upload/Add new video to Signbank #}
+            <legend>{% blocktrans %}Upload New Video{% endblocktrans %}</legend>
+            {# Translators:  #}
+            <p>{% blocktrans %}We have {{gloss.count_videos}} videos for this sign.{% endblocktrans %}</p>
             <form action="/video/upload/" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               <input type='hidden' name='redirect' value='{{request.path}}?edit'>
@@ -154,7 +170,8 @@
               </tr>
               <tr>
                   <td><input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
-                      <input class='btn btn-primary' type='submit' value='Upload Video'/></td>
+                      {# Translators: Submit button #}
+                      <input class='btn btn-primary' type='submit' value='{% blocktrans %}Upload Video{% endblocktrans %}'/></td>
               </tr>
             </table>
             </form>
@@ -162,11 +179,14 @@
     
         {% if perms.dictionary.update_video and gloss.count_videos > 0 %}
         <fieldset>
-         <legend>Delete/Revert Video</legend>
+         {# Translators:  #}
+         <legend>{% blocktrans %}Delete/Revert Video{% endblocktrans %}</legend>
             <table>
             <form action="/video/delete/{{gloss.pk}}" method='post'>
-            <tr><td><em>This will delete the most recent upload and restore the most recent earlier version.</em></td></tr>
-            <tr><td>{% csrf_token %}<input class='btn btn-danger' id='delete_video' type='submit' value='Delete/Revert this video'></td></tr>
+            {# Translators:  #}
+            <tr><td><em>{% blocktrans %}This will delete the most recent upload and restore the most recent earlier version.{% endblocktrans %}</em></td></tr>
+            {# Translators: Submit button #}
+            <tr><td>{% csrf_token %}<input class='btn btn-danger' id='delete_video' type='submit' value='{% blocktrans %}Delete/Revert this video{% endblocktrans %}'></td></tr>
             </form>
            </table>
         </fieldset>
@@ -277,13 +297,20 @@
 
         
         <table class='table table-condensed'>
-            <tr><th>ID Gloss:</th><td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td></tr>
-            <tr><th>Annotation ID Gloss:</th><td class='edit edit_text'  id='annotation_idgloss'>{% value gloss.annotation_idgloss %}</td></tr>
-            <tr><th>Annotation ID Gloss: English</th><td class='edit edit_text'  id='annotation_idgloss_en'>{% value gloss.annotation_idgloss_en %}</td></tr>
-            <tr><th>Translation equivalents in Dutch</th><td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
-            <tr><th>Annotation Instructions</th><td class='edit edit_text' id='useInstr'>{% value gloss.useInstr %}</td></tr>
-            <tr><th>Language</th><td class='edit edit_language' id='language'>{% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
-            <tr><th>Dialect</th><td class='edit edit_dialect' id='dialect'>{% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}ID Gloss:{% endblocktrans %}</th><td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Annotation ID Gloss:{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss'>{% value gloss.annotation_idgloss %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Annotation ID Gloss: English{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss_en'>{% value gloss.annotation_idgloss_en %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Translation equivalents in Dutch{% endblocktrans %}</th><td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Annotation Instructions{% endblocktrans %}</th><td class='edit edit_text' id='useInstr'>{% value gloss.useInstr %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Language{% endblocktrans %}</th><td class='edit edit_language' id='language'>{% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Dialect{% endblocktrans %}</th><td class='edit edit_dialect' id='dialect'>{% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
         </table>
 			 
     {% if perms.dictionary.view_advanced_properties %}
@@ -311,7 +338,8 @@
    <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#morphologydefinition' href='#morphology'>Morphology</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#morphologydefinition' href='#morphology'>{% blocktrans %}Morphology{% endblocktrans %}</a>
             </div>
         </div>
         <div id='morphology' class='collapse'>
@@ -319,8 +347,10 @@
                <table class='table table-condensed'>
                   <tr>
                       <th style='width:2em'></th>
-                      <th style='width:12em'>Type</th>
-                      <th style='width:12em'>Morpheme</th>
+                      {# Translators:  #}
+                      <th style='width:12em'>{% blocktrans %}Type{% endblocktrans %}</th>
+                      {# Translators:  #}
+                      <th style='width:12em'>{% blocktrans %}Morpheme{% endblocktrans %}</th>
                   </tr>
 
                    {% for morphdef in gloss.parent_glosses.all %}
@@ -334,19 +364,22 @@
                                  <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class='modal-header'>
-                                            <h2 id='modalTitle'>Delete This Morphology</h2>
+                                            {# Translators: Header2 #}
+                                            <h2 id='modalTitle'>{% blocktrans %}Delete This Morphology{% endblocktrans %}</h2>
                                         </div>
                                         <div class='modal-body'>
-
-                                            <p>Are you sure you want to delete this? This cannot be undone.</p>
+                                            {# Translators: Question #}
+                                            <p>{% blocktrans %}Are you sure you want to delete this? This cannot be undone.{% endblocktrans %}</p>
                                          </div>
                                       <form action='{% url "dictionary:update_gloss" gloss.id %}' method='post'>
                                           {% csrf_token %}
                                           <input type='hidden' name='id' value='morphology-definition-delete_{{morphdef.id}}'>
                                           <input type='hidden' name='value' value='confirmed'>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <input type="submit" class="btn btn-primary" value='Confirm Delete'>
+                                              {# Translators: Button  #}
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}</button>
+                                              {# Translators: Submit button #}
+                                            <input type="submit" class="btn btn-primary" value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
                                           </div>
                                       </form>
 
@@ -371,8 +404,10 @@
                    <tr>
                        <td style="width:2em;"></td>
                        <td style="width:12em;">{{morphologyform.role}}</td>
-                       <td><input class='form-control glosstypeahead' placeholder='SN/ID Gloss/Annotation ID Gloss' name='morpheme_id'></td>
-                       <td><input class='btn btn-primary' value='Add Morphology Definition' type='submit'></td>
+                       {# Translators: Placeholder #}
+                       <td><input class='form-control glosstypeahead' placeholder='{% blocktrans %}SN/ID Gloss/Annotation ID Gloss{% endblocktrans %}' name='morpheme_id'></td>
+                       {# Translators: Submit button  #}
+                       <td><input class='btn btn-primary' value='{% blocktrans %}Add Morphology Definition{% endblocktrans %}' type='submit'></td>
                    </tr>
                </table>
             </form>
@@ -390,7 +425,8 @@
 	<div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#phonology'>Phonology</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#definition' href='#phonology'>{% blocktrans %}Phonology{% endblocktrans %}</a>
             </div>
         </div>
         <div id='phonology' class='panel-collapse collapse'>
@@ -408,7 +444,8 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#semantics'>Semantics</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#definition' href='#semantics'>{% blocktrans %}Semantics{% endblocktrans %}</a>
             </div>
         </div>
         <div id='semantics' class='panel-collapse collapse'>
@@ -424,7 +461,8 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#relations'>Relations to Other Signs</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#definition' href='#relations'>{% blocktrans %}Relations to Other Signs{% endblocktrans %}</a>
             </div>
         </div>
         <div id='relations' class='collapse'>
@@ -438,20 +476,23 @@
                                  <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class='modal-header'>
-                                            <h2 id='modalTitle'>Delete This Relation</h2>
+                                            {# Translators: Header2  #}
+                                            <h2 id='modalTitle'>{% blocktrans %}Delete This Relation{% endblocktrans %}</h2>
                                         </div>
                                         <div class='modal-body'>
-                                            
-                                            <p>This action will delete the <strong>{{rel.get_role_display}}</strong>
-                                                 relation between {{rel.source}} and {{rel.target}}. It cannot be undone.</p>
+                                            {# Translators:  #}
+                                            <p>{% blocktrans trimmed %}This action will delete the <strong>{{rel.get_role_display}}</strong>
+                                                 relation between {{rel.source}} and {{rel.target}}. It cannot be undone.{% endblocktrans %}</p>
                                          </div>
                                       <form action='{% url "dictionary:update_gloss" gloss.id %}' method='post'>
                                           {% csrf_token %}
                                           <input type='hidden' name='id' value='relationdelete_{{rel.id}}'>
                                           <input type='hidden' name='value' value='confirmed'>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <input type="submit" class="btn btn-primary" value='Confirm Delete'>
+                                             {# Translators: Button #}
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}</button>
+                                             {# Translators: Submit button #}
+                                            <input type="submit" class="btn btn-primary" value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
                                           </div>
                                       </form>
                                           
@@ -475,8 +516,10 @@
                    <table class='table table-condensed'>
                        <tr>
                            <td>{{relationform.role}}</td>
-                           <td><input class='form-control glosstypeahead' placeholder='SN/ID Gloss/Annotation ID Gloss' name='targetid'></td>
-                           <td><input class='btn btn-primary' value='Add Relation' type='submit'></td>
+                           {# Translators:  #}
+                           <td><input class='form-control glosstypeahead' placeholder='{% blocktrans %}SN/ID Gloss/Annotation ID Gloss{% endblocktrans %}' name='targetid'></td>
+                           {# Translators: Submit button #}
+                           <td><input class='btn btn-primary' value='{% blocktrans %}Add Relation{% endblocktrans %}' type='submit'></td>
                        </tr>
                    </table>
                 </form>
@@ -491,15 +534,19 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#relationsforeign'>Relations to Foreign Signs</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#definition' href='#relationsforeign'>{% blocktrans %}Relations to Foreign Signs{% endblocktrans %}</a>
             </div>
         </div>
         <div id='relationsforeign' class='collapse'>
                <table class='table table-condensed'>
 	      <tr>
-		  <th style='width:3em'>Loan</th>
-		  <th style='width:6em'>Related Language</th>
-		  <th style='width:10em'>Gloss in related language</th>
+              {# Translators: Loan from another language(?) #}
+		  <th style='width:3em'>{% blocktrans %}Loan{% endblocktrans %}</th>
+              {# Translators:  #}
+		  <th style='width:6em'>{% blocktrans %}Related Language{% endblocktrans %}</th>
+              {# Translators: Equivalent Gloss in related language #}
+		  <th style='width:10em'>{% blocktrans %}Gloss in related language{% endblocktrans %}</th>
 		</tr>
 
                    {% for rel in gloss.relationtoforeignsign_set.all %}
@@ -511,19 +558,22 @@
                                  <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class='modal-header'>
-                                            <h2 id='modalTitle'>Delete This Relation</h2>
+                                            {# Translators: Header2 #}
+                                            <h2 id='modalTitle'>{% blocktrans %}Delete This Relation{% endblocktrans %}</h2>
                                         </div>
                                         <div class='modal-body'>
-                                            
-                                            <p>Are you sure you want to delete this? This cannot be undone.</p>
+                                            {# Translators: Question #}
+                                            <p>{% blocktrans %}Are you sure you want to delete this? This cannot be undone.{% endblocktrans %}</p>
                                          </div>
                                       <form action='{% url "dictionary:update_gloss" gloss.id %}' method='post'>
                                           {% csrf_token %}
                                           <input type='hidden' name='id' value='relationforeigndelete_{{rel.id}}'>
                                           <input type='hidden' name='value' value='confirmed'>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <input type="submit" class="btn btn-primary" value='Confirm Delete'>
+                                              {# Translators: Button #}
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}</button>
+                                              {# Translators: Submit button #}
+                                            <input type="submit" class="btn btn-primary" value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
                                           </div>
                                       </form>
                                           
@@ -546,9 +596,12 @@
                    <table class='table table-condensed'>
                        <tr>
                            <td><input class='checkbox' name='loan' type='checkbox'></td>
-                           <td><input class='form-control' placeholder='Related language' name='other_lang' type='text'></td>
-                           <td><input class='form-control' placeholder='Gloss in related language' name='other_lang_gloss' type='text'></td>
-                           <td><input class='btn btn-primary' value='Add Relation to Foreign Sign' type='submit'></td>
+                           {# Translators:  #}
+                           <td><input class='form-control' placeholder='{% blocktrans %}Related language{% endblocktrans %}' name='other_lang' type='text'></td>
+                           {# Translators:  #}
+                           <td><input class='form-control' placeholder='{% blocktrans %}Gloss in related language{% endblocktrans %}' name='other_lang_gloss' type='text'></td>
+                           {# Translators:  #}
+                           <td><input class='btn btn-primary' value='{% blocktrans %}Add Relation to Foreign Sign{% endblocktrans %}' type='submit'></td>
                        </tr>
                    </table>
                 </form>
@@ -565,7 +618,8 @@
         <div class="panel panel-default">
             <div class='panel-heading'>
                 <div class='panel-title'>
-                    <a data-toggle='collapse' data-parent='#definition' href='#frequency'>Frequency</a>
+                    {# Translators:  #}
+                    <a data-toggle='collapse' data-parent='#definition' href='#frequency'>{% blocktrans %}Frequency{% endblocktrans %}</a>
                 </div>
             </div>
             <div id='frequency' class='panel-collapse collapse'>
@@ -581,7 +635,8 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#pubStatus'>Publication Status</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#definition' href='#pubStatus'>{% blocktrans %}Publication Status{% endblocktrans %}</a>
             </div>
         </div>
         
@@ -589,8 +644,10 @@
         <div id="pubStatus" class="panel-collapse collapse">
         
             <table class='table table-condensed'>
-                <tr><th>In Web Dictionary</th><td {% if perms.dictionary.can_publish %}class='edit edit_check'{% endif %} id='inWeb'>{% if gloss.inWeb %}Yes{% else %}No{% endif %}</td></tr>
-                <tr><th>Proposed New Sign</th><td class='edit edit_check' id='isNew'>{% if gloss.isNew %}Yes{% else %}No{% endif %}</td></tr>
+                {# Translators:  #}
+                <tr><th>{% blocktrans %}In Web Dictionary{% endblocktrans %}</th><td {% if perms.dictionary.can_publish %}class='edit edit_check'{% endif %} id='inWeb'>{% if gloss.inWeb %}Yes{% else %}No{% endif %}</td></tr>
+                {# Translators:  #}
+                <tr><th>{% blocktrans %}Proposed New Sign{% endblocktrans %}</th><td class='edit edit_check' id='isNew'>{% if gloss.isNew %}Yes{% else %}No{% endif %}</td></tr>
             </table>
         </div>
     </div>
@@ -600,7 +657,8 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#definitions'>Notes</a>
+                {# Translators:  #}
+                <a data-toggle='collapse' data-parent='#definition' href='#definitions'>{% blocktrans %}Notes{% endblocktrans %}</a>
             </div>
         </div>
         <div id='definitions' class='collapse'>
@@ -610,9 +668,12 @@
     <table class='table'>
       <tr>
           <th style='width:1em'></th>
-          <th style='width:3em'>Published</th>
-          <th style='width:3em'>Index</th>
-          <th style='width:10em'>Type</th>
+          {# Translators:  #}
+          <th style='width:3em'>{% blocktrans %}Published{% endblocktrans %}</th>
+          {# Translators:  #}
+          <th style='width:3em'>{% blocktrans %}Index{% endblocktrans %}</th>
+          {# Translators:  #}
+          <th style='width:10em'>{% blocktrans %}Type{% endblocktrans %}</th>
           <th>Text</th>
       </tr>
     {% for role in roles %}
@@ -629,19 +690,23 @@
                  <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class='modal-header'>
-                            <h2 id='modalTitle'>Delete This Note</h2>
+                            {# Translators: Header2 #}
+                            <h2 id='modalTitle'>{% blocktrans %}Delete This Note{% endblocktrans %}</h2>
                         </div>
                         <div class='modal-body'>
                             <p><strong>{{def.get_role_display}}</strong> {{def.text}}</p>
-                            <p>This action will delete this note. It cannot be undone.</p>
+                            {# Translators:  #}
+                            <p>{% blocktrans %}This action will delete this note. It cannot be undone.{% endblocktrans %}</p>
                          </div>
                       <form action='{% url "dictionary:update_gloss" gloss.id %}' method='post'>
                           {% csrf_token %}
                           <input type='hidden' name='id' value='definitiondelete_{{def.id}}'>
                           <input type='hidden' name='value' value='confirmed'>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <input type="submit" class="btn btn-primary" value='Confirm Delete'>
+                              {# Translators: Button #}
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}</button>
+                              {# Translators: Submit button #}
+                            <input type="submit" class="btn btn-primary" value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
                           </div>
                       </form>
                           
@@ -673,14 +738,16 @@
                 <td style="width:7em"><input class='checkbox' name='published' type='checkbox'></td>
                 <td style='width:5em'><input class='form-control' name='count' type='number'></td>
                 <td style='width:10em'>{{definitionform.role}}</td>
-                <td><input class='form-control' name='text' placeholder='Enter new note'></td>
+                {# Translators: Placeholder #}
+                <td><input class='form-control' name='text' placeholder='{% blocktrans %}Enter new note{% endblocktrans %}'></td>
             </tr>
              <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input class='btn' type='submit' value='Save New'></td>
+                 {# Translators: Submit button #}
+                <td><input class='btn' type='submit' value='{% blocktrans %}Save New{% endblocktrans %}'></td>
             </tr>
          </table>
     </fieldset>

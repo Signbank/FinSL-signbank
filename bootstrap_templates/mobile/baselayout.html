@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,7 +7,7 @@
   
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
   
-    <title>{% block pagetitle %}Signbank{% endblock %}</title>
+    <title>{% block pagetitle %}{%trans "Signbank" noop %}{% endblock %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,23 +61,28 @@
 
   <div data-role="page" class="page"> 
     <div id="header" data-role="header">
-      <a href="/" data-transition="pop" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-      <h1>Signbank</h1>
+      {# Translators: Link to homepage | mobile #}
+      <a href="/" data-transition="pop" data-role="button" data-icon="home" data-iconpos="notext">{% blocktrans %}Home{% endblocktrans %}</a>
+      {# Translators: Numbersigns page header/title | mobile #}
+      <h1>{% blocktrans %}Signbank{% endblocktrans %}</h1>
       <div data-role="navbar">
         <ul>
   	      {% for item in menu %}
 	         {# don't include Home, since we have a link for that in the header #}
 	         {% ifnotequal item.url "/" %}
-	         <li><a {% if item.current %}class='ui-btn-active'{% endif %} href="{{item.url}}">{{item.title}}</a></li>
+             {# Translators: menu items | mobile #}
+	         <li><a {% if item.current %}class='ui-btn-active'{% endif %} href="{{item.url}}">{% blocktrans %}{{item.title}}{% endblocktrans %}</a></li>
 	         {% endifnotequal %}
 	      {% endfor %}
         </ul>
       </div>
-      <a href="{% url 'dictionary:signbank.dictionary.views.search' %}" data-role="button" data-icon="search" data-iconpos="notext">Search</a>
+      {# Translators: Search link | mobile #}
+      <a href="{% url 'dictionary:signbank.dictionary.views.search' %}" data-role="button" data-icon="search" data-iconpos="notext">{% blocktrans %}Search{% endblocktrans %}</a>
     </div>
 
     <div data-role="content">
-      <div>{% block content %}<p>Content</p>{% endblock %}</div>
+      {# Translators: Content block | mobile #}
+      <div>{% block content %}<p>{% blocktrans %}Content{% endblocktrans %}</p>{% endblock %}</div>
     
     </div>
     
@@ -86,7 +93,8 @@
       <div>
 	      <ul data-role="listview">
 		      {% for subitem in item.children %}
-		        <li><a href="{{subitem.url}}">{{subitem.title}}</a></li>
+                {# Translator: Child pages for menu links | mobile #}
+		        <li><a href="{{subitem.url}}">{% blocktrans %}{{subitem.title}}{% endblocktrans %}</a></li>
 		      {% endfor %} 
 	      </ul>
 	  </div>
@@ -103,11 +111,11 @@
                   
                       <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
                       -->
-                      <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">The NGT Signbank</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 International License</a>.
+                      <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">{% trans "The NGT Signbank" noop %}</span> {% blocktrans %}is licensed under a{% endblocktrans %} <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">{% trans "Creative Commons BY-NC-SA 4.0 International License" noop %}</a>.
              
               </div>
-        
-      View the <a href="?flavour=full" data-ajax='false'>Full Version</a> of this site.
+      {# Translation: text around link to full version of site | mobile #}
+      {% blocktrans %}View the{% endblocktrans %} <a href="?flavour=full" data-ajax='false'>{% blocktrans %}Full Version{% endblocktrans %}</a> {% blocktrans %}of this site.{% endblocktrans %}
     </div> 
     </div> 
   </div> 

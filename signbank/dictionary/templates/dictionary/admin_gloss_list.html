@@ -1,6 +1,8 @@
 {% extends "baselayout.html" %}
 {% load bootstrap3 %}
-{% block bootstrap3_title %}Signbank: Search Signs{% endblock %}
+{% load i18n %}
+{# Translators: Title for sign search page #}
+{% block bootstrap3_title %}{% blocktrans %}Signbank: Search Signs{% endblocktrans %}{% endblock %}
 {% block extrahead %}
 {% endblock %}
 
@@ -97,7 +99,8 @@ function clearForm(myFormElement) {
 
         <div class="panel-group">
             <div  class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-target="#searchpanels">Search by Language and Basic Properties</div>
+                {# Translators: Search by language #}
+                <div class="panel-heading" data-toggle="collapse" data-target="#searchpanels">{% blocktrans %}Search by Language and Basic Properties{% endblocktrans %}</div>
 
                 <div id='searchpanels' class='collapse'>
                 <table class='table'>
@@ -126,7 +129,8 @@ function clearForm(myFormElement) {
               </div>
 
             <div  class="panel panel-default">
-              <div class="panel-heading" data-toggle="collapse" data-target="#morph_search">Search by Morphology</div>
+              {# Translators: Search by morphology #}
+              <div class="panel-heading" data-toggle="collapse" data-target="#morph_search">{% blocktrans %}Search by Morphology{% endblocktrans %}</div>
 
               <div id='morph_search' class='collapse'>
               <table class='table table-condensed'>
@@ -145,7 +149,8 @@ function clearForm(myFormElement) {
             </div>
 
             <div  class="panel panel-default">
-              <div class="panel-heading" data-toggle="collapse" data-target="#phon_search">Search by Phonology</div>
+              {# Translators: Search by phonology #}
+              <div class="panel-heading" data-toggle="collapse" data-target="#phon_search">{% blocktrans %}Search by Phonology{% endblocktrans %}</div>
 
               <div id='phon_search' class='collapse'>
               <table class='table table-condensed'>
@@ -189,7 +194,8 @@ function clearForm(myFormElement) {
             </div>
 
             <div  class="panel panel-default">
-              <div class="panel-heading" data-toggle="collapse" data-target="#sem_search">Search by Semantics</div>
+              {# Translators: Search by semantics #}
+              <div class="panel-heading" data-toggle="collapse" data-target="#sem_search">{% blocktrans %}Search by Semantics{% endblocktrans %}</div>
 
               <div id='sem_search' class='collapse'>
               <table class='table table-condensed'>
@@ -210,7 +216,8 @@ function clearForm(myFormElement) {
             </div>
 
             <div  class="panel panel-default">
-              <div class="panel-heading" data-toggle="collapse" data-target="#rel_search">Search by Relation</div>
+              {# Translators: Search by relation #}
+              <div class="panel-heading" data-toggle="collapse" data-target="#rel_search">{% blocktrans %}Search by Relation{% endblocktrans %}</div>
 
               <div id='rel_search' class='collapse'>
               <table class='table'>
@@ -255,7 +262,8 @@ function clearForm(myFormElement) {
             </div>
 
             <div  class="panel panel-default">
-              <div class="panel-heading" data-toggle="collapse" data-target="#pub_search">Search by Publication Status and Notes</div>
+              {# Translators: Search by publication status and notes #}
+              <div class="panel-heading" data-toggle="collapse" data-target="#pub_search">{% blocktrans %}Search by Publication Status and Notes{% endblocktrans %}</div>
 
               <div id='pub_search' class='collapse'>
               <table class='table'>
@@ -307,7 +315,8 @@ function clearForm(myFormElement) {
         </div>
 
         <div class='form-group' id='paginate_by'>
-        <label for='paginate_by'>Results per page</label>
+        {# Translators: How many results to fit per page  #}
+        <label for='paginate_by'>{% blocktrans %}Results per page{% endblocktrans %}</label>
         <select class='form-control' name="paginate_by">
             <option>3000</option>
             <option>2000</option>
@@ -327,23 +336,28 @@ function clearForm(myFormElement) {
 
    {% if perms.dictionary.add_gloss %}
    <div  class="panel panel-default">
-      <div class="panel-heading" data-toggle="collapse"  data-target='#add_gloss_form'>Add New Sign</div>
+      {# Translators: Button #}
+      <div class="panel-heading" data-toggle="collapse"  data-target='#add_gloss_form'>{% blocktrans %}Add New Sign{% endblocktrans %}</div>
 
          <div id='add_gloss_form' class='collapse'>
              <form action='{% url "dictionary:add_gloss" %}' method='post'>
                  {% csrf_token %}
                  <table class='table'>
                      <tr>
-                         <th><label for='id_idgloss'>ID Gloss</label></th>
-                         <th><label for='id_annotation_idgloss'>Annotation ID Gloss</label></th>
-                         <th><label for='id_annotation_idgloss_en'>Annotation ID Gloss (English)</label></th>
+                         {# Translators: Field label #}
+                         <th><label for='id_idgloss'>{% blocktrans %}ID Gloss{% endblocktrans %}</label></th>
+                         {# Translators: Field label #}
+                         <th><label for='id_annotation_idgloss'>{% blocktrans %}Annotation ID Gloss{% endblocktrans %}</label></th>
+                         {# Translators: Field label  #}
+                         <th><label for='id_annotation_idgloss_en'>{% blocktrans %}Annotation ID Gloss (English){% endblocktrans %}</label></th>
                          <th></th>
                      </tr>
                      <tr>
                          <td>{{add_gloss_form.idgloss}}</td>
                          <td>{{add_gloss_form.annotation_idgloss}}</td>
                          <td>{{add_gloss_form.annotation_idgloss_en}}</td>
-                         <td><input class='btn btn-primary' type='submit' value='Add New Sign'></td>
+                         {# Translators: Button #}
+                         <td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'></td>
                      </tr>
                  </table>
                  
@@ -356,8 +370,8 @@ function clearForm(myFormElement) {
              
 
   
-
-<p>Number of matches: {{page_obj.paginator.count}} out of {{glosscount}}.</p>
+{# Translators: How many matches out of possible  #}
+<p>{% blocktrans %}Number of matches: {{page_obj.paginator.count}} out of {{glosscount}}{% endblocktrans %}.</p>
 
 {% if object_list %}
 <table class='table table-condensed'>

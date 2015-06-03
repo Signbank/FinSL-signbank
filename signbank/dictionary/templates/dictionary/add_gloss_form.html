@@ -1,5 +1,6 @@
 {% extends "baselayout.html" %}
 {% load bootstrap3 %}
+{% load i18n %}
 {% block bootstrap3_title %}Signbank: Add Gloss{% endblock %}
 {% block extrahead %}
 {% endblock %}
@@ -16,23 +17,29 @@
                  {% csrf_token %}
                  <table class='table'>
                      <tr>
-                         <th><label for='id_idgloss'>Lemma ID Gloss</label></th>
-                         <th><label for='id_annotation_idgloss'>Annotation ID Gloss</label></th>
-                         <th><label for='id_annotation_idgloss_en'>Annotation ID Gloss (English)</label></th>
+                         {# Translators: ID Gloss - add gloss form title #}
+                         <th><label for='id_idgloss'>{% blocktrans %}Lemma ID Gloss{% endblocktrans %}</label></th>
+                         {# Translators: Annotation ID Gloss - add gloss form title #}
+                         <th><label for='id_annotation_idgloss'>{% blocktrans %}Annotation ID Gloss{% endblocktrans %}</label></th>
+                         {# Translators: Annotation ID Gloss (English) - add gloss form title #}
+                         <th><label for='id_annotation_idgloss_en'>{% blocktrans %}Annotation ID Gloss (English){% endblocktrans %}</label></th>
                          <th></th>
                      </tr>
                      <tr>
                          <td>{{add_gloss_form.idgloss}}</td>
                          <td>{{add_gloss_form.annotation_idgloss}}</td>
                          <td>{{add_gloss_form.annotation_idgloss_en}}</td>
-                         <td><input class='btn btn-primary' type='submit' value='Add New Sign'></td>
+                         {# Translators: Button #}
+                         <td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'></td>
                      </tr>
                  </table>
                  
              </form>
              {% if add_gloss_form.sn.errors %}
-             <h2>Error</h2>
-                 <p>A sign with that Sign Number already exists. Please choose a different Sign Number.</p>
+             {# Translators: Title#}
+             <h2>{% blocktrans %}Error{% endblocktrans %}</h2>
+                 {# Translators: Error message #}
+                 <p>{% blocktrans %}A sign with that Sign Number already exists. Please choose a different Sign Number.{% endblocktrans %}</p>
              {% endif %}
         </div>
       {% endif %}

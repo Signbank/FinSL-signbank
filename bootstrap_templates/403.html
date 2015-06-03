@@ -1,10 +1,12 @@
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block content %}
 
-    <h2>Permission Denied</h2>
-
-    <p>You do not have permission to view the requested page.</p>
+    {# Translators: Title for error page 403 #}
+    <h2>{% blocktrans %}Permission Denied{% endblocktrans %}</h2>
+    {# Translators: Text for error page 403 #}
+    <p>{% blocktrans %}You do not have permission to view the requested page.{% endblocktrans %}</p>
     
 
 {% endblock %}

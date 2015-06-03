@@ -1,6 +1,5 @@
-
-
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block extrahead %}
 
@@ -24,8 +23,8 @@
 {% block content %}
 
 <div id="numbersigns">
-    
-	<p class='alert alert-info'>The number signs page is under construction.</p>
+    {# Translators: Alert for number signs page, if the page is under construction #}
+	<p class='alert alert-info'>{% blocktrans %}The number signs page is under construction.{% endblocktrans %}</p>
 
 </div>
 
