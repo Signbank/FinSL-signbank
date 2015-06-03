@@ -19,7 +19,12 @@
     
     <table>
 
-      <tr>{# Translators: Feedback summary #}<th>{% blocktrans %}Date{% endblocktrans %}</th>{# Translators: Feedback summary #}<th>{% blocktrans %}User{% endblocktrans %}</th>{# Translators: Feedback summary #}<th>{% blocktrans %}Comment{% endblocktrans %}</th></tr>
+      <tr>{# Translators: Feedback summary #}
+          <th>{% blocktrans %}Date{% endblocktrans %}</th>
+          {# Translators: Feedback summary #}
+          <th>{% blocktrans %}User{% endblocktrans %}</th>
+          {# Translators: Feedback summary #}
+          <th>{% blocktrans %}Comment{% endblocktrans %}</th></tr>
 
       {% for feedback in feedbacklist %}
       <tr>

@@ -30,9 +30,9 @@
             <p>{% blocktrans %}There is no exact match to the word you typed.{% endblocktrans %}</p>
 
             {# Translators:  #}
-            <p>{% blocktrans trimmed %}There are
-                {% if ANON_SAFE_SEARCH %}three{% else %}two{% endif %} 
-                main reasons why there may be no match:</p>
+            <p>{% blocktrans %}There are{% endblocktrans %}
+                {% if ANON_SAFE_SEARCH %}{% blocktrans %}three{% endblocktrans %}{% else %}{% blocktrans %}two{% endblocktrans %}{% endif %}
+                {% blocktrans %}main reasons why there may be no match:{% endblocktrans %}</p>
             <ol>
               {# Translators:  #}
               <li>{% blocktrans %}There really is no {{language}} sign in the database for which that word is an good translation{% endblocktrans %} <!-- (you may need to fingerspell the word)--></li>

@@ -51,7 +51,7 @@ msgstr ""
 
 #: bootstrap_templates/baselayout.html:45
 msgid "The FSE Signbank"
-msgstr ""
+msgstr "Testing translation"
 
 #. Translators: This is located in the footer of the site
 #: bootstrap_templates/baselayout.html:48
