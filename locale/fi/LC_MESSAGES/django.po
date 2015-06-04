@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-03 10:18+0300\n"
+"POT-Creation-Date: 2015-06-04 11:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,12 +49,25 @@ msgid ""
 "via e-mail and should be fixed shortly. Thanks for your patience. "
 msgstr ""
 
-#: bootstrap_templates/baselayout.html:45
+#. Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here!
+#: bootstrap_templates/baselayout.html:46
 msgid "The FSE Signbank"
-msgstr "Testing translation"
+msgstr "FinSL Signbank"
+
+#. Translators: License text in the footer of the site
+#: bootstrap_templates/baselayout.html:48
+#: bootstrap_templates/mobile/baselayout.html:117
+msgid "is licensed under a"
+msgstr "on lisensöity lisenssillä: "
+
+#. Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this)
+#: bootstrap_templates/baselayout.html:50
+#: bootstrap_templates/mobile/baselayout.html:119
+msgid "Creative Commons BY-NC-SA 4.0 International License"
+msgstr ""
 
 #. Translators: This is located in the footer of the site
-#: bootstrap_templates/baselayout.html:48
+#: bootstrap_templates/baselayout.html:53
 msgid "Provide feedback on the site"
 msgstr "Anna palautetta sivustosta"
 
@@ -153,6 +166,16 @@ msgstr "Rekisteröidy ilmaiseksi antaaksesi palautetta Signbankista"
 msgid "Lost Password"
 msgstr "Salasana unohtunut"
 
+#. Translators: Text for lost password
+#: bootstrap_templates/loginform.html:64
+#: bootstrap_templates/mobile/loginform.html:53
+msgid ""
+"If you've lost or forgotten your password, enter your email address here and "
+"we'll reset it and send you a reminder."
+msgstr ""
+"Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
+"tähän ja lähetämme sinulle uuden salasanan."
+
 #. Translators: Request password button
 #: bootstrap_templates/loginform.html:80
 msgid "Request Password"
@@ -163,10 +186,30 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
+#. Translators: Placeholder text in a search textfield
+#: bootstrap_templates/menu.html:94
+msgid "Search gloss"
+msgstr "Etsi glossia"
+
+#. Translators: Placeholder text in a search textfield
+#: bootstrap_templates/menu.html:97
+msgid "Search translation"
+msgstr "Etsi käännösvastinetta"
+
+#. Translators: Submit button (press to search)
+#: bootstrap_templates/menu.html:99 doc/usage.html:71
+msgid "Sign Search"
+msgstr "Etsi viittoma"
+
 #. Translators: Logout link
-#: bootstrap_templates/menu.html:104
+#: bootstrap_templates/menu.html:106
 msgid "Logout"
 msgstr "Kirjaudu ulos"
+
+#. Translators: Login link
+#: bootstrap_templates/menu.html:109
+msgid "Login"
+msgstr "Kirjaudu"
 
 #. Translators: Numbersigns page header/title | mobile
 #: bootstrap_templates/mobile/baselayout.html:10
@@ -201,27 +244,15 @@ msgstr ""
 msgid "%(subitem.title)s"
 msgstr ""
 
-#: bootstrap_templates/mobile/baselayout.html:114
-msgid "The NGT Signbank"
-msgstr ""
-
-#: bootstrap_templates/mobile/baselayout.html:114
-msgid "is licensed under a"
-msgstr ""
-
-#: bootstrap_templates/mobile/baselayout.html:114
-msgid "Creative Commons BY-NC-SA 4.0 International License"
-msgstr ""
-
-#: bootstrap_templates/mobile/baselayout.html:118
+#: bootstrap_templates/mobile/baselayout.html:123
 msgid "View the"
 msgstr ""
 
-#: bootstrap_templates/mobile/baselayout.html:118
+#: bootstrap_templates/mobile/baselayout.html:123
 msgid "Full Version"
 msgstr ""
 
-#: bootstrap_templates/mobile/baselayout.html:118
+#: bootstrap_templates/mobile/baselayout.html:123
 msgid "of this site."
 msgstr ""
 
@@ -241,12 +272,6 @@ msgstr ""
 #: bootstrap_templates/mobile/loginform.html:43
 msgid ""
 "Register for free to provide feedback on the Auslan dictionary of signs."
-msgstr ""
-
-#: bootstrap_templates/mobile/loginform.html:53
-msgid ""
-"If you've lost or forgotten your password, enter your email address here and "
-"we'll reset it and send you a reminder."
 msgstr ""
 
 #: bootstrap_templates/mobile/loginform.html:61
@@ -347,8 +372,9 @@ msgstr ""
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll reset "
 "your password and e-mail the new one to you."
-msgstr "Oletko unohtanut salasanasi? Kirjoita sähköpostiosoitteesi "
-"alapuolelle ja me lähetämme sinulle uuden salasanan sähköpostitse."
+msgstr ""
+"Oletko unohtanut salasanasi? Kirjoita sähköpostiosoitteesi alapuolelle ja me "
+"lähetämme sinulle uuden salasanan sähköpostitse."
 
 #: bootstrap_templates/registration/password_reset_form.html:17
 msgid "E-mail address:"
@@ -446,10 +472,6 @@ msgid ""
 "Once a staff user is logged in they will see an additional menu containing "
 "links to staff only options. Other pages (such as this one) can also be "
 "limited to certain groups of users."
-msgstr ""
-
-#: doc/usage.html:71
-msgid "Sign Search"
 msgstr ""
 
 #: doc/usage.html:75
