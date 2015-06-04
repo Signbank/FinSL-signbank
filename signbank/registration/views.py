@@ -109,8 +109,8 @@ def mylogin(request, template_name='registration/login.html', redirect_field_nam
     "Displays the login form and handles the login action."
 
     # TODO: Check if this is working correctly
-    # Replaced request.REQUEST with request.GET
-    redirect_to = request.GET(redirect_field_name, '')
+    # Replaced request.REQUEST with request.GET.get
+    redirect_to = request.GET.get(redirect_field_name, '')
     if request.method == "POST":
         form = EmailAuthenticationForm(data=request.POST)
         if form.is_valid():
