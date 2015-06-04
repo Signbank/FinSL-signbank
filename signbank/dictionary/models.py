@@ -60,7 +60,9 @@ class Keyword(models.Model):
     """A Dutch keyword that is a possible translation equivalent of a sign"""
 
     def __unicode__(self):
-        return self.text.encode('utf-8')
+        #return self.text.encode('utf-8')
+        # Fixed this to work with __unicode__ instead of __str__
+        return unicode(self.text).encode('ascii', 'ignore')
 
     text = models.CharField(max_length=100, unique=True)
 

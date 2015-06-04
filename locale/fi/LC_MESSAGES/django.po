@@ -58,7 +58,7 @@ msgstr "FinSL Signbank"
 #: bootstrap_templates/baselayout.html:48
 #: bootstrap_templates/mobile/baselayout.html:117
 msgid "is licensed under a"
-msgstr "on lisensöity lisenssillä: "
+msgstr "on lisensoitu lisenssillä: "
 
 #. Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this)
 #: bootstrap_templates/baselayout.html:50
