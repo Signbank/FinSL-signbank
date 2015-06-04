@@ -56,7 +56,7 @@ msgstr "Testing translation"
 #. Translators: This is located in the footer of the site
 #: bootstrap_templates/baselayout.html:48
 msgid "Provide feedback on the site"
-msgstr ""
+msgstr "Anna palautetta sivustosta"
 
 #. Translators: Error message
 #: bootstrap_templates/compat.html:9
@@ -115,43 +115,43 @@ msgstr ""
 #: bootstrap_templates/loginform.html:12
 #: bootstrap_templates/mobile/loginform.html:10
 msgid "Sign In"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
 #. Translators: Email - in login form
 #: bootstrap_templates/loginform.html:15
 #: bootstrap_templates/mobile/loginform.html:23
 #: bootstrap_templates/mobile/loginform.html:58
 msgid "Email"
-msgstr ""
+msgstr "Sähköposti"
 
 #. Translators: Password text - in login form
 #: bootstrap_templates/loginform.html:25
 #: bootstrap_templates/mobile/loginform.html:29
 msgid "Password"
-msgstr ""
+msgstr "Salasana"
 
 #. Translators: Sign in button in login form
 #: bootstrap_templates/loginform.html:37
 msgid "Sign in"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
 #. Translators: Text register - in login form
 #. Translators: Register link
 #: bootstrap_templates/loginform.html:50 bootstrap_templates/loginform.html:55
 #: bootstrap_templates/mobile/loginform.html:45
 msgid "Register"
-msgstr ""
+msgstr "Rekisteröidy"
 
 #. Translators: Text in login form
 #: bootstrap_templates/loginform.html:53
 msgid "Register for free to provide feedback on the Signbank."
-msgstr ""
+msgstr "Rekisteröidy ilmaiseksi antaaksesi palautetta Signbankista"
 
 #. Translators: Title lost password - in login form
 #: bootstrap_templates/loginform.html:62
 #: bootstrap_templates/mobile/loginform.html:50
 msgid "Lost Password"
-msgstr ""
+msgstr "Salasana unohtunut"
 
 #. Translators: Request password button
 #: bootstrap_templates/loginform.html:80
@@ -166,7 +166,7 @@ msgstr ""
 #. Translators: Logout link
 #: bootstrap_templates/menu.html:104
 msgid "Logout"
-msgstr ""
+msgstr "Kirjaudu ulos"
 
 #. Translators: Numbersigns page header/title | mobile
 #: bootstrap_templates/mobile/baselayout.html:10
@@ -251,7 +251,7 @@ msgstr ""
 
 #: bootstrap_templates/mobile/loginform.html:61
 msgid "Reset Password"
-msgstr ""
+msgstr "Palauta salasana"
 
 #. Translators: Numbersign page information text
 #: bootstrap_templates/mobile/numbersigns/numbersigns.html:111
@@ -347,7 +347,8 @@ msgstr ""
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll reset "
 "your password and e-mail the new one to you."
-msgstr ""
+msgstr "Oletko unohtanut salasanasi? Kirjoita sähköpostiosoitteesi "
+"alapuolelle ja me lähetämme sinulle uuden salasanan sähköpostitse."
 
 #: bootstrap_templates/registration/password_reset_form.html:17
 msgid "E-mail address:"

@@ -4,7 +4,7 @@
 {% if not user.is_authenticated %}
  <div class='row'>
   <div id="loginforms" class="col-md-6 col-md-offset-3">
-  
+
   <form class='form-horizontal' id="loginform" name="login" method="post" action="/accounts/login/">
     {% csrf_token %}
     <fieldset id='signin'>
@@ -16,7 +16,7 @@
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="email">
             </div>
-            {% if form.email.errors %} 
+            {% if form.email.errors %}
             <div class='alert alert-danger'>{{form.email.errors}}</div>
             {% endif %}
         </div>
@@ -26,11 +26,11 @@
             <div class="col-sm-10">
                 <input  class="form-control" type="password" name="password" >
             </div>
-            {% if form.password.errors %} 
+            {% if form.password.errors %}
             <div class='alert alert-danger'>{{form.password.errors}}</div>
             {% endif %}
         </div>
-    
+
         <div class="form-group">
            <div class="col-sm-offset-2 col-sm-10">
              {# Translators: Sign in button in login form #}
@@ -39,7 +39,7 @@
         </div>
 
     </fieldset>
-    
+
     <input type="hidden" name="next" value="{{ next }}" >
 
   </form>
@@ -56,24 +56,24 @@
     </p>
     </fieldset>
 {% endif %}
-    
+
     <fieldset id='lostpw'>
       {# Translators: Title lost password - in login form #}
       <legend>{% blocktrans %}Lost Password{% endblocktrans %}</legend>
       {# Translators: Text for lost password #}
-      <p>{% transblock %}]If you've lost or forgotten your password, enter your email
+      <p>{% blocktrans trimmed %}If you've lost or forgotten your password, enter your email
       address here and we'll reset it and send you a reminder.{% endblocktrans %}</p>
 
       <form class='form-horizontal' id="passwordresetform" action="/accounts/password/reset/" method="POST">
           {% csrf_token %}
-          <div class='form-group'>              
+          <div class='form-group'>
             <div class='form-group'>
                 <label for="email" class="col-sm-2 control-label">Email:</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="text" name="email">
                 </div>
-            </div>      
-              
+            </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                    {# Translators: Request password button #}
