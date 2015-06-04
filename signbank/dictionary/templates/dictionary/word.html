@@ -125,32 +125,6 @@
                     <li><a href="{% url 'root_page' %}feedback/generalfeedback.html">{% blocktrans %}Provide general site feedback{% endblocktrans %}</a></li>
                 </ul>
             </div>
-
-            {% if dialect_image %}
-            <div id="states">
-                <div>
-                    {# Translators: Alternative for image (when image is not shown it shows this text), dialect_image #}
-                    <img src="{{ STATIC_URL }}{{dialect_image}}" alt="{% blocktrans %}States{% endblocktrans %}">
-                </div>
-            </div>
-            {% endif %}
-
-            {% if gloss.dialect.all %}
-            <div>
-                {# Translators: Header4 #}
-                <h4>{% blocktrans %}Sign Distribution{% endblocktrans %}</h4>
-                <ul>
-                {% ifequal dialect_image "images/maps/allstates.gif" %}
-                  {# Translators: Dialect states?  #}
-                  <li>{% blocktrans %}All States{% endblocktrans %}</li>
-                {% else %}
-                    {% for dialect in gloss.dialect.all %}
-                      <li>{{ dialect.name }}</li>
-                    {% endfor %}
-                {% endifequal %}
-                </ul> 
-            </div>
-            {% endif %}
         </div>
 
         {% if DEFINITION_FIELDS and gloss.published_definitions %}

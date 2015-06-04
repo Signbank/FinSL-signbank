@@ -100,7 +100,6 @@ def word(request, keyword, n):
                                'total': total,
                                'matches': range(1, total + 1),
                                'navigation': nav,
-                               'dialect_image': map_image_for_dialects(gloss.dialect.all()),
                                # lastmatch is a construction of the url for this word
                                # view that we use to pass to gloss pages
                                # could do with being a fn call to generate this
@@ -191,7 +190,6 @@ def gloss(request, idgloss):
                               {'translation': trans,
                                'definitions': gloss.definitions(),
                                'allkwds': allkwds,
-                               'dialect_image': map_image_for_dialects(gloss.dialect.all()),
                                'lastmatch': lastmatch,
                                'videofile': videourl,
                                'viewname': word,
