@@ -125,6 +125,18 @@
                     <li><a href="{% url 'root_page' %}feedback/generalfeedback.html">{% blocktrans %}Provide general site feedback{% endblocktrans %}</a></li>
                 </ul>
             </div>
+
+            {% if gloss.dialect.all %}
+            <div>
+                {# Translators: Header4 #}
+                <h4>{% blocktrans %}Sign Distribution{% endblocktrans %}</h4>
+                <ul>
+                    {% for dialect in gloss.dialect.all %}
+                      <li>{{ dialect.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
 
         {% if DEFINITION_FIELDS and gloss.published_definitions %}
