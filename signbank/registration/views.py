@@ -108,7 +108,9 @@ from django.contrib.sites.models import Site, RequestSite
 def mylogin(request, template_name='registration/login.html', redirect_field_name=REDIRECT_FIELD_NAME):
     "Displays the login form and handles the login action."
 
-    redirect_to = request.REQUEST.get(redirect_field_name, '')
+    # TODO: Check if this is working correctly
+    # Replaced request.REQUEST with request.GET
+    redirect_to = request.GET(redirect_field_name, '')
     if request.method == "POST":
         form = EmailAuthenticationForm(data=request.POST)
         if form.is_valid():

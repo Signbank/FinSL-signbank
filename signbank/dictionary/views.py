@@ -1,26 +1,18 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import Context, RequestContext, loader
-from django.http import Http404
-from django.shortcuts import render_to_response, get_object_or_404
-from django.core.urlresolvers import reverse
-from django.conf import settings
-from django.db.models import Q
-from django.contrib.auth.decorators import login_required
-from tagging.models import Tag, TaggedItem
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.exceptions import ObjectDoesNotExist
-
-from django.utils.encoding import smart_unicode
-
-import os
 import csv
 
-from signbank.dictionary.models import *
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template import RequestContext
+from django.shortcuts import render_to_response, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from tagging.models import TaggedItem
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.encoding import smart_unicode
+
 from signbank.dictionary.forms import *
 from signbank.feedback.models import *
 from signbank.dictionary.update import update_keywords
 import forms
-
 from signbank.video.forms import VideoUploadForGlossForm
 from signbank.tools import video_to_signbank, compare_valuedict_to_gloss
 
@@ -386,10 +378,6 @@ def search(request):
                                'language': settings.LANGUAGE_NAME,
                                },
                               context_instance=RequestContext(request))
-
-
-from django.db.models.loading import get_model, get_apps, get_models
-from django.core import serializers
 
 
 def keyword_value_list(request, prefix=None):
