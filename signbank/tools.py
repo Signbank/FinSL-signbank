@@ -22,7 +22,7 @@ def video_to_signbank(source_folder, gloss, extension):
         extension = '.' + extension
 
     # Figure out some names
-    annotation_id = gloss.annotation_idgloss
+    annotation_id = gloss.annotation_idgloss_jkl
     pk = str(gloss.pk)
     destination_folder = SB_VIDEO_FOLDER + annotation_id[:2] + '/'
 

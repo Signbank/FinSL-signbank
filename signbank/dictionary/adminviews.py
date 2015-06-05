@@ -58,7 +58,7 @@ class GlossListView(ListView):
 #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
-        fieldnames = ['idgloss', 'annotation_idgloss', 'annotation_idgloss_en', 'useInstr', 'sense', 'StemSN', 'rmrks', 'handedness',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_en', 'useInstr', 'sense', 'StemSN', 'rmrks', 'handedness',
                       'domhndsh', 'subhndsh', 'handCh', 'relatArtic', 'locprim', 'locVirtObj', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
                       'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo',
                       'tokNoSgnr', 'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
@@ -143,7 +143,7 @@ class GlossListView(ListView):
         if get.has_key('search') and get['search'] != '':
             val = get['search']
             query = Q(idgloss__istartswith=val) | \
-                Q(annotation_idgloss__istartswith=val)
+                Q(annotation_idgloss_jkl__istartswith=val)
 
             if re.match('^\d+$', val):
                 query = query | Q(sn__exact=val)
@@ -174,7 +174,7 @@ class GlossListView(ListView):
 
             qs = qs.filter(definition__published=val)
 
-        fieldnames = ['idgloss', 'annotation_idgloss', 'annotation_idgloss_en', 'useInstr', 'sense', 'morph', 'StemSN', 'compound', 'rmrks', 'handedness',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_en', 'useInstr', 'sense', 'morph', 'StemSN', 'compound', 'rmrks', 'handedness',
                       'domhndsh', 'subhndsh', 'locprim', 'locVirtObj', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
                       'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo', 'tokNoSgnr',
                       'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
@@ -441,13 +441,13 @@ def gloss_ajax_complete(request, prefix):
     as a JSON structure suitable for typeahead."""
 
     query = Q(idgloss__istartswith=prefix) | \
-        Q(annotation_idgloss__istartswith=prefix) | \
+        Q(annotation_idgloss_jkl__istartswith=prefix) | \
         Q(sn__startswith=prefix)
     qs = Gloss.objects.filter(query)
 
     result = []
     for g in qs:
-        result.append({'idgloss': g.idgloss, 'annotation_idgloss':
-                       g.annotation_idgloss, 'sn': g.sn, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
+        result.append({'idgloss': g.idgloss, 'annotation_idgloss_jkl':
+                       g.annotation_idgloss_jkl, 'sn': g.sn, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})

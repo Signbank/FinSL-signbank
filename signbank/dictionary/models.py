@@ -791,7 +791,7 @@ database. No two Sign Entry Names can be exactly the same, but a "Sign
 Entry Name" can be (and often is) the same as the Annotation Idgloss.""")
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
-    annotation_idgloss = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text="""
+    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text="""
     This is the Dutch name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries

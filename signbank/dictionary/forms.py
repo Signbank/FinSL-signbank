@@ -34,7 +34,7 @@ class GlossCreateForm(forms.ModelForm):
     """Form for creating a new gloss from scratch"""
     class Meta:
         model = Gloss
-        fields = ['idgloss', 'annotation_idgloss', 'annotation_idgloss_en']
+        fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_en']
 
 
 class VideoUpdateForm(forms.Form):
@@ -126,7 +126,7 @@ class GlossSearchForm(forms.ModelForm):
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'annotation_idgloss', 'annotation_idgloss_en', 'morph', 'sense',
+        fields = ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_en', 'morph', 'sense',
                   'sn', 'StemSN', 'comptf', 'compound', 'language', 'dialect',
                   'inWeb', 'isNew',
                   'initial_relative_orientation', 'final_relative_orientation',

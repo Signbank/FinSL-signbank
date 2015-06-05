@@ -212,7 +212,7 @@ SIGN_NAVIGATION = False
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
 
-ADMIN_RESULT_FIELDS = ['annotation_idgloss', 'annotation_idgloss_en',
+ADMIN_RESULT_FIELDS = ['annotation_idgloss_jkl', 'annotation_idgloss_en',
                        'handedness', 'domhndsh', 'subhndsh', 'locprim']
 
 

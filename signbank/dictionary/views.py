@@ -361,7 +361,7 @@ def import_videos(request):
         extension = parts[-1]
 
         try:
-            gloss = Gloss.objects.get(annotation_idgloss=idgloss)
+            gloss = Gloss.objects.get(annotation_idgloss_jkl=idgloss)
         except ObjectDoesNotExist:
             return HttpResponse('Failed at ' + filename + '. Could not find ' + idgloss + '.')
 
@@ -370,7 +370,7 @@ def import_videos(request):
 
         if not was_allowed:
             return HttpResponse(
-                'Failed two overwrite ' + gloss.annotation_idgloss + '. Maybe this file is not owned by the webserver?')
+                'Failed two overwrite ' + gloss.annotation_idgloss_jkl + '. Maybe this file is not owned by the webserver?')
 
         out += '<li>' + filename + '</li>'
 
