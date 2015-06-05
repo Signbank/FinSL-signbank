@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-04 11:14+0300\n"
+"POT-Creation-Date: 2015-06-05 09:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,25 +49,32 @@ msgid ""
 "via e-mail and should be fixed shortly. Thanks for your patience. "
 msgstr ""
 
+#. Translators: This is the main Heading for the whole site
+#: bootstrap_templates/baselayout.html:22
+#, fuzzy
+#| msgid "The FSE Signbank"
+msgid "FinSL Signbank"
+msgstr "FinSL Signbank"
+
 #. Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here!
-#: bootstrap_templates/baselayout.html:46
+#: bootstrap_templates/baselayout.html:47
 msgid "The FSE Signbank"
 msgstr "FinSL Signbank"
 
 #. Translators: License text in the footer of the site
-#: bootstrap_templates/baselayout.html:48
+#: bootstrap_templates/baselayout.html:49
 #: bootstrap_templates/mobile/baselayout.html:117
 msgid "is licensed under a"
 msgstr "on lisensoitu lisenssillä: "
 
 #. Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this)
-#: bootstrap_templates/baselayout.html:50
+#: bootstrap_templates/baselayout.html:51
 #: bootstrap_templates/mobile/baselayout.html:119
 msgid "Creative Commons BY-NC-SA 4.0 International License"
 msgstr ""
 
 #. Translators: This is located in the footer of the site
-#: bootstrap_templates/baselayout.html:53
+#: bootstrap_templates/baselayout.html:54
 msgid "Provide feedback on the site"
 msgstr "Anna palautetta sivustosta"
 
@@ -1437,24 +1444,700 @@ msgstr ""
 msgid "Keywords:"
 msgstr ""
 
-#. Translators: Alternative for image (when image is not shown it shows this text), dialect_image
-#: signbank/dictionary/templates/dictionary/word.html:133
-msgid "States"
-msgstr ""
-
 #. Translators: Header4
-#: signbank/dictionary/templates/dictionary/word.html:141
+#: signbank/dictionary/templates/dictionary/word.html:132
 msgid "Sign Distribution"
 msgstr ""
 
-#. Translators: Dialect states?
+#. Translators: Header2
 #: signbank/dictionary/templates/dictionary/word.html:145
-msgid "All States"
+msgid "Sign Definition"
 msgstr ""
 
-#. Translators: Header2
-#: signbank/dictionary/templates/dictionary/word.html:159
-msgid "Sign Definition"
+#. Translators:
+#. Translators: Choices (feedback)
+#: signbank/feedback/models.py:77 signbank/feedback/models.py:120
+#: signbank/feedback/models.py:133 signbank/feedback/models.py:144
+#: signbank/feedback/models.py:157
+msgid "yes"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:79 signbank/feedback/models.py:150
+msgid "Perhaps"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:81
+msgid "Don't know"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:83
+msgid "Don't think so"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:85 signbank/feedback/models.py:128
+#: signbank/feedback/models.py:139 signbank/feedback/models.py:152
+#: signbank/feedback/models.py:165
+msgid "No"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:87 signbank/feedback/models.py:130
+#: signbank/feedback/models.py:141 signbank/feedback/models.py:154
+#: signbank/feedback/models.py:167
+msgid "N/A"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:122
+msgid "A little"
+msgstr "Vähän"
+
+#. Translators:
+#: signbank/feedback/models.py:124
+msgid "Don't care"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:126
+msgid "Not much"
+msgstr "Ei paljon"
+
+#. Translators:
+#. Translators: Choice
+#: signbank/feedback/models.py:135 signbank/feedback/models.py:146
+msgid "Sometimes"
+msgstr "Joskus"
+
+#. Translators:
+#: signbank/feedback/models.py:137
+msgid "Not Often"
+msgstr "Harvoin"
+
+#. Translators:
+#: signbank/feedback/models.py:148 signbank/feedback/models.py:161
+msgid "Don't Know"
+msgstr "En tiedä"
+
+#. Translators:
+#: signbank/feedback/models.py:159
+msgid "Mostly Correct"
+msgstr ""
+
+#. Translators:
+#: signbank/feedback/models.py:163
+msgid "Mostly Wrong"
+msgstr ""
+
+#. Translators: Sign feedback instructions
+#: signbank/feedback/models.py:181
+#: signbank/feedback/templates/feedback/signfeedback.html:17
+msgid ""
+"Please give us your comments about this sign. For example: do you think "
+"there are other keywords that belong with this sign? Please write your "
+"comments or new keyword/s below."
+msgstr ""
+
+#: signbank/feedback/models.py:184
+msgid ""
+"Is there a keyword or keyword/s that DO NOT belong with this sign? Please "
+"provide the list of keywords below"
+msgstr ""
+
+#: signbank/feedback/models.py:187
+msgid "Is this sign an $language Sign?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/models.py:190
+#: signbank/feedback/templates/feedback/signfeedback.html:44
+msgid "Where is this sign used?"
+msgstr ""
+
+#. Translators: Question (sign feedback)
+#. Translators: Feedback question
+#: signbank/feedback/models.py:192
+#: signbank/feedback/templates/feedback/signfeedback.html:49
+msgid "Do you like this sign?"
+msgstr ""
+
+#. Translators: Question (sign feedback)
+#. Translators: Feedback question
+#: signbank/feedback/models.py:194
+#: signbank/feedback/templates/feedback/signfeedback.html:54
+msgid "Do you use this sign?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/models.py:197
+#: signbank/feedback/templates/feedback/signfeedback.html:60
+msgid "If this sign is a suggested new sign, would you use it?"
+msgstr ""
+
+#. Translators: Feedback question
+#: signbank/feedback/models.py:200
+#: signbank/feedback/templates/feedback/signfeedback.html:65
+msgid "Is the information about the sign correct?"
+msgstr ""
+
+#. Translators: Handform choice (feedback)
+#: signbank/feedback/models.py:240
+msgid "One handed"
+msgstr ""
+
+#. Translators: Handform choice (feedback)
+#: signbank/feedback/models.py:242
+msgid "Two handed (same shape for each hand)"
+msgstr ""
+
+#. Translators: Handform choice (feedback)
+#: signbank/feedback/models.py:244
+msgid "Two handed (diffent shapes for each hand)"
+msgstr ""
+
+#. Translators: handshapeChoices
+#. Translators: locationChoices
+#. Translators: handbodycontactChoices
+#. Translators: directionChoices
+#. Translators: movementtypeChoices
+#. Translators: smallmovementChoices
+#. Translators: repetitionChoices
+#. Translators: relativelocationChoices
+#. Translators: handinteractionChoices
+#: signbank/feedback/models.py:247 signbank/feedback/models.py:310
+#: signbank/feedback/models.py:332 signbank/feedback/models.py:339
+#: signbank/feedback/models.py:351 signbank/feedback/models.py:358
+#: signbank/feedback/models.py:369 signbank/feedback/models.py:375
+#: signbank/feedback/models.py:385
+msgid "None"
+msgstr ""
+
+#. Translators: handShapeChoices
+#: signbank/feedback/models.py:249
+msgid "Animal"
+msgstr ""
+
+#: signbank/feedback/models.py:250
+msgid "Animal-flick"
+msgstr ""
+
+#: signbank/feedback/models.py:251
+msgid "Bad"
+msgstr ""
+
+#: signbank/feedback/models.py:252
+msgid "Ball"
+msgstr ""
+
+#: signbank/feedback/models.py:253
+msgid "Cup"
+msgstr ""
+
+#: signbank/feedback/models.py:254
+msgid "Cup-flush"
+msgstr ""
+
+#: signbank/feedback/models.py:255
+msgid "Cup-thumb"
+msgstr ""
+
+#: signbank/feedback/models.py:256
+msgid "Eight"
+msgstr ""
+
+#: signbank/feedback/models.py:257
+msgid "Eight-hook"
+msgstr ""
+
+#: signbank/feedback/models.py:258
+msgid "Fist-A"
+msgstr ""
+
+#: signbank/feedback/models.py:259
+msgid "Fist-S"
+msgstr ""
+
+#: signbank/feedback/models.py:260
+msgid "Flat"
+msgstr ""
+
+#: signbank/feedback/models.py:261
+msgid "Flat-bent"
+msgstr ""
+
+#: signbank/feedback/models.py:262
+msgid "Flat-B"
+msgstr ""
+
+#: signbank/feedback/models.py:263
+msgid "Flat-flush"
+msgstr ""
+
+#: signbank/feedback/models.py:264
+msgid "Flick"
+msgstr ""
+
+#: signbank/feedback/models.py:265
+msgid "Flick-gay"
+msgstr ""
+
+#: signbank/feedback/models.py:266
+msgid "Four"
+msgstr ""
+
+#: signbank/feedback/models.py:267
+msgid "Five"
+msgstr ""
+
+#: signbank/feedback/models.py:268
+msgid "Good"
+msgstr ""
+
+#: signbank/feedback/models.py:269
+msgid "Good-6"
+msgstr ""
+
+#: signbank/feedback/models.py:270
+msgid "Gun"
+msgstr ""
+
+#: signbank/feedback/models.py:271
+msgid "Gun-hook"
+msgstr ""
+
+#: signbank/feedback/models.py:272
+msgid "Hook"
+msgstr ""
+
+#: signbank/feedback/models.py:273
+msgid "Kneel"
+msgstr ""
+
+#: signbank/feedback/models.py:274
+msgid "Letter-C"
+msgstr ""
+
+#: signbank/feedback/models.py:275
+msgid "Letter-M"
+msgstr ""
+
+#: signbank/feedback/models.py:276
+msgid "Letter-N"
+msgstr ""
+
+#: signbank/feedback/models.py:277
+msgid "Love"
+msgstr ""
+
+#: signbank/feedback/models.py:278
+msgid "Middle"
+msgstr ""
+
+#: signbank/feedback/models.py:279
+msgid "Mother"
+msgstr ""
+
+#: signbank/feedback/models.py:280
+msgid "Nine"
+msgstr ""
+
+#: signbank/feedback/models.py:281
+msgid "Point-1"
+msgstr ""
+
+#: signbank/feedback/models.py:282
+msgid "Point-D"
+msgstr ""
+
+#: signbank/feedback/models.py:283
+msgid "Point-flush"
+msgstr ""
+
+#: signbank/feedback/models.py:284
+msgid "Okay-flat"
+msgstr ""
+
+#: signbank/feedback/models.py:285
+msgid "Okay-F"
+msgstr ""
+
+#: signbank/feedback/models.py:286
+msgid "Okay-O"
+msgstr ""
+
+#: signbank/feedback/models.py:287
+msgid "Old-seven"
+msgstr ""
+
+#: signbank/feedback/models.py:288
+msgid "Plane"
+msgstr ""
+
+#: signbank/feedback/models.py:289
+msgid "Perth"
+msgstr ""
+
+#: signbank/feedback/models.py:290
+msgid "Round-O"
+msgstr ""
+
+#: signbank/feedback/models.py:291
+msgid "Round-flat"
+msgstr ""
+
+#: signbank/feedback/models.py:292
+msgid "Round-E"
+msgstr ""
+
+#: signbank/feedback/models.py:293
+msgid "Rude"
+msgstr ""
+
+#: signbank/feedback/models.py:294
+msgid "Salt"
+msgstr ""
+
+#: signbank/feedback/models.py:295
+msgid "Salt-flick"
+msgstr ""
+
+#: signbank/feedback/models.py:296
+msgid "Small"
+msgstr ""
+
+#: signbank/feedback/models.py:297
+msgid "Soon"
+msgstr ""
+
+#: signbank/feedback/models.py:298
+msgid "Spoon"
+msgstr ""
+
+#: signbank/feedback/models.py:299
+msgid "Spoon-hook"
+msgstr ""
+
+#: signbank/feedback/models.py:300
+msgid "Spoon-thumb"
+msgstr ""
+
+#: signbank/feedback/models.py:301
+msgid "Thick"
+msgstr ""
+
+#: signbank/feedback/models.py:302
+msgid "Three"
+msgstr ""
+
+#: signbank/feedback/models.py:303
+msgid "Three-hook"
+msgstr ""
+
+#: signbank/feedback/models.py:304
+msgid "Two"
+msgstr ""
+
+#: signbank/feedback/models.py:305
+msgid "Wish"
+msgstr ""
+
+#: signbank/feedback/models.py:306
+msgid "Write"
+msgstr ""
+
+#: signbank/feedback/models.py:307
+msgid "Write-flat"
+msgstr ""
+
+#: signbank/feedback/models.py:311
+msgid "Top of head"
+msgstr ""
+
+#: signbank/feedback/models.py:312
+msgid "Forehead"
+msgstr ""
+
+#: signbank/feedback/models.py:313
+msgid "Temple"
+msgstr ""
+
+#: signbank/feedback/models.py:314
+msgid "Eyes"
+msgstr ""
+
+#: signbank/feedback/models.py:315
+msgid "Nose"
+msgstr ""
+
+#: signbank/feedback/models.py:316
+msgid "Whole of face"
+msgstr ""
+
+#: signbank/feedback/models.py:317
+msgid "Cheekbone"
+msgstr ""
+
+#: signbank/feedback/models.py:318
+msgid "Ear"
+msgstr ""
+
+#: signbank/feedback/models.py:319
+msgid "Cheek"
+msgstr ""
+
+#: signbank/feedback/models.py:320
+msgid "Mouth and lips"
+msgstr ""
+
+#: signbank/feedback/models.py:321
+msgid "Chin"
+msgstr ""
+
+#: signbank/feedback/models.py:322
+msgid "Neck"
+msgstr ""
+
+#: signbank/feedback/models.py:323
+msgid "Shoulder"
+msgstr ""
+
+#: signbank/feedback/models.py:324
+msgid "Chest"
+msgstr ""
+
+#: signbank/feedback/models.py:325
+msgid "Stomach"
+msgstr ""
+
+#: signbank/feedback/models.py:326
+msgid "Waist"
+msgstr ""
+
+#: signbank/feedback/models.py:327
+msgid "Lower waist"
+msgstr ""
+
+#: signbank/feedback/models.py:328
+msgid "Upper arm"
+msgstr ""
+
+#: signbank/feedback/models.py:329
+msgid "Elbow"
+msgstr ""
+
+#: signbank/feedback/models.py:333
+msgid "Contact at start of movement"
+msgstr ""
+
+#: signbank/feedback/models.py:334
+msgid "Contact at end of movement"
+msgstr ""
+
+#: signbank/feedback/models.py:335
+msgid "Two contacts (tap)"
+msgstr ""
+
+#: signbank/feedback/models.py:336
+msgid "Contact during (rub/stroke)"
+msgstr ""
+
+#: signbank/feedback/models.py:340
+msgid "Up"
+msgstr ""
+
+#: signbank/feedback/models.py:341
+msgid "Down"
+msgstr ""
+
+#: signbank/feedback/models.py:342
+msgid "Up and down"
+msgstr ""
+
+#: signbank/feedback/models.py:343
+msgid "Left"
+msgstr ""
+
+#: signbank/feedback/models.py:344
+msgid "Right"
+msgstr ""
+
+#: signbank/feedback/models.py:345
+msgid "Side to side"
+msgstr ""
+
+#: signbank/feedback/models.py:346
+msgid "Away"
+msgstr ""
+
+#: signbank/feedback/models.py:347
+msgid "Towards"
+msgstr ""
+
+#: signbank/feedback/models.py:348
+msgid "To and fro"
+msgstr ""
+
+#: signbank/feedback/models.py:352
+msgid "Straight"
+msgstr ""
+
+#: signbank/feedback/models.py:353
+msgid "Curved"
+msgstr ""
+
+#: signbank/feedback/models.py:354
+msgid "Circle"
+msgstr ""
+
+#: signbank/feedback/models.py:355
+msgid "Zig-zag"
+msgstr ""
+
+#: signbank/feedback/models.py:359
+msgid "Straighten from bent"
+msgstr ""
+
+#: signbank/feedback/models.py:360
+msgid "Bend fingers"
+msgstr ""
+
+#: signbank/feedback/models.py:361
+msgid "Nod at wrist"
+msgstr ""
+
+#: signbank/feedback/models.py:362
+msgid "Straighten fingers"
+msgstr ""
+
+#: signbank/feedback/models.py:363
+msgid "Open handshape"
+msgstr ""
+
+#: signbank/feedback/models.py:364
+msgid "Close handshape"
+msgstr ""
+
+#: signbank/feedback/models.py:365
+msgid "Wriggle fingers"
+msgstr ""
+
+#: signbank/feedback/models.py:366
+msgid "Crumble fingers"
+msgstr ""
+
+#: signbank/feedback/models.py:370
+msgid "Do the movement once"
+msgstr ""
+
+#: signbank/feedback/models.py:371
+msgid "Do the movement twice"
+msgstr ""
+
+#: signbank/feedback/models.py:372
+msgid "Repeat the movement several times"
+msgstr ""
+
+#: signbank/feedback/models.py:376
+msgid "Forearm"
+msgstr ""
+
+#: signbank/feedback/models.py:377
+msgid "Wrist"
+msgstr ""
+
+#: signbank/feedback/models.py:378
+msgid "Pulse"
+msgstr ""
+
+#: signbank/feedback/models.py:379
+msgid "Back of hand"
+msgstr ""
+
+#: signbank/feedback/models.py:380
+msgid "Palm"
+msgstr ""
+
+#: signbank/feedback/models.py:381
+msgid "Sides of hand"
+msgstr ""
+
+#: signbank/feedback/models.py:382
+msgid "Fingertips"
+msgstr ""
+
+#: signbank/feedback/models.py:387
+msgid "Alternate hands (one moves, then the other moves)"
+msgstr ""
+
+#: signbank/feedback/models.py:388
+msgid "Move the hands towards each other"
+msgstr ""
+
+#: signbank/feedback/models.py:389
+msgid "Move the hands away from each other"
+msgstr ""
+
+#: signbank/feedback/models.py:390
+msgid "The hands cross over each other"
+msgstr ""
+
+#: signbank/feedback/models.py:397
+msgid "How many hands are used to make this sign?"
+msgstr ""
+
+#: signbank/feedback/models.py:400
+msgid "What is the handshape?"
+msgstr ""
+
+#: signbank/feedback/models.py:403
+msgid "What is the handshape of the left hand?"
+msgstr ""
+
+#: signbank/feedback/models.py:406
+msgid "Choose the location of the sign on, or near the body"
+msgstr ""
+
+#: signbank/feedback/models.py:409
+msgid "Choose the location of the right hand on, or near the left hand"
+msgstr ""
+
+#: signbank/feedback/models.py:412
+msgid "Contact between hands and body"
+msgstr ""
+
+#: signbank/feedback/models.py:415
+msgid "Interaction between hands"
+msgstr ""
+
+#: signbank/feedback/models.py:418
+msgid "Movement direction of the hand(s)"
+msgstr ""
+
+#: signbank/feedback/models.py:421
+msgid "Type of movement"
+msgstr ""
+
+#: signbank/feedback/models.py:424
+msgid "Small movements of the hand(s) and fingers"
+msgstr ""
+
+#: signbank/feedback/models.py:427
+msgid "Number of movements"
+msgstr ""
+
+#. Translators: Missing sign feedback (meaning)
+#: signbank/feedback/models.py:429
+#, fuzzy
+#| msgid "Sign in"
+msgid "Sign Meaning"
+msgstr "Kirjaudu sisään"
+
+#. Translators: Missing sign feedback (comments)
+#: signbank/feedback/models.py:434
+msgid "Further Details"
 msgstr ""
 
 #: signbank/feedback/templates/feedback/generalfeedback.html:11
@@ -1866,14 +2549,6 @@ msgstr ""
 msgid "(if video does not play here you may be able to play by downloading)"
 msgstr ""
 
-#. Translators: Sign feedback instructions
-#: signbank/feedback/templates/feedback/signfeedback.html:17
-msgid ""
-"Please give us your comments about this sign. For example: do you think "
-"there are other keywords that belong with this sign? Please write your "
-"comments or new keyword/s below."
-msgstr ""
-
 #. Translators: Feedback question
 #: signbank/feedback/templates/feedback/signfeedback.html:25
 msgid "Is there a keyword or keyword/s that DO NOT belong with this sign?"
@@ -1893,31 +2568,6 @@ msgstr ""
 #: signbank/feedback/templates/feedback/signfeedback.html:38
 #, python-format
 msgid "Is this sign an %(language)s Sign?"
-msgstr ""
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:44
-msgid "Where is this sign used?"
-msgstr ""
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:49
-msgid "Do you like this sign?"
-msgstr ""
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:54
-msgid "Do you use this sign?"
-msgstr ""
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:60
-msgid "If this sign is a suggested new sign, would you use it?"
-msgstr ""
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:65
-msgid "Is the information about the sign correct?"
 msgstr ""
 
 #. Translators: Feedback
@@ -2095,3 +2745,6 @@ msgstr ""
 #: templates_notused/admin/dictionary/gloss/change_form.html:18
 msgid "View on site"
 msgstr ""
+
+#~ msgid "Australia Wide"
+#~ msgstr "Koko Suomessa"

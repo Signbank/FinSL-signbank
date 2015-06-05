@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import models as authmodels
 from django.conf import settings
 from signbank.video.fields import VideoUploadToFLVField
-
+from django.utils.translation import ugettext as _
 from signbank.dictionary.models import *
 from signbank.dictionary.models import Gloss
 # models to represent the feedback from users in the site
@@ -73,15 +73,21 @@ class GeneralFeedbackForm(forms.Form):
     video = VideoUploadToFLVField(
         required=False, widget=forms.FileInput(attrs={'size': '60'}))
 
-
-isAuslanChoices = ((1, "yes"),
-                   (2, "Perhaps"),
-                   (3, "Don't know"),
-                   (4, "Don't think so"),
-                   (5, "No"),
-                   (0, "N/A")
+# Translators:
+isAuslanChoices = ((1, _("yes")),
+                   # Translators:
+                   (2, _("Perhaps")),
+                   # Translators:
+                   (3, _("Don't know")),
+                   # Translators:
+                   (4, _("Don't think so")),
+                   # Translators:
+                   (5, _("No")),
+                   # Translators:
+                   (0, _("N/A"))
                    )
 
+# TODO: Implement Finnish choices here!
 if settings.LANGUAGE_NAME == "BSL":
     whereusedChoices = (('Belfast', 'Belfast'),
                         ('Birmingham', 'Birmingham'),
@@ -110,36 +116,55 @@ else:
                         ('dk', "Don't Know"),
                         ('n/a', "N/A")
                         )
-
-likedChoices = ((1, "yes"),
-                (2, "A little"),
-                (3, "Don't care"),
-                (4, "Not much"),
-                (5, "No"),
-                (0, "N/A")
+# Translators: Choices (feedback)
+likedChoices = ((1, _("yes")),
+                # Translators:
+                (2, _("A little")),
+                # Translators:
+                (3, _("Don't care")),
+                # Translators:
+                (4, _("Not much")),
+                # Translators:
+                (5, _("No")),
+                # Translators:
+                (0, _("N/A"))
                 )
-
-useChoices = ((1, "yes"),
-              (2, "Sometimes"),
-              (3, "Not Often"),
-              (4, "No"),
-              (0, "N/A")
+# Translators: Choices (feedback)
+useChoices = ((1, _("yes")),
+              # Translators:
+              (2, _("Sometimes")),
+              # Translators:
+              (3, _("Not Often")),
+              # Translators:
+              (4, _("No")),
+              # Translators:
+              (0, _("N/A"))
               )
-
-suggestedChoices = ((1, "yes"),
-                    (2, "Sometimes"),
-                    (3, "Don't Know"),
-                    (4, "Perhaps"),
-                    (5, "No"),
-                    (0, "N/A")
+# Translators: Choices (feedback)
+suggestedChoices = ((1, _("yes")),
+                    # Translators: Choice
+                    (2, _("Sometimes")),
+                    # Translators:
+                    (3, _("Don't Know")),
+                    # Translators:
+                    (4, _("Perhaps")),
+                    # Translators:
+                    (5, _("No")),
+                    # Translators:
+                    (0, _("N/A"))
                     )
-
-correctChoices = ((1, "yes"),
-                  (2, "Mostly Correct"),
-                  (3, "Don't Know"),
-                  (4, "Mostly Wrong"),
-                  (5, "No"),
-                  (0, "N/A")
+# Translators: Choices (feedback)
+correctChoices = ((1, _("yes")),
+                  # Translators:
+                  (2, _("Mostly Correct")),
+                  # Translators:
+                  (3, _("Don't Know")),
+                  # Translators:
+                  (4, _("Mostly Wrong")),
+                  # Translators:
+                  (5, _("No")),
+                  # Translators:
+                  (0, _("N/A"))
                   )
 
 
@@ -151,22 +176,29 @@ class SignFeedback(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     translation = models.ForeignKey(Translation, editable=False)
-
+    # Translators: Question (sign feedback)
     comment = models.TextField(
-        "Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below.", blank=True)
+        _("Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."), blank=True)
+    # Translators: Question (sign feedback)
     kwnotbelong = models.TextField(
-        "Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below", blank=True)
-
+        _("Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"), blank=True)
+    # Translators: Question (sign feedback)
     isAuslan = models.IntegerField(
-        t("Is this sign an $language Sign?"), choices=isAuslanChoices)
+        t(_("Is this sign an $language Sign?")), choices=isAuslanChoices)
+    # Translators: Question (sign feedback)
     whereused = models.CharField(
-        "Where is this sign used?", max_length=10, choices=whereusedChoices)
-    like = models.IntegerField("Do you like this sign?", choices=likedChoices)
-    use = models.IntegerField("Do you use this sign?", choices=useChoices)
+        _("Where is this sign used?"), max_length=10, choices=whereusedChoices)
+    # Translators: Question (sign feedback)
+    like = models.IntegerField(_("Do you like this sign?"), choices=likedChoices)
+    # Translators: Question (sign feedback)
+    use = models.IntegerField(_("Do you use this sign?"), choices=useChoices)
+    # Translators: Question (sign feedback)
     suggested = models.IntegerField(
-        "If this sign is a suggested new sign, would you use it?", default=3, choices=suggestedChoices)
+        _("If this sign is a suggested new sign, would you use it?"), default=3, choices=suggestedChoices)
+    # Translators: Question (sign feedback)
     correct = models.IntegerField(
-        "Is the information about the sign correct?", choices=correctChoices)
+        _("Is the information about the sign correct?"), choices=correctChoices)
+    # Translators: Question (sign feedback)
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='unread')
 
@@ -204,186 +236,202 @@ class SignFeedbackForm(forms.Form):
 
 
 handformChoices = (
-    (1, 'One handed'),
-    (2, 'Two handed (same shape for each hand)'),
-    (3, 'Two handed (diffent shapes for each hand)')
+    # Translators: Handform choice (feedback)
+    (1, _('One handed')),
+    # Translators: Handform choice (feedback)
+    (2, _('Two handed (same shape for each hand)')),
+    # Translators: Handform choice (feedback)
+    (3, _('Two handed (diffent shapes for each hand)'))
 )
-
-handshapeChoices = ((0, 'None'),
-                    (291, 'Animal'),
-                    (292, 'Animal-flick'),
-                    (293, 'Bad'),
-                    (294, 'Ball'),
-                    (295, 'Cup'),
-                    (296, 'Cup-flush'),
-                    (297, 'Cup-thumb'),
-                    (298, 'Eight'),
-                    (299, 'Eight-hook'),
-                    (300, 'Fist-A'),
-                    (301, 'Fist-S'),
-                    (302, 'Flat'),
-                    (303, 'Flat-bent'),
-                    (304, 'Flat-B'),
-                    (305, 'Flat-flush'),
-                    (306, 'Flick'),
-                    (307, 'Flick-gay'),
-                    (308, 'Four'),
-                    (309, 'Five'),
-                    (310, 'Good'),
-                    (311, 'Good-6'),
-                    (312, 'Gun'),
-                    (313, 'Gun-hook'),
-                    (314, 'Hook'),
-                    (315, 'Kneel'),
-                    (316, 'Letter-C'),
-                    (317, 'Letter-M'),
-                    (318, 'Letter-N'),
-                    (319, 'Love'),
-                    (320, 'Middle'),
-                    (321, 'Mother'),
-                    (322, 'Nine'),
-                    (323, 'Point-1'),
-                    (324, 'Point-D'),
-                    (325, 'Point-flush'),
-                    (326, 'Okay-flat'),
-                    (327, 'Okay-F'),
-                    (328, 'Okay-O'),
-                    (329, 'Old-seven'),
-                    (330, 'Plane'),
-                    (331, 'Perth'),
-                    (332, 'Round-O'),
-                    (333, 'Round-flat'),
-                    (334, 'Round-E'),
-                    (335, 'Rude'),
-                    (336, 'Salt'),
-                    (337, 'Salt-flick'),
-                    (338, 'Small'),
-                    (339, 'Soon'),
-                    (340, 'Spoon'),
-                    (341, 'Spoon-hook'),
-                    (342, 'Spoon-thumb'),
-                    (343, 'Thick'),
-                    (344, 'Three'),
-                    (345, 'Three-hook'),
-                    (346, 'Two'),
-                    (347, 'Wish'),
-                    (348, 'Write'),
-                    (349, 'Write-flat')
+# Translators: handshapeChoices
+handshapeChoices = ((0, _('None')),
+                    # Translators: handShapeChoices
+                    (291, _('Animal')),
+                    (292, _('Animal-flick')),
+                    (293, _('Bad')),
+                    (294, _('Ball')),
+                    (295, _('Cup')),
+                    (296, _('Cup-flush')),
+                    (297, _('Cup-thumb')),
+                    (298, _('Eight')),
+                    (299, _('Eight-hook')),
+                    (300, _('Fist-A')),
+                    (301, _('Fist-S')),
+                    (302, _('Flat')),
+                    (303, _('Flat-bent')),
+                    (304, _('Flat-B')),
+                    (305, _('Flat-flush')),
+                    (306, _('Flick')),
+                    (307, _('Flick-gay')),
+                    (308, _('Four')),
+                    (309, _('Five')),
+                    (310, _('Good')),
+                    (311, _('Good-6')),
+                    (312, _('Gun')),
+                    (313, _('Gun-hook')),
+                    (314, _('Hook')),
+                    (315, _('Kneel')),
+                    (316, _('Letter-C')),
+                    (317, _('Letter-M')),
+                    (318, _('Letter-N')),
+                    (319, _('Love')),
+                    (320, _('Middle')),
+                    (321, _('Mother')),
+                    (322, _('Nine')),
+                    (323, _('Point-1')),
+                    (324, _('Point-D')),
+                    (325, _('Point-flush')),
+                    (326, _('Okay-flat')),
+                    (327, _('Okay-F')),
+                    (328, _('Okay-O')),
+                    (329, _('Old-seven')),
+                    (330, _('Plane')),
+                    (331, _('Perth')),
+                    (332, _('Round-O')),
+                    (333, _('Round-flat')),
+                    (334, _('Round-E')),
+                    (335, _('Rude')),
+                    (336, _('Salt')),
+                    (337, _('Salt-flick')),
+                    (338, _('Small')),
+                    (339, _('Soon')),
+                    (340, _('Spoon')),
+                    (341, _('Spoon-hook')),
+                    (342, _('Spoon-thumb')),
+                    (343, _('Thick')),
+                    (344, _('Three')),
+                    (345, _('Three-hook')),
+                    (346, _('Two')),
+                    (347, _('Wish')),
+                    (348, _('Write')),
+                    (349, _('Write-flat'))
                     )
-
-locationChoices = ((0, 'None'),
-                   (257, 'Top of head'),
-                   (258, 'Forehead'),
-                   (259, 'Temple'),
-                   (260, 'Eyes'),
-                   (261, 'Nose'),
-                   (262, 'Whole of face'),
-                   (263, 'Cheekbone'),
-                   (264, 'Ear'),
-                   (265, 'Cheek'),
-                   (266, 'Mouth and lips'),
-                   (267, 'Chin'),
-                   (268, 'Neck'),
-                   (269, 'Shoulder'),
-                   (270, 'Chest'),
-                   (271, 'Stomach'),
-                   (272, 'Waist'),
-                   (273, 'Lower waist'),
-                   (274, 'Upper arm'),
-                   (275, 'Elbow')
+# Translators: locationChoices
+locationChoices = ((0, _('None')),
+                   (257, _('Top of head')),
+                   (258, _('Forehead')),
+                   (259, _('Temple')),
+                   (260, _('Eyes')),
+                   (261, _('Nose')),
+                   (262, _('Whole of face')),
+                   (263, _('Cheekbone')),
+                   (264, _('Ear')),
+                   (265, _('Cheek')),
+                   (266, _('Mouth and lips')),
+                   (267, _('Chin')),
+                   (268, _('Neck')),
+                   (269, _('Shoulder')),
+                   (270, _('Chest')),
+                   (271, _('Stomach')),
+                   (272, _('Waist')),
+                   (273, _('Lower waist')),
+                   (274, _('Upper arm')),
+                   (275, _('Elbow'))
                    )
-
-handbodycontactChoices = ((0, 'None'),
-                          (240, 'Contact at start of movement'),
-                          (241, 'Contact at end of movement'),
-                          (242, 'Two contacts (tap)'),
-                          (243, 'Contact during (rub/stroke)')
+# Translators: handbodycontactChoices
+handbodycontactChoices = ((0, _('None')),
+                          (240, _('Contact at start of movement')),
+                          (241, _('Contact at end of movement')),
+                          (242, _('Two contacts (tap)')),
+                          (243, _('Contact during (rub/stroke)'))
                           )
-
-directionChoices = ((0, 'None'),
-                    (472, 'Up'),
-                    (473, 'Down'),
-                    (474, 'Up and down'),
-                    (475, 'Left'),
-                    (476, 'Right'),
-                    (477, 'Side to side'),
-                    (478, 'Away'),
-                    (479, 'Towards'),
-                    (480, 'To and fro')
+# Translators: directionChoices
+directionChoices = ((0, _('None')),
+                    (472, _('Up')),
+                    (473, _('Down')),
+                    (474, _('Up and down')),
+                    (475, _('Left')),
+                    (476, _('Right')),
+                    (477, _('Side to side')),
+                    (478, _('Away')),
+                    (479, _('Towards')),
+                    (480, _('To and fro'))
                     )
-
-movementtypeChoices = ((0, 'None'),
-                       (481, 'Straight'),
-                       (482, 'Curved'),
-                       (483, 'Circle'),
-                       (484, 'Zig-zag')
+# Translators: movementtypeChoices
+movementtypeChoices = ((0, _('None')),
+                       (481, _('Straight')),
+                       (482, _('Curved')),
+                       (483, _('Circle')),
+                       (484, _('Zig-zag'))
                        )
-
-smallmovementChoices = ((0, 'None'),
-                        (485, 'Straighten from bent'),
-                        (486, 'Bend fingers'),
-                        (487, 'Nod at wrist'),
-                        (488, 'Straighten fingers'),
-                        (489, 'Open handshape'),
-                        (490, 'Close handshape'),
-                        (491, 'Wriggle fingers'),
-                        (492, 'Crumble fingers')
+# Translators: smallmovementChoices
+smallmovementChoices = ((0, _('None')),
+                        (485, _('Straighten from bent')),
+                        (486, _('Bend fingers')),
+                        (487, _('Nod at wrist')),
+                        (488, _('Straighten fingers')),
+                        (489, _('Open handshape')),
+                        (490, _('Close handshape')),
+                        (491, _('Wriggle fingers')),
+                        (492, _('Crumble fingers'))
                         )
-
-repetitionChoices = ((0, 'None'),
-                     (493, 'Do the movement once'),
-                     (494, 'Do the movement twice'),
-                     (495, 'Repeat the movement several times')
+# Translators: repetitionChoices
+repetitionChoices = ((0, _('None')),
+                     (493, _('Do the movement once')),
+                     (494, _('Do the movement twice')),
+                     (495, _('Repeat the movement several times'))
                      )
-
-relativelocationChoices = ((0, 'None'),
-                           (283, 'Forearm'),
-                           (284, 'Wrist'),
-                           (285, 'Pulse'),
-                           (286, 'Back of hand'),
-                           (287, 'Palm'),
-                           (288, 'Sides of hand'),
-                           (289, 'Fingertips')
+# Translators: relativelocationChoices
+relativelocationChoices = ((0, _('None')),
+                           (283, _('Forearm')),
+                           (284, _('Wrist')),
+                           (285, _('Pulse')),
+                           (286, _('Back of hand')),
+                           (287, _('Palm')),
+                           (288, _('Sides of hand')),
+                           (289, _('Fingertips'))
                            )
-
-handinteractionChoices = ((0, 'None'),
+# Translators: handinteractionChoices
+handinteractionChoices = ((0, _('None')),
                           (468,
-                           'Alternate hands (one moves, then the other moves)'),
-                          (469, 'Move the hands towards each other'),
-                          (470, 'Move the hands away from each other'),
-                          (471, 'The hands cross over each other')
+                           _('Alternate hands (one moves, then the other moves)')),
+                          (469, _('Move the hands towards each other')),
+                          (470, _('Move the hands away from each other')),
+                          (471, _('The hands cross over each other'))
                           )
 
 
 class MissingSignFeedbackForm(forms.Form):
+    # Translators: Missing sign feedback (handform)
     handform = forms.ChoiceField(choices=handformChoices,  required=False,
-                                 label='How many hands are used to make this sign?')
+                                 label=_('How many hands are used to make this sign?'))
+    # Translators: Missing sign feedback (handshape)
     handshape = forms.ChoiceField(choices=handshapeChoices, required=False,
-                                  label='What is the handshape?')
+                                  label=_('What is the handshape?'))
+    # Translators: Missing sign feedback (althandshape)
     althandshape = forms.ChoiceField(choices=handshapeChoices, required=False,
-                                     label='What is the handshape of the left hand?')
+                                     label=_('What is the handshape of the left hand?'))
+    # Translators: Missing sign feedback (location)
     location = forms.ChoiceField(choices=locationChoices, required=False,
-                                 label='Choose the location of the sign on, or near the body')
+                                 label=_('Choose the location of the sign on, or near the body'))
+    # Translators: Missing sign feedback (relativelocation)
     relativelocation = forms.ChoiceField(choices=relativelocationChoices,
-                                         label='Choose the location of the right hand on, or near the left hand', required=False)
+                                         label=_('Choose the location of the right hand on, or near the left hand'), required=False)
+    # Translators: Missing sign feedback (handbodycontact)
     handbodycontact = forms.ChoiceField(choices=handbodycontactChoices,
-                                        label='Contact between hands and body', required=False)
+                                        label=_('Contact between hands and body'), required=False)
+    # Translators: Missing sign feedback (handinteraction)
     handinteraction = forms.ChoiceField(choices=handinteractionChoices,
-                                        label='Interaction between hands', required=False)
+                                        label=_('Interaction between hands'), required=False)
+    # Translators: Missing sign feedback (direction)
     direction = forms.ChoiceField(choices=directionChoices,
-                                  label='Movement direction of the hand(s)', required=False)
+                                  label=_('Movement direction of the hand(s)'), required=False)
+    # Translators: Missing sign feedback (movementtype)
     movementtype = forms.ChoiceField(choices=movementtypeChoices,
-                                     label='Type of movement', required=False)
+                                     label=_('Type of movement'), required=False)
+    # Translators: Missing sign feedback (smallmovement)
     smallmovement = forms.ChoiceField(choices=smallmovementChoices,
-                                      label='Small movements of the hand(s) and fingers', required=False)
+                                      label=_('Small movements of the hand(s) and fingers'), required=False)
+    # Translators: Missing sign feedback (repetition)
     repetition = forms.ChoiceField(choices=repetitionChoices,
-                                   label='Number of movements', required=False)
-
-    meaning = forms.CharField(label='Sign Meaning',
+                                   label=_('Number of movements'), required=False)
+    # Translators: Missing sign feedback (meaning)
+    meaning = forms.CharField(label=_('Sign Meaning'),
                               widget=forms.Textarea(attrs={'cols': '55', 'rows': '8'}))
     video = forms.FileField(required=False,
                             widget=forms.FileInput(attrs={'size': '60'}))
-    comments = forms.CharField(label='Further Details',
+    # Translators: Missing sign feedback (comments)
+    comments = forms.CharField(label=_('Further Details'),
                                widget=forms.Textarea(attrs={'cols': '55', 'rows': '8'}), required=False)
 
 

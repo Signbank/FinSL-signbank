@@ -23,7 +23,6 @@ from collections import OrderedDict
 
 
 class Translation(models.Model):
-
     """A Dutch translation of NGT signs"""
 
     gloss = models.ForeignKey("Gloss")
@@ -33,8 +32,8 @@ class Translation(models.Model):
     # TODO: 1. Check if __unicode__ is better than __str__ implementation
     # TODO: 2. See if the return works better than the previous (now commented)
     def __unicode__(self):
-        return unicode(self.gloss).encode('ascii','ignore')+"-"+unicode(self.translation).encode('ascii','ignore')
-        #return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
+        return unicode(self.gloss).encode('ascii', 'ignore') + "-" + unicode(self.translation).encode('ascii', 'ignore')
+        # return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
 
     def get_absolute_url(self):
         """Return a URL for a view of this translation."""
@@ -56,11 +55,10 @@ class Translation(models.Model):
 
 
 class Keyword(models.Model):
-
     """A Dutch keyword that is a possible translation equivalent of a sign"""
 
     def __unicode__(self):
-        #return self.text.encode('utf-8')
+        # return self.text.encode('utf-8')
         # Fixed this to work with __unicode__ instead of __str__
         return unicode(self.text).encode('ascii', 'ignore')
 
@@ -125,7 +123,6 @@ DEFN_ROLE_CHOICES = (('note', 'Note'),
 
 
 class Definition(models.Model):
-
     """An English text associated with a gloss. It's called a note in the web interface"""
 
     def __unicode__(self):
@@ -147,7 +144,6 @@ class Definition(models.Model):
 
 
 class Language(models.Model):
-
     """A sign language name"""
 
     class Meta:
@@ -161,7 +157,6 @@ class Language(models.Model):
 
 
 class Dialect(models.Model):
-
     """A dialect name - a regional dialect of a given Language"""
 
     class Meta:
@@ -176,7 +171,6 @@ class Dialect(models.Model):
 
 
 class RelationToForeignSign(models.Model):
-
     """Defines a relationship to another sign in another language (often a loan)"""
 
     def __unicode__(self):
@@ -722,9 +716,8 @@ class FieldChoice(models.Model):
     class Meta:
         ordering = ['field', 'machine_value']
 
-# Lets see if this is needed, it is a bad way to check it from the db
 
-
+# This method builds a list of choices from the database
 def build_choice_list(field):
     choice_list = [('0', '-'), ('1', 'N/A')]
 
@@ -737,14 +730,12 @@ def build_choice_list(field):
 
         return choice_list
 
-    # Enter this exception if the db has no data yet
+    # Enter this exception if for example the db has no data yet
     except OperationalError:
         pass
 
 
-
 class Gloss(models.Model):
-
     class Meta:
         verbose_name_plural = "Glosses"
         ordering = ['idgloss']
@@ -800,7 +791,7 @@ database. No two Sign Entry Names can be exactly the same, but a "Sign
 Entry Name" can be (and often is) the same as the Annotation Idgloss.""")
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
-    annotation_idgloss = models.CharField("Annotation ID Gloss: JYU", blank=True, max_length=30, help_text="""
+    annotation_idgloss = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text="""
     This is the Dutch name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
@@ -809,7 +800,7 @@ minor or insignificant ways that can be ignored.""")
     # the idgloss used in transcription, may be shared between many signs
 
     # Changed this Gloss to be for the Helsinki folks
-    annotation_idgloss_en = models.CharField("Annotation ID Gloss: Helsinki", blank=True, max_length=30, help_text="""
+    annotation_idgloss_en = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text="""
     This is the English name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
@@ -819,6 +810,7 @@ minor or insignificant ways that can be ignored.""")
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
+    # TODO: Remove these fields if possible
     # these language fields are subsumed by the language field above
     bsltf = models.NullBooleanField("BSL sign", null=True, blank=True)
     asltf = models.NullBooleanField("ASL sign", null=True, blank=True)
@@ -828,6 +820,7 @@ minor or insignificant ways that can be ignored.""")
     aslgloss = models.CharField("ASL gloss", blank=True, max_length=50)
     asloantf = models.NullBooleanField("ASL loan sign", null=True, blank=True)
 
+    # TODO: These need to go aswell
     # loans from british sign language
     bslgloss = models.CharField("BSL gloss", max_length=50, blank=True)
     bslloantf = models.NullBooleanField("BSL loan sign", null=True, blank=True)
@@ -851,7 +844,7 @@ minor or insignificant ways that can be ignored.""")
 
     # Phonology fields
     handedness = models.CharField("Handedness", blank=True, null=True, choices=build_choice_list("Handedness"),
-                                  max_length=5) #handednessChoices <- use this if you want static
+                                  max_length=5)  # handednessChoices <- use this if you want static
 
     domhndsh = models.CharField("Strong Hand", blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
@@ -1081,7 +1074,7 @@ minor or insignificant ways that can be ignored.""")
         """Return the video object for this gloss or None if no video available"""
 
         video_path = 'glossvideo/' + \
-            self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
+                     self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
 
         if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
             return video_path
@@ -1244,7 +1237,6 @@ RELATION_ROLE_CHOICES = (('homonym', 'Homonym'),
 
 
 class Relation(models.Model):
-
     """A relation between two glosses"""
 
     source = models.ForeignKey(Gloss, related_name="relation_sources")
@@ -1262,11 +1254,10 @@ class Relation(models.Model):
 
 
 class MorphologyDefinition(models.Model):
-
     """Tells something about morphology of a gloss"""
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
-    #('MorphologyType'))
+    # ('MorphologyType'))
     role = models.CharField(max_length=5, choices=(('0', '-'), ('1', 'N/A')))
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
