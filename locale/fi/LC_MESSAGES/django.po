@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-05 09:49+0300\n"
+"POT-Creation-Date: 2015-06-08 17:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -758,7 +758,7 @@ msgstr ""
 
 #. Translators: Field label
 #: signbank/dictionary/templates/dictionary/add_gloss.html:25
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:348
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:356
 msgid "ID Gloss"
 msgstr ""
 
@@ -766,24 +766,40 @@ msgstr ""
 #. Translators: Field label
 #: signbank/dictionary/templates/dictionary/add_gloss.html:29
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:350
-msgid "Annotation ID Gloss"
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:358
+msgid "Annotation ID Gloss JKL"
 msgstr ""
 
 #. Translators: Annotation ID Gloss (English) - add gloss form title
 #. Translators: Field label
 #: signbank/dictionary/templates/dictionary/add_gloss.html:33
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:25
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:352
-msgid "Annotation ID Gloss (English)"
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:360
+msgid "Annotation ID Gloss JKL (English)"
+msgstr ""
+
+#. Translators: Annotation ID Gloss - add gloss form title
+#. Translators: Field label
+#: signbank/dictionary/templates/dictionary/add_gloss.html:37
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:27
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:362
+msgid "Annotation ID Gloss HKI"
+msgstr ""
+
+#. Translators: Annotation ID Gloss - add gloss form title
+#. Translators: Field label
+#: signbank/dictionary/templates/dictionary/add_gloss.html:41
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:29
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:364
+msgid "Annotation ID Gloss HKI (English)"
 msgstr ""
 
 #. Translators: Button
 #. Translators: Button
-#: signbank/dictionary/templates/dictionary/add_gloss.html:37
-#: signbank/dictionary/templates/dictionary/add_gloss_form.html:33
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:340
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:360
+#: signbank/dictionary/templates/dictionary/add_gloss.html:45
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:39
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:348
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:374
 msgid "Add New Sign"
 msgstr ""
 
@@ -793,12 +809,12 @@ msgid "Lemma ID Gloss"
 msgstr ""
 
 #. Translators: Title
-#: signbank/dictionary/templates/dictionary/add_gloss_form.html:40
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:46
 msgid "Error"
 msgstr ""
 
 #. Translators: Error message
-#: signbank/dictionary/templates/dictionary/add_gloss_form.html:42
+#: signbank/dictionary/templates/dictionary/add_gloss_form.html:48
 msgid ""
 "A sign with that Sign Number already exists. Please choose a different Sign "
 "Number."
@@ -810,42 +826,42 @@ msgid "Signbank: Search Signs"
 msgstr ""
 
 #. Translators: Search by language
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:103
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:111
 msgid "Search by Language and Basic Properties"
 msgstr ""
 
 #. Translators: Search by morphology
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:133
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:141
 msgid "Search by Morphology"
 msgstr ""
 
 #. Translators: Search by phonology
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:153
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:161
 msgid "Search by Phonology"
 msgstr ""
 
 #. Translators: Search by semantics
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:198
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 msgid "Search by Semantics"
 msgstr ""
 
 #. Translators: Search by relation
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:220
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:228
 msgid "Search by Relation"
 msgstr ""
 
 #. Translators: Search by publication status and notes
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:266
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:274
 msgid "Search by Publication Status and Notes"
 msgstr ""
 
 #. Translators: How many results to fit per page
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:319
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:327
 msgid "Results per page"
 msgstr ""
 
 #. Translators: How many matches out of possible
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:374
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:388
 #, python-format
 msgid "Number of matches: %(page_obj.paginator.count)s out of %(glosscount)s"
 msgstr ""
@@ -892,10 +908,10 @@ msgstr ""
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:100
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:380
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:493
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:574
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:707
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:384
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:497
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:578
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:711
 #: signbank/dictionary/templates/dictionary/update_video.html:90
 msgid "Cancel"
 msgstr ""
@@ -903,10 +919,10 @@ msgstr ""
 #. Translators: Confirmation button
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:102
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:382
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:495
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:576
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:709
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:386
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:499
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:580
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:713
 msgid "Confirm Delete"
 msgstr ""
 
@@ -973,96 +989,106 @@ msgstr ""
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:303
-msgid "Annotation ID Gloss:"
+msgid "Annotation ID Gloss JKL:"
 msgstr ""
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:305
-msgid "Annotation ID Gloss: English"
+msgid "Annotation ID Gloss JKL: English"
 msgstr ""
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:307
-msgid "Translation equivalents in Dutch"
+msgid "Annotation ID Gloss HKI:"
 msgstr ""
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:309
-msgid "Annotation Instructions"
+msgid "Annotation ID Gloss HKI: English"
 msgstr ""
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:311
-msgid "Language"
+msgid "Translation equivalents in Finnish"
 msgstr ""
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:313
+msgid "Annotation Instructions"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:315
+msgid "Language"
+msgstr ""
+
+#. Translators: Information about a Gloss
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:317
 msgid "Dialect"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:342
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:346
 msgid "Morphology"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:351
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:676
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:355
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:680
 msgid "Type"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:353
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:357
 msgid "Morpheme"
 msgstr ""
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:368
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:372
 msgid "Delete This Morphology"
 msgstr ""
 
 #. Translators: Question
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:372
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:566
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:376
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:570
 msgid "Are you sure you want to delete this? This cannot be undone."
 msgstr ""
 
 #. Translators: Placeholder
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:408
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:520
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:412
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:524
 msgid "SN/ID Gloss/Annotation ID Gloss"
 msgstr ""
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:410
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:414
 msgid "Add Morphology Definition"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:429
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:433
 msgid "Phonology"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:448
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:452
 msgid "Semantics"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:465
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:469
 msgid "Relations to Other Signs"
 msgstr ""
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:480
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:562
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:484
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:566
 msgid "Delete This Relation"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:484
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:488
 #, python-format
 msgid ""
 "This action will delete the <strong>%(rel.get_role_display)s</strong> "
@@ -1070,94 +1096,94 @@ msgid ""
 msgstr ""
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:522
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:526
 msgid "Add Relation"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:538
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:542
 msgid "Relations to Foreign Signs"
 msgstr ""
 
 #. Translators: Loan from another language(?)
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:545
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:549
 msgid "Loan"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:547
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:551
 msgid "Related Language"
 msgstr ""
 
 #. Translators: Equivalent Gloss in related language
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:549
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:602
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:553
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:606
 msgid "Gloss in related language"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:600
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:604
 msgid "Related language"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:604
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:608
 msgid "Add Relation to Foreign Sign"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:622
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:626
 msgid "Frequency"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:639
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:643
 msgid "Publication Status"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:648
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:652
 msgid "In Web Dictionary"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:650
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:654
 msgid "Proposed New Sign"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:661
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:665
 msgid "Notes"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:672
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:676
 msgid "Published"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:674
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:678
 msgid "Index"
 msgstr ""
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:694
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:698
 msgid "Delete This Note"
 msgstr ""
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:699
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:703
 msgid "This action will delete this note. It cannot be undone."
 msgstr ""
 
 #. Translators: Placeholder
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:742
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:746
 msgid "Enter new note"
 msgstr ""
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:750
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:754
 msgid "Save New"
 msgstr ""
 
@@ -2736,14 +2762,6 @@ msgstr ""
 #. Translators: Text preceding error message
 #: signbank/video/templates/addvideo.html:31
 msgid "Error:"
-msgstr ""
-
-#: templates_notused/admin/dictionary/gloss/change_form.html:15
-msgid "History"
-msgstr ""
-
-#: templates_notused/admin/dictionary/gloss/change_form.html:18
-msgid "View on site"
 msgstr ""
 
 #~ msgid "Australia Wide"

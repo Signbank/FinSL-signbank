@@ -120,7 +120,7 @@ class GlossVideoStorage(FileSystemStorage):
 
         (targetdir, basename) = os.path.split(name)
 
-        path = os.path.join(str(basename)[:2], str(basename))
+        path = os.path.join(unicode(basename)[:2], unicode(basename))
 
         result = os.path.join(targetdir, path)
 
