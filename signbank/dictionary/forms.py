@@ -74,8 +74,10 @@ ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 class GlossSearchForm(forms.ModelForm):
 
-    search = forms.CharField(label="Dutch Gloss")
-    englishGloss = forms.CharField(label="English Gloss")
+    search = forms.CharField(label="JKL Gloss")
+    JKLenglishGloss = forms.CharField(label="JKL English Gloss")
+    HKIGloss = forms.CharField(label="HKI Gloss")
+    HKIenglishGloss = forms.CharField(label="HKI English Gloss")
     tags = forms.MultipleChoiceField(
         choices=[(t, t) for t in settings.ALLOWED_TAGS])
     nottags = forms.MultipleChoiceField(

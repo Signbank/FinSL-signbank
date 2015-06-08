@@ -143,8 +143,7 @@ class GlossListView(ListView):
         if get.has_key('search') and get['search'] != '':
             val = get['search']
             query = Q(idgloss__istartswith=val) | \
-                Q(annotation_idgloss_jkl__istartswith=val) | \
-                Q(annotation_idgloss_hki__isstartswith=val)
+                Q(annotation_idgloss_jkl__istartswith=val)
 
             if re.match('^\d+$', val):
                 query = query | Q(sn__exact=val)
@@ -152,13 +151,17 @@ class GlossListView(ListView):
             qs = qs.filter(query)
             # print "A: ", len(qs)
 
-        if get.has_key('englishGlossJKL') and get['englishGlossJKL'] != '':
-            val = get['englishGloss']
+        if get.has_key('JKLenglishGloss') and get['JKLenglishGloss'] != '':
+            val = get['JKLenglishGloss']
             qs = qs.filter(annotation_idgloss_jkl_en__istartswith=val)
 
-        if get.has_key('englishGlossHKI') and get['englishGlossHKI'] != '':
-            val = get['englishGloss']
-            qs = qs.filter(annotation_idgloss_jkl_en__istartswith=val)
+        if get.has_key('HKIGloss') and get['HKIGloss'] != '':
+            val = get['HKIGloss']
+            qs = qs.filter(annotation_idgloss_hki__istartswith=val)
+
+        if get.has_key('HKIenglishGloss') and get['HKIenglishGloss'] != '':
+            val = get['HKIenglishGloss']
+            qs = qs.filter(annotation_idgloss_hki_en__istartswith=val)
 
         if get.has_key('keyword') and get['keyword'] != '':
             val = get['keyword']
