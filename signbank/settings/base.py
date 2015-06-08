@@ -13,7 +13,6 @@ EMAIL_HOST = ""
 
 ADMINS = (
     ('Henri Nieminen', 'henri.nieminen@gmail.com'),
-    ('Anna Puupponen', 'anna.puupponen@jyu.fi'),
 )
 
 MANAGERS = ADMINS
@@ -21,7 +20,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/heilniem/signbank-master/signbank.db',
+        'NAME': '/home/heilniem/signbank-fi/signbank.db',
     }
 }
 
@@ -36,11 +35,11 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-    '/home/heilniem/signbank-master/locale',
+    '/home/heilniem/signbank-fi/locale',
 )
 
 
-MEDIA_ROOT = '/home/heilniem/signbank-master/media'
+MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
 MEDIA_URL = '/media/'
 MEDIA_MOBILE_URL = MEDIA_URL
 
