@@ -8,8 +8,8 @@ from django.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('dictionary', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('dictionary', '__first__'),
     ]
 
     operations = [
@@ -77,10 +77,10 @@ class Migration(migrations.Migration):
                 ('kwnotbelong', models.TextField(verbose_name='Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below', blank=True)),
                 ('isAuslan', models.IntegerField(verbose_name='Is this sign an FIN Sign?', choices=[(1, 'yes'), (2, 'Perhaps'), (3, "Don't know"), (4, "Don't think so"), (5, 'Ei'), (0, 'N/A')])),
                 ('whereused', models.CharField(max_length=10, verbose_name='Where is this sign used?', choices=[(b'auswide', b'Australia Wide'), (b'dialectN', b'Dialect Sign (North)'), (b'dialectS', b'Dialect Sign (South)'), (b'nsw', b'New South Wales'), (b'vic', b'Victoria'), (b'qld', b'Queensland'), (b'wa', b'Western Australia'), (b'sa', b'South Australia'), (b'tas', b'Tasmania'), (b'nt', b'Northern Territory'), (b'act', b'Australian Capital Territory'), (b'dk', b"Don't Know"), (b'n/a', b'N/A')])),
-                ('like', models.IntegerField(verbose_name='Do you like this sign?', choices=[(1, 'yes'), (2, 'V\xe4h\xe4n'), (3, "Don't care"), (4, 'Ei paljon'), (5, 'Ei'), (0, 'N/A')])),
-                ('use', models.IntegerField(verbose_name='Do you use this sign?', choices=[(1, 'yes'), (2, 'Joskus'), (3, 'Harvoin'), (4, 'Ei'), (0, 'N/A')])),
-                ('suggested', models.IntegerField(default=3, verbose_name='If this sign is a suggested new sign, would you use it?', choices=[(1, 'yes'), (2, 'Joskus'), (3, 'En tied\xe4'), (4, 'Perhaps'), (5, 'Ei'), (0, 'N/A')])),
-                ('correct', models.IntegerField(verbose_name='Is the information about the sign correct?', choices=[(1, 'yes'), (2, 'Mostly Correct'), (3, 'En tied\xe4'), (4, 'Mostly Wrong'), (5, 'Ei'), (0, 'N/A')])),
+                ('like', models.IntegerField(verbose_name='Do you like this sign?', choices=[(1, 'yes'), (2, 'A little'), (3, "Don't care"), (4, 'Not much'), (5, 'Ei'), (0, 'N/A')])),
+                ('use', models.IntegerField(verbose_name='Do you use this sign?', choices=[(1, 'yes'), (2, 'Sometimes'), (3, 'Not Often'), (4, 'Ei'), (0, 'N/A')])),
+                ('suggested', models.IntegerField(default=3, verbose_name='If this sign is a suggested new sign, would you use it?', choices=[(1, 'yes'), (2, 'Sometimes'), (3, "Don't Know"), (4, 'Perhaps'), (5, 'Ei'), (0, 'N/A')])),
+                ('correct', models.IntegerField(verbose_name='Is the information about the sign correct?', choices=[(1, 'yes'), (2, 'Mostly Correct'), (3, "Don't Know"), (4, 'Mostly Wrong'), (5, 'Ei'), (0, 'N/A')])),
                 ('status', models.CharField(default=b'unread', max_length=10, choices=[(b'unread', b'unread'), (b'read', b'read'), (b'deleted', b'deleted')])),
                 ('translation', models.ForeignKey(editable=False, to='dictionary.Translation')),
                 ('user', models.ForeignKey(editable=False, to=settings.AUTH_USER_MODEL)),

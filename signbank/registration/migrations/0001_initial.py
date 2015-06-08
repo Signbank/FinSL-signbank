@@ -1,111 +1,44 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+from django.conf import settings
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'RegistrationProfile'
-        db.create_table(u'registration_registrationprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')
-             (to=orm['auth.User'], unique=True)),
-            ('activation_key', self.gf(
-                'django.db.models.fields.CharField')(max_length=40)),
-        ))
-        db.send_create_signal(u'registration', ['RegistrationProfile'])
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
-        # Adding model 'UserProfile'
-        db.create_table(u'registration_userprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')
-             (to=orm['auth.User'], unique=True)),
-            ('yob', self.gf('django.db.models.fields.IntegerField')()),
-            ('australian', self.gf('django.db.models.fields.BooleanField')()),
-            ('postcode', self.gf('django.db.models.fields.PositiveIntegerField')(
-                null=True, blank=True)),
-            ('background', self.gf(
-                'django.db.models.fields.CommaSeparatedIntegerField')(max_length=20)),
-            ('auslan_user', self.gf('django.db.models.fields.BooleanField')()),
-            ('learned', self.gf('django.db.models.fields.IntegerField')()),
-            ('deaf', self.gf('django.db.models.fields.BooleanField')()),
-            ('schooltype', self.gf('django.db.models.fields.IntegerField')()),
-            ('school', self.gf('django.db.models.fields.CharField')
-             (max_length=50, blank=True)),
-            ('teachercomm', self.gf('django.db.models.fields.IntegerField')()),
-        ))
-        db.send_create_signal(u'registration', ['UserProfile'])
-
-    def backwards(self, orm):
-        # Deleting model 'RegistrationProfile'
-        db.delete_table(u'registration_registrationprofile')
-
-        # Deleting model 'UserProfile'
-        db.delete_table(u'registration_userprofile')
-
-    models = {
-        u'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        u'auth.permission': {
-            'Meta': {'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')", 'unique_together': "((u'content_type', u'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        u'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        u'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        u'registration.registrationprofile': {
-            'Meta': {'object_name': 'RegistrationProfile'},
-            'activation_key': ('django.db.models.fields.CharField', [], {'max_length': '40'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'unique': 'True'})
-        },
-        u'registration.userprofile': {
-            'Meta': {'object_name': 'UserProfile'},
-            'auslan_user': ('django.db.models.fields.BooleanField', [], {}),
-            'australian': ('django.db.models.fields.BooleanField', [], {}),
-            'background': ('django.db.models.fields.CommaSeparatedIntegerField', [], {'max_length': '20'}),
-            'deaf': ('django.db.models.fields.BooleanField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'learned': ('django.db.models.fields.IntegerField', [], {}),
-            'postcode': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'school': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'schooltype': ('django.db.models.fields.IntegerField', [], {}),
-            'teachercomm': ('django.db.models.fields.IntegerField', [], {}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'unique': 'True'}),
-            'yob': ('django.db.models.fields.IntegerField', [], {})
-        }
-    }
-
-    complete_apps = ['registration']
+    operations = [
+        migrations.CreateModel(
+            name='RegistrationProfile',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('activation_key', models.CharField(max_length=40, verbose_name='activation key')),
+                ('user', models.ForeignKey(verbose_name='user', to=settings.AUTH_USER_MODEL, unique=True)),
+            ],
+            options={
+                'verbose_name': 'registration profile',
+                'verbose_name_plural': 'registration profiles',
+            },
+        ),
+        migrations.CreateModel(
+            name='UserProfile',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('yob', models.IntegerField(verbose_name=b'When were you born?')),
+                ('australian', models.BooleanField(verbose_name=b'Do you live in Finland?')),
+                ('postcode', models.CharField(max_length=20, verbose_name=b'If you live in Finland, what is your postcode?', blank=True)),
+                ('background', models.CommaSeparatedIntegerField(max_length=20, verbose_name=b'What is your background?', choices=[(0, b'deaf community'), (1, b'FIN teacher'), (2, b'teacher of the deaf'), (3, b'parent of a deaf child'), (4, b'sign language interpreter'), (5, b'school or university student'), (6, b'student learning FIN'), (7, b'other')])),
+                ('auslan_user', models.BooleanField(verbose_name=b'Do you use FIN?')),
+                ('learned', models.IntegerField(verbose_name=b'If you use FIN, when did you learn sign language?', choices=[(0, b'Not Applicable'), (1, b'At home from my parent(s)'), (2, b'At kindergarten or at the beginning of primary school'), (3, b'At primary school'), (4, b'At high school'), (5, b'After I left school')])),
+                ('deaf', models.BooleanField(verbose_name=b'Are you a deaf person?')),
+                ('schooltype', models.IntegerField(verbose_name=b'What sort of school do you (or did you) attend?', choices=[(0, b'a deaf school (boarder)'), (1, b'a deaf school (day student)'), (2, b'a deaf classroom or unit in a hearing school'), (3, b'a regular classroom in a hearing school')])),
+                ('school', models.CharField(max_length=50, verbose_name=b'Which school do you (or did you) attend?', blank=True)),
+                ('teachercomm', models.IntegerField(verbose_name=b'How do (or did) your teachers communicate with you?', choices=[(0, b'mostly oral'), (1, b'mostly Signed English'), (2, b'mostly sign language (FIN)'), (3, b'mostly fingerspelling')])),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, unique=True)),
+            ],
+        ),
+    ]

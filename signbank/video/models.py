@@ -8,15 +8,15 @@ import sys
 import os
 import time
 import shutil
+from django.utils.deconstruct import deconstructible
 
 from convertvideo import extract_frame, convert_video, ffmpeg
 
 from django.core.files.storage import FileSystemStorage
 from signbank.dictionary.models import Gloss
 
-
-class VideoPosterMixin:
-
+# TODO: Check if this is ok to inherit from object, had to fix this to make migration possible
+class VideoPosterMixin(object):
     """Base class for video models that adds a method
     for generating poster images
 
