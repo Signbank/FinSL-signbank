@@ -792,20 +792,28 @@ Entry Name" can be (and often is) the same as the Annotation Idgloss.""")
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
     annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text="""
-    This is the Dutch name of a sign used by annotators when glossing the corpus in
-an ELAN annotation file. The Annotation Idgloss may be the same for two or
+    This is the Jyvaskyla name of a sign used by annotators when glossing the corpus in
+an ELAN annotation file. The Jyvaskyla Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
 have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored.""")
     # the idgloss used in transcription, may be shared between many signs
 
+    # ID gloss for JKL gloss translation to English
+    annotation_idgloss_jkl_en = models.CharField("Gloss: JKL (Eng)", blank=True, max_length=30, help_text="""
+    This is the English name for the corresponding Jyvaskyla Gloss""")
+
     # Changed this Gloss to be for the Helsinki folks
-    annotation_idgloss_en = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text="""
-    This is the English name of a sign used by annotators when glossing the corpus in
-an ELAN annotation file. The Annotation Idgloss may be the same for two or
+    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text="""
+    This is the Helsinki name of a sign used by annotators when glossing the corpus in
+an ELAN annotation file. The Helsinki Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
 have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored.""")
+
+    # ID Gloss for HKI gloss translation to English
+    annotation_idgloss_hki_en = models.CharField("Gloss: HKI (Eng)", blank=True, max_length=30, help_text="""
+    This is the English name for the corresponding Jyvaskyla Gloss""")
 
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)

@@ -58,7 +58,7 @@ class GlossListView(ListView):
 #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_en', 'useInstr', 'sense', 'StemSN', 'rmrks', 'handedness',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'useInstr', 'sense', 'StemSN', 'rmrks', 'handedness',
                       'domhndsh', 'subhndsh', 'handCh', 'relatArtic', 'locprim', 'locVirtObj', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
                       'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo',
                       'tokNoSgnr', 'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
@@ -143,7 +143,8 @@ class GlossListView(ListView):
         if get.has_key('search') and get['search'] != '':
             val = get['search']
             query = Q(idgloss__istartswith=val) | \
-                Q(annotation_idgloss_jkl__istartswith=val)
+                Q(annotation_idgloss_jkl__istartswith=val) | \
+                Q(annotation_idgloss_hki__isstartswith=val)
 
             if re.match('^\d+$', val):
                 query = query | Q(sn__exact=val)
@@ -151,9 +152,13 @@ class GlossListView(ListView):
             qs = qs.filter(query)
             # print "A: ", len(qs)
 
-        if get.has_key('englishGloss') and get['englishGloss'] != '':
+        if get.has_key('englishGlossJKL') and get['englishGlossJKL'] != '':
             val = get['englishGloss']
-            qs = qs.filter(annotation_idgloss_en__istartswith=val)
+            qs = qs.filter(annotation_idgloss_jkl_en__istartswith=val)
+
+        if get.has_key('englishGlossHKI') and get['englishGlossHKI'] != '':
+            val = get['englishGloss']
+            qs = qs.filter(annotation_idgloss_jkl_en__istartswith=val)
 
         if get.has_key('keyword') and get['keyword'] != '':
             val = get['keyword']
@@ -174,7 +179,7 @@ class GlossListView(ListView):
 
             qs = qs.filter(definition__published=val)
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_en', 'useInstr', 'sense', 'morph', 'StemSN', 'compound', 'rmrks', 'handedness',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'useInstr', 'sense', 'morph', 'StemSN', 'compound', 'rmrks', 'handedness',
                       'domhndsh', 'subhndsh', 'locprim', 'locVirtObj', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
                       'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo', 'tokNoSgnr',
                       'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
