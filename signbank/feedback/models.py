@@ -202,8 +202,8 @@ class SignFeedback(models.Model):
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='unread')
 
-    def __str__(self):
-        return str(self.translation.translation) + " by " + str(self.user) + " on " + str(self.date)
+    def __unicode__(self):
+        return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
 
     class Meta:
         ordering = ['-date']
