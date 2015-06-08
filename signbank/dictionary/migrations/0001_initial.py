@@ -1,520 +1,216 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
+    dependencies = [
+    ]
 
-        # Adding model 'Translation'
-        db.create_table('dictionary_translation', (
-            ('id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('gloss', self.gf('django.db.models.fields.related.ForeignKey')
-             (to=orm['dictionary.Gloss'])),
-            ('translation', self.gf('django.db.models.fields.related.ForeignKey')(
-                to=orm['dictionary.Keyword'])),
-        ))
-        db.send_create_signal('dictionary', ['Translation'])
-
-        # Adding model 'Keyword'
-        db.create_table('dictionary_keyword', (
-            ('id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('text', self.gf('django.db.models.fields.CharField')
-             (max_length=50)),
-        ))
-        db.send_create_signal('dictionary', ['Keyword'])
-
-        # Adding model 'Definition'
-        db.create_table('dictionary_definition', (
-            ('id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('gloss', self.gf('django.db.models.fields.related.ForeignKey')
-             (to=orm['dictionary.Gloss'])),
-            ('text', self.gf('django.db.models.fields.TextField')()),
-            ('role', self.gf('django.db.models.fields.CharField')
-             (max_length=20)),
-            ('count', self.gf('django.db.models.fields.IntegerField')()),
-        ))
-        db.send_create_signal('dictionary', ['Definition'])
-
-        # Adding model 'Gloss'
-        db.create_table('dictionary_gloss', (
-            ('id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('idgloss', self.gf('django.db.models.fields.CharField')
-             (max_length=50)),
-            ('annotation_idgloss', self.gf('django.db.models.fields.CharField')(
-                max_length=30, blank=True)),
-            ('alternate', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('angcongtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('animalstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('arithmetictf', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('artstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('aslgloss', self.gf('django.db.models.fields.CharField')
-             (max_length=50, blank=True)),
-            ('asloantf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('asltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('auslextf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('begindirtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('blend', self.gf('django.db.models.fields.CharField')
-             (max_length=100, null=True, blank=True)),
-            ('blendtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('bodyloctf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('bodyprtstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('BookProb', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('bslgloss', self.gf('django.db.models.fields.CharField')
-             (max_length=50, blank=True)),
-            ('bslloantf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('bsltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('carstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('catholictf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('cathschtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('citiestf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('clothingtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('colorstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('comp', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('compound', self.gf('django.db.models.fields.CharField')
-             (max_length=100, blank=True)),
-            ('comptf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('cookingtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('CorrectionsAdditionsComments', self.gf(
-                'django.db.models.fields.TextField')(null=True, blank=True)),
-            ('crudetf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('daystf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('deaftf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('dirtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('handedness', self.gf('django.db.models.fields.CharField')
-             (max_length=10, blank=True)),
-            ('domhndsh', self.gf('django.db.models.fields.CharField')
-             (max_length=5, blank=True)),
-            ('subhndsh', self.gf('django.db.models.fields.CharField')
-             (max_length=5, null=True, blank=True)),
-            ('domonly', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('twohand', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('doublehnd', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('locprim', self.gf('django.db.models.fields.IntegerField')
-             (null=True, blank=True)),
-            ('locsecond', self.gf('django.db.models.fields.IntegerField')
-             (null=True, blank=True)),
-            ('doubtlextf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('drinkstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('eductf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('enddirtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('familytf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('feeltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('fingersptf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('foodstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('furntf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('general', self.gf('django.db.models.fields.TextField')
-             (null=True, blank=True)),
-            ('gensigntf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('govtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('groomtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('healthtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('inCD', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('inWeb', self.gf('django.db.models.fields.NullBooleanField')
-             (default=False, null=True)),
-            ('InMainBook', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('InSuppBook', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('InMedLex', self.gf('django.db.models.fields.NullBooleanField')
-             (default=False, null=True)),
-            ('isNew', self.gf('django.db.models.fields.NullBooleanField')
-             (default=False, null=True)),
-            ('inittext', self.gf('django.db.models.fields.CharField')
-             (max_length='50', blank=True)),
-            ('inittf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('judgetf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('jwtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('langactstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('lawtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('locdirtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('marginaltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('materialstf', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('metalgtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('mindtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('moneytf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('morph', self.gf('django.db.models.fields.CharField')
-             (max_length=50, blank=True)),
-            ('naturetf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('NotBkDBOnly', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('numbertf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('obscuretf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('obsoletetf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('onehand', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('opaquetf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('ordertf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('orienttf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('otherreltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('Palm_orientation', self.gf('django.db.models.fields.CharField')
-             (max_length=10, blank=True)),
-            ('para', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('peopletf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('physicalactstf', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('propernametf', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('qualitytf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('quantitytf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('queries', self.gf('django.db.models.fields.TextField')
-             (null=True, blank=True)),
-            ('questsigntf', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('recreationtf', self.gf('django.db.models.fields.NullBooleanField')(
-                null=True, blank=True)),
-            ('reglextf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('religiontf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('restricttf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('roomstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('saluttf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('sedefinetf', self.gf('django.db.models.fields.TextField')
-             (null=True, blank=True)),
-            ('segloss', self.gf('django.db.models.fields.CharField')
-             (max_length=50, blank=True)),
-            ('sensestf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('seonlytf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('setf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('sextf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('shapestf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('shoppingtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('SpecialCore', self.gf('django.db.models.fields.TextField')
-             (null=True, blank=True)),
-            ('sporttf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('stateschtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('sthtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('sym', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('techtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('telecomtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('timetf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('tjspeculate', self.gf('django.db.models.fields.TextField')
-             (null=True, blank=True)),
-            ('transltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('transptf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('traveltf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('utensilstf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('varlextf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('tastf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('victf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('watf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('satf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('qldtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('nswtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('nthtf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('weathertf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('worktf', self.gf('django.db.models.fields.NullBooleanField')
-             (null=True, blank=True)),
-            ('sense', self.gf('django.db.models.fields.IntegerField')
-             (null=True, blank=True)),
-            ('sn', self.gf('django.db.models.fields.IntegerField')
-             (null=True, blank=True)),
-            ('StemSN', self.gf('django.db.models.fields.IntegerField')
-             (null=True, blank=True)),
-        ))
-        db.send_create_signal('dictionary', ['Gloss'])
-
-        # Adding model 'Relation'
-        db.create_table('dictionary_relation', (
-            ('id', self.gf('django.db.models.fields.AutoField')
-             (primary_key=True)),
-            ('source', self.gf('django.db.models.fields.related.ForeignKey')
-             (related_name='relation_sources', to=orm['dictionary.Gloss'])),
-            ('target', self.gf('django.db.models.fields.related.ForeignKey')
-             (related_name='relation_targets', to=orm['dictionary.Gloss'])),
-            ('role', self.gf('django.db.models.fields.CharField')
-             (max_length=20)),
-        ))
-        db.send_create_signal('dictionary', ['Relation'])
-
-    def backwards(self, orm):
-
-        # Deleting model 'Translation'
-        db.delete_table('dictionary_translation')
-
-        # Deleting model 'Keyword'
-        db.delete_table('dictionary_keyword')
-
-        # Deleting model 'Definition'
-        db.delete_table('dictionary_definition')
-
-        # Deleting model 'Gloss'
-        db.delete_table('dictionary_gloss')
-
-        # Deleting model 'Relation'
-        db.delete_table('dictionary_relation')
-
-    models = {
-        'dictionary.definition': {
-            'Meta': {'object_name': 'Definition'},
-            'count': ('django.db.models.fields.IntegerField', [], {}),
-            'gloss': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['dictionary.Gloss']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'role': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'text': ('django.db.models.fields.TextField', [], {})
-        },
-        'dictionary.gloss': {
-            'BookProb': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'CorrectionsAdditionsComments': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'InMainBook': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'InMedLex': ('django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True'}),
-            'InSuppBook': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'Meta': {'object_name': 'Gloss'},
-            'NotBkDBOnly': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'Palm_orientation': ('django.db.models.fields.CharField', [], {'max_length': '10', 'blank': 'True'}),
-            'SpecialCore': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'StemSN': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'alternate': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'angcongtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'animalstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'annotation_idgloss': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'arithmetictf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'artstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'aslgloss': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'asloantf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'asltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'auslextf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'begindirtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'blend': ('django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'blendtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'bodyloctf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'bodyprtstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'bslgloss': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'bslloantf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'bsltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'carstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'catholictf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'cathschtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'citiestf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'clothingtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'colorstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'comp': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'compound': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
-            'comptf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'cookingtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'crudetf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'daystf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'deaftf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'dirtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'domhndsh': ('django.db.models.fields.CharField', [], {'max_length': '5', 'blank': 'True'}),
-            'domonly': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'doublehnd': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'doubtlextf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'drinkstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'eductf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'enddirtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'familytf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'feeltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'fingersptf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'foodstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'furntf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'general': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'gensigntf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'govtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'groomtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'handedness': ('django.db.models.fields.CharField', [], {'max_length': '10', 'blank': 'True'}),
-            'healthtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'idgloss': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'inCD': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'inWeb': ('django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True'}),
-            'inittext': ('django.db.models.fields.CharField', [], {'max_length': "'50'", 'blank': 'True'}),
-            'inittf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'isNew': ('django.db.models.fields.NullBooleanField', [], {'default': 'False', 'null': 'True'}),
-            'judgetf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'jwtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'langactstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'lawtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'locdirtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'locprim': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'locsecond': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'marginaltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'materialstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'metalgtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'mindtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'moneytf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'morph': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'naturetf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'nswtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'nthtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'numbertf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'obscuretf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'obsoletetf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'onehand': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'opaquetf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'ordertf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'orienttf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'otherreltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'para': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'peopletf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'physicalactstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'propernametf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'qldtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'qualitytf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'quantitytf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'queries': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'questsigntf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'recreationtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'reglextf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'religiontf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'restricttf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'roomstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'saluttf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'satf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'sedefinetf': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'segloss': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'sense': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'sensestf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'seonlytf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'setf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'sextf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'shapestf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'shoppingtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'sn': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'sporttf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'stateschtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'sthtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'subhndsh': ('django.db.models.fields.CharField', [], {'max_length': '5', 'null': 'True', 'blank': 'True'}),
-            'sym': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'tastf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'techtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'telecomtf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'timetf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'tjspeculate': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'transltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'transptf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'traveltf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'twohand': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'utensilstf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'varlextf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'victf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'watf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'weathertf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'}),
-            'worktf': ('django.db.models.fields.NullBooleanField', [], {'null': 'True', 'blank': 'True'})
-        },
-        'dictionary.keyword': {
-            'Meta': {'object_name': 'Keyword'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'text': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        'dictionary.relation': {
-            'Meta': {'object_name': 'Relation'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'role': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'source': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'relation_sources'", 'to': "orm['dictionary.Gloss']"}),
-            'target': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'relation_targets'", 'to': "orm['dictionary.Gloss']"})
-        },
-        'dictionary.translation': {
-            'Meta': {'object_name': 'Translation'},
-            'gloss': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['dictionary.Gloss']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'translation': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['dictionary.Keyword']"})
-        }
-    }
-
-    complete_apps = ['dictionary']
+    operations = [
+        migrations.CreateModel(
+            name='Definition',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('text', models.TextField()),
+                ('role', models.CharField(max_length=20, verbose_name=b'Type', choices=[(b'note', b'Note'), (b'privatenote', b'Private Note'), (b'phon', b'Phonology'), (b'todo', b'To Do'), (b'sugg', b'Suggestion for other gloss')])),
+                ('count', models.IntegerField()),
+                ('published', models.BooleanField(default=True)),
+            ],
+            options={
+                'ordering': ['gloss', 'role', 'count'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Dialect',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=20)),
+                ('description', models.TextField()),
+            ],
+            options={
+                'ordering': ['language', 'name'],
+            },
+        ),
+        migrations.CreateModel(
+            name='FieldChoice',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('field', models.CharField(max_length=50)),
+                ('english_name', models.CharField(max_length=50)),
+                ('machine_value', models.IntegerField()),
+            ],
+            options={
+                'ordering': ['field', 'machine_value'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Gloss',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('idgloss', models.CharField(help_text=b'\n    This is the unique identifying name of an entry of a sign form in the\ndatabase. No two Sign Entry Names can be exactly the same, but a "Sign\nEntry Name" can be (and often is) the same as the Annotation Idgloss.', max_length=50, verbose_name=b'ID Gloss')),
+                ('annotation_idgloss_jkl', models.CharField(help_text=b"\n    This is the Dutch name of a sign used by annotators when glossing the corpus in\nan ELAN annotation file. The Annotation Idgloss may be the same for two or\nmore entries (each with their own 'Sign Entry Name'). If two sign entries\nhave the same 'Annotation Idgloss' that means they differ in form in only\nminor or insignificant ways that can be ignored.", max_length=30, verbose_name=b'Gloss: JKL', blank=True)),
+                ('annotation_idgloss_en', models.CharField(help_text=b"\n    This is the English name of a sign used by annotators when glossing the corpus in\nan ELAN annotation file. The Annotation Idgloss may be the same for two or\nmore entries (each with their own 'Sign Entry Name'). If two sign entries\nhave the same 'Annotation Idgloss' that means they differ in form in only\nminor or insignificant ways that can be ignored.", max_length=30, verbose_name=b'Gloss: HKI', blank=True)),
+                ('bsltf', models.NullBooleanField(verbose_name=b'BSL sign')),
+                ('asltf', models.NullBooleanField(verbose_name=b'ASL sign')),
+                ('aslgloss', models.CharField(max_length=50, verbose_name=b'ASL gloss', blank=True)),
+                ('asloantf', models.NullBooleanField(verbose_name=b'ASL loan sign')),
+                ('bslgloss', models.CharField(max_length=50, verbose_name=b'BSL gloss', blank=True)),
+                ('bslloantf', models.NullBooleanField(verbose_name=b'BSL loan sign')),
+                ('useInstr', models.CharField(max_length=50, verbose_name=b'Annotation instructions', blank=True)),
+                ('rmrks', models.CharField(max_length=50, verbose_name=b'Remarks', blank=True)),
+                ('blend', models.CharField(max_length=100, null=True, verbose_name=b'Blend of', blank=True)),
+                ('blendtf', models.NullBooleanField(verbose_name=b'Blend')),
+                ('compound', models.CharField(max_length=100, verbose_name=b'Compound of', blank=True)),
+                ('comptf', models.NullBooleanField(verbose_name=b'Compound')),
+                ('handedness', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Handedness', choices=[(b'0', b'-'), (b'1', b'N/A'), (b'75', 'My choice')])),
+                ('domhndsh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Strong Hand', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('subhndsh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Weak Hand', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('final_domhndsh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Final Dominant Handshape', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('final_subhndsh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Final Subordinate Handshape', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('locprim', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Location', choices=[(b'0', b'No Value Set'), (b'1', b'N/A'), (b'2', b'Neutral space > head'), (b'3', b'Neutral space'), (b'4', b'Shoulder'), (b'5', b'Weak hand'), (b'6', b'Weak hand > arm'), (b'7', b'Forehead'), (b'8', b'Chest'), (b'9', b'Neck'), (b'10', b'Head'), (b'11', b'Weak hand: back'), (b'12', b'Chin'), (b'13', b'Ring finger'), (b'14', b'Forehead, belly'), (b'15', b'Eye'), (b'16', b'Cheekbone'), (b'17', b'Face'), (b'18', b'Ear'), (b'19', b'Mouth'), (b'20', b'Low in neutral space'), (b'21', b'Arm'), (b'22', b'Nose'), (b'23', b'Cheek'), (b'24', b'Heup'), (b'25', b'Body'), (b'26', b'Belly'), (b'27', b'Tongue'), (b'28', b'Chin > neutral space'), (b'29', b'Locative'), (b'30', b'Head ipsi'), (b'31', b'Forehead > chin'), (b'32', b'Head > shoulder'), (b'33', b'Chin > weak hand'), (b'34', b'Forehead > chest'), (b'35', b'Borst contra'), (b'36', b'Weak hand: palm'), (b'37', b'Back of head'), (b'38', b'Above head'), (b'39', b'Next to trunk'), (b'40', b'Under chin'), (b'41', b'Head > weak hand'), (b'42', b'Borst ipsi'), (b'43', b'Temple'), (b'44', b'Upper leg'), (b'45', b'Leg'), (b'46', b'Mouth ipsi'), (b'47', b'High in neutral space'), (b'48', b'Mouth > chest'), (b'49', b'Chin ipsi'), (b'50', b'Wrist'), (b'51', b'Lip'), (b'52', b'Neck > chest'), (b'53', b'Cheek + chin'), (b'54', b'Upper arm'), (b'55', b'Shoulder contra'), (b'56', b'Forehead > weak hand'), (b'57', b'Neck ipsi'), (b'58', b'Mouth > weak hand'), (b'59', b'Weak hand: thumb side'), (b'60', b'Between thumb and index finger'), (b'61', b'Neutral space: high'), (b'62', b'Chin contra'), (b'63', b'Upper lip'), (b'64', b'Forehead contra'), (b'65', b'Side of upper body'), (b'66', b'Weak hand: tips'), (b'67', b'Mouth + chin'), (b'68', b'Side of head'), (b'69', b'Head > neutral space'), (b'70', b'Chin > chest'), (b'71', b'Face + head'), (b'72', b'Cheek contra'), (b'73', b'Belly ipsi'), (b'74', b'Chest contra'), (b'75', b'Neck contra'), (b'76', b'Back of the head'), (b'77', b'Elbow'), (b'78', b'Temple > chest'), (b'79', b'Thumb'), (b'80', b'Middle finger'), (b'81', b'Pinkie'), (b'82', b'Index finger'), (b'83', b'Back'), (b'84', b'Ear > cheek'), (b'85', b'Knee'), (b'86', b'Shoulder contra > shoulder ipsi'), (b'87', b'Mouth + cheek')])),
+                ('final_loc', models.IntegerField(blank=True, null=True, verbose_name=b'Final Primary Location', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('locVirtObj', models.CharField(max_length=50, null=True, verbose_name=b'Virtual Object', blank=True)),
+                ('locsecond', models.IntegerField(blank=True, null=True, verbose_name=b'Secondary Location', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('initial_secondary_loc', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Initial Subordinate Location', choices=[(b'notset', b'No Value Set'), (b'0', b'N/A'), (b'back', b'Back'), (b'palm', b'Palm'), (b'radial', b'Radial'), (b'ulnar', b'Ulnar'), (b'fingertip(s)', b'Fingertips'), (b'root', b'Root')])),
+                ('final_secondary_loc', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Final Subordinate Location', choices=[(b'notset', b'No Value Set'), (b'0', b'N/A'), (b'back', b'Back'), (b'palm', b'Palm'), (b'radial', b'Radial'), (b'ulnar', b'Ulnar'), (b'fingertip(s)', b'Fingertips'), (b'root', b'Root')])),
+                ('initial_palm_orientation', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Initial Palm Orientation', choices=[(b'notset', b'No Value Set'), (b'prone', b'Prone'), (b'neutral', b'Neutral'), (b'supine', b'Supine'), (b'0', b'N/A')])),
+                ('final_palm_orientation', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Final Palm Orientation', choices=[(b'notset', b'No Value Set'), (b'prone', b'Prone'), (b'neutral', b'Neutral'), (b'supine', b'Supine'), (b'0', b'N/A')])),
+                ('initial_relative_orientation', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Initial Interacting Dominant Hand Part', choices=[(b'notset', b'No Value Set'), (b'palm', b'Palm'), (b'back', b'Back'), (b'root', b'Root'), (b'radial', b'Radial'), (b'ulnar', b'Ulnar'), (b'fingertip(s)', b'Fingertips'), (b'0', b'N/A')])),
+                ('final_relative_orientation', models.CharField(blank=True, max_length=20, null=True, verbose_name=b'Final Interacting Dominant Hand Part', choices=[(b'notset', b'No Value Set'), (b'palm', b'Palm'), (b'back', b'Back'), (b'root', b'Root'), (b'radial', b'Radial'), (b'ulnar', b'Ulnar'), (b'fingertip(s)', b'Fingertips'), (b'0', b'N/A')])),
+                ('inWeb', models.NullBooleanField(default=False, verbose_name=b'In the Web dictionary')),
+                ('isNew', models.NullBooleanField(default=False, verbose_name=b'Is this a proposed new sign?')),
+                ('inittext', models.CharField(max_length=b'50', blank=True)),
+                ('morph', models.CharField(max_length=50, verbose_name=b'Morphemic Analysis', blank=True)),
+                ('sedefinetf', models.TextField(null=True, verbose_name=b'Signed English definition available', blank=True)),
+                ('segloss', models.CharField(max_length=50, null=True, verbose_name=b'Signed English gloss', blank=True)),
+                ('sense', models.IntegerField(help_text=b'If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1', null=True, verbose_name=b'Sense Number', blank=True)),
+                ('sn', models.IntegerField(help_text=b'Sign Number must be a unique integer and defines the ordering of signs in the dictionary', unique=True, null=True, verbose_name=b'Sign Number', blank=True)),
+                ('StemSN', models.IntegerField(null=True, blank=True)),
+                ('relatArtic', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Relation between Articulators', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('absOriPalm', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Absolute Orientation: Palm', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('absOriFing', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Absolute Orientation: Fingers', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('relOriMov', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Relative Orientation: Movement', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('relOriLoc', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Relative Orientation: Location', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('oriCh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Orientation Change', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('handCh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Handshape Change', choices=[(b'0', b'-'), (b'1', b'N/A'), (b'0', 'From open to closed')])),
+                ('repeat', models.NullBooleanField(default=False, verbose_name=b'Repeated Movement')),
+                ('altern', models.NullBooleanField(default=False, verbose_name=b'Alternating Movement')),
+                ('movSh', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Movement Shape', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('movDir', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Movement Direction', choices=[(b'0', b'-'), (b'1', b'N/A'), (b'2', 'Movement Direction')])),
+                ('movMan', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Movement Manner', choices=[(b'0', b'-'), (b'1', b'N/A'), (b'2', 'Not gonna tell')])),
+                ('contType', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Contact Type', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('phonOth', models.TextField(null=True, verbose_name=b'Phonology Other', blank=True)),
+                ('mouthG', models.CharField(max_length=50, verbose_name=b'Mouth Gesture', blank=True)),
+                ('mouthing', models.CharField(max_length=50, verbose_name=b'Mouthing', blank=True)),
+                ('phonetVar', models.CharField(max_length=50, verbose_name=b'Phonetic Variation', blank=True)),
+                ('iconImg', models.CharField(max_length=50, verbose_name=b'Iconic Image', blank=True)),
+                ('namEnt', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Named Entity', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('semField', models.CharField(blank=True, max_length=5, null=True, verbose_name=b'Semantic Field', choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('tokNo', models.IntegerField(null=True, verbose_name=b'Total Number of Occurrences', blank=True)),
+                ('tokNoSgnr', models.IntegerField(null=True, verbose_name=b'Total Number of Signers Using this Sign', blank=True)),
+                ('tokNoA', models.IntegerField(null=True, verbose_name=b'Number of Occurrences in Amsterdam', blank=True)),
+                ('tokNoV', models.IntegerField(null=True, verbose_name=b'Number of Occurrences in Voorburg', blank=True)),
+                ('tokNoR', models.IntegerField(null=True, verbose_name=b'Number of Occurrences in Rotterdam', blank=True)),
+                ('tokNoGe', models.IntegerField(null=True, verbose_name=b'Number of Occurrences in Gestel', blank=True)),
+                ('tokNoGr', models.IntegerField(null=True, verbose_name=b'Number of Occurrences in Groningen', blank=True)),
+                ('tokNoO', models.IntegerField(null=True, verbose_name=b'Number of Occurrences in Other Regions', blank=True)),
+                ('tokNoSgnrA', models.IntegerField(null=True, verbose_name=b'Number of Amsterdam Signers', blank=True)),
+                ('tokNoSgnrV', models.IntegerField(null=True, verbose_name=b'Number of Voorburg Signers', blank=True)),
+                ('tokNoSgnrR', models.IntegerField(null=True, verbose_name=b'Number of Rotterdam Signers', blank=True)),
+                ('tokNoSgnrGe', models.IntegerField(null=True, verbose_name=b'Number of Gestel Signers', blank=True)),
+                ('tokNoSgnrGr', models.IntegerField(null=True, verbose_name=b'Number of Groningen Signers', blank=True)),
+                ('tokNoSgnrO', models.IntegerField(null=True, verbose_name=b'Number of Other Region Signers', blank=True)),
+                ('dialect', models.ManyToManyField(to='dictionary.Dialect')),
+            ],
+            options={
+                'ordering': ['idgloss'],
+                'verbose_name_plural': 'Glosses',
+                'permissions': (('update_video', 'Can Update Video'), ('search_gloss', 'Can Search/View Full Gloss Details'), ('export_csv', 'Can export sign details as CSV'), ('can_publish', 'Can publish signs and definitions'), ('can_delete_unpublished', 'Can delete unpub signs or defs'), ('can_delete_published', 'Can delete pub signs and defs'), ('view_advanced_properties', 'Include all properties in sign detail view')),
+            },
+        ),
+        migrations.CreateModel(
+            name='Keyword',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('text', models.CharField(unique=True, max_length=100)),
+            ],
+            options={
+                'ordering': ['text'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Language',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=20)),
+                ('description', models.TextField()),
+            ],
+            options={
+                'ordering': ['name'],
+            },
+        ),
+        migrations.CreateModel(
+            name='MorphologyDefinition',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('role', models.CharField(max_length=5, choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('morpheme', models.ForeignKey(related_name='morphemes', to='dictionary.Gloss')),
+                ('parent_gloss', models.ForeignKey(related_name='parent_glosses', to='dictionary.Gloss')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Relation',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('role', models.CharField(max_length=20, choices=[(b'0', b'-'), (b'1', b'N/A')])),
+                ('source', models.ForeignKey(related_name='relation_sources', to='dictionary.Gloss')),
+                ('target', models.ForeignKey(related_name='relation_targets', to='dictionary.Gloss')),
+            ],
+            options={
+                'ordering': ['source'],
+            },
+        ),
+        migrations.CreateModel(
+            name='RelationToForeignSign',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('loan', models.BooleanField(default=False, verbose_name=b'Loan Sign')),
+                ('other_lang', models.CharField(max_length=20, verbose_name=b'Related Language')),
+                ('other_lang_gloss', models.CharField(max_length=50, verbose_name=b'Gloss in related language')),
+                ('gloss', models.ForeignKey(to='dictionary.Gloss')),
+            ],
+            options={
+                'ordering': ['gloss', 'loan', 'other_lang', 'other_lang_gloss'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Translation',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('index', models.IntegerField(verbose_name=b'Index')),
+                ('gloss', models.ForeignKey(to='dictionary.Gloss')),
+                ('translation', models.ForeignKey(to='dictionary.Keyword')),
+            ],
+            options={
+                'ordering': ['gloss', 'index'],
+            },
+        ),
+        migrations.AddField(
+            model_name='gloss',
+            name='language',
+            field=models.ManyToManyField(to='dictionary.Language'),
+        ),
+        migrations.AddField(
+            model_name='dialect',
+            name='language',
+            field=models.ForeignKey(to='dictionary.Language'),
+        ),
+        migrations.AddField(
+            model_name='definition',
+            name='gloss',
+            field=models.ForeignKey(to='dictionary.Gloss'),
+        ),
+    ]

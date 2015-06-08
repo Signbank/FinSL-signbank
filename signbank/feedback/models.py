@@ -1,10 +1,10 @@
-from django.db import models
+#from django.db import models
 from django.contrib.auth import models as authmodels
-from django.conf import settings
+#from django.conf import settings
 from signbank.video.fields import VideoUploadToFLVField
 from django.utils.translation import ugettext as _
 from signbank.dictionary.models import *
-from signbank.dictionary.models import Gloss
+# from signbank.dictionary.models import Gloss
 # models to represent the feedback from users in the site
 
 import string
