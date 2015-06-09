@@ -29,8 +29,6 @@ class Translation(models.Model):
     translation = models.ForeignKey("Keyword")
     index = models.IntegerField("Index")
 
-    # TODO: 1. Check if __unicode__ is better than __str__ implementation
-    # TODO: 2. See if the return works better than the previous (now commented)
     def __unicode__(self):
         return unicode(self.gloss).encode('ascii', 'ignore') + "-" + unicode(self.translation).encode('ascii', 'ignore')
         # return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
@@ -818,21 +816,6 @@ minor or insignificant ways that can be ignored.""")
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
-    # TODO: Remove these fields if possible
-    # these language fields are subsumed by the language field above
-    bsltf = models.NullBooleanField("BSL sign", null=True, blank=True)
-    asltf = models.NullBooleanField("ASL sign", null=True, blank=True)
-
-    # TODO: these fields should be reviewed - do we put them in another class too?
-    # American Sign Language gloss
-    aslgloss = models.CharField("ASL gloss", blank=True, max_length=50)
-    asloantf = models.NullBooleanField("ASL loan sign", null=True, blank=True)
-
-    # TODO: These need to go aswell
-    # loans from british sign language
-    bslgloss = models.CharField("BSL gloss", max_length=50, blank=True)
-    bslloantf = models.NullBooleanField("BSL loan sign", null=True, blank=True)
-
     useInstr = models.CharField(
         "Annotation instructions", max_length=50, blank=True)
     rmrks = models.CharField("Remarks", max_length=50, blank=True)
@@ -841,10 +824,6 @@ minor or insignificant ways that can be ignored.""")
 
     # one or more regional dialects that this gloss is used in
     dialect = models.ManyToManyField(Dialect)
-
-    # This field type is a guess.
-    blend = models.CharField("Blend of", max_length=100, null=True, blank=True)
-    blendtf = models.NullBooleanField("Blend", null=True, blank=True)
 
     # This field type is a guess.
     compound = models.CharField("Compound of", max_length=100, blank=True)
@@ -896,11 +875,6 @@ minor or insignificant ways that can be ignored.""")
     inittext = models.CharField(max_length="50", blank=True)
 
     morph = models.CharField("Morphemic Analysis", max_length=50, blank=True)
-
-    sedefinetf = models.TextField("Signed English definition available", null=True,
-                                  blank=True)  # TODO: should be boolean
-    segloss = models.CharField(
-        "Signed English gloss", max_length=50, blank=True, null=True)
 
     sense = models.IntegerField("Sense Number", null=True, blank=True,
                                 help_text="If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1")
