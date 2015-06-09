@@ -1,77 +1,11 @@
-#from django.db import models
 from django.contrib.auth import models as authmodels
-#from django.conf import settings
-from signbank.video.fields import VideoUploadToFLVField
 from django.utils.translation import ugettext as _
+
 from signbank.dictionary.models import *
-# from signbank.dictionary.models import Gloss
-# models to represent the feedback from users in the site
-
 import string
+# from signbank.dictionary.models import Gloss
 
-
-def t(message):
-    """Replace $country and $language in message with dat from settings"""
-
-    tpl = string.Template(message)
-    return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
-
-
-from django import forms
-
-STATUS_CHOICES = (('unread', 'unread'),
-                  ('read', 'read'),
-                  ('deleted', 'deleted'),
-                  )
-
-
-class InterpreterFeedback(models.Model):
-
-    """Feedback on a sign from an interpreter"""
-
-    class Meta:
-        ordering = ['-date']
-        permissions = (
-            ('view_interpreterfeedback', "Can View Interpreter Feedback"),)
-
-    gloss = models.ForeignKey(Gloss)
-    comment = models.TextField('Note')
-    user = models.ForeignKey(authmodels.User)
-    date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='unread')
-
-
-class InterpreterFeedbackForm(forms.ModelForm):
-
-    class Meta:
-        model = InterpreterFeedback
-        fields = ['comment']
-        widgets = {'comment': forms.Textarea(attrs={'cols': 30, 'rows': 2})}
-
-
-class GeneralFeedback(models.Model):
-
-    comment = models.TextField(blank=True)
-    video = models.FileField(
-        upload_to=settings.COMMENT_VIDEO_LOCATION, blank=True)
-    user = models.ForeignKey(authmodels.User)
-    date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='unread')
-
-    class Meta:
-        ordering = ['-date']
-
-
-class GeneralFeedbackForm(forms.Form):
-
-    """Form for general feedback"""
-
-    comment = forms.CharField(
-        widget=forms.Textarea(attrs={'cols': '64'}), required=False)
-    video = VideoUploadToFLVField(
-        required=False, widget=forms.FileInput(attrs={'size': '60'}))
+# models to represent the feedback from users in the site
 
 # Translators:
 isAuslanChoices = ((1, _("yes")),
@@ -166,74 +100,6 @@ correctChoices = ((1, _("yes")),
                   # Translators:
                   (0, _("N/A"))
                   )
-
-
-class SignFeedback(models.Model):
-
-    """Store feedback on a particular sign"""
-
-    user = models.ForeignKey(authmodels.User, editable=False)
-    date = models.DateTimeField(auto_now_add=True)
-
-    translation = models.ForeignKey(Translation, editable=False)
-    # Translators: Question (sign feedback)
-    comment = models.TextField(
-        _("Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."), blank=True)
-    # Translators: Question (sign feedback)
-    kwnotbelong = models.TextField(
-        _("Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"), blank=True)
-    # Translators: Question (sign feedback)
-    isAuslan = models.IntegerField(
-        t(_("Is this sign an $language Sign?")), choices=isAuslanChoices)
-    # Translators: Question (sign feedback)
-    whereused = models.CharField(
-        _("Where is this sign used?"), max_length=10, choices=whereusedChoices)
-    # Translators: Question (sign feedback)
-    like = models.IntegerField(_("Do you like this sign?"), choices=likedChoices)
-    # Translators: Question (sign feedback)
-    use = models.IntegerField(_("Do you use this sign?"), choices=useChoices)
-    # Translators: Question (sign feedback)
-    suggested = models.IntegerField(
-        _("If this sign is a suggested new sign, would you use it?"), default=3, choices=suggestedChoices)
-    # Translators: Question (sign feedback)
-    correct = models.IntegerField(
-        _("Is the information about the sign correct?"), choices=correctChoices)
-    # Translators: Question (sign feedback)
-    status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='unread')
-
-    def __unicode__(self):
-        return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
-
-    class Meta:
-        ordering = ['-date']
-
-
-class SignFeedbackForm(forms.Form):
-
-    """Form for input of sign feedback"""
-
-    isAuslan = forms.ChoiceField(
-        choices=isAuslanChoices, initial=0, widget=forms.RadioSelect)
-    #isAuslan = forms.IntegerField(initial=0, widget=forms.HiddenInput)
-    whereused = forms.ChoiceField(choices=whereusedChoices, initial="n/a")
-    #whereused = forms.CharField(initial='n/a', widget=forms.HiddenInput)
-    like = forms.ChoiceField(
-        choices=likedChoices,  initial=0, widget=forms.RadioSelect)
-    #like = forms.IntegerField(initial=0, widget=forms.HiddenInput)
-    use = forms.ChoiceField(
-        choices=useChoices, initial=0,  widget=forms.RadioSelect)
-    #use = forms.IntegerField(initial=0, widget=forms.HiddenInput)
-    suggested = forms.ChoiceField(
-        choices=suggestedChoices, initial=3, required=False, widget=forms.RadioSelect)
-    #suggested = forms.IntegerField(initial=0, widget=forms.HiddenInput)
-    correct = forms.ChoiceField(
-        choices=correctChoices, initial=0, widget=forms.RadioSelect)
-    #correct = forms.IntegerField(initial=0, widget=forms.HiddenInput)
-    kwnotbelong = forms.CharField(
-        label="List keywords", required=False, widget=forms.Textarea)
-    comment = forms.CharField(required=False, widget=forms.Textarea)
-
 
 handformChoices = (
     # Translators: Handform choice (feedback)
@@ -391,48 +257,90 @@ handinteractionChoices = ((0, _('None')),
                           )
 
 
-class MissingSignFeedbackForm(forms.Form):
-    # Translators: Missing sign feedback (handform)
-    handform = forms.ChoiceField(choices=handformChoices,  required=False,
-                                 label=_('How many hands are used to make this sign?'))
-    # Translators: Missing sign feedback (handshape)
-    handshape = forms.ChoiceField(choices=handshapeChoices, required=False,
-                                  label=_('What is the handshape?'))
-    # Translators: Missing sign feedback (althandshape)
-    althandshape = forms.ChoiceField(choices=handshapeChoices, required=False,
-                                     label=_('What is the handshape of the left hand?'))
-    # Translators: Missing sign feedback (location)
-    location = forms.ChoiceField(choices=locationChoices, required=False,
-                                 label=_('Choose the location of the sign on, or near the body'))
-    # Translators: Missing sign feedback (relativelocation)
-    relativelocation = forms.ChoiceField(choices=relativelocationChoices,
-                                         label=_('Choose the location of the right hand on, or near the left hand'), required=False)
-    # Translators: Missing sign feedback (handbodycontact)
-    handbodycontact = forms.ChoiceField(choices=handbodycontactChoices,
-                                        label=_('Contact between hands and body'), required=False)
-    # Translators: Missing sign feedback (handinteraction)
-    handinteraction = forms.ChoiceField(choices=handinteractionChoices,
-                                        label=_('Interaction between hands'), required=False)
-    # Translators: Missing sign feedback (direction)
-    direction = forms.ChoiceField(choices=directionChoices,
-                                  label=_('Movement direction of the hand(s)'), required=False)
-    # Translators: Missing sign feedback (movementtype)
-    movementtype = forms.ChoiceField(choices=movementtypeChoices,
-                                     label=_('Type of movement'), required=False)
-    # Translators: Missing sign feedback (smallmovement)
-    smallmovement = forms.ChoiceField(choices=smallmovementChoices,
-                                      label=_('Small movements of the hand(s) and fingers'), required=False)
-    # Translators: Missing sign feedback (repetition)
-    repetition = forms.ChoiceField(choices=repetitionChoices,
-                                   label=_('Number of movements'), required=False)
-    # Translators: Missing sign feedback (meaning)
-    meaning = forms.CharField(label=_('Sign Meaning'),
-                              widget=forms.Textarea(attrs={'cols': '55', 'rows': '8'}))
-    video = forms.FileField(required=False,
-                            widget=forms.FileInput(attrs={'size': '60'}))
-    # Translators: Missing sign feedback (comments)
-    comments = forms.CharField(label=_('Further Details'),
-                               widget=forms.Textarea(attrs={'cols': '55', 'rows': '8'}), required=False)
+def t(message):
+    """Replace $country and $language in message with dat from settings"""
+
+    tpl = string.Template(message)
+    return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
+
+
+STATUS_CHOICES = (('unread', 'unread'),
+                  ('read', 'read'),
+                  ('deleted', 'deleted'),
+                  )
+
+
+class InterpreterFeedback(models.Model):
+    """Feedback on a sign from an interpreter"""
+
+    class Meta:
+        ordering = ['-date']
+        permissions = (
+            ('view_interpreterfeedback', "Can View Interpreter Feedback"),)
+
+    gloss = models.ForeignKey(Gloss)
+    comment = models.TextField('Note')
+    user = models.ForeignKey(authmodels.User)
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='unread')
+
+
+class GeneralFeedback(models.Model):
+    comment = models.TextField(blank=True)
+    video = models.FileField(
+        upload_to=settings.COMMENT_VIDEO_LOCATION, blank=True)
+    user = models.ForeignKey(authmodels.User)
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='unread')
+
+    class Meta:
+        ordering = ['-date']
+
+
+class SignFeedback(models.Model):
+    """Store feedback on a particular sign"""
+
+    user = models.ForeignKey(authmodels.User, editable=False)
+    date = models.DateTimeField(auto_now_add=True)
+
+    translation = models.ForeignKey(Translation, editable=False)
+    # Translators: Question (sign feedback)
+    comment = models.TextField(
+        _(
+            "Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."),
+        blank=True)
+    # Translators: Question (sign feedback)
+    kwnotbelong = models.TextField(
+        _(
+            "Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"),
+        blank=True)
+    # Translators: Question (sign feedback)
+    isAuslan = models.IntegerField(
+        t(_("Is this sign an $language Sign?")), choices=isAuslanChoices)
+    # Translators: Question (sign feedback)
+    whereused = models.CharField(
+        _("Where is this sign used?"), max_length=10, choices=whereusedChoices)
+    # Translators: Question (sign feedback)
+    like = models.IntegerField(_("Do you like this sign?"), choices=likedChoices)
+    # Translators: Question (sign feedback)
+    use = models.IntegerField(_("Do you use this sign?"), choices=useChoices)
+    # Translators: Question (sign feedback)
+    suggested = models.IntegerField(
+        _("If this sign is a suggested new sign, would you use it?"), default=3, choices=suggestedChoices)
+    # Translators: Question (sign feedback)
+    correct = models.IntegerField(
+        _("Is the information about the sign correct?"), choices=correctChoices)
+    # Translators: Question (sign feedback)
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='unread')
+
+    def __unicode__(self):
+        return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
+
+    class Meta:
+        ordering = ['-date']
 
 
 class MissingSignFeedback(models.Model):

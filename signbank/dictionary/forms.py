@@ -5,6 +5,7 @@ from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, Rel
 from django.conf import settings
 from tagging.models import Tag
 
+# TODO: Check what this is?
 # category choices are tag values that we'll restrict search to
 CATEGORY_CHOICES = (('all', 'All Signs'),
                     ('semantic:health', 'Only Health Related Signs'),
