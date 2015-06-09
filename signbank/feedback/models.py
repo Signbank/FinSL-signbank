@@ -308,13 +308,11 @@ class SignFeedback(models.Model):
     translation = models.ForeignKey(Translation, editable=False)
     # Translators: Question (sign feedback)
     comment = models.TextField(
-        _(
-            "Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."),
+        _("Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."),
         blank=True)
     # Translators: Question (sign feedback)
     kwnotbelong = models.TextField(
-        _(
-            "Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"),
+        _("Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"),
         blank=True)
     # Translators: Question (sign feedback)
     isAuslan = models.IntegerField(

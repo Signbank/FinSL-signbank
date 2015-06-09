@@ -232,6 +232,7 @@ def recordsignfeedback(request, trans, n, total):
             # get the clean (normalised) data from the feedback_form
             clean = feedback_form.cleaned_data
             # create a SignFeedback object to store the result in the db
+
             sfb = SignFeedback(
                 isAuslan=clean['isAuslan'],
                 whereused=clean['whereused'],
@@ -243,6 +244,7 @@ def recordsignfeedback(request, trans, n, total):
                 comment=clean['comment'],
                 user=request.user,
                 translation_id=request.POST["translation_id"]
+
             )
             sfb.save()
             valid = True
