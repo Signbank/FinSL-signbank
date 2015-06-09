@@ -172,6 +172,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
                 (newname, bak) = os.path.splitext(self.videofile.name)
                 if bak != '.bak':
                     # hmm, something bad happened
+                    # TODO: add http500 error handler
                     raise Http500()
                 self.version -= 1
         else:
