@@ -258,7 +258,7 @@ LOGIN_REDIRECT_URL = 'signs/search'
 
 
 # location of ffmpeg, used to convert uploaded videos
-FFMPEG_PROGRAM = "/Applications/ffmpegX.app/Contents/Resources/ffmpeg"
+FFMPEG_PROGRAM = "/home/heilniem/ffmpeg-2.6.3-64bit-static/ffmpeg"
 FFMPEG_TIMEOUT = 60
 FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
