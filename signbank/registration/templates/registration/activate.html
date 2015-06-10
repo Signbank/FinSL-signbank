@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {# Parameters #}
 {# username (string) #}
 {#   Either "" indicating that the user is not logged in, or the user name in <first name> <last name> form. #}
@@ -18,10 +20,12 @@
 
 {% block content %}
 
-  <p>Activation was successful. You may now <a href="/accounts/login?next=/">login</a>
-  using your email address and password.</p>
-  
-<p>Your Email Address:   {{ account.email }} </p>
+{# Translators: Registration activate #}
+<p>{% blocktrans %}Activation was successful. You may now <a href="/accounts/login?next=/">login</a>
+using your email address and password.{% endblocktrans %}</p>
+
+{# Translators: Registration activate #}
+<p>{% blocktrans %}Your Email Address:{% endblocktrans %}   {{ account.email }} </p>
 
 {% endblock %}							
 

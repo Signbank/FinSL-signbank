@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {# Parameters #}
 {# username (string) #}
 {#   Either "" indicating that the user is not logged in, or the user name in <first name> <last name> form. #}
@@ -17,7 +19,8 @@
 {% extends "baselayout.html" %}
 
 {% block content %}
-    <p>LOGOUT SCRIPT!</p>
+    {# Translators: This probably doesn't need to be transladed, added just in case needed later #}
+    <p>{% blocktrans %}LOGOUT SCRIPT!{% blocktrans %}</p>
 {% endblock %}							
 
 

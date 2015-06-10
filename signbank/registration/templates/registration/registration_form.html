@@ -1,6 +1,6 @@
-
 {% extends "baselayout.html" %}
 {% load bootstrap3 %}
+{% load i18n %}
 
 {% block content %}
 <form class='form-horizontal' method="post" action="">
@@ -12,7 +12,8 @@
         
         {% buttons %}
         <button type="submit" class="btn btn-primary">
-            {% bootstrap_icon "star" %} Submit
+            {# Translators: Submit button text (bootstrap) #}
+            {% bootstrap_icon "star" %} {% blocktrans %}Submit{% endblocktrans %}
         </button>
         {% endbuttons %}
     </div>

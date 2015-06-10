@@ -1,12 +1,13 @@
-
 {% extends "baselayout.html" %}
+{% load i18n %}
 
 {% block content %}
 
-   <p>Thank you for your registration details. An email has 
+    {# Translators: Registration completion text #}
+   <p>{% blocktrans %}Thank you for your registration details. An email has
    been sent to your nominated address. Please check your
    email for details of how to complete the registration
-   process.</p>
+   process.{% endblocktrans %}</p>
    
 {% endblock %}							
 
