@@ -30,7 +30,8 @@ class Translation(models.Model):
     index = models.IntegerField("Index")
 
     def __unicode__(self):
-        return unicode(self.gloss).encode('ascii', 'ignore') + "-" + unicode(self.translation).encode('ascii', 'ignore')
+        return unicode(self.gloss).encode('ascii', 'replace') + "-" + unicode(self.translation.text).encode('ascii', 'replace')
+        # return unicode(self.gloss).encode('ascii', 'ignore') + "-" + unicode(self.translation).encode('ascii', 'ignore')
         # return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
 
     def get_absolute_url(self):
@@ -41,6 +42,8 @@ class Translation(models.Model):
         for tr in alltrans:
             if tr == self:
                 return "/dictionary/words/" + str(self.translation) + "-" + str(idx + 1) + ".html"
+                # Tried to fix scandic letters not showing with this, had no effect
+                # return "/dictionary/words/" + unicode(self.translation).encode('ascii', 'replace') + "-" + unicode(idx + 1) + ".html"
             idx += 1
         return "/dictionary/"
 
@@ -716,10 +719,9 @@ class FieldChoice(models.Model):
 
 
 # This method builds a list of choices from the database
+# TODO: Change this implementation to somewhere else
 def build_choice_list(field):
     choice_list = [('0', '-'), ('1', 'N/A')]
-
-    # TODO: Is this try a good enough solution for first syncdb/migrate problem where migrate tries to access db before it is created due to this method trying to access it
 
     # Try to look for fields in FieldName and choose choices from there
     try:
@@ -1195,7 +1197,7 @@ minor or insignificant ways that can be ignored.""")
             reformatted_li = [('_' + str(value), text)
                               for value, text in sorted_li]
             choice_lists[fieldname] = OrderedDict(reformatted_li)
-        # TODO: This needs fixing, it used the build_choice_list method. Cannot know the choice values.
+
         # Choice lists for other models
         choice_lists['morphology_role'] = [human_value for machine_value, human_value in
                                            build_choice_list('MorphologyType')]
