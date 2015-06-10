@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.utils import timezone
+from django.utils.translation import ugettext as _
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
@@ -240,35 +241,34 @@ def t(message):
     tpl = string.Template(message)
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
-
-backgroundChoices = ((0, 'deaf community'),
-                     (1, t('$language teacher')),
-                     (2, 'teacher of the deaf'),
-                     (3, 'parent of a deaf child'),
-                     (4, 'sign language interpreter'),
-                     (5, 'school or university student'),
-                     (6, t('student learning $language')),
-                     (7, 'other'),
+backgroundChoices = ((0, _('deaf community')),
+                     (1, t(_('$language teacher'))),
+                     (2, _('teacher of the deaf')),
+                     (3, _('parent of a deaf child')),
+                     (4, _('sign language interpreter')),
+                     (5, _('school or university student')),
+                     (6, t(_('student learning $language'))),
+                     (7, _('other')),
                      )
 
-learnedChoices = ((0, 'Not Applicable'),
-                  (1, 'At home from my parent(s)'),
-                  (2, 'At kindergarten or at the beginning of primary school'),
-                  (3, 'At primary school'),
-                  (4, 'At high school'),
-                  (5, 'After I left school'),
+learnedChoices = ((0, _('Not Applicable')),
+                  (1, _('At home from my parent(s)')),
+                  (2, _('At kindergarten or at the beginning of primary school')),
+                  (3, _('At primary school')),
+                  (4, _('At high school')),
+                  (5, _('After I left school')),
                   )
 
-schoolChoices = ((0, 'a deaf school (boarder)'),
-                 (1, 'a deaf school (day student)'),
-                 (2, 'a deaf classroom or unit in a hearing school'),
-                 (3, 'a regular classroom in a hearing school'),
+schoolChoices = ((0, _('a deaf school (boarder)')),
+                 (1, _('a deaf school (day student)')),
+                 (2, _('a deaf classroom or unit in a hearing school')),
+                 (3, _('a regular classroom in a hearing school')),
                  )
 
-teachercommChoices = ((0, 'mostly oral'),
-                      (1, 'mostly Signed English'),
-                      (2, t('mostly sign language ($language)')),
-                      (3, 'mostly fingerspelling')
+teachercommChoices = ((0, _('mostly oral')),
+                      (1, _('mostly Signed English')),
+                      (2, t(_('mostly sign language ($language)'))),
+                      (3, _('mostly fingerspelling'))
                       )
 
 
@@ -277,21 +277,21 @@ class UserProfile(models.Model):
     """Extended profile for users of the site"""
 
     user = models.ForeignKey(authmodels.User, unique=True)
-    yob = models.IntegerField("When were you born?")
-    australian = models.BooleanField(t("Do you live in $country?"))
+    yob = models.IntegerField(_("When were you born?"))
+    australian = models.BooleanField(t(_("Do you live in $country?")))
     postcode = models.CharField(
-        t("If you live in $country, what is your postcode?"), max_length=20, blank=True)
+        t(_("If you live in $country, what is your postcode?")), max_length=20, blank=True)
     background = models.CommaSeparatedIntegerField(
-        "What is your background?", max_length=20, choices=backgroundChoices)
-    auslan_user = models.BooleanField(t("Do you use $language?"))
-    learned = models.IntegerField(t("If you use $language, when did you learn sign language?"),
+        _("What is your background?"), max_length=20, choices=backgroundChoices)
+    auslan_user = models.BooleanField(t(_("Do you use $language?")))
+    learned = models.IntegerField(t(_("If you use $language, when did you learn sign language?")),
                                   choices=learnedChoices)
-    deaf = models.BooleanField("Are you a deaf person?")
-    schooltype = models.IntegerField("What sort of school do you (or did you) attend?",
+    deaf = models.BooleanField(_("Are you a deaf person?"))
+    schooltype = models.IntegerField(_("What sort of school do you (or did you) attend?"),
                                      choices=schoolChoices)
     school = models.CharField(
-        "Which school do you (or did you) attend?", max_length=50, blank=True)
-    teachercomm = models.IntegerField("How do (or did) your teachers communicate with you?",
+        _("Which school do you (or did you) attend?"), max_length=50, blank=True)
+    teachercomm = models.IntegerField(_("How do (or did) your teachers communicate with you?"),
                                       choices=teachercommChoices)
 
     class Admin:
