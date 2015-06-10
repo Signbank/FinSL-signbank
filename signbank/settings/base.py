@@ -13,7 +13,6 @@ EMAIL_HOST = ""
 
 ADMINS = (
     ('Henri Nieminen', 'henri.nieminen@gmail.com'),
-    ('Anna Puupponen', 'anna.puupponen@jyu.fi'),
 )
 
 MANAGERS = ADMINS
@@ -21,7 +20,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/heilniem/signbank-master/signbank.db',
+        'NAME': '/home/heilniem/signbank-fi/signbank.db',
     }
 }
 
@@ -36,11 +35,11 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-    '/home/heilniem/signbank-master/locale',
+    '/home/heilniem/signbank-fi/locale',
 )
 
 
-MEDIA_ROOT = '/home/heilniem/signbank-master/media'
+MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
 MEDIA_URL = '/media/'
 MEDIA_MOBILE_URL = MEDIA_URL
 
@@ -212,7 +211,7 @@ SIGN_NAVIGATION = False
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
 
-ADMIN_RESULT_FIELDS = ['annotation_idgloss', 'annotation_idgloss_en',
+ADMIN_RESULT_FIELDS = ['annotation_idgloss_jkl', 'annotation_idgloss_jkl_en','annotation_idgloss_hki', 'annotation_idgloss_hki_en',
                        'handedness', 'domhndsh', 'subhndsh', 'locprim']
 
 
@@ -259,7 +258,7 @@ LOGIN_REDIRECT_URL = 'signs/search'
 
 
 # location of ffmpeg, used to convert uploaded videos
-FFMPEG_PROGRAM = "/Applications/ffmpegX.app/Contents/Resources/ffmpeg"
+FFMPEG_PROGRAM = "/home/heilniem/ffmpeg-2.6.3-64bit-static/ffmpeg"
 FFMPEG_TIMEOUT = 60
 FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 

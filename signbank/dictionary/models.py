@@ -23,18 +23,14 @@ from collections import OrderedDict
 
 
 class Translation(models.Model):
-
     """A Dutch translation of NGT signs"""
 
     gloss = models.ForeignKey("Gloss")
     translation = models.ForeignKey("Keyword")
     index = models.IntegerField("Index")
 
-    # TODO: 1. Check if __unicode__ is better than __str__ implementation
-    # TODO: 2. See if the return works better than the previous (now commented)
     def __unicode__(self):
-        return unicode(self.gloss).encode('ascii','ignore')+"-"+unicode(self.translation).encode('ascii','ignore')
-        #return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
+        return self.gloss.idgloss + '-' + self.translation.text
 
     def get_absolute_url(self):
         """Return a URL for a view of this translation."""
@@ -44,6 +40,7 @@ class Translation(models.Model):
         for tr in alltrans:
             if tr == self:
                 return "/dictionary/words/" + str(self.translation) + "-" + str(idx + 1) + ".html"
+
             idx += 1
         return "/dictionary/"
 
@@ -56,11 +53,10 @@ class Translation(models.Model):
 
 
 class Keyword(models.Model):
-
     """A Dutch keyword that is a possible translation equivalent of a sign"""
 
     def __unicode__(self):
-        return self.text.encode('utf-8')
+        return self.text
 
     text = models.CharField(max_length=100, unique=True)
 
@@ -123,7 +119,6 @@ DEFN_ROLE_CHOICES = (('note', 'Note'),
 
 
 class Definition(models.Model):
-
     """An English text associated with a gloss. It's called a note in the web interface"""
 
     def __unicode__(self):
@@ -145,7 +140,6 @@ class Definition(models.Model):
 
 
 class Language(models.Model):
-
     """A sign language name"""
 
     class Meta:
@@ -159,7 +153,6 @@ class Language(models.Model):
 
 
 class Dialect(models.Model):
-
     """A dialect name - a regional dialect of a given Language"""
 
     class Meta:
@@ -174,7 +167,6 @@ class Dialect(models.Model):
 
 
 class RelationToForeignSign(models.Model):
-
     """Defines a relationship to another sign in another language (often a loan)"""
 
     def __unicode__(self):
@@ -720,13 +712,11 @@ class FieldChoice(models.Model):
     class Meta:
         ordering = ['field', 'machine_value']
 
-# Lets see if this is needed, it is a bad way to check it from the db
 
-
+# This method builds a list of choices from the database
+# TODO: Change this implementation to somewhere else
 def build_choice_list(field):
     choice_list = [('0', '-'), ('1', 'N/A')]
-
-    # TODO: Is this try a good enough solution for first syncdb/migrate problem where migrate tries to access db before it is created due to this method trying to access it
 
     # Try to look for fields in FieldName and choose choices from there
     try:
@@ -735,14 +725,12 @@ def build_choice_list(field):
 
         return choice_list
 
-    # Enter this exception if the db has no data yet
+    # Enter this exception if for example the db has no data yet
     except OperationalError:
         pass
 
 
-
 class Gloss(models.Model):
-
     class Meta:
         verbose_name_plural = "Glosses"
         ordering = ['idgloss']
@@ -798,37 +786,32 @@ database. No two Sign Entry Names can be exactly the same, but a "Sign
 Entry Name" can be (and often is) the same as the Annotation Idgloss.""")
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
-    annotation_idgloss = models.CharField("Annotation ID Gloss: JYU", blank=True, max_length=30, help_text="""
-    This is the Dutch name of a sign used by annotators when glossing the corpus in
-an ELAN annotation file. The Annotation Idgloss may be the same for two or
+    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text="""
+    This is the Jyvaskyla name of a sign used by annotators when glossing the corpus in
+an ELAN annotation file. The Jyvaskyla Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
 have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored.""")
     # the idgloss used in transcription, may be shared between many signs
 
+    # ID gloss for JKL gloss translation to English
+    annotation_idgloss_jkl_en = models.CharField("Gloss: JKL (Eng)", blank=True, max_length=30, help_text="""
+    This is the English name for the corresponding Jyvaskyla Gloss""")
+
     # Changed this Gloss to be for the Helsinki folks
-    annotation_idgloss_en = models.CharField("Annotation ID Gloss: Helsinki", blank=True, max_length=30, help_text="""
-    This is the English name of a sign used by annotators when glossing the corpus in
-an ELAN annotation file. The Annotation Idgloss may be the same for two or
+    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text="""
+    This is the Helsinki name of a sign used by annotators when glossing the corpus in
+an ELAN annotation file. The Helsinki Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
 have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored.""")
 
+    # ID Gloss for HKI gloss translation to English
+    annotation_idgloss_hki_en = models.CharField("Gloss: HKI (Eng)", blank=True, max_length=30, help_text="""
+    This is the English name for the corresponding Jyvaskyla Gloss""")
+
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
-
-    # these language fields are subsumed by the language field above
-    bsltf = models.NullBooleanField("BSL sign", null=True, blank=True)
-    asltf = models.NullBooleanField("ASL sign", null=True, blank=True)
-
-    # TODO: these fields should be reviewed - do we put them in another class too?
-    # American Sign Language gloss
-    aslgloss = models.CharField("ASL gloss", blank=True, max_length=50)
-    asloantf = models.NullBooleanField("ASL loan sign", null=True, blank=True)
-
-    # loans from british sign language
-    bslgloss = models.CharField("BSL gloss", max_length=50, blank=True)
-    bslloantf = models.NullBooleanField("BSL loan sign", null=True, blank=True)
 
     useInstr = models.CharField(
         "Annotation instructions", max_length=50, blank=True)
@@ -840,16 +823,12 @@ minor or insignificant ways that can be ignored.""")
     dialect = models.ManyToManyField(Dialect)
 
     # This field type is a guess.
-    blend = models.CharField("Blend of", max_length=100, null=True, blank=True)
-    blendtf = models.NullBooleanField("Blend", null=True, blank=True)
-
-    # This field type is a guess.
     compound = models.CharField("Compound of", max_length=100, blank=True)
     comptf = models.NullBooleanField("Compound", null=True, blank=True)
 
     # Phonology fields
     handedness = models.CharField("Handedness", blank=True, null=True, choices=build_choice_list("Handedness"),
-                                  max_length=5) #handednessChoices <- use this if you want static
+                                  max_length=5)  # handednessChoices <- use this if you want static
 
     domhndsh = models.CharField("Strong Hand", blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
@@ -893,11 +872,6 @@ minor or insignificant ways that can be ignored.""")
     inittext = models.CharField(max_length="50", blank=True)
 
     morph = models.CharField("Morphemic Analysis", max_length=50, blank=True)
-
-    sedefinetf = models.TextField("Signed English definition available", null=True,
-                                  blank=True)  # TODO: should be boolean
-    segloss = models.CharField(
-        "Signed English gloss", max_length=50, blank=True, null=True)
 
     sense = models.IntegerField("Sense Number", null=True, blank=True,
                                 help_text="If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1")
@@ -1079,7 +1053,7 @@ minor or insignificant ways that can be ignored.""")
         """Return the video object for this gloss or None if no video available"""
 
         video_path = 'glossvideo/' + \
-            self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
+                     self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
 
         if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
             return video_path
@@ -1218,7 +1192,7 @@ minor or insignificant ways that can be ignored.""")
             reformatted_li = [('_' + str(value), text)
                               for value, text in sorted_li]
             choice_lists[fieldname] = OrderedDict(reformatted_li)
-        # TODO: This needs fixing, it used the build_choice_list method. Cannot know the choice values.
+
         # Choice lists for other models
         choice_lists['morphology_role'] = [human_value for machine_value, human_value in
                                            build_choice_list('MorphologyType')]
@@ -1242,7 +1216,6 @@ RELATION_ROLE_CHOICES = (('homonym', 'Homonym'),
 
 
 class Relation(models.Model):
-
     """A relation between two glosses"""
 
     source = models.ForeignKey(Gloss, related_name="relation_sources")
@@ -1260,11 +1233,10 @@ class Relation(models.Model):
 
 
 class MorphologyDefinition(models.Model):
-
     """Tells something about morphology of a gloss"""
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
-    #('MorphologyType'))
+    # ('MorphologyType'))
     role = models.CharField(max_length=5, choices=(('0', '-'), ('1', 'N/A')))
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 

@@ -300,11 +300,15 @@
             {# Translators: Information about a Gloss #}
             <tr><th>{% blocktrans %}ID Gloss:{% endblocktrans %}</th><td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td></tr>
             {# Translators: Information about a Gloss #}
-            <tr><th>{% blocktrans %}Annotation ID Gloss:{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss'>{% value gloss.annotation_idgloss %}</td></tr>
+            <tr><th>{% blocktrans %}Annotation ID Gloss JKL:{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss_jkl'>{% value gloss.annotation_idgloss_jkl %}</td></tr>
             {# Translators: Information about a Gloss #}
-            <tr><th>{% blocktrans %}Annotation ID Gloss: English{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss_en'>{% value gloss.annotation_idgloss_en %}</td></tr>
+            <tr><th>{% blocktrans %}Annotation ID Gloss JKL: English{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss_jkl_en'>{% value gloss.annotation_idgloss_jkl_en %}</td></tr>
             {# Translators: Information about a Gloss #}
-            <tr><th>{% blocktrans %}Translation equivalents in Dutch{% endblocktrans %}</th><td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
+            <tr><th>{% blocktrans %}Annotation ID Gloss HKI:{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss_hki'>{% value gloss.annotation_idgloss_hki %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Annotation ID Gloss HKI: English{% endblocktrans %}</th><td class='edit edit_text'  id='annotation_idgloss_hki_en'>{% value gloss.annotation_idgloss_hki_en %}</td></tr>
+            {# Translators: Information about a Gloss #}
+            <tr><th>{% blocktrans %}Translation equivalents in Finnish{% endblocktrans %}</th><td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
             {# Translators: Information about a Gloss #}
             <tr><th>{% blocktrans %}Annotation Instructions{% endblocktrans %}</th><td class='edit edit_text' id='useInstr'>{% value gloss.useInstr %}</td></tr>
             {# Translators: Information about a Gloss #}

@@ -20,15 +20,21 @@
                          {# Translators: ID Gloss - add gloss form title #}
                          <th><label for='id_idgloss'>{% blocktrans %}Lemma ID Gloss{% endblocktrans %}</label></th>
                          {# Translators: Annotation ID Gloss - add gloss form title #}
-                         <th><label for='id_annotation_idgloss'>{% blocktrans %}Annotation ID Gloss{% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_jkl'>{% blocktrans %}Annotation ID Gloss JKL{% endblocktrans %}</label></th>
                          {# Translators: Annotation ID Gloss (English) - add gloss form title #}
-                         <th><label for='id_annotation_idgloss_en'>{% blocktrans %}Annotation ID Gloss (English){% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Annotation ID Gloss JKL (English){% endblocktrans %}</label></th>
+                         {# Translators: Annotation ID Gloss - add gloss form title #}
+                         <th><label for='id_annotation_idgloss_hki'>{% blocktrans %}Annotation ID Gloss HKI{% endblocktrans %}</label></th>
+                         {# Translators: Annotation ID Gloss - add gloss form title #}
+                         <th><label for='id_annotation_idgloss_hki_en'>{% blocktrans %}Annotation ID Gloss HKI (English){% endblocktrans %}</label></th>
                          <th></th>
                      </tr>
                      <tr>
                          <td>{{add_gloss_form.idgloss}}</td>
-                         <td>{{add_gloss_form.annotation_idgloss}}</td>
-                         <td>{{add_gloss_form.annotation_idgloss_en}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_jkl}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_jkl_en}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_hki}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_hki_en}}</td>
                          {# Translators: Button #}
                          <td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'></td>
                      </tr>

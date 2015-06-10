@@ -76,7 +76,7 @@ class SenseNumberListFilter(SimpleListFilter):
 
 
 class GlossAdmin(VersionAdmin):
-    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss', 'annotation_idgloss_en', 'useInstr', 'morph', 'sense',
+    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'useInstr', 'morph', 'sense',
                                     'sn', 'StemSN', 'comptf', 'compound', 'language', 'dialect', 'rmrks')}, ),
                  ('Publication Status', {'fields': ('inWeb',  'isNew',),
                                          'classes': ('collapse',)}, ),
@@ -98,8 +98,8 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'annotation_idgloss', 'morph', 'sense', 'sn']
-    search_fields = ['^idgloss', '=sn', '^annotation_idgloss']
+    list_display = ['idgloss', 'annotation_idgloss_jkl', 'morph', 'sense', 'sn']
+    search_fields = ['^idgloss', '=sn', '^annotation_idgloss_jkl']
     list_filter = [
         'language', 'dialect', SenseNumberListFilter, 'inWeb', 'domhndsh']
     inlines = [RelationInline, RelationToForeignSignInline,
@@ -107,7 +107,7 @@ class GlossAdmin(VersionAdmin):
 
 
 class RegistrationProfileAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'activation_key_expired', )
+    list_display = ('__unicode__', 'activation_key_expired', )
     search_fields = ('user__username', 'user__first_name', )
 
 

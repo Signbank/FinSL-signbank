@@ -5,6 +5,7 @@ from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, Rel
 from django.conf import settings
 from tagging.models import Tag
 
+# TODO: Check what this is?
 # category choices are tag values that we'll restrict search to
 CATEGORY_CHOICES = (('all', 'All Signs'),
                     ('semantic:health', 'Only Health Related Signs'),
@@ -34,7 +35,7 @@ class GlossCreateForm(forms.ModelForm):
     """Form for creating a new gloss from scratch"""
     class Meta:
         model = Gloss
-        fields = ['idgloss', 'annotation_idgloss', 'annotation_idgloss_en']
+        fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en']
 
 
 class VideoUpdateForm(forms.Form):
@@ -74,8 +75,10 @@ ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 class GlossSearchForm(forms.ModelForm):
 
-    search = forms.CharField(label="Dutch Gloss")
-    englishGloss = forms.CharField(label="English Gloss")
+    search = forms.CharField(label="JKL Gloss")
+    JKLenglishGloss = forms.CharField(label="JKL English Gloss")
+    HKIGloss = forms.CharField(label="HKI Gloss")
+    HKIenglishGloss = forms.CharField(label="HKI English Gloss")
     tags = forms.MultipleChoiceField(
         choices=[(t, t) for t in settings.ALLOWED_TAGS])
     nottags = forms.MultipleChoiceField(
@@ -126,7 +129,7 @@ class GlossSearchForm(forms.ModelForm):
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'annotation_idgloss', 'annotation_idgloss_en', 'morph', 'sense',
+        fields = ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'morph', 'sense',
                   'sn', 'StemSN', 'comptf', 'compound', 'language', 'dialect',
                   'inWeb', 'isNew',
                   'initial_relative_orientation', 'final_relative_orientation',

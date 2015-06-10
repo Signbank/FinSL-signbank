@@ -181,7 +181,7 @@ class Command(BaseCommand):
 
                     print row['annotation idgloss'], row['idgloss']
                     gloss = Gloss()
-                    gloss.annotation_idgloss = row['annotation idgloss']
+                    gloss.annotation_idgloss_jkl = row['annotation idgloss jkl']
                     gloss.bsltf = True
                     gloss.inWeb = False
                     gloss.asltf = row['asltf']
@@ -195,7 +195,7 @@ class Command(BaseCommand):
                     if row['idgloss'] != '':
                         gloss.idgloss = row['idgloss']
                     else:
-                        gloss.idgloss = gloss.annotation_idgloss
+                        gloss.idgloss = gloss.annotation_idgloss_jkl
 
                     if row['domhndsh'] != '':
                         if row['domhndsh'] == '0':

@@ -36,7 +36,7 @@ SIGN_NAVIGATION = False
 
 #ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss']
 
-# Fixes the problem with merge
+# Fixes the problem with merge TODO: Is this needed anymore?
 SOUTH_MIGRATION_MODULES = {
     'tagging': 'tagging.south_migrations',
 }
@@ -87,6 +87,6 @@ XALLOWED_TAGS = ['',
                  'phonology:two handed',
                  ]
 
-DATABASE_NAME = '/home/heilniem/signbank-master/signbank.db'
+DATABASE_NAME = '/home/heilniem/signbank-fi/signbank.db'
 # TODO: Fix where this points at
 WSGI_FILE = '/var/www2/signbank/live/virtualenv/signbank/lib/python2.7/site-packages/signbank/wsgi.py'

@@ -8,15 +8,15 @@ import sys
 import os
 import time
 import shutil
+from django.utils.deconstruct import deconstructible
 
 from convertvideo import extract_frame, convert_video, ffmpeg
 
 from django.core.files.storage import FileSystemStorage
 from signbank.dictionary.models import Gloss
 
-
-class VideoPosterMixin:
-
+# TODO: Check if this is ok to inherit from object, had to fix this to make migration possible
+class VideoPosterMixin(object):
     """Base class for video models that adds a method
     for generating poster images
 
@@ -120,7 +120,7 @@ class GlossVideoStorage(FileSystemStorage):
 
         (targetdir, basename) = os.path.split(name)
 
-        path = os.path.join(str(basename)[:2], str(basename))
+        path = os.path.join(unicode(basename)[:2], unicode(basename))
 
         result = os.path.join(targetdir, path)
 
@@ -172,6 +172,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
                 (newname, bak) = os.path.splitext(self.videofile.name)
                 if bak != '.bak':
                     # hmm, something bad happened
+                    # TODO: add http500 error handler
                     raise Http500()
                 self.version -= 1
         else:

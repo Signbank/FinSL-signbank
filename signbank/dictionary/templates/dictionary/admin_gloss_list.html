@@ -82,12 +82,20 @@ function clearForm(myFormElement) {
             <table class='table' id='searchfields'>
                 <tr>
                     <td><div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss'>{{searchform.search.label}}</label>
+                        <label class='input-group-addon' for='id_annotation_idgloss_jkl'>{{searchform.search.label}}</label>
                         <input name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}'{% endif %}></div>
                     </td>
                     <td><div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_en'>{{searchform.englishGloss.label}}</label>
-                        <input name='englishGloss' class='form-control' {% if searchform.englishGloss.value %}value='{{searchform.englishGloss.value}}'{% endif %}></div>
+                        <label class='input-group-addon' for='id_annotation_idgloss_jkl_en'>{{searchform.JKLenglishGloss.label}}</label>
+                        <input name='JKLenglishGloss' class='form-control' {% if searchform.JKLenglishGloss.value %}value='{{searchform.JKLenglishGloss.value}}'{% endif %}></div>
+                    </td>
+                    <td><div class='input-group'>
+                        <label class='input-group-addon' for='id_annotation_idgloss_hki'>{{searchform.HKIGloss.label}}</label>
+                        <input name='HKIGloss' class='form-control' {% if searchform.HKIGloss.value %}value='{{searchform.HKIGloss.value}}'{% endif %}></div>
+                    </td>
+                    <td><div class='input-group'>
+                        <label class='input-group-addon' for='id_annotation_idgloss_hki_en'>{{searchform.HKIenglishGloss.label}}</label>
+                        <input name='HKIenglishGloss' class='form-control' {% if searchform.HKIenglishGloss.value %}value='{{searchform.HKIenglishGloss.value}}'{% endif %}></div>
                     </td>
                     <td><div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
@@ -347,15 +355,21 @@ function clearForm(myFormElement) {
                          {# Translators: Field label #}
                          <th><label for='id_idgloss'>{% blocktrans %}ID Gloss{% endblocktrans %}</label></th>
                          {# Translators: Field label #}
-                         <th><label for='id_annotation_idgloss'>{% blocktrans %}Annotation ID Gloss{% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_jkl'>{% blocktrans %}Annotation ID Gloss JKL{% endblocktrans %}</label></th>
                          {# Translators: Field label  #}
-                         <th><label for='id_annotation_idgloss_en'>{% blocktrans %}Annotation ID Gloss (English){% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Annotation ID Gloss JKL (English){% endblocktrans %}</label></th>
+                         {# Translators: Field label  #}
+                         <th><label for='id_annotation_idgloss_hki'>{% blocktrans %}Annotation ID Gloss HKI{% endblocktrans %}</label></th>
+                         {# Translators: Field label  #}
+                         <th><label for='id_annotation_idgloss_hki_en'>{% blocktrans %}Annotation ID Gloss HKI (English){% endblocktrans %}</label></th>
                          <th></th>
                      </tr>
                      <tr>
                          <td>{{add_gloss_form.idgloss}}</td>
-                         <td>{{add_gloss_form.annotation_idgloss}}</td>
-                         <td>{{add_gloss_form.annotation_idgloss_en}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_jkl}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_jkl_en}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_hki}}</td>
+                         <td>{{add_gloss_form.annotation_idgloss_hki_en}}</td>
                          {# Translators: Button #}
                          <td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'></td>
                      </tr>

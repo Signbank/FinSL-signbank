@@ -1,6 +1,6 @@
-
 import os
 from models import *
+from signbank.feedback.forms import *
 from django import forms
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import Context, RequestContext, loader
@@ -24,7 +24,6 @@ def index(request):
 
 @login_required
 def interpreterfeedback(request, glossid=None):
-
     if request.method == "POST":
 
         if 'action' in request.POST and 'delete_all' in request.POST['action']:
@@ -41,7 +40,6 @@ def interpreterfeedback(request, glossid=None):
 
             form = InterpreterFeedbackForm(request.POST, request.FILES)
             if form.is_valid():
-
                 fb = form.save(commit=False)
                 fb.user = request.user
                 fb.gloss = gloss
@@ -105,7 +103,6 @@ def generalfeedback(request):
 
 @login_required
 def missingsign(request):
-
     posted = False  # was the feedback posted?
 
     if request.method == "POST":
@@ -157,9 +154,9 @@ def missingsign(request):
                               context_instance=RequestContext(request))
 
 
-#-----------
+# -----------
 # views to show feedback to Trevor et al
-#-----------
+# -----------
 
 @permission_required('feedback.delete_generalfeedback')
 def showfeedback(request):
@@ -179,14 +176,12 @@ def showfeedback(request):
 
 @login_required
 def glossfeedback(request, glossid):
-
     gloss = get_object_or_404(Gloss, idgloss=glossid)
 
     # construct a translation so we can record feedback against it
     # really should have recorded feedback for a gloss, not a sign
     allkwds = gloss.translation_set.all()
     if len(allkwds) == 0:
-
         trans = Translation()
     else:
         trans = allkwds[0]
@@ -231,6 +226,7 @@ def recordsignfeedback(request, trans, n, total):
             # get the clean (normalised) data from the feedback_form
             clean = feedback_form.cleaned_data
             # create a SignFeedback object to store the result in the db
+
             sfb = SignFeedback(
                 isAuslan=clean['isAuslan'],
                 whereused=clean['whereused'],
@@ -241,13 +237,15 @@ def recordsignfeedback(request, trans, n, total):
                 kwnotbelong=clean['kwnotbelong'],
                 comment=clean['comment'],
                 user=request.user,
-                translation_id=request.POST["translation_id"]
+                translation_id=request.POST['translation_id']
+
             )
             sfb.save()
             valid = True
             # redirect to the original page
             if lastmatch:
-                return HttpResponseRedirect(sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=Thank you. Your feedback has been saved.")
+                return HttpResponseRedirect(
+                    sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=Thank you. Your feedback has been saved.")
             else:
                 return HttpResponseRedirect(sourcepage + "?feedbackmessage=Thank you. Your feedback has been saved.")
     else:
@@ -266,9 +264,9 @@ def recordsignfeedback(request, trans, n, total):
                               context_instance=RequestContext(request))
 
 
-#--------------------
+# --------------------
 #  deleting feedback
-#--------------------
+# --------------------
 @permission_required('feedback.delete_generalfeedback')
 def delete(request, kind, id):
     """Mark a feedback item as deleted, kind 'signfeedback', 'generalfeedback' or 'missingsign'"""

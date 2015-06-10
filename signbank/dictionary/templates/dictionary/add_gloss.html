@@ -21,16 +21,24 @@
          {% csrf_token %}
          <table class='table' style='width: 400px;'>
              <tr>
-                 {# Translation: Glossin ID #}
+                 {# Translation: Glosses ID #}
                  <th><label for='id_idgloss'>{% blocktrans %}ID Gloss{% endblocktrans %}</label></th><td>{{add_gloss_form.idgloss}}</td>
              </tr>
              <tr>
-                 {# Translation: Glossin annotation ID #}
-                 <th><label for='id_annotation_idgloss'>{% blocktrans %}Annotation ID Gloss{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss}}</td>
+                 {# Translation: Glosses annotation ID JKL #}
+                 <th><label for='id_annotation_idgloss_jkl'>{% blocktrans %}Annotation ID Gloss JKL{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_jkl}}</td>
              </tr>
              <tr>
-                 {# Translation: Glossing annotation ID in English #}
-                 <th><label for='id_annotation_idgloss_en'>{% blocktrans %}Annotation ID Gloss (English){% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_en}}</td>
+                 {# Translation: Glosses annotation ID JKL in English #}
+                 <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Annotation ID Gloss JKL (English){% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_jkl_en}}</td>
+             </tr>
+             <tr>
+                 {# Translation: Glosses annotation ID HKI #}
+                 <th><label for='id_annotation_idgloss_hki'>{% blocktrans %}Annotation ID Gloss HKI{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_hki}}</td>
+             </tr>
+             <tr>
+                 {# Translation: Glosses annotation ID HKI in English #}
+                 <th><label for='id_annotation_idgloss_hki_en'>{% blocktrans %}Annotation ID Gloss HKI (English){% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_hki_en}}</td>
              </tr>
          </table>
      {# Translation: Add new sign button #}
