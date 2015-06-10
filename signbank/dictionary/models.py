@@ -30,7 +30,10 @@ class Translation(models.Model):
     index = models.IntegerField("Index")
 
     def __unicode__(self):
-        return unicode(self.gloss).encode('ascii', 'replace') + "-" + unicode(self.translation.text).encode('ascii', 'replace')
+        return self.gloss.idgloss + '-' + self.translation.text
+        # Seems that __unicode__ automatically codes these
+        # return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
+        # return unicode(self.gloss.idgloss).encode('ascii', 'replace') + "-" + unicode(self.translation.text).encode('ascii', 'replace')
         # return unicode(self.gloss).encode('ascii', 'ignore') + "-" + unicode(self.translation).encode('ascii', 'ignore')
         # return self.gloss.idgloss.encode('utf-8') + '-' + self.translation.text.encode('utf-8')
 
@@ -42,8 +45,7 @@ class Translation(models.Model):
         for tr in alltrans:
             if tr == self:
                 return "/dictionary/words/" + str(self.translation) + "-" + str(idx + 1) + ".html"
-                # Tried to fix scandic letters not showing with this, had no effect
-                # return "/dictionary/words/" + unicode(self.translation).encode('ascii', 'replace') + "-" + unicode(idx + 1) + ".html"
+
             idx += 1
         return "/dictionary/"
 
@@ -61,7 +63,8 @@ class Keyword(models.Model):
     def __unicode__(self):
         # return self.text.encode('utf-8')
         # Fixed this to work with __unicode__ instead of __str__
-        return unicode(self.text).encode('ascii', 'ignore')
+        # return unicode(self.text).encode('ascii', 'replace')
+        return self.text
 
     text = models.CharField(max_length=100, unique=True)
 
