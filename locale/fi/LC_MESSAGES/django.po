@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-10 14:10+0300\n"
+"POT-Creation-Date: 2015-06-10 16:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2625,7 +2625,7 @@ msgstr ""
 msgid "Advanced options"
 msgstr ""
 
-#: signbank/pages/models.py:10 signbank/pages/models.py:37
+#: signbank/pages/models.py:10 signbank/pages/models.py:38
 msgid "title"
 msgstr ""
 
@@ -2665,21 +2665,21 @@ msgstr ""
 msgid "Used to order pages in the menu"
 msgstr ""
 
-#: signbank/pages/models.py:21
+#: signbank/pages/models.py:22
 msgid ""
 "This page will only be visible to members of these groups, leave blank to "
 "allow anyone to access."
 msgstr ""
 
-#: signbank/pages/models.py:24
+#: signbank/pages/models.py:25
 msgid "page"
 msgstr ""
 
-#: signbank/pages/models.py:25
+#: signbank/pages/models.py:26
 msgid "pages"
 msgstr ""
 
-#: signbank/pages/models.py:38
+#: signbank/pages/models.py:39
 msgid "number"
 msgstr ""
 
