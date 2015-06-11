@@ -781,13 +781,13 @@ class Gloss(models.Model):
 
         return result
 
-    idgloss = models.CharField("ID Gloss", max_length=50, help_text=_("""
+    idgloss = models.CharField("ID Gloss", max_length=50, unique=True, help_text=_("""
     This is the unique identifying name of an entry of a sign form in the
 database. No two Sign Entry Names can be exactly the same, but a "Sign
 Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
-    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text=_("""
+    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, unique=True, max_length=30, help_text=_("""
     This is the Jyvaskyla name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Jyvaskyla Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
@@ -800,7 +800,7 @@ minor or insignificant ways that can be ignored."""))
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # Changed this Gloss to be for the Helsinki folks
-    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text=_("""
+    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, unique=True, max_length=30, help_text=_("""
     This is the Helsinki name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Helsinki Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
