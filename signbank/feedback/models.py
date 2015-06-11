@@ -276,7 +276,7 @@ class InterpreterFeedback(models.Model):
     class Meta:
         ordering = ['-date']
         permissions = (
-            ('view_interpreterfeedback', "Can View Interpreter Feedback"),)
+            ('view_interpreterfeedback', _("Can View Interpreter Feedback")),)
 
     gloss = models.ForeignKey(Gloss)
     comment = models.TextField('Note')
