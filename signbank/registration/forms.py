@@ -195,7 +195,7 @@ class BirthYearField(forms.Field):
         # or that this person isn't over 110
         if year < thisyear - 110:
             raise forms.ValidationError(
-                _("If you were born in %s you are now %s years old! Please enter your real birth year.") % (year, thisyear - year))
+                _("If you were born in") + " %s " + _("you are now") + " %s " + ("years old! Please enter your real birth year.") % (year, thisyear - year))
         return year
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-11 11:13+0300\n"
+"POT-Creation-Date: 2015-06-11 11:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2763,10 +2763,6 @@ msgid ""
 "provide the list of keywords below"
 msgstr ""
 
-#: signbank/feedback/models.py:319
-msgid "Is this sign an $language Sign?"
-msgstr ""
-
 #. Translators: Feedback question
 #: signbank/feedback/models.py:322
 #: signbank/feedback/templates/feedback/signfeedback.html:44
@@ -2810,6 +2806,7 @@ msgstr ""
 #: signbank/feedback/templates/feedback/index.html:30
 #: signbank/feedback/templates/feedback/interpreter.html:25
 #: signbank/feedback/templates/feedback/show.html:48
+#: signbank/feedback/views.py:98
 msgid "General Feedback"
 msgstr ""
 
@@ -2906,6 +2903,7 @@ msgstr ""
 
 #. Translators: Feedback
 #: signbank/feedback/templates/feedback/index.html:38
+#: signbank/feedback/views.py:151
 msgid "Report a Missing Sign"
 msgstr ""
 
@@ -3232,6 +3230,14 @@ msgid ""
 " misleading."
 msgstr ""
 
+#: signbank/feedback/views.py:22
+msgid "Leave Feedback"
+msgstr ""
+
+#: signbank/feedback/views.py:249 signbank/feedback/views.py:251
+msgid "Thank you. Your feedback has been saved."
+msgstr ""
+
 #: signbank/pages/admin.py:15
 msgid ""
 "Example: '/about/contact/'. Make sure to have leading and trailing slashes."
@@ -3375,6 +3381,49 @@ msgstr ""
 msgid "Number<br>Signs"
 msgstr ""
 
+#: signbank/pages/views.py:39
+msgid "No pages defined. Login to <a href=\"/admin\"> to create some."
+msgstr ""
+
+#: signbank/video/fields.py:124
+msgid "Converted to mp4: "
+msgstr ""
+
+#: signbank/video/fields.py:135
+msgid "Video conversion failed"
+msgstr ""
+
+#: signbank/video/fields.py:166
+msgid "Killing ffmpeg process"
+msgstr ""
+
+#: signbank/video/fields.py:167
+msgid ""
+"Conversion of video took too long.  This site is only able to host "
+"relatively short videos."
+msgstr ""
+
+#: signbank/video/fields.py:178
+msgid "Conversion of video failed: please try to use a diffent format"
+msgstr ""
+
+#: signbank/video/fields.py:180
+msgid "Conversion of video failed: please try to use a different video format"
+msgstr ""
+
+#. Translators: Text preceding error message
+#: signbank/video/fields.py:185 signbank/video/templates/addvideo.html:31
+msgid "Error:"
+msgstr ""
+
+#: signbank/video/fields.py:185
+msgid "Command:"
+msgstr ""
+
+#: signbank/video/fields.py:188
+msgid "Video conversion failed on Auslan"
+msgstr ""
+
 #: signbank/video/models.py:102
 msgid "Video file in h264 mp4 format"
 msgstr ""
@@ -3391,11 +3440,6 @@ msgstr ""
 #. Translators: Text preceding file url
 #: signbank/video/templates/addvideo.html:21
 msgid "File:"
-msgstr ""
-
-#. Translators: Text preceding error message
-#: signbank/video/templates/addvideo.html:31
-msgid "Error:"
 msgstr ""
 
 #~ msgid "Australia Wide"

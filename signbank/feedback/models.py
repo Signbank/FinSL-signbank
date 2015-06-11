@@ -316,7 +316,7 @@ class SignFeedback(models.Model):
         blank=True)
     # Translators: Question (sign feedback)
     isAuslan = models.IntegerField(
-        t(_("Is this sign an $language Sign?")), choices=isAuslanChoices)
+        _(t("Is this sign an $language Sign?")), choices=isAuslanChoices)
     # Translators: Question (sign feedback)
     whereused = models.CharField(
         _("Where is this sign used?"), max_length=10, choices=whereusedChoices)

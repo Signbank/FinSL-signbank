@@ -242,12 +242,12 @@ def t(message):
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
 backgroundChoices = ((0, _('deaf community')),
-                     (1, t(_('$language teacher'))),
+                     (1, _(t('$language teacher'))),
                      (2, _('teacher of the deaf')),
                      (3, _('parent of a deaf child')),
                      (4, _('sign language interpreter')),
                      (5, _('school or university student')),
-                     (6, t(_('student learning $language'))),
+                     (6, _(t('student learning $language'))),
                      (7, _('other')),
                      )
 
@@ -267,7 +267,7 @@ schoolChoices = ((0, _('a deaf school (boarder)')),
 
 teachercommChoices = ((0, _('mostly oral')),
                       (1, _('mostly Signed English')),
-                      (2, t(_('mostly sign language ($language)'))),
+                      (2, _(t('mostly sign language ($language)'))),
                       (3, _('mostly fingerspelling'))
                       )
 
@@ -278,13 +278,13 @@ class UserProfile(models.Model):
 
     user = models.ForeignKey(authmodels.User, unique=True)
     yob = models.IntegerField(_("When were you born?"))
-    australian = models.BooleanField(t(_("Do you live in $country?")))
+    australian = models.BooleanField(_(t("Do you live in $country?")))
     postcode = models.CharField(
-        t(_("If you live in $country, what is your postcode?")), max_length=20, blank=True)
+        _(t("If you live in $country, what is your postcode?")), max_length=20, blank=True)
     background = models.CommaSeparatedIntegerField(
         _("What is your background?"), max_length=20, choices=backgroundChoices)
-    auslan_user = models.BooleanField(t(_("Do you use $language?")))
-    learned = models.IntegerField(t(_("If you use $language, when did you learn sign language?")),
+    auslan_user = models.BooleanField(_(t("Do you use $language?")))
+    learned = models.IntegerField(_(t("If you use $language, when did you learn sign language?")),
                                   choices=learnedChoices)
     deaf = models.BooleanField(_("Are you a deaf person?"))
     schooltype = models.IntegerField(_("What sort of school do you (or did you) attend?"),

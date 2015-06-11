@@ -121,7 +121,7 @@ class VideoUploadToFLVField(forms.FileField):
         # the flv file, not the original but I can't
         # create one of those from an existing file
         # so I use my own wrapper class
-        debug(_("Converted to mp4:) " + mp4file)
+        debug(_("Converted to mp4: ") + mp4file)
 
         # os.unlink(tmpname)
         return UploadedFLVFile(mp4file)
