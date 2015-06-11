@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext_lazy as _
 
 import time
 
@@ -18,7 +19,7 @@ def index(request):
                               {
                                   'language': settings.LANGUAGE_NAME,
                                   'country': settings.COUNTRY_NAME,
-                                  'title': "Leave Feedback"},
+                                  'title': _("Leave Feedback")},
                               context_instance=RequestContext(request))
 
 
@@ -94,7 +95,7 @@ def generalfeedback(request):
                               {
                                   'language': settings.LANGUAGE_NAME,
                                   'country': settings.COUNTRY_NAME,
-                                  'title': "General Feedback",
+                                  'title': _("General Feedback"),
                                   'form': form,
                                   'valid': valid},
                               context_instance=RequestContext(request)
@@ -147,7 +148,7 @@ def missingsign(request):
                               {
                                   'language': settings.LANGUAGE_NAME,
                                   'country': settings.COUNTRY_NAME,
-                                  'title': "Report a Missing Sign",
+                                  'title': _("Report a Missing Sign"),
                                   'posted': posted,
                                   'form': form
                               },
@@ -245,9 +246,9 @@ def recordsignfeedback(request, trans, n, total):
             # redirect to the original page
             if lastmatch:
                 return HttpResponseRedirect(
-                    sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=Thank you. Your feedback has been saved.")
+                    sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=" + _("Thank you. Your feedback has been saved."))
             else:
-                return HttpResponseRedirect(sourcepage + "?feedbackmessage=Thank you. Your feedback has been saved.")
+                return HttpResponseRedirect(sourcepage + "?feedbackmessage=" + _("Thank you. Your feedback has been saved."))
     else:
         feedback_form = SignFeedbackForm()
 

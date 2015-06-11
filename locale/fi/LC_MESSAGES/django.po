@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-11 09:29+0300\n"
+"POT-Creation-Date: 2015-06-11 11:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,6 +291,7 @@ msgstr ""
 
 #. Translators: Search link | mobile
 #: bootstrap_templates/mobile/baselayout.html:80
+#: signbank/dictionary/forms.py:22
 msgid "Search"
 msgstr ""
 
@@ -846,6 +847,557 @@ msgstr ""
 msgid "More than one"
 msgstr ""
 
+#: signbank/dictionary/forms.py:11
+msgid "All Signs"
+msgstr ""
+
+#: signbank/dictionary/forms.py:12
+msgid "Only Health Related Signs"
+msgstr ""
+
+#: signbank/dictionary/forms.py:13
+msgid "Only Education Related Signs"
+msgstr ""
+
+#: signbank/dictionary/forms.py:18
+msgid "Glosses containing"
+msgstr ""
+
+#: signbank/dictionary/forms.py:20
+msgid "Translations containing"
+msgstr ""
+
+#: signbank/dictionary/forms.py:56
+msgid "Unspecified"
+msgstr ""
+
+#: signbank/dictionary/forms.py:56 signbank/dictionary/forms.py:106
+msgid "Yes"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/forms.py:56 signbank/dictionary/forms.py:106
+#: signbank/feedback/models.py:19 signbank/feedback/models.py:62
+#: signbank/feedback/models.py:73 signbank/feedback/models.py:86
+#: signbank/feedback/models.py:99
+msgid "No"
+msgstr ""
+
+#: signbank/dictionary/forms.py:58
+msgid "Unknown"
+msgstr ""
+
+#: signbank/dictionary/forms.py:58
+msgid "True"
+msgstr ""
+
+#: signbank/dictionary/forms.py:58
+msgid "False"
+msgstr ""
+
+#: signbank/dictionary/forms.py:61 signbank/dictionary/forms.py:71
+msgid "All"
+msgstr ""
+
+#: signbank/dictionary/forms.py:62 signbank/dictionary/models.py:1209
+msgid "Homonym"
+msgstr ""
+
+#: signbank/dictionary/forms.py:63 signbank/dictionary/models.py:1210
+msgid "Synonym"
+msgstr ""
+
+#: signbank/dictionary/forms.py:64 signbank/dictionary/models.py:1211
+msgid "Variant"
+msgstr ""
+
+#: signbank/dictionary/forms.py:65 signbank/dictionary/models.py:1212
+msgid "Antonym"
+msgstr ""
+
+#: signbank/dictionary/forms.py:66 signbank/dictionary/models.py:1213
+msgid "Hyponym"
+msgstr ""
+
+#: signbank/dictionary/forms.py:67 signbank/dictionary/models.py:1214
+msgid "Hypernym"
+msgstr ""
+
+#: signbank/dictionary/forms.py:68 signbank/dictionary/models.py:1215
+msgid "See Also"
+msgstr ""
+
+#: signbank/dictionary/forms.py:79
+msgid "JKL Gloss"
+msgstr ""
+
+#: signbank/dictionary/forms.py:80
+msgid "JKL English Gloss"
+msgstr ""
+
+#: signbank/dictionary/forms.py:81
+msgid "HKI Gloss"
+msgstr ""
+
+#: signbank/dictionary/forms.py:82
+msgid "HKI English Gloss"
+msgstr ""
+
+#: signbank/dictionary/forms.py:87
+#, fuzzy
+#| msgid "Search translation"
+msgid "Translations"
+msgstr "Etsi käännösvastinetta"
+
+#: signbank/dictionary/forms.py:88
+msgid "Has Video"
+msgstr ""
+
+#: signbank/dictionary/forms.py:90
+msgid "All Definitions Published"
+msgstr ""
+
+#: signbank/dictionary/forms.py:92
+msgid "Search Definition/Notes"
+msgstr ""
+
+#: signbank/dictionary/forms.py:96
+msgid "Search for gloss of related signs"
+msgstr ""
+
+#: signbank/dictionary/forms.py:98
+msgid "Search for gloss of foreign signs"
+msgstr ""
+
+#: signbank/dictionary/forms.py:100
+msgid "Search for gloss with this as morpheme"
+msgstr ""
+
+#: signbank/dictionary/forms.py:103
+msgid "Phonology other"
+msgstr ""
+
+#: signbank/dictionary/forms.py:105
+msgid "Related to foreign sign or not"
+msgstr ""
+
+#: signbank/dictionary/forms.py:108
+msgid "Type of relation"
+msgstr ""
+
+#: signbank/dictionary/forms.py:110
+msgid "Has morpheme type"
+msgstr ""
+
+#: signbank/dictionary/forms.py:114
+msgid "Repeating Movement"
+msgstr ""
+
+#: signbank/dictionary/forms.py:117 signbank/dictionary/models.py:911
+msgid "Alternating Movement"
+msgstr ""
+
+#: signbank/dictionary/forms.py:120
+msgid "Is a proposed new sign"
+msgstr ""
+
+#: signbank/dictionary/forms.py:122
+msgid "Is in Web dictionary"
+msgstr ""
+
+#: signbank/dictionary/forms.py:124
+msgid "Note type"
+msgstr ""
+
+#: signbank/dictionary/forms.py:126
+msgid "Note contains"
+msgstr ""
+
+#: signbank/dictionary/forms.py:161 signbank/dictionary/forms.py:174
+#, fuzzy
+#| msgid "Search gloss"
+msgid "Source Gloss"
+msgstr "Etsi glossia"
+
+#: signbank/dictionary/forms.py:162
+msgid "Target Gloss"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/forms.py:176 signbank/dictionary/models.py:178
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:551
+msgid "Related Language"
+msgstr ""
+
+#: signbank/dictionary/forms.py:177
+msgid "Gloss in Related Language"
+msgstr ""
+
+#: signbank/dictionary/forms.py:187
+msgid "Parent Gloss"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/forms.py:188
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:355
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:680
+msgid "Type"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/forms.py:190
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:357
+msgid "Morpheme"
+msgstr ""
+
+#: signbank/dictionary/models.py:114
+msgid "Note"
+msgstr ""
+
+#: signbank/dictionary/models.py:115
+msgid "Private Note"
+msgstr ""
+
+#. Translators:
+#: signbank/dictionary/models.py:116
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:433
+msgid "Phonology"
+msgstr ""
+
+#: signbank/dictionary/models.py:117
+msgid "To Do"
+msgstr ""
+
+#: signbank/dictionary/models.py:118
+msgid "Suggestion for other gloss"
+msgstr ""
+
+#: signbank/dictionary/models.py:177
+msgid "Loan Sign"
+msgstr ""
+
+#. Translators: Equivalent Gloss in related language
+#. Translators:
+#: signbank/dictionary/models.py:180
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:553
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:606
+msgid "Gloss in related language"
+msgstr ""
+
+#: signbank/dictionary/models.py:738
+msgid "Can Update Video"
+msgstr ""
+
+#: signbank/dictionary/models.py:739
+msgid "Can Search/View Full Gloss Details"
+msgstr ""
+
+#: signbank/dictionary/models.py:740
+msgid "Can export sign details as CSV"
+msgstr ""
+
+#: signbank/dictionary/models.py:741
+msgid "Can publish signs and definitions"
+msgstr ""
+
+#: signbank/dictionary/models.py:743
+msgid "Can delete unpub signs or defs"
+msgstr ""
+
+#: signbank/dictionary/models.py:745
+msgid "Can delete pub signs and defs"
+msgstr ""
+
+#: signbank/dictionary/models.py:747
+msgid "Include all properties in sign detail view"
+msgstr ""
+
+#: signbank/dictionary/models.py:784
+msgid ""
+"\n"
+"    This is the unique identifying name of an entry of a sign form in the\n"
+"database. No two Sign Entry Names can be exactly the same, but a \"Sign\n"
+"Entry Name\" can be (and often is) the same as the Annotation Idgloss."
+msgstr ""
+
+#: signbank/dictionary/models.py:790
+msgid ""
+"\n"
+"    This is the Jyvaskyla name of a sign used by annotators when glossing "
+"the corpus in\n"
+"an ELAN annotation file. The Jyvaskyla Annotation Idgloss may be the same "
+"for two or\n"
+"more entries (each with their own 'Sign Entry Name'). If two sign entries\n"
+"have the same 'Annotation Idgloss' that means they differ in form in only\n"
+"minor or insignificant ways that can be ignored."
+msgstr ""
+
+#: signbank/dictionary/models.py:799 signbank/dictionary/models.py:811
+msgid ""
+"\n"
+"    This is the English name for the corresponding Jyvaskyla Gloss"
+msgstr ""
+
+#: signbank/dictionary/models.py:803
+msgid ""
+"\n"
+"    This is the Helsinki name of a sign used by annotators when glossing the "
+"corpus in\n"
+"an ELAN annotation file. The Helsinki Annotation Idgloss may be the same for "
+"two or\n"
+"more entries (each with their own 'Sign Entry Name'). If two sign entries\n"
+"have the same 'Annotation Idgloss' that means they differ in form in only\n"
+"minor or insignificant ways that can be ignored."
+msgstr ""
+
+#: signbank/dictionary/models.py:818
+msgid "Annotation instructions"
+msgstr ""
+
+#: signbank/dictionary/models.py:819
+msgid "Remarks"
+msgstr ""
+
+#: signbank/dictionary/models.py:827
+msgid "Compound of"
+msgstr ""
+
+#: signbank/dictionary/models.py:828
+msgid "Compound"
+msgstr ""
+
+#: signbank/dictionary/models.py:831
+msgid "Handedness"
+msgstr ""
+
+#: signbank/dictionary/models.py:834
+msgid "Strong Hand"
+msgstr ""
+
+#: signbank/dictionary/models.py:836
+msgid "Weak Hand"
+msgstr ""
+
+#: signbank/dictionary/models.py:839
+msgid "Final Dominant Handshape"
+msgstr ""
+
+#: signbank/dictionary/models.py:841
+msgid "Final Subordinate Handshape"
+msgstr ""
+
+#. Translators:
+#. Translators: Gloss information
+#: signbank/dictionary/models.py:845
+#: signbank/feedback/templates/feedback/interpreter.html:148
+#: signbank/feedback/templates/feedback/show.html:174
+msgid "Location"
+msgstr ""
+
+#: signbank/dictionary/models.py:846
+msgid "Final Primary Location"
+msgstr ""
+
+#: signbank/dictionary/models.py:849
+msgid "Virtual Object"
+msgstr ""
+
+#: signbank/dictionary/models.py:852
+msgid "Secondary Location"
+msgstr ""
+
+#: signbank/dictionary/models.py:854
+msgid "Initial Subordinate Location"
+msgstr ""
+
+#: signbank/dictionary/models.py:856
+msgid "Final Subordinate Location"
+msgstr ""
+
+#: signbank/dictionary/models.py:859
+msgid "Initial Palm Orientation"
+msgstr ""
+
+#: signbank/dictionary/models.py:861
+msgid "Final Palm Orientation"
+msgstr ""
+
+#: signbank/dictionary/models.py:864
+msgid "Initial Interacting Dominant Hand Part"
+msgstr ""
+
+#: signbank/dictionary/models.py:866
+msgid "Final Interacting Dominant Hand Part"
+msgstr ""
+
+#: signbank/dictionary/models.py:869
+#, fuzzy
+#| msgid "Search translation"
+msgid "In the Web dictionary"
+msgstr "Etsi käännösvastinetta"
+
+#: signbank/dictionary/models.py:871
+msgid "Is this a proposed new sign?"
+msgstr ""
+
+#: signbank/dictionary/models.py:875
+msgid "Morphemic Analysis"
+msgstr ""
+
+#: signbank/dictionary/models.py:877
+msgid "Sense Number"
+msgstr ""
+
+#: signbank/dictionary/models.py:878
+msgid ""
+"If there is more than one sense of a sign enter a number here, all signs "
+"with sense>1 will use the same video as sense=1"
+msgstr ""
+
+#: signbank/dictionary/models.py:881
+#, fuzzy
+#| msgid "Sign Search"
+msgid "Sign Number"
+msgstr "Etsi viittoma"
+
+#: signbank/dictionary/models.py:882
+msgid ""
+"Sign Number must be a unique integer and defines the ordering of signs in "
+"the dictionary"
+msgstr ""
+
+#: signbank/dictionary/models.py:890
+msgid "Relation between Articulators"
+msgstr ""
+
+#: signbank/dictionary/models.py:893
+msgid "Absolute Orientation: Palm"
+msgstr ""
+
+#: signbank/dictionary/models.py:895
+msgid "Absolute Orientation: Fingers"
+msgstr ""
+
+#: signbank/dictionary/models.py:898
+msgid "Relative Orientation: Movement"
+msgstr ""
+
+#: signbank/dictionary/models.py:900
+msgid "Relative Orientation: Location"
+msgstr ""
+
+#: signbank/dictionary/models.py:902
+msgid "Orientation Change"
+msgstr ""
+
+#: signbank/dictionary/models.py:905
+msgid "Handshape Change"
+msgstr ""
+
+#: signbank/dictionary/models.py:909
+msgid "Repeated Movement"
+msgstr ""
+
+#: signbank/dictionary/models.py:913
+msgid "Movement Shape"
+msgstr ""
+
+#: signbank/dictionary/models.py:915
+msgid "Movement Direction"
+msgstr ""
+
+#: signbank/dictionary/models.py:917
+msgid "Movement Manner"
+msgstr ""
+
+#: signbank/dictionary/models.py:919
+msgid "Contact Type"
+msgstr ""
+
+#: signbank/dictionary/models.py:922
+msgid "Phonology Other"
+msgstr ""
+
+#: signbank/dictionary/models.py:924
+msgid "Mouth Gesture"
+msgstr ""
+
+#: signbank/dictionary/models.py:925
+msgid "Mouthing"
+msgstr ""
+
+#: signbank/dictionary/models.py:927
+msgid "Phonetic Variation"
+msgstr ""
+
+#: signbank/dictionary/models.py:931
+msgid "Iconic Image"
+msgstr ""
+
+#: signbank/dictionary/models.py:932
+msgid "Named Entity"
+msgstr ""
+
+#: signbank/dictionary/models.py:934
+msgid "Semantic Field"
+msgstr ""
+
+#: signbank/dictionary/models.py:940
+msgid "Total Number of Occurrences"
+msgstr ""
+
+#: signbank/dictionary/models.py:942
+msgid "Total Number of Signers Using this Sign"
+msgstr ""
+
+#: signbank/dictionary/models.py:944
+msgid "Number of Occurrences in Amsterdam"
+msgstr ""
+
+#: signbank/dictionary/models.py:946
+msgid "Number of Occurrences in Voorburg"
+msgstr ""
+
+#: signbank/dictionary/models.py:948
+msgid "Number of Occurrences in Rotterdam"
+msgstr ""
+
+#: signbank/dictionary/models.py:950
+msgid "Number of Occurrences in Gestel"
+msgstr ""
+
+#: signbank/dictionary/models.py:952
+msgid "Number of Occurrences in Groningen"
+msgstr ""
+
+#: signbank/dictionary/models.py:954
+msgid "Number of Occurrences in Other Regions"
+msgstr ""
+
+#: signbank/dictionary/models.py:957
+msgid "Number of Amsterdam Signers"
+msgstr ""
+
+#: signbank/dictionary/models.py:959
+msgid "Number of Voorburg Signers"
+msgstr ""
+
+#: signbank/dictionary/models.py:961
+msgid "Number of Rotterdam Signers"
+msgstr ""
+
+#: signbank/dictionary/models.py:963
+msgid "Number of Gestel Signers"
+msgstr ""
+
+#: signbank/dictionary/models.py:965
+msgid "Number of Groningen Signers"
+msgstr ""
+
+#: signbank/dictionary/models.py:967
+msgid "Number of Other Region Signers"
+msgstr ""
+
 #: signbank/dictionary/templates/dictionary/add_gloss.html:18
 msgid "Please provide some initial data"
 msgstr ""
@@ -1128,17 +1680,6 @@ msgstr ""
 msgid "Morphology"
 msgstr ""
 
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:355
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:680
-msgid "Type"
-msgstr ""
-
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:357
-msgid "Morpheme"
-msgstr ""
-
 #. Translators: Header2
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:372
 msgid "Delete This Morphology"
@@ -1160,11 +1701,6 @@ msgstr ""
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:414
 msgid "Add Morphology Definition"
-msgstr ""
-
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:433
-msgid "Phonology"
 msgstr ""
 
 #. Translators:
@@ -1204,18 +1740,6 @@ msgstr ""
 #. Translators: Loan from another language(?)
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:549
 msgid "Loan"
-msgstr ""
-
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:551
-msgid "Related Language"
-msgstr ""
-
-#. Translators: Equivalent Gloss in related language
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:553
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:606
-msgid "Gloss in related language"
 msgstr ""
 
 #. Translators:
@@ -1669,13 +2193,6 @@ msgstr ""
 #. Translators:
 #: signbank/feedback/models.py:17
 msgid "Don't think so"
-msgstr ""
-
-#. Translators:
-#: signbank/feedback/models.py:19 signbank/feedback/models.py:62
-#: signbank/feedback/models.py:73 signbank/feedback/models.py:86
-#: signbank/feedback/models.py:99
-msgid "No"
 msgstr ""
 
 #. Translators:
@@ -2517,13 +3034,6 @@ msgstr ""
 #: signbank/feedback/templates/feedback/interpreter.html:146
 #: signbank/feedback/templates/feedback/show.html:172
 msgid "Alternate Handshape"
-msgstr ""
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:148
-#: signbank/feedback/templates/feedback/show.html:174
-msgid "Location"
 msgstr ""
 
 #. Translators:
