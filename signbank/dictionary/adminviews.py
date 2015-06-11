@@ -75,7 +75,7 @@ class GlossListView(ListView):
         writer.writerow(header)
 
         for gloss in self.get_queryset():
-            row = [str(gloss.pk)]
+            row = [unicode(gloss.pk)]
             for f in fields:
 
                 # Try the value of the choicelist
@@ -87,9 +87,9 @@ class GlossListView(ListView):
                     value = getattr(gloss, f.name)
 
                     if isinstance(value, unicode):
-                        value = str(value.encode('ascii', 'xmlcharrefreplace'))
+                        value = unicode(value)
                     elif not isinstance(value, str):
-                        value = str(value)
+                        value = unicode(value)
 
                     row.append(value)
 
