@@ -1,5 +1,5 @@
 from django.contrib.auth import models as authmodels
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from signbank.dictionary.models import *
 import string

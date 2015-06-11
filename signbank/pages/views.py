@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.conf import settings
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext as _
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
@@ -35,7 +36,7 @@ def page(request, url='/'):
         if url == '/':
 
             f = Page(title='No Pages',
-                     content='<p>No pages defined. Login to <a href="/admin"> to create some.</p>')
+                     content='<p>' + _('No pages defined. Login to <a href="/admin"> to create some.') + '</p>')
         else:
             t = loader.get_template("404.html")
             return HttpResponseNotFound(t.render(RequestContext(request)))

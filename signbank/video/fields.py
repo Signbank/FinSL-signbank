@@ -17,6 +17,7 @@ from django.core.mail import mail_admins, EmailMessage
 from signbank.video.convertvideo import convert_video
 
 from logging import debug
+from django.utils.translation import ugettext_lazy as _
 
 
 class UploadedFLVFile(UploadedFile):
@@ -120,7 +121,7 @@ class VideoUploadToFLVField(forms.FileField):
         # the flv file, not the original but I can't
         # create one of those from an existing file
         # so I use my own wrapper class
-        debug("Converted to mp4: " + mp4file)
+        debug(_("Converted to mp4:) " + mp4file)
 
         # os.unlink(tmpname)
         return UploadedFLVFile(mp4file)
@@ -131,7 +132,7 @@ class VideoUploadToFLVField(forms.FileField):
         if convert_video(sourcefile, targetfile):
             return True
         else:
-            errormsg = "Video conversion failed"
+            errormsg = _("Video conversion failed")
             raise ValidationError(errormsg)
 
     def xconvert(self, sourcefile, targetfile):
@@ -162,8 +163,8 @@ class VideoUploadToFLVField(forms.FileField):
             if time.time() - start > settings.FFMPEG_TIMEOUT:
                 # we've gone over time, kill the process
                 os.kill(process.pid, signal.SIGKILL)
-                debug("Killing ffmpeg process")
-                errormsg = "Conversion of video took too long.  This site is only able to host relatively short videos."
+                debug(_("Killing ffmpeg process"))
+                errormsg = _("Conversion of video took too long.  This site is only able to host relatively short videos.")
 
         status = process.poll()
         #out,err = process.communicate()
@@ -174,17 +175,17 @@ class VideoUploadToFLVField(forms.FileField):
             fsize = s.st_size
             if (fsize == 0):
                 os.remove(targetfile)
-                errormsg = "Conversion of video failed: please try to use a diffent format"
+                errormsg = _("Conversion of video failed: please try to use a diffent format")
         except:
-            errormsg = "Conversion of video failed: please try to use a different video format"
+            errormsg = _("Conversion of video failed: please try to use a different video format")
 
         if errormsg:
             # we have a conversion error
             # notify the admins, attaching the offending file
-            msgtxt = "Error: %s\n\nCommand: %s\n\n" % (
+            msgtxt = _("Error:") + " %s\n\n" + _("Command:") + " %s\n\n" % (
                 errormsg, " ".join(ffmpeg))
 
-            message = EmailMessage("Video conversion failed on Auslan",
+            message = EmailMessage(_("Video conversion failed on Auslan"),
                                    msgtxt,
                                    to=[a[1] for a in settings.ADMINS])
             message.attach_file(sourcefile)

@@ -9,7 +9,7 @@ import os
 import time
 import shutil
 from django.utils.deconstruct import deconstructible
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from convertvideo import extract_frame, convert_video, ffmpeg
 

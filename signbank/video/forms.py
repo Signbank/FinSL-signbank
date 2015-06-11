@@ -1,6 +1,6 @@
 from django import forms
 from models import Video, GlossVideo
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 class VideoUploadForm(forms.ModelForm):
 

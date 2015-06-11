@@ -6,7 +6,6 @@ Forms and validation code for user registration.
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext as _ug
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -186,23 +185,23 @@ class BirthYearField(forms.Field):
             raise forms.ValidationError(_ug('Enter a four digit year, eg. 1984.'))
 
         if not self.year_re.match(str(value)):
-            raise forms.ValidationError(_ug('%s is not a valid year.') % value)
+            raise forms.ValidationError(_('%s is not a valid year.') % value)
         year = int(value)
         # check not after this year
         thisyear = time.localtime()[0]
         if year > thisyear:
             raise forms.ValidationError(
-                _ug("%s is in the future, please enter your year of birth.") % value)
+                _("%s is in the future, please enter your year of birth.") % value)
         # or that this person isn't over 110
         if year < thisyear - 110:
             raise forms.ValidationError(
-                _ug("If you were born in %s you are now %s years old! Please enter your real birth year.") % (year, thisyear - year))
+                _("If you were born in %s you are now %s years old! Please enter your real birth year.") % (year, thisyear - year))
         return year
 
 
 from models import backgroundChoices, learnedChoices, schoolChoices, teachercommChoices
 
-yesnoChoices = ((1, _ug('yes')), (0, _ug('no')))
+yesnoChoices = ((1, _('yes')), (0, _('no')))
 
 import string
 
@@ -220,34 +219,34 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
     Registration form for the site
     """
     username = forms.CharField(widget=forms.HiddenInput, required=False)
-    firstname = forms.CharField(label=t(_ug("Firstname")), max_length=50)
+    firstname = forms.CharField(label=t(_("Firstname")), max_length=50)
 
-    lastname = forms.CharField(label=t(_ug("Lastname")), max_length=50)
+    lastname = forms.CharField(label=t(_("Lastname")), max_length=50)
 
-    yob = BirthYearField(label=t(_ug("What year were you born?")))
+    yob = BirthYearField(label=t(_("What year were you born?")))
 
     australian = forms.ChoiceField(
-        yesnoChoices, label=t(_ug("Do you live in ${country}?")))
+        yesnoChoices, label=t(_("Do you live in ${country}?")))
 
-    postcode = forms.CharField(label=t(_ug("If you live in $country, what is your postcode?")),
+    postcode = forms.CharField(label=t(_("If you live in $country, what is your postcode?")),
                                max_length=20, required=False)
 
     background = forms.MultipleChoiceField(
-        backgroundChoices, label=_ug("What is your background?"))
+        backgroundChoices, label=_("What is your background?"))
 
     auslan_user = forms.ChoiceField(
-        yesnoChoices, label=t(_ug("Do you use $language?")), required=False)
+        yesnoChoices, label=t(_("Do you use $language?")), required=False)
 
-    learned = forms.ChoiceField(label=t(_ug("If you use $language, when did you learn sign language?")),
+    learned = forms.ChoiceField(label=t(_("If you use $language, when did you learn sign language?")),
                                 choices=learnedChoices, required=False)
 
-    deaf = forms.ChoiceField(yesnoChoices, label=t(_ug("Are you a deaf person?")))
+    deaf = forms.ChoiceField(yesnoChoices, label=t(_("Are you a deaf person?")))
 
-    schooltype = forms.ChoiceField(label=t(_ug("What sort of school do you (or did you) attend?")),
+    schooltype = forms.ChoiceField(label=t(_("What sort of school do you (or did you) attend?")),
                                    choices=schoolChoices, required=False)
-    school = forms.CharField(label=t(_ug("Which school do you (or did you) attend?")),
+    school = forms.CharField(label=t(_("Which school do you (or did you) attend?")),
                              max_length=50, required=False)
-    teachercomm = forms.ChoiceField(label=t(_ug("How do (or did) your teachers communicate with you?")),
+    teachercomm = forms.ChoiceField(label=t(_("How do (or did) your teachers communicate with you?")),
                                     choices=teachercommChoices,
                                     required=False)
 
@@ -308,8 +307,8 @@ class EmailAuthenticationForm(forms.Form):
     Base class for authenticating users. Extend this to get a form that accepts
     username/password logins.
     """
-    email = forms.CharField(label=_ug("Email"), max_length=100)
-    password = forms.CharField(label=_ug("Password"), widget=forms.PasswordInput)
+    email = forms.CharField(label=_("Email"), max_length=100)
+    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
 
     def __init__(self, request=None, *args, **kwargs):
         """
@@ -330,15 +329,15 @@ class EmailAuthenticationForm(forms.Form):
             self.user_cache = authenticate(username=email, password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(
-                    _ug("Please enter a correct email and password. Note that password is case-sensitive."))
+                    _("Please enter a correct email and password. Note that password is case-sensitive."))
             elif not self.user_cache.is_active:
-                raise forms.ValidationError(_ug("This account is inactive."))
+                raise forms.ValidationError(_("This account is inactive."))
 
         # TODO: determine whether this should move to its own method.
         if self.request:
             if not self.request.session.test_cookie_worked():
                 raise forms.ValidationError(
-                    _ug("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in."))
+                    _("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in."))
 
         return self.cleaned_data
 
