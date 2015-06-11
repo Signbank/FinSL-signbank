@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-11 11:57+0300\n"
+"POT-Creation-Date: 2015-06-11 12:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,218 +18,218 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:43
+#: signbank/registration/forms.py:43
 msgid "Username"
 msgstr ""
 
-#: forms.py:48
+#: signbank/registration/forms.py:48
 msgid "Your Email Address"
 msgstr ""
 
-#: forms.py:50 forms.py:311
+#: signbank/registration/forms.py:50 signbank/registration/forms.py:311
 msgid "Password"
 msgstr ""
 
-#: forms.py:52
+#: signbank/registration/forms.py:52
 msgid "Password (again)"
 msgstr ""
 
-#: forms.py:66
+#: signbank/registration/forms.py:66
 msgid "This username is already taken. Please choose another."
 msgstr ""
 
-#: forms.py:77
+#: signbank/registration/forms.py:77
 msgid "You must type the same password each time"
 msgstr ""
 
-#: forms.py:110
+#: signbank/registration/forms.py:110
 msgid "I have read and agree to the Terms of Service"
 msgstr ""
 
-#: forms.py:120
+#: signbank/registration/forms.py:120
 msgid "You must agree to the terms to register"
 msgstr ""
 
-#: forms.py:142
+#: signbank/registration/forms.py:142
 msgid ""
 "This email address is already in use. Please supply a different email "
 "address."
 msgstr ""
 
-#: forms.py:169
+#: signbank/registration/forms.py:169
 msgid ""
 "Registration using free email addresses is prohibited. Please supply a "
 "different email address."
 msgstr ""
 
-#: forms.py:185
+#: signbank/registration/forms.py:185
 msgid "Enter a four digit year, eg. 1984."
 msgstr ""
 
-#: forms.py:188
+#: signbank/registration/forms.py:188
 #, python-format
 msgid "%s is not a valid year."
 msgstr ""
 
-#: forms.py:194
+#: signbank/registration/forms.py:194
 #, python-format
 msgid "%s is in the future, please enter your year of birth."
 msgstr ""
 
-#: forms.py:198
+#: signbank/registration/forms.py:198
 msgid "If you were born in"
 msgstr ""
 
-#: forms.py:198
+#: signbank/registration/forms.py:198
 msgid "you are now"
 msgstr ""
 
-#: forms.py:204
+#: signbank/registration/forms.py:204
 msgid "yes"
 msgstr ""
 
-#: forms.py:204
+#: signbank/registration/forms.py:204
 msgid "no"
 msgstr ""
 
-#: forms.py:235 models.py:285
+#: signbank/registration/forms.py:235 signbank/registration/models.py:285
 msgid "What is your background?"
 msgstr ""
 
-#: forms.py:310
+#: signbank/registration/forms.py:310
 msgid "Email"
 msgstr ""
 
-#: forms.py:332
+#: signbank/registration/forms.py:332
 msgid ""
 "Please enter a correct email and password. Note that password is case-"
 "sensitive."
 msgstr ""
 
-#: forms.py:334
+#: signbank/registration/forms.py:334
 msgid "This account is inactive."
 msgstr ""
 
-#: forms.py:340
+#: signbank/registration/forms.py:340
 msgid ""
 "Your Web browser doesn't appear to have cookies enabled. Cookies are "
 "required for logging in."
 msgstr ""
 
-#: models.py:199
+#: signbank/registration/models.py:199
 msgid "user"
 msgstr ""
 
-#: models.py:200
+#: signbank/registration/models.py:200
 msgid "activation key"
 msgstr ""
 
-#: models.py:205
+#: signbank/registration/models.py:205
 msgid "registration profile"
 msgstr ""
 
-#: models.py:206
+#: signbank/registration/models.py:206
 msgid "registration profiles"
 msgstr ""
 
-#: models.py:244
+#: signbank/registration/models.py:244
 msgid "deaf community"
 msgstr ""
 
-#: models.py:246
+#: signbank/registration/models.py:246
 msgid "teacher of the deaf"
 msgstr ""
 
-#: models.py:247
+#: signbank/registration/models.py:247
 msgid "parent of a deaf child"
 msgstr ""
 
-#: models.py:248
+#: signbank/registration/models.py:248
 msgid "sign language interpreter"
 msgstr ""
 
-#: models.py:249
+#: signbank/registration/models.py:249
 msgid "school or university student"
 msgstr ""
 
-#: models.py:251
+#: signbank/registration/models.py:251
 msgid "other"
 msgstr ""
 
-#: models.py:254
+#: signbank/registration/models.py:254
 msgid "Not Applicable"
 msgstr ""
 
-#: models.py:255
+#: signbank/registration/models.py:255
 msgid "At home from my parent(s)"
 msgstr ""
 
-#: models.py:256
+#: signbank/registration/models.py:256
 msgid "At kindergarten or at the beginning of primary school"
 msgstr ""
 
-#: models.py:257
+#: signbank/registration/models.py:257
 msgid "At primary school"
 msgstr ""
 
-#: models.py:258
+#: signbank/registration/models.py:258
 msgid "At high school"
 msgstr ""
 
-#: models.py:259
+#: signbank/registration/models.py:259
 msgid "After I left school"
 msgstr ""
 
-#: models.py:262
+#: signbank/registration/models.py:262
 msgid "a deaf school (boarder)"
 msgstr ""
 
-#: models.py:263
+#: signbank/registration/models.py:263
 msgid "a deaf school (day student)"
 msgstr ""
 
-#: models.py:264
+#: signbank/registration/models.py:264
 msgid "a deaf classroom or unit in a hearing school"
 msgstr ""
 
-#: models.py:265
+#: signbank/registration/models.py:265
 msgid "a regular classroom in a hearing school"
 msgstr ""
 
-#: models.py:268
+#: signbank/registration/models.py:268
 msgid "mostly oral"
 msgstr ""
 
-#: models.py:269
+#: signbank/registration/models.py:269
 msgid "mostly Signed English"
 msgstr ""
 
-#: models.py:271
+#: signbank/registration/models.py:271
 msgid "mostly fingerspelling"
 msgstr ""
 
-#: models.py:280
+#: signbank/registration/models.py:280
 msgid "When were you born?"
 msgstr ""
 
-#: models.py:289
+#: signbank/registration/models.py:289
 msgid "Are you a deaf person?"
 msgstr ""
 
-#: models.py:290
+#: signbank/registration/models.py:290
 msgid "What sort of school do you (or did you) attend?"
 msgstr ""
 
-#: models.py:293
+#: signbank/registration/models.py:293
 msgid "Which school do you (or did you) attend?"
 msgstr ""
 
-#: models.py:294
+#: signbank/registration/models.py:294
 msgid "How do (or did) your teachers communicate with you?"
 msgstr ""
 
 #. Translators: Registration activate
-#: templates/registration/activate.html:24
+#: signbank/registration/templates/registration/activate.html:24
 msgid ""
 "Activation was successful. You may now <a href=\"/accounts/login?next=/"
 "\">login</a>\n"
@@ -237,12 +237,12 @@ msgid ""
 msgstr ""
 
 #. Translators: Registration activate
-#: templates/registration/activate.html:28
+#: signbank/registration/templates/registration/activate.html:28
 msgid "Your Email Address:"
 msgstr ""
 
 #. Translators: Activation email message
-#: templates/registration/activation_email.txt:4
+#: signbank/registration/templates/registration/activation_email.txt:4
 #, python-format
 msgid ""
 "Someone, hopefully you, signed up for a new account at  %(site.name)s\n"
@@ -252,33 +252,33 @@ msgid ""
 msgstr ""
 
 #. Translators: Activation email message
-#: templates/registration/activation_email.txt:12
+#: signbank/registration/templates/registration/activation_email.txt:12
 msgid ""
 "If you didn't request this, you don't need to do anything; you won't\n"
 "receive any more email from us, and the account will expire automatically \n"
 "in two days."
 msgstr ""
 
-#: templates/registration/activation_email.txt:16
+#: signbank/registration/templates/registration/activation_email.txt:16
 msgid "Webmaster"
 msgstr ""
 
-#: templates/registration/activation_email_subject.txt:3
+#: signbank/registration/templates/registration/activation_email_subject.txt:3
 msgid "Registration for"
 msgstr ""
 
 #. Translators: Login error
-#: templates/registration/login.html:13
+#: signbank/registration/templates/registration/login.html:13
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 
 #. Translators: This probably doesn't need to be transladed, added just in case needed later
-#: templates/registration/logout.html:23
+#: signbank/registration/templates/registration/logout.html:23
 msgid "LOGOUT SCRIPT!"
 msgstr ""
 
 #. Translators: Registration completion text
-#: templates/registration/registration_complete.html:7
+#: signbank/registration/templates/registration/registration_complete.html:7
 msgid ""
 "Thank you for your registration details. An email has\n"
 "   been sent to your nominated address. Please check your\n"
@@ -287,6 +287,6 @@ msgid ""
 msgstr ""
 
 #. Translators: Submit button text (bootstrap)
-#: templates/registration/registration_form.html:16
+#: signbank/registration/templates/registration/registration_form.html:16
 msgid "Submit"
 msgstr ""
