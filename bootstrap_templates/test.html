@@ -1,3 +1,4 @@
+{% load i18n %}
 <html>
  <head>
   <title>Video Test</title>
@@ -57,28 +58,28 @@
 
  </head>
  <body>
-
-<h1>Video Test page for Auslan Signbank</h1>
-
-<p>This page shows the same video using different video player tools
-to help us work out what the best tool to use on the website is.</p>
-
-<h2>HTML5 video tag</h2>
+{# Translators: Header1 #}
+<h1>{% blocktrans %}Video Test page for Auslan Signbank{% endblocktrans %}</h1>
+{# Translators: Text on videotest page #}
+<p>{% blocktrans trimmed %}This page shows the same video using different video player tools
+to help us work out what the best tool to use on the website is.{% endblocktrans %}</p>
+{# Translators: Header2 #}
+<h2>{% blocktrans %}HTML5 video tag{% endblocktrans %}</h2>
 
      <video width=320 height=240 src='http://media.auslan.org.au/auslan/42/42500.mp4' type='video/mp4'  preload controls>
      </video>
-
-<h2>Projekktor</h2>
+{# Translators: This translation won't be translated #}
+<h2>{% trans "Projekktor" noop %}</h2>
 
      <video class='projekktor' width=320 height=240 src='http://media.auslan.org.au/auslan/42/42500.mp4'></video>
-
-<h2>Flowplayer</h2>
+{# Translators: This translation won't be translated #}
+<h2>{% trans "Flowplayer" noop %}</h2>
 
    <div  width=320 height=240 class="flowplayer">
       <video type="video/mp4" src='http://media.auslan.org.au/auslan/42/42500.mp4'/></video>
    </div>
-   
-<h2>Video.js</h2>
+{# Translators: This translation won't be translated #}
+<h2>{% trans "Video.js" noop %}</h2>
 
      <video  width=320 height=240 id='sign' class='video-js vjs-default-skin' controls autoplay>
          <source src='http://media.auslan.org.au/auslan/42/42500.mp4' type='video/mp4' codecs='avc1.42E01E, mp4a.40.2'></source>
