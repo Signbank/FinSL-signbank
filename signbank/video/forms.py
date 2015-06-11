@@ -1,6 +1,6 @@
 from django import forms
 from models import Video, GlossVideo
-
+from django.utils.translation import ugettext as _
 
 class VideoUploadForm(forms.ModelForm):
 
@@ -15,6 +15,6 @@ class VideoUploadForGlossForm(forms.Form):
 
     """Form for video upload for a particular gloss"""
 
-    videofile = forms.FileField(label="Upload Video")
+    videofile = forms.FileField(label=_("Upload Video"))
     gloss_id = forms.CharField(widget=forms.HiddenInput)
     redirect = forms.CharField(widget=forms.HiddenInput, required=False)

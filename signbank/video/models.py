@@ -9,6 +9,7 @@ import os
 import time
 import shutil
 from django.utils.deconstruct import deconstructible
+from django.utils.translation import ugettext as _
 
 from convertvideo import extract_frame, convert_video, ffmpeg
 
@@ -98,7 +99,7 @@ class Video(models.Model, VideoPosterMixin):
 
     # video file name relative to MEDIA_ROOT
     videofile = models.FileField(
-        "Video file in h264 mp4 format", upload_to=settings.VIDEO_UPLOAD_LOCATION)
+        _("Video file in h264 mp4 format"), upload_to=settings.VIDEO_UPLOAD_LOCATION)
 
     def __unicode__(self):
         return self.videofile.name
@@ -141,7 +142,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
     # video version, version = 0 is always the one that will be displayed
     # we will increment the version (via reversion) if a new video is added
     # for this gloss
-    version = models.IntegerField("Version", default=0)
+    version = models.IntegerField(_("Version"), default=0)
 
     def get_mobile_url(self):
         """Return a URL to serve the mobile version of this
