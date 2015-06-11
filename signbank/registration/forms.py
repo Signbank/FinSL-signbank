@@ -182,7 +182,7 @@ class BirthYearField(forms.Field):
 
     def clean(self, value):
         if not value:
-            raise forms.ValidationError(_ug('Enter a four digit year, eg. 1984.'))
+            raise forms.ValidationError(_('Enter a four digit year, eg. 1984.'))
 
         if not self.year_re.match(str(value)):
             raise forms.ValidationError(_('%s is not a valid year.') % value)
@@ -219,34 +219,34 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
     Registration form for the site
     """
     username = forms.CharField(widget=forms.HiddenInput, required=False)
-    firstname = forms.CharField(label=t(_("Firstname")), max_length=50)
+    firstname = forms.CharField(label=_(t("Firstname")), max_length=50)
 
-    lastname = forms.CharField(label=t(_("Lastname")), max_length=50)
+    lastname = forms.CharField(label=_(t("Lastname")), max_length=50)
 
-    yob = BirthYearField(label=t(_("What year were you born?")))
+    yob = BirthYearField(label=_(t("What year were you born?")))
 
     australian = forms.ChoiceField(
-        yesnoChoices, label=t(_("Do you live in ${country}?")))
+        yesnoChoices, label=_(t("Do you live in ${country}?")))
 
-    postcode = forms.CharField(label=t(_("If you live in $country, what is your postcode?")),
+    postcode = forms.CharField(label=_(t("If you live in $country, what is your postcode?")),
                                max_length=20, required=False)
 
     background = forms.MultipleChoiceField(
         backgroundChoices, label=_("What is your background?"))
 
     auslan_user = forms.ChoiceField(
-        yesnoChoices, label=t(_("Do you use $language?")), required=False)
+        yesnoChoices, label=_(t("Do you use $language?")), required=False)
 
-    learned = forms.ChoiceField(label=t(_("If you use $language, when did you learn sign language?")),
+    learned = forms.ChoiceField(label=_(t("If you use $language, when did you learn sign language?")),
                                 choices=learnedChoices, required=False)
 
-    deaf = forms.ChoiceField(yesnoChoices, label=t(_("Are you a deaf person?")))
+    deaf = forms.ChoiceField(yesnoChoices, label=_(t("Are you a deaf person?")))
 
-    schooltype = forms.ChoiceField(label=t(_("What sort of school do you (or did you) attend?")),
+    schooltype = forms.ChoiceField(label=_(t("What sort of school do you (or did you) attend?")),
                                    choices=schoolChoices, required=False)
-    school = forms.CharField(label=t(_("Which school do you (or did you) attend?")),
+    school = forms.CharField(label=_(t("Which school do you (or did you) attend?")),
                              max_length=50, required=False)
-    teachercomm = forms.ChoiceField(label=t(_("How do (or did) your teachers communicate with you?")),
+    teachercomm = forms.ChoiceField(label=_(t("How do (or did) your teachers communicate with you?")),
                                     choices=teachercommChoices,
                                     required=False)
 
