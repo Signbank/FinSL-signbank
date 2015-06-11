@@ -16,6 +16,7 @@ import sys
 import os
 import json
 from collections import OrderedDict
+from django.utils.translation import ugettext_lazy as _
 
 # from signbank.video.models import GlossVideo
 
@@ -110,11 +111,11 @@ class Keyword(models.Model):
         return (trans, len(alltrans))
 
 
-DEFN_ROLE_CHOICES = (('note', 'Note'),
-                     ('privatenote', 'Private Note'),
-                     ('phon', 'Phonology'),
-                     ('todo', 'To Do'),
-                     ('sugg', 'Suggestion for other gloss'),
+DEFN_ROLE_CHOICES = (('note', _('Note')),
+                     ('privatenote', _('Private Note')),
+                     ('phon', _('Phonology')),
+                     ('todo', _('To Do')),
+                     ('sugg', _('Suggestion for other gloss')),
                      )
 
 
@@ -173,10 +174,10 @@ class RelationToForeignSign(models.Model):
         return str(self.gloss) + "/" + self.other_lang + ',' + self.other_lang_gloss
 
     gloss = models.ForeignKey("Gloss")
-    loan = models.BooleanField("Loan Sign", default=False)
-    other_lang = models.CharField("Related Language", max_length=20)
+    loan = models.BooleanField(_("Loan Sign"), default=False)
+    other_lang = models.CharField(_("Related Language"), max_length=20)
     other_lang_gloss = models.CharField(
-        "Gloss in related language", max_length=50)
+        _("Gloss in related language"), max_length=50)
 
     class Meta:
         ordering = ['gloss', 'loan', 'other_lang', 'other_lang_gloss']
@@ -734,16 +735,16 @@ class Gloss(models.Model):
     class Meta:
         verbose_name_plural = "Glosses"
         ordering = ['idgloss']
-        permissions = (('update_video', "Can Update Video"),
-                       ('search_gloss', 'Can Search/View Full Gloss Details'),
-                       ('export_csv', 'Can export sign details as CSV'),
-                       ('can_publish', 'Can publish signs and definitions'),
+        permissions = (('update_video', _("Can Update Video")),
+                       ('search_gloss', _('Can Search/View Full Gloss Details')),
+                       ('export_csv', _('Can export sign details as CSV')),
+                       ('can_publish', _('Can publish signs and definitions')),
                        ('can_delete_unpublished',
-                        'Can delete unpub signs or defs'),
+                        _('Can delete unpub signs or defs')),
                        ('can_delete_published',
-                        'Can delete pub signs and defs'),
+                        _('Can delete pub signs and defs')),
                        ('view_advanced_properties',
-                        'Include all properties in sign detail view'),
+                        _('Include all properties in sign detail view')),
                        )
 
     def __unicode__(self):
@@ -780,42 +781,42 @@ class Gloss(models.Model):
 
         return result
 
-    idgloss = models.CharField("ID Gloss", max_length=50, help_text="""
+    idgloss = models.CharField("ID Gloss", max_length=50, help_text=_("""
     This is the unique identifying name of an entry of a sign form in the
 database. No two Sign Entry Names can be exactly the same, but a "Sign
-Entry Name" can be (and often is) the same as the Annotation Idgloss.""")
+Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
-    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text="""
+    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text=_("""
     This is the Jyvaskyla name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Jyvaskyla Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
 have the same 'Annotation Idgloss' that means they differ in form in only
-minor or insignificant ways that can be ignored.""")
+minor or insignificant ways that can be ignored."""))
     # the idgloss used in transcription, may be shared between many signs
 
     # ID gloss for JKL gloss translation to English
-    annotation_idgloss_jkl_en = models.CharField("Gloss: JKL (Eng)", blank=True, max_length=30, help_text="""
-    This is the English name for the corresponding Jyvaskyla Gloss""")
+    annotation_idgloss_jkl_en = models.CharField("Gloss: JKL (Eng)", blank=True, max_length=30, help_text=_("""
+    This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # Changed this Gloss to be for the Helsinki folks
-    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text="""
+    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text=_("""
     This is the Helsinki name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Helsinki Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
 have the same 'Annotation Idgloss' that means they differ in form in only
-minor or insignificant ways that can be ignored.""")
+minor or insignificant ways that can be ignored."""))
 
     # ID Gloss for HKI gloss translation to English
-    annotation_idgloss_hki_en = models.CharField("Gloss: HKI (Eng)", blank=True, max_length=30, help_text="""
-    This is the English name for the corresponding Jyvaskyla Gloss""")
+    annotation_idgloss_hki_en = models.CharField("Gloss: HKI (Eng)", blank=True, max_length=30, help_text=_("""
+    This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
     useInstr = models.CharField(
-        "Annotation instructions", max_length=50, blank=True)
-    rmrks = models.CharField("Remarks", max_length=50, blank=True)
+        _("Annotation instructions"), max_length=50, blank=True)
+    rmrks = models.CharField(_("Remarks"), max_length=50, blank=True)
 
     ########
 
@@ -823,62 +824,62 @@ minor or insignificant ways that can be ignored.""")
     dialect = models.ManyToManyField(Dialect)
 
     # This field type is a guess.
-    compound = models.CharField("Compound of", max_length=100, blank=True)
-    comptf = models.NullBooleanField("Compound", null=True, blank=True)
+    compound = models.CharField(_("Compound of"), max_length=100, blank=True)
+    comptf = models.NullBooleanField(_("Compound"), null=True, blank=True)
 
     # Phonology fields
-    handedness = models.CharField("Handedness", blank=True, null=True, choices=build_choice_list("Handedness"),
+    handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
 
-    domhndsh = models.CharField("Strong Hand", blank=True, null=True, choices=build_choice_list("Handshape"),
+    domhndsh = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
-    subhndsh = models.CharField("Weak Hand", null=True, choices=build_choice_list("Handshape"), blank=True,
+    subhndsh = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
                                 max_length=5)
 
-    final_domhndsh = models.CharField("Final Dominant Handshape", blank=True, null=True,
+    final_domhndsh = models.CharField(_("Final Dominant Handshape"), blank=True, null=True,
                                       choices=build_choice_list("Handshape"), max_length=5)
-    final_subhndsh = models.CharField("Final Subordinate Handshape", null=True, choices=build_choice_list("Handshape"),
+    final_subhndsh = models.CharField(_("Final Subordinate Handshape"), null=True, choices=build_choice_list("Handshape"),
                                       blank=True, max_length=5)
 
     locprim = models.CharField(
-        "Location", choices=locationChoices, null=True, blank=True, max_length=20)
-    final_loc = models.IntegerField("Final Primary Location", choices=build_choice_list("Location"), null=True,
+        _("Location"), choices=locationChoices, null=True, blank=True, max_length=20)
+    final_loc = models.IntegerField(_("Final Primary Location"), choices=build_choice_list("Location"), null=True,
                                     blank=True)
     locVirtObj = models.CharField(
-        "Virtual Object", blank=True, null=True, max_length=50)
+        _("Virtual Object"), blank=True, null=True, max_length=50)
 
     locsecond = models.IntegerField(
-        "Secondary Location", choices=build_choice_list("Location"), null=True, blank=True)
+        _("Secondary Location"), choices=build_choice_list("Location"), null=True, blank=True)
 
-    initial_secondary_loc = models.CharField("Initial Subordinate Location", max_length=20,
+    initial_secondary_loc = models.CharField(_("Initial Subordinate Location"), max_length=20,
                                              choices=BSLsecondLocationChoices, null=True, blank=True)
-    final_secondary_loc = models.CharField("Final Subordinate Location", max_length=20,
+    final_secondary_loc = models.CharField(_("Final Subordinate Location"), max_length=20,
                                            choices=BSLsecondLocationChoices, null=True, blank=True)
 
-    initial_palm_orientation = models.CharField("Initial Palm Orientation", max_length=20, null=True, blank=True,
+    initial_palm_orientation = models.CharField(_("Initial Palm Orientation"), max_length=20, null=True, blank=True,
                                                 choices=palmOrientationChoices)
-    final_palm_orientation = models.CharField("Final Palm Orientation", max_length=20, null=True, blank=True,
+    final_palm_orientation = models.CharField(_("Final Palm Orientation"), max_length=20, null=True, blank=True,
                                               choices=palmOrientationChoices)
 
-    initial_relative_orientation = models.CharField("Initial Interacting Dominant Hand Part", null=True, max_length=20,
+    initial_relative_orientation = models.CharField(_("Initial Interacting Dominant Hand Part"), null=True, max_length=20,
                                                     blank=True, choices=relOrientationChoices)
-    final_relative_orientation = models.CharField("Final Interacting Dominant Hand Part", null=True, max_length=20,
+    final_relative_orientation = models.CharField(_("Final Interacting Dominant Hand Part"), null=True, max_length=20,
                                                   blank=True, choices=relOrientationChoices)
 
-    inWeb = models.NullBooleanField("In the Web dictionary", default=False)
+    inWeb = models.NullBooleanField(_("In the Web dictionary"), default=False)
     isNew = models.NullBooleanField(
-        "Is this a proposed new sign?", null=True, default=False)
+        _("Is this a proposed new sign?"), null=True, default=False)
 
     inittext = models.CharField(max_length="50", blank=True)
 
-    morph = models.CharField("Morphemic Analysis", max_length=50, blank=True)
+    morph = models.CharField(_("Morphemic Analysis"), max_length=50, blank=True)
 
-    sense = models.IntegerField("Sense Number", null=True, blank=True,
-                                help_text="If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1")
+    sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
+                                help_text=_("If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1"))
     sense.list_filter_sense = True
 
-    sn = models.IntegerField("Sign Number",
-                             help_text="Sign Number must be a unique integer and defines the ordering of signs in the dictionary",
+    sn = models.IntegerField(_("Sign Number"),
+                             help_text=_("Sign Number must be a unique integer and defines the ordering of signs in the dictionary"),
                              null=True, blank=True, unique=True)
     # this is a sign number - was trying
     # to be a primary key, also defines a sequence - need to keep the sequence
@@ -886,84 +887,84 @@ minor or insignificant ways that can be ignored.""")
 
     StemSN = models.IntegerField(null=True, blank=True)
 
-    relatArtic = models.CharField("Relation between Articulators", choices=build_choice_list("RelatArtic"), null=True,
+    relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"), null=True,
                                   blank=True, max_length=5)
 
-    absOriPalm = models.CharField("Absolute Orientation: Palm", choices=build_choice_list("RelatArtic"), null=True,
+    absOriPalm = models.CharField(_("Absolute Orientation: Palm"), choices=build_choice_list("RelatArtic"), null=True,
                                   blank=True, max_length=5)
-    absOriFing = models.CharField("Absolute Orientation: Fingers", choices=build_choice_list("AbsOriFing"), null=True,
+    absOriFing = models.CharField(_("Absolute Orientation: Fingers"), choices=build_choice_list("AbsOriFing"), null=True,
                                   blank=True, max_length=5)
 
-    relOriMov = models.CharField("Relative Orientation: Movement", choices=build_choice_list("RelOriMov"), null=True,
+    relOriMov = models.CharField(_("Relative Orientation: Movement"), choices=build_choice_list("RelOriMov"), null=True,
                                  blank=True, max_length=5)
-    relOriLoc = models.CharField("Relative Orientation: Location", choices=build_choice_list("RelOriLoc"), null=True,
+    relOriLoc = models.CharField(_("Relative Orientation: Location"), choices=build_choice_list("RelOriLoc"), null=True,
                                  blank=True, max_length=5)
-    oriCh = models.CharField("Orientation Change", choices=build_choice_list("OriChange"), null=True, blank=True,
+    oriCh = models.CharField(_("Orientation Change"), choices=build_choice_list("OriChange"), null=True, blank=True,
                              max_length=5)
 
-    handCh = models.CharField("Handshape Change", choices=build_choice_list("HandshapeChange"), null=True, blank=True,
+    handCh = models.CharField(_("Handshape Change"), choices=build_choice_list("HandshapeChange"), null=True, blank=True,
                               max_length=5)
 
     repeat = models.NullBooleanField(
-        "Repeated Movement", null=True, default=False)
+        _("Repeated Movement"), null=True, default=False)
     altern = models.NullBooleanField(
-        "Alternating Movement", null=True, default=False)
+        _("Alternating Movement"), null=True, default=False)
 
-    movSh = models.CharField("Movement Shape", choices=build_choice_list("MovementShape"), null=True, blank=True,
+    movSh = models.CharField(_("Movement Shape"), choices=build_choice_list("MovementShape"), null=True, blank=True,
                              max_length=5)
-    movDir = models.CharField("Movement Direction", choices=build_choice_list("MovementDir"), null=True, blank=True,
+    movDir = models.CharField(_("Movement Direction"), choices=build_choice_list("MovementDir"), null=True, blank=True,
                               max_length=5)
-    movMan = models.CharField("Movement Manner", choices=build_choice_list("MovementMan"), null=True, blank=True,
+    movMan = models.CharField(_("Movement Manner"), choices=build_choice_list("MovementMan"), null=True, blank=True,
                               max_length=5)
-    contType = models.CharField("Contact Type", choices=build_choice_list("ContactType"), null=True, blank=True,
+    contType = models.CharField(_("Contact Type"), choices=build_choice_list("ContactType"), null=True, blank=True,
                                 max_length=5)
 
-    phonOth = models.TextField("Phonology Other", null=True, blank=True)
+    phonOth = models.TextField(_("Phonology Other"), null=True, blank=True)
 
-    mouthG = models.CharField("Mouth Gesture", max_length=50, blank=True)
-    mouthing = models.CharField("Mouthing", max_length=50, blank=True)
+    mouthG = models.CharField(_("Mouth Gesture"), max_length=50, blank=True)
+    mouthing = models.CharField(_("Mouthing"), max_length=50, blank=True)
     phonetVar = models.CharField(
-        "Phonetic Variation", max_length=50, blank=True, )
+        _("Phonetic Variation"), max_length=50, blank=True, )
 
     # Semantic fields
 
-    iconImg = models.CharField("Iconic Image", max_length=50, blank=True)
-    namEnt = models.CharField("Named Entity", choices=build_choice_list("NamedEntity"), null=True, blank=True,
+    iconImg = models.CharField(_("Iconic Image"), max_length=50, blank=True)
+    namEnt = models.CharField(_("Named Entity"), choices=build_choice_list("NamedEntity"), null=True, blank=True,
                               max_length=5)
-    semField = models.CharField("Semantic Field", choices=build_choice_list("SemField"), null=True, blank=True,
+    semField = models.CharField(_("Semantic Field"), choices=build_choice_list("SemField"), null=True, blank=True,
                                 max_length=5)
 
     # Frequency fields
 
     tokNo = models.IntegerField(
-        "Total Number of Occurrences", null=True, blank=True)
+        _("Total Number of Occurrences"), null=True, blank=True)
     tokNoSgnr = models.IntegerField(
-        "Total Number of Signers Using this Sign", null=True, blank=True)
+        _("Total Number of Signers Using this Sign"), null=True, blank=True)
     tokNoA = models.IntegerField(
-        "Number of Occurrences in Amsterdam", null=True, blank=True)
+        _("Number of Occurrences in Amsterdam"), null=True, blank=True)
     tokNoV = models.IntegerField(
-        "Number of Occurrences in Voorburg", null=True, blank=True)
+        _("Number of Occurrences in Voorburg"), null=True, blank=True)
     tokNoR = models.IntegerField(
-        "Number of Occurrences in Rotterdam", null=True, blank=True)
+        _("Number of Occurrences in Rotterdam"), null=True, blank=True)
     tokNoGe = models.IntegerField(
-        "Number of Occurrences in Gestel", null=True, blank=True)
+        _("Number of Occurrences in Gestel"), null=True, blank=True)
     tokNoGr = models.IntegerField(
-        "Number of Occurrences in Groningen", null=True, blank=True)
+        _("Number of Occurrences in Groningen"), null=True, blank=True)
     tokNoO = models.IntegerField(
-        "Number of Occurrences in Other Regions", null=True, blank=True)
+        _("Number of Occurrences in Other Regions"), null=True, blank=True)
 
     tokNoSgnrA = models.IntegerField(
-        "Number of Amsterdam Signers", null=True, blank=True)
+        _("Number of Amsterdam Signers"), null=True, blank=True)
     tokNoSgnrV = models.IntegerField(
-        "Number of Voorburg Signers", null=True, blank=True)
+        _("Number of Voorburg Signers"), null=True, blank=True)
     tokNoSgnrR = models.IntegerField(
-        "Number of Rotterdam Signers", null=True, blank=True)
+        _("Number of Rotterdam Signers"), null=True, blank=True)
     tokNoSgnrGe = models.IntegerField(
-        "Number of Gestel Signers", null=True, blank=True)
+        _("Number of Gestel Signers"), null=True, blank=True)
     tokNoSgnrGr = models.IntegerField(
-        "Number of Groningen Signers", null=True, blank=True)
+        _("Number of Groningen Signers"), null=True, blank=True)
     tokNoSgnrO = models.IntegerField(
-        "Number of Other Region Signers", null=True, blank=True)
+        _("Number of Other Region Signers"), null=True, blank=True)
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
@@ -1205,13 +1206,13 @@ try:
 except tagging.AlreadyRegistered:
     pass
 
-RELATION_ROLE_CHOICES = (('homonym', 'Homonym'),
-                         ('synonym', 'Synonym'),
-                         ('variant', 'Variant'),
-                         ('antonym', 'Antonym'),
-                         ('hyponym', 'Hyponym'),
-                         ('hypernym', 'Hypernym'),
-                         ('seealso', 'See Also'),
+RELATION_ROLE_CHOICES = (('homonym', _('Homonym')),
+                         ('synonym', _('Synonym')),
+                         ('variant', _('Variant')),
+                         ('antonym', _('Antonym')),
+                         ('hyponym', _('Hyponym')),
+                         ('hypernym', _('Hypernym')),
+                         ('seealso', _('See Also')),
                          )
 
 

@@ -15,11 +15,11 @@ html {
 
  #header {
 		/* background-image: url(images/ngt/black_02.gif); */
-        padding:0;
-        background:#B82B22;
-        height:110px;
-        clear:both;
-        position:relative;
+        padding: 0;
+        background: #B82B22;
+        height: 110px;
+        clear: both;
+        position: relative;
         margin: 0px;
 }
 
@@ -35,12 +35,11 @@ html {
 }
 
 #logoholder {
-    background-image: url(./images/ngt/jy_text_500.png);
+    background-image: url(./images/ngt/jy_text_500.png), url(./images/ngt/kl-logo-fi.png);
     background-repeat: no-repeat;
+    background-position: left top, right top;
     /*background-position: 20px 20px;*/
-    /* Added background size*/
-    background-size: 166px 95px;
-	width: 265px;
+	width: 365px;
     height: 110px;
     position: absolute;
     right: 0px;

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-10 16:38+0300\n"
+"POT-Creation-Date: 2015-06-11 09:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,31 +88,43 @@ msgid ""
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:33
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:32
 #: bootstrap_templates/mobile/numbersigns/numbersigns.html:123
 msgid "REPLAY"
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:40
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:38
 msgid "Enter Text"
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:49
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:66
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:46
 msgid "Playback Speed"
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:51
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:67
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:47
 msgid "Slow"
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:53
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:68
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:48
 msgid "Medium"
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:55
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:69
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:49
 msgid "Fast"
 msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:101
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:120
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:95
 msgid "Click on images to view."
 msgstr ""
 
@@ -129,6 +141,45 @@ msgstr ""
 
 #: bootstrap_templates/fingerspell/fingerspellingonehanded.html:114
 msgid "two handed finger spelling"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:58
+msgid "New Word"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:59
+msgid "Reveal Answer"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:61
+msgid "The word is:"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:74
+msgid ""
+"Click <em>New Word</em> on the left to have a word spelled out; <em>Replay</"
+"em> will play the word again. Click <em>Reveal Answer</em> to check your "
+"answer."
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingpractice.html:127
+msgid ""
+"Return to <a href=\"twohanded.html\" data-ajax='false'>two handed "
+"fingerspelling"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:101
+msgid ""
+"One handed fingerspelling signs for American Sign Language are also "
+"available:"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:102
+msgid "link"
+msgstr ""
+
+#: bootstrap_templates/fingerspell/fingerspellingtwohanded.html:105
+msgid "Practice your fingerspelling</a> with randomly generated words."
 msgstr ""
 
 #. Translators: Text sign in - login form
@@ -204,7 +255,9 @@ msgid "Search translation"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Submit button (press to search)
+#. Translators: Submit button
 #: bootstrap_templates/menu.html:99 doc/usage.html:71
+#: signbank/dictionary/templates/mobile/dictionary/index.html:11
 msgid "Sign Search"
 msgstr "Etsi viittoma"
 
@@ -303,6 +356,11 @@ msgstr ""
 msgid "Edit Page"
 msgstr ""
 
+#. Translators: Title
+#: bootstrap_templates/plain.html:7
+msgid "Projekktor Version 8 Test"
+msgstr ""
+
 #: bootstrap_templates/registration/password_reset_complete.html:5
 #: bootstrap_templates/registration/password_reset_complete.html:9
 msgid "Password reset complete"
@@ -355,6 +413,10 @@ msgid ""
 "used.  Please request a new password reset."
 msgstr ""
 
+#: bootstrap_templates/registration/password_reset_done.html:6
+msgid "An email has been sent to your address with a new password."
+msgstr ""
+
 #: bootstrap_templates/registration/password_reset_email.html:2
 #, python-format
 msgid ""
@@ -399,6 +461,38 @@ msgstr ""
 #. Translators: Text search content in searchlayout
 #: bootstrap_templates/searchlayout.html:14
 msgid "SEARCH CONTENT"
+msgstr ""
+
+#. Translators: Header1
+#: bootstrap_templates/test.html:62
+msgid "Video Test page for Auslan Signbank"
+msgstr ""
+
+#. Translators: Text on videotest page
+#: bootstrap_templates/test.html:64
+msgid ""
+"This page shows the same video using different video player tools to help us "
+"work out what the best tool to use on the website is."
+msgstr ""
+
+#. Translators: Header2
+#: bootstrap_templates/test.html:67
+msgid "HTML5 video tag"
+msgstr ""
+
+#. Translators: This translation won't be translated
+#: bootstrap_templates/test.html:72
+msgid "Projekktor"
+msgstr ""
+
+#. Translators: This translation won't be translated
+#: bootstrap_templates/test.html:76
+msgid "Flowplayer"
+msgstr ""
+
+#. Translators: This translation won't be translated
+#: bootstrap_templates/test.html:82
+msgid "Video.js"
 msgstr ""
 
 #: doc/usage.html:4
@@ -960,8 +1054,10 @@ msgid "We have %(gloss.count_videos)s videos for this sign."
 msgstr ""
 
 #. Translators: Submit button
+#. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:174
 #: signbank/dictionary/templates/dictionary/update_video.html:106
+#: signbank/video/forms.py:18
 msgid "Upload Video"
 msgstr ""
 
@@ -1478,6 +1574,22 @@ msgstr ""
 #. Translators: Header2
 #: signbank/dictionary/templates/dictionary/word.html:145
 msgid "Sign Definition"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/mobile/dictionary/index.html:6
+#, fuzzy
+#| msgid "Search translation"
+msgid "Search the Dictionary"
+msgstr "Etsi käännösvastinetta"
+
+#: signbank/dictionary/templates/mobile/dictionary/index.html:15
+msgid "Search medical signs only"
+msgstr ""
+
+#. Translators: Header2
+#: signbank/dictionary/templates/mobile/dictionary/index.html:22
+msgid "Browse Keywords"
 msgstr ""
 
 #: signbank/feedback/forms.py:54
@@ -2115,6 +2227,10 @@ msgstr ""
 msgid "The hands cross over each other"
 msgstr ""
 
+#: signbank/feedback/models.py:279
+msgid "Can View Interpreter Feedback"
+msgstr ""
+
 #. Translators: Sign feedback instructions
 #: signbank/feedback/models.py:311
 #: signbank/feedback/templates/feedback/signfeedback.html:17
@@ -2747,6 +2863,14 @@ msgstr ""
 #. Translators: Link text
 #: signbank/pages/templates/pages/mainpage.html:23
 msgid "Number<br>Signs"
+msgstr ""
+
+#: signbank/video/models.py:102
+msgid "Video file in h264 mp4 format"
+msgstr ""
+
+#: signbank/video/models.py:145
+msgid "Version"
 msgstr ""
 
 #. Translators: Submit button
