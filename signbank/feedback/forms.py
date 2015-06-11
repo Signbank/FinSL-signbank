@@ -44,7 +44,7 @@ class SignFeedbackForm(forms.Form):
         choices=correctChoices, initial=0, widget=forms.RadioSelect)
     # correct = forms.IntegerField(initial=0, widget=forms.HiddenInput)
     kwnotbelong = forms.CharField(
-        label="List keywords", required=False, widget=forms.Textarea)
+        label=_("List keywords"), required=False, widget=forms.Textarea)
     comment = forms.CharField(required=False, widget=forms.Textarea)
 
 

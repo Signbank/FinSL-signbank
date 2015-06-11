@@ -246,9 +246,13 @@ def recordsignfeedback(request, trans, n, total):
             # redirect to the original page
             if lastmatch:
                 return HttpResponseRedirect(
-                    sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=" + _("Thank you. Your feedback has been saved."))
+                    # sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=" + _(
+                    #    "Thank you. Your feedback has been saved."))
+                    "%s%s%s%s%s" % (sourcepage, "?lastmatch=", lastmatch, "&feedbackmessage=", _("Thank you. Your feedback has been saved.")))
             else:
-                return HttpResponseRedirect(sourcepage + "?feedbackmessage=" + _("Thank you. Your feedback has been saved."))
+                return HttpResponseRedirect(
+                    # sourcepage + "?feedbackmessage=" + _("Thank you. Your feedback has been saved."))
+                    "%s%s%s" % (sourcepage, "?feedbackmessage=", _("Thank you. Your feedback has been saved.")))
     else:
         feedback_form = SignFeedbackForm()
 
