@@ -701,9 +701,28 @@ namedEntChoices = (
     ("20", 'Magazine'),
 )
 
+# Fields for FieldChoice
+fieldChoiceFields = (
+    ("Handedness", "Handedness"),
+    ("Handshape", "Handshape"),
+    ("Location", "Final Primary Location"),
+    ("RelatArtic", "Relation between Articulators"),
+    ("AbsOriFing", "Absolute Orientation: Fingers"),
+    ("RelOriMov", "Relative Orientation: Movement"),
+    ("RelOriLoc", "Relative Orientation: Location"),
+    ("OriChange", "Orientation Change"),
+    ("HandshapeChange", "Handshape Change"),
+    ("MovementShape", "Movement Shape"),
+    ("MovementDir", "Movement Direction"),
+    ("MovementMan", "Movement Manner"),
+    ("ContactType", "Contact Type"),
+    ("NamedEntity", "Named Entity"),
+     ("SemField", "Semantic Field"),
+)
 
+# This class stores the dynamic change options
 class FieldChoice(models.Model):
-    field = models.CharField(max_length=50)
+    field = models.CharField(max_length=50, choices=fieldChoiceFields)
     english_name = models.CharField(max_length=50)
     machine_value = models.IntegerField()
 
