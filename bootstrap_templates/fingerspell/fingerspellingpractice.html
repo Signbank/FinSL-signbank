@@ -1,6 +1,5 @@
-
 {% extends "baselayout.html" %}
- 
+{% load i18n %}
 {% block extrajs %}
     
     <script type="text/javascript" src="{{ STATIC_URL }}js/fingerspelling.js"></script>
@@ -56,26 +55,26 @@
     </div>
   
     <form id="inputarea">
-      <p><button class='btn btn-primary'id="new_word">New Word</button>
-	 <button class='btn btn-default' id="reveal_answer">Reveal Answer</button> 
+      <p><button class='btn btn-primary'id="new_word">{% blocktrans %}New Word{% endblocktrans %}</button>
+	 <button class='btn btn-default' id="reveal_answer">{% blocktrans %}Reveal Answer{% endblocktrans %}</button>
       </p>
-      <p id="answerpara">The word is: <span id="answer"></span></p>
+      <p id="answerpara">{% blocktrans %}The word is:{% endblocktrans %} <span id="answer"></span></p>
     </form>
    
    <form name='speedform'>
    <fieldset data-role="controlgroup" data-type="horizontal" >
-   <legend>Playback Speed</legend>
-      <input type='radio' name='speed' id='speed-slow' value='1500'><label for='speed-slow'>Slow</label>
-      <input type='radio' name='speed' id='speed-medium' value='1000' checked><label for='speed-medium'>Medium</label>
-      <input type='radio' name='speed' id='speed-fast' value='500'><label for='speed-fast'>Fast</label>      
+   <legend>{% blocktrans %}Playback Speed{% endblocktrans %}</legend>
+      <input type='radio' name='speed' id='speed-slow' value='1500'><label for='speed-slow'>{% blocktrans %}Slow{% endblocktrans %}</label>
+      <input type='radio' name='speed' id='speed-medium' value='1000' checked><label for='speed-medium'>{% blocktrans %}Medium{% endblocktrans %}</label>
+      <input type='radio' name='speed' id='speed-fast' value='500'><label for='speed-fast'>{% blocktrans %}Fast{% endblocktrans %}</label>
    </fieldset>
    </form>
    
     <p>
-    Click <em>New Word</em>
+    {% blocktrans trimmed %}Click <em>New Word</em>
    on the left to have a word spelled out; <em>Replay</em>
    will play the word again. Click <em>Reveal Answer</em>
-   to check your answer. 
+   to check your answer.{% endblocktrans %}
     </p>
   </div> 
 
@@ -118,14 +117,14 @@
  </tr>
  <tr>
    <td class='blank'></td>
-   <td colspan='3' class='blank'><p>Click on images to view.
+   <td colspan='3' class='blank'><p>{% blocktrans %}Click on images to view.{% endblocktrans %}
    </p></td>
    <td id="Z"></td>
  </tr>
 </table>
 
   <div id="info">
-     <p>Return to <a href="twohanded.html" data-ajax='false'>two handed fingerspelling</a></p>
+     <p>{% blocktrans %}Return to <a href="twohanded.html" data-ajax='false'>two handed fingerspelling{% endblocktrans %}</a></p>
   </div>
 </div>
 </div>
