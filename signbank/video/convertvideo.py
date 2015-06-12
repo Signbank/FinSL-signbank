@@ -111,7 +111,9 @@ def convert_video(sourcefile, targetfile, force=False):
     else:
         format = 'force'
 
-    if format == "h264":
+    # TODO: Should we use startswith?
+    if format.startswith("h264"):
+    # if format == "h264":
         # just do a copy of the file
         shutil.copy(sourcefile, targetfile)
     else:
@@ -119,7 +121,13 @@ def convert_video(sourcefile, targetfile, force=False):
         b = ffmpeg(sourcefile, targetfile, options=FFMPEG_OPTIONS)
 
     format = probe_format(targetfile)
-    if format == 'h264':
+
+    """This checks if the new file format is h264
+    But the original 'if' checked if it is exactly h264,
+    problem was that 'h264 high + something' didn't match"""
+    # TODO: This is a temporary fix, what are all the possible formats it returns? who knows?
+    if format.startswith('h264'):
+    # if format == 'h264':
         return True
     else:
         return False
