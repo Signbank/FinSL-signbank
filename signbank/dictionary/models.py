@@ -111,18 +111,12 @@ class Keyword(models.Model):
         return (trans, len(alltrans))
 
 
-DEFN_ROLE_CHOICES = (
-    # Translators: DEFN_ROLE_CHOICES
-    ('note', _('Note')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('privatenote', _('Private Note')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('phon', _('Phonology')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('todo', _('To Do')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('sugg', _('Suggestion for other gloss')),
-)
+DEFN_ROLE_CHOICES = (('note', _('Note')),
+                     ('privatenote', _('Private Note')),
+                     ('phon', _('Phonology')),
+                     ('todo', _('To Do')),
+                     ('sugg', _('Suggestion for other gloss')),
+                     )
 
 
 class Definition(models.Model):
@@ -180,11 +174,8 @@ class RelationToForeignSign(models.Model):
         return str(self.gloss) + "/" + self.other_lang + ',' + self.other_lang_gloss
 
     gloss = models.ForeignKey("Gloss")
-    # Translators: RelationToForeignSign field verbose name
     loan = models.BooleanField(_("Loan Sign"), default=False)
-    # Translators: RelationToForeignSign field verbose name
     other_lang = models.CharField(_("Related Language"), max_length=20)
-    # Translators: RelationToForeignSign field verbose name
     other_lang_gloss = models.CharField(
         _("Gloss in related language"), max_length=50)
 
@@ -744,28 +735,17 @@ class Gloss(models.Model):
     class Meta:
         verbose_name_plural = "Glosses"
         ordering = ['idgloss']
-        permissions = (
-            # Translators: Gloss permissions
-            ('update_video', _("Can Update Video")),
-            # Translators: Gloss permissions
-            ('search_gloss', _('Can Search/View Full Gloss Details')),
-            # Translators: Gloss permissions
-            ('export_csv', _('Can export sign details as CSV')),
-            # Translators: Gloss permissions
-            ('can_publish', _('Can publish signs and definitions')),
-            # Translators: Gloss permissions
-            ('can_delete_unpublished',
-             # Translators: Gloss permissions
-             _('Can delete unpub signs or defs')),
-            # Translators: Gloss permissions
-            ('can_delete_published',
-             # Translators: Gloss permissions
-             _('Can delete pub signs and defs')),
-            # Translators: Gloss permissions
-            ('view_advanced_properties',
-             # Translators: Gloss permissions
-             _('Include all properties in sign detail view')),
-        )
+        permissions = (('update_video', _("Can Update Video")),
+                       ('search_gloss', _('Can Search/View Full Gloss Details')),
+                       ('export_csv', _('Can export sign details as CSV')),
+                       ('can_publish', _('Can publish signs and definitions')),
+                       ('can_delete_unpublished',
+                        _('Can delete unpub signs or defs')),
+                       ('can_delete_published',
+                        _('Can delete pub signs and defs')),
+                       ('view_advanced_properties',
+                        _('Include all properties in sign detail view')),
+                       )
 
     def __unicode__(self):
         return "%s" % (self.idgloss)
@@ -801,19 +781,13 @@ class Gloss(models.Model):
 
         return result
 
-    # Translators: Gloss models field: idgloss, verbose name
-    idgloss = models.CharField(_("ID Gloss"), max_length=50,
-                               # Translators: Help text for Gloss models field: idgloss
-                               help_text=_("""
+    idgloss = models.CharField("ID Gloss", max_length=50, help_text=_("""
     This is the unique identifying name of an entry of a sign form in the
 database. No two Sign Entry Names can be exactly the same, but a "Sign
 Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
-    # Translators: Gloss models field: annotation_idgloss_jkl, verbose name
-    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30,
-                                              # Translators: Help text for Gloss models field: annotation_idgloss_jkl
-                                              help_text=_("""
+    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30, help_text=_("""
     This is the Jyvaskyla name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Jyvaskyla Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
@@ -822,17 +796,11 @@ minor or insignificant ways that can be ignored."""))
     # the idgloss used in transcription, may be shared between many signs
 
     # ID gloss for JKL gloss translation to English
-    # Translators: Gloss models field: annotation_idgloss_jkl_en (english), verbose name
-    annotation_idgloss_jkl_en = models.CharField(_("Gloss: JKL (Eng)"), blank=True, max_length=30,
-                                                 # Translators: Help text for Gloss models field: annotation_idgloss_jkl_en (english)
-                                                 help_text=_("""
+    annotation_idgloss_jkl_en = models.CharField("Gloss: JKL (Eng)", blank=True, max_length=30, help_text=_("""
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # Changed this Gloss to be for the Helsinki folks
-    # Translators: Gloss models field: annotation_idgloss_hki, verbose name
-    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30,
-                                              # Translators: Help text for Gloss models field: annotation_idgloss_hki
-                                              help_text=_("""
+    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30, help_text=_("""
     This is the Helsinki name of a sign used by annotators when glossing the corpus in
 an ELAN annotation file. The Helsinki Annotation Idgloss may be the same for two or
 more entries (each with their own 'Sign Entry Name'). If two sign entries
@@ -840,19 +808,14 @@ have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored."""))
 
     # ID Gloss for HKI gloss translation to English
-    # Translators: Gloss models field: annotation_idgloss_hki_en (english), verbose name
-    annotation_idgloss_hki_en = models.CharField(_("Gloss: HKI (Eng)"), blank=True, max_length=30,
-                                                 # Translators: Help text for Glodd models field: annotation_id_gloss_hki_en (english)
-                                                 help_text=_("""
+    annotation_idgloss_hki_en = models.CharField("Gloss: HKI (Eng)", blank=True, max_length=30, help_text=_("""
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
-    # Translators: Gloss models field: useInstr, verbose name
     useInstr = models.CharField(
         _("Annotation instructions"), max_length=50, blank=True)
-    # Translators: Gloss models field: rmrks, verbose name
     rmrks = models.CharField(_("Remarks"), max_length=50, blank=True)
 
     ########
@@ -861,89 +824,62 @@ minor or insignificant ways that can be ignored."""))
     dialect = models.ManyToManyField(Dialect)
 
     # This field type is a guess.
-    # Translators: Gloss models field: compound, verbose name
     compound = models.CharField(_("Compound of"), max_length=100, blank=True)
-    # Translators: Gloss models field: comptf, verbose name
     comptf = models.NullBooleanField(_("Compound"), null=True, blank=True)
 
     # Phonology fields
-    # Translators: Gloss models field: handedness, verbose name
     handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
-    # Translators: Gloss models field: domhdndsh, verbose name
+
     domhndsh = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
-    # Translators: Gloss models field: subhndsh, verbose name
     subhndsh = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
                                 max_length=5)
 
-    # Translators: Gloss models field: final_domhndsh, verbose name
     final_domhndsh = models.CharField(_("Final Dominant Handshape"), blank=True, null=True,
                                       choices=build_choice_list("Handshape"), max_length=5)
-    # Translators: Help text for Gloss models field: final_subhndsh
-    final_subhndsh = models.CharField(_("Final Subordinate Handshape"), null=True,
-                                      choices=build_choice_list("Handshape"),
+    final_subhndsh = models.CharField(_("Final Subordinate Handshape"), null=True, choices=build_choice_list("Handshape"),
                                       blank=True, max_length=5)
 
-    # Translators: Gloss models field: locprim, verbose name
     locprim = models.CharField(
         _("Location"), choices=locationChoices, null=True, blank=True, max_length=20)
-    # Translators: Gloss models field: final_loc, verbose name
     final_loc = models.IntegerField(_("Final Primary Location"), choices=build_choice_list("Location"), null=True,
                                     blank=True)
-    # Translators: Help text for Gloss models field: locVirtObj, verbose name
     locVirtObj = models.CharField(
         _("Virtual Object"), blank=True, null=True, max_length=50)
 
-    # Translators: Gloss models field: locsecond, verbose name
     locsecond = models.IntegerField(
         _("Secondary Location"), choices=build_choice_list("Location"), null=True, blank=True)
 
-    # Translators: Gloss models field: initial_secondary_loc, verbose name
     initial_secondary_loc = models.CharField(_("Initial Subordinate Location"), max_length=20,
                                              choices=BSLsecondLocationChoices, null=True, blank=True)
-    # Translators: Gloss models field: final_secondary_loc, verbose name
     final_secondary_loc = models.CharField(_("Final Subordinate Location"), max_length=20,
                                            choices=BSLsecondLocationChoices, null=True, blank=True)
 
-    # Translators: Gloss models field: initial_palm, verbose name
     initial_palm_orientation = models.CharField(_("Initial Palm Orientation"), max_length=20, null=True, blank=True,
                                                 choices=palmOrientationChoices)
-    # Translators: Gloss models field: final_palm_orientation, verbose name
     final_palm_orientation = models.CharField(_("Final Palm Orientation"), max_length=20, null=True, blank=True,
                                               choices=palmOrientationChoices)
 
-    # Translators: Gloss models field: initial_relative_orientation, verbose name
-    initial_relative_orientation = models.CharField(_("Initial Interacting Dominant Hand Part"), null=True,
-                                                    max_length=20,
+    initial_relative_orientation = models.CharField(_("Initial Interacting Dominant Hand Part"), null=True, max_length=20,
                                                     blank=True, choices=relOrientationChoices)
-    # Translators: Gloss models field: final_relative_orientation, verbose name
     final_relative_orientation = models.CharField(_("Final Interacting Dominant Hand Part"), null=True, max_length=20,
                                                   blank=True, choices=relOrientationChoices)
 
-    # Translators: Gloss models field: inWeb, verbose name
     inWeb = models.NullBooleanField(_("In the Web dictionary"), default=False)
-    # Translators: Gloss models field: isNew, verbose name
     isNew = models.NullBooleanField(
         _("Is this a proposed new sign?"), null=True, default=False)
 
     inittext = models.CharField(max_length="50", blank=True)
 
-    # Translators: Gloss models field: morph, verbose name
     morph = models.CharField(_("Morphemic Analysis"), max_length=50, blank=True)
 
-    # Translators: Gloss models field: sense, verbose name
     sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
-                                # Translators: Help text for Gloss models field: sense
-                                help_text=_(
-                                    "If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1"))
+                                help_text=_("If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1"))
     sense.list_filter_sense = True
 
-    # Translators: Gloss models field: sn, verbose name
     sn = models.IntegerField(_("Sign Number"),
-                             # Translators: Help text for Gloss models field: sn
-                             help_text=_(
-                                 "Sign Number must be a unique integer and defines the ordering of signs in the dictionary"),
+                             help_text=_("Sign Number must be a unique integer and defines the ordering of signs in the dictionary"),
                              null=True, blank=True, unique=True)
     # this is a sign number - was trying
     # to be a primary key, also defines a sequence - need to keep the sequence
@@ -951,69 +887,50 @@ minor or insignificant ways that can be ignored."""))
 
     StemSN = models.IntegerField(null=True, blank=True)
 
-    # Translators: Gloss models field: relatArtic, verbose name
-    relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"),
-                                  null=True,
+    relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"), null=True,
                                   blank=True, max_length=5)
 
-    # Translators: Gloss models field: absOriPalm, verbose name
     absOriPalm = models.CharField(_("Absolute Orientation: Palm"), choices=build_choice_list("RelatArtic"), null=True,
                                   blank=True, max_length=5)
-    # Translators: Gloss models field: absOriFing, verbose name
-    absOriFing = models.CharField(_("Absolute Orientation: Fingers"), choices=build_choice_list("AbsOriFing"),
-                                  null=True,
+    absOriFing = models.CharField(_("Absolute Orientation: Fingers"), choices=build_choice_list("AbsOriFing"), null=True,
                                   blank=True, max_length=5)
 
-    # Translators: Gloss models field: relOriMov, verbose name
     relOriMov = models.CharField(_("Relative Orientation: Movement"), choices=build_choice_list("RelOriMov"), null=True,
                                  blank=True, max_length=5)
-    # Translators: Gloss models field: relOriLoc, verbose name
     relOriLoc = models.CharField(_("Relative Orientation: Location"), choices=build_choice_list("RelOriLoc"), null=True,
                                  blank=True, max_length=5)
-    # Translators: Gloss models field: oriCh, verbose name
     oriCh = models.CharField(_("Orientation Change"), choices=build_choice_list("OriChange"), null=True, blank=True,
                              max_length=5)
 
-    # Translators: Gloss models field: handCh, verbose name
-    handCh = models.CharField(_("Handshape Change"), choices=build_choice_list("HandshapeChange"), null=True,
-                              blank=True,
+    handCh = models.CharField(_("Handshape Change"), choices=build_choice_list("HandshapeChange"), null=True, blank=True,
                               max_length=5)
 
-    # Translators: Gloss models field: repeat, verbose name
-    repeat = models.NullBooleanField(_("Repeated Movement"), null=True, default=False)
-    # Translators: Gloss models field: altern, verbose name
-    altern = models.NullBooleanField(_("Alternating Movement"), null=True, default=False)
+    repeat = models.NullBooleanField(
+        _("Repeated Movement"), null=True, default=False)
+    altern = models.NullBooleanField(
+        _("Alternating Movement"), null=True, default=False)
 
-    # Translators: Gloss models field: movSh, verbose name
     movSh = models.CharField(_("Movement Shape"), choices=build_choice_list("MovementShape"), null=True, blank=True,
                              max_length=5)
-    # Translators: Gloss models field: movDir, verbose name
     movDir = models.CharField(_("Movement Direction"), choices=build_choice_list("MovementDir"), null=True, blank=True,
                               max_length=5)
-    # Translators: Gloss models field: movMan, verbose name
     movMan = models.CharField(_("Movement Manner"), choices=build_choice_list("MovementMan"), null=True, blank=True,
                               max_length=5)
-    # Translators: Gloss models field: contType, verbose name
     contType = models.CharField(_("Contact Type"), choices=build_choice_list("ContactType"), null=True, blank=True,
                                 max_length=5)
 
-    # Translators: Gloss models field: phonOth verbose name
     phonOth = models.TextField(_("Phonology Other"), null=True, blank=True)
 
-    # Translators: Gloss models field: mouthG, verbose name
     mouthG = models.CharField(_("Mouth Gesture"), max_length=50, blank=True)
-    # Translators: Gloss models field: mouthing, verbose name
     mouthing = models.CharField(_("Mouthing"), max_length=50, blank=True)
-    # Translators: Gloss models field: phonetVar, verbose name
-    phonetVar = models.CharField(_("Phonetic Variation"), max_length=50, blank=True, )
+    phonetVar = models.CharField(
+        _("Phonetic Variation"), max_length=50, blank=True, )
 
     # Semantic fields
-    # Translators: Gloss models field: iconImg, verbose name
+
     iconImg = models.CharField(_("Iconic Image"), max_length=50, blank=True)
-    # Translators: Gloss models field: namEnt, verbose name
     namEnt = models.CharField(_("Named Entity"), choices=build_choice_list("NamedEntity"), null=True, blank=True,
                               max_length=5)
-    # Translators: Gloss models field: semField, verbose name
     semField = models.CharField(_("Semantic Field"), choices=build_choice_list("SemField"), null=True, blank=True,
                                 max_length=5)
 
@@ -1289,22 +1206,14 @@ try:
 except tagging.AlreadyRegistered:
     pass
 
-RELATION_ROLE_CHOICES = (
-    # Translators: RELATION_ROLE_CHOICES
-    ('homonym', _('Homonym')),
-    # Translators: RELATION_ROLE_CHOICES
-    ('synonym', _('Synonym')),
-    # Translators: RELATION_ROLE_CHOICES
-    ('variant', _('Variant')),
-    # Translators: RELATION_ROLE_CHOICES
-    ('antonym', _('Antonym')),
-    # Translators: RELATION_ROLE_CHOICES
-    ('hyponym', _('Hyponym')),
-    # Translators: RELATION_ROLE_CHOICES
-    ('hypernym', _('Hypernym')),
-    # Translators: RELATION_ROLE_CHOICES
-    ('seealso', _('See Also')),
-)
+RELATION_ROLE_CHOICES = (('homonym', _('Homonym')),
+                         ('synonym', _('Synonym')),
+                         ('variant', _('Variant')),
+                         ('antonym', _('Antonym')),
+                         ('hyponym', _('Hyponym')),
+                         ('hypernym', _('Hypernym')),
+                         ('seealso', _('See Also')),
+                         )
 
 
 class Relation(models.Model):
