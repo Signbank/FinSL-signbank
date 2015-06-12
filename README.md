@@ -13,9 +13,9 @@ Currently Signbank-fi is not released and it is still under development.
 ### How do I get set up? ###
 
 * Summary of set up  
-    pip install -r /path/to/requirements.txt  
-    python bin/develop.py migrate  
-    python bin/develop.py runserver 127.0.0.1:8000  
+> pip install -r /path/to/requirements.txt  
+> python bin/develop.py migrate  
+> python bin/develop.py runserver 127.0.0.1:8000  
 * Configuration  
 Before you can get Signbank-fi working, you must change some paths in:  
 signbank/settings/base.py  
