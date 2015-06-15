@@ -22,13 +22,16 @@ Once the first working version of Signbank-fi is working, the repository will be
 * **Summary of set up**
 
 > pip install -r /path/to/requirements.txt
+>
 > python bin/develop.py migrate
+>
 > python bin/develop.py runserver 127.0.0.1:8000
 
 * **Configuration**
 
 Before you can get Signbank-fi working, you must change some paths in:  
 > signbank/settings/base.py  
+>
 > signbank/settings/development.py                              
 
 * **Dependencies**
