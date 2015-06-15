@@ -8,8 +8,11 @@ This README would normally document whatever steps are necessary to get your app
 
 This repository is for Finnish Signbank - a sign language Gloss database.
 Finnish Signbank is a fork of Dutch Signbank (https://github.com/Woseseltops/signbank).
+
 Finnish version of Signbank is intended for research use at first, and perhaps later it will be opened to public use.
-The source code is free to use and you can build your own version of Signbank on top of it. This version of Signbank is the first one to offer Django's translation engine feature, so it should be fairly easily to translate to different languages.
+The source code is free to use and you can build your own version of Signbank on top of it.
+
+This version of Signbank is the first one to offer Django's translation engine feature, so it should be fairly easily to translate to different languages.
 
 Signbank is built on django-framework and it uses python 2.7.
 
