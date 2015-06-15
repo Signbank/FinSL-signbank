@@ -305,7 +305,8 @@ class SignFeedback(models.Model):
     user = models.ForeignKey(authmodels.User, editable=False)
     date = models.DateTimeField(auto_now_add=True)
 
-    translation = models.ForeignKey(Translation, editable=False)
+    # Added null=True, blank=True because there might be no translation for a Gloss
+    translation = models.ForeignKey(Translation, editable=False, null=True, blank=True)
     # Translators: Question (sign feedback)
     comment = models.TextField(
         _("Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."),

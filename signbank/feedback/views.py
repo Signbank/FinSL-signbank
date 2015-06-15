@@ -182,7 +182,9 @@ def glossfeedback(request, glossid):
     # construct a translation so we can record feedback against it
     # really should have recorded feedback for a gloss, not a sign
     allkwds = gloss.translation_set.all()
+
     if len(allkwds) == 0:
+        # TODO: What is the purpose of this? You get nothing, then create nothing?
         trans = Translation()
     else:
         trans = allkwds[0]
@@ -238,9 +240,13 @@ def recordsignfeedback(request, trans, n, total):
                 kwnotbelong=clean['kwnotbelong'],
                 comment=clean['comment'],
                 user=request.user,
-                translation_id=request.POST['translation_id']
-
+                # translation_id=request.POST['translation_id']
             )
+            # Here we are hacking away this problem when there is no translation
+            # for a Gloss. Because translation_id is int, it doesn't accept None.
+            exists_translation_id=request.POST['translation_id']
+            if exists_translation_id != 'None':
+                sfb.translation_id=exists_translation_id
             sfb.save()
             valid = True
             # redirect to the original page
