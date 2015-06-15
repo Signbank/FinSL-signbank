@@ -930,6 +930,8 @@ minor or insignificant ways that can be ignored."""))
     inittext = models.CharField(max_length="50", blank=True)
 
     # Translators: Gloss models field: morph, verbose name
+    # TODO: Check if this is used, I strongly suspect it is not.
+    # This can be found in some fields, but doesn't seem to affect anything really.
     morph = models.CharField(_("Morphemic Analysis"), max_length=50, blank=True)
 
     # Translators: Gloss models field: sense, verbose name
@@ -994,6 +996,7 @@ minor or insignificant ways that can be ignored."""))
     movMan = models.CharField(_("Movement Manner"), choices=build_choice_list("MovementMan"), null=True, blank=True,
                               max_length=5)
     # Translators: Gloss models field: contType, verbose name
+    # TODO: Check if this is actually used
     contType = models.CharField(_("Contact Type"), choices=build_choice_list("ContactType"), null=True, blank=True,
                                 max_length=5)
 
