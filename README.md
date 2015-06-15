@@ -36,11 +36,25 @@ Before you can get Signbank-fi working, you must change some paths in:
 > signbank/settings/development.py                              
 
 * Dependencies
+
+> See *requirements.txt*
+
 * Database configuration
+
+Django should make all the needed database configurations apart from setting up a database.
+
+Just use:
+> bin/develop.py migrate
+
 * How to run tests
+
+Sadly tests are not yet available.
+
 * Deployment instructions
 
 ### Contribution guidelines ###
+
+Right now this repository is not up for contribution, because this might not be actively maintained. You can fork this and make your own version.
 
 * Writing tests
 * Code review
