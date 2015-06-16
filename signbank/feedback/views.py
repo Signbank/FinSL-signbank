@@ -244,9 +244,9 @@ def recordsignfeedback(request, trans, n, total):
             )
             # Here we are hacking away this problem when there is no translation
             # for a Gloss. Because translation_id is int, it doesn't accept None.
-            exists_translation_id=request.POST['translation_id']
-            if exists_translation_id != 'None':
-                sfb.translation_id=exists_translation_id
+            this_translation_id=request.POST['translation_id']
+            if this_translation_id != 'None':
+                sfb.translation_id=this_translation_id
             sfb.save()
             valid = True
             # redirect to the original page
