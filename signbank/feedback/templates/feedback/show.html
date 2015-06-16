@@ -76,12 +76,12 @@ jQuery(document).ready(function(){
       
 	    <p>{{fb.comment}}</p>
      
-       <p><form action="/feedback/general/delete/{{fb.id}}" method="post">
+       <form action="/feedback/general/delete/{{fb.id}}" method="post"><p>
            {% csrf_token %}
             {# Translators: Submit button #}
            <input class='delete btn btn-default' type='submit' value='{% blocktrans %}Delete Comment{% endblocktrans %}'>
-           </form>
-         </p>
+           </p></form>
+
        </div> 
       </div>
      </div>
@@ -121,12 +121,12 @@ jQuery(document).ready(function(){
         
         </ul>
         -->      
-        <p><form action="/feedback/sign/delete/{{fb.id}}" method="post">
+        <form action="/feedback/sign/delete/{{fb.id}}" method="post"><p>
            {% csrf_token %}
             {# Translators: Submit button #}
            <input class='delete btn btn-default' type='submit' value='{% blocktrans %}Delete Comment{% endblocktrans %}'>
-           </form>
-         </p>     
+           </p> </form>
+
      
         </div> 
        </div>
@@ -192,12 +192,12 @@ jQuery(document).ready(function(){
              <dt>{% blocktrans %}Comments{% endblocktrans %}</dt><dd>{{fb.comments}}</dd>
          </dl>
      
-         <p><form action="/feedback/missingsign/delete/{{fb.id}}" method="post">
+         <form action="/feedback/missingsign/delete/{{fb.id}}" method="post"><p>
            {% csrf_token %}
             {# Translators: Submit button #}
            <input class='delete btn btn-default' type='submit' value='{% blocktrans %}Delete Comment{% endblocktrans %}'>
-           </form>
-         </p>
+         </p></form>
+
  
       </div>
      </div>
