@@ -76,7 +76,7 @@ class SenseNumberListFilter(SimpleListFilter):
 
 
 class GlossAdmin(VersionAdmin):
-    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotationComments', 'morph', 'sense',
+    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotationComments', 'sense',
                                     'sn', 'comptf', 'compound', 'language', 'dialect')}, ),
                  ('Publication Status', {'fields': ('inWeb',  'isNew',),
                                          'classes': ('collapse',)}, ),
@@ -98,7 +98,7 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'annotation_idgloss_jkl', 'morph', 'sense', 'sn']
+    list_display = ['idgloss', 'annotation_idgloss_jkl', 'sense', 'sn']
     search_fields = ['^idgloss', '=sn', '^annotation_idgloss_jkl']
     list_filter = [
         'language', 'dialect', SenseNumberListFilter, 'inWeb', 'domhndsh']
