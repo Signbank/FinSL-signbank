@@ -179,7 +179,7 @@ class GlossSearchForm(forms.ModelForm):
         model = Gloss
         fields = ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
                   'annotation_idgloss_hki_en', 'sense',
-                  'sn', 'comptf', 'compound', 'language', 'dialect',
+                  'sn', 'comptf', 'language', 'dialect',
                   'inWeb', 'isNew',
                   'initial_relative_orientation', 'final_relative_orientation',
                   'initial_palm_orientation', 'final_palm_orientation',

@@ -860,8 +860,7 @@ minor or insignificant ways that can be ignored."""))
     dialect = models.ManyToManyField(Dialect)
 
     # This field type is a guess.
-    # Translators: Gloss models field: compound, verbose name
-    compound = models.CharField(_("Compound of"), max_length=100, blank=True)
+
     # Translators: Gloss models field: comptf, verbose name
     comptf = models.NullBooleanField(_("Compound"), null=True, blank=True)
 
