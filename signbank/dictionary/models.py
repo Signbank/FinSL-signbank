@@ -850,7 +850,6 @@ minor or insignificant ways that can be ignored."""))
     language = models.ManyToManyField(Language)
 
     # Translators: Gloss models field: annotation_comments, verbose name
-    # variable name was: useInstr
     annotation_comments = models.CharField(
         _("Annotation comments"), max_length=50, blank=True)
 
@@ -865,21 +864,11 @@ minor or insignificant ways that can be ignored."""))
     handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
     # Translators: Gloss models field: domhdndsh, verbose name
-    # variable name was: domhndsh
     strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
     # Translators: Gloss models field: weak_handshape, verbose name
-    #subhndsh
     weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
                                 max_length=5)
-
-    # Translators: Gloss models field: final_domhndsh, verbose name
-    final_domhndsh = models.CharField(_("Final Dominant Handshape"), blank=True, null=True,
-                                      choices=build_choice_list("Handshape"), max_length=5)
-    # Translators: Help text for Gloss models field: final_subhndsh
-    final_subhndsh = models.CharField(_("Final Subordinate Handshape"), null=True,
-                                      choices=build_choice_list("Handshape"),
-                                      blank=True, max_length=5)
 
     # Translators: Gloss models field: locprim, verbose name
     locprim = models.CharField(
