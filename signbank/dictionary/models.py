@@ -858,11 +858,7 @@ minor or insignificant ways that can be ignored."""))
 
     # one or more regional dialects that this gloss is used in
     dialect = models.ManyToManyField(Dialect)
-
     # This field type is a guess.
-
-    # Translators: Gloss models field: comptf, verbose name
-    comptf = models.NullBooleanField(_("Compound"), null=True, blank=True)
 
     # Phonology fields
     # Translators: Gloss models field: handedness, verbose name
