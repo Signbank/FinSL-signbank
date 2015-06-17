@@ -950,7 +950,6 @@ minor or insignificant ways that can be ignored."""))
     # to be a primary key, also defines a sequence - need to keep the sequence
     # and allow gaps between numbers for inserting later signs
 
-    StemSN = models.IntegerField(null=True, blank=True)
 
     # Translators: Gloss models field: relatArtic, verbose name
     relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"),
