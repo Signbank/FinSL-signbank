@@ -349,7 +349,7 @@ def missing_video_view(request):
 
 
 def import_videos(request):
-    video_folder = '/var/www2/signbank/live/writable/import_videos/'
+    video_folder = '/var/www2/signbank/live/writable/import_videos/' # TODO: Change this folder / check what this is for
 
     out = '<p>Imported</p><ul>'
     overwritten_files = '<p>Overwritten</p><ul>'

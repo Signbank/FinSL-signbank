@@ -27,6 +27,7 @@ def addvideo(request):
 
             # construct a filename for the video, use sn
             # if present, otherwise use idgloss+gloss id
+            # TODO: This seems to cause the problem with adding video to a gloss that has sn (sign number)
             if gloss.sn != None:
                 vfile.name = str(gloss.sn) + ".mp4"
             else:

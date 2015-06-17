@@ -899,8 +899,6 @@ minor or insignificant ways that can be ignored."""))
     isNew = models.NullBooleanField(
         _("Is this a proposed new sign?"), null=True, default=False)
 
-    inittext = models.CharField(max_length="50", blank=True)
-
     # Translators: Gloss models field: sense, verbose name
     sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
                                 # Translators: Help text for Gloss models field: sense
@@ -909,6 +907,7 @@ minor or insignificant ways that can be ignored."""))
     sense.list_filter_sense = True
 
     # Translators: Gloss models field: sn, verbose name
+    # TODO: See if this can be removed
     sn = models.IntegerField(_("Sign Number"),
                              # Translators: Help text for Gloss models field: sn
                              help_text=_(

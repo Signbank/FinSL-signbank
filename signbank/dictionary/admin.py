@@ -92,8 +92,6 @@ class GlossAdmin(VersionAdmin):
                  ('Frequency', {'fields': ('tokNo', 'tokNoSgnr', 'tokNoA', 'tokNoSgnrA', 'tokNoV', 'tokNoSgnrV',
                                            'tokNoR', 'tokNoSgnrR', 'tokNoGe', 'tokNoSgnrGe', 'tokNoGr', 'tokNoSgnrGr',
                                            'tokNoO', 'tokNoSgnrO'), 'classes': ('collapse',)}),
-                 ('Obsolete Fields', {
-                  'fields': ('inittext', ), 'classes': ('collapse',)}),
                  )
     save_on_top = True
     save_as = True
