@@ -802,7 +802,7 @@ class Gloss(models.Model):
         return result
 
     # Translators: Gloss models field: idgloss, verbose name
-    idgloss = models.CharField(_("ID Gloss"), max_length=50,
+    idgloss = models.CharField(_("Gloss"), max_length=50,
                                # Translators: Help text for Gloss models field: idgloss
                                help_text=_("""
     This is the unique identifying name of an entry of a sign form in the
@@ -811,7 +811,7 @@ Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
     # Changed this Gloss to be for the University of Jyvaskyla folks
     # Translators: Gloss models field: annotation_idgloss_jkl, verbose name
-    annotation_idgloss_jkl = models.CharField("Gloss: JKL", blank=True, max_length=30,
+    annotation_idgloss_jkl = models.CharField(_("Gloss JKL"), blank=True, max_length=30,
                                               # Translators: Help text for Gloss models field: annotation_idgloss_jkl
                                               help_text=_("""
     This is the Jyvaskyla name of a sign used by annotators when glossing the corpus in
@@ -823,14 +823,14 @@ minor or insignificant ways that can be ignored."""))
 
     # ID gloss for JKL gloss translation to English
     # Translators: Gloss models field: annotation_idgloss_jkl_en (english), verbose name
-    annotation_idgloss_jkl_en = models.CharField(_("Gloss: JKL (Eng)"), blank=True, max_length=30,
+    annotation_idgloss_jkl_en = models.CharField(_("Gloss JKL (Eng)"), blank=True, max_length=30,
                                                  # Translators: Help text for Gloss models field: annotation_idgloss_jkl_en (english)
                                                  help_text=_("""
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # Changed this Gloss to be for the Helsinki folks
     # Translators: Gloss models field: annotation_idgloss_hki, verbose name
-    annotation_idgloss_hki = models.CharField("Gloss: HKI", blank=True, max_length=30,
+    annotation_idgloss_hki = models.CharField(_("Gloss HKI"), blank=True, max_length=30,
                                               # Translators: Help text for Gloss models field: annotation_idgloss_hki
                                               help_text=_("""
     This is the Helsinki name of a sign used by annotators when glossing the corpus in
@@ -841,8 +841,8 @@ minor or insignificant ways that can be ignored."""))
 
     # ID Gloss for HKI gloss translation to English
     # Translators: Gloss models field: annotation_idgloss_hki_en (english), verbose name
-    annotation_idgloss_hki_en = models.CharField(_("Gloss: HKI (Eng)"), blank=True, max_length=30,
-                                                 # Translators: Help text for Glodd models field: annotation_id_gloss_hki_en (english)
+    annotation_idgloss_hki_en = models.CharField(_("Gloss HKI (Eng)"), blank=True, max_length=30,
+                                                 # Translators: Help text for Gloss models field: annotation_id_gloss_hki_en (english)
                                                  help_text=_("""
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
@@ -851,7 +851,7 @@ minor or insignificant ways that can be ignored."""))
 
     # Translators: Gloss models field: useInstr, verbose name
     useInstr = models.CharField(
-        _("Annotation instructions"), max_length=50, blank=True)
+        _("Annotation comments"), max_length=50, blank=True)
     # Translators: Gloss models field: rmrks, verbose name
     rmrks = models.CharField(_("Remarks"), max_length=50, blank=True)
 

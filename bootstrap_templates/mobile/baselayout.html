@@ -70,8 +70,7 @@
   	      {% for item in menu %}
 	         {# don't include Home, since we have a link for that in the header #}
 	         {% ifnotequal item.url "/" %}
-             {# Translators: menu items | mobile #}
-	         <li><a {% if item.current %}class='ui-btn-active'{% endif %} href="{{item.url}}">{% blocktrans %}{{item.title}}{% endblocktrans %}</a></li>
+	         <li><a {% if item.current %}class='ui-btn-active'{% endif %} href="{{item.url}}">{{item.title}}</a></li>
 	         {% endifnotequal %}
 	      {% endfor %}
         </ul>
@@ -93,8 +92,7 @@
       <div>
 	      <ul data-role="listview">
 		      {% for subitem in item.children %}
-                {# Translator: Child pages for menu links | mobile #}
-		        <li><a href="{{subitem.url}}">{% blocktrans %}{{subitem.title}}{% endblocktrans %}</a></li>
+		        <li><a href="{{subitem.url}}">{{subitem.title}}</a></li>
 		      {% endfor %} 
 	      </ul>
 	  </div>

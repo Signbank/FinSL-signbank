@@ -353,15 +353,15 @@ function clearForm(myFormElement) {
                  <table class='table'>
                      <tr>
                          {# Translators: Field label #}
-                         <th><label for='id_idgloss'>{% blocktrans %}ID Gloss{% endblocktrans %}</label></th>
+                         <th><label for='id_idgloss'>{% blocktrans %}Gloss{% endblocktrans %}</label></th>
                          {# Translators: Field label #}
-                         <th><label for='id_annotation_idgloss_jkl'>{% blocktrans %}Annotation ID Gloss JKL{% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_jkl'>{% blocktrans %}Gloss JKL{% endblocktrans %}</label></th>
                          {# Translators: Field label  #}
-                         <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Annotation ID Gloss JKL (English){% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Gloss JKL English{% endblocktrans %}</label></th>
                          {# Translators: Field label  #}
-                         <th><label for='id_annotation_idgloss_hki'>{% blocktrans %}Annotation ID Gloss HKI{% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_hki'>{% blocktrans %}Gloss HKI{% endblocktrans %}</label></th>
                          {# Translators: Field label  #}
-                         <th><label for='id_annotation_idgloss_hki_en'>{% blocktrans %}Annotation ID Gloss HKI (English){% endblocktrans %}</label></th>
+                         <th><label for='id_annotation_idgloss_hki_en'>{% blocktrans %}Gloss HKI English{% endblocktrans %}</label></th>
                          <th></th>
                      </tr>
                      <tr>
@@ -392,10 +392,13 @@ function clearForm(myFormElement) {
     <thead>
       <tr>
          {% for name, value in object_list.0.admin_fields %}
-		 
-           {% if forloop.counter == 2 %}		
-           <th>{{ name }}</th><th>Keywords</th>		   
-		   {% else %}	   
+
+           {# It seems like this if-clause inserts translation equivalents in the gloss list #}
+           {# The number in the forloop counter means where to insert the table title for these fields #}
+           {% if forloop.counter == 4 %}
+           {# This inserts the desired name for the table label #}
+           <th>{{ name }}</th><th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
+		   {% else %}
            <th>{{ name }}</th>
 		   {% endif %}
 		   
@@ -409,7 +412,10 @@ function clearForm(myFormElement) {
             {% for name, value in gloss.admin_fields %}
             {% if forloop.first %}
             <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
-            {% elif forloop.counter == 2 %}
+
+            {# This is a continuation of the if commented before #}
+            {# This forloop.counter adds translation equiv values #}
+            {% elif forloop.counter == 4 %}
             <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
 
 			<td>
