@@ -396,10 +396,10 @@ function clearForm(myFormElement) {
            {# It seems like this if-clause inserts translation equivalents in the gloss list #}
            {# The number in the forloop counter means where to insert the table title for these fields #}
            {% if forloop.counter == 4 %}
-           {# This inserts the desired name for the table label #}
-           <th>{{ name }}</th><th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
+               {# This inserts the desired name for the table label #}
+               <th>{{ name }}</th><th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
 		   {% else %}
-           <th>{{ name }}</th>
+               <th>{{ name }}</th>
 		   {% endif %}
 		   
          {% endfor %}
@@ -410,24 +410,27 @@ function clearForm(myFormElement) {
     {% for gloss in object_list %}
         <tr>		
             {% for name, value in gloss.admin_fields %}
-            {% if forloop.first %}
-            <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
+                {# This forloop.counter adds links to first columns #}
+                {% if forloop.first %}
+                    <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
 
-            {# This is a continuation of the if commented before #}
-            {# This forloop.counter adds translation equiv values #}
-            {% elif forloop.counter == 4 %}
-            <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
+                {# This forloop.counter adds links to desired columns #}
+                {% elif forloop.counter == 3 %}
+                    <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
 
-			<td>
-			{% for translation in gloss.translation_set.all %}
-            {{ translation.translation }} 
-			{% endfor %}			
-			</td>
-		
-            {% else %}
-            <td>{{ value }}</td>
-            {% endif %}  
-            {% endfor %} 
+                {# This forloop.counter adds regular values, and then adds after them translation equiv values #}
+                {% elif forloop.counter == 4 %}
+                    <td>{{ value }}</td>
+                    <td>
+                    {% for translation in gloss.translation_set.all %}
+                        {{ translation.translation }}
+                    {% endfor %}
+                    </td>
+
+                {% else %}
+                    <td>{{ value }}</td>
+                {% endif %}
+            {% endfor %}
 
     <td>{% for tag in gloss.tags %}<span class='tag'>{{tag}}</span> {% endfor %}</td>
             
