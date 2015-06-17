@@ -187,7 +187,7 @@ class GlossSearchForm(forms.ModelForm):
                   'domhndsh', 'subhndsh', 'locprim', 'locVirtObj', 'locsecond',
                   'final_domhndsh', 'final_subhndsh', 'final_loc',
 
-                  'handedness', 'useInstr', 'rmrks', 'relatArtic', 'absOriPalm', 'absOriFing',
+                  'handedness', 'annotationComments', 'relatArtic', 'absOriPalm', 'absOriFing',
                   'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',
                   'contType', 'mouthG',
                   'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField',

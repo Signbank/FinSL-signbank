@@ -849,11 +849,10 @@ minor or insignificant ways that can be ignored."""))
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
-    # Translators: Gloss models field: useInstr, verbose name
-    useInstr = models.CharField(
+    # Translators: Gloss models field: annotationComments, verbose name
+    # variable name was: useInstr
+    annotationComments = models.CharField(
         _("Annotation comments"), max_length=50, blank=True)
-    # Translators: Gloss models field: rmrks, verbose name
-    rmrks = models.CharField(_("Remarks"), max_length=50, blank=True)
 
     ########
 

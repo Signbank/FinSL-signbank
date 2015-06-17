@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 10:10+0300\n"
+"POT-Creation-Date: 2015-06-17 11:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1003,27 +1003,37 @@ msgid "See Also"
 msgstr "Katso myös"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:108
-#, fuzzy
-#| msgid "Search gloss"
-msgid "JKL Gloss"
-msgstr "Etsi glossia"
+#. Translators: Gloss models field: annotation_idgloss_jkl, verbose name
+#. Translators: Field label
+#: signbank/dictionary/forms.py:108 signbank/dictionary/models.py:814
+#: signbank/dictionary/templates/dictionary/add_gloss.html:29
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:358
+msgid "Gloss JKL"
+msgstr "Glossi JKL"
 
 #. Translators: GlossSearchForm label
+#. Translators: Field label
 #: signbank/dictionary/forms.py:110
-msgid "JKL English Gloss"
+#: signbank/dictionary/templates/dictionary/add_gloss.html:33
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:360
+msgid "Gloss JKL English"
 msgstr ""
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:112
-#, fuzzy
-#| msgid "Search gloss"
-msgid "HKI Gloss"
-msgstr "Etsi glossia"
+#. Translators: Gloss models field: annotation_idgloss_hki, verbose name
+#. Translators: Field label
+#: signbank/dictionary/forms.py:112 signbank/dictionary/models.py:833
+#: signbank/dictionary/templates/dictionary/add_gloss.html:37
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:362
+msgid "Gloss HKI"
+msgstr "Glossi HKI"
 
 #. Translators: GlossSearchForm label
+#. Translators: Field label
 #: signbank/dictionary/forms.py:114
-msgid "HKI English Gloss"
+#: signbank/dictionary/templates/dictionary/add_gloss.html:41
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:364
+msgid "Gloss HKI English"
 msgstr ""
 
 #. Translators: GlossSearchForm label
@@ -1232,10 +1242,8 @@ msgstr ""
 #: signbank/dictionary/models.py:805
 #: signbank/dictionary/templates/dictionary/add_gloss.html:25
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:356
-#, fuzzy
-#| msgid "Search gloss"
 msgid "Gloss"
-msgstr "Etsi glossia"
+msgstr "Glossi"
 
 #. Translators: Help text for Gloss models field: idgloss
 #: signbank/dictionary/models.py:807
@@ -1244,14 +1252,6 @@ msgid ""
 "    This is the unique identifying name of an entry of a sign form in the\n"
 "database. No two Sign Entry Names can be exactly the same, but a \"Sign\n"
 "Entry Name\" can be (and often is) the same as the Annotation Idgloss."
-msgstr ""
-
-#. Translators: Gloss models field: annotation_idgloss_jkl, verbose name
-#. Translators: Field label
-#: signbank/dictionary/models.py:814
-#: signbank/dictionary/templates/dictionary/add_gloss.html:29
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:358
-msgid "Gloss JKL"
 msgstr ""
 
 #. Translators: Help text for Gloss models field: annotation_idgloss_jkl
@@ -1270,7 +1270,7 @@ msgstr ""
 #. Translators: Gloss models field: annotation_idgloss_jkl_en (english), verbose name
 #: signbank/dictionary/models.py:826
 msgid "Gloss JKL (Eng)"
-msgstr ""
+msgstr "Glossi JKL (Eng)"
 
 #. Translators: Help text for Gloss models field: annotation_idgloss_jkl_en (english)
 #. Translators: Help text for Gloss models field: annotation_id_gloss_hki_en (english)
@@ -1278,14 +1278,6 @@ msgstr ""
 msgid ""
 "\n"
 "    This is the English name for the corresponding Jyvaskyla Gloss"
-msgstr ""
-
-#. Translators: Gloss models field: annotation_idgloss_hki, verbose name
-#. Translators: Field label
-#: signbank/dictionary/models.py:833
-#: signbank/dictionary/templates/dictionary/add_gloss.html:37
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:362
-msgid "Gloss HKI"
 msgstr ""
 
 #. Translators: Help text for Gloss models field: annotation_idgloss_hki
@@ -1304,7 +1296,7 @@ msgstr ""
 #. Translators: Gloss models field: annotation_idgloss_hki_en (english), verbose name
 #: signbank/dictionary/models.py:844
 msgid "Gloss HKI (Eng)"
-msgstr ""
+msgstr "Glossi HKI (Eng)"
 
 #: signbank/dictionary/models.py:854
 #, fuzzy
@@ -1330,17 +1322,17 @@ msgstr ""
 #. Translators: Gloss models field: handedness, verbose name
 #: signbank/dictionary/models.py:871
 msgid "Handedness"
-msgstr ""
+msgstr "Kätisyys"
 
 #. Translators: Gloss models field: domhdndsh, verbose name
 #: signbank/dictionary/models.py:874
 msgid "Strong Hand"
-msgstr ""
+msgstr "Dominoiva käsi"
 
 #. Translators: Gloss models field: subhndsh, verbose name
 #: signbank/dictionary/models.py:877
 msgid "Weak Hand"
-msgstr ""
+msgstr "Ei-dominoiva käsi"
 
 #. Translators: Gloss models field: final_domhndsh, verbose name
 #: signbank/dictionary/models.py:881
@@ -1358,7 +1350,7 @@ msgstr ""
 #: signbank/feedback/templates/feedback/interpreter.html:148
 #: signbank/feedback/templates/feedback/show.html:174
 msgid "Location"
-msgstr ""
+msgstr "Paikka"
 
 #. Translators: Gloss models field: final_loc, verbose name
 #: signbank/dictionary/models.py:892
@@ -1370,10 +1362,8 @@ msgid "Virtual Object"
 msgstr ""
 
 #: signbank/dictionary/models.py:900
-#, fuzzy
-#| msgid "Search translation"
 msgid "Secondary Location"
-msgstr "Etsi käännösvastinetta"
+msgstr ""
 
 #. Translators: Gloss models field: initial_secondary_loc, verbose name
 #: signbank/dictionary/models.py:903
@@ -1603,18 +1593,6 @@ msgstr ""
 
 #: signbank/dictionary/templates/dictionary/add_gloss.html:18
 msgid "Please provide some initial data"
-msgstr ""
-
-#. Translators: Field label
-#: signbank/dictionary/templates/dictionary/add_gloss.html:33
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:360
-msgid "Gloss JKL English"
-msgstr ""
-
-#. Translators: Field label
-#: signbank/dictionary/templates/dictionary/add_gloss.html:41
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:364
-msgid "Gloss HKI English"
 msgstr ""
 
 #. Translators: Button
@@ -1907,7 +1885,7 @@ msgstr ""
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:346
 msgid "Morphology"
-msgstr ""
+msgstr "Morfologia"
 
 #. Translators: Header2
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:372
@@ -1935,7 +1913,7 @@ msgstr ""
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:452
 msgid "Semantics"
-msgstr ""
+msgstr "Semantiikka"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:469
@@ -1966,17 +1944,17 @@ msgstr "Etsi käännösvastinetta"
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:542
 msgid "Relations to Foreign Signs"
-msgstr ""
+msgstr "Suhteet vieraskielisiin viittomiin"
 
 #. Translators: Loan from another language(?)
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:549
 msgid "Loan"
-msgstr ""
+msgstr "Laina"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:604
 msgid "Related language"
-msgstr ""
+msgstr "Lainattu kieli"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:608
@@ -1986,7 +1964,7 @@ msgstr ""
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:626
 msgid "Frequency"
-msgstr ""
+msgstr "Frekvenssi"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:643
@@ -3984,6 +3962,3 @@ msgstr ""
 #: signbank/video/templates/addvideo.html:21
 msgid "File:"
 msgstr ""
-
-#~ msgid "Australia Wide"
-#~ msgstr "Koko Suomessa"

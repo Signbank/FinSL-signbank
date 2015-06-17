@@ -59,7 +59,7 @@ class GlossListView(ListView):
 #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'useInstr', 'sense', 'StemSN', 'rmrks', 'handedness',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotationComments', 'sense', 'StemSN', 'handedness',
                       'domhndsh', 'subhndsh', 'handCh', 'relatArtic', 'locprim', 'locVirtObj', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
                       'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo',
                       'tokNoSgnr', 'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
@@ -183,7 +183,7 @@ class GlossListView(ListView):
 
             qs = qs.filter(definition__published=val)
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'useInstr', 'sense', 'morph', 'StemSN', 'compound', 'rmrks', 'handedness',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotationComments', 'sense', 'morph', 'StemSN', 'compound', 'handedness',
                       'domhndsh', 'subhndsh', 'locprim', 'locVirtObj', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
                       'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo', 'tokNoSgnr',
                       'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
@@ -198,8 +198,8 @@ class GlossListView(ListView):
         if vals != []:
             qs = qs.filter(language__in=vals)
 
-        if get.has_key('useInstr') and get['useInstr'] != '':
-            qs = qs.filter(useInstr__icontains=get['useInstr'])
+        if get.has_key('annotationComments') and get['annotationComments'] != '':
+            qs = qs.filter(annotationComments__icontains=get['annotationComments'])
 
         # phonology and semantics field filters
         for fieldname in fieldnames:
