@@ -183,9 +183,7 @@ class GlossSearchForm(forms.ModelForm):
                   'inWeb', 'isNew',
                   'initial_relative_orientation', 'final_relative_orientation',
                   'initial_palm_orientation', 'final_palm_orientation',
-                  'initial_secondary_loc', 'final_secondary_loc',
-                  'strong_handshape', 'weak_handshape', 'locprim', 'locVirtObj', 'locsecond',
-                  'final_loc',
+                  'strong_handshape', 'weak_handshape', 'location', 'locVirtObj',
 
                   'handedness', 'annotation_comments', 'relatArtic', 'absOriPalm', 'absOriFing',
                   'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',

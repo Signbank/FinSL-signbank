@@ -205,22 +205,6 @@ class Command(BaseCommand):
                         if row['weak_handshape'] == '0':
                             row['weak_handshape'] = '0.0'
                         gloss.weak_handshape = row['weak_handshape']
-                    if row['FinalLoc'] != '':
-                        gloss.final_loc = row['FinalLoc']
-                    if row['locprim'] != '':
-                        gloss.locprim = int(row['locprim'])
-                    # if row['locsecond'] != '':
-                    #    gloss.locsecond = int(row['locsecond'])
-
-                    # if row['PalmOriInitial'] != '':
-                    #    gloss.initial_palm_orientation = row['PalmOriInitial']
-                    # if row['PalmOriFinal'] != '':
-                    #    gloss.final_palm_orientation = row['PalmOriFinal']
-
-                    if row['prim2ndloc'] != '':
-                        gloss.initial_secondary_loc = row['prim2ndloc']
-                    if row['fin2ndloc'] != '':
-                        gloss.final_secondary_loc = row['fin2ndloc']
 
                     if row['Initrelori'] != '':
                         gloss.initial_relative_orientation = row['Initrelori']

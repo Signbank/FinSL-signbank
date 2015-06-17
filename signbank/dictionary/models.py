@@ -870,26 +870,13 @@ minor or insignificant ways that can be ignored."""))
     weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
                                 max_length=5)
 
-    # Translators: Gloss models field: locprim, verbose name
-    locprim = models.CharField(
-        _("Location"), choices=locationChoices, null=True, blank=True, max_length=20)
-    # Translators: Gloss models field: final_loc, verbose name
-    final_loc = models.IntegerField(_("Final Primary Location"), choices=build_choice_list("Location"), null=True,
-                                    blank=True)
+    # Translators: Gloss models field: location, verbose name
+    location = models.CharField(
+        _("Location"), choices=locationChoices, null=True, blank=True, max_length=20) # TODO: build_choice_list("Location")
+
     # Translators: Help text for Gloss models field: locVirtObj, verbose name
     locVirtObj = models.CharField(
-        _("Virtual Object"), blank=True, null=True, max_length=50)
-
-    # Translators: Gloss models field: locsecond, verbose name
-    locsecond = models.IntegerField(
-        _("Secondary Location"), choices=build_choice_list("Location"), null=True, blank=True)
-
-    # Translators: Gloss models field: initial_secondary_loc, verbose name
-    initial_secondary_loc = models.CharField(_("Initial Subordinate Location"), max_length=20,
-                                             choices=BSLsecondLocationChoices, null=True, blank=True)
-    # Translators: Gloss models field: final_secondary_loc, verbose name
-    final_secondary_loc = models.CharField(_("Final Subordinate Location"), max_length=20,
-                                           choices=BSLsecondLocationChoices, null=True, blank=True)
+        _("Virtual Object"), blank=True, null=True, max_length=50) # TODO: remove this field
 
     # Translators: Gloss models field: initial_palm, verbose name
     initial_palm_orientation = models.CharField(_("Initial Palm Orientation"), max_length=20, null=True, blank=True,
@@ -1244,7 +1231,7 @@ minor or insignificant ways that can be ignored."""))
         choice_lists = {}
 
         # Start with your own choice lists
-        for fieldname in ['handedness', 'locprim', 'strong_handshape', 'weak_handshape',
+        for fieldname in ['handedness', 'location', 'strong_handshape', 'weak_handshape',
                           'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov',
                           'relOriLoc', 'handCh', 'repeat', 'altern', 'movSh',
                           'movDir', 'movMan', 'contType', 'namEnt', 'oriCh', 'semField']:

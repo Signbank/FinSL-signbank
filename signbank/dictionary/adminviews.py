@@ -60,7 +60,7 @@ class GlossListView(ListView):
         # We want to manually set which fields to export here
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'locprim', 'locVirtObj', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
+                      'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'location', 'locVirtObj', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
                       'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo',
                       'tokNoSgnr', 'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
                       'tokNoSgnrGr', 'tokNoSgnrO', 'inWeb', 'isNew']
@@ -184,7 +184,7 @@ class GlossListView(ListView):
             qs = qs.filter(definition__published=val)
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'locprim', 'locVirtObj', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
+                      'strong_handshape', 'weak_handshape', 'location', 'locVirtObj', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
                       'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo', 'tokNoSgnr',
                       'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
                       'tokNoSgnrGr', 'tokNoSgnrO', 'inWeb', 'isNew']
@@ -230,18 +230,6 @@ class GlossListView(ListView):
         if get.has_key('final_palm_orientation') and get['final_palm_orientation'] != '':
             val = get['final_palm_orientation']
             qs = qs.filter(final_palm_orientation__exact=val)
-
-        if get.has_key('initial_secondary_loc') and get['initial_secondary_loc'] != '':
-            val = get['initial_secondary_loc']
-            qs = qs.filter(initial_secondary_loc__exact=val)
-
-        if get.has_key('final_secondary_loc') and get['final_secondary_loc'] != '':
-            val = get['final_secondary_loc']
-            qs = qs.filter(final_secondary_loc__exact=val)
-
-        if get.has_key('final_secondary_loc') and get['final_secondary_loc'] != '':
-            val = get['final_secondary_loc']
-            qs = qs.filter(final_secondary_loc__exact=val)
 
         if get.has_key('defsearch') and get['defsearch'] != '':
 
@@ -413,7 +401,7 @@ class GlossDetailView(DetailView):
 
         fields = {}
 
-        fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'locprim', 'locVirtObj', 'absOriPalm', 'absOriFing',
+        fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'location', 'locVirtObj', 'absOriPalm', 'absOriFing',
                                'relOriMov', 'relOriLoc', 'oriCh', 'contType', 'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG',
                                'mouthing', 'phonetVar', ]
 
