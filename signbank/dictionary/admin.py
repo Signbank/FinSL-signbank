@@ -84,7 +84,7 @@ class GlossAdmin(VersionAdmin):
                                            'initial_relative_orientation', 'final_relative_orientation',
                                            'initial_secondary_loc', 'final_secondary_loc',
                                            'locprim', 'locVirtObj', 'final_loc',
-                                           'strong_handshape', 'subhndsh', 'final_domhndsh', 'final_subhndsh',
+                                           'strong_handshape', 'weak_handshape', 'final_domhndsh', 'final_subhndsh',
                                            'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh',
                                            'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan', 'contType',
                                            'phonOth', 'mouthG', 'mouthing', 'phonetVar'), 'classes': ('collapse',)}, ),

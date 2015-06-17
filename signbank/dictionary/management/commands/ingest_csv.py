@@ -201,10 +201,10 @@ class Command(BaseCommand):
                         if row['strong_handshape'] == '0':
                             row['strong_handshape'] = '0.0'
                         gloss.strong_handshape = row['strong_handshape']
-                    if row['subhndsh'] != '':
-                        if row['subhndsh'] == '0':
-                            row['subhndsh'] = '0.0'
-                        gloss.subhndsh = row['subhndsh']
+                    if row['weak_handshape'] != '':
+                        if row['weak_handshape'] == '0':
+                            row['weak_handshape'] = '0.0'
+                        gloss.weak_handshape = row['weak_handshape']
                     if row['FinaldominantHS'] != '':
                         if row['FinaldominantHS'] == '0':
                             row['FinaldominantHS'] = '0.0'
@@ -212,7 +212,7 @@ class Command(BaseCommand):
                     if row['FinalSubordinateHS'] != '':
                         if row['FinalSubordinateHS'] == '0':
                             row['FinalSubordinateHS'] = '0.0'
-                        gloss.final_subhndsh = row['FinalSubordinateHS']
+                        gloss.final_weak_handshape = row['FinalSubordinateHS']
                     if row['FinalLoc'] != '':
                         gloss.final_loc = row['FinalLoc']
                     if row['locprim'] != '':
