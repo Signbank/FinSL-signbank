@@ -197,10 +197,10 @@ class Command(BaseCommand):
                     else:
                         gloss.idgloss = gloss.annotation_idgloss_jkl
 
-                    if row['domhndsh'] != '':
-                        if row['domhndsh'] == '0':
-                            row['domhndsh'] = '0.0'
-                        gloss.domhndsh = row['domhndsh']
+                    if row['strong_handshape'] != '':
+                        if row['strong_handshape'] == '0':
+                            row['strong_handshape'] = '0.0'
+                        gloss.strong_handshape = row['strong_handshape']
                     if row['subhndsh'] != '':
                         if row['subhndsh'] == '0':
                             row['subhndsh'] = '0.0'

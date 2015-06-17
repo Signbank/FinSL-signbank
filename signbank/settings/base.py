@@ -212,7 +212,7 @@ DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
 
 ADMIN_RESULT_FIELDS = ['annotation_idgloss_jkl', 'annotation_idgloss_jkl_en','annotation_idgloss_hki', 'annotation_idgloss_hki_en',
-                       'handedness', 'domhndsh', 'subhndsh', 'locprim']
+                       'handedness', 'strong_handshape', 'subhndsh', 'locprim']
 
 
 # location and URL for uploaded files

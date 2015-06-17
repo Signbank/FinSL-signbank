@@ -310,7 +310,7 @@
             {# Translators: Information about a Gloss #}
             <tr><th>{% blocktrans %}Translation equivalents in Finnish:{% endblocktrans %}</th><td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
             {# Translators: Information about a Gloss #}
-            <tr><th>{% blocktrans %}Annotation Comments:{% endblocktrans %}</th><td class='edit edit_text' id='annotationComments'>{% value gloss.annotationComments %}</td></tr>
+            <tr><th>{% blocktrans %}Annotation Comments:{% endblocktrans %}</th><td class='edit edit_text' id='annotation_comments'>{% value gloss.annotation_comments %}</td></tr>
             {# Translators: Information about a Gloss #}
             <tr><th>{% blocktrans %}Language:{% endblocktrans %}</th><td class='edit edit_language' id='language'>{% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
             {# Translators: Information about a Gloss #}

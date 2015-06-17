@@ -849,9 +849,9 @@ minor or insignificant ways that can be ignored."""))
     # languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
-    # Translators: Gloss models field: annotationComments, verbose name
+    # Translators: Gloss models field: annotation_comments, verbose name
     # variable name was: useInstr
-    annotationComments = models.CharField(
+    annotation_comments = models.CharField(
         _("Annotation comments"), max_length=50, blank=True)
 
     ########
@@ -865,7 +865,8 @@ minor or insignificant ways that can be ignored."""))
     handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
     # Translators: Gloss models field: domhdndsh, verbose name
-    domhndsh = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
+    #domhndsh
+    strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
                                 max_length=5)
     # Translators: Gloss models field: subhndsh, verbose name
     subhndsh = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
@@ -1253,7 +1254,7 @@ minor or insignificant ways that can be ignored."""))
         choice_lists = {}
 
         # Start with your own choice lists
-        for fieldname in ['handedness', 'locprim', 'domhndsh', 'subhndsh',
+        for fieldname in ['handedness', 'locprim', 'strong_handshape', 'subhndsh',
                           'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov',
                           'relOriLoc', 'handCh', 'repeat', 'altern', 'movSh',
                           'movDir', 'movMan', 'contType', 'namEnt', 'oriCh', 'semField']:

@@ -76,7 +76,7 @@ class SenseNumberListFilter(SimpleListFilter):
 
 
 class GlossAdmin(VersionAdmin):
-    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotationComments', 'sense',
+    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense',
                                     'sn', 'language', 'dialect')}, ),
                  ('Publication Status', {'fields': ('inWeb',  'isNew',),
                                          'classes': ('collapse',)}, ),
@@ -84,7 +84,7 @@ class GlossAdmin(VersionAdmin):
                                            'initial_relative_orientation', 'final_relative_orientation',
                                            'initial_secondary_loc', 'final_secondary_loc',
                                            'locprim', 'locVirtObj', 'final_loc',
-                                           'domhndsh', 'subhndsh', 'final_domhndsh', 'final_subhndsh',
+                                           'strong_handshape', 'subhndsh', 'final_domhndsh', 'final_subhndsh',
                                            'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh',
                                            'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan', 'contType',
                                            'phonOth', 'mouthG', 'mouthing', 'phonetVar'), 'classes': ('collapse',)}, ),
@@ -101,7 +101,7 @@ class GlossAdmin(VersionAdmin):
     list_display = ['idgloss', 'annotation_idgloss_jkl', 'sense', 'sn']
     search_fields = ['^idgloss', '=sn', '^annotation_idgloss_jkl']
     list_filter = [
-        'language', 'dialect', SenseNumberListFilter, 'inWeb', 'domhndsh']
+        'language', 'dialect', SenseNumberListFilter, 'inWeb', 'strong_handshape']
     inlines = [RelationInline, RelationToForeignSignInline,
                DefinitionInline, TranslationInline]
 
