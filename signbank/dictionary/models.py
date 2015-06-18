@@ -859,7 +859,27 @@ minor or insignificant ways that can be ignored."""))
     dialect = models.ManyToManyField(Dialect)
     # This field type is a guess.
 
-    # Phonology fields
+    # ###
+    # Translators: Gloss models field: sense, verbose name
+    sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
+                                # Translators: Help text for Gloss models field: sense
+                                help_text=_(
+                                    "If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1"))
+    sense.list_filter_sense = True
+
+    # TODO: See if this can be removed
+    # Translators: Gloss models field: sn, verbose name
+    sn = models.IntegerField(_("Sign Number"),
+                             # Translators: Help text for Gloss models field: sn
+                             help_text=_(
+                                 "Sign Number must be a unique integer and defines the ordering of signs in the dictionary"),
+                             null=True, blank=True, unique=True)
+    # this is a sign number - was trying
+    # to be a primary key, also defines a sequence - need to keep the sequence
+    # and allow gaps between numbers for inserting later signs
+
+
+    # ### Phonology fields
     # Translators: Gloss models field: handedness, verbose name
     handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
@@ -873,32 +893,6 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: location, verbose name
     location = models.CharField(
         _("Location"), choices=locationChoices, null=True, blank=True, max_length=20) # TODO: build_choice_list("Location")
-
-    # ### Publication status
-    # Translators: Gloss models field: in_web_dictionary, verbose name
-    in_web_dictionary = models.NullBooleanField(_("In the Web dictionary"), default=False)
-    # Translators: Gloss models field: is_proposed_new_sign, verbose name
-    is_proposed_new_sign = models.NullBooleanField(
-        _("Is this a proposed new sign?"), null=True, default=False)
-
-    # Translators: Gloss models field: sense, verbose name
-    sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
-                                # Translators: Help text for Gloss models field: sense
-                                help_text=_(
-                                    "If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1"))
-    sense.list_filter_sense = True
-
-    # Translators: Gloss models field: sn, verbose name
-    # TODO: See if this can be removed
-    sn = models.IntegerField(_("Sign Number"),
-                             # Translators: Help text for Gloss models field: sn
-                             help_text=_(
-                                 "Sign Number must be a unique integer and defines the ordering of signs in the dictionary"),
-                             null=True, blank=True, unique=True)
-    # this is a sign number - was trying
-    # to be a primary key, also defines a sequence - need to keep the sequence
-    # and allow gaps between numbers for inserting later signs
-
 
     # Translators: Gloss models field: relatArtic, verbose name
     relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"),
@@ -957,7 +951,7 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: phonetVar, verbose name
     phonetVar = models.CharField(_("Phonetic Variation"), max_length=50, blank=True, )
 
-    # Semantic fields
+    # ### Semantic fields
     # Translators: Gloss models field: iconImg, verbose name
     iconImg = models.CharField(_("Iconic Image"), max_length=50, blank=True)
     # Translators: Gloss models field: namEnt, verbose name
@@ -967,9 +961,16 @@ minor or insignificant ways that can be ignored."""))
     semField = models.CharField(_("Semantic Field"), choices=build_choice_list("SemField"), null=True, blank=True,
                                 max_length=5)
 
-    # Frequency fields
+    # ### Frequency fields
     number_of_occurences = models.IntegerField(
         _("Number of Occurrences"), null=True, blank=True, help_text="Number of occurences in annotation materials")
+
+    # ### Publication status
+    # Translators: Gloss models field: in_web_dictionary, verbose name
+    in_web_dictionary = models.NullBooleanField(_("In the Web dictionary"), default=False)
+    # Translators: Gloss models field: is_proposed_new_sign, verbose name
+    is_proposed_new_sign = models.NullBooleanField(
+        _("Is this a proposed new sign?"), null=True, default=False)
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
