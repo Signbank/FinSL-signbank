@@ -1059,7 +1059,7 @@ minor or insignificant ways that can be ignored."""))
         """Return the video object for this gloss or None if no video available"""
 
         video_path = 'glossvideo/' + \
-                     self.idgloss[:2] + '/' + self.idgloss + '-' + str(self.pk) + '.mp4'
+                     unicode(self.idgloss[:2]) + '/' + unicode(self.idgloss) + '-' + unicode(self.pk) + '.mp4'
 
         if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
             return video_path
@@ -1255,4 +1255,4 @@ class MorphologyDefinition(models.Model):
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
-        return self.morpheme.idgloss + ' is ' + self.get_role_display() + ' of ' + self.parent_gloss.idgloss
+        return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(self.parent_gloss.idgloss)
