@@ -206,18 +206,6 @@ class Command(BaseCommand):
                             row['weak_handshape'] = '0.0'
                         gloss.weak_handshape = row['weak_handshape']
 
-                    if row['Initrelori'] != '':
-                        gloss.initial_relative_orientation = row['Initrelori']
-                    if row['Finrelori'] != '':
-                        gloss.final_relative_orientation = row['Finrelori']
-
-                    #gloss.morph = row['morph']
-                    # if row['sense'] != '':
-                    #    gloss.sense = int(row['sense'])
-
-                    #gloss.comptf = row['comptf'] == 'T'
-                    #gloss.compound = row['compound']
-
                     gloss.segloss = row['segloss']
 
                     # save direct properties

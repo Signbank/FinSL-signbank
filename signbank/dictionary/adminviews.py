@@ -215,22 +215,6 @@ class GlossListView(ListView):
                     kwargs = {key: val}
                     qs = qs.filter(**kwargs)
 
-        if get.has_key('initial_relative_orientation') and get['initial_relative_orientation'] != '':
-            val = get['initial_relative_orientation']
-            qs = qs.filter(initial_relative_orientation__exact=val)
-
-        if get.has_key('final_relative_orientation') and get['final_relative_orientation'] != '':
-            val = get['final_relative_orientation']
-            qs = qs.filter(final_relative_orientation__exact=val)
-
-        if get.has_key('initial_palm_orientation') and get['initial_palm_orientation'] != '':
-            val = get['initial_palm_orientation']
-            qs = qs.filter(initial_palm_orientation__exact=val)
-
-        if get.has_key('final_palm_orientation') and get['final_palm_orientation'] != '':
-            val = get['final_palm_orientation']
-            qs = qs.filter(final_palm_orientation__exact=val)
-
         if get.has_key('defsearch') and get['defsearch'] != '':
 
             val = get['defsearch']

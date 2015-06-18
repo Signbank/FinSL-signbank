@@ -878,21 +878,6 @@ minor or insignificant ways that can be ignored."""))
     locVirtObj = models.CharField(
         _("Virtual Object"), blank=True, null=True, max_length=50) # TODO: remove this field
 
-    # Translators: Gloss models field: initial_palm, verbose name
-    initial_palm_orientation = models.CharField(_("Initial Palm Orientation"), max_length=20, null=True, blank=True,
-                                                choices=palmOrientationChoices)
-    # Translators: Gloss models field: final_palm_orientation, verbose name
-    final_palm_orientation = models.CharField(_("Final Palm Orientation"), max_length=20, null=True, blank=True,
-                                              choices=palmOrientationChoices)
-
-    # Translators: Gloss models field: initial_relative_orientation, verbose name
-    initial_relative_orientation = models.CharField(_("Initial Interacting Dominant Hand Part"), null=True,
-                                                    max_length=20,
-                                                    blank=True, choices=relOrientationChoices)
-    # Translators: Gloss models field: final_relative_orientation, verbose name
-    final_relative_orientation = models.CharField(_("Final Interacting Dominant Hand Part"), null=True, max_length=20,
-                                                  blank=True, choices=relOrientationChoices)
-
     # Translators: Gloss models field: inWeb, verbose name
     inWeb = models.NullBooleanField(_("In the Web dictionary"), default=False)
     # Translators: Gloss models field: isNew, verbose name
@@ -1191,7 +1176,7 @@ minor or insignificant ways that can be ignored."""))
 
         return self.options_to_json(relOrientationChoices)
 
-    def secondary_location_choices_json(self):
+    def secondary_location_choices_json(self): # TODO: see if these can be removed
         """Return JSON for the secondary location (BSL) choice list"""
 
         return self.options_to_json(BSLsecondLocationChoices)
