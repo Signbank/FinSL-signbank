@@ -84,7 +84,7 @@
           {% for word in page.object_list %}
             <p>
               <a href="{% url 'root_page' %}dictionary/words/{{ word.text }}-1.html">{{ word.text }}</a>
-              {% if not word.inWeb %}*{% endif %}  
+              {% if not word.in_web_dictionary %}*{% endif %}
             </p>
 
             {% if forloop.counter|divisibleby:"15" %}

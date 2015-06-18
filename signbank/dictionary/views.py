@@ -70,9 +70,9 @@ def word(request, keyword, n):
             glosscount = Gloss.objects.count()
             glossposn = Gloss.objects.filter(sn__lt=gloss.sn).count() + 1
         else:
-            glosscount = Gloss.objects.filter(inWeb__exact=True).count()
+            glosscount = Gloss.objects.filter(in_web_dictionary__exact=True).count()
             glossposn = Gloss.objects.filter(
-                inWeb__exact=True, sn__lt=gloss.sn).count() + 1
+                in_web_dictionary__exact=True, sn__lt=gloss.sn).count() + 1
     else:
         glosscount = 0
         glossposn = 0
@@ -156,9 +156,9 @@ def gloss(request, idgloss):
             glosscount = Gloss.objects.count()
             glossposn = Gloss.objects.filter(sn__lt=gloss.sn).count() + 1
         else:
-            glosscount = Gloss.objects.filter(inWeb__exact=True).count()
+            glosscount = Gloss.objects.filter(in_web_dictionary__exact=True).count()
             glossposn = Gloss.objects.filter(
-                inWeb__exact=True, sn__lt=gloss.sn).count() + 1
+                in_web_dictionary__exact=True, sn__lt=gloss.sn).count() + 1
     else:
         glosscount = 0
         glossposn = 0
@@ -248,7 +248,7 @@ def search(request):
         else:
             # regular users see either everything that's published
             words = Keyword.objects.filter(text__icontains=term,
-                                           translation__gloss__inWeb__exact=True).distinct()
+                                           translation__gloss__in_web_dictionary__exact=True).distinct()
 
         try:
             crudetag = Tag.objects.get(name='lexis:crude')
@@ -333,7 +333,7 @@ def missing_video_list():
     """A list of signs that don't have an
     associated video file"""
 
-    glosses = Gloss.objects.filter(inWeb__exact=True)
+    glosses = Gloss.objects.filter(in_web_dictionary__exact=True)
     for gloss in glosses:
         if not gloss.has_video():
             yield gloss

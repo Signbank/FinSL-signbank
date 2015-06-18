@@ -183,14 +183,14 @@ class Command(BaseCommand):
                     gloss = Gloss()
                     gloss.annotation_idgloss_jkl = row['annotation idgloss jkl']
                     gloss.bsltf = True
-                    gloss.inWeb = False
+                    gloss.in_web_dictionary = False
                     gloss.asltf = row['asltf']
 
                     # if row['sn'] != '':
                     #    gloss.sn = int(row['sn'])
 
-                    if row['inWeb'] != '':
-                        gloss.inWeb = row['inWeb'] == 'T'
+                    if row['in_web_dictionary'] != '':
+                        gloss.in_web_dictionary = row['in_web_dictionary'] == 'T'
 
                     if row['idgloss'] != '':
                         gloss.idgloss = row['idgloss']

@@ -161,10 +161,10 @@ class GlossSearchForm(forms.ModelForm):
         label=_('Alternating Movement'), choices=NULLBOOLEANCHOICES)
 
     # Translators: GlossSearchForm label
-    isNew = forms.ChoiceField(
+    is_proposed_new_sign = forms.ChoiceField(
         label=_('Is a proposed new sign'), choices=NULLBOOLEANCHOICES, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
     # Translators: GlossSearchForm label
-    inWeb = forms.ChoiceField(
+    in_web_dictionary = forms.ChoiceField(
         label=_('Is in Web dictionary'), choices=NULLBOOLEANCHOICES, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
     # Translators: GlossSearchForm label
     definitionRole = forms.ChoiceField(
@@ -180,7 +180,7 @@ class GlossSearchForm(forms.ModelForm):
         fields = ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
                   'annotation_idgloss_hki_en', 'sense',
                   'sn', 'language', 'dialect',
-                  'inWeb', 'isNew',
+                  'in_web_dictionary', 'is_proposed_new_sign',
                   'strong_handshape', 'weak_handshape', 'location',
 
                   'handedness', 'annotation_comments', 'relatArtic', 'absOriPalm', 'absOriFing',

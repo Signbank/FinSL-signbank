@@ -646,9 +646,9 @@
         
             <table class='table table-condensed'>
                 {# Translators:  #}
-                <tr><th>{% blocktrans %}In Web Dictionary{% endblocktrans %}</th><td {% if perms.dictionary.can_publish %}class='edit edit_check'{% endif %} id='inWeb'>{% if gloss.inWeb %}Yes{% else %}No{% endif %}</td></tr>
+                <tr><th>{% blocktrans %}In Web Dictionary{% endblocktrans %}</th><td {% if perms.dictionary.can_publish %}class='edit edit_check'{% endif %} id='in_web_dictionary'>{% if gloss.in_web_dictionary %}Yes{% else %}No{% endif %}</td></tr>
                 {# Translators:  #}
-                <tr><th>{% blocktrans %}Proposed New Sign{% endblocktrans %}</th><td class='edit edit_check' id='isNew'>{% if gloss.isNew %}Yes{% else %}No{% endif %}</td></tr>
+                <tr><th>{% blocktrans %}Proposed New Sign{% endblocktrans %}</th><td class='edit edit_check' id='is_proposed_new_sign'>{% if gloss.is_proposed_new_sign %}Yes{% else %}No{% endif %}</td></tr>
             </table>
         </div>
     </div>

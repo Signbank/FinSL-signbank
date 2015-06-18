@@ -78,7 +78,7 @@ class SenseNumberListFilter(SimpleListFilter):
 class GlossAdmin(VersionAdmin):
     fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense',
                                     'sn', 'language', 'dialect')}, ),
-                 ('Publication Status', {'fields': ('inWeb',  'isNew',),
+                 ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)}, ),
                  ('Phonology', {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                            'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh',
@@ -95,7 +95,7 @@ class GlossAdmin(VersionAdmin):
     list_display = ['idgloss', 'annotation_idgloss_jkl', 'sense', 'sn']
     search_fields = ['^idgloss', '=sn', '^annotation_idgloss_jkl']
     list_filter = [
-        'language', 'dialect', SenseNumberListFilter, 'inWeb', 'strong_handshape']
+        'language', 'dialect', SenseNumberListFilter, 'in_web_dictionary', 'strong_handshape']
     inlines = [RelationInline, RelationToForeignSignInline,
                DefinitionInline, TranslationInline]
 

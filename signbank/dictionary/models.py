@@ -61,11 +61,11 @@ class Keyword(models.Model):
 
     text = models.CharField(max_length=100, unique=True)
 
-    def inWeb(self):
+    def in_web_dictionary(self):
         """Return True if some gloss associated with this
         keyword is in the web version of the dictionary"""
 
-        return len(self.translation_set.filter(gloss__inWeb__exact=True)) != 0
+        return len(self.translation_set.filter(gloss__in_web_dictionary__exact=True)) != 0
 
     class Meta:
         ordering = ['text']
@@ -129,7 +129,7 @@ class Definition(models.Model):
     """An English text associated with a gloss. It's called a note in the web interface"""
 
     def __unicode__(self):
-        return str(self.gloss) + "/" + self.role
+        return self.gloss + "/" + self.role
 
     gloss = models.ForeignKey("Gloss")
     text = models.TextField()
@@ -177,7 +177,7 @@ class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
 
     def __unicode__(self):
-        return str(self.gloss) + "/" + self.other_lang + ',' + self.other_lang_gloss
+        return self.gloss + "/" + self.other_lang + ',' + self.other_lang_gloss
 
     gloss = models.ForeignKey("Gloss")
     # Translators: RelationToForeignSign field verbose name
@@ -875,10 +875,10 @@ minor or insignificant ways that can be ignored."""))
         _("Location"), choices=locationChoices, null=True, blank=True, max_length=20) # TODO: build_choice_list("Location")
 
     # ### Publication status
-    # Translators: Gloss models field: inWeb, verbose name
-    inWeb = models.NullBooleanField(_("In the Web dictionary"), default=False)
-    # Translators: Gloss models field: isNew, verbose name
-    isNew = models.NullBooleanField(
+    # Translators: Gloss models field: in_web_dictionary, verbose name
+    in_web_dictionary = models.NullBooleanField(_("In the Web dictionary"), default=False)
+    # Translators: Gloss models field: is_proposed_new_sign, verbose name
+    is_proposed_new_sign = models.NullBooleanField(
         _("Is this a proposed new sign?"), null=True, default=False)
 
     # Translators: Gloss models field: sense, verbose name
@@ -1029,7 +1029,7 @@ minor or insignificant ways that can be ignored."""))
             set = Gloss.objects.filter(sn__gt=self.sn).order_by('sn')
         else:
             set = Gloss.objects.filter(
-                sn__gt=self.sn, inWeb__exact=True).order_by('sn')
+                sn__gt=self.sn, in_web_dictionary__exact=True).order_by('sn')
         if set:
             return set[0]
         else:
@@ -1043,7 +1043,7 @@ minor or insignificant ways that can be ignored."""))
             set = Gloss.objects.filter(sn__lt=self.sn).order_by('-sn')
         else:
             set = Gloss.objects.filter(
-                sn__lt=self.sn, inWeb__exact=True).order_by('-sn')
+                sn__lt=self.sn, in_web_dictionary__exact=True).order_by('-sn')
         if set:
             return set[0]
         else:

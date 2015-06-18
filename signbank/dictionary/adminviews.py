@@ -63,7 +63,7 @@ class GlossListView(ListView):
                       'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'location', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
                       'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo',
                       'tokNoSgnr', 'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
-                      'tokNoSgnrGr', 'tokNoSgnrO', 'inWeb', 'isNew']
+                      'tokNoSgnrGr', 'tokNoSgnrO', 'in_web_dictionary', 'is_proposed_new_sign']
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         writer = csv.writer(response)
@@ -168,9 +168,9 @@ class GlossListView(ListView):
             val = get['keyword']
             qs = qs.filter(translation__translation__text__istartswith=val)
 
-        if get.has_key('inWeb') and get['inWeb'] != 'unspecified':
-            val = get['inWeb'] == 'yes'
-            qs = qs.filter(inWeb__exact=val)
+        if get.has_key('in_web_dictionary') and get['in_web_dictionary'] != 'unspecified':
+            val = get['in_web_dictionary'] == 'yes'
+            qs = qs.filter(in_web_dictionary__exact=val)
             # print "B :", len(qs)
 
         if get.has_key('hasvideo') and get['hasvideo'] != 'unspecified':
@@ -187,7 +187,7 @@ class GlossListView(ListView):
                       'strong_handshape', 'weak_handshape', 'location', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
                       'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo', 'tokNoSgnr',
                       'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
-                      'tokNoSgnrGr', 'tokNoSgnrO', 'inWeb', 'isNew']
+                      'tokNoSgnrGr', 'tokNoSgnrO', 'in_web_dictionary', 'is_proposed_new_sign']
 
         # Language and basic property filters
         vals = get.getlist('dialect', [])

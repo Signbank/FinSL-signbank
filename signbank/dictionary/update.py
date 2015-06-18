@@ -155,13 +155,13 @@ def update_gloss(request, glossid):
                     gloss.save()
                     newvalue = value
 
-        elif field == 'inWeb':
+        elif field == 'in_web_dictionary':
             # only modify if we have publish permission
             if request.user.has_perm('dictionary.can_publish'):
-                gloss.inWeb = (value == 'Yes')
+                gloss.in_web_dictionary = (value == 'Yes')
                 gloss.save()
 
-            if gloss.inWeb:
+            if gloss.in_web_dictionary:
                 newvalue = 'Yes'
             else:
                 newvalue = 'No'
