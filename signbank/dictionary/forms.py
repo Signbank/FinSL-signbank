@@ -181,7 +181,7 @@ class GlossSearchForm(forms.ModelForm):
                   'annotation_idgloss_hki_en', 'sense',
                   'sn', 'language', 'dialect',
                   'inWeb', 'isNew',
-                  'strong_handshape', 'weak_handshape', 'location', 'locVirtObj',
+                  'strong_handshape', 'weak_handshape', 'location',
 
                   'handedness', 'annotation_comments', 'relatArtic', 'absOriPalm', 'absOriFing',
                   'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',

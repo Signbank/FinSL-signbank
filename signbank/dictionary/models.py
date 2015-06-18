@@ -874,10 +874,7 @@ minor or insignificant ways that can be ignored."""))
     location = models.CharField(
         _("Location"), choices=locationChoices, null=True, blank=True, max_length=20) # TODO: build_choice_list("Location")
 
-    # Translators: Help text for Gloss models field: locVirtObj, verbose name
-    locVirtObj = models.CharField(
-        _("Virtual Object"), blank=True, null=True, max_length=50) # TODO: remove this field
-
+    # ### Publication status
     # Translators: Gloss models field: inWeb, verbose name
     inWeb = models.NullBooleanField(_("In the Web dictionary"), default=False)
     # Translators: Gloss models field: isNew, verbose name
@@ -1116,7 +1113,7 @@ minor or insignificant ways that can be ignored."""))
     def get_video_url(self):
         """return  the url of the video for this gloss which may be that of a homophone"""
 
-        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'
+        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4' # TODO: This line needs to be removed
 
         video = self.get_video()
         if video != None:
