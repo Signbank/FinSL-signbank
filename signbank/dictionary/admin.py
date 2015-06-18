@@ -84,11 +84,8 @@ class GlossAdmin(VersionAdmin):
                                            'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh',
                                            'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan', 'contType',
                                            'phonOth', 'mouthG', 'mouthing', 'phonetVar'), 'classes': ('collapse',)}, ),
-                 ('Semantics', {
-                  'fields': ('iconImg', 'namEnt', 'semField'), 'classes': ('collapse',)}),
-                 ('Frequency', {'fields': ('tokNo', 'tokNoSgnr', 'tokNoA', 'tokNoSgnrA', 'tokNoV', 'tokNoSgnrV',
-                                           'tokNoR', 'tokNoSgnrR', 'tokNoGe', 'tokNoSgnrGe', 'tokNoGr', 'tokNoSgnrGr',
-                                           'tokNoO', 'tokNoSgnrO'), 'classes': ('collapse',)}),
+                 ('Semantics', {'fields': ('iconImg', 'namEnt', 'semField'), 'classes': ('collapse',)}),
+                 ('Frequency', {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True
     save_as = True

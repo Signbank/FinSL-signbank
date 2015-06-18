@@ -61,9 +61,8 @@ class GlossListView(ListView):
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
                       'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'location', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
-                      'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo',
-                      'tokNoSgnr', 'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
-                      'tokNoSgnrGr', 'tokNoSgnrO', 'in_web_dictionary', 'is_proposed_new_sign']
+                      'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences',
+                      'in_web_dictionary', 'is_proposed_new_sign']
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         writer = csv.writer(response)
@@ -185,9 +184,7 @@ class GlossListView(ListView):
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
                       'strong_handshape', 'weak_handshape', 'location', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
-                      'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'tokNo', 'tokNoSgnr',
-                      'tokNoA', 'tokNoV', 'tokNoR', 'tokNoGe', 'tokNoGr', 'tokNoO', 'tokNoSgnrA', 'tokNoSgnrV', 'tokNoSgnrR', 'tokNoSgnrGe',
-                      'tokNoSgnrGr', 'tokNoSgnrO', 'in_web_dictionary', 'is_proposed_new_sign']
+                      'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences', 'in_web_dictionary', 'is_proposed_new_sign']
 
         # Language and basic property filters
         vals = get.getlist('dialect', [])
@@ -391,8 +388,7 @@ class GlossDetailView(DetailView):
 
         fields['semantics'] = ['iconImg', 'namEnt', 'semField']
 
-        fields['frequency'] = ['tokNoA', 'tokNoSgnrA', 'tokNoV', 'tokNoSgnrV', 'tokNoR', 'tokNoSgnrR', 'tokNoGe', 'tokNoSgnrGe',
-                               'tokNoGr', 'tokNoSgnrGr', 'tokNoO', 'tokNoSgnrO']
+        fields['frequency'] = ['number_of_occurences']
 
         for topic in ['phonology', 'semantics', 'frequency']:
             context[topic + '_fields'] = []

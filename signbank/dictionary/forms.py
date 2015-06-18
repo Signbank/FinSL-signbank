@@ -186,9 +186,7 @@ class GlossSearchForm(forms.ModelForm):
                   'handedness', 'annotation_comments', 'relatArtic', 'absOriPalm', 'absOriFing',
                   'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',
                   'contType', 'mouthG',
-                  'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField',
-                  'tokNoA', 'tokNoSgnrA', 'tokNoV', 'tokNoSgnrV', 'tokNoR', 'tokNoSgnrR', 'tokNoGe', 'tokNoSgnrGe',
-                  'tokNoGr', 'tokNoSgnrGr', 'tokNoO', 'tokNoSgnrO')
+                  'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences')
 
 
 class DefinitionForm(forms.ModelForm):

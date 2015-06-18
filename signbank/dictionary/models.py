@@ -129,7 +129,7 @@ class Definition(models.Model):
     """An English text associated with a gloss. It's called a note in the web interface"""
 
     def __unicode__(self):
-        return self.gloss + "/" + self.role
+        return unicode(self.gloss) + "/" + unicode(self.role)
 
     gloss = models.ForeignKey("Gloss")
     text = models.TextField()
@@ -156,7 +156,7 @@ class Language(models.Model):
     description = models.TextField()
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.name)
 
 
 class Dialect(models.Model):
@@ -170,14 +170,14 @@ class Dialect(models.Model):
     description = models.TextField()
 
     def __unicode__(self):
-        return self.language.name + "/" + self.name
+        return unicode(self.language.name) + "/" + unicode(self.name)
 
 
 class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
 
     def __unicode__(self):
-        return self.gloss + "/" + self.other_lang + ',' + self.other_lang_gloss
+        return unicode(self.gloss) + "/" + unicode(self.other_lang) + ',' + unicode(self.other_lang_gloss)
 
     gloss = models.ForeignKey("Gloss")
     # Translators: RelationToForeignSign field verbose name
@@ -968,36 +968,8 @@ minor or insignificant ways that can be ignored."""))
                                 max_length=5)
 
     # Frequency fields
-
-    tokNo = models.IntegerField(
-        _("Total Number of Occurrences"), null=True, blank=True)
-    tokNoSgnr = models.IntegerField(
-        _("Total Number of Signers Using this Sign"), null=True, blank=True)
-    tokNoA = models.IntegerField(
-        _("Number of Occurrences in Amsterdam"), null=True, blank=True)
-    tokNoV = models.IntegerField(
-        _("Number of Occurrences in Voorburg"), null=True, blank=True)
-    tokNoR = models.IntegerField(
-        _("Number of Occurrences in Rotterdam"), null=True, blank=True)
-    tokNoGe = models.IntegerField(
-        _("Number of Occurrences in Gestel"), null=True, blank=True)
-    tokNoGr = models.IntegerField(
-        _("Number of Occurrences in Groningen"), null=True, blank=True)
-    tokNoO = models.IntegerField(
-        _("Number of Occurrences in Other Regions"), null=True, blank=True)
-
-    tokNoSgnrA = models.IntegerField(
-        _("Number of Amsterdam Signers"), null=True, blank=True)
-    tokNoSgnrV = models.IntegerField(
-        _("Number of Voorburg Signers"), null=True, blank=True)
-    tokNoSgnrR = models.IntegerField(
-        _("Number of Rotterdam Signers"), null=True, blank=True)
-    tokNoSgnrGe = models.IntegerField(
-        _("Number of Gestel Signers"), null=True, blank=True)
-    tokNoSgnrGr = models.IntegerField(
-        _("Number of Groningen Signers"), null=True, blank=True)
-    tokNoSgnrO = models.IntegerField(
-        _("Number of Other Region Signers"), null=True, blank=True)
+    number_of_occurences = models.IntegerField(
+        _("Number of Occurrences"), null=True, blank=True, help_text="Number of occurences in annotation materials")
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
