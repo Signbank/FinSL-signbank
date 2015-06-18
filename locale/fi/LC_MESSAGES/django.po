@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 17:09+0300\n"
+"POT-Creation-Date: 2015-06-18 09:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -968,37 +968,37 @@ msgid "All"
 msgstr "Kaikki"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:83 signbank/dictionary/models.py:1264
+#: signbank/dictionary/forms.py:83 signbank/dictionary/models.py:1244
 msgid "Homonym"
 msgstr "Homonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:85 signbank/dictionary/models.py:1266
+#: signbank/dictionary/forms.py:85 signbank/dictionary/models.py:1246
 msgid "Synonym"
 msgstr "Synonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:87 signbank/dictionary/models.py:1268
+#: signbank/dictionary/forms.py:87 signbank/dictionary/models.py:1248
 msgid "Variant"
 msgstr "Variantti"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:89 signbank/dictionary/models.py:1270
+#: signbank/dictionary/forms.py:89 signbank/dictionary/models.py:1250
 msgid "Antonym"
 msgstr "Antonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:91 signbank/dictionary/models.py:1272
+#: signbank/dictionary/forms.py:91 signbank/dictionary/models.py:1252
 msgid "Hyponym"
 msgstr "Hyponyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:93 signbank/dictionary/models.py:1274
+#: signbank/dictionary/forms.py:93 signbank/dictionary/models.py:1254
 msgid "Hypernym"
 msgstr "Hypernyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:95 signbank/dictionary/models.py:1276
+#: signbank/dictionary/forms.py:95 signbank/dictionary/models.py:1256
 msgid "See Also"
 msgstr "Katso myös"
 
@@ -1007,7 +1007,7 @@ msgstr "Katso myös"
 #. Translators: Field label
 #: signbank/dictionary/forms.py:108 signbank/dictionary/models.py:814
 #: signbank/dictionary/templates/dictionary/add_gloss.html:29
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:358
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:357
 msgid "Gloss JKL"
 msgstr "Glossi JKL"
 
@@ -1015,7 +1015,7 @@ msgstr "Glossi JKL"
 #. Translators: Field label
 #: signbank/dictionary/forms.py:110
 #: signbank/dictionary/templates/dictionary/add_gloss.html:33
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:360
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:359
 msgid "Gloss JKL English"
 msgstr ""
 
@@ -1024,7 +1024,7 @@ msgstr ""
 #. Translators: Field label
 #: signbank/dictionary/forms.py:112 signbank/dictionary/models.py:833
 #: signbank/dictionary/templates/dictionary/add_gloss.html:37
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:362
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:361
 msgid "Gloss HKI"
 msgstr "Glossi HKI"
 
@@ -1032,7 +1032,7 @@ msgstr "Glossi HKI"
 #. Translators: Field label
 #: signbank/dictionary/forms.py:114
 #: signbank/dictionary/templates/dictionary/add_gloss.html:41
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:364
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:363
 msgid "Gloss HKI English"
 msgstr ""
 
@@ -1091,7 +1091,7 @@ msgid "Repeating Movement"
 msgstr "Toistuva liike"
 
 #. Translators: Gloss models field: altern, verbose name
-#: signbank/dictionary/forms.py:161 signbank/dictionary/models.py:954
+#: signbank/dictionary/forms.py:161 signbank/dictionary/models.py:934
 msgid "Alternating Movement"
 msgstr "Vaihteleva liike"
 
@@ -1115,14 +1115,14 @@ msgstr "Merkintä sisältää"
 
 #. Translators: RelationForm label
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:207 signbank/dictionary/forms.py:221
+#: signbank/dictionary/forms.py:205 signbank/dictionary/forms.py:219
 #, fuzzy
 #| msgid "Search gloss"
 msgid "Source Gloss"
 msgstr "Alkuperäinen Glossi"
 
 #. Translators: RelationForm label
-#: signbank/dictionary/forms.py:209
+#: signbank/dictionary/forms.py:207
 #, fuzzy
 #| msgid "Search gloss"
 msgid "Target Gloss"
@@ -1131,25 +1131,25 @@ msgstr "Kohdeglossi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:224 signbank/dictionary/models.py:186
+#: signbank/dictionary/forms.py:222 signbank/dictionary/models.py:186
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:548
 msgid "Related Language"
 msgstr "Liittyvä kieli"
 
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:226
+#: signbank/dictionary/forms.py:224
 msgid "Gloss in Related Language"
 msgstr "Glossi liittyvässä kielessä"
 
 #. Translators: MorphologyForm label
-#: signbank/dictionary/forms.py:236
+#: signbank/dictionary/forms.py:234
 #, fuzzy
 #| msgid "Search gloss"
 msgid "Parent Gloss"
 msgstr "Emoglossi"
 
 #. Translators:
-#: signbank/dictionary/forms.py:237
+#: signbank/dictionary/forms.py:235
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:352
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:677
 msgid "Type"
@@ -1157,7 +1157,7 @@ msgstr "Tyyppi"
 
 #. Translators: MorphologyForm label
 #. Translators:
-#: signbank/dictionary/forms.py:240
+#: signbank/dictionary/forms.py:238
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:354
 msgid "Morpheme"
 msgstr "Morfeemi"
@@ -1241,7 +1241,7 @@ msgstr ""
 #. Translators: Field label
 #: signbank/dictionary/models.py:805
 #: signbank/dictionary/templates/dictionary/add_gloss.html:25
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:356
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:355
 msgid "Gloss"
 msgstr "Glossi"
 
@@ -1327,49 +1327,25 @@ msgstr "Ei-dominoiva käsi"
 msgid "Location"
 msgstr "Paikka"
 
+#. Translators: Gloss models field: in_web_dictionary, verbose name
 #: signbank/dictionary/models.py:879
-msgid "Virtual Object"
-msgstr ""
-
-#. Translators: Gloss models field: initial_palm, verbose name
-#: signbank/dictionary/models.py:882
-msgid "Initial Palm Orientation"
-msgstr ""
-
-#. Translators: Gloss models field: final_palm_orientation, verbose name
-#: signbank/dictionary/models.py:885
-msgid "Final Palm Orientation"
-msgstr ""
-
-#. Translators: Gloss models field: initial_relative_orientation, verbose name
-#: signbank/dictionary/models.py:889
-msgid "Initial Interacting Dominant Hand Part"
-msgstr ""
-
-#. Translators: Gloss models field: final_relative_orientation, verbose name
-#: signbank/dictionary/models.py:893
-msgid "Final Interacting Dominant Hand Part"
-msgstr ""
-
-#. Translators: Gloss models field: inWeb, verbose name
-#: signbank/dictionary/models.py:897
 #, fuzzy
 #| msgid "Search translation"
 msgid "In the Web dictionary"
 msgstr "Etsi käännösvastinetta"
 
-#: signbank/dictionary/models.py:900
+#: signbank/dictionary/models.py:882
 msgid "Is this a proposed new sign?"
 msgstr ""
 
 #. Translators: Gloss models field: sense, verbose name
-#: signbank/dictionary/models.py:905
+#: signbank/dictionary/models.py:885
 #, fuzzy
 #| msgid "Sign Search"
 msgid "Sense Number"
 msgstr "Etsi viittoma"
 
-#: signbank/dictionary/models.py:908
+#: signbank/dictionary/models.py:888
 msgid ""
 "If there is more than one sense of a sign enter a number here, all signs "
 "with sense>1 will use the same video as sense=1"
@@ -1377,167 +1353,167 @@ msgstr ""
 
 #. Translators: Gloss models field: sn, verbose name
 #. TODO: See if this can be removed
-#: signbank/dictionary/models.py:913
+#: signbank/dictionary/models.py:893
 #, fuzzy
 #| msgid "Sign Search"
 msgid "Sign Number"
 msgstr "Etsi viittoma"
 
-#: signbank/dictionary/models.py:916
+#: signbank/dictionary/models.py:896
 msgid ""
 "Sign Number must be a unique integer and defines the ordering of signs in "
 "the dictionary"
 msgstr ""
 
 #. Translators: Gloss models field: relatArtic, verbose name
-#: signbank/dictionary/models.py:924
+#: signbank/dictionary/models.py:904
 msgid "Relation between Articulators"
 msgstr ""
 
 #. Translators: Gloss models field: absOriPalm, verbose name
-#: signbank/dictionary/models.py:929
+#: signbank/dictionary/models.py:909
 msgid "Absolute Orientation: Palm"
 msgstr ""
 
 #. Translators: Gloss models field: absOriFing, verbose name
-#: signbank/dictionary/models.py:932
+#: signbank/dictionary/models.py:912
 msgid "Absolute Orientation: Fingers"
 msgstr ""
 
 #. Translators: Gloss models field: relOriMov, verbose name
-#: signbank/dictionary/models.py:937
+#: signbank/dictionary/models.py:917
 msgid "Relative Orientation: Movement"
 msgstr ""
 
 #. Translators: Gloss models field: relOriLoc, verbose name
-#: signbank/dictionary/models.py:940
+#: signbank/dictionary/models.py:920
 msgid "Relative Orientation: Location"
 msgstr ""
 
 #. Translators: Gloss models field: oriCh, verbose name
-#: signbank/dictionary/models.py:943
+#: signbank/dictionary/models.py:923
 msgid "Orientation Change"
 msgstr ""
 
 #. Translators: Gloss models field: handCh, verbose name
-#: signbank/dictionary/models.py:947
+#: signbank/dictionary/models.py:927
 msgid "Handshape Change"
 msgstr ""
 
 #. Translators: Gloss models field: repeat, verbose name
-#: signbank/dictionary/models.py:952
+#: signbank/dictionary/models.py:932
 msgid "Repeated Movement"
 msgstr ""
 
 #. Translators: Gloss models field: movSh, verbose name
-#: signbank/dictionary/models.py:957
+#: signbank/dictionary/models.py:937
 msgid "Movement Shape"
 msgstr ""
 
 #. Translators: Gloss models field: movDir, verbose name
-#: signbank/dictionary/models.py:960
+#: signbank/dictionary/models.py:940
 msgid "Movement Direction"
 msgstr ""
 
 #. Translators: Gloss models field: movMan, verbose name
-#: signbank/dictionary/models.py:963
+#: signbank/dictionary/models.py:943
 msgid "Movement Manner"
 msgstr ""
 
 #. Translators: Gloss models field: contType, verbose name
 #. TODO: Check if this is actually used
-#: signbank/dictionary/models.py:967
+#: signbank/dictionary/models.py:947
 msgid "Contact Type"
 msgstr ""
 
 #. Translators: Gloss models field: phonOth verbose name
-#: signbank/dictionary/models.py:971
+#: signbank/dictionary/models.py:951
 msgid "Phonology Other"
 msgstr ""
 
 #. Translators: Gloss models field: mouthG, verbose name
-#: signbank/dictionary/models.py:974
+#: signbank/dictionary/models.py:954
 msgid "Mouth Gesture"
 msgstr ""
 
 #. Translators: Gloss models field: mouthing, verbose name
-#: signbank/dictionary/models.py:976
+#: signbank/dictionary/models.py:956
 msgid "Mouthing"
 msgstr ""
 
 #. Translators: Gloss models field: phonetVar, verbose name
-#: signbank/dictionary/models.py:978
+#: signbank/dictionary/models.py:958
 msgid "Phonetic Variation"
 msgstr ""
 
 #. Translators: Gloss models field: iconImg, verbose name
-#: signbank/dictionary/models.py:982
+#: signbank/dictionary/models.py:962
 msgid "Iconic Image"
 msgstr ""
 
 #. Translators: Gloss models field: namEnt, verbose name
-#: signbank/dictionary/models.py:984
+#: signbank/dictionary/models.py:964
 msgid "Named Entity"
 msgstr ""
 
 #. Translators: Gloss models field: semField, verbose name
-#: signbank/dictionary/models.py:987
+#: signbank/dictionary/models.py:967
 msgid "Semantic Field"
 msgstr ""
 
-#: signbank/dictionary/models.py:993
+#: signbank/dictionary/models.py:973
 msgid "Total Number of Occurrences"
 msgstr ""
 
-#: signbank/dictionary/models.py:995
+#: signbank/dictionary/models.py:975
 msgid "Total Number of Signers Using this Sign"
 msgstr ""
 
-#: signbank/dictionary/models.py:997
+#: signbank/dictionary/models.py:977
 msgid "Number of Occurrences in Amsterdam"
 msgstr ""
 
-#: signbank/dictionary/models.py:999
+#: signbank/dictionary/models.py:979
 msgid "Number of Occurrences in Voorburg"
 msgstr ""
 
-#: signbank/dictionary/models.py:1001
+#: signbank/dictionary/models.py:981
 msgid "Number of Occurrences in Rotterdam"
 msgstr ""
 
-#: signbank/dictionary/models.py:1003
+#: signbank/dictionary/models.py:983
 msgid "Number of Occurrences in Gestel"
 msgstr ""
 
-#: signbank/dictionary/models.py:1005
+#: signbank/dictionary/models.py:985
 msgid "Number of Occurrences in Groningen"
 msgstr ""
 
-#: signbank/dictionary/models.py:1007
+#: signbank/dictionary/models.py:987
 msgid "Number of Occurrences in Other Regions"
 msgstr ""
 
-#: signbank/dictionary/models.py:1010
+#: signbank/dictionary/models.py:990
 msgid "Number of Amsterdam Signers"
 msgstr ""
 
-#: signbank/dictionary/models.py:1012
+#: signbank/dictionary/models.py:992
 msgid "Number of Voorburg Signers"
 msgstr ""
 
-#: signbank/dictionary/models.py:1014
+#: signbank/dictionary/models.py:994
 msgid "Number of Rotterdam Signers"
 msgstr ""
 
-#: signbank/dictionary/models.py:1016
+#: signbank/dictionary/models.py:996
 msgid "Number of Gestel Signers"
 msgstr ""
 
-#: signbank/dictionary/models.py:1018
+#: signbank/dictionary/models.py:998
 msgid "Number of Groningen Signers"
 msgstr ""
 
-#: signbank/dictionary/models.py:1020
+#: signbank/dictionary/models.py:1000
 msgid "Number of Other Region Signers"
 msgstr ""
 
@@ -1549,8 +1525,8 @@ msgstr ""
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/add_gloss.html:45
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:39
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:348
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:374
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:347
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:373
 msgid "Add New Sign"
 msgstr ""
 
@@ -1620,36 +1596,36 @@ msgid "Search by Phonology"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Search by semantics
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
 #, fuzzy
 #| msgid "Search translation"
 msgid "Search by Semantics"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Search by relation
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:228
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:227
 #, fuzzy
 #| msgid "Search translation"
 msgid "Search by Relation"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Search by publication status and notes
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:274
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:273
 msgid "Search by Publication Status and Notes"
 msgstr ""
 
 #. Translators: How many results to fit per page
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:327
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:326
 msgid "Results per page"
 msgstr ""
 
 #. Translators: How many matches out of possible
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:388
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:387
 #, python-format
 msgid "Number of matches: %(page_obj.paginator.count)s out of %(glosscount)s"
 msgstr ""
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:400
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:399
 #, fuzzy
 #| msgid "Search translation"
 msgid "Translation equivalents"
