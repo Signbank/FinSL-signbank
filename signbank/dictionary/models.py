@@ -726,10 +726,8 @@ class FieldChoice(models.Model):
 # This method builds a list of choices from the database
 # TODO: Change this implementation to somewhere else
 def build_choice_list(field):
-    # Translators: These are appended to all choice lists, change the presentations if needed
-    choice_list = [('0', _('-')),
-                   # Translators: These are appended to all choice lists, change the presentations if needed
-                   ('1', _('N/A'))]
+    # These are not translated with ugettext_lazy due to json serialization problem
+    choice_list = [('0', '-'), ('1', 'N/A')]
 
     # Try to look for fields in FieldName and choose choices from there
     try:
@@ -1272,5 +1270,4 @@ class MorphologyDefinition(models.Model):
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
-        return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
-            self.parent_gloss.idgloss)
+        return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(self.parent_gloss.idgloss)
