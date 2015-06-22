@@ -16,6 +16,7 @@ import re
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
 
 
 @permission_required('dictionary.add_gloss')
@@ -117,7 +118,7 @@ def update_gloss(request, glossid):
                     lang = Language.objects.get(name=value)
                     gloss.language.add(lang)
                 gloss.save()
-                newvalue = ", ".join([str(g) for g in gloss.language.all()])
+                newvalue = ", ".join([unicode(g) for g in gloss.language.all()])
             except:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest("%s %s" % _("Uknown Language"), values, {'content-type': 'text/plain'})
@@ -131,7 +132,7 @@ def update_gloss(request, glossid):
                     lang = Dialect.objects.get(name=value)
                     gloss.dialect.add(lang)
                 gloss.save()
-                newvalue = ", ".join([str(g.name)
+                newvalue = ", ".join([unicode(g.name)
                                       for g in gloss.dialect.all()])
             except:
                 # Translators: HttpResponseBadRequest
@@ -270,7 +271,7 @@ def update_relation(gloss, field, value):
         if target:
             rel.target = target
             rel.save()
-            newvalue = str(target)
+            newvalue = unicode(target)
         else:
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value, {'content-type': 'text/plain'})
@@ -315,7 +316,7 @@ def update_relationtoforeignsign(gloss, field, value):
 
     else:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("U%s '%s'" % _("nknown form field"), field, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, {'content-type': 'text/plain'})
 
     return HttpResponse(value, {'content-type': 'text/plain'})
 
@@ -336,7 +337,11 @@ def gloss_from_identifier(value):
         pk = match.group(1)
         # print "INFO: ", idgloss, pk
         print "INFO: ", pk
-        target = Gloss.objects.get(pk=int(pk))
+        # Try if target Gloss exists, if not, assign None to target, then it returns None and will continue with httpError
+        try:
+            target = Gloss.objects.get(pk=int(pk))
+        except ObjectDoesNotExist:
+            target = None
         print "TARGET: ", target
         return target
     else:
@@ -536,7 +541,7 @@ def update_morphology_definition(gloss, field, value):
         if morpheme:
             morph_def.morpheme = morpheme
             morph_def.save()
-            newvalue = str(morpheme)
+            newvalue = unicode(morpheme)
         else:
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value, {'content-type': 'text/plain'})
