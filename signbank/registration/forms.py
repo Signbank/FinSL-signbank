@@ -202,7 +202,7 @@ class BirthYearField(forms.Field):
         thisyear = time.localtime()[0]
         if year > thisyear:
             raise forms.ValidationError(
-                _("%s %s.") % value, _("is in the future, please enter your year of birth"))
+                "%s %s." % value, _("is in the future, please enter your year of birth"))
         # or that this person isn't over 110
         if year < thisyear - 110:
             raise forms.ValidationError(
