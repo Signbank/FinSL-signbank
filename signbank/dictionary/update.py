@@ -324,13 +324,18 @@ def gloss_from_identifier(value):
     """Given an id of the form idgloss (pk) return the
     relevant gloss or None if none is found"""
 
-    match = re.match('(.*) \((\d+)\)', value)
+    # match = re.match('(.*) \((\d+)\)', value)
+    # Did not understand the previous regex, this should work since the pk/id should be integer
+    match = re.match('(\d+)', value)
+
     if match:
         print "MATCH: ", match
-        idgloss = match.group(1)
-        pk = match.group(2)
-        print "INFO: ", idgloss, pk
-
+        # Had to remove idgloss from here, what was it doing since value had only 1 value, not 2, can't compare
+        # idgloss = match.group(1)
+        # pk = match.group(2)
+        pk = match.group(1)
+        # print "INFO: ", idgloss, pk
+        print "INFO: ", pk
         target = Gloss.objects.get(pk=int(pk))
         print "TARGET: ", target
         return target

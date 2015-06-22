@@ -770,7 +770,7 @@ class Gloss(models.Model):
         )
 
     def __unicode__(self):
-        return "%s" % (self.idgloss)
+        return "%s" % (unicode(self.idgloss))
 
     def field_labels(self):
         """Return the dictionary of field labels for use in a template"""
