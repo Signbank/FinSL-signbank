@@ -410,7 +410,7 @@ relOrientationChoices = (
     ('0', 'N/A'),
 )
 
-relatArticChoices = (
+relation_between_articulators_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", 'One hand behind the other'),
@@ -452,7 +452,7 @@ relatArticChoices = (
     ("38", 'Below the weak hand'),
 )
 
-absOriPalmChoices = (
+absolute_orientation_palm_choices = (
     ('0', 'No Value Set'),
     ('1', 'N/A'),
     ('2', 'Downwards'),
@@ -473,7 +473,7 @@ absOriPalmChoices = (
     ('17', 'Forwards, downwards'),
 )
 
-absOriFingChoices = (
+absolute_orientation_fingers_choices = (
     ('0', 'No Value Set'),
     ('1', 'N/A'),
     ('2', 'Inwards'),
@@ -491,7 +491,7 @@ absOriFingChoices = (
     ('14', 'Towards weak hand'),
 )
 
-relOriMovChoices = (
+relative_orientation_movement_choices = (
     ('0', 'No Value Set'),
     ('1', 'N/A'),
     ('2', 'Pinkie'),
@@ -516,7 +516,7 @@ relOriMovChoices = (
     ('21', 'Thumb > pinkie'),
 )
 
-relOriLocChoices = (
+relative_orientation_location_choices = (
     ('0', 'No Value Set'),
     ('1', 'N/A'),
     ('2', 'Pinkie/thumb'),
@@ -898,24 +898,24 @@ minor or insignificant ways that can be ignored."""))
         _("Location"), choices=locationChoices, null=True, blank=True,
         max_length=20)  # TODO: build_choice_list("Location")
 
-    # Translators: Gloss models field: relatArtic, verbose name
-    relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"),
+    # Translators: Gloss models field: relation_between_articulators, verbose name
+    relation_between_articulators = models.CharField(_("Relation between Articulators"), choices=build_choice_list("relation_between_articulators"),
                                   null=True,
                                   blank=True, max_length=5)
 
-    # Translators: Gloss models field: absOriPalm, verbose name
-    absOriPalm = models.CharField(_("Absolute Orientation: Palm"), choices=build_choice_list("RelatArtic"), null=True,
+    # Translators: Gloss models field: absolute_orientation_palm, verbose name
+    absolute_orientation_palm = models.CharField(_("Absolute Orientation: Palm"), choices=build_choice_list("relation_between_articulators"), null=True,
                                   blank=True, max_length=5)
-    # Translators: Gloss models field: absOriFing, verbose name
-    absOriFing = models.CharField(_("Absolute Orientation: Fingers"), choices=build_choice_list("AbsOriFing"),
+    # Translators: Gloss models field: absolute_orientation_fingers, verbose name
+    absolute_orientation_fingers = models.CharField(_("Absolute Orientation: Fingers"), choices=build_choice_list("absolute_orientation_fingers"),
                                   null=True,
                                   blank=True, max_length=5)
 
-    # Translators: Gloss models field: relOriMov, verbose name
-    relOriMov = models.CharField(_("Relative Orientation: Movement"), choices=build_choice_list("RelOriMov"), null=True,
+    # Translators: Gloss models field: relative_orientation_movement, verbose name
+    relative_orientation_movement = models.CharField(_("Relative Orientation: Movement"), choices=build_choice_list("relative_orientation_movement"), null=True,
                                  blank=True, max_length=5)
-    # Translators: Gloss models field: relOriLoc, verbose name
-    relOriLoc = models.CharField(_("Relative Orientation: Location"), choices=build_choice_list("RelOriLoc"), null=True,
+    # Translators: Gloss models field: relative_orientation_location, verbose name
+    relative_orientation_location = models.CharField(_("Relative Orientation: Location"), choices=build_choice_list("relative_orientation_location"), null=True,
                                  blank=True, max_length=5)
     # Translators: Gloss models field: oriCh, verbose name
     oriCh = models.CharField(_("Orientation Change"), choices=build_choice_list("OriChange"), null=True, blank=True,
@@ -1196,8 +1196,8 @@ minor or insignificant ways that can be ignored."""))
 
         # Start with your own choice lists
         for fieldname in ['handedness', 'location', 'strong_handshape', 'weak_handshape',
-                          'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov',
-                          'relOriLoc', 'handCh', 'repeat', 'altern', 'movSh',
+                          'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
+                          'relative_orientation_location', 'handCh', 'repeat', 'altern', 'movSh',
                           'movDir', 'movMan', 'contType', 'namEnt', 'oriCh', 'semField']:
             # Get the list of choices for this field
             li = self._meta.get_field(fieldname).choices

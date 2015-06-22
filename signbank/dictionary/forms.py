@@ -185,8 +185,8 @@ class GlossSearchForm(forms.ModelForm):
                   'in_web_dictionary', 'is_proposed_new_sign',
                   'strong_handshape', 'weak_handshape', 'location',
 
-                  'handedness', 'annotation_comments', 'relatArtic', 'absOriPalm', 'absOriFing',
-                  'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',
+                  'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
+                  'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',
                   'contType', 'mouthG',
                   'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences')
 

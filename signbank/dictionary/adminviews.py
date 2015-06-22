@@ -60,7 +60,7 @@ class GlossListView(ListView):
         # We want to manually set which fields to export here
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'location', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'contType',
+                      'strong_handshape', 'weak_handshape', 'handCh', 'relation_between_articulators', 'location', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'contType',
                       'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences',
                       'in_web_dictionary', 'is_proposed_new_sign']
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
@@ -183,7 +183,7 @@ class GlossListView(ListView):
             qs = qs.filter(definition__published=val)
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'location', 'relatArtic', 'absOriPalm', 'absOriFing', 'relOriMov', 'relOriLoc', 'oriCh', 'handCh', 'repeat', 'altern',
+                      'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'handCh', 'repeat', 'altern',
                       'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences', 'in_web_dictionary', 'is_proposed_new_sign']
 
         # Language and basic property filters
@@ -382,8 +382,8 @@ class GlossDetailView(DetailView):
 
         fields = {}
 
-        fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handCh', 'relatArtic', 'location', 'absOriPalm', 'absOriFing',
-                               'relOriMov', 'relOriLoc', 'oriCh', 'contType', 'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG',
+        fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handCh', 'relation_between_articulators', 'location', 'absolute_orientation_palm', 'absolute_orientation_fingers',
+                               'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'contType', 'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG',
                                'mouthing', 'phonetVar', ]
 
         fields['semantics'] = ['iconImg', 'namEnt', 'semField']
