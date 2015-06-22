@@ -19,6 +19,7 @@ def index(request):
                               {
                                   'language': settings.LANGUAGE_NAME,
                                   'country': settings.COUNTRY_NAME,
+                                  # Translators: Title for feedback views index
                                   'title': _("Leave Feedback")},
                               context_instance=RequestContext(request))
 
@@ -95,6 +96,7 @@ def generalfeedback(request):
                               {
                                   'language': settings.LANGUAGE_NAME,
                                   'country': settings.COUNTRY_NAME,
+                                  # Translators: General Feedback title
                                   'title': _("General Feedback"),
                                   'form': form,
                                   'valid': valid},
@@ -148,6 +150,7 @@ def missingsign(request):
                               {
                                   'language': settings.LANGUAGE_NAME,
                                   'country': settings.COUNTRY_NAME,
+                                  # Translators Report Missing Sign title
                                   'title': _("Report a Missing Sign"),
                                   'posted': posted,
                                   'form': form
@@ -244,9 +247,9 @@ def recordsignfeedback(request, trans, n, total):
             )
             # Here we are hacking away this problem when there is no translation
             # for a Gloss. Because translation_id is int, it doesn't accept None.
-            this_translation_id=request.POST['translation_id']
+            this_translation_id = request.POST['translation_id']
             if this_translation_id != 'None':
-                sfb.translation_id=this_translation_id
+                sfb.translation_id = this_translation_id
             sfb.save()
             valid = True
             # redirect to the original page
@@ -254,11 +257,15 @@ def recordsignfeedback(request, trans, n, total):
                 return HttpResponseRedirect(
                     # sourcepage + "?lastmatch=" + lastmatch + "&feedbackmessage=" + _(
                     #    "Thank you. Your feedback has been saved."))
-                    "%s%s%s%s%s" % (sourcepage, "?lastmatch=", lastmatch, "&feedbackmessage=", _("Thank you. Your feedback has been saved.")))
+                    "%s%s%s%s%s" % (sourcepage, "?lastmatch=", lastmatch, "&feedbackmessage=",
+                                    # Translators: Thank you message for recording signfeedback
+                                    _("Thank you. Your feedback has been saved.")))
             else:
                 return HttpResponseRedirect(
                     # sourcepage + "?feedbackmessage=" + _("Thank you. Your feedback has been saved."))
-                    "%s%s%s" % (sourcepage, "?feedbackmessage=", _("Thank you. Your feedback has been saved.")))
+                    "%s%s%s" % (sourcepage, "?feedbackmessage=",
+                                # Translators: Thank you message for recording signfeedback
+                                _("Thank you. Your feedback has been saved.")))
     else:
         feedback_form = SignFeedbackForm()
 

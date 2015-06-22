@@ -26,6 +26,7 @@ class GeneralFeedbackForm(forms.Form):
 class SignFeedbackForm(forms.Form):
     """Form for input of sign feedback"""
 
+    # TODO: Change this variable name
     isAuslan = forms.ChoiceField(
         choices=isAuslanChoices, initial=0, widget=forms.RadioSelect)
     # isAuslan = forms.IntegerField(initial=0, widget=forms.HiddenInput)
@@ -44,6 +45,7 @@ class SignFeedbackForm(forms.Form):
         choices=correctChoices, initial=0, widget=forms.RadioSelect)
     # correct = forms.IntegerField(initial=0, widget=forms.HiddenInput)
     kwnotbelong = forms.CharField(
+        # Translators: keywordnotbelong, label name
         label=_("List keywords"), required=False, widget=forms.Textarea)
     comment = forms.CharField(required=False, widget=forms.Textarea)
 

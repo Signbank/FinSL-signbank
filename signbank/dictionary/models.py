@@ -196,7 +196,7 @@ class RelationToForeignSign(models.Model):
         list_filter = ['other_lang']
         search_fields = ['gloss__idgloss']
 
-
+# TODO: Remove all these choice lists
 handednessChoices = (('0', 'No Value Set'),
                      ('1', 'N/A'),
                      ('2', '1'),
@@ -726,7 +726,10 @@ class FieldChoice(models.Model):
 # This method builds a list of choices from the database
 # TODO: Change this implementation to somewhere else
 def build_choice_list(field):
-    choice_list = [('0', '-'), ('1', 'N/A')]
+    # Translators: These are appended to all choice lists, change the presentations if needed
+    choice_list = [('0', _('-')),
+                   # Translators: These are appended to all choice lists, change the presentations if needed
+                   ('1', _('N/A'))]
 
     # Try to look for fields in FieldName and choose choices from there
     try:
@@ -735,14 +738,15 @@ def build_choice_list(field):
 
         return choice_list
 
-    # Enter this exception if for example the db has no data yet
+    # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
     except OperationalError:
         pass
 
 
 class Gloss(models.Model):
     class Meta:
-        verbose_name_plural = "Glosses"
+        # Translators: This is verbose_name_plural, so it has to be plural here
+        verbose_name_plural = _("Glosses")
         ordering = ['idgloss']
         permissions = (
             # Translators: Gloss permissions
@@ -821,7 +825,7 @@ have the same 'Annotation Idgloss' that means they differ in form in only
 minor or insignificant ways that can be ignored."""))
     # the idgloss used in transcription, may be shared between many signs
 
-    # ID gloss for JKL gloss translation to English
+    # ID gloss for JKL Gloss' translation to English
     # Translators: Gloss models field: annotation_idgloss_jkl_en (english), verbose name
     annotation_idgloss_jkl_en = models.CharField(_("Gloss JKL (Eng)"), blank=True, max_length=30,
                                                  # Translators: Help text for Gloss models field: annotation_idgloss_jkl_en (english)
@@ -846,7 +850,7 @@ minor or insignificant ways that can be ignored."""))
                                                  help_text=_("""
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
-    # languages that this gloss is part of
+    # Languages that this gloss is part of
     language = models.ManyToManyField(Language)
 
     # Translators: Gloss models field: annotation_comments, verbose name
@@ -855,7 +859,7 @@ minor or insignificant ways that can be ignored."""))
 
     ########
 
-    # one or more regional dialects that this gloss is used in
+    # One or more regional dialects that this gloss is used in
     dialect = models.ManyToManyField(Dialect)
     # This field type is a guess.
 
@@ -864,7 +868,8 @@ minor or insignificant ways that can be ignored."""))
     sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
                                 # Translators: Help text for Gloss models field: sense
                                 help_text=_(
-                                    "If there is more than one sense of a sign enter a number here, all signs with sense>1 will use the same video as sense=1"))
+                                    """If there is more than one sense of a sign enter a number here,
+                                       all signs with sense>1 will use the same video as sense=1"""))
     sense.list_filter_sense = True
 
     # TODO: See if this can be removed
@@ -883,16 +888,17 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: handedness, verbose name
     handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
-    # Translators: Gloss models field: domhdndsh, verbose name
+    # Translators: Gloss models field: strong_handshape, verbose name
     strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
-                                max_length=5)
+                                        max_length=5)
     # Translators: Gloss models field: weak_handshape, verbose name
     weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
-                                max_length=5)
+                                      max_length=5)
 
     # Translators: Gloss models field: location, verbose name
     location = models.CharField(
-        _("Location"), choices=locationChoices, null=True, blank=True, max_length=20) # TODO: build_choice_list("Location")
+        _("Location"), choices=locationChoices, null=True, blank=True,
+        max_length=20)  # TODO: build_choice_list("Location")
 
     # Translators: Gloss models field: relatArtic, verbose name
     relatArtic = models.CharField(_("Relation between Articulators"), choices=build_choice_list("RelatArtic"),
@@ -937,7 +943,6 @@ minor or insignificant ways that can be ignored."""))
     movMan = models.CharField(_("Movement Manner"), choices=build_choice_list("MovementMan"), null=True, blank=True,
                               max_length=5)
     # Translators: Gloss models field: contType, verbose name
-    # TODO: Check if this is actually used
     contType = models.CharField(_("Contact Type"), choices=build_choice_list("ContactType"), null=True, blank=True,
                                 max_length=5)
 
@@ -962,8 +967,11 @@ minor or insignificant ways that can be ignored."""))
                                 max_length=5)
 
     # ### Frequency fields
+    # Translators: Gloss models field_ number_of_occurences, verbose name
     number_of_occurences = models.IntegerField(
-        _("Number of Occurrences"), null=True, blank=True, help_text="Number of occurences in annotation materials")
+        _("Number of Occurrences"), null=True, blank=True,
+        # Translators: Help text for Gloss models field: number_of_occurences
+        help_text=_("Number of occurences in annotation materials"))
 
     # ### Publication status
     # Translators: Gloss models field: in_web_dictionary, verbose name
@@ -994,6 +1002,7 @@ minor or insignificant ways that can be ignored."""))
 
         return self.prev_dictionary_gloss(True)
 
+    # TODO: See if this is really needed, 'sn' seems like a dirty way to determine order
     def next_dictionary_gloss(self, staff=False):
         """Find the next gloss in dictionary order"""
         if self.sn == None:
@@ -1008,6 +1017,7 @@ minor or insignificant ways that can be ignored."""))
         else:
             return None
 
+    # TODO: See if this is really needed, 'sn' seems like a dirty way to determine order
     def prev_dictionary_gloss(self, staff=False):
         """Find the previous gloss in dictionary order"""
         if self.sn == None:
@@ -1067,6 +1077,7 @@ minor or insignificant ways that can be ignored."""))
         else:
             return None
 
+        # TODO: Find out the mystery of this line, it is unreachable
         video_with_gloss = self.get_video_gloss()
 
         try:
@@ -1084,10 +1095,11 @@ minor or insignificant ways that can be ignored."""))
         return video_with_gloss.glossvideo_set.count()
 
     def get_video_url(self):
-        """return  the url of the video for this gloss which may be that of a homophone"""
+        """Return  the url of the video for this gloss which may be that of a homophone"""
 
-        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4' # TODO: This line needs to be removed
+        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
 
+        # TODO: Unreachable line
         video = self.get_video()
         if video != None:
             return video.get_absolute_url()
@@ -1108,7 +1120,7 @@ minor or insignificant ways that can be ignored."""))
         return [d for d in defs if d.role in settings.DEFINITION_FIELDS]
 
     def definitions(self):
-        """gather together the definitions for this gloss"""
+        """Gather together the definitions for this gloss"""
 
         defs = dict()
         for d in self.definition_set.all().order_by('count'):
@@ -1146,7 +1158,7 @@ minor or insignificant ways that can be ignored."""))
 
         return self.options_to_json(relOrientationChoices)
 
-    def secondary_location_choices_json(self): # TODO: see if these can be removed
+    def secondary_location_choices_json(self):  # TODO: see if these can be removed
         """Return JSON for the secondary location (BSL) choice list"""
 
         return self.options_to_json(BSLsecondLocationChoices)
@@ -1206,7 +1218,7 @@ minor or insignificant ways that can be ignored."""))
 
         return json.dumps(choice_lists)
 
-# register Gloss for tags
+# Register Gloss for tags
 try:
     tagging.register(Gloss)
 except tagging.AlreadyRegistered:
@@ -1252,8 +1264,13 @@ class MorphologyDefinition(models.Model):
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
     # ('MorphologyType'))
-    role = models.CharField(max_length=5, choices=(('0', '-'), ('1', 'N/A')))
+    role = models.CharField(max_length=5, choices=(
+        # Translators: Role choice for MorphologyDefinition
+        ('0', _('-')),
+        # Translators: Role choice for MorphologyDefinition
+        ('1', _('N/A'))))
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
-        return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(self.parent_gloss.idgloss)
+        return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
+            self.parent_gloss.idgloss)

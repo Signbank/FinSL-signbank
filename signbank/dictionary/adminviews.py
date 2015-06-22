@@ -47,7 +47,7 @@ class GlossListView(ListView):
     # noinspection PyInterpreter,PyInterpreter
     def render_to_csv_response(self, context):
 
-        if not self.request.user.has_perm('dictionary.export_csv'):
+        if not self.request.user.has_perm('dictionary.export_csv'): # TODO: Check
             raise PermissionDenied
 
         # Create the HttpResponse object with the appropriate CSV header.
@@ -138,7 +138,7 @@ class GlossListView(ListView):
 
         # print "QS:", len(qs)
 
-        get = self.request.GET
+        get = self.request.GET # TODO: Check
 
         if get.has_key('search') and get['search'] != '':
             val = get['search']

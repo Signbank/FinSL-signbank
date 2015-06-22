@@ -40,15 +40,19 @@ class RegistrationForm(forms.Form):
     """
     username = forms.CharField(max_length=30,
                                widget=forms.TextInput(attrs=attrs_reqd),
+                               # Translators: label username
                                label=_(u'Username'))
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_reqd,
                                                                maxlength=75)
 
                                                     ),
+                             # Translators: label email
                              label=_(u'Your Email Address'))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_reqd),
+                                # Translators: label password1
                                 label=_(u'Password'))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_reqd),
+                                # Translators: label password2
                                 label=_(u'Password (again)'))
 
     def clean_username(self):
@@ -63,6 +67,7 @@ class RegistrationForm(forms.Form):
         except User.DoesNotExist:
             return self.cleaned_data['username']
         raise forms.ValidationError(
+            # Translators: exception ValidationError
             _(u'This username is already taken. Please choose another.'))
 
     def clean_password2(self):
@@ -74,6 +79,7 @@ class RegistrationForm(forms.Form):
             if self.cleaned_data['password1'] == self.cleaned_data['password2']:
                 return self.cleaned_data['password2']
             raise forms.ValidationError(
+                # Translators: ValidationError
                 _(u'You must type the same password each time'))
 
     def save(self, profile_callback=None):
@@ -107,6 +113,7 @@ class RegistrationFormTermsOfService(RegistrationForm):
 
     """
     tos = forms.BooleanField(widget=forms.CheckboxInput(attrs=attrs_reqd),
+                             # Translators: Terms of service
                              label=_(u'I have read and agree to the Terms of Service'))
 
     def clean_tos(self):
@@ -117,6 +124,7 @@ class RegistrationFormTermsOfService(RegistrationForm):
         if self.cleaned_data.get('tos', False):
             return self.cleaned_data['tos']
         raise forms.ValidationError(
+            # Translators: ValidationError on TOS
             _(u'You must agree to the terms to register'))
 
 
@@ -139,6 +147,7 @@ class RegistrationFormUniqueEmail(RegistrationForm):
         except User.DoesNotExist:
             return self.cleaned_data['email']
         raise forms.ValidationError(
+            # Translators: Validation error on unique email address in registration
             _(u'This email address is already in use. Please supply a different email address.'))
 
 
@@ -166,6 +175,7 @@ class RegistrationFormNoFreeEmail(RegistrationForm):
         email_domain = self.cleaned_data['email'].split('@')[1]
         if email_domain in self.bad_domains:
             raise forms.ValidationError(
+                # Translators: ValidationError: NoFreeEmail
                 _(u'Registration using free email addresses is prohibited. Please supply a different email address.'))
         return self.cleaned_data['email']
 
@@ -182,26 +192,37 @@ class BirthYearField(forms.Field):
 
     def clean(self, value):
         if not value:
+            # Translators: ValidationError birthyear value
             raise forms.ValidationError(_('Enter a four digit year, eg. 1984.'))
 
         if not self.year_re.match(str(value)):
-            raise forms.ValidationError(_('%s is not a valid year.') % value)
+            raise forms.ValidationError('%s %s.' % value, _("is not a valid year"))
         year = int(value)
         # check not after this year
         thisyear = time.localtime()[0]
         if year > thisyear:
             raise forms.ValidationError(
-                _("%s is in the future, please enter your year of birth.") % value)
+                _("%s %s.") % value, _("is in the future, please enter your year of birth"))
         # or that this person isn't over 110
         if year < thisyear - 110:
             raise forms.ValidationError(
-                _("If you were born in") + " %s " + _("you are now") + " %s " + ("years old! Please enter your real birth year.") % (year, thisyear - year))
+                 "%s %s %s %s %s." % (
+                     # Translators: ValidationError (if born in, you are x, enter real byear)
+                     _("If you were born in"), year,
+                     # Translators: ValidationError (if born in, you are x, enter real byear)
+                     _("you are now"), (thisyear - year),
+                     # Translators: ValidationError (if born in, you are x, enter real byear)
+                     _("years old! Please enter your real birth year")))
         return year
 
 
 from models import backgroundChoices, learnedChoices, schoolChoices, teachercommChoices
 
-yesnoChoices = ((1, _('yes')), (0, _('no')))
+yesnoChoices = (
+    # Translators: yesnoChoices
+    (1, _('yes')),
+    # Translators: yesnoChoices
+    (0, _('no')))
 
 import string
 
@@ -213,39 +234,44 @@ def t(message):
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
 
+# TODO: Change the name of this class and adjust the questions accordingly
+# TODO: What kind of information do we want to record of our users?
 class RegistrationFormAuslan(RegistrationFormUniqueEmail):
 
     """
     Registration form for the site
     """
     username = forms.CharField(widget=forms.HiddenInput, required=False)
+    # Translators: RegistrationForm: firstname
     firstname = forms.CharField(label=_(t("Firstname")), max_length=50)
-
+    # Translators: RegistrationForm: lastname
     lastname = forms.CharField(label=_(t("Lastname")), max_length=50)
-
+    # Translators: RegistrationForm: birthyear
     yob = BirthYearField(label=_(t("What year were you born?")))
-
+    # Translators: RegistrationForm: australian (alias do you live in $country)
     australian = forms.ChoiceField(
         yesnoChoices, label=_(t("Do you live in ${country}?")))
-
+    # Translators: RegistrationForm: postcode
     postcode = forms.CharField(label=_(t("If you live in $country, what is your postcode?")),
                                max_length=20, required=False)
-
+    # Translators: RegistrationForm: background
     background = forms.MultipleChoiceField(
         backgroundChoices, label=_("What is your background?"))
-
+    # Translators: RegistrationForm: auslan_user
     auslan_user = forms.ChoiceField(
         yesnoChoices, label=_(t("Do you use $language?")), required=False)
-
+    # Translators: RegistrationForm: learned
     learned = forms.ChoiceField(label=_(t("If you use $language, when did you learn sign language?")),
                                 choices=learnedChoices, required=False)
-
+    # Translators: RegistrationForm: deaf
     deaf = forms.ChoiceField(yesnoChoices, label=_(t("Are you a deaf person?")))
-
+    # Translators: RegistrationForm: schooltype
     schooltype = forms.ChoiceField(label=_(t("What sort of school do you (or did you) attend?")),
                                    choices=schoolChoices, required=False)
+    # Translators: RegistrationForm: school
     school = forms.CharField(label=_(t("Which school do you (or did you) attend?")),
                              max_length=50, required=False)
+    # Translators: RegistrationForm: teachercomm
     teachercomm = forms.ChoiceField(label=_(t("How do (or did) your teachers communicate with you?")),
                                     choices=teachercommChoices,
                                     required=False)
@@ -307,7 +333,9 @@ class EmailAuthenticationForm(forms.Form):
     Base class for authenticating users. Extend this to get a form that accepts
     username/password logins.
     """
+    # Translators: EmailAuthenticationForm: email
     email = forms.CharField(label=_("Email"), max_length=100)
+    # Translators: EmailAuthenticationForm: password
     password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
 
     def __init__(self, request=None, *args, **kwargs):
@@ -329,14 +357,17 @@ class EmailAuthenticationForm(forms.Form):
             self.user_cache = authenticate(username=email, password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(
+                    # Translators: EmailAuthenticationForm: ValidationError
                     _("Please enter a correct email and password. Note that password is case-sensitive."))
             elif not self.user_cache.is_active:
+                # Translators: EmailAuthenticationForm: ValidationError
                 raise forms.ValidationError(_("This account is inactive."))
 
         # TODO: determine whether this should move to its own method.
         if self.request:
             if not self.request.session.test_cookie_worked():
                 raise forms.ValidationError(
+                    # Translators: EmailAuthenticationForm: ValidationError
                     _("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in."))
 
         return self.cleaned_data

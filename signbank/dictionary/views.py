@@ -16,6 +16,7 @@ import forms
 from signbank.video.forms import VideoUploadForGlossForm
 from signbank.tools import video_to_signbank, compare_valuedict_to_gloss
 
+from django.utils.translation import ugettext_lazy as _
 
 def login_required_config(f):
     """like @login_required if the ALWAYS_REQUIRE_LOGIN setting is True"""
@@ -94,6 +95,7 @@ def word(request, keyword, n):
                               {'translation': trans.translation.text.encode('utf-8'),
                                'viewname': 'words',
                                'definitions': trans.gloss.definitions(),
+                               # TODO: duplicate key
                                'gloss': trans.gloss,
                                'allkwds': allkwds,
                                'n': n,
@@ -108,6 +110,7 @@ def word(request, keyword, n):
                                'videofile': videourl,
                                'update_form': update_form,
                                'videoform': video_form,
+                               # TODO: duplicate key
                                'gloss': gloss,
                                'glosscount': glosscount,
                                'glossposn': glossposn,
@@ -214,7 +217,8 @@ def search(request):
 
     if not (request.user.is_staff) and len(request.user.groups.filter(name="Publisher")) == 0 and len(
             request.user.groups.filter(name="Editor")) == 0:
-        return HttpResponse('You are not allowed to see this page.')
+        # Translators: Message sent if user is not allowed to see requested page.
+        return HttpResponse(_('You are not allowed to see this page.'))
 
     form = UserSignSearchForm(request.GET.copy())
 
@@ -363,14 +367,21 @@ def import_videos(request):
         try:
             gloss = Gloss.objects.get(annotation_idgloss_jkl=idgloss)
         except ObjectDoesNotExist:
-            return HttpResponse('Failed at ' + filename + '. Could not find ' + idgloss + '.')
+            return HttpResponse(
+                # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
+                _('Failed at ') + filename +
+                # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
+                _('. Could not find ') + idgloss + '.')
 
         overwritten, was_allowed = video_to_signbank(
             video_folder, gloss, extension)
 
         if not was_allowed:
             return HttpResponse(
-                'Failed two overwrite ' + gloss.annotation_idgloss_jkl + '. Maybe this file is not owned by the webserver?')
+                # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
+                _('Failed two overwrite ') + gloss.annotation_idgloss_jkl +
+                # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
+                _('. Maybe this file is not owned by the webserver?'))
 
         out += '<li>' + filename + '</li>'
 
@@ -404,7 +415,8 @@ def add_new_sign(request):
 
 def import_csv(request):
     if not (request.user.is_staff) and len(request.user.groups.filter(name="Publisher")) == 0:
-        return HttpResponse('You are not allowed to see this page.')
+        # Translators: import_csv: not allowed to see requested page (Might not be useful to translate)
+        return HttpResponse(_('You are not allowed to see this page.'))
 
     uploadform = forms.CSVUploadForm
     changes = []

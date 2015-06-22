@@ -35,7 +35,9 @@ def page(request, url='/'):
         # no page, if we're after the root page then serve a default page
         if url == '/':
 
-            f = Page(title='No Pages',
+            # Translators: exception with page request
+            f = Page(title=_('No Pages'),
+                     # Translators: exception with page request
                      content='<p>' + _('No pages defined. Login to <a href="/admin"> to create some.') + '</p>')
         else:
             t = loader.get_template("404.html")

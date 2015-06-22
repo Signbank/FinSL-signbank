@@ -2,6 +2,7 @@ from django.contrib import admin
 from signbank.dictionary.models import *
 from reversion.admin import VersionAdmin
 from tagging.models import TaggedItem
+from django.utils.translation import ugettext_lazy as _
 
 
 class KeywordAdmin(VersionAdmin):
@@ -34,7 +35,8 @@ class RelationInline(admin.TabularInline):
     model = Relation
     fk_name = 'source'
     raw_id_fields = ['source', 'target']
-    verbose_name_plural = "Relations to other Glosses"
+    # Translators: verbose_name_plural
+    verbose_name_plural = _("Relations to other Glosses")
     extra = 1
 
 
@@ -45,6 +47,7 @@ from django.contrib.admin import SimpleListFilter
 class SenseNumberListFilter(SimpleListFilter):
     # Human-readable title which will be displayed in the
     # right admin sidebar just above the filter options.
+    # Translators: Human-readable title which will be displayed in the right admin sidebar just above the filter options.
     title = _('number of senses')
 
     # Parameter for the filter that will be used in the URL query.
@@ -58,7 +61,10 @@ class SenseNumberListFilter(SimpleListFilter):
         human-readable name for the option that will appear
         in the right sidebar.
         """
+
+        # Translators: SenseNumberListFilter
         return (('none', _('No Senses')),
+                # Translators: SenseNumberListFilter
                 ('morethanone', _('More than one')),
                 )
 

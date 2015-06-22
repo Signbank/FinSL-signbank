@@ -7,21 +7,21 @@ import string
 
 # models to represent the feedback from users in the site
 
-# Translators:
+# Translators: isAuslanChoices
 isAuslanChoices = ((1, _("yes")),
-                   # Translators:
+                   # Translators: isAuslanChoices
                    (2, _("Perhaps")),
-                   # Translators:
+                   # Translators: isAuslanChoices
                    (3, _("Don't know")),
-                   # Translators:
+                   # Translators: isAuslanChoices
                    (4, _("Don't think so")),
-                   # Translators:
+                   # Translators: isAuslanChoices
                    (5, _("No")),
-                   # Translators:
+                   # Translators: isAuslanChoices
                    (0, _("N/A"))
                    )
 
-# TODO: Implement Finnish choices here!
+# TODO: Implement Finnish choices here, or remove the whole thing
 if settings.LANGUAGE_NAME == "BSL":
     whereusedChoices = (('Belfast', 'Belfast'),
                         ('Birmingham', 'Birmingham'),
@@ -50,54 +50,54 @@ else:
                         ('dk', "Don't Know"),
                         ('n/a', "N/A")
                         )
-# Translators: Choices (feedback)
+# Translators: likedChoices (feedback)
 likedChoices = ((1, _("yes")),
-                # Translators:
+                # Translators: likedChoices
                 (2, _("A little")),
-                # Translators:
+                # Translators: likedChoices
                 (3, _("Don't care")),
-                # Translators:
+                # Translators: likedChoices
                 (4, _("Not much")),
-                # Translators:
+                # Translators: likedChoices
                 (5, _("No")),
-                # Translators:
+                # Translators: likedChoices
                 (0, _("N/A"))
                 )
-# Translators: Choices (feedback)
+# Translators: useChoices (feedback)
 useChoices = ((1, _("yes")),
-              # Translators:
+              # Translators: useChoices
               (2, _("Sometimes")),
-              # Translators:
+              # Translators: useChoices
               (3, _("Not Often")),
-              # Translators:
+              # Translators: useChoices
               (4, _("No")),
-              # Translators:
+              # Translators: useChoices
               (0, _("N/A"))
               )
-# Translators: Choices (feedback)
+# Translators: suggestedChoices (feedback)
 suggestedChoices = ((1, _("yes")),
-                    # Translators: Choice
+                    # Translators: suggestedChoices
                     (2, _("Sometimes")),
-                    # Translators:
+                    # Translators: suggestedChoices
                     (3, _("Don't Know")),
-                    # Translators:
+                    # Translators: suggestedChoices
                     (4, _("Perhaps")),
-                    # Translators:
+                    # Translators: suggestedChoices
                     (5, _("No")),
-                    # Translators:
+                    # Translators: suggestedChoices
                     (0, _("N/A"))
                     )
-# Translators: Choices (feedback)
+# Translators: correctChoices (feedback)
 correctChoices = ((1, _("yes")),
-                  # Translators:
+                  # Translators: correctChoices
                   (2, _("Mostly Correct")),
-                  # Translators:
+                  # Translators: correctChoices
                   (3, _("Don't Know")),
-                  # Translators:
+                  # Translators: correctChoices
                   (4, _("Mostly Wrong")),
-                  # Translators:
+                  # Translators: correctChoices
                   (5, _("No")),
-                  # Translators:
+                  # Translators: correctChoices
                   (0, _("N/A"))
                   )
 
@@ -309,11 +309,13 @@ class SignFeedback(models.Model):
     translation = models.ForeignKey(Translation, editable=False, null=True, blank=True)
     # Translators: Question (sign feedback)
     comment = models.TextField(
-        _("Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."),
+        _(
+            "Please give us your comments about this sign. For example: do you think there are other keywords that belong with this sign? Please write your comments or new keyword/s below."),
         blank=True)
     # Translators: Question (sign feedback)
     kwnotbelong = models.TextField(
-        _("Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"),
+        _(
+            "Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"),
         blank=True)
     # Translators: Question (sign feedback)
     isAuslan = models.IntegerField(

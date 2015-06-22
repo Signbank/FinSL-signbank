@@ -99,6 +99,7 @@ class Video(models.Model, VideoPosterMixin):
 
     # video file name relative to MEDIA_ROOT
     videofile = models.FileField(
+        # Translators: Video: videofile
         _("Video file in h264 mp4 format"), upload_to=settings.VIDEO_UPLOAD_LOCATION)
 
     def __unicode__(self):
@@ -142,6 +143,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
     # video version, version = 0 is always the one that will be displayed
     # we will increment the version (via reversion) if a new video is added
     # for this gloss
+    # Translators: GlossVideo: version
     version = models.IntegerField(_("Version"), default=0)
 
     def get_mobile_url(self):

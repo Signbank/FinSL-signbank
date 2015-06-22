@@ -11,10 +11,14 @@ from signbank.log import debug
 
 
 class PageForm(forms.ModelForm):
-    url = forms.RegexField(label=_("URL"), max_length=100, regex=r'^[-\w/]+$',
-                           help_text=_("Example: '/about/contact/'. Make sure to have leading"
+    url = forms.RegexField(
+        # Translators: Label for PageForm
+        label=_("URL"), max_length=100, regex=r'^[-\w/]+$',
+        # Translators: Help_text for PageForm
+        help_text=_("Example: '/about/contact/'. Make sure to have leading"
                                        " and trailing slashes."),
-                           error_message=_("This value must contain only letters, numbers,"
+        # Translators: error_message for PageForm
+        error_message=_("This value must contain only letters, numbers,"
                                            " underscores, dashes or slashes."))
 
     class Meta:
@@ -23,9 +27,11 @@ class PageForm(forms.ModelForm):
 
 
 class PageVideoForm(forms.ModelForm):
-    video = VideoUploadToFLVField(label='Video',
+    # Translators: PageVideoForm label
+    video = VideoUploadToFLVField(label=_('Video'),
                                   required=True,
                                   prefix='pages',
+                                  # Translators: help_text for PageVideoForm
                                   help_text=_(
                                       "Uploaded video will be converted to Flash"),
                                   widget=admin.widgets.AdminFileWidget)

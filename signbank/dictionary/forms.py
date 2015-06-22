@@ -95,11 +95,13 @@ RELATION_ROLE_CHOICES = (('', '---------'),
                          ('seealso', _('See Also')),
                          )
 
-DEFN_ROLE_CHOICES = (('', '---------'),
+# Translators: This is a choice option that probably represents nothing, don't translate if not needed to.
+DEFN_ROLE_CHOICES = (('', _('---------')),
                      # Translators: DEFN_ROLE_CHOICES
                      ('all', _('All'))) + DEFN_ROLE_CHOICES
 MORPHEME_ROLE_CHOICES = [
-                            ('', '---------')] + build_choice_list('MorphologyType')
+                            # Translators: This is a choice option that probably represents nothing, don't translate if not needed to.
+                            ('', _('---------'))] + build_choice_list('MorphologyType')
 ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 

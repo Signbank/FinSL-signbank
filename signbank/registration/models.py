@@ -196,13 +196,17 @@ class RegistrationProfile(models.Model):
     ``RegistrationManager``.
 
     """
+    # Translators: RegistrationProfile field: user
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    # Translators: RegistrationProfile field: activation_key
     activation_key = models.CharField(_('activation key'), max_length=40)
 
     objects = RegistrationManager()
 
     class Meta:
+        # Translators: RegistrationProfile verbose_name
         verbose_name = _('registration profile')
+        # Translators: RegistrationProfile verbose_name_plural
         verbose_name_plural = _('registration profiles')
 
     class Admin:
@@ -210,7 +214,7 @@ class RegistrationProfile(models.Model):
         search_fields = ('user__username', 'user__first_name')
 
     def __unicode__(self):
-        return u"Registration information for %s" % self.user
+        return "%s for %s" % _(u"Registration information"), self.user
 
     def activation_key_expired(self):
         """
@@ -241,34 +245,60 @@ def t(message):
     tpl = string.Template(message)
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
-backgroundChoices = ((0, _('deaf community')),
-                     (1, _(t('$language teacher'))),
-                     (2, _('teacher of the deaf')),
-                     (3, _('parent of a deaf child')),
-                     (4, _('sign language interpreter')),
-                     (5, _('school or university student')),
-                     (6, _(t('student learning $language'))),
-                     (7, _('other')),
+backgroundChoices = (
+    # Translators: backgroundChoices
+    (0, _('deaf community')),
+    # Translators: backgroundChoices
+    (1, _(t('$language teacher'))),
+    # Translators: backgroundChoices
+    (2, _('teacher of the deaf')),
+    # Translators: backgroundChoices
+    (3, _('parent of a deaf child')),
+    # Translators: backgroundChoices
+    (4, _('sign language interpreter')),
+    # Translators: backgroundChoices
+    (5, _('school or university student')),
+    # Translators: backgroundChoices
+    (6, _(t('student learning $language'))),
+    # Translators: backgroundChoices
+    (7, _('other')),
                      )
 
-learnedChoices = ((0, _('Not Applicable')),
-                  (1, _('At home from my parent(s)')),
-                  (2, _('At kindergarten or at the beginning of primary school')),
-                  (3, _('At primary school')),
-                  (4, _('At high school')),
-                  (5, _('After I left school')),
+learnedChoices = (
+    # Translators: learnedChoices
+    (0, _('Not Applicable')),
+    # Translators: learnedChoices
+    (1, _('At home from my parent(s)')),
+    # Translators: learnedChoices
+    (2, _('At kindergarten or at the beginning of primary school')),
+    # Translators: learnedChoices
+    (3, _('At primary school')),
+    # Translators: learnedChoices
+    (4, _('At high school')),
+    # Translators: learnedChoices
+    (5, _('After I left school')),
                   )
 
-schoolChoices = ((0, _('a deaf school (boarder)')),
-                 (1, _('a deaf school (day student)')),
-                 (2, _('a deaf classroom or unit in a hearing school')),
-                 (3, _('a regular classroom in a hearing school')),
+schoolChoices = (
+    # Translators: schoolChoices
+    (0, _('a deaf school (boarder)')),
+    # Translators: schoolChoices
+    (1, _('a deaf school (day student)')),
+    # Translators: schoolChoices
+    (2, _('a deaf classroom or unit in a hearing school')),
+    # Translators: schoolChoices
+    (3, _('a regular classroom in a hearing school')),
                  )
 
-teachercommChoices = ((0, _('mostly oral')),
-                      (1, _('mostly Signed English')),
-                      (2, _(t('mostly sign language ($language)'))),
-                      (3, _('mostly fingerspelling'))
+teachercommChoices = (
+    # Translators: teachercommChoices
+    (0, _('mostly oral')),
+    # Translators: teachercommChoices
+    (1, _('mostly Signed English')),
+    # Translators: teachercommChoices
+    (2, _(t('mostly sign language ($language)'))),
+    # Translators: teachercommChoices
+    (3, _('mostly fingerspelling'))
                       )
 
 
@@ -277,20 +307,30 @@ class UserProfile(models.Model):
     """Extended profile for users of the site"""
 
     user = models.ForeignKey(authmodels.User, unique=True)
+    # Translators: UserProfile field: yob
     yob = models.IntegerField(_("When were you born?"))
+    # Translators: UserProfile field: australian
     australian = models.BooleanField(_(t("Do you live in $country?")))
+    # Translators: UserProfile field: postcode
     postcode = models.CharField(
         _(t("If you live in $country, what is your postcode?")), max_length=20, blank=True)
+    # Translators: UserProfile field: background
     background = models.CommaSeparatedIntegerField(
         _("What is your background?"), max_length=20, choices=backgroundChoices)
+    # Translators: UserProfile field: auslan_user
     auslan_user = models.BooleanField(_(t("Do you use $language?")))
+    # Translators: UserProfile field: learned
     learned = models.IntegerField(_(t("If you use $language, when did you learn sign language?")),
                                   choices=learnedChoices)
+    # Translators: UserProfile field: deaf
     deaf = models.BooleanField(_("Are you a deaf person?"))
+    # Translators: UserProfile field: schooltype
     schooltype = models.IntegerField(_("What sort of school do you (or did you) attend?"),
                                      choices=schoolChoices)
+    # Translators: UserProfile field: school
     school = models.CharField(
         _("Which school do you (or did you) attend?"), max_length=50, blank=True)
+    # Translators: UserProfile field: teachercomm
     teachercomm = models.IntegerField(_("How do (or did) your teachers communicate with you?"),
                                       choices=teachercommChoices)
 

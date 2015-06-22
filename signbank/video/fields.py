@@ -27,6 +27,7 @@ class UploadedFLVFile(UploadedFile):
     """
 
     def __init__(self, name):
+        super(UploadedFLVFile, self).__init__()
         self.name = name
         self.fullname = name  # needed because UploadedFile will clobber .name
         self.field_name = None
@@ -121,6 +122,7 @@ class VideoUploadToFLVField(forms.FileField):
         # the flv file, not the original but I can't
         # create one of those from an existing file
         # so I use my own wrapper class
+        # Translators: Debug message
         debug(_("Converted to mp4: ") + mp4file)
 
         # os.unlink(tmpname)
@@ -132,6 +134,7 @@ class VideoUploadToFLVField(forms.FileField):
         if convert_video(sourcefile, targetfile):
             return True
         else:
+            # Translators: Error message
             errormsg = _("Video conversion failed")
             raise ValidationError(errormsg)
 
@@ -163,7 +166,9 @@ class VideoUploadToFLVField(forms.FileField):
             if time.time() - start > settings.FFMPEG_TIMEOUT:
                 # we've gone over time, kill the process
                 os.kill(process.pid, signal.SIGKILL)
+                # Translators: Debug message
                 debug(_("Killing ffmpeg process"))
+                # Translators: Error message
                 errormsg = _("Conversion of video took too long.  This site is only able to host relatively short videos.")
 
         status = process.poll()
@@ -175,16 +180,23 @@ class VideoUploadToFLVField(forms.FileField):
             fsize = s.st_size
             if (fsize == 0):
                 os.remove(targetfile)
+                # Translators: Error message
                 errormsg = _("Conversion of video failed: please try to use a diffent format")
         except:
+            # Translators: Error message
             errormsg = _("Conversion of video failed: please try to use a different video format")
 
         if errormsg:
             # we have a conversion error
             # notify the admins, attaching the offending file
-            msgtxt = _("Error:") + " %s\n\n" + _("Command:") + " %s\n\n" % (
-                errormsg, " ".join(ffmpeg))
+            # Translators: msgtxt
+            msgtxt = "%s: %s\n\n%s %s\n\n" % (
+                # Translators: errormsg msgtxt
+                _("Error"), errormsg,
+                # Translators: errormsg msgtxt
+                _("Command:"), " ".join(ffmpeg))
 
+            # Translators: errormsg EmailMessage
             message = EmailMessage(_("Video conversion failed on Auslan"),
                                    msgtxt,
                                    to=[a[1] for a in settings.ADMINS])
