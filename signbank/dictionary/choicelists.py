@@ -2,8 +2,9 @@ __author__ = 'heilniem'
 
 
 # These static choice lists were moved here from dictionary/models
+# In the current implementation these are not used, but I decided to keep them for reference.
 
-handednessChoices = (('0', 'No Value Set'),
+handedness_choices = (('0', 'No Value Set'),
                      ('1', 'N/A'),
                      ('2', '1'),
                      ('3', '2'),
@@ -11,7 +12,7 @@ handednessChoices = (('0', 'No Value Set'),
                      ('5', '2s'),
                      ('6', 'X'))
 
-handshapeChoices = (('0', 'No Value Set'),
+handshape_choices = (('0', 'No Value Set'),
                     ('1', 'N/A'),
                     ('2', 'J + beak2'),
                     ('3', '5'),
@@ -95,7 +96,7 @@ handshapeChoices = (('0', 'No Value Set'),
                     ('81', '1 + m'),
                     ('82', 'S + i'))
 
-locationChoices = (('0', 'No Value Set'),
+location_choices = (('0', 'No Value Set'),
                    ('1', 'N/A'),
                    ('2', 'Neutral space > head'),
                    ('3', 'Neutral space'),
@@ -197,7 +198,7 @@ BSLsecondLocationChoices = (
     ('root', 'Root')
 )
 
-palmOrientationChoices = (
+palm_orientation_choices = (
     ('notset', 'No Value Set'),
     ('prone', 'Prone'),
     ('neutral', 'Neutral'),
@@ -205,7 +206,7 @@ palmOrientationChoices = (
     ('0', 'N/A'),
 )
 
-relOrientationChoices = (
+relative_orientation_choices = (
     ('notset', 'No Value Set'),
     ('palm', 'Palm'),
     ('back', 'Back'),
@@ -328,7 +329,7 @@ relative_orientation_location_choices = (
     ('2', 'Pinkie/thumb'),
 )
 
-handChChoices = (
+handshape_change_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", '+ closing'),
@@ -363,7 +364,7 @@ handChChoices = (
     ("31", 'Extension one by one'),
 )
 
-movShapeChoices = (
+movement_shape_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", 'Circle sagittal > straight'),
@@ -410,7 +411,7 @@ movShapeChoices = (
     ("43", 'Circle parallel small'),
 )
 
-movDirChoices = (
+movement_direction_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", '+ forward'),
@@ -463,7 +464,7 @@ movDirChoices = (
     ("49", 'Variable'),
 )
 
-movManChoices = (
+movement_manner_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", 'Short'),
@@ -477,7 +478,7 @@ movManChoices = (
     ("10", 'Tense'),
 )
 
-contTypeChoices = (
+contact_type_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", 'Brush'),
@@ -492,7 +493,7 @@ contTypeChoices = (
     ("11", 'None + final'),
 )
 
-namedEntChoices = (
+named_entity_choices = (
     ("0", 'No Value Set'),
     ("1", 'N/A'),
     ("2", 'Person'),

@@ -140,7 +140,7 @@ class GlossSearchForm(forms.ModelForm):
         label=_('Search for gloss with this as morpheme'), widget=forms.TextInput(attrs=ATTRS_FOR_FORMS))
 
     # Translators: GlossSearchForm label
-    phonOth = forms.CharField(
+    phonology_other = forms.CharField(
         label=_('Phonology other'), widget=forms.TextInput())
 
     # Translators: GlossSearchForm label
@@ -155,11 +155,11 @@ class GlossSearchForm(forms.ModelForm):
 
     # ,widget=forms.Select(attrs=ATTRS_FOR_FORMS));
     # Translators: GlossSearchForm label
-    repeat = forms.ChoiceField(
+    repeated_movement = forms.ChoiceField(
         label=_('Repeating Movement'), choices=NULLBOOLEANCHOICES)
     # ,widget=forms.Select(attrs=ATTRS_FOR_FORMS));
     # Translators: GlossSearchForm label
-    altern = forms.ChoiceField(
+    alternating_movement = forms.ChoiceField(
         label=_('Alternating Movement'), choices=NULLBOOLEANCHOICES)
 
     # Translators: GlossSearchForm label
@@ -185,10 +185,11 @@ class GlossSearchForm(forms.ModelForm):
                   'in_web_dictionary', 'is_proposed_new_sign',
                   'strong_handshape', 'weak_handshape', 'location',
 
-                  'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
-                  'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan',
-                  'contType', 'mouthG',
-                  'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences')
+                  'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm',
+                  'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',
+                  'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
+                  'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'mouth_gesture',
+                  'mouthing', 'phonetic_variation', 'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences')
 
 
 class DefinitionForm(forms.ModelForm):

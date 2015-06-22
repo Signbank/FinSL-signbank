@@ -87,10 +87,11 @@ class GlossAdmin(VersionAdmin):
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)}, ),
                  ('Phonology', {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
-                                           'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location', 'oriCh',
-                                           'handCh', 'repeat', 'altern', 'movSh', 'movDir', 'movMan', 'contType',
-                                           'phonOth', 'mouthG', 'mouthing', 'phonetVar'), 'classes': ('collapse',)}, ),
-                 ('Semantics', {'fields': ('iconImg', 'namEnt', 'semField'), 'classes': ('collapse',)}),
+                                           'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
+                                           'relative_orientation_movement', 'relative_orientation_location', 'orientation_change',
+                                           'handshape_change', 'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
+                                           'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'), 'classes': ('collapse',)}, ),
+                 ('Semantics', {'fields': ('iconic_image', 'named_entity', 'semantic_field'), 'classes': ('collapse',)}),
                  ('Frequency', {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True

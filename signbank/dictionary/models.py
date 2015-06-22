@@ -17,7 +17,7 @@ import os
 import json
 from collections import OrderedDict
 from django.utils.translation import ugettext_lazy as _
-from signbank.dictionary import choicelists
+from signbank.dictionary.choicelists import *
 
 # from signbank.video.models import GlossVideo
 
@@ -374,18 +374,18 @@ minor or insignificant ways that can be ignored."""))
 
     # ### Phonology fields
     # Translators: Gloss models field: handedness, verbose name
-    handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("Handedness"),
+    handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("handedness"),
                                   max_length=5)  # handednessChoices <- use this if you want static
     # Translators: Gloss models field: strong_handshape, verbose name
-    strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("Handshape"),
+    strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("handshape"),
                                         max_length=5)
     # Translators: Gloss models field: weak_handshape, verbose name
-    weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("Handshape"), blank=True,
+    weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("handshape"), blank=True,
                                       max_length=5)
 
     # Translators: Gloss models field: location, verbose name
     location = models.CharField(
-        _("Location"), choices=locationChoices, null=True, blank=True,
+        _("Location"), choices=build_choice_list("location"), null=True, blank=True,
         max_length=20)  # TODO: build_choice_list("Location")
 
     # Translators: Gloss models field: relation_between_articulators, verbose name
@@ -407,51 +407,51 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: relative_orientation_location, verbose name
     relative_orientation_location = models.CharField(_("Relative Orientation: Location"), choices=build_choice_list("relative_orientation_location"), null=True,
                                  blank=True, max_length=5)
-    # Translators: Gloss models field: oriCh, verbose name
-    oriCh = models.CharField(_("Orientation Change"), choices=build_choice_list("OriChange"), null=True, blank=True,
+    # Translators: Gloss models field: orientation_change, verbose name
+    orientation_change = models.CharField(_("Orientation Change"), choices=build_choice_list("orientation_change"), null=True, blank=True,
                              max_length=5)
 
-    # Translators: Gloss models field: handCh, verbose name
-    handCh = models.CharField(_("Handshape Change"), choices=build_choice_list("HandshapeChange"), null=True,
+    # Translators: Gloss models field: handshape_change, verbose name
+    handshape_change = models.CharField(_("Handshape Change"), choices=build_choice_list("handshape_change"), null=True,
                               blank=True,
                               max_length=5)
 
-    # Translators: Gloss models field: repeat, verbose name
-    repeat = models.NullBooleanField(_("Repeated Movement"), null=True, default=False)
-    # Translators: Gloss models field: altern, verbose name
-    altern = models.NullBooleanField(_("Alternating Movement"), null=True, default=False)
+    # Translators: Gloss models field: repeated_movement, verbose name
+    repeated_movement = models.NullBooleanField(_("Repeated Movement"), null=True, default=False)
+    # Translators: Gloss models field: alternating_movement, verbose name
+    alternating_movement = models.NullBooleanField(_("Alternating Movement"), null=True, default=False)
 
-    # Translators: Gloss models field: movSh, verbose name
-    movSh = models.CharField(_("Movement Shape"), choices=build_choice_list("MovementShape"), null=True, blank=True,
+    # Translators: Gloss models field: movement_shape, verbose name
+    movement_shape = models.CharField(_("Movement Shape"), choices=build_choice_list("movement_shape"), null=True, blank=True,
                              max_length=5)
-    # Translators: Gloss models field: movDir, verbose name
-    movDir = models.CharField(_("Movement Direction"), choices=build_choice_list("MovementDir"), null=True, blank=True,
+    # Translators: Gloss models field: movement_direction, verbose name
+    movement_direction = models.CharField(_("Movement Direction"), choices=build_choice_list("movement_direction"), null=True, blank=True,
                               max_length=5)
-    # Translators: Gloss models field: movMan, verbose name
-    movMan = models.CharField(_("Movement Manner"), choices=build_choice_list("MovementMan"), null=True, blank=True,
+    # Translators: Gloss models field: movement_manner, verbose name
+    movement_manner = models.CharField(_("Movement Manner"), choices=build_choice_list("movement_manner"), null=True, blank=True,
                               max_length=5)
-    # Translators: Gloss models field: contType, verbose name
-    contType = models.CharField(_("Contact Type"), choices=build_choice_list("ContactType"), null=True, blank=True,
+    # Translators: Gloss models field: contact_type, verbose name
+    contact_type = models.CharField(_("Contact Type"), choices=build_choice_list("contact_type"), null=True, blank=True,
                                 max_length=5)
 
-    # Translators: Gloss models field: phonOth verbose name
-    phonOth = models.TextField(_("Phonology Other"), null=True, blank=True)
+    # Translators: Gloss models field: phonology_other verbose name
+    phonology_other = models.TextField(_("Phonology Other"), null=True, blank=True)
 
-    # Translators: Gloss models field: mouthG, verbose name
-    mouthG = models.CharField(_("Mouth Gesture"), max_length=50, blank=True)
+    # Translators: Gloss models field: mouth_gesture, verbose name
+    mouth_gesture = models.CharField(_("Mouth Gesture"), max_length=50, blank=True)
     # Translators: Gloss models field: mouthing, verbose name
     mouthing = models.CharField(_("Mouthing"), max_length=50, blank=True)
-    # Translators: Gloss models field: phonetVar, verbose name
-    phonetVar = models.CharField(_("Phonetic Variation"), max_length=50, blank=True, )
+    # Translators: Gloss models field: phonetic_variation, verbose name
+    phonetic_variation = models.CharField(_("Phonetic Variation"), max_length=50, blank=True, )
 
     # ### Semantic fields
-    # Translators: Gloss models field: iconImg, verbose name
-    iconImg = models.CharField(_("Iconic Image"), max_length=50, blank=True)
-    # Translators: Gloss models field: namEnt, verbose name
-    namEnt = models.CharField(_("Named Entity"), choices=build_choice_list("NamedEntity"), null=True, blank=True,
+    # Translators: Gloss models field: iconic_image, verbose name
+    iconic_image = models.CharField(_("Iconic Image"), max_length=50, blank=True)
+    # Translators: Gloss models field: named_entity, verbose name
+    named_entity = models.CharField(_("Named Entity"), choices=build_choice_list("named_entity"), null=True, blank=True,
                               max_length=5)
-    # Translators: Gloss models field: semField, verbose name
-    semField = models.CharField(_("Semantic Field"), choices=build_choice_list("SemField"), null=True, blank=True,
+    # Translators: Gloss models field: semantic_field, verbose name
+    semantic_field = models.CharField(_("Semantic Field"), choices=build_choice_list("semantic_field"), null=True, blank=True,
                                 max_length=5)
 
     # ### Frequency fields
@@ -629,22 +629,22 @@ minor or insignificant ways that can be ignored."""))
     def handshape_choices_json(self):
         """Return JSON for the handshape choice list"""
 
-        return self.options_to_json(handshapeChoices)
+        return self.options_to_json(handshape_choices)
 
     def location_choices_json(self):
         """Return JSON for the location choice list"""
 
-        return self.options_to_json(locationChoices)
+        return self.options_to_json(location_choices)
 
     def palm_orientation_choices_json(self):
         """Return JSON for the palm orientation choice list"""
 
-        return self.options_to_json(palmOrientationChoices)
+        return self.options_to_json(palm_orientation_choices)
 
     def relative_orientation_choices_json(self):
         """Return JSON for the relative orientation choice list"""
 
-        return self.options_to_json(relOrientationChoices)
+        return self.options_to_json(relative_orientation_choices)
 
     def secondary_location_choices_json(self):  # TODO: see if these can be removed
         """Return JSON for the secondary location (BSL) choice list"""
@@ -687,8 +687,8 @@ minor or insignificant ways that can be ignored."""))
         # Start with your own choice lists
         for fieldname in ['handedness', 'location', 'strong_handshape', 'weak_handshape',
                           'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
-                          'relative_orientation_location', 'handCh', 'repeat', 'altern', 'movSh',
-                          'movDir', 'movMan', 'contType', 'namEnt', 'oriCh', 'semField']:
+                          'relative_orientation_location', 'handshape_change', 'repeated_movement', 'alternating_movement', 'movement_shape',
+                          'movement_direction', 'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']:
             # Get the list of choices for this field
             li = self._meta.get_field(fieldname).choices
 

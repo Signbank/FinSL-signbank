@@ -59,9 +59,14 @@ class GlossListView(ListView):
 #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'handCh', 'relation_between_articulators', 'location', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'contType',
-                      'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+                      'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness', 'strong_handshape',
+                      'weak_handshape', 'handshape_change', 'relation_between_articulators', 'location',
+                      'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
+                      'relative_orientation_location', 'orientation_change', 'contact_type',
+                      'movement_shape', 'movement_direction', 'movement_manner', 'repeated_movement',
+                      'alternating_movement', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
+                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
                       'in_web_dictionary', 'is_proposed_new_sign']
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
@@ -182,9 +187,14 @@ class GlossListView(ListView):
 
             qs = qs.filter(definition__published=val)
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'handCh', 'repeat', 'altern',
-                      'movSh', 'movDir', 'movMan', 'contType', 'phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg', 'namEnt', 'semField', 'number_of_occurences', 'in_web_dictionary', 'is_proposed_new_sign']
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+                      'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
+                      'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
+                      'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
+                      'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
+                      'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'phonology_other',
+                      'mouth_gesture', 'mouthing', 'phonetic_variation',
+                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'in_web_dictionary', 'is_proposed_new_sign']
 
         # Language and basic property filters
         vals = get.getlist('dialect', [])
@@ -382,11 +392,14 @@ class GlossDetailView(DetailView):
 
         fields = {}
 
-        fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handCh', 'relation_between_articulators', 'location', 'absolute_orientation_palm', 'absolute_orientation_fingers',
-                               'relative_orientation_movement', 'relative_orientation_location', 'oriCh', 'contType', 'movSh', 'movDir', 'movMan', 'repeat', 'altern', 'phonOth', 'mouthG',
-                               'mouthing', 'phonetVar', ]
+        fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handshape_change',
+                               'relation_between_articulators', 'location', 'absolute_orientation_palm',
+                               'absolute_orientation_fingers', 'relative_orientation_movement',
+                               'relative_orientation_location', 'orientation_change', 'contact_type', 'movement_shape',
+                               'movement_direction', 'movement_manner', 'repeated_movement', 'alternating_movement',
+                               'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', ]
 
-        fields['semantics'] = ['iconImg', 'namEnt', 'semField']
+        fields['semantics'] = ['iconic_image', 'named_entity', 'semantic_field']
 
         fields['frequency'] = ['number_of_occurences']
 
@@ -400,9 +413,9 @@ class GlossDetailView(DetailView):
                 except AttributeError:
                     value = getattr(gl, field)
 
-                if field in ['phonOth', 'mouthG', 'mouthing', 'phonetVar', 'iconImg']:
+                if field in ['phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'iconic_image']:
                     kind = 'text'
-                elif field in ['repeat', 'altern']:
+                elif field in ['repeated_movement', 'alternating_movement']:
                     kind = 'check'
                 else:
                     kind = 'list'
