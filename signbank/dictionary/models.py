@@ -386,7 +386,7 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: location, verbose name
     location = models.CharField(
         _("Location"), choices=build_choice_list("location"), null=True, blank=True,
-        max_length=20)  # TODO: build_choice_list("Location")
+        max_length=20)
 
     # Translators: Gloss models field: relation_between_articulators, verbose name
     relation_between_articulators = models.CharField(_("Relation between Articulators"), choices=build_choice_list("relation_between_articulators"),
