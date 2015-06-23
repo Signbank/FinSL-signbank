@@ -82,7 +82,7 @@ def update_gloss(request, glossid):
         # validate
         # field is a valid field
         # value is a valid value for field
-
+        # TODO: Inspect these startswith parts, it can break the code if you edit some field names.
         if field == 'deletegloss':
             if value == 'confirmed':
                 # delete the gloss and redirect back to gloss list
@@ -101,7 +101,8 @@ def update_gloss(request, glossid):
 
             return update_relationtoforeignsign(gloss, field, value)
 
-        elif field.startswith('relation'):
+        # Had to add field != 'relation_between_articulators' because I changed its field name, and it conflicted here.
+        elif field.startswith('relation') and field != 'relation_between_articulators':
 
             return update_relation(gloss, field, value)
 
