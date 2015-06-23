@@ -326,27 +326,44 @@ def gloss_from_identifier(value):
     """Given an id of the form idgloss (pk) return the
     relevant gloss or None if none is found"""
 
-    # match = re.match('(.*) \((\d+)\)', value)
-    # Did not understand the previous regex, this should work since the pk/id should be integer
-    match = re.match('(\d+)', value)
-
-    if match:
-        print "MATCH: ", match
-        # Had to remove idgloss from here, what was it doing since value had only 1 value, not 2, can't compare
-        # idgloss = match.group(1)
-        # pk = match.group(2)
-        pk = match.group(1)
-        # print "INFO: ", idgloss, pk
-        print "INFO: ", pk
-        # Try if target Gloss exists, if not, assign None to target, then it returns None and will continue with httpError
+    # See if 'value' is an int, should match if the user uses only an 'id' as a search string
+    try:
+        int(value)
+        is_int = True
+    except:
+        is_int = False
+    # If value is already int, try to match the int as IDGloss id.
+    if is_int:
         try:
-            target = Gloss.objects.get(pk=int(pk))
+            target = Gloss.objects.get(pk=int(value))
         except ObjectDoesNotExist:
-            target = None
-        print "TARGET: ", target
+            # If the int doesn't match anything, return
+            return HttpResponseBadRequest(_("Target gloss not found."), {'content-type': 'text/plain'})
+
         return target
+    # If 'value' is not int, then try to catch a string like "CAMEL (10)"
     else:
-        return None
+
+        # This regex looks from the Beginning of a string for IDGLOSS and then the id
+        # For example: "CAMEL (10)", idgloss="CAMEL" and pk=10
+        match = re.match('(.*) \((\d+)\)', value)
+
+
+        if match:
+            print "MATCH: ", match
+            idgloss = match.group(1)
+            pk = match.group(2)
+            print "INFO: ", idgloss, pk
+            # Try if target Gloss exists, if not, assign None to target, then it returns None and will continue with httpError
+            try:
+                target = Gloss.objects.get(pk=int(pk))
+            except ObjectDoesNotExist:
+                target = None
+            print "TARGET: ", target
+            return target
+        # If regex doesn't match, return None
+        else:
+            return None
 
 
 def update_definition(request, gloss, field, value):
@@ -414,6 +431,7 @@ def add_relation(request):
                 return HttpResponseBadRequest(_("Source gloss not found."), {'content-type': 'text/plain'})
 
             target = gloss_from_identifier(targetid)
+
             if target:
                 rel = Relation(source=source, target=target, role=role)
                 rel.save()
