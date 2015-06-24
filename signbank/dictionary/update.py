@@ -32,21 +32,28 @@ def add_gloss(request):
             # Translators: Warning message in Add Gloss
             return render_to_response('dictionary/warning.html', {'warning': _('Gloss field is empty')},
                                       context_instance=RequestContext(request))
-                # Check that the idgloss is unique
+        # Check that the idgloss is unique
         if len(Gloss.objects.filter(idgloss=request.POST['idgloss'])) != 0:
             # Translators: warning message in Add Gloss
             return render_to_response('dictionary/warning.html', {'warning': _('Gloss not unique')},
                                       context_instance=RequestContext(request))
 
-        # Check that the JKL annotation gloss is unique
-        if len(Gloss.objects.filter(annotation_idgloss_jkl=request.POST['annotation_idgloss_jkl'])) != 0:
-            # Translators: warning message in Add Gloss
-            return render_to_response('dictionary/warning.html', {'warning': _('Gloss JKL not unique')},
-                                      context_instance=RequestContext(request))
-        # Check that the HKI annotation gloss is unique
-        if len(Gloss.objects.filter(annotation_idgloss_hki=request.POST['annotation_idgloss_hki'])) != 0:
-            # Translators: warning message in Add Gloss
-            return render_to_response('dictionary/warning.html', {'warning': _('Gloss HKI not unique')},
+        # Check that one of JKL Gloss or HKI Gloss has a value
+        # Only after that check if JKL or HKI gloss is unique
+        if request.POST['annotation_idgloss_jkl'] or request.POST['annotation_idgloss_hki']:
+            # Check that the JKL annotation gloss is unique
+            if len(Gloss.objects.filter(annotation_idgloss_jkl=request.POST['annotation_idgloss_jkl'])) != 0:
+                # Translators: warning message in Add Gloss
+                return render_to_response('dictionary/warning.html', {'warning': _('Gloss JKL not unique')},
+                                          context_instance=RequestContext(request))
+            # Check that the HKI annotation gloss is unique
+            if len(Gloss.objects.filter(annotation_idgloss_hki=request.POST['annotation_idgloss_hki'])) != 0:
+                # Translators: warning message in Add Gloss
+                return render_to_response('dictionary/warning.html', {'warning': _('Gloss HKI not unique')},
+                                          context_instance=RequestContext(request))
+        else:
+            # Translators: Warning message in Add Gloss
+            return render_to_response('dictionary/warning.html', {'warning': _('Missing JKL or HKI Gloss')},
                                       context_instance=RequestContext(request))
 
         if form.is_valid():
