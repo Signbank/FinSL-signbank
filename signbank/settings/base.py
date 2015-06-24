@@ -38,6 +38,10 @@ LOCALE_PATHS = (
     '/home/heilniem/signbank-fi/locale',
 )
 
+LANGUAGES = (
+    ('fi', 'Finnish'),
+    ('en', 'English'),
+)
 
 MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
 MEDIA_URL = '/media/'

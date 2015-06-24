@@ -26,6 +26,9 @@ urlpatterns = patterns('',
                        url(r'^$', 'signbank.pages.views.page',
                            name='root_page'),
 
+                       # This allows to change the translations site language
+                       url(r'^i18n/', include('django.conf.urls.i18n')),
+
                        url(r'^dictionary/',
                            include('signbank.dictionary.urls', namespace='dictionary')),
                        url(r'^feedback/', include('signbank.feedback.urls')),
@@ -72,7 +75,6 @@ urlpatterns = patterns('',
 
                        # special admin sub site
                        url(r'^publisher/', include(publisher_admin.urls)),
-
 
                        url(r'^summernote/', include('django_summernote.urls')),
 

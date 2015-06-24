@@ -39,7 +39,6 @@ def add_gloss(request):
                                       context_instance=RequestContext(request))
 
         # Check that one of JKL Gloss or HKI Gloss has a value
-        # Only after that check if JKL or HKI gloss is unique
         if not (request.POST['annotation_idgloss_jkl'] or request.POST['annotation_idgloss_hki']):
             # Translators: Warning message in Add Gloss
             return render_to_response('dictionary/warning.html', {'warning': _('Missing JKL or HKI Gloss')},
