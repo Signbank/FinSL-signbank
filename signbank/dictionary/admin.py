@@ -23,7 +23,9 @@ class RelationToOtherSignInline(admin.TabularInline):
 class RelationToForeignSignInline(admin.TabularInline):
     model = RelationToForeignSign
     extra = 1
-#    raw_id_fields = ['other_lang_gloss']
+
+
+# raw_id_fields = ['other_lang_gloss']
 
 
 class DefinitionInline(admin.TabularInline):
@@ -82,16 +84,22 @@ class SenseNumberListFilter(SimpleListFilter):
 
 
 class GlossAdmin(VersionAdmin):
-    fieldsets = ((None, {'fields': ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki', 'annotation_idgloss_hki_en', 'annotation_comments', 'sense',
-                                    'sn', 'language', 'dialect')}, ),
+    fieldsets = ((None, {'fields': (
+        'idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+        'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'sn', 'language', 'dialect')},),
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
-                                         'classes': ('collapse',)}, ),
+                                         'classes': ('collapse',)},),
                  ('Phonology', {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
-                                           'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
-                                           'relative_orientation_movement', 'relative_orientation_location', 'orientation_change',
-                                           'handshape_change', 'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
-                                           'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'), 'classes': ('collapse',)}, ),
-                 ('Semantics', {'fields': ('iconic_image', 'named_entity', 'semantic_field'), 'classes': ('collapse',)}),
+                                           'relation_between_articulators', 'absolute_orientation_palm',
+                                           'absolute_orientation_fingers',
+                                           'relative_orientation_movement', 'relative_orientation_location',
+                                           'orientation_change',
+                                           'handshape_change', 'repeated_movement', 'alternating_movement',
+                                           'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
+                                           'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
+                                'classes': ('collapse',)},),
+                 (
+                 'Semantics', {'fields': ('iconic_image', 'named_entity', 'semantic_field'), 'classes': ('collapse',)}),
                  ('Frequency', {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True
@@ -105,12 +113,11 @@ class GlossAdmin(VersionAdmin):
 
 
 class RegistrationProfileAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'activation_key_expired', )
-    search_fields = ('user__username', 'user__first_name', )
+    list_display = ('__unicode__', 'activation_key_expired',)
+    search_fields = ('user__username', 'user__first_name',)
 
 
 class DialectInline(admin.TabularInline):
-
     model = Dialect
 
 
@@ -121,6 +128,7 @@ class DialectAdmin(VersionAdmin):
 class LanguageAdmin(VersionAdmin):
     model = Language
     inlines = [DialectInline]
+
 
 admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)

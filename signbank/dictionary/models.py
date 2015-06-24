@@ -703,7 +703,7 @@ minor or insignificant ways that can be ignored."""))
         # Choice lists for other models
         choice_lists['morphology_role'] = [human_value for machine_value, human_value in
                                            build_choice_list('MorphologyType')]
-
+        # morphology_role
         return json.dumps(choice_lists)
 
 # Register Gloss for tags
@@ -751,12 +751,7 @@ class MorphologyDefinition(models.Model):
     """Tells something about morphology of a gloss"""
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
-    # ('MorphologyType'))
-    role = models.CharField(max_length=5, choices=(
-        # Translators: Role choice for MorphologyDefinition
-        ('0', _('-')),
-        # Translators: Role choice for MorphologyDefinition
-        ('1', _('N/A'))))
+    role = models.CharField(max_length=5, choices=(build_choice_list('MorphologyType')))
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):

@@ -180,11 +180,8 @@ class GlossSearchForm(forms.ModelForm):
 
         model = Gloss
         fields = ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                  'annotation_idgloss_hki_en', 'sense',
-                  'sn', 'language', 'dialect',
-                  'in_web_dictionary', 'is_proposed_new_sign',
-                  'strong_handshape', 'weak_handshape', 'location',
-
+                  'annotation_idgloss_hki_en', 'sense', 'sn', 'language', 'dialect', 'in_web_dictionary',
+                  'is_proposed_new_sign', 'strong_handshape', 'weak_handshape', 'location',
                   'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm',
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',
                   'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
