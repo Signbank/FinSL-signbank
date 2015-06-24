@@ -326,6 +326,13 @@ def gloss_from_identifier(value):
     """Given an id of the form idgloss (pk) return the
     relevant gloss or None if none is found"""
 
+    # We need another way to add a Relation to a Gloss. One textfield can't serve all the possible ways of adding.
+    # One possible solution is to add two fields, one that serves adding by ID and other with Gloss name or name+id.
+    # However, no one is going to memorize or check for the id numbers and they will probably add with Gloss name only.
+    # Therefore the only useful implementation is to do it with the Gloss name only or with Glossname + id.
+    # TODO: Decide what to do here
+
+    """
     # See if 'value' is an int, should match if the user uses only an 'id' as a search string
     try:
         int(value)
@@ -342,28 +349,28 @@ def gloss_from_identifier(value):
 
         return target
     # If 'value' is not int, then try to catch a string like "CAMEL (10)"
+    else:"""
+
+    # This regex looks from the Beginning of a string for IDGLOSS and then the id
+    # For example: "CAMEL (10)", idgloss="CAMEL" and pk=10
+    match = re.match('(.*) \((\d+)\)', value)
+
+
+    if match:
+        print "MATCH: ", match
+        idgloss = match.group(1)
+        pk = match.group(2)
+        print "INFO: ", idgloss, pk
+        # Try if target Gloss exists, if not, assign None to target, then it returns None
+        try:
+            target = Gloss.objects.get(pk=int(pk))
+        except ObjectDoesNotExist:
+            target = None
+        print "TARGET: ", target
+        return target
+    # If regex doesn't match, return None
     else:
-
-        # This regex looks from the Beginning of a string for IDGLOSS and then the id
-        # For example: "CAMEL (10)", idgloss="CAMEL" and pk=10
-        match = re.match('(.*) \((\d+)\)', value)
-
-
-        if match:
-            print "MATCH: ", match
-            idgloss = match.group(1)
-            pk = match.group(2)
-            print "INFO: ", idgloss, pk
-            # Try if target Gloss exists, if not, assign None to target, then it returns None and will continue with httpError
-            try:
-                target = Gloss.objects.get(pk=int(pk))
-            except ObjectDoesNotExist:
-                target = None
-            print "TARGET: ", target
-            return target
-        # If regex doesn't match, return None
-        else:
-            return None
+        return None
 
 
 def update_definition(request, gloss, field, value):
