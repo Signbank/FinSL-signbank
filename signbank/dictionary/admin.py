@@ -104,7 +104,8 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'annotation_idgloss_jkl', 'sense', 'sn']
+    list_display = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+                    'annotation_idgloss_hki_en']
     search_fields = ['^idgloss', '=sn', '^annotation_idgloss_jkl']
     list_filter = [
         'language', 'dialect', SenseNumberListFilter, 'in_web_dictionary', 'strong_handshape']
