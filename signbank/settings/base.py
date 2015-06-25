@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.staticfiles',

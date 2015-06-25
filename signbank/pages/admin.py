@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_summernote.admin import SummernoteModelAdmin
 
+from modeltranslation.admin import TranslationAdmin
+
 
 from signbank.log import debug
 
@@ -54,8 +56,8 @@ class PageVideoInline(admin.TabularInline):
     model = PageVideo
     extra = 1
 
-
-class PageAdmin(SummernoteModelAdmin):
+# Adds SummernoteModelAdmin and TranslationAdmin (Modeltranslation), the settings are for Summernote
+class PageAdmin(SummernoteModelAdmin, TranslationAdmin):
     form = PageForm
     fieldsets = (
         (None, {
@@ -67,5 +69,6 @@ class PageAdmin(SummernoteModelAdmin):
     list_filter = ('publish', 'group_required')
     search_fields = ('url', 'title')
     inlines = [PageVideoInline]
+
 
 admin.site.register(Page, PageAdmin)
