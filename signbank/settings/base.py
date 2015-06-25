@@ -171,7 +171,7 @@ LOGGING = {
 
 # TODO: Test the logging and improve it
 # turn on lots of logging or not
-DO_LOGGING = True
+DO_LOGGING = False
 LOG_FILENAME = "debug.log"
 
 # Application settings for signbank

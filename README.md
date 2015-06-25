@@ -64,6 +64,17 @@ This creates django.po file for the local you want. Write translations inside ms
 >
 > For example: msgstr "My translation of the text"
 
+This is what the whole thing for one string/text looks like:
+
+> \#. Translators: Button
+
+> \#: signbank/dictionary/templates/dictionary/gloss_detail.html:78
+
+> msgid "Delete Sign"
+
+> msgstr ""
+
+
 After you have written your translations, do:
 
 > python bin/develop.py compilemessages yourlocale
