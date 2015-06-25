@@ -5,17 +5,16 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * **Quick summary**
-    * This repository is for Finnish Signbank - a sign language Gloss database.
+    * This repository is for Finnish Signbank, a sign language Gloss database.
     * Finnish Signbank is a fork of Dutch Signbank (https://github.com/Woseseltops/signbank).
-    * Finnish version of Signbank is intended for research use at first, and perhaps later it will be opened to public use.
-    * The source code is free to use and you can build your own version of Signbank on top of it.
-    * This version of Signbank is the first one to offer Django's translation engine feature, so it should be fairly easy to translate to different languages.
-    * Signbank is built on django-framework and it uses python 2.7.
+      * Dutch Signbank is a fork of Australian Signbank (https://bitbucket.org/stevecassidy/signbank).
+    * Signbank-fi uses Django's translation engine, so it should be fairly easy to translate to different languages.
+    * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
 
 * **Version**
 
-Signbank-fi is not yet released and it is still under development.
-Once the first working version of Signbank-fi is working, the repository will be made public.
+Signbank-fi has not been released yet.
+When the first working version of Signbank-fi is working, the repository will be made public.
 
 ### How do I get set up? ###
 
@@ -43,15 +42,19 @@ Before you can get Signbank-fi working, you must change some paths in:
 Django should make all the needed database configurations apart from setting up a database.
 > bin/develop.py migrate
 
+You can use sqlite3 for development
+
 * **How to run tests**
 
-Sadly tests are not yet available.
+Tests are not yet available.
 
 * **Deployment instructions**
 
 ### Contribution guidelines ###
 
-Right now this repository is not up for contribution, because this might not be actively maintained. You can fork this and make your own version.
+Right now this repository is not up for contribution, because this might not be actively maintained.
+
+However, you can fork this and make your own version.
 
 * Writing tests
 * Code review
@@ -66,3 +69,5 @@ Henri Nieminen, owner of this repository
 * **Other community or team contact**
 
 University of Jyväskylä, Sign language center (http://viittomakielenkeskus.jyu.fi/inenglish.html)
+
+Finnish Association of the Deaf (http://www.kuurojenliitto.fi/en)
