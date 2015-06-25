@@ -50,6 +50,26 @@ Tests are not yet available.
 
 * **Deployment instructions**
 
+### Translations ###
+
+Signbank-fi uses djangos translation features and fetches strings to translate into django.po.
+
+You can create new locales by:
+
+> python bin/develop.py makemessages yourlocale
+
+This creates django.po file for the local you want. Write translations inside msgstr:
+
+> msgstr ""
+>
+> For example: msgstr "My translation of the text"
+
+After you have written your translations, do:
+
+> python bin/develop.py compilemessages yourlocale
+
+This will compile the translations you wrote into django.po to django.mo
+
 ### Contribution guidelines ###
 
 This repository might not be actively maintained and that makes contribution a little harder.

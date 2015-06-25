@@ -5,3 +5,4 @@ django-reversion
 django-bootstrap3
 django-summernote
 unicodecsv
+django-modeltranslation
