@@ -1,3 +1,4 @@
+from signbank.settings.settings_secret import *
 # Django settings for signbank project.
 
 import os
@@ -5,24 +6,12 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_DIR = os.path.dirname(BASE_DIR)
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 EMAIL_HOST = ""
 
-ADMINS = (
-    ('Henri Nieminen', 'henri.nieminen@gmail.com'),
-)
-
 MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/heilniem/signbank-fi/signbank.db',
-    }
-}
 
 TIME_ZONE = 'Europe/Helsinki'
 
@@ -47,10 +36,8 @@ MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
 MEDIA_URL = '/media/'
 MEDIA_MOBILE_URL = MEDIA_URL
 
-
 # Ditto for static files from the Auslan site (css, etc) with trailing slash
 AUSLAN_STATIC_PREFIX = "/static/"
-
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -76,8 +63,6 @@ STATICFILES_FINDERS = (
     #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '%dd0=4%@nrpp9x9%fav*ss*%&opf-amp!ytgd?lek0_^$opds%feer413kl'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -183,14 +168,12 @@ LOGGING = {
     }
 }
 
-
+# TODO: Test the logging and improve it
 # turn on lots of logging or not
-DO_LOGGING = False
+DO_LOGGING = True
 LOG_FILENAME = "debug.log"
 
-
 # Application settings for signbank
-
 
 # Settings controlling page contents
 
@@ -206,11 +189,12 @@ ANON_SAFE_SEARCH = False
 # do we show the tag based search for anonymous users?
 ANON_TAG_SEARCH = False
 
-
+# TODO: I think this can be removed. This would allow the removal of gloss.sn too
 # do we display the previous/next links to signs, requires gloss.sn to be
 # used consistently
 SIGN_NAVIGATION = False
 
+# TODO: Do something with these, remove or see if they need correction?
 # which definition fields do we show and in what order?
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
@@ -245,36 +229,33 @@ QUICK_UPDATE_GLOSS_FIELDS = ['language', 'dialect']
 # should we always require a login for viewing dictionary content
 ALWAYS_REQUIRE_LOGIN = True
 
+# TODO: Remove this
 # name of the primary css file, relative to the media directory
 PRIMARY_CSS = "bootstrap_css/test-server.css"
-
 
 # do we allow people to register for the site
 ALLOW_REGISTRATION = True
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-
 # show the number signs page or an under construction page?
+# TODO: remove this
 SHOW_NUMBERSIGNS = True
 
 LOGIN_REDIRECT_URL = '/signs/search'
-
 
 # location of ffmpeg, used to convert uploaded videos
 FFMPEG_PROGRAM = "/home/heilniem/ffmpeg-2.6.3-64bit-static/ffmpeg"
 FFMPEG_TIMEOUT = 60
 FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
-
 # defines the aspect ratio for videos
 VIDEO_ASPECT_RATIO = 3.0 / 4.0
 
-
 # settings for django-tagging
-
 FORCE_LOWERCASE_TAGS = True
 
+# TODO: Redo
 # a list of tags we're allowed to use
 ALLOWED_TAGS = ['',
                 'workflow:needs video',

@@ -13,6 +13,7 @@ admin.autodiscover()
 
 from adminsite import publisher_admin
 
+# TODO: Remove this
 if settings.SHOW_NUMBERSIGNS:
     numbersigns_view = TemplateView.as_view(
         template_name='numbersigns/numbersigns.html')
@@ -32,6 +33,8 @@ urlpatterns = patterns('',
                        url(r'^dictionary/',
                            include('signbank.dictionary.urls', namespace='dictionary')),
                        url(r'^feedback/', include('signbank.feedback.urls')),
+
+                       # TODO: Is this really useful? It uploads files to the site.
                        url(r'^attachments/',
                            include('signbank.attachments.urls')),
                        url(r'^video/', include('signbank.video.urls')),
@@ -40,13 +43,15 @@ urlpatterns = patterns('',
                        url(r'^logout.html', 'django.contrib.auth.views.logout',
                            {'next_page': "/"}, "logout"),
 
-                       url(r'^spell/twohanded.html$',
-                           TemplateView.as_view(template_name='fingerspell/fingerspellingtwohanded.html')),
-                       url(r'^spell/practice.html$',
-                           TemplateView.as_view(template_name='fingerspell/fingerspellingpractice.html')),
-                       url(r'^spell/onehanded.html$',
-                           TemplateView.as_view(template_name='fingerspell/fingerspellingonehanded.html')),
-                       url(r'^numbersigns.html$', numbersigns_view),
+                       # TODO: Remove these lines completely
+                       # Removed these for now, since they are not useful for Finnish Signbank
+                       # url(r'^spell/twohanded.html$',
+                       #    TemplateView.as_view(template_name='fingerspell/fingerspellingtwohanded.html')),
+                       # url(r'^spell/practice.html$',
+                       #    TemplateView.as_view(template_name='fingerspell/fingerspellingpractice.html')),
+                       # url(r'^spell/onehanded.html$',
+                       #    TemplateView.as_view(template_name='fingerspell/fingerspellingonehanded.html')),
+                       # url(r'^numbersigns.html$', numbersigns_view),
 
                        # Hardcoding a number of special urls:
                        url(r'^signs/dictionary/$',
@@ -78,9 +83,12 @@ urlpatterns = patterns('',
 
                        url(r'^summernote/', include('django_summernote.urls')),
 
-                       url(r'^test/(?P<videofile>.*)$',
-                           TemplateView.as_view(template_name="test.html")),
+                       # TODO: Remove these lines completely
+                       # This might become handy some day, but not right now
+                       # url(r'^test/(?P<videofile>.*)$',
+                       #    TemplateView.as_view(template_name="test.html")),
 
+                       # TODO: To get this working correctly, fix the path/to
                        url(r'reload_signbank/$',
                            'signbank.tools.reload_signbank'),
 
