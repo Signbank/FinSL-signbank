@@ -13,7 +13,6 @@ import hashlib
 from django.conf import settings
 from django.db import models
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.utils import timezone
@@ -197,7 +196,10 @@ class RegistrationProfile(models.Model):
 
     """
     # Translators: RegistrationProfile field: user
-    user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    # Django gave a warning about this: 'Setting unique=True on a ForeignKey has the same effect as using a OneToOneField.'
+    # user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    user = models.OneToOneField(User, verbose_name=_('user'))
+
     # Translators: RegistrationProfile field: activation_key
     activation_key = models.CharField(_('activation key'), max_length=40)
 
@@ -305,8 +307,9 @@ teachercommChoices = (
 class UserProfile(models.Model):
 
     """Extended profile for users of the site"""
-
-    user = models.ForeignKey(authmodels.User, unique=True)
+    # Django gave a warning about this: 'Setting unique=True on a ForeignKey has the same effect as using a OneToOneField.'
+    # user = models.ForeignKey(authmodels.User, unique=True)
+    user = models.OneToOneField(authmodels.User)
     # Translators: UserProfile field: yob
     yob = models.IntegerField(_("When were you born?"))
     # Translators: UserProfile field: australian

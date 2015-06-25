@@ -7,7 +7,7 @@ This README would normally document whatever steps are necessary to get your app
 * **Quick summary**
     * This repository is for Finnish Signbank, a sign language Gloss database.
     * Finnish Signbank is a fork of Dutch Signbank (https://github.com/Woseseltops/signbank).
-      * Dutch Signbank is a fork of Australian Signbank (https://bitbucket.org/stevecassidy/signbank).
+         * Dutch Signbank is a fork of Australian Signbank (https://bitbucket.org/stevecassidy/signbank).
     * Signbank-fi uses Django's translation engine, so it should be fairly easy to translate to different languages.
     * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
 
@@ -52,11 +52,14 @@ Tests are not yet available.
 
 ### Contribution guidelines ###
 
-Right now this repository is not up for contribution, because this might not be actively maintained.
-
-However, you can fork this and make your own version.
+This repository might not be actively maintained and that makes contribution a little harder.
 
 * Writing tests
+
+If you are willing to contribute to this repository, writing tests would be a good way to help.
+
+Before doing anything, contact the admin of this repository for discussion.
+
 * Code review
 * Other guidelines
 
@@ -64,7 +67,7 @@ However, you can fork this and make your own version.
 
 * **Repo owner or admin**
 
-Henri Nieminen, owner of this repository
+Henri Nieminen, admin of this repository
 
 * **Other community or team contact**
 
