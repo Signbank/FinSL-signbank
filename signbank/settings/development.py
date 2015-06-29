@@ -37,9 +37,9 @@ SIGN_NAVIGATION = False
 #ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss']
 
 # Fixes the problem with merge TODO: Is this needed anymore?
-SOUTH_MIGRATION_MODULES = {
-    'tagging': 'tagging.south_migrations',
-}
+# SOUTH_MIGRATION_MODULES = {
+#    'tagging': 'tagging.south_migrations',
+# }
 
 
 GLOSS_VIDEO_DIRECTORY = 'glossvideo'
