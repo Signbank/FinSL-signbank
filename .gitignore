@@ -10,4 +10,4 @@ media/css/.DS_Store
 
 media/css/.DS_Store
 
-signbank/settins/secret_settings.py
+signbank/settings/secret_settings.py
