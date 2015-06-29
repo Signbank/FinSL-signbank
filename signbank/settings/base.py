@@ -179,7 +179,7 @@ LOG_FILENAME = "debug.log"
 # Settings controlling page contents
 
 # what do we call this signbank?
-LANGUAGE_NAME = "FSE"
+LANGUAGE_NAME = "FinSL"
 COUNTRY_NAME = "Finland"
 
 # do we implement safe search for anonymous users?

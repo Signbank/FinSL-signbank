@@ -18,7 +18,7 @@ PRIMARY_CSS = "bootstrap_css/ngt.css"
 
 
 # what do we call this signbank?
-LANGUAGE_NAME = "FIN"
+LANGUAGE_NAME = "FinSL"
 COUNTRY_NAME = "Finland"
 
 # show/don't show sign navigation
