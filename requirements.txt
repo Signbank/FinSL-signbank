@@ -6,3 +6,4 @@ django-bootstrap3
 django-summernote
 unicodecsv
 django-modeltranslation
+django-formtools
