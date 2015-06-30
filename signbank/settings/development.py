@@ -52,7 +52,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/heilniem/log/debug.log',
+            'filename': '/home/heilniem/signbank-fi/debug.log',
         },
     },
     'loggers': {
