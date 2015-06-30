@@ -765,8 +765,8 @@ class Relation(models.Model):
 
     source = models.ForeignKey(Gloss, related_name="relation_sources")
     target = models.ForeignKey(Gloss, related_name="relation_targets")
-    role = models.CharField(max_length=20, choices=build_choice_list('MorphologyType'))
-    #role = models.ForeignKey(max_length=20, to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
+    # role = models.CharField(max_length=20, choices=build_choice_list('MorphologyType'))
+    role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
     # antonym, synonym, cf (what's this? - see also), var[b-f]
     # (what's this - variant (XXXa is the stem, XXXb is a variant)
 
@@ -782,8 +782,8 @@ class MorphologyDefinition(models.Model):
     """Tells something about morphology of a gloss"""
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
-    role = models.CharField(max_length=5, choices=(build_choice_list('MorphologyType')))
-    # role = models.ForeignKey(max_length=20, to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
+    #role = models.CharField(max_length=5, choices=(build_choice_list('MorphologyType')))
+    role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
