@@ -217,15 +217,13 @@ class FieldChoice(models.Model):
 # This method builds a list of choices from the database
 # TODO: Change this implementation to somewhere else
 def build_choice_list(field):
-    # These are not translated with ugettext_lazy due to json serialization problem
     choice_list = [('0', '-'), ('1', 'N/A')]
 
     # Try to look for fields in FieldName and choose choices from there
 
     try:
-        if FieldChoice.objects.filter(field=field).exists():
-            for choice in FieldChoice.objects.filter(field=field):
-                choice_list.append((str(choice.machine_value), choice.english_name))
+        for choice in FieldChoice.objects.filter(field=field):
+            choice_list.append((str(choice.machine_value), choice.english_name))
 
         return choice_list
 
