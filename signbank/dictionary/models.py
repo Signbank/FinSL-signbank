@@ -782,8 +782,8 @@ class MorphologyDefinition(models.Model):
     """Tells something about morphology of a gloss"""
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
-    # role = models.CharField(max_length=5, choices=(build_choice_list('MorphologyType')))
-    role = models.ForeignKey(max_length=20, to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
+    role = models.CharField(max_length=5, choices=(build_choice_list('MorphologyType')))
+    # role = models.ForeignKey(max_length=20, to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
