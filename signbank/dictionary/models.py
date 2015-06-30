@@ -221,15 +221,16 @@ def build_choice_list(field):
     choice_list = [('0', '-'), ('1', 'N/A')]
 
     # Try to look for fields in FieldName and choose choices from there
-    try:
-        for choice in FieldChoice.objects.filter(field=field):
-            choice_list.append((str(choice.machine_value), choice.english_name))
+    if FieldChoice.objects.filter(field=field).exists():
+        try:
+            for choice in FieldChoice.objects.filter(field=field):
+                choice_list.append((str(choice.machine_value), choice.english_name))
 
-        return choice_list
+            return choice_list
 
-    # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
-    except OperationalError:
-        pass
+        # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
+        except OperationalError:
+            pass
 
 
 class Gloss(models.Model):
