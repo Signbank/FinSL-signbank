@@ -205,7 +205,7 @@ class RelationToForeignSign(models.Model):
 class FieldChoice(models.Model):
     field = models.CharField(max_length=50)
     english_name = models.CharField(max_length=50)
-    machine_value = models.IntegerField()
+    machine_value = models.IntegerField(unique=True)
 
     def __unicode__(self):
         return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
@@ -766,7 +766,7 @@ class Relation(models.Model):
     source = models.ForeignKey(Gloss, related_name="relation_sources")
     target = models.ForeignKey(Gloss, related_name="relation_targets")
     # role = models.CharField(max_length=20, choices=build_choice_list('MorphologyType'))
-    role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
+    role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'}, unique=True)
     # antonym, synonym, cf (what's this? - see also), var[b-f]
     # (what's this - variant (XXXa is the stem, XXXb is a variant)
 
@@ -783,7 +783,7 @@ class MorphologyDefinition(models.Model):
 
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses")
     #role = models.CharField(max_length=5, choices=(build_choice_list('MorphologyType')))
-    role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'})
+    role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType', limit_choices_to={'field':'MorphologyType'}, unique=True)
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
