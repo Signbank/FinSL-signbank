@@ -71,7 +71,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
     #     'django.template.loaders.eggs.Loader',
 )
-
+# The order of middleware classes is critical
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -117,6 +117,7 @@ ROOT_URLCONF = 'signbank.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'signbank.wsgi.application'
 
+# The order of apps matters!
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',

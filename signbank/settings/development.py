@@ -17,6 +17,7 @@ PRIMARY_CSS = "bootstrap_css/ngt.css"
 #VIDEO_ASPECT_RATIO = 360.0/640.0
 
 
+# TODO: Remove these lines, they are already in base.py
 # what do we call this signbank?
 LANGUAGE_NAME = "FinSL"
 COUNTRY_NAME = "Finland"

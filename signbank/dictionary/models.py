@@ -230,6 +230,7 @@ def build_choice_list(field):
         # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
     except OperationalError:
         pass
+    return choice_list
 
 
 class Gloss(models.Model):
