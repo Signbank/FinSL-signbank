@@ -378,63 +378,63 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: handedness, verbose name
     # handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("handedness"),
     #                               max_length=5)  # handednessChoices <- use this if you want static
-    handedness = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='handedness', limit_choices_to={'field':'handedness'}, related_name=_("handedness"), blank=True)
+    handedness = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='handedness', limit_choices_to={'field':'handedness'}, related_name=_("handedness"), blank=True, null=True)
     # Translators: Gloss models field: strong_handshape, verbose name
     # strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("handshape"),
     #                                     max_length=5)
-    strong_handshape = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='strong_handshape', limit_choices_to={'field':'strong_handshape'}, related_name=_("strong_handshape"), blank=True)
+    strong_handshape = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='strong_handshape', limit_choices_to={'field':'strong_handshape'}, related_name=_("strong_handshape"), blank=True, null=True)
 
     # Translators: Gloss models field: weak_handshape, verbose name
     # weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("handshape"), blank=True,
     #                                  max_length=5)
-    weak_handshape = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='weak_handshape', limit_choices_to={'field':'weak_handshape'}, related_name=_("weak_handshape"), blank=True)
+    weak_handshape = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='weak_handshape', limit_choices_to={'field':'weak_handshape'}, related_name=_("weak_handshape"), blank=True, null=True)
 
     # Translators: Gloss models field: location, verbose name
     # location = models.CharField(
     #     _("Location"), choices=build_choice_list("location"), null=True, blank=True, max_length=20)
-    location = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='location', limit_choices_to={'field':'location'}, related_name=_("location"), blank=True)
+    location = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='location', limit_choices_to={'field':'location'}, related_name=_("location"), blank=True, null=True)
 
     # Translators: Gloss models field: relation_between_articulators, verbose name
     # relation_between_articulators = models.CharField(
     #    _("Relation between Articulators"), choices=build_choice_list("relation_between_articulators"),
     #    null=True, blank=True, max_length=5)
-    relation_between_articulators = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='relation_between_articulators', limit_choices_to={'field':'relation_between_articulators'}, related_name=_("relation_between_articulators"), blank=True)
+    relation_between_articulators = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='relation_between_articulators', limit_choices_to={'field':'relation_between_articulators'}, related_name=_("relation_between_articulators"), blank=True, null=True)
 
     # Translators: Gloss models field: absolute_orientation_palm, verbose name
     # absolute_orientation_palm = models.CharField(_("Absolute Orientation: Palm"),
     #                                             choices=build_choice_list("relation_between_articulators"), null=True,
     #                                             blank=True, max_length=5)
-    absolute_orientation_palm = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='absolute_orientation_palm', limit_choices_to={'field':'absolute_orientation_palm'}, related_name=_("absolute_orientation_palm"), blank=True)
+    absolute_orientation_palm = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='absolute_orientation_palm', limit_choices_to={'field':'absolute_orientation_palm'}, related_name=_("absolute_orientation_palm"), blank=True, null=True)
     # Translators: Gloss models field: absolute_orientation_fingers, verbose name
     # absolute_orientation_fingers = models.CharField(_("Absolute Orientation: Fingers"),
     #                                                choices=build_choice_list("absolute_orientation_fingers"),
     #                                                null=True,
     #                                                blank=True, max_length=5)
-    absolute_orientation_fingers = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='absolute_orientation_fingers', limit_choices_to={'field':'absolute_orientation_fingers'}, related_name=_("absolute_orientation_fingers"), blank=True)
+    absolute_orientation_fingers = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='absolute_orientation_fingers', limit_choices_to={'field':'absolute_orientation_fingers'}, related_name=_("absolute_orientation_fingers"), blank=True, null=True)
 
     # Translators: Gloss models field: relative_orientation_movement, verbose name
     # relative_orientation_movement = models.CharField(_("Relative Orientation: Movement"),
     #                                                 choices=build_choice_list("relative_orientation_movement"),
     #                                                 null=True,
     #                                                 blank=True, max_length=5)
-    relative_orientation_movement = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='relative_orientation_movement', limit_choices_to={'field':'relative_orientation_movement'}, related_name=_("relative_orientation_movement"), blank=True)
+    relative_orientation_movement = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='relative_orientation_movement', limit_choices_to={'field':'relative_orientation_movement'}, related_name=_("relative_orientation_movement"), blank=True, null=True)
     # Translators: Gloss models field: relative_orientation_location, verbose name
     # relative_orientation_location = models.CharField(_("Relative Orientation: Location"),
     #                                                 choices=build_choice_list("relative_orientation_location"),
     #                                                 null=True,
     #                                                 blank=True, max_length=5)
-    relative_orientation_location = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='relative_orientation_location', limit_choices_to={'field':'relative_orientation_location'}, related_name=_("relative_orientation_location"), blank=True)
+    relative_orientation_location = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='relative_orientation_location', limit_choices_to={'field':'relative_orientation_location'}, related_name=_("relative_orientation_location"), blank=True, null=True)
     # Translators: Gloss models field: orientation_change, verbose name
     # orientation_change = models.CharField(_("Orientation Change"), choices=build_choice_list("orientation_change"),
     #                                      null=True, blank=True,
     #                                      max_length=5)
-    orientation_change = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='orientation_change', limit_choices_to={'field':'orientation_change'}, related_name=_("orientation_change"), blank=True)
+    orientation_change = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='orientation_change', limit_choices_to={'field':'orientation_change'}, related_name=_("orientation_change"), blank=True, null=True)
 
     # Translators: Gloss models field: handshape_change, verbose name
     # handshape_change = models.CharField(_("Handshape Change"), choices=build_choice_list("handshape_change"), null=True,
     #                                    blank=True,
     #                                    max_length=5)
-    handshape_change = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='handshape_change', limit_choices_to={'field':'handshape_change'}, related_name=_("handshape_change"), blank=True)
+    handshape_change = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='handshape_change', limit_choices_to={'field':'handshape_change'}, related_name=_("handshape_change"), blank=True, null=True)
 
     # Translators: Gloss models field: repeated_movement, verbose name
     repeated_movement = models.NullBooleanField(_("Repeated Movement"), null=True, default=False)
@@ -445,21 +445,21 @@ minor or insignificant ways that can be ignored."""))
     # movement_shape = models.CharField(_("Movement Shape"), choices=build_choice_list("movement_shape"), null=True,
     #                                  blank=True,
     #                                  max_length=5)
-    movement_shape = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='movement_shape', limit_choices_to={'field':'movement_shape'}, related_name=_("movement_shape"), blank=True)
+    movement_shape = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='movement_shape', limit_choices_to={'field':'movement_shape'}, related_name=_("movement_shape"), blank=True, null=True)
     # Translators: Gloss models field: movement_direction, verbose name
     # movement_direction = models.CharField(_("Movement Direction"), choices=build_choice_list("movement_direction"),
     #                                      null=True, blank=True,
     #                                      max_length=5)
-    movement_direction = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='movement_direction', limit_choices_to={'field':'movement_direction'}, related_name=_("movement_direction"), blank=True)
+    movement_direction = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='movement_direction', limit_choices_to={'field':'movement_direction'}, related_name=_("movement_direction"), blank=True, null=True)
     # Translators: Gloss models field: movement_manner, verbose name
     # movement_manner = models.CharField(_("Movement Manner"), choices=build_choice_list("movement_manner"), null=True,
     #                                   blank=True,
     #                                   max_length=5)
-    movement_manner = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='movement_manner', limit_choices_to={'field':'movement_manner'}, related_name=_("movement_manner"), blank=True)
+    movement_manner = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='movement_manner', limit_choices_to={'field':'movement_manner'}, related_name=_("movement_manner"), blank=True, null=True)
     # Translators: Gloss models field: contact_type, verbose name
     # contact_type = models.CharField(_("Contact Type"), choices=build_choice_list("contact_type"), null=True, blank=True,
     #                                max_length=5)
-    contact_type = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='contact_type', limit_choices_to={'field':'contact_type'}, related_name=_("contact_type"), blank=True)
+    contact_type = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='contact_type', limit_choices_to={'field':'contact_type'}, related_name=_("contact_type"), blank=True, null=True)
 
     # Translators: Gloss models field: phonology_other verbose name
     phonology_other = models.TextField(_("Phonology Other"), null=True, blank=True)
@@ -477,12 +477,12 @@ minor or insignificant ways that can be ignored."""))
     # Translators: Gloss models field: named_entity, verbose name
     # named_entity = models.CharField(_("Named Entity"), choices=build_choice_list("named_entity"), null=True, blank=True,
     #                                max_length=5)
-    named_entity = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='named_entity', limit_choices_to={'field':'named_entity'}, related_name=_("named_entity"), blank=True)
+    named_entity = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='named_entity', limit_choices_to={'field':'named_entity'}, related_name=_("named_entity"), blank=True, null=True)
     # Translators: Gloss models field: semantic_field, verbose name
     # semantic_field = models.CharField(_("Semantic Field"), choices=build_choice_list("semantic_field"), null=True,
     #                                  blank=True,
     #                                  max_length=5)
-    semantic_field = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='semantic_field', limit_choices_to={'field':'semantic_field'}, related_name=_("semantic_field"), blank=True)
+    semantic_field = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='semantic_field', limit_choices_to={'field':'semantic_field'}, related_name=_("semantic_field"), blank=True, null=True)
 
     # ### Frequency fields
     # Translators: Gloss models field_ number_of_occurences, verbose name
