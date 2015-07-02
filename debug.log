@@ -562,3 +562,83 @@ Not Found: /about/copyright/
 Not Found: /about/copyright/
 Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
 Not Found: /about/copyright/
+Not Found: /about/copyright/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Not Found: /about/instructions/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /testipage/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /testipage/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /testipage/
+Not Found: /testipage/
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/pages/views.py", line 69, in page
+    response = HttpResponse(t.render(c))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 159, in render
+    return template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 211, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 493, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/urlresolvers.py", line 433, in _reverse_with_prefix
+    self._populate()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in _populate
+    p_pattern = pattern.regex.pattern
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/urlresolvers.py", line 195, in regex
+    (regex, six.text_type(e)))
+ImproperlyConfigured: "about/(*\D)$" is not a valid regular expression: nothing to repeat
+Not Found: /testipage/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
+Not Found: /about/instructions/
+Not Found: /about/copyright/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
+Not Found: /about/copyright/
