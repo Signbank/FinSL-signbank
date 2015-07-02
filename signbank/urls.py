@@ -92,10 +92,10 @@ urlpatterns = patterns('',
                        url(r'reload_signbank/$',
                            'signbank.tools.reload_signbank'),
 
-                       # TODO: Review the sanity of this implementation, it sounds completely crazy, but it also works
+                       # TODO: Review the sanity of this implementation, it sounds completely crazy, but it also worksyyyi
                        # This URL is supposed to grab every url not grabbed by any url before.
                        # The reason is to forward user created static pages inside the app to a view 'page'.
-                       url(r'(.*)/',
+                       url(r'',
                            'signbank.pages.views.page'),
 
                        ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
