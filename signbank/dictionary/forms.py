@@ -2,7 +2,7 @@ from django import forms
 from formtools.preview import FormPreview
 from signbank.video.fields import VideoUploadToFLVField
 from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, RelationToForeignSign, \
-    MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list
+    MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice
 from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
@@ -230,8 +230,10 @@ class RelationToForeignSignForm(forms.ModelForm):
 class MorphologyForm(forms.ModelForm):
     # Translators: MorphologyForm label
     parent_gloss_id = forms.CharField(label=_('Parent Gloss'))
-    role = forms.ChoiceField(label=_('Type'), choices=build_choice_list(
-        'MorphologyType'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+    #role = forms.ChoiceField(label=_('Type'), choices=build_choice_list(
+    #    'MorphologyType'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+    # Note that to_field_name has to be unique!
+    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'), to_field_name='machine_value', empty_label=None)
     # Translators: MorphologyForm label
     morpheme_id = forms.CharField(label=_('Morpheme'))
 

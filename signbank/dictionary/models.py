@@ -853,5 +853,6 @@ class MorphologyDefinition(models.Model):
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
-        return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
-            self.parent_gloss.idgloss)
+        #return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
+        #    self.parent_gloss.idgloss)
+        return unicode(self.morpheme.idgloss + ' is ' + unicode(self.role) + ' of ' + unicode(self.parent_gloss.idgloss))
