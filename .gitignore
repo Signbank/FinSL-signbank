@@ -11,3 +11,5 @@ media/css/.DS_Store
 media/css/.DS_Store
 
 signbank/settings/secret_settings.py
+
+debug.log

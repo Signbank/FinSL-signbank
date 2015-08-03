@@ -247,7 +247,6 @@ def get_choices(field):
         pass
     return choice_list
 
-
 class Gloss(models.Model):
     class Meta:
         # Translators: This is verbose_name_plural, so it has to be plural here

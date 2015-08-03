@@ -219,7 +219,13 @@ def update_gloss(request, glossid):
                 newvalue = ''
             else:
 
-                gloss.__setattr__(field, value)
+                # TODO: Check these changes later on
+                # gloss.__setattr__(field, value)
+                # See if the field is a ForeignKey
+                if gloss._meta.get_field_by_name(field)[0].get_internal_type() == "ForeignKey":
+                    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
+                else:
+                    gloss.__setattr__(field, value)
                 gloss.save()
 
                 # If the value is not a Boolean, return the new value
@@ -227,10 +233,17 @@ def update_gloss(request, glossid):
 
                     f = Gloss._meta.get_field(field)
 
+                    # TODO: Look into this to fix the representation of FieldChoice
                     # for choice fields we want to return the 'display' version of
                     # the value
+                    """
                     valdict = dict(f.flatchoices)
                     # some fields take ints
+                    if valdict.keys() != [] and type(valdict.keys()[0]) == int:
+                        newvalue = valdict.get(int(value), value)
+                    """
+                    # Gets a choicelist for the current field, does not include a blank choice
+                    valdict = dict(f.get_choices(include_blank=False))
                     if valdict.keys() != [] and type(valdict.keys()[0]) == int:
                         newvalue = valdict.get(int(value), value)
                     else:
