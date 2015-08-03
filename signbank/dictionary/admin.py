@@ -130,10 +130,13 @@ class LanguageAdmin(VersionAdmin):
     model = Language
     inlines = [DialectInline]
 
+class FieldChoiceAdmin(admin.ModelAdmin):
+    model = FieldChoice
+    list_display = ('field', 'english_name', 'machine_value')
 
 admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
 admin.site.register(Keyword, KeywordAdmin)
-admin.site.register(FieldChoice)
+admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)

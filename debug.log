@@ -2890,3 +2890,500 @@ Traceback (most recent call last):
   File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
     self.field.rel.to._meta.object_name,
 ValueError: Cannot assign "u'701'": "Gloss.relative_orientation_location" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'401'": "Gloss.relation_between_articulators" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'901'": "Gloss.handshape_change" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'901'": "Gloss.handshape_change" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 243, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'901'": "Gloss.handshape_change" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(FieldChoice.objects.filter(field=field), value)
+TypeError: attribute name must be string, not 'QuerySet'
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(FieldChoice.objects.get(field), value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1146, in build_filter
+    arg, value = filter_expr
+ValueError: too many values to unpack
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(FieldChoice.objects.get(field=field), value)
+TypeError: attribute name must be string, not 'FieldChoice'
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(field=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(english_name=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(english_name=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(field=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value).__getattr__(FieldChoice.english_name))
+AttributeError: 'FieldChoice' object has no attribute '__getattr__'
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.filter(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "[<FieldChoice: Vaihtoehto1>]": "Gloss.handshape_change" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.filter(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "[<FieldChoice: Vaihtoehto1>]": "Gloss.absolute_orientation_fingers" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 225, in update_gloss
+    gloss.__setattr__(field, fieldchoiceobject.english_name)
+AttributeError: 'QuerySet' object has no attribute 'english_name'
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 225, in update_gloss
+    gloss.__setattr__(field, fieldchoiceobject.english_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'Vaihtoehto1'": "Gloss.absolute_orientation_fingers" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 224, in update_gloss
+    fieldchoiceobject = FieldChoice.objects.get(machine_value=value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1208, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1101, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 101, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 139, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1874, in get_prep_lookup
+    return super(IntegerField, self).get_prep_lookup(lookup_type, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 225, in update_gloss
+    gloss.__setattr__(field, fieldchoiceobject.english_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'Vaihtoehto1'": "Gloss.absolute_orientation_fingers" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 225, in update_gloss
+    gloss.__setattr__(field, fieldchoiceobject.english_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'Vaihtoehto1'": "Gloss.handshape_change" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 228, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'501'": "Gloss.absolute_orientation_fingers" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1208, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1101, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 101, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 139, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1874, in get_prep_lookup
+    return super(IntegerField, self).get_prep_lookup(lookup_type, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1146, in build_filter
+    arg, value = filter_expr
+ValueError: too many values to unpack
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(value)[0])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1146, in build_filter
+    arg, value = filter_expr
+ValueError: too many values to unpack
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(Gloss.get_choices())
+AttributeError: type object 'Gloss' has no attribute 'get_choices'
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(Gloss.get_choice_lists())
+TypeError: unbound method get_choice_lists() must be called with Gloss instance as first argument (got nothing instead)
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(Gloss.get_choice_lists())
+TypeError: unbound method get_choice_lists() must be called with Gloss instance as first argument (got nothing instead)
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(Gloss.get_choice_lists())
+TypeError: unbound method get_choice_lists() must be called with Gloss instance as first argument (got nothing instead)
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(f.get_choices().flatchoices)
+AttributeError: 'list' object has no attribute 'flatchoices'
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1208, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1101, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 101, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 139, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1874, in get_prep_lookup
+    return super(IntegerField, self).get_prep_lookup(lookup_type, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = f.get_choices1()
+AttributeError: 'ForeignKey' object has no attribute 'get_choices1'
+Internal Server Error: /dictionary/update/gloss/13
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = f.get_choices2()
+AttributeError: 'ForeignKey' object has no attribute 'get_choices2'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = f.get_choices2()
+AttributeError: 'ForeignKey' object has no attribute 'get_choices2'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = f.get_choices2(field)
+AttributeError: 'ForeignKey' object has no attribute 'get_choices2'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 246, in update_gloss
+    if valdict.keys() != []: #and type(valdict.keys()[0]) == int:
+AttributeError: 'list' object has no attribute 'keys'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 246, in update_gloss
+    if valdict.keys() != []: #and type(valdict.keys()[0]) == int:
+AttributeError: 'list' object has no attribute 'keys'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(f.get_choices2(field))
+AttributeError: 'ForeignKey' object has no attribute 'get_choices2'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 245, in update_gloss
+    valdict = dict(f.get_2choices(field))
+AttributeError: 'ForeignKey' object has no attribute 'get_2choices'
+Internal Server Error: /dictionary/gloss/29/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 787, in get_choice_lists
+    li = get_choices(fieldname)
+NameError: global name 'get_choices' is not defined
+Internal Server Error: /dictionary/update/gloss/25
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1208, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1101, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 101, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 139, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1874, in get_prep_lookup
+    return super(IntegerField, self).get_prep_lookup(lookup_type, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
