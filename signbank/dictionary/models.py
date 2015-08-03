@@ -208,7 +208,7 @@ class FieldChoice(models.Model):
     machine_value = models.IntegerField(unique=True)
 
     def __unicode__(self):
-        # return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
+        #return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
         return unicode(self.english_name)
 
     class Meta:
@@ -222,6 +222,20 @@ def build_choice_list(field):
 
     # Try to look for fields in FieldName and choose choices from there
 
+    try:
+        for choice in FieldChoice.objects.filter(field=field):
+            choice_list.append((str(choice.machine_value), choice.english_name))
+
+        return choice_list
+
+        # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
+    except OperationalError:
+        pass
+    return choice_list
+
+# This method gets choices from FieldChoice and returns them as a dict
+def get_choices(field):
+    choice_list = []
     try:
         for choice in FieldChoice.objects.filter(field=field):
             choice_list.append((str(choice.machine_value), choice.english_name))
@@ -295,6 +309,7 @@ class Gloss(models.Model):
                 result.append((fname, getattr(self, field)))
 
         return result
+
 
     # Translators: Gloss models field: idgloss, verbose name
     idgloss = models.CharField(_("Gloss"), max_length=50,
@@ -769,7 +784,8 @@ minor or insignificant ways that can be ignored."""))
                           'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
                           'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']:
             # Get the list of choices for this field
-            li = self._meta.get_field(fieldname).choices
+            #li = self._meta.get_field(fieldname).choices
+            li = get_choices(fieldname)
 
             # Sort the list
             sorted_li = sorted(li, key=lambda x: x[1])

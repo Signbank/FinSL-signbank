@@ -642,3 +642,2251 @@ Not Found: /about/copyright/
 Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
 Forbidden (CSRF token missing or incorrect.): /i18n/setlang/
 Not Found: /about/copyright/
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 162, in render
+    len_values = len(values)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 144, in __len__
+    self._fetch_all()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 965, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 238, in iterator
+    results = compiler.execute_sql()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 840, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 318, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such column: dictionary_morphologydefinition.MorphologyType
+Internal Server Error: /dictionary/gloss/1/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 162, in render
+    len_values = len(values)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 144, in __len__
+    self._fetch_all()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 965, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 238, in iterator
+    results = compiler.execute_sql()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 840, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 318, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such column: dictionary_morphologydefinition.MorphologyType
+Internal Server Error: /dictionary/gloss/29/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 162, in render
+    len_values = len(values)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 144, in __len__
+    self._fetch_all()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 965, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 238, in iterator
+    results = compiler.execute_sql()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 840, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 318, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such column: dictionary_morphologydefinition.MorphologyType
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1094, in generic_tag_compiler
+    defaults, takes_context, name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1083, in parse_bits
+    (name, ", ".join("'%s'" % p for p in unhandled_params)))
+TemplateSyntaxError: 'value' did not receive value(s) for the argument(s): 'value'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 394, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: 'english_name', expected 'endif'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 394, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: 'label', expected 'endif'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 394, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: 'label', expected 'endif'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1094, in generic_tag_compiler
+    defaults, takes_context, name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1074, in parse_bits
+    name)
+TemplateSyntaxError: 'value' received too many positional arguments
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 394, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: 'english_name', expected 'endif'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader.py", line 64, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1014, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 872, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 1028, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 394, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: 'english_name', expected 'endif'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/detail.py", line 116, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 424, in get_context_data
+    topic + '_fields'].append([value, field, labels[field], kind, gl.english_name])
+AttributeError: 'Gloss' object has no attribute 'english_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/detail.py", line 116, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 414, in get_context_data
+    value = getattr(gl, field.english_name)
+AttributeError: 'str' object has no attribute 'english_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/detail.py", line 116, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 414, in get_context_data
+    value = getattr(gl.FieldChoice.english_name, field)
+AttributeError: 'Gloss' object has no attribute 'FieldChoice'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/detail.py", line 116, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 414, in get_context_data
+    value = getattr(gl, FieldChoice.english_name)
+AttributeError: type object 'FieldChoice' has no attribute 'english_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/detail.py", line 116, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 413, in get_context_data
+    value = getattr(gl, get_english_name)
+NameError: global name 'get_english_name' is not defined
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1194, in render
+    resolved_args, resolved_kwargs = self.get_resolved_arguments(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1111, in get_resolved_arguments
+    resolved_args = [var.resolve(context) for var in self.args]
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 299, in get_english_name
+    return unicode(FieldChoice.english_name)
+AttributeError: type object 'FieldChoice' has no attribute 'english_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1194, in render
+    resolved_args, resolved_kwargs = self.get_resolved_arguments(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1111, in get_resolved_arguments
+    resolved_args = [var.resolve(context) for var in self.args]
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 299, in get_english_name
+    return unicode(FieldChoice.english_name)
+AttributeError: type object 'FieldChoice' has no attribute 'english_name'
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 580, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 539, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2010'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 580, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 773, in get_choice_lists
+    li = self._meta.get_field(fieldname).limit_choices_to
+AttributeError: 'ForeignKey' object has no attribute 'limit_choices_to'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 773, in get_choice_lists
+    li = self._meta.get_field(fieldname).english_name
+AttributeError: 'ForeignKey' object has no attribute 'english_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 773, in get_choice_lists
+    li = self._meta.get_field(fieldname).machine_value
+AttributeError: 'ForeignKey' object has no attribute 'machine_value'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 773, in get_choice_lists
+    li = self._meta.get_field(fieldname).field
+AttributeError: 'ForeignKey' object has no attribute 'field'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 773, in get_choice_lists
+    li = self._meta.get_field(fieldname).related_name
+AttributeError: 'ForeignKey' object has no attribute 'related_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 773, in get_choice_lists
+    li = self._meta.get_field(fieldname).related_name
+AttributeError: 'ForeignKey' object has no attribute 'related_name'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 774, in get_choice_lists
+    li = self.get_fields().__getattribute__(self, fieldname)
+TypeError: expected 1 arguments, got 2
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 779, in get_choice_lists
+    li = self.get_choices()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    return FieldChoice.field
+AttributeError: type object 'FieldChoice' has no attribute 'field'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 782, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 782, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+TypeError: 'AutoField' object does not support indexing
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 779, in get_choice_lists
+    li = self.get_choices()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    return self.limit_choices_to
+AttributeError: 'Gloss' object has no attribute 'limit_choices_to'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 779, in get_choice_lists
+    li = self.get_choices()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    return self._meta.get_field(self).limit_choices_to
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/options.py", line 554, in get_field
+    raise FieldDoesNotExist('%s has no field named %r' % (self.object_name, field_name))
+FieldDoesNotExist: Gloss has no field named <Gloss: DELFIINI>
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 779, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    return self._meta.get_field(fieldname).limit_choices_to
+AttributeError: 'ForeignKey' object has no attribute 'limit_choices_to'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 781, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    fieldchoice = FieldChoice.objects.get(field=fieldname)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 338, in get
+    (self.model._meta.object_name, num)
+MultipleObjectsReturned: get() returned more than one FieldChoice -- it returned 5!
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 782, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 303, in get_choices
+    fieldchoice.append(FieldChoice.objects.get(field=fieldname))
+AttributeError: 'dict' object has no attribute 'append'
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 782, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 303, in get_choices
+    fieldchoice = FieldChoice.objects.get(field=fieldname)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 338, in get
+    (self.model._meta.object_name, num)
+MultipleObjectsReturned: get() returned more than one FieldChoice -- it returned 5!
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 782, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 303, in get_choices
+    fieldchoice += FieldChoice.objects.get(field=fieldname)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 338, in get
+    (self.model._meta.object_name, num)
+MultipleObjectsReturned: get() returned more than one FieldChoice -- it returned 5!
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 782, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 303, in get_choices
+    fieldchoice += FieldChoice.objects.get(field=fieldname)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 338, in get
+    (self.model._meta.object_name, num)
+MultipleObjectsReturned: get() returned more than one FieldChoice -- it returned 5!
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+TypeError: 'FieldChoice' object does not support indexing
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 781, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    fieldchoice = FieldChoice.objects.get(field=fieldname)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 338, in get
+    (self.model._meta.object_name, num)
+MultipleObjectsReturned: get() returned more than one FieldChoice -- it returned 5!
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+KeyError: 1
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 781, in get_choice_lists
+    li = self.get_choices(fieldname)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 302, in get_choices
+    fieldchoice = FieldChoice.objects.filter(field=fieldname).values(field)
+NameError: global name 'field' is not defined
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+KeyError: 1
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+KeyError: 1
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+KeyError: 1
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in get_choice_lists
+    sorted_li = sorted(li, key=lambda x: x[1])
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 784, in <lambda>
+    sorted_li = sorted(li, key=lambda x: x[1])
+KeyError: 1
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 788, in get_choice_lists
+    for value, text in sorted_li]
+NameError: global name 'sorted_li' is not defined
+Internal Server Error: /dictionary/gloss/19/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 789, in get_choice_lists
+    for value, text in sorted_li]
+ValueError: need more than 1 value to unpack
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'103'": "Gloss.handedness" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'104'": "Gloss.handedness" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'102'": "Gloss.handedness" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'102'": "Gloss.handedness" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/19
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 222, in update_gloss
+    gloss.__setattr__(field, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'701'": "Gloss.relative_orientation_location" must be a "FieldChoice" instance.
