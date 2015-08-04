@@ -232,9 +232,11 @@ class MorphologyForm(forms.ModelForm):
     parent_gloss_id = forms.CharField(label=_('Parent Gloss'))
     #role = forms.ChoiceField(label=_('Type'), choices=build_choice_list(
     #    'MorphologyType'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+
     # Note that to_field_name has to be unique!
-    #role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'), to_field_name='machine_value', empty_label=None, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
-    role = forms.ChoiceField(label=_('Type'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'), to_field_name='machine_value', empty_label=None, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+
+    #role = forms.ChoiceField(label=_('Type'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
     # Translators: MorphologyForm label
     morpheme_id = forms.CharField(label=_('Morpheme'))
 

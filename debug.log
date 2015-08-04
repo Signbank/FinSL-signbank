@@ -3387,3 +3387,1637 @@ Traceback (most recent call last):
   File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2011'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /admin/dictionary/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 1271, in render
+    _dict = func(*resolved_args, **resolved_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 320, in result_list
+    'results': list(results(cl))}
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 296, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 287, in __init__
+    super(ResultList, self).__init__(*items)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 199, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/utils.py", line 282, in lookup_field
+    value = attr()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/base.py", line 503, in __str__
+    return force_text(self).encode('utf-8')
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/encoding.py", line 92, in force_text
+    s = six.text_type(s)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 856, in __unicode__
+    return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
+AttributeError: 'MorphologyDefinition' object has no attribute 'get_role_display'
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2010'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /admin/dictionary/morphologydefinition/1/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1519, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1459, in changeform_view
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    (instance._meta.object_name, self.field.name)
+ValueError: Cannot assign None: "MorphologyDefinition.role" does not allow null values.
+Internal Server Error: /admin/dictionary/morphologydefinition/1/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1519, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1459, in changeform_view
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    (instance._meta.object_name, self.field.name)
+ValueError: Cannot assign None: "MorphologyDefinition.role" does not allow null values.
+Internal Server Error: /admin/dictionary/morphologydefinition/1/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1519, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/utils/decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1459, in changeform_view
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 627, in __set__
+    (instance._meta.object_name, self.field.name)
+ValueError: Cannot assign None: "MorphologyDefinition.role" does not allow null values.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2011'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2016'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2016'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2012'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2010'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 553, in add_morphology_definition
+    parent_gloss = form.cleaned_data['parent_gloss_id']
+AttributeError: 'MorphologyForm' object has no attribute 'cleaned_data'
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 394, in full_clean
+    self._post_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 427, in _post_clean
+    self.instance = construct_instance(self, self.instance, opts.fields, construct_instance_exclude)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 62, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 874, in save_form_data
+    setattr(instance, self.name, data)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2013'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'7'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/morphologydefinition/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 552, in add_morphology_definition
+    if form.is_valid():
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 184, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 176, in errors
+    self.full_clean()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 392, in full_clean
+    self._clean_fields()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/forms.py", line 407, in _clean_fields
+    value = field.clean(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/fields.py", line 162, in clean
+    value = self.to_python(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/forms/models.py", line 1218, in to_python
+    value = self.queryset.get(**{key: value})
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 338, in get
+    (self.model._meta.object_name, num)
+MultipleObjectsReturned: get() returned more than one FieldChoice -- it returned 7!
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'0'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'0'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = FieldChoice.objects.get(field=value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = FieldChoice.objects.get(machine_value=value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'4'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/1
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    newvalue = morph_def.get_role_display()
+AttributeError: 'MorphologyDefinition' object has no attribute 'get_role_display'
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/20
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/33
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'4'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/33
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'0'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/33
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'6'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/33
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/33
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/33
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/10
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    test = MorphologyForm.role.choices
+AttributeError: type object 'MorphologyForm' has no attribute 'role'
+Internal Server Error: /dictionary/update/gloss/10
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    test = MorphologyForm.role.choices
+AttributeError: type object 'MorphologyForm' has no attribute 'role'
+Internal Server Error: /dictionary/update/gloss/29
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'0'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/29
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/29
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'1'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'1'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 801, in get_choice_lists
+    choice_lists['morphology_role'] = MorphologyDefinition.role.choices
+AttributeError: 'ReverseSingleRelatedObjectDescriptor' object has no attribute 'choices'
+Internal Server Error: /dictionary/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 801, in get_choice_lists
+    choice_lists['morphology_role'] = MorphologyDefinition.role.get_choices()
+AttributeError: 'ReverseSingleRelatedObjectDescriptor' object has no attribute 'get_choices'
+Internal Server Error: /dictionary/gloss/7/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 801, in get_choice_lists
+    choice_lists['morphology_role'] = MorphologyDefinition.role.get_choices()
+AttributeError: 'ReverseSingleRelatedObjectDescriptor' object has no attribute 'get_choices'
+Internal Server Error: /dictionary/gloss/7/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 804, in get_choice_lists
+    return json.dumps(choice_lists)
+  File "/usr/lib64/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <django.db.models.fields.related.ReverseSingleRelatedObjectDescriptor object at 0x39ecb10> is not JSON serializable
+Internal Server Error: /dictionary/gloss/7/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/debug.py", line 89, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 647, in resolve
+    obj = self.var.resolve(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 787, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/template/base.py", line 847, in _resolve_lookup
+    current = current()
+  File "/home/heilniem/signbank-fi/signbank/dictionary/models.py", line 803, in get_choice_lists
+    return json.dumps(choice_lists)
+  File "/usr/lib64/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: [<FieldChoice: Yhdysviittoma>, <FieldChoice: Nominaali>, <FieldChoice: Verbaali-1>, <FieldChoice: Verbaali-2>, <FieldChoice: Verbaali-3>, <FieldChoice: Klassifikaattorikäsimuoto>, <FieldChoice: Numeraali käsimuoto>] is not JSON serializable
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'1'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'4'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 593, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'1'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 246, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 246, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 246, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1208, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1101, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 101, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 139, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1874, in get_prep_lookup
+    return super(IntegerField, self).get_prep_lookup(lookup_type, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 246, in update_gloss
+    valdict = dict(f.flatchoices + f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 252, in update_gloss
+    valdict.append(dict(f.get_choices(include_blank=False)))
+AttributeError: 'dict' object has no attribute 'append'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 253, in update_gloss
+    fchoices = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 254, in update_gloss
+    choicesdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 254, in update_gloss
+    choicesdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 605, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'0'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 257, in update_gloss
+    valdict = dict(f.get_choices(include_blank=False))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 260, in update_gloss
+    valdict = dict(f)
+TypeError: 'CharField' object is not iterable
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 260, in update_gloss
+    if dict(f.get_choices(include_blank=False))[0] == FieldChoice:
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 260, in update_gloss
+    if dict(f.get_choices(include_blank=False))[0] == FieldChoice:
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/7
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 260, in update_gloss
+    if dict(f.get_choices(include_blank=False))[0] == FieldChoice:
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 817, in get_choices
+    rel_model = self.rel.to
+AttributeError: 'NoneType' object has no attribute 'to'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 226, in update_gloss
+    gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 325, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1208, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1101, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 101, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/lookups.py", line 139, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1874, in get_prep_lookup
+    return super(IntegerField, self).get_prep_lookup(lookup_type, value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 1868, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = morph_def.get_role_display()
+AttributeError: 'MorphologyDefinition' object has no attribute 'get_role_display'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = morph_def.role_id
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "2010": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 597, in update_morphology_definition
+    newvalue = morph_def.get_role_display()
+AttributeError: 'MorphologyDefinition' object has no attribute 'get_role_display'
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'1'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/9
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 582, in update_morphology_definition
+    return HttpResponseBadRequest("%s '%s'" % _("Bad Morphology Definition ID"), morph_def_id,
+TypeError: not enough arguments for format string
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 582, in update_morphology_definition
+    return HttpResponseBadRequest("%s '%s'" % _("Bad Morphology Definition ID"), morph_def_id,
+TypeError: not enough arguments for format string
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 582, in update_morphology_definition
+    return HttpResponseBadRequest("%s '%s'" % _("Bad Morphology Definition ID"), morph_def_id,
+TypeError: not enough arguments for format string
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'4'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'1'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'3'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'6'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = MorphologyForm.__getattribute__(morph_def.role)
+TypeError: expected 1 arguments, got 0
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = MorphologyForm.__getattribute__(morph_def, value)
+AttributeError: 'MorphologyDefinition' object has no attribute '3'
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = MorphologyForm.__getattribute__(MorphologyForm, role)
+NameError: global name 'role' is not defined
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = MorphologyForm.__getattribute__(MorphologyForm, MorphologyDefinition.role)
+TypeError: attribute name must be string, not 'ReverseSingleRelatedObjectDescriptor'
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 595, in update_morphology_definition
+    morph_def.role = MorphologyForm.__getattribute__(MorphologyForm, 'role')
+AttributeError: 'ModelFormMetaclass' object has no attribute 'role'
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'4'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2012'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Internal Server Error: /dictionary/update/gloss/12
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 130, in update_gloss
+    return update_morphology_definition(gloss, field, value)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/update.py", line 594, in update_morphology_definition
+    morph_def.role = value
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 635, in __set__
+    self.field.rel.to._meta.object_name,
+ValueError: Cannot assign "u'2014'": "MorphologyDefinition.role" must be a "FieldChoice" instance.
+Not Found: /dictionary/update/morphologydefinition/
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(unicode(morphemes)))
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 16: ordinal not in range(128)
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(unicode(morphemes)))
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 16: ordinal not in range(128)
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(unicode(morphemes)))
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 16: ordinal not in range(128)
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 131, in render_to_csv_response
+    safe_row.append(column.encode('utf-8'))
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 48: ordinal not in range(128)
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 131, in render_to_csv_response
+    safe_row.append(column.encode('utf-8'))
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 1: ordinal not in range(128)
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 91, in render_to_csv_response
+    value = getattr(gloss, f.name)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/fields/related.py", line 610, in __get__
+    rel_obj = qs.get()
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: FieldChoice matching query does not exist.
+Internal Server Error: /signs/search/
+Traceback (most recent call last):
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/heilniem/env-django1.8/lib/python2.7/site-packages/django/views/generic/list.py", line 175, in get
+    return self.render_to_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 43, in render_to_response
+    return self.render_to_csv_response(context)
+  File "/home/heilniem/signbank-fi/signbank/dictionary/adminviews.py", line 115, in render_to_csv_response
+    row.append(", ".join(morphemes))
+TypeError: sequence item 0: expected string, FieldChoice found
