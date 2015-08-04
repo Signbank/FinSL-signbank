@@ -591,9 +591,11 @@ def update_morphology_definition(gloss, field, value):
         morph_def.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'morphology_definition_role':
-        morph_def.role = value
+        #morph_def.role = value
+        morph_def.role = FieldChoice.objects.get(machine_value=value)
         morph_def.save()
-        newvalue = morph_def.get_role_display()
+        #newvalue = morph_def.get_role_display()
+        newvalue = morph_def.role.english_name
     elif what == 'morphology_definition_morpheme':
 
         morpheme = gloss_from_identifier(value)

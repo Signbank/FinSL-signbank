@@ -796,8 +796,12 @@ minor or insignificant ways that can be ignored."""))
             choice_lists[fieldname] = OrderedDict(reformatted_li)
 
         # Choice lists for other models
-        choice_lists['morphology_role'] = [human_value for machine_value, human_value in
-                                           build_choice_list('MorphologyType')]
+        #choice_lists['morphology_role'] = [human_value for machine_value, human_value in
+        #                                   build_choice_list('MorphologyType')]
+        choice_lists['morphology_role'] = get_choices('MorphologyType')
+        reformatted_morph_role = [('_' + str(value), text)
+                              for value, text in choice_lists['morphology_role']]
+        choice_lists['morphology_role'] = OrderedDict(reformatted_morph_role)
         # morphology_role
         return json.dumps(choice_lists)
 
