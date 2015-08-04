@@ -236,14 +236,15 @@ def update_gloss(request, glossid):
                     # TODO: Look into this to fix the representation of FieldChoice
                     # for choice fields we want to return the 'display' version of
                     # the value
-                    """
-                    valdict = dict(f.flatchoices)
-                    # some fields take ints
-                    if valdict.keys() != [] and type(valdict.keys()[0]) == int:
-                        newvalue = valdict.get(int(value), value)
-                    """
-                    # Gets a choicelist for the current field, does not include a blank choice
-                    valdict = dict(f.get_choices(include_blank=False))
+
+                    # Try to use get_choices to get correct choice names for FieldChoices
+                    # If it doesn't work, go to exception and get flatchoices
+                    try:
+                        valdict = dict(f.get_choices(include_blank=False))
+                    except:
+                        valdict = dict(f.flatchoices)
+
+                    # Some fields take ints
                     if valdict.keys() != [] and type(valdict.keys()[0]) == int:
                         newvalue = valdict.get(int(value), value)
                     else:

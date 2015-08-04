@@ -218,7 +218,8 @@ class FieldChoice(models.Model):
 # This method builds a list of choices from the database
 # TODO: Change this implementation to somewhere else
 def build_choice_list(field):
-    choice_list = [('0', '-'), ('1', 'N/A')]
+    #choice_list = [('0', '-'), ('1', 'N/A')]
+    choice_list= []
 
     # Try to look for fields in FieldName and choose choices from there
 
