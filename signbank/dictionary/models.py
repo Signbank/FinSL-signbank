@@ -248,6 +248,19 @@ def get_choices(field):
         pass
     return choice_list
 
+def get_choices_with_int(field):
+    choice_list = []
+    try:
+        for choice in FieldChoice.objects.filter(field=field):
+            choice_list.append((choice.machine_value, choice.english_name))
+
+        return choice_list
+
+        # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
+    except OperationalError:
+        pass
+    return choice_list
+
 class Gloss(models.Model):
     class Meta:
         # Translators: This is verbose_name_plural, so it has to be plural here

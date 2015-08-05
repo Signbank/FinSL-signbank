@@ -240,7 +240,8 @@ def update_gloss(request, glossid):
                     # Try to use get_choices to get correct choice names for FieldChoices
                     # If it doesn't work, go to exception and get flatchoices
                     try:
-                        valdict = dict(f.get_choices(include_blank=False))
+                        #valdict = dict(f.get_choices(include_blank=False))
+                        valdict = dict(get_choices_with_int(field))
                     except:
                         valdict = dict(f.flatchoices)
 
