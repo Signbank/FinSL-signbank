@@ -53,9 +53,38 @@ class Translation(models.Model):
         list_display = ['gloss', 'translation']
         search_fields = ['gloss__idgloss']
 
+class TranslationEnglish(models.Model):
+    """A Dutch translation of NGT signs"""
+
+    gloss = models.ForeignKey("Gloss")
+    translation_english = models.ForeignKey("KeywordEnglish")
+    index = models.IntegerField("Index")
+
+    def __unicode__(self):
+        return self.gloss.idgloss + '-' + self.translation_english.text
+
+    def get_absolute_url(self):
+        """Return a URL for a view of this translation."""
+
+        alltrans = self.translationenglish.translation_english_set.all()
+        idx = 0
+        for tr in alltrans:
+            if tr == self:
+                return "/dictionary/words/" + str(self.translation_english) + "-" + str(idx + 1) + ".html"
+
+            idx += 1
+        return "/dictionary/"
+
+    class Meta:
+        ordering = ['gloss', 'index']
+
+    class Admin:
+        list_display = ['gloss', 'translation_english']
+        search_fields = ['gloss__idgloss']
+
 
 class Keyword(models.Model):
-    """A Dutch keyword that is a possible translation equivalent of a sign"""
+    """A keyword that is a possible translation equivalent of a sign"""
 
     def __unicode__(self):
         return self.text
@@ -111,6 +140,62 @@ class Keyword(models.Model):
 
         return (trans, len(alltrans))
 
+class KeywordEnglish(models.Model):
+    """A keyword that is a possible translation equivalent of a sign"""
+
+    def __unicode__(self):
+        return self.text
+
+    text = models.CharField(max_length=100, unique=True)
+
+    def in_web_dictionary(self):
+        """Return True if some gloss associated with this
+        keyword is in the web version of the dictionary"""
+
+        return len(self.translation_english_set.filter(gloss__in_web_dictionary__exact=True)) != 0
+
+    class Meta:
+        ordering = ['text']
+
+    class Admin:
+        search_fields = ['text']
+
+    def match_request_english(self, request, n):
+        """Find the translation matching a keyword request given an index 'n'
+        response depends on login status
+        Returns a tuple (translation, count) where count is the total number
+        of matches."""
+
+        if request.user.has_perm('dictionary.search_gloss'):
+            alltrans = self.translation_english_set.all()
+        else:
+            alltrans = self.translation_english_set.filter(gloss__inWeb__exact=True)
+
+        # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is
+        # on
+        try:
+            crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
+        except:
+            crudetag = None
+
+        safe = (not request.user.is_authenticated()
+                ) and settings.ANON_SAFE_SEARCH
+        if safe and crudetag:
+            alltrans = [
+                tr for tr in alltrans if not crudetag in tagging.models.Tag.objects.get_for_object(tr.gloss)]
+
+        # if there are no translations, generate a 404
+        if len(alltrans) == 0:
+            raise Http404
+
+        # take the nth translation if n is in range
+        # otherwise take the last
+        if n - 1 < len(alltrans):
+            trans = alltrans[n - 1]
+        else:
+            trans = alltrans[len(alltrans) - 1]
+
+        return (trans, len(alltrans))
 
 DEFN_ROLE_CHOICES = (
     # Translators: DEFN_ROLE_CHOICES

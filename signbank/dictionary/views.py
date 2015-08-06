@@ -40,10 +40,16 @@ def index(request):
                               context_instance=RequestContext(request))
 
 @login_required_config
-def word(request, keyword, n):
+def word(request, keyword, n, keyword_english, n_en):
     """View of a single keyword that may have more than one sign"""
 
     n = int(n)
+    # Added this in try-block because I am not sure where this method is used from. Just added the keyword_english
+    # stuff here, which may not always be sent.
+    try:
+        n_en = int(n_en)
+    except:
+        pass
 
     if request.GET.has_key('feedbackmessage'):
         feedbackmessage = request.GET['feedbackmessage']
@@ -51,12 +57,20 @@ def word(request, keyword, n):
         feedbackmessage = False
 
     word = get_object_or_404(Keyword, text=keyword)
+    word_en = get_object_or_404(KeywordEnglish, text=keyword_english)
 
+    # TODO: Implement / check these KeywordEnglish features
     # returns (matching translation, number of matches)
     (trans, total) = word.match_request(request, n, )
 
+    # returns (matching English translation, number of matches)
+    (trans_en, total_en) = word.match_request_english(request, n_en, )
+
     # and all the keywords associated with this sign
     allkwds = trans.gloss.translation_set.all()
+
+    # and all the keywords associated with this sign
+    allkwds_en = trans_en.gloss.translationenglish_set.all()
 
     videourl = trans.gloss.get_video_url()
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, videourl)):
@@ -93,11 +107,14 @@ def word(request, keyword, n):
 
     return render_to_response("dictionary/word.html",
                               {'translation': trans.translation.text.encode('utf-8'),
+                               # Added this to support English translations
+                               'translationenglish:': trans_en.translation_english.text.encode('utf-8'),
                                'viewname': 'words',
                                'definitions': trans.gloss.definitions(),
                                # TODO: duplicate key
                                'gloss': trans.gloss,
                                'allkwds': allkwds,
+                               'allkwds_en': allkwds_en,
                                'n': n,
                                'total': total,
                                'matches': range(1, total + 1),
@@ -150,6 +167,13 @@ def gloss(request, idgloss):
     else:
         trans = allkwds[0]
 
+    # and all the English keywords associated with this sign
+    allkwds_en = gloss.translationenglish_set.all()
+    if len(allkwds_en) == 0:
+        trans_en = TranslationEnglish()
+    else:
+        trans_en = allkwds[0]
+
     videourl = gloss.get_video_url()
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, videourl)):
         videourl = None
@@ -191,8 +215,10 @@ def gloss(request, idgloss):
 
     return render_to_response("dictionary/word.html",
                               {'translation': trans,
+                               'translationenglish': trans_en,
                                'definitions': gloss.definitions(),
                                'allkwds': allkwds,
+                               'allkwds_en': allkwds_en,
                                'lastmatch': lastmatch,
                                'videofile': videourl,
                                'viewname': word,

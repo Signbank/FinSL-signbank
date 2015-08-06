@@ -116,6 +116,10 @@ def update_gloss(request, glossid):
 
             return update_keywords(gloss, field, value)
 
+        elif field == 'keywords_english':
+
+            return update_keywords_english(gloss, field, value)
+
         elif field.startswith('relationforeign'):
 
             return update_relationtoforeignsign(gloss, field, value)
@@ -257,7 +261,7 @@ def update_gloss(request, glossid):
 
         return HttpResponse(newvalue, {'content-type': 'text/plain'})
 
-
+# Updates keywords for the 1st language
 def update_keywords(gloss, field, value):
     """Update the keyword field"""
 
@@ -276,6 +280,28 @@ def update_keywords(gloss, field, value):
         [t.translation.text for t in gloss.translation_set.all()])
 
     return HttpResponse(newvalue, {'content-type': 'text/plain'})
+
+# Updates English keywords
+# The reason this method is copied is to keep it simpler.
+def update_keywords_english(gloss, field, value):
+    """Update the keyword field"""
+
+    kwds = [k.strip() for k in value.split(',')]
+    # remove current keywords
+    current_trans = gloss.translationenglish_set.all()
+    # current_kwds = [t.translation for t in current_trans]
+    current_trans.delete()
+    # add new keywords
+    for i in range(len(kwds)):
+        (kobj, created) = KeywordEnglish.objects.get_or_create(text=kwds[i])
+        trans = TranslationEnglish(gloss=gloss, translation_english=kobj, index=i)
+        trans.save()
+
+    newvalue = ", ".join(
+        [t.translation_english.text for t in gloss.translationenglish_set.all()])
+
+    return HttpResponse(newvalue, {'content-type': 'text/plain'})
+
 
 
 def update_relation(gloss, field, value):

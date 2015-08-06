@@ -108,6 +108,14 @@
                  {% endfor %}
                  </p>
             </div>
+            <div id="keywords_english">
+                {# Translators: Keywords English #}
+                 <p><strong>{% blocktrans %}English Keywords:{% endblocktrans %}</strong>
+                 {% for kwd in allkwds_en %}
+                   {% ifequal translation_english kwd.translation_english.text %}<strong>{{ kwd.translation_english.text|safe }}</strong>{% else %}{{ kwd.translation_english.text|safe }}{% endifequal %}{% if not forloop.last %},{% endif %}
+                 {% endfor %}
+                 </p>
+            </div>
 
             <div id="feedback">
                 <ul>

@@ -8,12 +8,15 @@ from django.utils.translation import ugettext_lazy as _
 class KeywordAdmin(VersionAdmin):
     search_fields = ['^text']
 
-
 class TranslationInline(admin.TabularInline):
     model = Translation
     extra = 1
     raw_id_fields = ['translation']
 
+class TranslationEnglishInline(admin.TabularInline):
+    model = TranslationEnglish
+    extra = 1
+    raw_id_fields = ['translation_english']
 
 class RelationToOtherSignInline(admin.TabularInline):
     model = Relation
@@ -91,9 +94,8 @@ class GlossAdmin(VersionAdmin):
                                          'classes': ('collapse',)},),
                  ('Phonology', {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                            'relation_between_articulators', 'absolute_orientation_palm',
-                                           'absolute_orientation_fingers',
-                                           'relative_orientation_movement', 'relative_orientation_location',
-                                           'orientation_change',
+                                           'absolute_orientation_fingers', 'relative_orientation_movement',
+                                           'relative_orientation_location', 'orientation_change',
                                            'handshape_change', 'repeated_movement', 'alternating_movement',
                                            'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
                                            'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
@@ -110,7 +112,7 @@ class GlossAdmin(VersionAdmin):
     list_filter = [
         'language', 'dialect', SenseNumberListFilter, 'in_web_dictionary', 'strong_handshape']
     inlines = [RelationInline, RelationToForeignSignInline,
-               DefinitionInline, TranslationInline]
+               DefinitionInline, TranslationInline, TranslationEnglishInline]
 
 
 class RegistrationProfileAdmin(admin.ModelAdmin):
@@ -138,5 +140,7 @@ admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
 admin.site.register(Keyword, KeywordAdmin)
+# Add the same admin interface to KeywordEnglish
+admin.site.register(KeywordEnglish, KeywordAdmin)
 admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
