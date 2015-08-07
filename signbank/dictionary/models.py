@@ -1,4 +1,4 @@
-"""Models for the NGT database.
+"""Models for the Signbank dictionary database.
 
 These are refactored from the original database to 
 normalise the data and hopefully make it more
@@ -18,14 +18,10 @@ import json
 from collections import OrderedDict
 from django.utils.translation import ugettext_lazy as _
 from signbank.dictionary.choicelists import *
-
 # from signbank.video.models import GlossVideo
 
-# from models_legacy import Sign
-
-
 class Translation(models.Model):
-    """A Dutch translation of NGT signs"""
+    """A first language (Finnish) translation equivalent of a sign"""
 
     gloss = models.ForeignKey("Gloss")
     translation = models.ForeignKey("Keyword")
@@ -53,8 +49,9 @@ class Translation(models.Model):
         list_display = ['gloss', 'translation']
         search_fields = ['gloss__idgloss']
 
+
 class TranslationEnglish(models.Model):
-    """A Dutch translation of NGT signs"""
+    """English translation equivalent of a sign"""
 
     gloss = models.ForeignKey("Gloss")
     translation_english = models.ForeignKey("KeywordEnglish")
@@ -140,6 +137,7 @@ class Keyword(models.Model):
 
         return (trans, len(alltrans))
 
+
 class KeywordEnglish(models.Model):
     """A keyword that is a possible translation equivalent of a sign"""
 
@@ -196,6 +194,7 @@ class KeywordEnglish(models.Model):
             trans = alltrans[len(alltrans) - 1]
 
         return (trans, len(alltrans))
+
 
 DEFN_ROLE_CHOICES = (
     # Translators: DEFN_ROLE_CHOICES
@@ -283,17 +282,13 @@ class RelationToForeignSign(models.Model):
         search_fields = ['gloss__idgloss']
 
 
-# TODO: Remove all these choice lists
-
-
-
 class FieldChoice(models.Model):
     field = models.CharField(max_length=50)
     english_name = models.CharField(max_length=50)
     machine_value = models.IntegerField(unique=True)
 
     def __unicode__(self):
-        #return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
+        # return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
         return unicode(self.english_name)
 
     class Meta:
@@ -301,10 +296,9 @@ class FieldChoice(models.Model):
 
 
 # This method builds a list of choices from the database
-# TODO: Change this implementation to somewhere else
 def build_choice_list(field):
-    #choice_list = [('0', '-'), ('1', 'N/A')]
-    choice_list= []
+    # choice_list = [('0', '-'), ('1', 'N/A')]
+    choice_list = []
 
     # Try to look for fields in FieldName and choose choices from there
 
@@ -318,6 +312,7 @@ def build_choice_list(field):
     except OperationalError:
         pass
     return choice_list
+
 
 # This method gets choices from FieldChoice and returns them as a dict
 def get_choices(field):
@@ -333,6 +328,7 @@ def get_choices(field):
         pass
     return choice_list
 
+
 def get_choices_with_int(field):
     choice_list = []
     try:
@@ -345,6 +341,7 @@ def get_choices_with_int(field):
     except OperationalError:
         pass
     return choice_list
+
 
 class Gloss(models.Model):
     class Meta:
@@ -407,7 +404,6 @@ class Gloss(models.Model):
                 result.append((fname, getattr(self, field)))
 
         return result
-
 
     # Translators: Gloss models field: idgloss, verbose name
     idgloss = models.CharField(_("Gloss"), max_length=50,
@@ -756,7 +752,7 @@ minor or insignificant ways that can be ignored."""))
         else:
             return None
 
-        # TODO: Find out the mystery of this line, it is unreachable
+        # TODO: Find out the mystery of this line, it is unreachable, just like everything behind it
         video_with_gloss = self.get_video_gloss()
 
         try:
@@ -776,9 +772,7 @@ minor or insignificant ways that can be ignored."""))
     def get_video_url(self):
         """Return  the url of the video for this gloss which may be that of a homophone"""
 
-        return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
-
-        # TODO: Unreachable line
+        #return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
         video = self.get_video()
         if video != None:
             return video.get_absolute_url()
@@ -882,7 +876,7 @@ minor or insignificant ways that can be ignored."""))
                           'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
                           'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']:
             # Get the list of choices for this field
-            #li = self._meta.get_field(fieldname).choices
+            # li = self._meta.get_field(fieldname).choices
             li = get_choices(fieldname)
 
             # Sort the list
@@ -894,11 +888,11 @@ minor or insignificant ways that can be ignored."""))
             choice_lists[fieldname] = OrderedDict(reformatted_li)
 
         # Choice lists for other models
-        #choice_lists['morphology_role'] = [human_value for machine_value, human_value in
+        # choice_lists['morphology_role'] = [human_value for machine_value, human_value in
         #                                   build_choice_list('MorphologyType')]
         choice_lists['morphology_role'] = get_choices('MorphologyType')
         reformatted_morph_role = [('_' + str(value), text)
-                              for value, text in choice_lists['morphology_role']]
+                                  for value, text in choice_lists['morphology_role']]
         choice_lists['morphology_role'] = OrderedDict(reformatted_morph_role)
         # morphology_role
         return json.dumps(choice_lists)
@@ -956,6 +950,7 @@ class MorphologyDefinition(models.Model):
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
     def __unicode__(self):
-        #return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
+        # return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
         #    self.parent_gloss.idgloss)
-        return unicode(self.morpheme.idgloss + ' is ' + unicode(self.role) + ' of ' + unicode(self.parent_gloss.idgloss))
+        return unicode(
+            self.morpheme.idgloss + ' is ' + unicode(self.role) + ' of ' + unicode(self.parent_gloss.idgloss))

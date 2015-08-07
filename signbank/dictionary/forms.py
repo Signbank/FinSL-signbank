@@ -7,7 +7,7 @@ from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
 
-# TODO: Check what this is?
+# TODO: Remove these until a sane usecase is figured out
 # category choices are tag values that we'll restrict search to
 CATEGORY_CHOICES = (
     # Translators: These are CATEGORY_CHOICES

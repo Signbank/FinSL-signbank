@@ -94,7 +94,6 @@ class VideoPosterMixin(object):
 
 
 class Video(models.Model, VideoPosterMixin):
-
     """A video file stored on the site"""
 
     # video file name relative to MEDIA_ROOT
@@ -110,7 +109,6 @@ import shutil
 
 
 class GlossVideoStorage(FileSystemStorage):
-
     """Implement our shadowing video storage system"""
 
     def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
@@ -133,7 +131,6 @@ storage = GlossVideoStorage()
 
 
 class GlossVideo(models.Model, VideoPosterMixin):
-
     """A video that represents a particular idgloss"""
 
     videofile = models.FileField(

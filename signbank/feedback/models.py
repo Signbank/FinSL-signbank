@@ -339,7 +339,7 @@ class SignFeedback(models.Model):
         max_length=10, choices=STATUS_CHOICES, default='unread')
 
     def __unicode__(self):
-        #return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
+        # return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
         # Changed this, because if translation doesn't exist you can't get it.
         # Also this maybe doesn't have to be tied to a translation...
         return unicode(self.user) + " on " + unicode(self.date)

@@ -111,8 +111,7 @@ def word(request, keyword, n, keyword_english, n_en):
                                'translationenglish:': trans_en.translation_english.text.encode('utf-8'),
                                'viewname': 'words',
                                'definitions': trans.gloss.definitions(),
-                               # TODO: duplicate key
-                               'gloss': trans.gloss,
+                               #'gloss': trans.gloss,
                                'allkwds': allkwds,
                                'allkwds_en': allkwds_en,
                                'n': n,
@@ -127,7 +126,6 @@ def word(request, keyword, n, keyword_english, n_en):
                                'videofile': videourl,
                                'update_form': update_form,
                                'videoform': video_form,
-                               # TODO: duplicate key
                                'gloss': gloss,
                                'glosscount': glosscount,
                                'glossposn': glossposn,

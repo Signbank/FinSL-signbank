@@ -16,7 +16,6 @@ from tagging.models import Tag, TaggedItem
 
 
 class GlossListView(ListView):
-
     model = Gloss
     template_name = 'dictionary/admin_gloss_list.html'
     paginate_by = 500
@@ -47,7 +46,7 @@ class GlossListView(ListView):
     # noinspection PyInterpreter,PyInterpreter
     def render_to_csv_response(self, context):
 
-        if not self.request.user.has_perm('dictionary.export_csv'): # TODO: Check
+        if not self.request.user.has_perm('dictionary.export_csv'):
             raise PermissionDenied
 
         # Create the HttpResponse object with the appropriate CSV header.
@@ -56,7 +55,7 @@ class GlossListView(ListView):
             'Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
 
 
-#        fields = [f.name for f in Gloss._meta.fields]
+        #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
@@ -73,7 +72,8 @@ class GlossListView(ListView):
         writer = csv.writer(response)
         header = ['Signbank ID'] + [f.verbose_name for f in fields]
 
-        for extra_column in ['Languages', 'Dialects', 'Keywords', 'Morphology', 'Relations to other signs', 'Relations to foreign signs', ]:
+        for extra_column in ['Languages', 'Dialects', 'Keywords', 'Morphology', 'Relations to other signs',
+                             'Relations to foreign signs', ]:
             header.append(extra_column)
 
         writer.writerow(header)
@@ -143,12 +143,12 @@ class GlossListView(ListView):
 
         # print "QS:", len(qs)
 
-        get = self.request.GET # TODO: Check
+        get = self.request.GET  # TODO: Check
 
         if get.has_key('search') and get['search'] != '':
             val = get['search']
             query = Q(idgloss__istartswith=val) | \
-                Q(annotation_idgloss_jkl__istartswith=val)
+                    Q(annotation_idgloss_jkl__istartswith=val)
 
             if re.match('^\d+$', val):
                 query = query | Q(sn__exact=val)
@@ -191,10 +191,12 @@ class GlossListView(ListView):
                       'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
                       'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
-                      'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
+                      'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
+                      'alternating_movement',
                       'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'phonology_other',
                       'mouth_gesture', 'mouthing', 'phonetic_variation',
-                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'in_web_dictionary', 'is_proposed_new_sign']
+                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'in_web_dictionary',
+                      'is_proposed_new_sign']
 
         # Language and basic property filters
         vals = get.getlist('dialect', [])
@@ -257,7 +259,7 @@ class GlossListView(ListView):
         if get.has_key('nottags') and get['nottags'] != '':
             vals = get.getlist('nottags')
 
-           # print "NOT TAGS: ", vals
+            # print "NOT TAGS: ", vals
 
             tags = []
             for t in vals:
@@ -266,14 +268,13 @@ class GlossListView(ListView):
             # search is an implicit AND so intersection
             tqs = TaggedItem.objects.get_intersection_by_model(Gloss, tags)
 
-           # print "NOT", tags, len(tqs)
+            # print "NOT", tags, len(tqs)
             # exclude all of tqs from qs
             qs = [q for q in qs if q not in tqs]
 
-           # print "K :", len(qs)
+            # print "K :", len(qs)
 
         if get.has_key('relationToForeignSign') and get['relationToForeignSign'] != '':
-
             relations = RelationToForeignSign.objects.filter(
                 other_lang_gloss__icontains=get['relationToForeignSign'])
             potential_pks = [relation.gloss.pk for relation in relations]
@@ -293,7 +294,6 @@ class GlossListView(ListView):
                 qs = qs.exclude(pk__in=pks_for_glosses_with_relations)
 
         if get.has_key('relation') and get['relation'] != '':
-
             potential_targets = Gloss.objects.filter(
                 idgloss__icontains=get['relation'])
             relations = Relation.objects.filter(target__in=potential_targets)
@@ -316,7 +316,6 @@ class GlossListView(ListView):
             qs = qs.filter(pk__in=pks_for_glosses_with_correct_relation)
 
         if get.has_key('morpheme') and get['morpheme'] != '':
-
             potential_morphemes = Gloss.objects.filter(
                 idgloss__icontains=get['morpheme'])
             potential_morphdefs = MorphologyDefinition.objects.filter(
@@ -326,7 +325,6 @@ class GlossListView(ListView):
             qs = qs.filter(pk__in=potential_pks)
 
         if get.has_key('hasMorphemeOfType') and get['hasMorphemeOfType'] != '':
-
             morphdefs_with_correct_role = MorphologyDefinition.objects.filter(
                 role__exact=get['hasMorphemeOfType'])
             pks_for_glosses_with_morphdefs_with_correct_role = [
@@ -350,7 +348,6 @@ class GlossListView(ListView):
             qs = qs.filter(pk__in=pks_for_glosses_with_these_definitions)
 
         if get.has_key('definitionContains') and get['definitionContains'] != '':
-
             definitions_with_this_text = Definition.objects.filter(
                 text__icontains=get['definitionContains'])
 
@@ -360,12 +357,11 @@ class GlossListView(ListView):
                 definition.gloss.pk for definition in definitions_with_this_text]
             qs = qs.filter(pk__in=pks_for_glosses_with_these_definitions)
 
-       # print "Final :", len(qs)
+            # print "Final :", len(qs)
         return qs
 
 
 class GlossDetailView(DetailView):
-
     model = Gloss
     context_object_name = 'gloss'
 
@@ -431,13 +427,13 @@ def gloss_ajax_complete(request, prefix):
     as a JSON structure suitable for typeahead."""
 
     query = Q(idgloss__istartswith=prefix) | \
-        Q(annotation_idgloss_jkl__istartswith=prefix) | \
-        Q(sn__startswith=prefix)
+            Q(annotation_idgloss_jkl__istartswith=prefix) | \
+            Q(sn__startswith=prefix)
     qs = Gloss.objects.filter(query)
 
     result = []
     for g in qs:
         result.append({'idgloss': g.idgloss, 'annotation_idgloss_jkl':
-                       g.annotation_idgloss_jkl, 'sn': g.sn, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
+            g.annotation_idgloss_jkl, 'sn': g.sn, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})

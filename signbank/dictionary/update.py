@@ -59,7 +59,6 @@ def add_gloss(request):
                 return render_to_response('dictionary/warning.html', {'warning': _('Gloss HKI not unique')},
                                           context_instance=RequestContext(request))
 
-
         if form.is_valid():
 
             gloss = form.save()
@@ -101,7 +100,7 @@ def update_gloss(request, glossid):
         # validate
         # field is a valid field
         # value is a valid value for field
-        # TODO: Inspect these startswith parts, it can break the code if you edit some field names.
+        # NOTICE: if you edit some field names, it can break things. Some fiels are checked with startswith!
         if field == 'deletegloss':
             if value == 'confirmed':
                 # delete the gloss and redirect back to gloss list
@@ -236,30 +235,27 @@ def update_gloss(request, glossid):
                 if not isinstance(value, bool):
 
                     f = Gloss._meta.get_field(field)
-
-                    # TODO: Look into this to fix the representation of FieldChoice
-                    # for choice fields we want to return the 'display' version of
-                    # the value
-
+                    # for choice fields we want to return the 'display' version of the value
                     # Try to use get_choices to get correct choice names for FieldChoices
                     # If it doesn't work, go to exception and get flatchoices
                     try:
-                        #valdict = dict(f.get_choices(include_blank=False))
+                        # valdict = dict(f.get_choices(include_blank=False))
                         valdict = dict(get_choices_with_int(field))
                     except:
                         valdict = dict(f.flatchoices)
 
                     # Some fields take ints
-                    #if valdict.keys() != [] and type(valdict.keys()[0]) == int:
+                    # if valdict.keys() != [] and type(valdict.keys()[0]) == int:
                     try:
                         newvalue = valdict.get(int(value), value)
-                    #else:
+                    # else:
                     except:
                         # either it's not an int or there's no flatchoices
                         # so here we use get with a default of the value itself
                         newvalue = valdict.get(value, value)
 
         return HttpResponse(newvalue, {'content-type': 'text/plain'})
+
 
 # Updates keywords for the 1st language
 def update_keywords(gloss, field, value):
@@ -281,6 +277,7 @@ def update_keywords(gloss, field, value):
 
     return HttpResponse(newvalue, {'content-type': 'text/plain'})
 
+
 # Updates English keywords
 # The reason this method is copied is to keep it simpler.
 def update_keywords_english(gloss, field, value):
@@ -301,7 +298,6 @@ def update_keywords_english(gloss, field, value):
         [t.translation_english.text for t in gloss.translationenglish_set.all()])
 
     return HttpResponse(newvalue, {'content-type': 'text/plain'})
-
 
 
 def update_relation(gloss, field, value):
@@ -337,7 +333,8 @@ def update_relation(gloss, field, value):
             newvalue = unicode(target)
         else:
             # Translators: HttpResponseBadRequest
-            return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value, {'content-type': 'text/plain'})
+            return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value,
+                                          {'content-type': 'text/plain'})
     else:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, {'content-type': 'text/plain'})
@@ -355,7 +352,8 @@ def update_relationtoforeignsign(gloss, field, value):
         rel = RelationToForeignSign.objects.get(id=relid)
     except:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Bad RelationToForeignSign ID"), relid, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Bad RelationToForeignSign ID"), relid,
+                                      {'content-type': 'text/plain'})
 
     if not rel.gloss == gloss:
         # Translators: HttpResponseBadRequest
@@ -416,7 +414,6 @@ def gloss_from_identifier(value):
     # This regex looks from the Beginning of a string for IDGLOSS and then the id
     # For example: "CAMEL (10)", idgloss="CAMEL" and pk=10
     match = re.match('(.*) \((\d+)\)', value)
-
 
     if match:
         # print "MATCH: ", match
@@ -620,10 +617,10 @@ def update_morphology_definition(gloss, field, value):
         morph_def.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'morphology_definition_role':
-        #morph_def.role = value
+        # morph_def.role = value
         morph_def.role = FieldChoice.objects.get(machine_value=value)
         morph_def.save()
-        #newvalue = morph_def.get_role_display()
+        # newvalue = morph_def.get_role_display()
         newvalue = morph_def.role.english_name
     elif what == 'morphology_definition_morpheme':
 
@@ -634,7 +631,8 @@ def update_morphology_definition(gloss, field, value):
             newvalue = unicode(morpheme)
         else:
             # Translators: HttpResponseBadRequest
-            return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value, {'content-type': 'text/plain'})
+            return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value,
+                                          {'content-type': 'text/plain'})
     else:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, {'content-type': 'text/plain'})

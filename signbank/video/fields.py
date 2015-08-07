@@ -1,4 +1,3 @@
-
 from django.core.files.uploadedfile import UploadedFile
 from django.forms.utils import ValidationError
 from django import forms
@@ -21,7 +20,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class UploadedFLVFile(UploadedFile):
-
     """
     A file converted to FLV.
     """
@@ -50,7 +48,7 @@ class UploadedFLVFile(UploadedFile):
     def rename(self, location):
         """Rename (move) the file to a new location on disk"""
 
-        #debug("moving %s to %s (%s)" % (self.fullname, location, self._name))
+        # debug("moving %s to %s (%s)" % (self.fullname, location, self._name))
         # use fullname here because name has been clobbered by UploadedFile
         # need shutil.copy not os.rename because temp dir might be a different
         # device
@@ -69,7 +67,6 @@ class UploadedFLVFile(UploadedFile):
 
 
 class VideoUploadToFLVField(forms.FileField):
-
     """A custom form field that supports uploading video
     files and converting them to FLV (flash video) before 
     saving"""
@@ -169,10 +166,11 @@ class VideoUploadToFLVField(forms.FileField):
                 # Translators: Debug message
                 debug(_("Killing ffmpeg process"))
                 # Translators: Error message
-                errormsg = _("Conversion of video took too long.  This site is only able to host relatively short videos.")
+                errormsg = _(
+                    "Conversion of video took too long.  This site is only able to host relatively short videos.")
 
         status = process.poll()
-        #out,err = process.communicate()
+        # out,err = process.communicate()
 
         # Check if file exists and is > 0 Bytes
         try:

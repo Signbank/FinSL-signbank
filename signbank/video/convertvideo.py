@@ -2,12 +2,13 @@
 
 try:
     from django.conf import settings
+
     FFMPEG_PROGRAM = settings.FFMPEG_PROGRAM
     FFMPEG_OPTIONS = settings.FFMPEG_OPTIONS
 except:
     # TODO: This needs to point to the correct location
     FFMPEG_PROGRAM = "/Applications/ffmpegX.app/Contents/Resources/ffmpeg"
-    #FFMPEG_OPTIONS = ["-vcodec", "libx264", "-an", "-vpre", "hq", "-crf", "22", "-threads", "0"]
+    # FFMPEG_OPTIONS = ["-vcodec", "libx264", "-an", "-vpre", "hq", "-crf", "22", "-threads", "0"]
     FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
 import sys
@@ -113,7 +114,7 @@ def convert_video(sourcefile, targetfile, force=False):
 
     # TODO: Should we use startswith?
     if format.startswith("h264"):
-    # if format == "h264":
+        # if format == "h264":
         # just do a copy of the file
         shutil.copy(sourcefile, targetfile)
     else:
@@ -127,10 +128,11 @@ def convert_video(sourcefile, targetfile, force=False):
     problem was that 'h264 high + something' didn't match"""
     # TODO: This is a temporary fix, what are all the possible formats it returns? who knows?
     if format.startswith('h264'):
-    # if format == 'h264':
+        # if format == 'h264':
         return True
     else:
         return False
+
 
 if __name__ == '__main__':
     import sys
