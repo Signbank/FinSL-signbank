@@ -307,6 +307,7 @@ class SignFeedback(models.Model):
 
     # Added null=True, blank=True because there might be no translation for a Gloss
     translation = models.ForeignKey(Translation, editable=False, null=True, blank=True)
+    translation_english = models.ForeignKey(TranslationEnglish, editable=False, null=True, blank=True)
     # Translators: Question (sign feedback)
     comment = models.TextField(
         _(
@@ -338,7 +339,7 @@ class SignFeedback(models.Model):
         max_length=10, choices=STATUS_CHOICES, default='unread')
 
     def __unicode__(self):
-        # return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
+        #return unicode(self.translation.translation) + " by " + unicode(self.user) + " on " + unicode(self.date)
         # Changed this, because if translation doesn't exist you can't get it.
         # Also this maybe doesn't have to be tied to a translation...
         return unicode(self.user) + " on " + unicode(self.date)

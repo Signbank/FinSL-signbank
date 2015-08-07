@@ -185,14 +185,18 @@ def glossfeedback(request, glossid):
     # construct a translation so we can record feedback against it
     # really should have recorded feedback for a gloss, not a sign
     allkwds = gloss.translation_set.all()
+    allkwds_en = gloss.translationenglish_set.all()
 
     if len(allkwds) == 0:
-        # TODO: What is the purpose of this? You get nothing, then create nothing?
         trans = Translation()
     else:
         trans = allkwds[0]
+    if len(allkwds_en) == 0:
+        trans_en = TranslationEnglish()
+    else:
+        trans_en = allkwds_en[0]
 
-    return recordsignfeedback(request, trans, 1, len(allkwds))
+    return recordsignfeedback(request, trans, 1, len(allkwds), trans_en, 1, len(allkwds_en))
 
 
 # Feedback on individual signs
@@ -209,7 +213,7 @@ def signfeedback(request, keyword, n):
     return recordsignfeedback(request, trans, n, total)
 
 
-def recordsignfeedback(request, trans, n, total):
+def recordsignfeedback(request, trans, n, total, trans_en, n_en, total_en):
     """Do the work of recording feedback for a sign or gloss"""
 
     # get the page to return to from the get request
@@ -273,6 +277,9 @@ def recordsignfeedback(request, trans, n, total):
                               {'translation': trans,
                                'n': n,
                                'total': total,
+                               'translation_english': trans_en,
+                               'n_en': n_en,
+                               'total_en': total_en,
                                'feedback_form': feedback_form,
                                'valid': valid,
                                'sourcepage': sourcepage,
