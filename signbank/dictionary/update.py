@@ -419,16 +419,16 @@ def gloss_from_identifier(value):
 
 
     if match:
-        print "MATCH: ", match
+        # print "MATCH: ", match
         idgloss = match.group(1)
         pk = match.group(2)
-        print "INFO: ", idgloss, pk
+        # print "INFO: ", idgloss, pk
         # Try if target Gloss exists, if not, assign None to target, then it returns None
         try:
             target = Gloss.objects.get(pk=int(pk))
         except ObjectDoesNotExist:
             target = None
-        print "TARGET: ", target
+        # print "TARGET: ", target
         return target
     # If regex doesn't match, return None
     else:
