@@ -176,7 +176,7 @@ function configure_edit() {
      });                  
      $('.edit_relation_role').editable(edit_post_url, {
          type      : 'select',
-         data      : relation_role_choices
+         data      : choice_lists['morphology_role']
      }); 
      $('.edit_relation_target').editable(edit_post_url, {
          type      : 'glosstypeahead'

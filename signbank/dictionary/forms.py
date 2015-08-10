@@ -203,6 +203,8 @@ class RelationForm(forms.ModelForm):
     sourceid = forms.CharField(label=_('Source Gloss'))
     # Translators: RelationForm label
     targetid = forms.CharField(label=_('Target Gloss'))
+    # Note that to_field_name has to be unique!
+    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'), to_field_name='machine_value', empty_label=None, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
 
     class Meta:
         model = Relation

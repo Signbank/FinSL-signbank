@@ -321,9 +321,14 @@ def update_relation(gloss, field, value):
         rel.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'relationrole':
-        rel.role = value
+        #rel.role = value
+        try:
+            rel.role = FieldChoice.objects.get(machine_value=value)
+        except:
+            rel.role = value
         rel.save()
-        newvalue = rel.get_role_display()
+        #newvalue = rel.get_role_display()
+        newvalue = rel.role
     elif what == 'relationtarget':
 
         target = gloss_from_identifier(value)
