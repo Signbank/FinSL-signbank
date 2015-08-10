@@ -5,18 +5,17 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 *   ** Quick summary **
-    * This repository is for Finnish Signbank, a sign language Gloss database.
-    * Finnish Signbank is a fork of Dutch Signbank (https://github.com/Woseseltops/signbank).
-         * Dutch Signbank is a fork of Australian Signbank (https://bitbucket.org/stevecassidy/signbank).
-    * Signbank-fi uses Django's translation engine, so it should be fairly easy to translate to different languages.
+    * This is a repository for Signbank-fi, a sign language Gloss database.
+    * This version of Signbank is adjusted for the needs of Finnish sign language researchers.
+    * Signbank-fi is based on Dutch Signbank (https://github.com/Woseseltops/signbank), which is a fork of Australian Signbank (https://bitbucket.org/stevecassidy/signbank).
+    * Signbank-fi is easy to translate to various languages, it uses Django's translation engine paired with django-modeltranslation. 
     * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
 
 *   ** Version **
 
-Signbank-fi has not been released yet.
-When the first working version of Signbank-fi is working, the repository will be made public.
+    * Signbank-fi is currently in development.
 
-### How do I get set up? ###
+### How do I get Signbank-fi set up? ###
 
 *   ** Summary of set up **
 
@@ -37,11 +36,11 @@ Before you can get Signbank-fi working, you must change some paths in:
 
     See *requirements.txt*
 
-*   ** Database configuratio n**
+*   ** Database configuration **
 
 Django should make all the needed database configurations apart from setting up a database.
 
-    bin/develop.py migrate
+    python bin/develop.py migrate
 
 You can use sqlite3 for development
 
@@ -59,28 +58,35 @@ You can create new locales by:
 
     python bin/develop.py makemessages yourlocale
 
-This creates django.po file for the local you want. Write translations inside msgstr:
+This creates django.po file for the locale you chose. Write translations inside msgstr:
 
     msgstr ""
     For example: msgstr "My translation of the text"
 
 This is what the whole thing for one string/text looks like:
 
-    \#. Translators: Button
-    \#: signbank/dictionary/templates/dictionary/gloss_detail.html:78
+```
+#!bash
+
+    #. Translators: Button
+    #: signbank/dictionary/templates/dictionary/gloss_detail.html:78
     msgid "Delete Sign"
     msgstr ""
+
+```
+
 
 
 After you have written your translations, do:
 
     python bin/develop.py compilemessages yourlocale
 
-This will compile the translations you wrote into django.po to django.mo
+This will compile the translations you wrote into django.po to django.mo file.
 
 ### Contribution guidelines ###
 
 This repository might not be actively maintained and that makes contribution a little harder.
+If you want to contribute to the project, contact the repository administrator or University of Jyväskylä's Sign language centre.
 
 * Writing tests
 
