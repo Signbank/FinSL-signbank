@@ -110,7 +110,7 @@ class GlossListView(ListView):
             row.append(", ".join(trans))
 
             # get morphology
-            morphemes = [morpheme.role for morpheme in MorphologyDefinition.objects.filter(
+            morphemes = [unicode(morpheme) for morpheme in MorphologyDefinition.objects.filter(
                 parent_gloss=gloss)]
             row.append(", ".join(morphemes))
 
