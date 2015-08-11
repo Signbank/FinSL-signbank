@@ -237,7 +237,7 @@ class Language(models.Model):
     class Meta:
         ordering = ['name']
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     description = models.TextField()
 
     def __unicode__(self):
@@ -251,7 +251,7 @@ class Dialect(models.Model):
         ordering = ['language', 'name']
 
     language = models.ForeignKey(Language)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     description = models.TextField()
 
     def __unicode__(self):
