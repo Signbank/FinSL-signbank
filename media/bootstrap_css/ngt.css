@@ -13,37 +13,42 @@ html {
   /* background-image: url(images/ngt/black_05.gif); */
 }
 
- #header {
-		/* background-image: url(images/ngt/black_02.gif); */
-        padding: 0;
-        background: #B82B22;
-        height: 110px;
-        clear: both;
-        position: relative;
-        margin: 0px;
+#header {
+    /* background-image: url(images/ngt/black_02.gif); */
+    padding-left: 1em;
+    padding-right: 1em;
+    background: #2980b9;
+    height: 110px;
+    clear: both;
+    position: relative;
+    margin: 0px;
 }
 
 #header h1 {
-        height: 110px;
-        width: 759px;
-        /* background-image: url(./images/ngt/ngt-header.png); */
-        background-position: 20px 20px;
-        background-repeat: no-repeat;   
-        /* text-indent: -9000px; */
-        margin: 0px;
-        
+    float: left;
 }
 
 #logoholder {
-    background-image: url(./images/ngt/jy_text_500.png), url(./images/ngt/kl-logo-fi.png);
+    float: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#logojy {
+    background-image: url(./images/ngt/jy_text_500.png);
     background-repeat: no-repeat;
-    background-position: left top, right top;
-    /*background-position: 20px 20px;*/
-	width: 365px;
-    height: 110px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
+    width: 167px;
+    height: 95px;
+    float: left;
+    margin-right: 1em;
+}
+
+#logokl {
+    background-image: url(./images/ngt/kl-logo-fi.png);
+    background-repeat: no-repeat;
+    width: 227px;
+    height: 85px;
+    float: right;
 }
 
 /* superfish menu styling - background image is assumed 26px high */

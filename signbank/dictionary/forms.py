@@ -41,6 +41,9 @@ class GlossModelForm(forms.ModelForm):
 class GlossCreateForm(forms.ModelForm):
     """Form for creating a new gloss from scratch"""
 
+    # TODO: Change add gloss things here
+    #idgloss = forms.CharField(label=_('ID Gloss'), widget=forms.TextInput(attrs={'class': 'control-label'}))
+
     class Meta:
         model = Gloss
         fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
