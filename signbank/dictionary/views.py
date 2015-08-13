@@ -40,7 +40,8 @@ def index(request):
                               context_instance=RequestContext(request))
 
 @login_required_config
-def word(request, keyword, n, keyword_english, n_en):
+# Default values for keyword_english and n_en are None
+def word(request, keyword, n, keyword_english=None, n_en=None):
     """View of a single keyword that may have more than one sign"""
 
     n = int(n)
@@ -57,26 +58,30 @@ def word(request, keyword, n, keyword_english, n_en):
         feedbackmessage = False
 
     word = get_object_or_404(Keyword, text=keyword)
-    word_en = get_object_or_404(KeywordEnglish, text=keyword_english)
+    # TODO: Enable?
+    # word_en = get_object_or_404(KeywordEnglish, text=keyword_english)
 
     # TODO: Implement / check these KeywordEnglish features
     # returns (matching translation, number of matches)
     (trans, total) = word.match_request(request, n, )
 
     # returns (matching English translation, number of matches)
-    (trans_en, total_en) = word.match_request_english(request, n_en, )
+    # TODO: enable?
+    # (trans_en, total_en) = word.match_request_english(request, n_en, )
 
     # and all the keywords associated with this sign
     allkwds = trans.gloss.translation_set.all()
 
     # and all the keywords associated with this sign
-    allkwds_en = trans_en.gloss.translationenglish_set.all()
+    # TODO: enable?
+    # allkwds_en = trans_en.gloss.translationenglish_set.all()
 
     videourl = trans.gloss.get_video_url()
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, videourl)):
         videourl = None
 
-    trans.homophones = trans.gloss.relation_sources.filter(role='homophone')
+    # TODO: Currently disabled, TEMPORARILY, because was causing problems testing something else
+    # trans.homophones = trans.gloss.relation_sources.filter(role='homophone')
 
     # work out the number of this gloss and the total number
     gloss = trans.gloss
@@ -108,12 +113,14 @@ def word(request, keyword, n, keyword_english, n_en):
     return render_to_response("dictionary/word.html",
                               {'translation': trans.translation.text.encode('utf-8'),
                                # Added this to support English translations
-                               'translationenglish:': trans_en.translation_english.text.encode('utf-8'),
+                               # TODO: disabled temporarily
+                               # 'translationenglish:': trans_en.translation_english.text.encode('utf-8'),
                                'viewname': 'words',
                                'definitions': trans.gloss.definitions(),
-                               #'gloss': trans.gloss,
+                               'gloss': trans.gloss,
                                'allkwds': allkwds,
-                               'allkwds_en': allkwds_en,
+                               # TODO: disabled temporarily
+                               # 'allkwds_en': allkwds_en,
                                'n': n,
                                'total': total,
                                'matches': range(1, total + 1),
@@ -126,7 +133,7 @@ def word(request, keyword, n, keyword_english, n_en):
                                'videofile': videourl,
                                'update_form': update_form,
                                'videoform': video_form,
-                               'gloss': gloss,
+                               #'gloss': gloss,
                                'glosscount': glosscount,
                                'glossposn': glossposn,
                                'feedback': True,

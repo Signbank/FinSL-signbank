@@ -143,12 +143,15 @@ class GlossListView(ListView):
 
         # print "QS:", len(qs)
 
-        get = self.request.GET  # TODO: Check
+        get = self.request.GET
 
         if get.has_key('search') and get['search'] != '':
             val = get['search']
+            # It seems that you are supposed to add the searchable fields here
+            # TODO: Add all needed search fields here
             query = Q(idgloss__istartswith=val) | \
-                    Q(annotation_idgloss_jkl__istartswith=val)
+                    Q(annotation_idgloss_jkl__istartswith=val) | \
+                    Q(annotation_idgloss_hki__istartswith=val)
 
             if re.match('^\d+$', val):
                 query = query | Q(sn__exact=val)
@@ -426,6 +429,7 @@ def gloss_ajax_complete(request, prefix):
     """Return a list of glosses matching the search term
     as a JSON structure suitable for typeahead."""
 
+    # TODO: See where this is used, is it safe to add more things here
     query = Q(idgloss__istartswith=prefix) | \
             Q(annotation_idgloss_jkl__istartswith=prefix) | \
             Q(sn__startswith=prefix)
