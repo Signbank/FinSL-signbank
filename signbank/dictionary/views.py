@@ -41,6 +41,7 @@ def index(request):
 
 @login_required_config
 # Default values for keyword_english and n_en are None
+# n is the amount of hits we get for one keyword
 def word(request, keyword, n, keyword_english=None, n_en=None):
     """View of a single keyword that may have more than one sign"""
 

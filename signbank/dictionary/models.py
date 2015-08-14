@@ -775,7 +775,8 @@ minor or insignificant ways that can be ignored."""))
         #return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
         video = self.get_video()
         if video != None:
-            return video.get_absolute_url()
+            # return video.get_absolute_url()
+            return self.get_absolute_url()
         else:
             return ""
 
