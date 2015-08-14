@@ -317,7 +317,7 @@
             <tr><th>{% blocktrans %}Language:{% endblocktrans %}</th><td class='edit edit_language' id='language'>{% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
             {# Translators: Information about a Gloss #}
             <tr><th>{% blocktrans %}Dialect:{% endblocktrans %}</th><td class='edit edit_dialect' id='dialect'>{% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
-            <tr><th>{% blocktrans %}URL:{% endblocktrans %}</th><td class='edit edit_url' id='url_field'><a id='urlout' href="{{ gloss.url_field }}" target="_blank">{{ gloss.url_field }}</a></td></tr>
+            <tr><th>{% blocktrans %}URL:{% endblocktrans %}</th><td class='edit edit_url' id='url_field'>{% if gloss.url_field %}<a id='urlout' href="{{ gloss.url_field }}" target="_blank">{{ gloss.url_field }}</a>{% endif %}</td></tr>
         </table>
 			 
     {% if perms.dictionary.view_advanced_properties %}
