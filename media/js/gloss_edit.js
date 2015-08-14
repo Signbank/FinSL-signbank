@@ -138,7 +138,11 @@ function configure_edit() {
      $('.edit_area').editable(edit_post_url, { 
          type      : 'textarea'
      });
-     $('.edit_role').editable(edit_post_url, { 
+     $('.edit_url').editable(edit_post_url, {
+         type      : 'text',
+         data      : $('#urlout').attr('href')
+     });
+     $('.edit_role').editable(edit_post_url, {
          type      : 'select',
          data      : definition_role_choices
      });

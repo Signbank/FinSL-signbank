@@ -457,6 +457,9 @@ minor or insignificant ways that can be ignored."""))
     annotation_comments = models.CharField(
         _("Annotation comments"), max_length=50, blank=True)
 
+    # Translators: Gloss models field: url
+    url_field = models.URLField(_("URL"), max_length=200, blank=True, unique=False)
+
     ########
 
     # One or more regional dialects that this gloss is used in
