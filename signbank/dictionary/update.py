@@ -13,6 +13,7 @@ import os
 import shutil
 import re
 
+from signbank.video.models import GlossVideo
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from django.utils.translation import ugettext_lazy as _
@@ -84,6 +85,8 @@ def update_gloss(request, glossid):
     if request.method == "POST":
 
         gloss = get_object_or_404(Gloss, id=glossid)
+        old_idgloss = unicode(gloss)
+
 
         field = request.POST.get('id', '')
         value = request.POST.get('value', '')
@@ -253,6 +256,21 @@ def update_gloss(request, glossid):
                         # either it's not an int or there's no flatchoices
                         # so here we use get with a default of the value itself
                         newvalue = valdict.get(value, value)
+
+            # If field is idgloss and if the value has changed
+            # Then change the filename on system and in glossvideo.videofile
+            if field == 'idgloss' and newvalue != old_idgloss:
+                try:
+                    glossvideo = GlossVideo.objects.get(gloss=gloss)
+                    new_path = 'glossvideo/' + unicode(gloss.idgloss[:2]) + '/' + \
+                           unicode(gloss) + '-' + unicode(gloss.pk) + '.mp4'
+                    new_path_full = settings.MEDIA_ROOT + '/' + new_path
+                    os.rename(glossvideo.videofile.path, new_path_full)
+                    glossvideo.videofile.name = new_path
+                    glossvideo.save()
+                except:
+                    #gloss.idgloss = old_idgloss
+                    pass
 
         return HttpResponse(newvalue, {'content-type': 'text/plain'})
 
