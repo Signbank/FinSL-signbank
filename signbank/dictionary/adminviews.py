@@ -177,6 +177,10 @@ class GlossListView(ListView):
             val = get['keyword']
             qs = qs.filter(translation__translation__text__istartswith=val)
 
+        if get.has_key('keyword_eng') and get['keyword_eng'] != '':
+            val = get['keyword_eng']
+            qs = qs.filter(translationenglish__translation_english__text__istartswith=val)
+
         if get.has_key('in_web_dictionary') and get['in_web_dictionary'] != 'unspecified':
             val = get['in_web_dictionary'] == 'yes'
             qs = qs.filter(in_web_dictionary__exact=val)

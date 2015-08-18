@@ -202,8 +202,8 @@ SIGN_NAVIGATION = False
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
 
-ADMIN_RESULT_FIELDS = ['annotation_idgloss_jkl', 'annotation_idgloss_jkl_en','annotation_idgloss_hki', 'annotation_idgloss_hki_en',
-                       'handedness', 'strong_handshape', 'weak_handshape', 'location']
+ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en','annotation_idgloss_hki', 'annotation_idgloss_hki_en',
+                       'annotation_comments']
 
 
 # location and URL for uploaded files

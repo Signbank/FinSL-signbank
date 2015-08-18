@@ -396,9 +396,12 @@ function clearForm(myFormElement) {
 
            {# It seems like this if-clause inserts translation equivalents in the gloss list #}
            {# The number in the forloop counter means where to insert the table title for these fields #}
-           {% if forloop.counter == 4 %}
-               {# This inserts the desired name for the table label #}
-               <th>{{ name }}</th><th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
+           {% if forloop.counter == 5 %}
+               {# This inserts the desired name for the table label - translation equivalents #}
+               <th>{{ name }}</th>
+               <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
+               {# This inserts the desired name for the table label - translation equivalents in english #}
+               <th>{% blocktrans %}Translation equivalents in English{% endblocktrans %}</th>
 		   {% else %}
                <th>{{ name }}</th>
 		   {% endif %}
@@ -416,15 +419,31 @@ function clearForm(myFormElement) {
                     <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
 
                 {# This forloop.counter adds links to desired columns #}
-                {% elif forloop.counter == 3 %}
-                    <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
+                {# REMOVE COMMENTS if you want to enable these links #}
+                {# {% elif forloop.counter == 2 %} #}
+                    {#<td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>#}
 
                 {# This forloop.counter adds regular values, and then adds after them translation equiv values #}
-                {% elif forloop.counter == 4 %}
+                {% elif forloop.counter == 5 %}
                     <td>{{ value }}</td>
                     <td>
                     {% for translation in gloss.translation_set.all %}
-                        {{ translation.translation }}
+                        {# Here we set a comma after all items except the last one #}
+                        {% if forloop.last %}
+                            {{ translation.translation }}
+                        {% else %}
+                            {{ translation.translation }},
+                        {% endif %}
+                    {% endfor %}
+                    </td>
+                    <td>
+                    {% for translationenglish in gloss.translationenglish_set.all %}
+                        {# Here we set a comma after all items except the last one #}
+                        {% if forloop.last %}
+                            {{ translationenglish.translation_english }}
+                        {% else %}
+                            {{ translationenglish.translation_english }},
+                        {% endif %}
                     {% endfor %}
                     </td>
 

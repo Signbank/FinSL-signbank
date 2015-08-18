@@ -124,6 +124,8 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     keyword = forms.CharField(label=_('Translations'))
     # Translators: GlossSearchForm label
+    keyword_eng = forms.CharField(label=_('Translations English'))
+    # Translators: GlossSearchForm label
     hasvideo = forms.ChoiceField(label=_('Has Video'), choices=YESNOCHOICES)
     # Translators: GlossSearchForm label
     defspublished = forms.ChoiceField(
