@@ -53,7 +53,7 @@
             </a>
             {% endif %}
             {# Translators: Sign x of n(amount) #}
-            <button class='btn navbar-btn'>{% blocktrans %}Sign {{glossposn}} of {{glosscount}} in the NGT Dictionary{% endblocktrans %}</button>
+            <button class='btn navbar-btn'>{% blocktrans %}Sign {{glossposn}} of {{glosscount}} in the dictionary{% endblocktrans %}</button>
             
             {% if navigation.next %}
             {# Translators: Navigation - next #}
@@ -667,7 +667,7 @@
           <th style='width:3em'>{% blocktrans %}Index{% endblocktrans %}</th>
           {# Translators:  #}
           <th style='width:10em'>{% blocktrans %}Type{% endblocktrans %}</th>
-          <th>Text</th>
+          <th>{% blocktrans %}Text{% endblocktrans %}</th>
       </tr>
     {% for role in roles %}
 
