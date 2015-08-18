@@ -1459,7 +1459,7 @@ msgstr ""
 #. max_length=5)
 #: signbank/dictionary/models.py:636
 msgid "Named Entity"
-msgstr ""
+msgstr "Nimetty kohde"
 
 #. Translators: Gloss models field: semantic_field, verbose name
 #. semantic_field = models.CharField(_("Semantic Field"), choices=build_choice_list("semantic_field"), null=True,
@@ -1467,7 +1467,7 @@ msgstr ""
 #. max_length=5)
 #: signbank/dictionary/models.py:643
 msgid "Semantic Field"
-msgstr ""
+msgstr "Semanttinen kenttä"
 
 #: signbank/dictionary/models.py:650
 msgid "Number of Occurrences"
@@ -1666,25 +1666,25 @@ msgstr "Anna palautetta tästä Glossista"
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:149
 #: signbank/dictionary/templates/dictionary/word.html:131
 msgid "Report a missing sign"
-msgstr ""
+msgstr "Ilmoita puuttuva viittoma"
 
 #. Translators:
 #. Translators: Provide feedback about the site in general
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:151
 #: signbank/dictionary/templates/dictionary/word.html:133
 msgid "Provide general site feedback"
-msgstr ""
+msgstr "Anna palautetta sivustosta"
 
 #. Translators: Upload/Add new video to Signbank
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:161
 msgid "Upload New Video"
-msgstr ""
+msgstr "Lähetä uusi video"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:163
 #, python-format
 msgid "We have %(gloss.count_videos)s videos for this sign."
-msgstr ""
+msgstr "Tälle viittomalle on %(gloss.count_videos)s videota."
 
 #. Translators: Submit button
 #. Translators: Submit button
@@ -1693,19 +1693,20 @@ msgstr ""
 #: signbank/dictionary/templates/dictionary/update_video.html:106
 #: signbank/video/forms.py:17
 msgid "Upload Video"
-msgstr ""
+msgstr "Lähetä video"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:183
 msgid "Delete/Revert Video"
-msgstr ""
+msgstr "Poista/Palauta video"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:187
 msgid ""
 "This will delete the most recent upload and restore the most recent earlier "
 "version."
-msgstr ""
+msgstr "Tämä toiminto poistaa uusimman videon ja palauttaa sitä edellisen "
+"version."
 
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:189
@@ -1940,7 +1941,7 @@ msgstr "Lähetä"
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/import_csv.html:24
 msgid "The following changes were detected:"
-msgstr ""
+msgstr "Seuraavat muutokset havaittiin:"
 
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/import_csv.html:29
@@ -1954,12 +1955,12 @@ msgstr ""
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/import_csv.html:35
 msgid "Make changes"
-msgstr ""
+msgstr "Tee muutoksia"
 
 #. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/import_csv.html:41
 msgid "Changes are live."
-msgstr ""
+msgstr "Muutokset ovat voimassa."
 
 #. Translators: Welcome message
 #: signbank/dictionary/templates/dictionary/index.html:7
@@ -1978,28 +1979,31 @@ msgid ""
 "     you can search for a sign using a Dutch translation in the search box\n"
 "     above, or browse words starting with any letter below."
 msgstr ""
+"Tervetuloa %(language)s SignBankin viittomahakuun. Täällä\n"
+"     voit etsiä viittomaa kirjoittamalla käännösvastineen hakuruutuun\n"
+"     yläpuolella, tai voit selata sanoja jotka alkavat valitsemallasi kirjaimella."
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:30
 msgid "There is no exact match to the word you typed."
-msgstr ""
+msgstr "Hakemaasi sanaa ei löydy."
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:33
 msgid "There are"
-msgstr ""
+msgstr "Täällä on"
 
 #: signbank/dictionary/templates/dictionary/search_result.html:34
 msgid "three"
-msgstr ""
+msgstr "kolme"
 
 #: signbank/dictionary/templates/dictionary/search_result.html:34
 msgid "two"
-msgstr ""
+msgstr "kaksi"
 
 #: signbank/dictionary/templates/dictionary/search_result.html:35
 msgid "main reasons why there may be no match:"
-msgstr ""
+msgstr "syytä sille miksei haulle löytynyt vastineita:"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:38
@@ -2008,6 +2012,7 @@ msgid ""
 "There really is no %(language)s sign in the database for which that word is "
 "an good translation"
 msgstr ""
+"%(language)s viittomaa ei löydy tietokannasta, jolle sana olisi hyvä käännös."
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:41
@@ -2015,16 +2020,18 @@ msgid ""
 "You have mis-typed the word or you have added unnecessary word endings. "
 "Follow these search tips:"
 msgstr ""
+"Olet kirjoittanut sanan väärin tai olet lisännyt ylimääräisiä päätteitä. "
+"Noudata näitä hakuvinkkejä:"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:44
 msgid "type only the first few letters of a word"
-msgstr ""
+msgstr "kirjoita vain sanan ensimmäiset kirjaimet"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:47
 msgid "type words with no word endings like ‘-en’, ‘-end’, or ‘-t’."
-msgstr ""
+msgstr "älä käytä sanassa sijapäätteitä."
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:51
@@ -2033,7 +2040,8 @@ msgid ""
 "The match is blocked in the public view of %(language)s Signbank because the "
 "word/sign is\n"
 "            obscene or offensive in Dutch or %(language)s, or both."
-msgstr ""
+msgstr "Hakutulosta ei voida näyttää julkisessa näkymässä %(language)s "
+"Signbankissa, koska sana on epäsiveellinen tai loukkaava suomenkielessä tai %(language)s."
 
 #: signbank/dictionary/templates/dictionary/search_result.html:52
 msgid ""
@@ -2058,12 +2066,13 @@ msgid ""
 "There is one word that fully or partially match your query. Please select "
 "the word below."
 msgstr ""
+"Yksi sana vastaa hakuasi osittain tai kokonaan. Valitse sana alapuolelta."
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:69
 #, python-format
 msgid "There are %(wordcount)s words that fully or partially match your query."
-msgstr ""
+msgstr "Löytyi %(wordcount)s sanaa jotka vastaavat hakuasi."
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/search_result.html:76
@@ -2193,24 +2202,18 @@ msgstr ""
 
 #. Translators: Keywords English
 #: signbank/dictionary/templates/dictionary/word.html:113
-#, fuzzy
-#| msgid "Lost Password"
 msgid "English Keywords:"
-msgstr "Salasana unohtunut"
+msgstr "Englanninkieliset käännösvastineet"
 
 #. Translators: Header4
 #: signbank/dictionary/templates/dictionary/word.html:140
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign Distribution"
-msgstr "Kirjaudu sisään"
+msgstr "Viittoman levinneisyys"
 
 #. Translators: Header2
 #: signbank/dictionary/templates/dictionary/word.html:153
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign Definition"
-msgstr "Kirjaudu sisään"
+msgstr "Viittoman määritelmä"
 
 #. Translators: Header2
 #: signbank/dictionary/templates/mobile/dictionary/index.html:6
@@ -2233,174 +2236,150 @@ msgstr ""
 
 #. Translators: warning message in Add Gloss
 #: signbank/dictionary/update.py:39
-#, fuzzy
-#| msgid "Gloss JKL (Eng)"
 msgid "Gloss not unique"
-msgstr "Glossi JKL (Eng)"
+msgstr "Glossi ei ole uniikki"
 
 #. Translators: Warning message in Add Gloss
 #: signbank/dictionary/update.py:45
 msgid "Missing JKL or HKI Gloss"
-msgstr ""
+msgstr "JKL tai HKI Glossi puuttuu"
 
 #. Translators: warning message in Add Gloss
 #: signbank/dictionary/update.py:53
-#, fuzzy
-#| msgid "Gloss JKL (Eng)"
 msgid "Gloss JKL not unique"
-msgstr "Glossi JKL (Eng)"
+msgstr "Glossi JKL ei ole uniikki"
 
 #. Translators: warning message in Add Gloss
 #: signbank/dictionary/update.py:60
-#, fuzzy
-#| msgid "Gloss HKI (Eng)"
 msgid "Gloss HKI not unique"
-msgstr "Glossi HKI (Eng)"
+msgstr "Glossi HKI ei ole uniikki"
 
 #. Translators: HttpResponseForbidden for update_gloss
 #: signbank/dictionary/update.py:83
 msgid "Gloss Update Not Allowed"
-msgstr ""
+msgstr "Glossin päivittäminen ei ole sallittua"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:150
-#, fuzzy
-#| msgid "Related Language"
 msgid "Uknown Language"
-msgstr "Liittyvä kieli"
+msgstr "Tuntematon kieli"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:165
-#, fuzzy
-#| msgid "Unknown"
 msgid "Unknown Dialect"
-msgstr "Tuntematon"
+msgstr "Tuntematon murre"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:180
 msgid "SN value must be integer"
-msgstr ""
+msgstr "SN arvon täytyy olla kokonaisluku"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:186
 msgid "SN value already taken for gloss"
-msgstr ""
+msgstr "SN arvo on jo käytössä"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:208
-#, fuzzy
-#| msgid "Unknown"
 msgid "Unknown field"
-msgstr "Tuntematon"
+msgstr "Tuntematon kenttä"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:332
-#, fuzzy
-#| msgid "Search translation"
 msgid "Bad Relation ID"
-msgstr "Etsi käännösvastinetta"
+msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:336 signbank/dictionary/update.py:384
 msgid "Relation doesn't match gloss"
-msgstr ""
+msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:360 signbank/dictionary/update.py:658
 msgid "Badly formed gloss identifier"
-msgstr ""
+msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:364 signbank/dictionary/update.py:404
 #: signbank/dictionary/update.py:662
 msgid "Unknown form field"
-msgstr ""
+msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:379
-#, fuzzy
-#| msgid "Relations to Foreign Signs"
 msgid "Bad RelationToForeignSign ID"
-msgstr "Suhteet vieraskielisiin viittomiin"
+msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:467
-#, fuzzy
-#| msgid "Sign in"
 msgid "Bad Definition ID"
-msgstr "Kirjaudu sisään"
+msgstr "Epäkelpo määritelmän ID"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:471
 msgid "Definition doesn't match gloss"
-msgstr ""
+msgstr "Määritelmä ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:521 signbank/dictionary/update.py:559
-#, fuzzy
-#| msgid "Search gloss"
 msgid "Source gloss not found."
-msgstr "Alkuperäinen Glossi"
+msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:533
-#, fuzzy
-#| msgid "Search gloss"
 msgid "Target gloss not found."
-msgstr "Kohdeglossi"
+msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:571
 msgid "Form not valid"
-msgstr ""
+msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
 #: signbank/dictionary/update.py:619
 msgid "Incorrect request"
-msgstr ""
+msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:632
 msgid "Bad Morphology Definition ID"
-msgstr ""
+msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:637
 msgid "Morphology Definition doesn't match gloss"
-msgstr ""
+msgstr "Morfologia ei vastaa glossia"
 
 #. Translators: Message sent if user is not allowed to see requested page.
 #. Translators: import_csv: not allowed to see requested page (Might not be useful to translate)
 #: signbank/dictionary/views.py:253 signbank/dictionary/views.py:451
 msgid "You are not allowed to see this page."
-msgstr ""
+msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua."
 
 #. Translators: HttpResponse if import_videos fails (Might not be useful to translate)
 #: signbank/dictionary/views.py:404
 msgid "Failed at "
-msgstr ""
+msgstr "Epäonnistuttiin "
 
 #. Translators: HttpResponse if import_videos fails (Might not be useful to translate)
 #: signbank/dictionary/views.py:406
 msgid ". Could not find "
-msgstr ""
+msgstr ". Ei voitu löytää "
 
 #. Translators: HttpResponse if import_videos fails (Might not be useful to translate)
 #: signbank/dictionary/views.py:414
 msgid "Failed two overwrite "
-msgstr ""
+msgstr "Päällekirjoitus epäonnistui "
 
 #. Translators: HttpResponse if import_videos fails (Might not be useful to translate)
 #: signbank/dictionary/views.py:416
 msgid ". Maybe this file is not owned by the webserver?"
-msgstr ""
+msgstr ". Ehkä tämä webpalvelimella ei ole oikeuksia tähän tiedostoon?"
 
 #. Translators: keywordnotbelong, label name
 #: signbank/feedback/forms.py:49
-#, fuzzy
-#| msgid "Lost Password"
 msgid "List keywords"
-msgstr "Salasana unohtunut"
+msgstr "Keyword lista"
 
 #: signbank/feedback/forms.py:56
 msgid "How many hands are used to make this sign?"
@@ -2448,10 +2427,8 @@ msgstr ""
 
 #. Translators: Missing sign feedback (meaning)
 #: signbank/feedback/forms.py:89
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign Meaning"
-msgstr "Kirjaudu sisään"
+msgstr ""
 
 #. Translators: Missing sign feedback (comments)
 #: signbank/feedback/forms.py:94
@@ -2478,17 +2455,13 @@ msgstr ""
 
 #. Translators: isAuslanChoices
 #: signbank/feedback/models.py:15
-#, fuzzy
-#| msgid "Don't Know"
 msgid "Don't know"
 msgstr "En tiedä"
 
 #. Translators: isAuslanChoices
 #: signbank/feedback/models.py:17
-#, fuzzy
-#| msgid "Don't Know"
 msgid "Don't think so"
-msgstr "En tiedä"
+msgstr "En usko"
 
 #. Translators: isAuslanChoices
 #. Translators: likedChoices
@@ -2508,10 +2481,8 @@ msgstr "Vähän"
 
 #. Translators: likedChoices
 #: signbank/feedback/models.py:58
-#, fuzzy
-#| msgid "Don't Know"
 msgid "Don't care"
-msgstr "En tiedä"
+msgstr "En välitä"
 
 #. Translators: likedChoices
 #: signbank/feedback/models.py:60
@@ -3110,10 +3081,8 @@ msgstr ""
 #: signbank/feedback/templates/feedback/interpreter.html:25
 #: signbank/feedback/templates/feedback/show.html:48
 #: signbank/feedback/views.py:100
-#, fuzzy
-#| msgid "Sign Search"
 msgid "General Feedback"
-msgstr "Etsi viittoma"
+msgstr "Yleinen palaute"
 
 #. Translators: Feedback
 #: signbank/feedback/templates/feedback/generalfeedback.html:19
@@ -3268,33 +3237,28 @@ msgstr ""
 #: signbank/feedback/templates/feedback/show.html:91
 #: signbank/feedback/templates/feedback/signfeedback.html:8
 #: signbank/feedback/templates/feedback/viewsignfeedback.html:5
-#, fuzzy
-#| msgid "Sign Search"
 msgid "Sign Feedback"
-msgstr "Etsi viittoma"
+msgstr "Glossin palaute"
 
 #. Translators:
 #. Translators: Link to a sign
 #: signbank/feedback/templates/feedback/interpreter.html:80
 #: signbank/feedback/templates/feedback/show.html:107
-#, fuzzy
-#| msgid "Sign In"
+
 msgid "Sign:"
-msgstr "Kirjaudu sisään"
+msgstr "Kirjaudu:"
 
 #. Translators:
 #: signbank/feedback/templates/feedback/interpreter.html:82
 #: signbank/feedback/templates/feedback/show.html:110
 msgid "Comment:"
-msgstr ""
+msgstr "Kommentti:"
 
 #. Translators:
 #: signbank/feedback/templates/feedback/interpreter.html:84
 #: signbank/feedback/templates/feedback/show.html:112
-#, fuzzy
-#| msgid "Don't Know"
 msgid "Don't Belong:"
-msgstr "En tiedä"
+msgstr "Ei kuulu:"
 
 #. Translators:
 #: signbank/feedback/templates/feedback/interpreter.html:108
@@ -3308,19 +3272,15 @@ msgstr ""
 #: signbank/feedback/templates/feedback/interpreter.html:112
 #: signbank/feedback/templates/feedback/missingsign.html:49
 #: signbank/feedback/templates/feedback/show.html:137
-#, fuzzy
-#| msgid "Sign Search"
 msgid "Missing Sign Feedback"
-msgstr "Etsi viittoma"
+msgstr "Puuttuvan viittoman palaute"
 
 #. Translators:
 #. Translators: Preceding an email address
 #: signbank/feedback/templates/feedback/interpreter.html:129
 #: signbank/feedback/templates/feedback/show.html:153
-#, fuzzy
-#| msgid "Email"
 msgid "Email:"
-msgstr "Sähköposti"
+msgstr "Sähköposti:"
 
 #. Translators:
 #: signbank/feedback/templates/feedback/interpreter.html:135
@@ -3403,10 +3363,8 @@ msgstr ""
 #. Translators: Gloss information
 #: signbank/feedback/templates/feedback/interpreter.html:164
 #: signbank/feedback/templates/feedback/show.html:190
-#, fuzzy
-#| msgid "Sign in"
 msgid "Meaning"
-msgstr "Kirjaudu sisään"
+msgstr "Merkitys"
 
 #. Translators:
 #. Translators: Gloss information
@@ -3464,10 +3422,8 @@ msgstr ""
 
 #. Translators:
 #: signbank/feedback/templates/feedback/missingsign.html:98
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign Description"
-msgstr "Kirjaudu sisään"
+msgstr "Glossin kuvaus"
 
 #. Translators:
 #: signbank/feedback/templates/feedback/missingsign.html:109
@@ -3502,10 +3458,8 @@ msgstr ""
 
 #. Translators: Submit button
 #: signbank/feedback/templates/feedback/missingsign.html:207
-#, fuzzy
-#| msgid "Sign Search"
 msgid "Submit Feedback"
-msgstr "Etsi viittoma"
+msgstr "Lähetä palaute"
 
 #. Translators: Link
 #. Translators: Download link
@@ -3554,10 +3508,8 @@ msgstr ""
 
 #. Translators: Title for feedback views index
 #: signbank/feedback/views.py:23
-#, fuzzy
-#| msgid "Sign Search"
 msgid "Leave Feedback"
-msgstr "Etsi viittoma"
+msgstr "Jätä palautetta"
 
 #. Translators: Thank you message for recording signfeedback
 #: signbank/feedback/views.py:266 signbank/feedback/views.py:272
@@ -3653,26 +3605,20 @@ msgstr ""
 
 #. Translators: verbose name for PageVideo number
 #: signbank/pages/models.py:55
-#, fuzzy
-#| msgid "Sign Search"
 msgid "number"
-msgstr "Etsi viittoma"
+msgstr "numero"
 
 #. Translators: __unicode__ return of self (PageVideo)
 #: signbank/pages/models.py:61
-#, fuzzy
-#| msgid "Has Video"
 msgid "Page Video"
-msgstr "Video on"
+msgstr "Sivun video"
 
 #. Translators: Link title
 #: signbank/pages/templates/mobile/pages/mainpage.html:9
 #: signbank/pages/templates/pages/mainpage.html:9
 #: signbank/pages/templates/pages/medical.html:10
-#, fuzzy
-#| msgid "Search translation"
 msgid "Search the SignBank Dictionary"
-msgstr "Etsi käännösvastinetta"
+msgstr "Etsi Signbankista"
 
 #. Translators: Linkt title
 #. Translators: Link text
@@ -3680,10 +3626,8 @@ msgstr "Etsi käännösvastinetta"
 #: signbank/pages/templates/mobile/pages/mainpage.html:11
 #: signbank/pages/templates/pages/mainpage.html:11
 #: signbank/pages/templates/pages/medical.html:12
-#, fuzzy
-#| msgid "The FSE Signbank"
 msgid "SignBank"
-msgstr "FinSL Signbank"
+msgstr "Signbank"
 
 #. Translators: Link title
 #: signbank/pages/templates/mobile/pages/mainpage.html:13
@@ -3716,18 +3660,14 @@ msgstr ""
 #. Translators: Link title
 #: signbank/pages/templates/pages/mainpage.html:13
 #: signbank/pages/templates/pages/medical.html:14
-#, fuzzy
-#| msgid "Search translation"
 msgid "Search the Medical SignBank"
-msgstr "Etsi käännösvastinetta"
+msgstr ""
 
 #. Translators: Link text
 #: signbank/pages/templates/pages/mainpage.html:15
 #: signbank/pages/templates/pages/medical.html:16
-#, fuzzy
-#| msgid "The FSE Signbank"
 msgid "Medical SignBank"
-msgstr "FinSL Signbank"
+msgstr ""
 
 #. Translators: Link text
 #: signbank/pages/templates/pages/mainpage.html:19
@@ -3761,10 +3701,8 @@ msgstr ""
 
 #. Translators: label password2
 #: signbank/registration/forms.py:56
-#, fuzzy
-#| msgid "Password"
 msgid "Password (again)"
-msgstr "Salasana"
+msgstr "Salasana (uudelleen)"
 
 #. Translators: exception ValidationError
 #: signbank/registration/forms.py:71
@@ -3879,10 +3817,8 @@ msgid "registration profiles"
 msgstr ""
 
 #: signbank/registration/models.py:219
-#, fuzzy
-#| msgid "Register"
 msgid "Registration information"
-msgstr "Rekisteröidy"
+msgstr "Rekisteröitymistietoa"
 
 #. Translators: backgroundChoices
 #: signbank/registration/models.py:252
@@ -4039,10 +3975,8 @@ msgid "Webmaster"
 msgstr ""
 
 #: signbank/registration/templates/registration/activation_email_subject.txt:3
-#, fuzzy
-#| msgid "Register"
 msgid "Registration for"
-msgstr "Rekisteröidy"
+msgstr "Rekisteröity "
 
 #. Translators: Login error
 #: signbank/registration/templates/registration/login.html:14
