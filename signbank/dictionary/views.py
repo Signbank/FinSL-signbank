@@ -256,10 +256,24 @@ def search(request):
 
     if form.is_valid():
 
-        glossQuery = form.cleaned_data['glossQuery']
+        """
+        These two redirects 'if glossQuery & if query' basically make the rest of this search method
+        useless. But keeping them for reference is the public search needs to be enabled at some point.
+        """
 
+        glossQuery = form.cleaned_data['glossQuery']
+        # From the menu searchbar using the gloss search, it redirects here
+        # If the glossQuery field has values, redirect the search to adminviews.py
+        # and use GET searchfield search to search for glosses.
         if glossQuery != '':
             return HttpResponseRedirect('../../signs/search/?search=' + glossQuery)
+
+        query = form.cleaned_data['query']
+        # From the menu searchbar using translation search, it redirects here
+        # If query field has values, redirect the searc to adminviews.py via GET attribute
+        # and set the GET field to be keyword, insert the searched keyword after it
+        if query != '':
+            return HttpResponseRedirect('../../signs/search/?keyword=' + query)
 
         # need to transcode the query to our encoding
         term = form.cleaned_data['query']
