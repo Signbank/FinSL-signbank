@@ -216,7 +216,7 @@ class RegistrationProfile(models.Model):
         search_fields = ('user__username', 'user__first_name')
 
     def __unicode__(self):
-        return "%s for %s" % _(u"Registration information"), self.user
+        return "%s for %s" % (_(u"Registration information"), self.user)
 
     def activation_key_expired(self):
         """
