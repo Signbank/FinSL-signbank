@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 15:44+0300\n"
+"POT-Creation-Date: 2015-08-20 12:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,30 +54,31 @@ msgstr ""
 "Tapahtui virhe. Virheestä on tiedotettu ylläpidolle, ja se\n"
 "pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
 
-#. Translators: This is the main Heading for the whole site
-#: bootstrap_templates/baselayout.html:22
+#: bootstrap_templates/baselayout.html:23
+#: bootstrap_templates/baselayout.html:24
+#: bootstrap_templates/baselayout.html:25
 msgid "FinSL Signbank"
 msgstr "FinSL Signbank"
 
 #. Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here!
-#: bootstrap_templates/baselayout.html:50
+#: bootstrap_templates/baselayout.html:55
 msgid "The FSE Signbank"
 msgstr "FinSL Signbank"
 
 #. Translators: License text in the footer of the site
-#: bootstrap_templates/baselayout.html:52
+#: bootstrap_templates/baselayout.html:57
 #: bootstrap_templates/mobile/baselayout.html:115
 msgid "is licensed under a"
 msgstr "on lisensoitu lisenssillä: "
 
 #. Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this)
-#: bootstrap_templates/baselayout.html:54
+#: bootstrap_templates/baselayout.html:59
 #: bootstrap_templates/mobile/baselayout.html:117
 msgid "Creative Commons BY-NC-SA 4.0 International License"
 msgstr "Creative Commons BY-NC-SA 4.0 International License"
 
 #. Translators: This is located in the footer of the site
-#: bootstrap_templates/baselayout.html:57
+#: bootstrap_templates/baselayout.html:62
 msgid "Provide feedback on the site"
 msgstr "Anna palautetta sivustosta"
 
@@ -193,6 +194,14 @@ msgstr "linkki"
 msgid "Practice your fingerspelling</a> with randomly generated words."
 msgstr "Harjoittele sormitavutusta</a> satunnaisgeneroiduilla sanoilla."
 
+#: bootstrap_templates/langbar.html:8
+msgid "Logout"
+msgstr "Kirjaudu ulos"
+
+#: bootstrap_templates/langbar.html:12
+msgid "Login"
+msgstr "Kirjaudu"
+
 #. Translators: Text sign in - login form
 #: bootstrap_templates/loginform.html:12
 #: bootstrap_templates/mobile/loginform.html:10
@@ -277,16 +286,6 @@ msgstr "Etsi käännösvastinetta"
 msgid "Sign Search"
 msgstr "Hae"
 
-#. Translators: Logout link
-#: bootstrap_templates/menu.html:106
-msgid "Logout"
-msgstr "Kirjaudu ulos"
-
-#. Translators: Login link
-#: bootstrap_templates/menu.html:109
-msgid "Login"
-msgstr "Kirjaudu"
-
 #. Translators: Numbersigns page header/title | mobile
 #: bootstrap_templates/mobile/baselayout.html:10
 #: bootstrap_templates/mobile/baselayout.html:67
@@ -303,6 +302,7 @@ msgstr "Etusivu"
 #. Translators: UserSignSearchForm
 #: bootstrap_templates/mobile/baselayout.html:79
 #: signbank/dictionary/forms.py:30
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:155
 msgid "Search"
 msgstr "Haku"
 
@@ -905,7 +905,7 @@ msgid "Unspecified"
 msgstr "Määrittelemätön"
 
 #. Translators: YESNOCHOICES
-#: signbank/dictionary/forms.py:70 signbank/dictionary/forms.py:153
+#: signbank/dictionary/forms.py:70 signbank/dictionary/forms.py:155
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -915,7 +915,7 @@ msgstr "Kyllä"
 #. Translators: useChoices
 #. Translators: suggestedChoices
 #. Translators: correctChoices
-#: signbank/dictionary/forms.py:72 signbank/dictionary/forms.py:153
+#: signbank/dictionary/forms.py:72 signbank/dictionary/forms.py:155
 #: signbank/feedback/models.py:19 signbank/feedback/models.py:62
 #: signbank/feedback/models.py:73 signbank/feedback/models.py:86
 #: signbank/feedback/models.py:99
@@ -984,23 +984,34 @@ msgid "---------"
 msgstr ""
 
 #. Translators: GlossSearchForm label
+#. Translators: Gloss models field: idgloss, verbose name
+#. Translators: Field label
+#. Translators: Field label
+#: signbank/dictionary/forms.py:113 signbank/dictionary/models.py:409
+#: signbank/dictionary/templates/dictionary/add_gloss.html:25
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:357
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:357
+msgid "Gloss"
+msgstr "Glossi"
+
+#. Translators: GlossSearchForm label
 #. Translators: Gloss models field: annotation_idgloss_jkl, verbose name
 #. Translators: Field label
 #. Translators: Field label
-#: signbank/dictionary/forms.py:113 signbank/dictionary/models.py:418
+#: signbank/dictionary/forms.py:115 signbank/dictionary/models.py:418
 #: signbank/dictionary/templates/dictionary/add_gloss.html:29
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:359
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:359
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:359
 msgid "Gloss JKL"
 msgstr "Glossi JKL"
 
 #. Translators: GlossSearchForm label
 #. Translators: Field label
 #. Translators: Field label
-#: signbank/dictionary/forms.py:115
+#: signbank/dictionary/forms.py:117
 #: signbank/dictionary/templates/dictionary/add_gloss.html:33
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:361
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:361
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:361
 msgid "Gloss JKL English"
 msgstr ""
 
@@ -1008,116 +1019,116 @@ msgstr ""
 #. Translators: Gloss models field: annotation_idgloss_hki, verbose name
 #. Translators: Field label
 #. Translators: Field label
-#: signbank/dictionary/forms.py:117 signbank/dictionary/models.py:437
+#: signbank/dictionary/forms.py:119 signbank/dictionary/models.py:437
 #: signbank/dictionary/templates/dictionary/add_gloss.html:37
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:363
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:363
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:363
 msgid "Gloss HKI"
 msgstr "Glossi HKI"
 
 #. Translators: GlossSearchForm label
 #. Translators: Field label
 #. Translators: Field label
-#: signbank/dictionary/forms.py:119
+#: signbank/dictionary/forms.py:121
 #: signbank/dictionary/templates/dictionary/add_gloss.html:41
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:365
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:365
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:365
 msgid "Gloss HKI English"
 msgstr ""
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:125
+#: signbank/dictionary/forms.py:127
 msgid "Translations"
 msgstr "Käännösvastineet"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:127
+#: signbank/dictionary/forms.py:129
 #, fuzzy
 #| msgid "Translations"
 msgid "Translations English"
 msgstr "Käännösvastineet"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:129
+#: signbank/dictionary/forms.py:131
 msgid "Has Video"
 msgstr "Video on"
 
-#: signbank/dictionary/forms.py:132
+#: signbank/dictionary/forms.py:134
 msgid "All Definitions Published"
 msgstr "Kaikki julkaistut määritelmät"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:134
+#: signbank/dictionary/forms.py:136
 msgid "Search Definition/Notes"
 msgstr "Etsi määritelmiä/merkintöjä"
 
-#: signbank/dictionary/forms.py:139
+#: signbank/dictionary/forms.py:141
 msgid "Search for gloss of related signs"
 msgstr "Etsi yhteenkuuluvien viittomien glossia"
 
-#: signbank/dictionary/forms.py:142
+#: signbank/dictionary/forms.py:144
 msgid "Search for gloss of foreign signs"
 msgstr "Etsi vieraskielisen viittoman glossia"
 
-#: signbank/dictionary/forms.py:145
+#: signbank/dictionary/forms.py:147
 msgid "Search for gloss with this as morpheme"
 msgstr "Etsi glossia jolla on tämä morfeemi"
 
-#: signbank/dictionary/forms.py:149
+#: signbank/dictionary/forms.py:151
 msgid "Phonology other"
 msgstr "Fonologia muu"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:152
+#: signbank/dictionary/forms.py:154
 msgid "Related to foreign sign or not"
 msgstr "Liittyykö vieraskieliseen viittomaan"
 
-#: signbank/dictionary/forms.py:156
+#: signbank/dictionary/forms.py:158
 msgid "Type of relation"
 msgstr "Relaation tyyppi"
 
-#: signbank/dictionary/forms.py:159
+#: signbank/dictionary/forms.py:161
 msgid "Has morpheme type"
 msgstr "Morfeenityyppi löytyy"
 
-#: signbank/dictionary/forms.py:164
+#: signbank/dictionary/forms.py:166
 msgid "Repeating Movement"
 msgstr "Toistuva liike"
 
 #. Translators: Gloss models field: alternating_movement, verbose name
-#: signbank/dictionary/forms.py:168 signbank/dictionary/models.py:589
+#: signbank/dictionary/forms.py:170 signbank/dictionary/models.py:589
 msgid "Alternating Movement"
 msgstr "Vaihteleva liike"
 
-#: signbank/dictionary/forms.py:172
+#: signbank/dictionary/forms.py:174
 msgid "Is a proposed new sign"
 msgstr "On ehdotettu uusi viittoma"
 
-#: signbank/dictionary/forms.py:175
+#: signbank/dictionary/forms.py:177
 msgid "Is in Web dictionary"
 msgstr "On verkkosanakirjassa"
 
-#: signbank/dictionary/forms.py:178
+#: signbank/dictionary/forms.py:180
 msgid "Note type"
 msgstr "Merkinnän tyyppi"
 
-#: signbank/dictionary/forms.py:181
+#: signbank/dictionary/forms.py:183
 msgid "Note contains"
 msgstr "Merkintä sisältää"
 
 #. Translators: RelationForm label
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:208 signbank/dictionary/forms.py:224
+#: signbank/dictionary/forms.py:210 signbank/dictionary/forms.py:226
 msgid "Source Gloss"
 msgstr "Lähdeglossi"
 
 #. Translators: RelationForm label
-#: signbank/dictionary/forms.py:210
+#: signbank/dictionary/forms.py:212
 msgid "Target Gloss"
 msgstr "Kohdeglossi"
 
 #. Translators:
-#: signbank/dictionary/forms.py:212 signbank/dictionary/forms.py:244
+#: signbank/dictionary/forms.py:214 signbank/dictionary/forms.py:246
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:355
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:669
 msgid "Type"
@@ -1126,24 +1137,24 @@ msgstr "Tyyppi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:227 signbank/dictionary/models.py:271
+#: signbank/dictionary/forms.py:229 signbank/dictionary/models.py:271
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:544
 msgid "Related Language"
 msgstr "Liittyvä kieli"
 
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:229
+#: signbank/dictionary/forms.py:231
 msgid "Gloss in Related Language"
 msgstr "Glossi liittyvässä kielessä"
 
 #. Translators: MorphologyForm label
-#: signbank/dictionary/forms.py:239
+#: signbank/dictionary/forms.py:241
 msgid "Parent Gloss"
 msgstr "Emoglossi"
 
 #. Translators: MorphologyForm label
 #. Translators:
-#: signbank/dictionary/forms.py:248
+#: signbank/dictionary/forms.py:250
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:357
 msgid "Morpheme"
 msgstr "Morfeemi"
@@ -1227,16 +1238,6 @@ msgstr "Voi poistaa julkisia viittomia ja määritelmiä"
 #: signbank/dictionary/models.py:371
 msgid "Include all properties in sign detail view"
 msgstr "Sisällytä kaikki ominaisuudet viittoman tarkassa näkymässä"
-
-#. Translators: Gloss models field: idgloss, verbose name
-#. Translators: Field label
-#. Translators: Field label
-#: signbank/dictionary/models.py:409
-#: signbank/dictionary/templates/dictionary/add_gloss.html:25
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:357
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:357
-msgid "Gloss"
-msgstr "Glossi"
 
 #. Translators: Help text for Gloss models field: idgloss
 #: signbank/dictionary/models.py:411
@@ -1512,10 +1513,10 @@ msgstr "Kirjoita Glossin alustavat tiedot"
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/add_gloss.html:45
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:39
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:349
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:375
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:349
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:375
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:349
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:375
 msgid "Add New Sign"
 msgstr "Lisää uusi Glossi"
 
@@ -1562,66 +1563,88 @@ msgstr ""
 #. Translators: Title for sign search page
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:5
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:5
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:5
 msgid "Signbank: Search Signs"
 msgstr "Signbank: Etsi viittomia"
 
 #. Translators: Search by language
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:113
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:125
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:113
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:113
 msgid "Search by Language and Basic Properties"
 msgstr "Etsi kielellä ja perusominaisuuksilla"
 
-#. Translators: Search by morphology
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:143
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:143
-msgid "Search by Morphology"
-msgstr "Etsi morfologialla"
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
+msgid "CSV"
+msgstr "CSV"
 
-#. Translators: Search by phonology
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:163
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:163
-msgid "Search by Phonology"
-msgstr "Etsi fonologialla"
-
-#. Translators: Search by semantics
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:207
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:207
-msgid "Search by Semantics"
-msgstr "Etsi semantiikalla"
-
-#. Translators: Search by relation
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:229
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:229
-msgid "Search by Relation"
-msgstr "Etsi suhteilla"
-
-#. Translators: Search by publication status and notes
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:275
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:275
-msgid "Search by Publication Status and Notes"
-msgstr "Etsi julkaisun ja muistiinpanojen perusteella"
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:159
+msgid "Reset"
+msgstr "Tyhjennä"
 
 #. Translators: How many results to fit per page
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:328
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:164
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:328
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:328
 msgid "Results per page"
 msgstr "Tuloksia per sivu"
 
 #. Translators: How many matches out of possible
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:389
-#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:389
-#, python-format
-msgid "Number of matches: %(page_obj.paginator.count)s out of %(glosscount)s"
-msgstr "Osumia: %(page_obj.paginator.count)s %(glosscount)s :stä"
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
+msgid "Number of matches:"
+msgstr "Hakutuloksia:"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:402
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
+msgid "out of"
+msgstr "/"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:195
 #: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:401
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:402
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:404
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:197
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:404
 msgid "Translation equivalents in English"
 msgstr "Käännösvastineet englanniksi"
+
+#. Translators: Search by morphology
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:143
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:143
+msgid "Search by Morphology"
+msgstr "Etsi morfologialla"
+
+#. Translators: Search by phonology
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:163
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:163
+msgid "Search by Phonology"
+msgstr "Etsi fonologialla"
+
+#. Translators: Search by semantics
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:207
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:207
+msgid "Search by Semantics"
+msgstr "Etsi semantiikalla"
+
+#. Translators: Search by relation
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:229
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:229
+msgid "Search by Relation"
+msgstr "Etsi suhteilla"
+
+#. Translators: Search by publication status and notes
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:275
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:275
+msgid "Search by Publication Status and Notes"
+msgstr "Etsi julkaisun ja muistiinpanojen perusteella"
+
+#. Translators: How many matches out of possible
+#: signbank/dictionary/templates/dictionary/backup08-2015_admin_gloss_list.html:389
+#: signbank/dictionary/templates/dictionary/backup2_08-2015_admin_gloss_list.html:389
+#, python-format
+msgid "Number of matches: %(page_obj.paginator.count)s out of %(glosscount)s"
+msgstr "Osumia: %(page_obj.paginator.count)s %(glosscount)s :stä"
 
 #. Translators: Navigation - previous
 #. Translators: Navigation

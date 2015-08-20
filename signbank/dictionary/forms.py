@@ -110,7 +110,9 @@ ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
-    search = forms.CharField(label=_("Gloss JKL"))
+    search = forms.CharField(label=_("Gloss"))
+    # Translators: GlossSearchForm label
+    JKLGloss = forms.CharField(label=_("Gloss JKL"))
     # Translators: GlossSearchForm label
     JKLenglishGloss = forms.CharField(label=_("Gloss JKL English"))
     # Translators: GlossSearchForm label

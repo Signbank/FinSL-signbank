@@ -81,21 +81,26 @@ function clearForm(myFormElement) {
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_jkl'>{{searchform.search.label}}</label>
+                        <label class='input-group-addon' for='id_idgloss'>{{searchform.search.label}}</label>
                         <input name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class='input-group'>
+                        <label class='input-group-addon' for='id_annotation_idgloss_jkl'>{{searchform.JKLGloss.label}}</label>
+                        <input name='JKLGloss' class='form-control' {% if searchform.JKLGloss.value %}value='{{searchform.JKLGloss.value}}' {% endif %}>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class='input-group'>
+                        <label class='input-group-addon' for='id_annotation_idgloss_hki'>{{searchform.HKIGloss.label}}</label>
+                        <input name='HKIGloss' class='form-control' {% if searchform.HKIGloss.value %}value='{{searchform.HKIGloss.value}}' {% endif %}>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_annotation_idgloss_jkl_en'>{{searchform.JKLenglishGloss.label}}</label>
                         <input name='JKLenglishGloss' class='form-control' {% if searchform.JKLenglishGloss.value %}value='{{searchform.JKLenglishGloss.value}}' {% endif %}>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_hki'>{{searchform.HKIGloss.label}}</label>
-                        <input name='HKIGloss' class='form-control' {% if searchform.HKIGloss.value %}value='{{searchform.HKIGloss.value}}' {% endif %}>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -147,11 +152,11 @@ function clearForm(myFormElement) {
         </div>
 
         <div class='btn-group'>
-            <input class='btn btn-primary' type='submit' name='submit' value='Search'>
+            <input class='btn btn-primary' type='submit' name='submit' value='{% blocktrans %}Search{% endblocktrans %}'>
             {% if perms.dictionary.export_csv %}
-            <input class='btn btn-default' type='submit' name='format' value='CSV'>
+            <input class='btn btn-default' type='submit' name='format' value='{% blocktrans %}CSV{% endblocktrans %}'>
             {% endif %}
-            <input class='btn btn-default' type='submit' onclick="clearForm(document.adminsearch);" value='Reset'>
+            <input class='btn btn-default' type='submit' onclick="clearForm(document.adminsearch);" value='{% blocktrans %}Reset{% endblocktrans %}'>
         </div>
 
         <div class='form-group' id='paginate_by'>
@@ -173,9 +178,8 @@ function clearForm(myFormElement) {
     </form>
 </div>
 
-  
 {# Translators: How many matches out of possible  #}
-<p>{% blocktrans %}Number of matches: {{page_obj.paginator.count}} out of {{glosscount}}{% endblocktrans %}.</p>
+<p>{% blocktrans %}Number of matches:{% endblocktrans %} {{ page_obj.paginator.count }} {% blocktrans %}out of{% endblocktrans %} {{glosscount}}.</p>
 
 {% if object_list %}
 <table class='table table-condensed'>
