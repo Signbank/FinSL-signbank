@@ -358,17 +358,11 @@ class Gloss(models.Model):
             # Translators: Gloss permissions
             ('can_publish', _('Can publish signs and definitions')),
             # Translators: Gloss permissions
-            ('can_delete_unpublished',
-             # Translators: Gloss permissions
-             _('Can delete unpub signs or defs')),
+            ('can_delete_unpublished', _('Can delete unpub signs or defs')),
             # Translators: Gloss permissions
-            ('can_delete_published',
-             # Translators: Gloss permissions
-             _('Can delete pub signs and defs')),
+            ('can_delete_published', _('Can delete pub signs and defs')),
             # Translators: Gloss permissions
-            ('view_advanced_properties',
-             # Translators: Gloss permissions
-             _('Include all properties in sign detail view')),
+            ('view_advanced_properties', _('Include all properties in sign detail view')),
         )
 
     def __unicode__(self):
