@@ -1,6 +1,5 @@
 django==1.8.3
 django-tagging
-django-mobile
 django-reversion
 django-bootstrap3
 django-summernote

@@ -34,7 +34,7 @@ LANGUAGES = (
 
 MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
 MEDIA_URL = '/media/'
-MEDIA_MOBILE_URL = MEDIA_URL
+#MEDIA_MOBILE_URL = MEDIA_URL
 
 # Ditto for static files from the Auslan site (css, etc) with trailing slash
 AUSLAN_STATIC_PREFIX = "/static/"
@@ -66,7 +66,6 @@ STATICFILES_FINDERS = (
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
     #     'django.template.loaders.eggs.Loader',
@@ -81,8 +80,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'signbank.pages.middleware.PageFallbackMiddleware',
-    'django_mobile.middleware.MobileDetectionMiddleware',
-    'django_mobile.middleware.SetFlavourMiddleware',
     #    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'reversion.middleware.RevisionMiddleware',
 )
@@ -97,7 +94,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.contrib.messages.context_processors.messages",
     "signbank.pages.context_processors.menu",
-    "django_mobile.context_processors.flavour",
     "django.template.context_processors.csrf",
 )
 
@@ -138,7 +134,6 @@ INSTALLED_APPS = (
     'signbank.attachments',
     'signbank.video',
     'reversion',
-    'django_mobile',
     'tagging',
 )
 

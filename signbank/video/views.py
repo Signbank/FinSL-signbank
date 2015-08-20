@@ -107,10 +107,7 @@ def iframe(request, videoid):
         gloss = Gloss.objects.get(pk=videoid)
         glossvideo = gloss.get_video()
 
-        if django_mobile.get_flavour(request) == 'mobile':
-            videourl = glossvideo.get_mobile_url()
-        else:
-            videourl = glossvideo.get_absolute_url()
+        videourl = glossvideo.get_absolute_url()
 
         posterurl = glossvideo.poster_url()
     except:
