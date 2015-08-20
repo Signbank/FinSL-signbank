@@ -6,7 +6,6 @@ from django.conf import settings
 from models import Video, GlossVideo
 from forms import VideoUploadForm, VideoUploadForGlossForm
 from convertvideo import extract_frame
-import django_mobile
 
 from signbank.dictionary.models import Gloss
 
