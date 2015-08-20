@@ -185,7 +185,7 @@ function clearForm(myFormElement) {
 
            {# It seems like this if-clause inserts translation equivalents in the gloss list #}
            {# The number in the forloop counter means where to insert the table title for these fields #}
-           {% if forloop.counter == 5 %}
+           {% if forloop.counter == 3 %}
                {# This inserts the desired name for the table label - translation equivalents #}
                <th>{{ name }}</th>
                <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
@@ -213,7 +213,7 @@ function clearForm(myFormElement) {
                     {#<td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>#}
 
                 {# This forloop.counter adds regular values, and then adds after them translation equiv values #}
-                {% elif forloop.counter == 5 %}
+                {% elif forloop.counter == 3 %}
                     <td>{{ value }}</td>
                     <td>
                     {% for translation in gloss.translation_set.all %}

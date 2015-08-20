@@ -202,9 +202,9 @@ SIGN_NAVIGATION = False
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
 
-ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en','annotation_idgloss_hki', 'annotation_idgloss_hki_en',
-                       'annotation_comments']
-
+ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_hki', 'annotation_comments']
+# If you want to show English glosses, add these back to ADMIN_RESULT_FIELDS:
+# 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki_en'
 
 # location and URL for uploaded files
 UPLOAD_ROOT = MEDIA_ROOT + "upload/"
