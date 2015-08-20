@@ -19,13 +19,18 @@
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
             {# Translators: This is the main Heading for the whole site #}
-            <div id='header'><a href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
-                <div id='logoholder' class='visible-lg visible-md visible-sm'>
-                    <div id='logojy' class='visible-lg visible-md visible-sm'></div>
-                    <div id='logokl' class='visible-lg visible-md visible-sm'></div>
+            <div id='header'>
+                <a class="hidden-xs hidden-sm" href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
+                <a class="visible-sm" href="{% url "root_page" %}"><h1 class="h2">{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
+                <a class="visible-xs" href="{% url "root_page" %}"><h1 class="h5">{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
+                {% include 'langbar.html' %}
+                <div id='logoholder' class='visible-lg visible-md visible-sm hidden-xs'>
+                    <div id='logojy' class='visible-lg visible-md visible-sm hidden-xs'></div>
+                    <div id='logokl' class='visible-lg visible-md visible-sm hidden-xs'></div>
                 </div>
+
             </div>
- <div>{% include 'setlang.html' %}</div>
+
             <div id='bslstripe'></div>
         {% include 'menu.html' %}  
 

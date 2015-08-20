@@ -18,38 +18,41 @@ html {
     padding-left: 1em;
     padding-right: 1em;
     background: #2980b9;
-    height: 110px;
+    height: 80px;
     clear: both;
     position: relative;
     margin: 0px;
 }
 
-#header h1 {
+#header a {
+    text-decoration: none;
     float: left;
     color: #133a53;
 }
 
 #logoholder {
     float: right;
+    position: relative;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-right: 10px;
 }
 
 #logojy {
-    background-image: url(./images/ngt/jy_text_500.png);
+    background-image: url(./images/ngt/jy_text_50.png);
     background-repeat: no-repeat;
-    width: 167px;
-    height: 95px;
+    width: 123px;
+    height: 70px;
     float: left;
-    margin-right: 1em;
+    margin-right: 5px;
 }
 
 #logokl {
-    background-image: url(./images/ngt/kl-logo-fi.png);
+    background-image: url(./images/ngt/kl-logo-fi-50.png);
     background-repeat: no-repeat;
-    width: 227px;
-    height: 85px;
-    float: right;
+    width: 187px;
+    height: 70px;
+    float: left;
 }
 
 /* superfish menu styling - background image is assumed 26px high */
@@ -62,4 +65,26 @@ html {
 #pages #mainlinks td {
   
   background-image: url(images/ngt/black_02.gif);
+}
+
+.col-md-4 {
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+.col-sm-6 {
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+#langbar {
+    position: relative;
+    float: right;
+    padding-top: 8px;
+}
+#langselect {
+    position: relative;
+    margin-bottom: 5px;
+}
+#login {
+    position: relative;
+    margin: auto;
 }

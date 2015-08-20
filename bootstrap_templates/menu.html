@@ -100,15 +100,7 @@
     </form>
     
     
-    <ul class='nav navbar-nav navbar-right'>
-    {% if user.is_authenticated %}
-      {# Translators: Logout link #}
-      <li><a href="{% url 'logout' %}">{% blocktrans %}Logout{% endblocktrans %} ({{ user.first_name }} {{ user.last_name }})</a></li>
-    {% else %}
-       {# Translators: Login link #}
-       <li><a href="/accounts/login/?next=/">{% blocktrans %}Login{% endblocktrans %}</a></li>
-    {% endif %} 
-    </ul>
+
   
 
   </div><!-- /.navbar-collapse -->

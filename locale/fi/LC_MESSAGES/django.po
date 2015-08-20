@@ -275,7 +275,7 @@ msgstr "Etsi käännösvastinetta"
 #: bootstrap_templates/menu.html:99 doc/usage.html:71
 #: signbank/dictionary/templates/mobile/dictionary/index.html:11
 msgid "Sign Search"
-msgstr "Etsi viittoma"
+msgstr "Hae"
 
 #. Translators: Logout link
 #: bootstrap_templates/menu.html:106
