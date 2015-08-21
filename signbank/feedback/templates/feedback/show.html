@@ -59,48 +59,29 @@ jQuery(document).ready(function(){
           </h4> 
         </div>
         <div id="gencollapse{{fb.id}}" class="panel-collapse collapse">
-  
 
+            <div class="videocontainer">
+            {% if fb.video %}
+                <div class="player">
+                    <video id="genfbvid{{fb.id}}" width="450px" preload="metadata" controls muted>
+                      <source src="{{ STATIC_URL }}{{ fb.video }}" type="video/mp4">
+                    {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                    </video>
+                </div>
 
-        <div class="videocontainer">
-        {% if fb.video %}
-            <div class="player">
-              <iframe class='videoiframe' scrolling="no" frameborder='0'
-               src="/static/{{fb.video}}">
-
-              </iframe>
+            {% else %}
+                <div class='player'>
+                    <img class='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
+                </div>
+            {% endif %}
             </div>
-            <div class="replay"></div>
-
-        {% else %}
-        <div class='player'>
-         <img class='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
-        </div>
-        {% endif %}
-        </div>
-
-        {% if fb.video %}
-        <div class="videocontainer">
-            <video id='genfbvid{{fb.id}}' class='video-js vjs-default-skin' 
-               poster='{{posterurl}}' controls  preload='false' data-setup='{"example_option":true}'>
-                <source src='{{ STATIC_URL }}{{ fb.video }}' type='video/mp4' codecs='avc1.42E01E, mp4a.40.2'></source>
-            </video>
-            {# Translators: Link #}
-            <p><a href='{{ STATIC_URL }}{{ fb.video }}'>{% blocktrans %}Download video{% endblocktrans %}</a><br>{# Translators:  #}
-                {% blocktrans %}(if video does not play here you may be able to play by downloading){% endblocktrans %}</p>
-        </div>
-        {% endif %}
-        
-
-      
-	    <p>{{fb.comment}}</p>
+	        <p>{{fb.comment}}</p>
      
-       <form action="/feedback/general/delete/{{fb.id}}" method="post"><p>
-           {% csrf_token %}
-            {# Translators: Submit button #}
-           <input class='delete btn btn-default' type='submit' value='{% blocktrans %}Delete Comment{% endblocktrans %}'>
-           </p></form>
-
+           <form action="/feedback/general/delete/{{fb.id}}" method="post"><p>
+               {% csrf_token %}
+                {# Translators: Submit button #}
+               <input class='delete btn btn-default' type='submit' value='{% blocktrans %}Delete Comment{% endblocktrans %}'>
+               </p></form>
        </div> 
       </div>
      </div>
@@ -172,14 +153,16 @@ jQuery(document).ready(function(){
         <p>{% blocktrans %}Email:{% endblocktrans %} <a href="mailto:{{fb.user.email}}">{{fb.user.email}}</a></p>
         {% if fb.video %}  
         <div class="videocontainer">
-            <video id='msfb{{fb.id}}' class='video-js vjs-default-skin' 
-               poster='{{posterurl}}' controls preload='false' data-setup='{"example_option":true}'>
-                <source src='{{ MEDIA_URL }}{{ fb.video }}' type='video/mp4' codecs='avc1.42E01E, mp4a.40.2'></source>
-            </video>
+            <div class="player">
+                <video id='msfb{{fb.id}}' width="450px" poster="{{posterurl}}" preload="metadata" controls muted>
+                  <source src="{{ STATIC_URL }}{{ fb.video }}" type="video/mp4">
+                {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                </video>
+            </div>
             {# Translators: Download link #}
-            <p><a href='{{ MEDIA_URL }}{{ fb.video }}'>{% blocktrans %}Download video{% endblocktrans %}</a><br>{# Translators: Instructions if video does not play #}
+            <p><a href='{{ STATIC_URL }}{{ fb.video }}'>{% blocktrans %}Download video{% endblocktrans %}</a> {# Translators: Instructions if video does not play #}
                 {% blocktrans %}(if video does not play here you may be able to play by downloading){% endblocktrans %}</p>
-         </div>
+        </div>
         {% endif %}
     
          <dl class='dl-horizontal'>

@@ -90,14 +90,15 @@ body {
 
 
 .videocontainer {
-   width: 450px;
+   /*width: 450px;*/
    margin: auto;
+   position: relative;
 }
 .videocontainer .player {
    margin: auto;
-   width:450px;
-   height:259px;
-/*   border-left: 6px solid black;
+   /*width:450px;*/
+   /*height:259px;*/
+   /*border-left: 6px solid black;
    border-right: 6px solid black;*/
    background-color: white;
 }
