@@ -763,7 +763,6 @@ minor or insignificant ways that can be ignored."""))
         for this video - ie. the number of versions stored"""
 
         video_with_gloss = self.get_video_gloss()
-
         return video_with_gloss.glossvideo_set.count()
 
     def get_video_url(self):
