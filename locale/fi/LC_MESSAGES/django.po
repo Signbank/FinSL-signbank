@@ -3295,7 +3295,7 @@ msgstr ""
 #: signbank/feedback/templates/feedback/signfeedback.html:8
 #: signbank/feedback/templates/feedback/viewsignfeedback.html:5
 msgid "Sign Feedback"
-msgstr "Glossin palaute"
+msgstr "Palautetta glosseista"
 
 #. Translators:
 #. Translators: Link to a sign
@@ -3329,7 +3329,7 @@ msgstr ""
 #: signbank/feedback/templates/feedback/missingsign.html:49
 #: signbank/feedback/templates/feedback/show.html:137
 msgid "Missing Sign Feedback"
-msgstr "Puuttuvan viittoman palaute"
+msgstr "Palaute puuttuvista viittomista"
 
 #. Translators:
 #. Translators: Preceding an email address
