@@ -110,7 +110,12 @@ def mylogin(request, template_name='registration/login.html', redirect_field_nam
 
     # TODO: Check if this is working correctly
     # Replaced request.REQUEST with request.GET.get
-    redirect_to = request.GET.get(redirect_field_name, '')
+    # Get the url to forward to after login
+    # If GET has the value, use it, else use POST to get the url
+    if request.GET.get(redirect_field_name):
+        redirect_to = request.GET.get(redirect_field_name, '')
+    else:
+        redirect_to = request.POST.get(redirect_field_name, '')
     if request.method == "POST":
         form = EmailAuthenticationForm(data=request.POST)
         if form.is_valid():

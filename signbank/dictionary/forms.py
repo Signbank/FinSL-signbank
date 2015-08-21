@@ -57,7 +57,7 @@ class VideoUpdateForm(forms.Form):
 
 class TagUpdateForm(forms.Form):
     """Form to add a new tag to a gloss"""
-
+    # TODO: ALLOWED_TAGS should be changed to a dynamic implementation
     tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}),
                             choices=[(t, t) for t in settings.ALLOWED_TAGS])
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)

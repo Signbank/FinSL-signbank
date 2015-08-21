@@ -113,27 +113,22 @@
 
 <div id="definitionblock">
     <div id="leftblock">
-    <div id="videocontainer">
-    {% if gloss.get_video %}
-
-     <!-- {{ gloss.get_video }} -->
-
-        <div id="player">
-          <iframe id='videoiframe' scrolling="no" frameborder='0'
-		   src="/static/{{gloss.get_video}}">
-
-          </iframe>
+        <div id="videocontainer">
+            {% if gloss.get_video %}
+                <!-- {{ gloss.get_video }} -->
+                <div id="player">
+                    <video id="glossvid{{gloss.id}}" width="450px" preload="auto" controls autoplay muted>
+                        <source src="{{ STATIC_URL }}{{ gloss.get_video }}" type="video/mp4">
+                        {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                    </video>
+                </div>
+            {% else %}
+                <div id="player">
+                    <img id='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
+                    <!-- {{ gloss.get_video }} -->
+                </div>
+            {% endif %}
         </div>
-        <div id="replay"></div>
-
-    {% else %}
-    <div id='player'>
-     <img id='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
-     <!-- {{ gloss.get_video }} -->
-    </div>
-    {% endif %}
-    
-    </div>
     
     <div id="feedback">
         <ul>
@@ -288,9 +283,7 @@
 
     {% endif %} <-- should be below the div
     </div>-->
-
-    
-</div>
+    </div>
 
     <div class='panel-group' id="definition">
         

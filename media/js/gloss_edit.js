@@ -71,6 +71,7 @@ function disable_edit() {
 function enable_edit() {
     $('.edit').editable('enable');
     $('.edit').css('color', 'red');
+    /* TODO: get message from django instead */
     $('#edit_message').text('Click on red text to edit  '); 
     $('.editform').show();
     $('#delete_gloss_btn').show().addClass('btn-danger');
