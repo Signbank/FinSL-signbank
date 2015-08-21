@@ -68,11 +68,6 @@ jQuery(document).ready(function(){
                     {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                     </video>
                 </div>
-
-            {% else %}
-                <div class='player'>
-                    <img class='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
-                </div>
             {% endif %}
             </div>
 	        <p>{{fb.comment}}</p>
