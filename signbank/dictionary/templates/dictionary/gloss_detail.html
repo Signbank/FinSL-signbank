@@ -153,40 +153,40 @@
     
     {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
     <div class='editform'>
-        <fieldset>
-            {# Translators: Upload/Add new video to Signbank #}
-            <legend>{% blocktrans %}Upload New Video{% endblocktrans %}</legend>
-            {# Translators:  #}
-            <p>{% blocktrans %}We have {% endblocktrans %}{{gloss.count_videos}} {% blocktrans %}videos for this sign.{% endblocktrans %}</p>
-            <form action="/video/upload/" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              <input type='hidden' name='redirect' value='{{request.path}}?edit'>
-            <table id="staffops">
-              <tr>
-                  <td>{{videoform.videofile}}</td>
-              </tr>
-              <tr>
-                  <td><input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
-                      {# Translators: Submit button #}
-                      <input class='btn btn-primary' type='submit' value='{% blocktrans %}Upload Video{% endblocktrans %}'/></td>
-              </tr>
-            </table>
-            </form>
-        </fieldset>
+        <div class="uploadvid">
+            <fieldset>
+                {# Translators: Upload/Add new video to Signbank #}
+                <legend>{% blocktrans %}Upload New Video{% endblocktrans %}</legend>
+
+                <form action="/video/upload/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type='hidden' name='redirect' value='{{request.path}}?edit'>
+
+                    {{videoform.videofile}}
+
+                    <input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
+                    {# Translators: Submit button #}
+                    <input class='btn btn-primary' type='submit' value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
+
+                </form>
+            </fieldset>
+        </div>
     
         {% if perms.dictionary.update_video and gloss.count_videos > 0 %}
-        <fieldset>
-         {# Translators:  #}
-         <legend>{% blocktrans %}Delete/Revert Video{% endblocktrans %}</legend>
-            <table>
-            <form action="/video/delete/{{gloss.pk}}" method='post'>
-            {# Translators:  #}
-            <tr><td><em>{% blocktrans %}This will delete the most recent upload and restore the most recent earlier version.{% endblocktrans %}</em></td></tr>
-            {# Translators: Submit button #}
-            <tr><td>{% csrf_token %}<input class='btn btn-danger' id='delete_video' type='submit' value='{% blocktrans %}Delete/Revert this video{% endblocktrans %}'></td></tr>
-            </form>
-           </table>
-        </fieldset>
+        <div class="uploadvid">
+            <fieldset>
+             {# Translators:  #}
+             <legend>{% blocktrans %}Delete/Revert Video{% endblocktrans %}</legend>
+                <form action="/video/delete/{{gloss.pk}}" method='post'>
+                    {# Translators:  #}
+                    <em>{% blocktrans %}This will delete the most recent upload and restore the most recent earlier version.{% endblocktrans %}</em>
+                    {# Translators:  #}
+                    <p>{% blocktrans %}We have {% endblocktrans %}{{gloss.count_videos}} {% blocktrans %}videos for this sign.{% endblocktrans %}</p>
+                    {# Translators: Submit button #}
+                    {% csrf_token %}<input class='btn btn-danger' id='delete_video' type='submit' value='{% blocktrans %}Delete/Revert this video{% endblocktrans %}'>
+                </form>
+            </fieldset>
+        </div>
         {% endif %}
     </div>
     {% endif %}

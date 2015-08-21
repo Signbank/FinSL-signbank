@@ -88,3 +88,12 @@ html {
     position: relative;
     margin: auto;
 }
+.uploadvid {
+    padding: 10px;
+}
+.uploadvid legend {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+}

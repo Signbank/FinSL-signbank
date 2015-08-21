@@ -1,5 +1,5 @@
 {% load i18n %}
-    <div id='tags'>
+    <div id='tags' class="uploadvid">
         <fieldset>
       <legend>Tags</legend>
       {% load tagging_tags %}
@@ -30,10 +30,10 @@
                 action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}" 
                 method="post" enctype="multipart/form-data">
            {% csrf_token %}
-           <table>
+
            {# Translators: Submit button #}
-           <tr><td>{{tagform.tag}}</td><td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tag{% endblocktrans %}'></td></tr>
-           </table>
+           {{tagform.tag}}<input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tag{% endblocktrans %}'>
+
           </form>
       </div>
       {% endif %}
