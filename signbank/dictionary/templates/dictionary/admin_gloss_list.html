@@ -193,8 +193,6 @@ function clearForm(myFormElement) {
                {# This inserts the desired name for the table label - translation equivalents #}
                <th>{{ name }}</th>
                <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
-               {# This inserts the desired name for the table label - translation equivalents in english #}
-               <th>{% blocktrans %}Translation equivalents in English{% endblocktrans %}</th>
 		   {% else %}
                <th>{{ name }}</th>
 		   {% endif %}
@@ -226,16 +224,6 @@ function clearForm(myFormElement) {
                             {{ translation.translation }}
                         {% else %}
                             {{ translation.translation }},
-                        {% endif %}
-                    {% endfor %}
-                    </td>
-                    <td>
-                    {% for translationenglish in gloss.translationenglish_set.all %}
-                        {# Here we set a comma after all items except the last one #}
-                        {% if forloop.last %}
-                            {{ translationenglish.translation_english }}
-                        {% else %}
-                            {{ translationenglish.translation_english }},
                         {% endif %}
                     {% endfor %}
                     </td>
