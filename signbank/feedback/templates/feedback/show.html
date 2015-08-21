@@ -65,16 +65,16 @@ jQuery(document).ready(function(){
         <div class="videocontainer">
         {% if fb.video %}
             <div class="player">
-              <iframe id='videoiframe' scrolling="no" frameborder='0'
+              <iframe class='videoiframe' scrolling="no" frameborder='0'
                src="/static/{{fb.video}}">
 
               </iframe>
             </div>
-            <div id="replay"></div>
+            <div class="replay"></div>
 
         {% else %}
-        <div id='player'>
-         <img id='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
+        <div class='player'>
+         <img class='novideo' src='{{ STATIC_URL }}images/no-video-ngt.png'>
         </div>
         {% endif %}
         </div>
