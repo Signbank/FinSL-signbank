@@ -23,54 +23,6 @@ def index(request):
                                   'title': _("Leave Feedback")},
                               context_instance=RequestContext(request))
 
-
-@login_required
-def interpreterfeedback(request, glossid=None):
-    if request.method == "POST":
-
-        if 'action' in request.POST and 'delete_all' in request.POST['action']:
-            gloss = get_object_or_404(Gloss, pk=glossid)
-            fbset = gloss.interpreterfeedback_set.all()
-            fbset.delete()
-        elif 'action' in request.POST and 'delete' in request.POST['action']:
-            fbid = request.POST['id']
-            fb = get_object_or_404(InterpreterFeedback, pk=fbid)
-
-            fb.delete()
-        else:
-            gloss = get_object_or_404(Gloss, pk=glossid)
-
-            form = InterpreterFeedbackForm(request.POST, request.FILES)
-            if form.is_valid():
-                fb = form.save(commit=False)
-                fb.user = request.user
-                fb.gloss = gloss
-                fb.save()
-
-        # redirect to the gloss page
-        return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': glossid}))
-    else:
-
-        # generate a page listing the feedback from interpreters
-
-        notes = InterpreterFeedback.objects.all()
-
-        general = GeneralFeedback.objects.filter(
-            status='unread', user__groups__name='Interpreter')
-        missing = MissingSignFeedback.objects.filter(
-            status='unread', user__groups__name='Interpreter')
-        signfb = SignFeedback.objects.filter(
-            status='unread', user__groups__name='Interpreter')
-
-        return render_to_response('feedback/interpreter.html',
-                                  {'notes': notes,
-                                   'general': general,
-                                   'missing': missing,
-                                   'signfb': signfb,
-                                   },
-                                  context_instance=RequestContext(request))
-
-
 @login_required
 def generalfeedback(request):
     feedback = GeneralFeedback()

@@ -34,9 +34,6 @@ urlpatterns = patterns('',
                            include('signbank.dictionary.urls', namespace='dictionary')),
                        url(r'^feedback/', include('signbank.feedback.urls')),
 
-                       # TODO: Is this really useful? It uploads files to the site.
-                       url(r'^attachments/',
-                           include('signbank.attachments.urls')),
                        url(r'^video/', include('signbank.video.urls')),
 
                        #(r'^register.html', 'signbank.views.index'),

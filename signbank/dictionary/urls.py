@@ -48,15 +48,13 @@ urlpatterns = patterns('',
                        url(r'^ajax/gloss/(?P<prefix>.*)$',
                            'signbank.dictionary.adminviews.gloss_ajax_complete', name='gloss_complete'),
 
-                       url(r'^missingvideo.html$',
-                           'signbank.dictionary.views.missing_video_view'),
-
-                       url(r'^import_videos/$',
-                           'signbank.dictionary.views.import_videos'),
+                       # These views are disabled simply because there is no use for them right now
+                       #url(r'^missingvideo.html$', 'signbank.dictionary.views.missing_video_view'),
+                       #url(r'^import_videos/$', 'signbank.dictionary.views.import_videos'),
 
                        # Admin views
                        # A view for the developer to try out some things
-                       url(r'^try/$', 'signbank.dictionary.views.try_code'),
+                       # url(r'^try/$', 'signbank.dictionary.views.try_code'),
 
                        url(r'^list/$', permission_required('dictionary.search_gloss')
                        (GlossListView.as_view()), name='admin_gloss_list'),

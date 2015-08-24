@@ -15,6 +15,7 @@ from signbank.dictionary.update import update_keywords
 import forms
 from signbank.video.forms import VideoUploadForGlossForm
 from signbank.tools import video_to_signbank, compare_valuedict_to_gloss
+from django.contrib.admin.views.decorators import user_passes_test
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -378,7 +379,8 @@ def keyword_value_list(request, prefix=None):
     kwds_list = [k.text for k in kwds]
     return HttpResponse("\n".join(kwds_list), content_type='text/plain')
 
-
+# Used by missing_video_view
+@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def missing_video_list():
     """A list of signs that don't have an
     associated video file"""
@@ -388,7 +390,9 @@ def missing_video_list():
         if not gloss.has_video():
             yield gloss
 
-
+# Don't find any use for this method
+# I guess it looks for missing videos
+@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def missing_video_view(request):
     """A view for the above list"""
 
@@ -397,7 +401,8 @@ def missing_video_view(request):
     return render_to_response("dictionary/missingvideo.html",
                               {'glosses': glosses})
 
-
+# No idea what this method is for. Do not user it.
+@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def import_videos(request):
     video_folder = '/var/www2/signbank/live/writable/import_videos/' # TODO: Change this folder / check what this is for
 
@@ -439,7 +444,7 @@ def import_videos(request):
 
     return HttpResponse(out + overwritten_files)
 
-
+@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def try_code(request):
     """A view for the developer to try out things"""
 

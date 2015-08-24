@@ -34,9 +34,6 @@ change_page = Permission.objects.get(
     codename='change_page', content_type__model__exact='page')
 add_page = Permission.objects.get(
     codename='add_page', content_type__model__exact='page')
-add_attachment = Permission.objects.get(
-    codename='add_attachment', content_type__app_label__exact='attachments')
-
 
 class Command(BaseCommand):
 
@@ -62,7 +59,6 @@ class Command(BaseCommand):
         publisher.permissions.add(delete_gen_feedback)
         publisher.permissions.add(change_page)
         publisher.permissions.add(add_page)
-        publisher.permissions.add(add_attachment)
 
         # Editor
         editor, created = Group.objects.get_or_create(name='Editor')

@@ -131,7 +131,6 @@ INSTALLED_APPS = (
     'signbank.feedback',
     'signbank.registration',
     'signbank.pages',
-    'signbank.attachments',
     'signbank.video',
     'reversion',
     'tagging',
@@ -213,9 +212,6 @@ PAGES_VIDEO_LOCATION = 'pages'
 # videos are stored here prior to copying over to the main
 # storage location
 VIDEO_UPLOAD_LOCATION = "upload"
-
-# path to store uploaded attachments relative to MEDIA_ROOT
-ATTACHMENT_LOCATION = 'attachments'
 
 # within MEDIA_ROOT we store newly uploaded videos in this directory
 GLOSS_VIDEO_DIRECTORY = "video"
