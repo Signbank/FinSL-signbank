@@ -388,7 +388,7 @@ def update_relationtoforeignsign(gloss, field, value):
         rel.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'relationforeign_loan':
-        rel.loan = value == 'YES'
+        rel.loan = value == 'Yes'
         rel.save()
 
     elif what == 'relationforeign_other_lang':
