@@ -310,32 +310,6 @@ class UserProfile(models.Model):
     # Django gave a warning about this: 'Setting unique=True on a ForeignKey has the same effect as using a OneToOneField.'
     # user = models.ForeignKey(authmodels.User, unique=True)
     user = models.OneToOneField(authmodels.User)
-    # Translators: UserProfile field: yob
-    yob = models.IntegerField(_("When were you born?"))
-    # Translators: UserProfile field: australian
-    australian = models.BooleanField(_(t("Do you live in $country?")))
-    # Translators: UserProfile field: postcode
-    postcode = models.CharField(
-        _(t("If you live in $country, what is your postcode?")), max_length=20, blank=True)
-    # Translators: UserProfile field: background
-    background = models.CommaSeparatedIntegerField(
-        _("What is your background?"), max_length=20, choices=backgroundChoices)
-    # Translators: UserProfile field: auslan_user
-    auslan_user = models.BooleanField(_(t("Do you use $language?")))
-    # Translators: UserProfile field: learned
-    learned = models.IntegerField(_(t("If you use $language, when did you learn sign language?")),
-                                  choices=learnedChoices)
-    # Translators: UserProfile field: deaf
-    deaf = models.BooleanField(_("Are you a deaf person?"))
-    # Translators: UserProfile field: schooltype
-    schooltype = models.IntegerField(_("What sort of school do you (or did you) attend?"),
-                                     choices=schoolChoices)
-    # Translators: UserProfile field: school
-    school = models.CharField(
-        _("Which school do you (or did you) attend?"), max_length=50, blank=True)
-    # Translators: UserProfile field: teachercomm
-    teachercomm = models.IntegerField(_("How do (or did) your teachers communicate with you?"),
-                                      choices=teachercommChoices)
 
     class Admin:
-        list_display = ['user', 'deaf', 'auslan_user']
+        list_display = ['user']

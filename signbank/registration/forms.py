@@ -101,7 +101,7 @@ class RegistrationForm(forms.Form):
                                                                     email=self.cleaned_data[
                                                                         'email'],
                                                                     profile_callback=profile_callback)
-        barf
+        #barf
         return new_user
 
 
@@ -236,7 +236,7 @@ def t(message):
 
 # TODO: Change the name of this class and adjust the questions accordingly
 # TODO: What kind of information do we want to record of our users?
-class RegistrationFormAuslan(RegistrationFormUniqueEmail):
+class RegistrationFormSB(RegistrationFormUniqueEmail):
 
     """
     Registration form for the site
@@ -246,35 +246,6 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
     firstname = forms.CharField(label=_(t("Firstname")), max_length=50)
     # Translators: RegistrationForm: lastname
     lastname = forms.CharField(label=_(t("Lastname")), max_length=50)
-    # Translators: RegistrationForm: birthyear
-    yob = BirthYearField(label=_(t("What year were you born?")))
-    # Translators: RegistrationForm: australian (alias do you live in $country)
-    australian = forms.ChoiceField(
-        yesnoChoices, label=_(t("Do you live in ${country}?")))
-    # Translators: RegistrationForm: postcode
-    postcode = forms.CharField(label=_(t("If you live in $country, what is your postcode?")),
-                               max_length=20, required=False)
-    # Translators: RegistrationForm: background
-    background = forms.MultipleChoiceField(
-        backgroundChoices, label=_("What is your background?"))
-    # Translators: RegistrationForm: auslan_user
-    auslan_user = forms.ChoiceField(
-        yesnoChoices, label=_(t("Do you use $language?")), required=False)
-    # Translators: RegistrationForm: learned
-    learned = forms.ChoiceField(label=_(t("If you use $language, when did you learn sign language?")),
-                                choices=learnedChoices, required=False)
-    # Translators: RegistrationForm: deaf
-    deaf = forms.ChoiceField(yesnoChoices, label=_(t("Are you a deaf person?")))
-    # Translators: RegistrationForm: schooltype
-    schooltype = forms.ChoiceField(label=_(t("What sort of school do you (or did you) attend?")),
-                                   choices=schoolChoices, required=False)
-    # Translators: RegistrationForm: school
-    school = forms.CharField(label=_(t("Which school do you (or did you) attend?")),
-                             max_length=50, required=False)
-    # Translators: RegistrationForm: teachercomm
-    teachercomm = forms.ChoiceField(label=_(t("How do (or did) your teachers communicate with you?")),
-                                    choices=teachercommChoices,
-                                    required=False)
 
     def save(self, profile_callback=None):
         """
@@ -305,18 +276,7 @@ class RegistrationFormAuslan(RegistrationFormUniqueEmail):
         # now also create the userprofile for this user with
         # the extra information from the form
 
-        profile = UserProfile(user=new_user,
-                              yob=self.cleaned_data['yob'],
-                              australian=self.cleaned_data['australian'],
-                              postcode=self.cleaned_data['postcode'],
-                              background=",".join(
-                                  self.cleaned_data['background']),
-                              auslan_user=self.cleaned_data['auslan_user'],
-                              learned=self.cleaned_data['learned'],
-                              deaf=self.cleaned_data['deaf'],
-                              schooltype=self.cleaned_data['schooltype'],
-                              school=self.cleaned_data['school'],
-                              teachercomm=self.cleaned_data['teachercomm'])
+        profile = UserProfile(user=new_user)
 
         profile.save()
 

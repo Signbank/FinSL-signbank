@@ -59,7 +59,7 @@ urlpatterns = patterns('',
                            register,
                            name='registration_register',
                            kwargs={
-                               'form_class': RegistrationFormAuslan,
+                               'form_class': RegistrationFormSB,
                            },
                            ),
 

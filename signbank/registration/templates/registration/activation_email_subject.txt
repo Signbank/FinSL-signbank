@@ -1,3 +1,2 @@
 {% load i18n %}
-{# Translators: Email subject #)
 {% blocktrans %}Registration for{% endblocktrans %} {{site}}
