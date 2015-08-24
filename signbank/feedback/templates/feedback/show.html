@@ -63,7 +63,7 @@ jQuery(document).ready(function(){
             <div class="videocontainer">
             {% if fb.video %}
                 <div class="player">
-                    <video id="genfbvid{{fb.id}}" width="450px" preload="metadata" controls muted>
+                    <video id="genfbvid{{fb.id}}" width="450px" preload="none" controls muted>
                       <source src="{{ STATIC_URL }}{{ fb.video }}" type="video/mp4">
                     {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                     </video>
