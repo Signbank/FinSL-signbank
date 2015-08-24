@@ -34,7 +34,6 @@ LANGUAGES = (
 
 MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
 MEDIA_URL = '/media/'
-#MEDIA_MOBILE_URL = MEDIA_URL
 
 # Ditto for static files from the Auslan site (css, etc) with trailing slash
 AUSLAN_STATIC_PREFIX = "/static/"

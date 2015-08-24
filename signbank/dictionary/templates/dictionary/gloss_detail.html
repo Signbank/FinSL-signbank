@@ -191,106 +191,11 @@
     </div>
     {% endif %}
 
-
   {% include "dictionary/glosstags.html" %}
-    
-        <!--   
-    {% if perms.feedback.view_interpreterfeedback %}
-    <div id='interpfeedback'>
-        <h3>Interpreter Notes</h3>
-        {% if perms.feedback.delete_interpreterfeedback %}
-        <p data-toggle='modal' 
-              data-target='#delete_intnote_modal'> 
-               <span class='glyphicon glyphicon-trash note_delete' 
-              ></span>&nbsp;Delete All Interpreter Notes</p>
 
-         <div class="modal fade" id="delete_intnote_modal" 
-              role="dialog" aria-labelledby="#modalTitle" aria-hidden="true">
-             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class='modal-header'>
-                        <h2 id='modalTitle'>Delete All Interpreter Notes</h2>
-                    </div>
-                    <div class='modal-body'>
-                        <p>This action will delete all interpreter notes on this sign. It cannot be undone.</p>
-                     </div>
-                  <form action='{% url "intnote" gloss.id %}' method='post'>
-                      {% csrf_token %}
-                      <input type='hidden' name='action' value='delete_all'>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <input type="submit" class="btn btn-primary" value='Confirm Delete'>
-                      </div>
-                  </form>
-              
-                </div>
-              </div>
-         </div>
-         {% endif %}
-        
-        {% if perms.feedback.add_interpreterfeedback %}
-        <form action='/feedback/interpreter/{{gloss.pk}}' method='post'>
-            {% csrf_token %}
-            {% bootstrap_field interpform.comment show_label=False %}
-            {% buttons %}
-                <button type="submit" class="btn btn-primary">
-                     Submit
-                </button>
-            {% endbuttons %}
-        </form>
-        {% endif %}
-        
-        <table class='table'>
-        {% for fb in gloss.interpreterfeedback_set.all %}
-            <tr><th>{{fb.user.first_name}} {{fb.user.last_name}}</th>
-                <th>{{fb.date}}</th>
-                <td>
-                    {% if perms.feedback.delete_interpreterfeedback %}
-                    <span class='glyphicon glyphicon-trash note_delete' 
-                          data-toggle='modal' 
-                          data-target='#delete_intnote_modal_{{fb.id}}'></span>
-            
-                     <div class="modal fade" id="delete_intnote_modal_{{fb.id}}" 
-                          role="dialog" aria-labelledby="#modalTitle" aria-hidden="true">
-                         <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class='modal-header'>
-                                    <h2 id='modalTitle'>Delete This Note</h2>
-                                </div>
-                                <div class='modal-body'>
-                                    <p><strong>{{fb.user.first_name}} {{fb.user.last_name}}</strong></p>
-                                    <p>{{fb.comment}}</p>
-                                    <p>This action will delete this note. It cannot be undone.</p>
-                                 </div>
-                              <form action='{% url "intnote" gloss.id %}' method='post'>
-                                  {% csrf_token %}
-                                  <input type='hidden' name='action' value='delete'>
-                                  <input type='hidden' name='id' value='{{fb.id}}'>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <input type="submit" class="btn btn-primary" value='Confirm Delete'>
-                                  </div>
-                              </form>
-                          
-                            </div>
-                          </div>
-                     </div>
-                     {% endif %}
-                </td>
-            </tr>
-            <tr><td colspan=3>{{fb.comment}}</td></tr>
-        {% endfor %}
-        </table>
-        
-
-    {% endif %} <-- should be below the div
-    </div>-->
     </div>
-
     <div class='panel-group' id="definition">
-        
 
-        
         <table class='table table-condensed'>
             {# Translators: Information about a Gloss #}
             <tr><th>{% blocktrans %}Gloss:{% endblocktrans %}</th><td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td></tr>
