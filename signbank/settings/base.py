@@ -240,7 +240,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 # TODO: remove this
 SHOW_NUMBERSIGNS = True
 
-LOGIN_REDIRECT_URL = '/signs/search'
+LOGIN_REDIRECT_URL = '/'
 
 # location of ffmpeg, used to convert uploaded videos
 FFMPEG_PROGRAM = "/home/heilniem/ffmpeg-2.6.3-64bit-static/ffmpeg"
