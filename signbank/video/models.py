@@ -16,6 +16,8 @@ from convertvideo import extract_frame, convert_video, ffmpeg
 from django.core.files.storage import FileSystemStorage
 from signbank.dictionary.models import Gloss
 
+from django.http import HttpResponseServerError
+
 # TODO: Check if this is ok to inherit from object, had to fix this to make migration possible
 class VideoPosterMixin(object):
     """Base class for video models that adds a method
@@ -172,8 +174,8 @@ class GlossVideo(models.Model, VideoPosterMixin):
                 (newname, bak) = os.path.splitext(self.videofile.name)
                 if bak != '.bak':
                     # hmm, something bad happened
-                    # TODO: add http500 error handler
-                    raise Http500()
+                    #raise Http500()
+                    raise HttpResponseServerError()
                 self.version -= 1
         else:
             # find a name for the backup, a filename that isn't used already
