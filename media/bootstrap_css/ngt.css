@@ -87,6 +87,8 @@ html {
 #login {
     position: relative;
     margin: auto;
+    overflow: visible;
+    z-index: 9999;
 }
 .uploadvid {
     padding: 10px;

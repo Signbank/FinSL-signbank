@@ -1,6 +1,6 @@
 {% load i18n %}
     <div id='tags' class="uploadvid">
-        <fieldset>
+      <fieldset>
       <legend>Tags</legend>
       {% load tagging_tags %}
       {% tags_for_object gloss as tag_list %}
@@ -32,7 +32,7 @@
            {% csrf_token %}
 
            {# Translators: Submit button #}
-           {{tagform.tag}}<input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tag{% endblocktrans %}'>
+           {{tagform.tag}}<input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tag{% endblocktrans %}' style='margin-top:5px'>
 
           </form>
       </div>

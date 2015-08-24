@@ -83,11 +83,22 @@ body {
    margin: auto;
    width:450px;
    /*height:259px;*/
-/*   border-left: 6px solid black;
+   /*border-left: 6px solid black;
    border-right: 6px solid black;*/
    background-color: white;
 }
 
+#playergloss {
+    margin: auto;
+    width:450px;
+    background-color: white;
+}
+#playergloss video {
+    padding: 2px;
+    border-style: solid;
+    border-color: #F0F0F0;
+    border-width: 0px 1px 1px;
+}
 
 .videocontainer {
    /*width: 450px;*/
@@ -365,7 +376,6 @@ body {
 
 #tagaddform {
     clear: both;
-    padding: 20px;
 }
 
 

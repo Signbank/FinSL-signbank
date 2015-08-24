@@ -15,7 +15,7 @@
 
     <div id='wrap'>
         <div class="container">
-            
+
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
             {# Translators: This is the main Heading for the whole site #}
@@ -32,41 +32,38 @@
             </div>
 
             <div id='bslstripe'></div>
-        {% include 'menu.html' %}  
+        {% include 'menu.html' %}
 
         {% bootstrap_messages %}
 
         <div role='main'>
         {% block content %}(no content){% endblock %}
         </div>
-        
+
         </div>
     </div>
 
-    <div id="footer"> 
+    <div id="footer">
        <div class='container'>
           <div id="copyright">
-              <!--
-              <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  
-                  <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
-                  -->
-                  {# Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here! #}
-                  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">{% blocktrans %}The FSE Signbank{% endblocktrans %} </span>
-                  {# Translators: License text in the footer of the site #}
-                  {% blocktrans %}is licensed under a{% endblocktrans %}
-                  {# Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this) #}
-                  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> {% trans "Creative Commons BY-NC-SA 4.0 International License" noop %}</a>.
-              
-              {# Translators: This is located in the footer of the site #}
-              <a href="{% url 'signbank.feedback.views.generalfeedback' %}">{% blocktrans %}Provide feedback on the site{% endblocktrans %}</a>
+          <!--
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+
+              <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
+              -->
+              {# Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here! #}
+              <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">{% blocktrans %}FinSL Signbank{% endblocktrans %} </span>
+              {# Translators: License text in the footer of the site #}
+              {% blocktrans %}is licensed under a{% endblocktrans %}
+              {# Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this) #}
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> {% trans "Creative Commons BY-NC-SA 4.0 International License" noop %}</a>.
           </div>
        </div>
     </div>
-    
+
     <script src='{{ STATIC_URL}}js/jquery-1.11.0.min.js'></script>
     <script src='{{ STATIC_URL}}bootstrap/js/bootstrap.min.js'></script>
-    
+
     <!-- DataTables -->
     <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
 

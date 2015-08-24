@@ -203,38 +203,24 @@ function clearForm(myFormElement) {
     </thead>
     <tbody>
     {% for gloss in object_list %}
-        <tr>		
+        <tr {% if gloss.has_video %}class="success"{% endif %}>
             {% for name, value in gloss.admin_fields %}
-                {# This forloop.counter adds links to first columns #}
-                {% if forloop.first %}
-                    <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
-
-                {# This forloop.counter adds links to desired columns #}
-                {# REMOVE COMMENTS if you want to enable these links #}
-                {# {% elif forloop.counter == 2 %} #}
-                    {#<td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>#}
-
+                {% if forloop.first %}{# This forloop.counter adds links to first columns #}
+                <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
                 {# This forloop.counter adds regular values, and then adds after them translation equiv values #}
                 {% elif forloop.counter == 3 %}
-                    <td>{{ value }}</td>
-                    <td>
-                    {% for translation in gloss.translation_set.all %}
-                        {# Here we set a comma after all items except the last one #}
-                        {% if forloop.last %}
-                            {{ translation.translation }}
-                        {% else %}
-                            {{ translation.translation }},
-                        {% endif %}
-                    {% endfor %}
-                    </td>
-
+                <td>{{ value }}</td>
+                <td>
+                {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
+                    {% if forloop.last %}{{ translation.translation }}
+                    {% else %}{{ translation.translation }},{% endif %}
+                {% endfor %}
+                </td>
                 {% else %}
-                    <td>{{ value }}</td>
+                <td>{{ value }}</td>
                 {% endif %}
             {% endfor %}
-
-    <td>{% for tag in gloss.tags %}<span class='tag'>{{tag}}</span> {% endfor %}</td>
-            
+                <td>{% for tag in gloss.tags %}<span class='tag'>{{tag}}</span> {% endfor %}</td>
         </tr>
     {% endfor %}
   </tbody>

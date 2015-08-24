@@ -116,7 +116,7 @@
         <div id="videocontainer">
             {% if gloss.get_video %}
                 <!-- {{ gloss.get_video }} -->
-                <div id="player">
+                <div id="playergloss">
                     <video id="glossvid{{gloss.id}}" width="450px" preload="auto" controls autoplay muted>
                         {# Had to put that t-value in the url to get around browser/server caching the videos issue #}
                         <source src="{{ STATIC_URL }}{{gloss.get_video}}?t={% now "U" %}" type="video/mp4">
