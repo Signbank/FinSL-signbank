@@ -330,7 +330,7 @@ function ajaxifyTagForm() {
                         // remove the tag from the page 
                        tagelement.remove();
                     }
-               }, "text");
+               });
         
         return false;
     });
