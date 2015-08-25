@@ -324,7 +324,7 @@ function ajaxifyTagForm() {
 
         // This determines the post action: jQuery.post( url [, data ] [, success ] [, dataType ] )
         $.post(action, 
-              {tag: tagid, 'delete': "True" }, 
+              {'tag': tagid, 'delete': "True" },
                function(data) {
                     if (data == 'deleted') {
                         // remove the tag from the page 
