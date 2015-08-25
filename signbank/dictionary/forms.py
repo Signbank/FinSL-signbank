@@ -121,8 +121,8 @@ class GlossSearchForm(forms.ModelForm):
     #tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
     #nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
-    tags = forms.ModelMultipleChoiceField(choices=Tag.objects.all())
-    nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
+    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
+    nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
     # Translators: GlossSearchForm label
     keyword = forms.CharField(label=_('Translations'))
     # Translators: GlossSearchForm label
