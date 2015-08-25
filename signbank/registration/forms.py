@@ -231,8 +231,6 @@ def t(message):
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
 
-# TODO: Change the name of this class and adjust the questions accordingly
-# TODO: What kind of information do we want to record of our users?
 class RegistrationFormSB(RegistrationFormUniqueEmail):
 
     """

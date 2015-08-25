@@ -377,7 +377,12 @@ body {
     clear: both;
 }
 
-
+td .tag {
+    margin-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    padding: 0px 10px 0px 8px;
+}
 
 // typeahead dropdown styling
 
