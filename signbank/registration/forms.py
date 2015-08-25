@@ -215,9 +215,6 @@ class BirthYearField(forms.Field):
                      _("years old! Please enter your real birth year")))
         return year
 
-
-from models import backgroundChoices, learnedChoices, schoolChoices, teachercommChoices
-
 yesnoChoices = (
     # Translators: yesnoChoices
     (1, _('yes')),
