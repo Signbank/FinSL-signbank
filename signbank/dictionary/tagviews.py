@@ -13,7 +13,7 @@ def taglist_json(request):
 
     tags = [t.name for t in Tag.objects.all()]
 
-    return HttpResponse(json.dumps(tags), {'content-type': 'application/json'})
+    return HttpResponse(json.dumps(tags), content_type='application/json')
 
 
 def taglist(request, tag=None):

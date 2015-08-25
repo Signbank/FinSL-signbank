@@ -147,7 +147,7 @@ def update_gloss(request, glossid):
                 newvalue = ", ".join([unicode(g) for g in gloss.language.all()])
             except:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest("%s %s" % _("Uknown Language"), values, {'content-type': 'text/plain'})
+                return HttpResponseBadRequest("%s %s" % _("Uknown Language"), values, content_type='text/plain')
 
         elif field == 'dialect':
             # expecting possibly multiple values
@@ -162,7 +162,7 @@ def update_gloss(request, glossid):
                                       for g in gloss.dialect.all()])
             except:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest("%s %s" % _("Unknown Dialect"), values, {'content-type': 'text/plain'})
+                return HttpResponseBadRequest("%s %s" % _("Unknown Dialect"), values, content_type='text/plain')
 
         elif field == "sn":
             # sign number must be unique, return error message if this SN is
@@ -177,14 +177,14 @@ def update_gloss(request, glossid):
                     value = int(value)
                 except:
                     # Translators: HttpResponseBadRequest
-                    return HttpResponseBadRequest(_("SN value must be integer"), {'content-type': 'text/plain'})
+                    return HttpResponseBadRequest(_("SN value must be integer"), content_type='text/plain')
 
                 existing_gloss = Gloss.objects.filter(sn__exact=value)
                 if existing_gloss.count() > 0:
                     g = existing_gloss[0].idgloss
                     # Translators: HttpResponseBadRequest
                     return HttpResponseBadRequest("%s %s" % _("SN value already taken for gloss"), g,
-                                                  {'content-type': 'text/plain'})
+                                                  content_type='text/plain')
                 else:
                     gloss.sn = value
                     gloss.save()
@@ -205,7 +205,7 @@ def update_gloss(request, glossid):
 
             if not field in Gloss._meta.get_all_field_names():
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest(_("Unknown field"), {'content-type': 'text/plain'})
+                return HttpResponseBadRequest(_("Unknown field"), content_type='text/plain')
 
             # special cases
             # - Foreign Key fields (Language, Dialect)
@@ -273,7 +273,7 @@ def update_gloss(request, glossid):
                     #gloss.idgloss = old_idgloss
                     pass
 
-        return HttpResponse(newvalue, {'content-type': 'text/plain'})
+        return HttpResponse(newvalue, content_type='text/plain')
 
 
 # Updates keywords for the 1st language
@@ -294,7 +294,7 @@ def update_keywords(gloss, field, value):
     newvalue = ", ".join(
         [t.translation.text for t in gloss.translation_set.all()])
 
-    return HttpResponse(newvalue, {'content-type': 'text/plain'})
+    return HttpResponse(newvalue, content_type='text/plain')
 
 
 # Updates English keywords
@@ -316,7 +316,7 @@ def update_keywords_english(gloss, field, value):
     newvalue = ", ".join(
         [t.translation_english.text for t in gloss.translationenglish_set.all()])
 
-    return HttpResponse(newvalue, {'content-type': 'text/plain'})
+    return HttpResponse(newvalue, content_type='text/plain')
 
 
 def update_relation(gloss, field, value):
@@ -329,11 +329,11 @@ def update_relation(gloss, field, value):
         rel = Relation.objects.get(id=relid)
     except:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Bad Relation ID"), relid, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Bad Relation ID"), relid, content_type='text/plain')
 
     if not rel.source == gloss:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest(_("Relation doesn't match gloss"), {'content-type': 'text/plain'})
+        return HttpResponseBadRequest(_("Relation doesn't match gloss"), content_type='text/plain')
 
     if what == 'relationdelete':
         print "DELETE: ", rel
@@ -358,12 +358,12 @@ def update_relation(gloss, field, value):
         else:
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value,
-                                          {'content-type': 'text/plain'})
+                                          content_type='text/plain')
     else:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, content_type='text/plain')
 
-    return HttpResponse(newvalue, {'content-type': 'text/plain'})
+    return HttpResponse(newvalue, content_type='text/plain')
 
 
 def update_relationtoforeignsign(gloss, field, value):
@@ -377,11 +377,11 @@ def update_relationtoforeignsign(gloss, field, value):
     except:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Bad RelationToForeignSign ID"), relid,
-                                      {'content-type': 'text/plain'})
+                                      content_type='text/plain')
 
     if not rel.gloss == gloss:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest(_("Relation doesn't match gloss"), {'content-type': 'text/plain'})
+        return HttpResponseBadRequest(_("Relation doesn't match gloss"), content_type='text/plain')
 
     if what == 'relationforeigndelete':
         print "DELETE: ", rel
@@ -401,9 +401,9 @@ def update_relationtoforeignsign(gloss, field, value):
 
     else:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, content_type='text/plain')
 
-    return HttpResponse(value, {'content-type': 'text/plain'})
+    return HttpResponse(value, content_type='text/plain')
 
 
 def gloss_from_identifier(value):
@@ -429,7 +429,7 @@ def gloss_from_identifier(value):
             target = Gloss.objects.get(pk=int(value))
         except ObjectDoesNotExist:
             # If the int doesn't match anything, return
-            return HttpResponseBadRequest(_("Target gloss not found."), {'content-type': 'text/plain'})
+            return HttpResponseBadRequest(_("Target gloss not found."), content_type='text/plain')
 
         return target
     # If 'value' is not int, then try to catch a string like "CAMEL (10)"
@@ -464,11 +464,11 @@ def update_definition(request, gloss, field, value):
         defn = Definition.objects.get(id=defid)
     except:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Bad Definition ID"), defid, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Bad Definition ID"), defid, content_type='text/plain')
 
     if not defn.gloss == gloss:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest(_("Definition doesn't match gloss"), {'content-type': 'text/plain'})
+        return HttpResponseBadRequest(_("Definition doesn't match gloss"), content_type='text/plain')
 
     if what == 'definitiondelete':
         defn.delete()
@@ -498,7 +498,7 @@ def update_definition(request, gloss, field, value):
         defn.save()
         newvalue = defn.get_role_display()
 
-    return HttpResponse(newvalue, {'content-type': 'text/plain'})
+    return HttpResponse(newvalue, content_type='text/plain')
 
 
 def add_relation(request):
@@ -518,7 +518,7 @@ def add_relation(request):
                 source = Gloss.objects.get(pk=int(sourceid))
             except:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest(_("Source gloss not found."), {'content-type': 'text/plain'})
+                return HttpResponseBadRequest(_("Source gloss not found."), content_type='text/plain')
 
             target = gloss_from_identifier(targetid)
 
@@ -530,7 +530,7 @@ def add_relation(request):
                     reverse('dictionary:admin_gloss_view', kwargs={'pk': source.id}) + '?editrel')
             else:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest(_("Target gloss not found."), {'content-type': 'text/plain'})
+                return HttpResponseBadRequest(_("Target gloss not found."), content_type='text/plain')
         else:
             print form
 
@@ -556,7 +556,7 @@ def add_relationtoforeignsign(request):
                 gloss = Gloss.objects.get(pk=int(sourceid))
             except:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest(_("Source gloss not found."), {'content-type': 'text/plain'})
+                return HttpResponseBadRequest(_("Source gloss not found."), content_type='text/plain')
 
             rel = RelationToForeignSign(gloss=gloss, loan=loan, other_lang=other_lang,
                                         other_lang_gloss=other_lang_gloss)
@@ -568,7 +568,7 @@ def add_relationtoforeignsign(request):
         else:
             print form
             # Translators: HttpResponseBadRequest
-            return HttpResponseBadRequest(_("Form not valid"), {'content-type': 'text/plain'})
+            return HttpResponseBadRequest(_("Form not valid"), content_type='text/plain')
 
     # fallback to redirecting to the requesting page
     return HttpResponseRedirect('/')
@@ -630,11 +630,11 @@ def update_morphology_definition(gloss, field, value):
     except:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Bad Morphology Definition ID"), morph_def_id,
-                                      {'content-type': 'text/plain'})
+                                      content_type='text/plain')
 
     if not morph_def.parent_gloss == gloss:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest(_("Morphology Definition doesn't match gloss"), {'content-type': 'text/plain'})
+        return HttpResponseBadRequest(_("Morphology Definition doesn't match gloss"), content_type='text/plain')
 
     if what == 'morphology_definition_delete':
         print "DELETE: ", morph_def
@@ -656,12 +656,12 @@ def update_morphology_definition(gloss, field, value):
         else:
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value,
-                                          {'content-type': 'text/plain'})
+                                          content_type='text/plain')
     else:
         # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, {'content-type': 'text/plain'})
+        return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, content_type='text/plain')
 
-    return HttpResponse(newvalue, {'content-type': 'text/plain'})
+    return HttpResponse(newvalue, content_type='text/plain')
 
 
 @permission_required('dictionary.change_gloss')
@@ -669,7 +669,7 @@ def add_tag(request, glossid):
     """View to add a tag to a gloss"""
 
     # default response
-    response = HttpResponse('invalid', {'content-type': 'text/plain'})
+    response = HttpResponse('invalid', content_type='text/plain')
 
     if request.method == "POST":
         thisgloss = get_object_or_404(Gloss, id=glossid)
@@ -685,7 +685,7 @@ def add_tag(request, glossid):
                     TaggedItem, object_id=thisgloss.id, tag__name=tag)
                 ti.delete()
                 response = HttpResponse(
-                    'deleted', {'content-type': 'text/plain'})
+                    'deleted', content_type='text/plain')
             else:
                 # we need to wrap the tag name in quotes since it might contain
                 # spaces

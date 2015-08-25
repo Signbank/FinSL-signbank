@@ -57,9 +57,8 @@ class VideoUpdateForm(forms.Form):
 
 class TagUpdateForm(forms.Form):
     """Form to add a new tag to a gloss"""
-    # TODO: ALLOWED_TAGS should be changed to a dynamic implementation
-    tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}),
-                            choices=[(t, t) for t in settings.ALLOWED_TAGS])
+    #tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None)
+    tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=[(t, t) for t in Tag.objects.all()])
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
 
@@ -120,9 +119,10 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     HKIenglishGloss = forms.CharField(label=_("Gloss HKI English"))
     tags = forms.MultipleChoiceField(
-        choices=[(t, t) for t in settings.ALLOWED_TAGS])
+        choices=Tag.objects.all())
+    #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
     nottags = forms.MultipleChoiceField(
-        choices=[(t, t) for t in settings.ALLOWED_TAGS])
+        choices=Tag.objects.all())
     # Translators: GlossSearchForm label
     keyword = forms.CharField(label=_('Translations'))
     # Translators: GlossSearchForm label

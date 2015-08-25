@@ -321,7 +321,8 @@ function ajaxifyTagForm() {
         var action = $(this).attr('href');
         var tagid = $(this).attr('id');
         var tagelement = $(this).parents('.tagli');
-        
+
+        // This determines the post action: jQuery.post( url [, data ] [, success ] [, dataType ] )
         $.post(action, 
               {tag: tagid, 'delete': "True" }, 
                function(data) {
@@ -329,7 +330,7 @@ function ajaxifyTagForm() {
                         // remove the tag from the page 
                        tagelement.remove();
                     }
-               });
+               }, "text");
         
         return false;
     });
