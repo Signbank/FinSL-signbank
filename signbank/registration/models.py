@@ -247,63 +247,6 @@ def t(message):
     tpl = string.Template(message)
     return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
 
-backgroundChoices = (
-    # Translators: backgroundChoices
-    (0, _('deaf community')),
-    # Translators: backgroundChoices
-    (1, _(t('$language teacher'))),
-    # Translators: backgroundChoices
-    (2, _('teacher of the deaf')),
-    # Translators: backgroundChoices
-    (3, _('parent of a deaf child')),
-    # Translators: backgroundChoices
-    (4, _('sign language interpreter')),
-    # Translators: backgroundChoices
-    (5, _('school or university student')),
-    # Translators: backgroundChoices
-    (6, _(t('student learning $language'))),
-    # Translators: backgroundChoices
-    (7, _('other')),
-                     )
-
-learnedChoices = (
-    # Translators: learnedChoices
-    (0, _('Not Applicable')),
-    # Translators: learnedChoices
-    (1, _('At home from my parent(s)')),
-    # Translators: learnedChoices
-    (2, _('At kindergarten or at the beginning of primary school')),
-    # Translators: learnedChoices
-    (3, _('At primary school')),
-    # Translators: learnedChoices
-    (4, _('At high school')),
-    # Translators: learnedChoices
-    (5, _('After I left school')),
-                  )
-
-schoolChoices = (
-    # Translators: schoolChoices
-    (0, _('a deaf school (boarder)')),
-    # Translators: schoolChoices
-    (1, _('a deaf school (day student)')),
-    # Translators: schoolChoices
-    (2, _('a deaf classroom or unit in a hearing school')),
-    # Translators: schoolChoices
-    (3, _('a regular classroom in a hearing school')),
-                 )
-
-teachercommChoices = (
-    # Translators: teachercommChoices
-    (0, _('mostly oral')),
-    # Translators: teachercommChoices
-    (1, _('mostly Signed English')),
-    # Translators: teachercommChoices
-    (2, _(t('mostly sign language ($language)'))),
-    # Translators: teachercommChoices
-    (3, _('mostly fingerspelling'))
-                      )
-
-
 class UserProfile(models.Model):
 
     """Extended profile for users of the site"""

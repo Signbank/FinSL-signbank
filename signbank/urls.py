@@ -40,16 +40,6 @@ urlpatterns = patterns('',
                        url(r'^logout.html', 'django.contrib.auth.views.logout',
                            {'next_page': "/"}, "logout"),
 
-                       # TODO: Remove these lines completely
-                       # Removed these for now, since they are not useful for Finnish Signbank
-                       # url(r'^spell/twohanded.html$',
-                       #    TemplateView.as_view(template_name='fingerspell/fingerspellingtwohanded.html')),
-                       # url(r'^spell/practice.html$',
-                       #    TemplateView.as_view(template_name='fingerspell/fingerspellingpractice.html')),
-                       # url(r'^spell/onehanded.html$',
-                       #    TemplateView.as_view(template_name='fingerspell/fingerspellingonehanded.html')),
-                       # url(r'^numbersigns.html$', numbersigns_view),
-
                        # Hardcoding a number of special urls:
                        url(r'^signs/dictionary/$',
                            'signbank.dictionary.views.search'),
@@ -60,11 +50,6 @@ urlpatterns = patterns('',
                            'signbank.dictionary.views.import_csv'),
                        url(r'^feedback/overview/$',
                            'signbank.feedback.views.showfeedback'),
-
-                       # compatibility with old links - intercept and return
-                       # 401
-                       url(r'^index.cfm', TemplateView.as_view(
-                           template_name='compat.html')),
 
                        # (r'^accounts/login/', 'django.contrib.auth.views.login'),
 
@@ -79,16 +64,12 @@ urlpatterns = patterns('',
 
                        url(r'^summernote/', include('django_summernote.urls')),
 
-                       # TODO: Remove these lines completely
-                       # This might become handy some day, but not right now
-                       # url(r'^test/(?P<videofile>.*)$',
-                       #    TemplateView.as_view(template_name="test.html")),
-
-                       # TODO: To get this working correctly, fix the path/to
+                       # This URL runs a script on tools.py that reloads signbank app
+                       # It simply runs: 'touch signbank/wsgi.py'
                        url(r'reload_signbank/$',
                            'signbank.tools.reload_signbank'),
 
-                       # TODO: Review the sanity of this implementation, it sounds completely crazy, but it also worksyyyi
+                       # TODO: Review the sanity of this implementation, it sounds completely crazy, but it also works
                        # This URL is supposed to grab every url not grabbed by any url before.
                        # The reason is to forward user created static pages inside the app to a view 'page'.
                        url(r'(.*)',

@@ -222,10 +222,6 @@ QUICK_UPDATE_GLOSS_FIELDS = ['language', 'dialect']
 # should we always require a login for viewing dictionary content
 ALWAYS_REQUIRE_LOGIN = True
 
-# TODO: Remove this
-# name of the primary css file, relative to the media directory
-PRIMARY_CSS = "bootstrap_css/test-server.css"
-
 # do we allow people to register for the site
 ALLOW_REGISTRATION = True
 
