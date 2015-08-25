@@ -118,11 +118,11 @@ class GlossSearchForm(forms.ModelForm):
     HKIGloss = forms.CharField(label=_("Gloss HKI"))
     # Translators: GlossSearchForm label
     HKIenglishGloss = forms.CharField(label=_("Gloss HKI English"))
-    tags = forms.MultipleChoiceField(
-        choices=Tag.objects.all())
+    #tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
-    nottags = forms.MultipleChoiceField(
-        choices=Tag.objects.all())
+    #nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
+    tags = forms.ModelMultipleChoiceField(choices=Tag.objects.all())
+    nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
     # Translators: GlossSearchForm label
     keyword = forms.CharField(label=_('Translations'))
     # Translators: GlossSearchForm label
