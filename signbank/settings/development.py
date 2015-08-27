@@ -5,22 +5,13 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'bootstrap_templates'),
 )
 
-# show emails on the console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# To test emailin use this to show emails on the console
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#PRIMARY_CSS = "bootstrap_css/bsl.css"
-#PRIMARY_CSS = "bootstrap_css/auslan.css"
 PRIMARY_CSS = "bootstrap_css/ngt.css"
-
 
 # defines the aspect ratio for videos
 #VIDEO_ASPECT_RATIO = 360.0/640.0
-
-
-# TODO: Remove these lines, they are already in base.py
-# what do we call this signbank?
-LANGUAGE_NAME = "FinSL"
-COUNTRY_NAME = "Finland"
 
 # show/don't show sign navigation
 SIGN_NAVIGATION = False

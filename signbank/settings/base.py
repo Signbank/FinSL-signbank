@@ -98,6 +98,9 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
+# Email backend used to send email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # add the Email backend to allow logins using email as username
 AUTHENTICATION_BACKENDS = (
     "signbank.registration.EmailBackend",
