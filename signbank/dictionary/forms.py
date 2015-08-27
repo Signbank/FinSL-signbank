@@ -56,7 +56,7 @@ class VideoUpdateForm(forms.Form):
 
 class TagUpdateForm(forms.Form):
     """Form to add a new tag to a gloss"""
-    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None, to_field_name='name')
+    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None, to_field_name='name', widget=forms.Select(attrs={'class': 'form-control'}))
     #tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=[(t, t) for t in Tag.objects.all()])
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
