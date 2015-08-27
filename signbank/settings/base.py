@@ -9,8 +9,6 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-EMAIL_HOST = ""
-
 MANAGERS = ADMINS
 
 TIME_ZONE = 'Europe/Helsinki'
