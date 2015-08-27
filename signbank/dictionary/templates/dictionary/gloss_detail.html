@@ -73,7 +73,8 @@
     {% if perms.dictionary.change_gloss %}
     
     <div class='pull-right'>
-         <span id='edit_message'></span>&nbsp;
+         {# Translators: Text that appears when editing is on #}
+         <span id='edit_message' style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
          {# Translators: Button #}
          <button id='delete_gloss_btn' class='btn btn-default navbar-btn' data-toggle='modal' data-target='#delete_gloss_modal'>{% blocktrans %}Delete Sign{% endblocktrans %}</button>
          {# Translators: Button #}

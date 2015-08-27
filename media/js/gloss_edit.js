@@ -54,7 +54,8 @@
 function disable_edit() {
     $('.edit').editable('disable');
     $('.edit').css('color', 'black');
-    $('#edit_message').text(''); 
+    /*$('#edit_message').text('');*/
+    $('#edit_message').hide();
     $('.editform').hide();
     $('#delete_gloss_btn').hide();
     $('#enable_edit').addClass('btn-primary').removeClass('btn-danger');
@@ -72,7 +73,8 @@ function enable_edit() {
     $('.edit').editable('enable');
     $('.edit').css('color', 'red');
     /* TODO: get message from django instead */
-    $('#edit_message').text('Click on red text to edit  '); 
+    /*$('#edit_message').text('Click on red text to edit  ');*/
+    $('#edit_message').show();
     $('.editform').show();
     $('#delete_gloss_btn').show().addClass('btn-danger');
     $('#enable_edit').removeClass('btn-primary').addClass('btn-danger');
