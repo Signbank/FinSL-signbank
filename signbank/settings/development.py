@@ -8,7 +8,7 @@ TEMPLATE_DIRS = (
 # To test emailin use this to show emails on the console
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-PRIMARY_CSS = "bootstrap_css/ngt.css"
+PRIMARY_CSS = "bootstrap_css/signbank.css"
 
 # defines the aspect ratio for videos
 #VIDEO_ASPECT_RATIO = 360.0/640.0

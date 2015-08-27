@@ -1,93 +1,76 @@
 html,
 body {
-  height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
 }
-
 /* Wrapper for page content to push down footer */
 #wrap {
-  min-height: 100%;
-  height: auto;
-  /* Negative indent footer by its height */
-  margin: 0 auto -60px;
-  /* Pad bottom by footer height */
-  padding: 0 0 60px;
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
 }
-
 /* remove rounded corners on navbar */
 .navbar {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
 }
-
 #content {
     background-color: #fff;
 }
 /* Set the fixed height of the footer here */
 #footer {
-  height: 60px;
-  background-color: #f5f5f5;
-  text-align: center;
-  clear: both;
+    height: 60px;
+    background-color: #f5f5f5;
+    text-align: center;
+    clear: both;
 }
-
 #signinfo {
     background-color: #ffffff;
     margin-bottom: 0px;
 }
-
 #signinfo .navbar-text {
-        color: #FFFFFF;
+    color: #FFFFFF;
 }
 #signinfo #editbutton {
     margin-right: 15px;
 }
-
-
 #signs { 
-   margin-right: 0em;
-   text-align: left;
-   float: left; 
-   width: 338px;  /* to match rh edge of video container */
+    margin-right: 0em;
+    text-align: left;
+    float: left;
+    width: 338px;  /* to match rh edge of video container */
 }
-
-
 #definitionblock {
    border-top: 1px solid #000; 
    margin-top: 0px;
    background-color: #FFF;
 }
-
 @media  (min-width: 992px) {
-
     #definitionblock .col-md-8 {
         padding-left: 60px;
     }
-
 }
-
-
 #leftblock {
-   float: left; 
-   margin-left: 6px;
-   width: 465px;
-   
+    float: left;
+    margin-left: 6px;
+    width: 465px;
 }
-
 #videocontainer {
-   width: 450px;
-   margin: auto;
+    width: 450px;
+    margin: auto;
 }
 #videocontainer #player {
-   margin: auto;
-   width:450px;
-   /*height:259px;*/
-   /*border-left: 6px solid black;
-   border-right: 6px solid black;*/
-   background-color: white;
+    margin: auto;
+    width:450px;
+    /*height:259px;*/
+    /*border-left: 6px solid black;
+    border-right: 6px solid black;*/
+    background-color: white;
 }
-
 #playergloss {
     margin: auto;
     width:450px;
@@ -98,229 +81,109 @@ body {
     border-color: #F0F0F0;
     border-width: 0px 1px 1px;
 }
-
 .videocontainer {
-   /*width: 450px;*/
-   margin: auto;
-   position: relative;
+    /*width: 450px;*/
+    margin: auto;
+    position: relative;
 }
 .videocontainer .player {
-   margin: auto;
-   /*width:450px;*/
-   /*height:259px;*/
-   /*border-left: 6px solid black;
-   border-right: 6px solid black;*/
-   background-color: white;
+    margin: auto;
+    /*width:450px;*/
+    /*height:259px;*/
+    /*border-left: 6px solid black;
+    border-right: 6px solid black;*/
+    background-color: white;
 }
-
 #novideo
 {
-	border: 0;
-	margin: auto;
-	display: block;
+    border: 0;
+    margin: auto;
+    display: block;
 }
-
 #videoiframe {
-   -webkit-border-radius: 0px 0px 10px 10px;
-   -moz-border-radius: 0px 0px 10px 10px;
-   border-radius: 0px 0px 10px 10px;
-	width:460px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    width:460px;
     height:259px;
 }
-
-/* style for the answer in the fingerspelling practice page */
-#answerpara {
-   font-size: larger;
-   font-weight: bold;
-}
-#answer {
-   color: #FF0000;
-}
-
 /* replay for both video and fingerspelling images */
 #replay {
-   text-align: right;
-   padding-right: 1em;
-   margin-bottom: 1em;
-   background-color: #000000;
-   color: #ffffff;
-   -webkit-border-radius: 0px 0px 10px 10px;
-   -moz-border-radius: 0px 0px 10px 10px;
-   border-radius: 0px 0px 10px 10px;
+    text-align: right;
+    padding-right: 1em;
+    margin-bottom: 1em;
+    background-color: #000000;
+    color: #ffffff;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
 }
-
 #keywords {
-
 }
 #definition {
-   margin-left: 475px;
-   padding-left: 6px;
+    margin-left: 475px;
+    padding-left: 6px;
 }
-#staffinfo {
-   margin-left: 338px;
-   padding-left: 6px;
-}
-
-#staffinfo .helptext {
-    font-size: smaller;
-    font-style: italic;
-    color: #ccc;
-}
-
-/* numbersigns */
-
-#numsigntable {
-    margin-left: 400px;
-}
-
-
-
 /* admin search form */
-
 #searchformwell {
     background: #FFFFFF;
 }
-
 #adminsearch td input {
     width: 100%;
 }
-
 #adminsearch #searchpanels > td {
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
 }
-
 #adminsearch #searchfields td {
     width: 33%;
     border-top: 0px;
 }
-
 #adminsearch .table
 {
 	margin-bottom: 5px;
 }
-
 #adminsearch .table-condensed .table-condensed
 {
 	margin-bottom: 0px;
 }
-
 #adminsearch #searchpanels {
     width: 100%;
 }
-
-
 #adminsearch #searchpanels select {
     width: 100%;
 }
-
 #paginate_by select {
     width: 100px;
 }
-
 #paginate_by {
     float: right;
 }
-
 #paginate_by label {
     display: inline;
 }
-
 #paginate_by select {
     display: inline-block;
 }
-
 /* editing gloss */
-
 .edit_enabled {
     background-color: red;
 }
-
 #definition .table th {
     width: 20em;
 }
 
-
-/* styles for finger spelling pages */
-
-#fingerspellblock {
-   border-top: 10px solid black;
-}
-
-#handcontainer {
-   margin-top: -2px;
-   width: 320px;
-}
-
-#handcontainer #handimage {
-   margin: auto;
-   width:320px;
-   height:240px;
-   border-left: 6px solid black;
-   border-right: 6px solid black;
-}
-
-
-/* this will be the same size as our videos */ 
-#handimage {
-  position: relative;
-  height: 240px;
-  width:  300px;
-  background-color: #4b62ae;
-  border-left: 10px solid black;
-  border-right: 10px solid black;
-}
-
-
-/* images are 192x144 centre them in the above div */
-#mainimg {
-  position: absolute;
-  top: 49px; /* (240 - 144)/2  */
-  left: 54px;  /* (300 - 192)/2 */
-  display: block;
-  margin: auto;
-}
-
-#fingerspellright {
-   width: 470px; /* 847 - 320 - 20 - fiddle factor */
-   float: left;
-   padding-left: 20px;or
-}
-
-#fstable td {
-  margin-right: -1em;
-}
-#fstable img {
-  width: 75px;
-  height: 56px;
-}
-#fstable td div {
-  margin-top: -1.4em; 
-  font-size: large;
-  color: #fff;
-  text-align: center;
-}
-#info {
-   clear: both;
-}
-
-
-
 /* tag code adapted from http://cssglobe.com/pure-css3-post-tags/ */
-
 .taglist {
     margin:0;
     padding:0;
     list-style:none;
 }
-
-
 .tag {
     float:left;
     height:24px;
     line-height:24px;
     position:relative;
-        
     margin-left:20px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -329,14 +192,12 @@ body {
     color:#fff;
     text-decoration:none;
     -moz-border-radius-bottomright:4px;
-    -webkit-border-bottom-right-radius:4px; 
+    -webkit-border-bottom-right-radius:4px;
     border-bottom-right-radius:4px;
     -moz-border-radius-topright:4px;
-    -webkit-border-top-right-radius:4px;    
+    -webkit-border-top-right-radius:4px;
     border-top-right-radius:4px;
-
-    }
-    
+}
 .tag:before {
     content:"";
     float:left;
@@ -349,7 +210,6 @@ body {
     border-style:solid;
     border-width:12px 12px 12px 0;      
 }
-
 .tag:after{
     content:"";
     position:absolute;
@@ -365,18 +225,13 @@ body {
     -moz-box-shadow:-1px -1px 2px #004977;
     -webkit-box-shadow:-1px -1px 2px #004977;
     box-shadow:-1px -1px 2px #004977;
-    }
-    
-    
-
+}
 .tagdelete {
     color: red;
 }
-
 #tagaddform {
     clear: both;
 }
-
 td .tag {
     margin-left: 15px;
     margin-top: 0px;
@@ -385,73 +240,56 @@ td .tag {
 }
 
 // typeahead dropdown styling
-
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 396px;
-  height: 30px;
-  padding: 8px 12px;
-  font-size: 24px;
-  line-height: 30px;
-  border: 2px solid #ccc;
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-  outline: none;
+    width: 396px;
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    outline: none;
 }
-
 .typeahead {
-  background-color: #fff;
+    background-color: #fff;
 }
-
 .typeahead:focus {
-  border: 2px solid #0097cf;
+    border: 2px solid #0097cf;
 }
-
 .tt-query {
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-
 .tt-hint {
-  color: #999
+    color: #999
 }
-
 .tt-dropdown-menu {
-  width: 422px;
-  margin-top: 12px;
-  padding: 8px 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    width: 422px;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
-
 .tt-suggestion {
-  padding: 3px 20px;
-  line-height: 20px;
+    padding: 3px 20px;
+    line-height: 20px;
 }
-
 .tt-suggestion.tt-cursor {
-  color: #fff;
-  background-color: #0097cf;
-
+    color: #fff;
+    background-color: #0097cf;
 }
-
 .tt-suggestion p {
-  margin: 0;
+    margin: 0;
 }
-
-/* Who does this seriously?? Ruining functionality that exists
-.col-md-4
-{
-
-	width: 100%
-}*/

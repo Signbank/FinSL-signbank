@@ -1,20 +1,14 @@
-/* variant style for black - main page style */
-
-
-html { 
-  /* background-image: url(images/ngt/black_02.gif); */
-} 
-
+/* This is the PRIMARY_CSS file of signbank app */
+html {
+    /* */
+}
 #leftcontentborder {
-  /* background-image: url(images/ngt/black_03.gif); */
+    /* */
 }
-
 #rightcontentborder {
-  /* background-image: url(images/ngt/black_05.gif); */
+    /* */
 }
-
 #header {
-    /* background-image: url(images/ngt/black_02.gif); */
     padding-left: 1em;
     padding-right: 1em;
     background: #2980b9;
@@ -23,13 +17,11 @@ html {
     position: relative;
     margin: 0px;
 }
-
 #header a {
     text-decoration: none;
     float: left;
     color: #133a53;
 }
-
 #logoholder {
     float: right;
     position: relative;
@@ -37,36 +29,21 @@ html {
     padding-bottom: 5px;
     padding-right: 10px;
 }
-
 #logojy {
-    background-image: url(./images/ngt/jy_text_50.png);
+    background-image: url(./images/jy_text_50.png);
     background-repeat: no-repeat;
     width: 123px;
     height: 70px;
     float: left;
     margin-right: 5px;
 }
-
 #logokl {
-    background-image: url(./images/ngt/kl-logo-fi-50.png);
+    background-image: url(./images/kl-logo-fi-50.png);
     background-repeat: no-repeat;
     width: 187px;
     height: 70px;
     float: left;
 }
-
-/* superfish menu styling - background image is assumed 26px high */
-.sf-navbar  { 
-   background-image: url(images/ngt/black_08.gif);
-   background-position: top right;
-   background-repeat: no-repeat;
-}
-
-#pages #mainlinks td {
-  
-  background-image: url(images/ngt/black_02.gif);
-}
-
 .col-md-4 {
     padding-bottom: 5px;
     padding-left: 0px;
