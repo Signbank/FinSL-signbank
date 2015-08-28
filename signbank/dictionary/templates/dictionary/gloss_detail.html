@@ -118,7 +118,7 @@
             {% if gloss.get_video %}
                 <!-- {{ gloss.get_video }} -->
                 <div id="playergloss">
-                    <video id="glossvid{{gloss.id}}" width="450px" preload="auto" controls autoplay muted>
+                    <video id="glossvid{{gloss.id}}" width="450" preload="auto" controls autoplay muted>
                         {# Had to put that t-value in the url to get around browser/server caching the videos issue #}
                         <source src="{{ STATIC_URL }}{{gloss.get_video}}?t={% now "U" %}" type="video/mp4">
                         {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
@@ -436,22 +436,21 @@
             </div>
         </div>
         <div id='relationsforeign' class='collapse'>
-               <table class='table table-condensed'>
-	      <tr>
-          <th style='width:1em'></th>
-              {# Translators: Loan from another language(?) #}
-		  <th style='width:3em'>{% blocktrans %}Loan{% endblocktrans %}</th>
-              {# Translators:  #}
-		  <th style='width:6em'>{% blocktrans %}Related Language{% endblocktrans %}</th>
-              {# Translators: Equivalent Gloss in related language #}
-		  <th style='width:10em'>{% blocktrans %}Gloss in related language{% endblocktrans %}</th>
-		</tr>
+            <table class='table table-condensed'>
+                <tr>
+                    <th style='width:1em'></th>
+                      {# Translators: Loan from another language(?) #}
+                    <th style='width:3em'>{% blocktrans %}Loan{% endblocktrans %}</th>
+                      {# Translators:  #}
+                    <th style='width:6em'>{% blocktrans %}Related Language{% endblocktrans %}</th>
+                      {# Translators: Equivalent Gloss in related language #}
+                    <th style='width:10em'>{% blocktrans %}Gloss in related language{% endblocktrans %}</th>
+                </tr>
 
-                   {% for rel in gloss.relationtoforeignsign_set.all %}
+                {% for rel in gloss.relationtoforeignsign_set.all %}
                     <tr>                                               
                          <td>
                             <span class='glyphicon glyphicon-trash relation_delete' data-toggle='modal' data-target='#delete_relation_modal_{{rel.id}}'></span>
-                            
                              <div class="modal fade" id="delete_relation_modal_{{rel.id}}" role="dialog" aria-labelledby="#modalTitle" aria-hidden="true">
                                  <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
