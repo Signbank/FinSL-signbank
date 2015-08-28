@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 14:09+0300\n"
+"POT-Creation-Date: 2015-08-28 09:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -873,12 +873,12 @@ msgstr "Tyyppi"
 #: signbank/dictionary/forms.py:228 signbank/dictionary/models.py:271
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:445
 msgid "Related Language"
-msgstr "Liittyvä kieli"
+msgstr "Lainattu kieli"
 
 #. Translators: RelationToForeignSignForm label
 #: signbank/dictionary/forms.py:230
 msgid "Gloss in Related Language"
-msgstr "Glossi liittyvässä kielessä"
+msgstr "Glossi lainatussa kielessä"
 
 #. Translators: MorphologyForm label
 #: signbank/dictionary/forms.py:240
@@ -1025,9 +1025,15 @@ msgstr ""
 msgid "Gloss HKI (Eng)"
 msgstr "Glossi HKI (Eng)"
 
+#. Translators: Gloss information
+#. Translators:
+#. Translators: Gloss information
 #: signbank/dictionary/models.py:452
-msgid "Annotation comments"
-msgstr "Annotaatiokommentit"
+#: signbank/feedback/templates/feedback/backup_08-2015_show.html:192
+#: signbank/feedback/templates/feedback/interpreter.html:166
+#: signbank/feedback/templates/feedback/show.html:189
+msgid "Comments"
+msgstr "Kommentit"
 
 #. Translators: Gloss models field: url
 #. Translators: Label for PageForm
@@ -1561,8 +1567,10 @@ msgstr "Käännösvastineet englanniksi"
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:216
-msgid "Annotation Comments:"
-msgstr "Annotaatiokommentit"
+#, fuzzy
+#| msgid "Comments"
+msgid "Comments:"
+msgstr "Kommentit"
 
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:218
@@ -1572,7 +1580,7 @@ msgstr "Kieli:"
 #. Translators: Information about a Gloss
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:220
 msgid "Dialect:"
-msgstr "Murre:"
+msgstr "Alue:"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:221
 msgid "URL:"
@@ -1980,15 +1988,16 @@ msgstr ""
 
 #. Translators: Page title
 #: signbank/dictionary/templates/dictionary/word.html:5
-#, python-format
-msgid "NGT: sign for %(translation)s"
+#, fuzzy, python-format
+#| msgid "NGT: sign for %(translation)s"
+msgid "FinSL: sign for %(translation)s"
 msgstr "FinSL: viittoma %(translation)s:lle"
 
 #. Translators: Sign x of n(signs)
 #: signbank/dictionary/templates/dictionary/word.html:43
 #, python-format
 msgid ""
-"Sign %(glossposn)s of %(glosscount)s <span class='hidden-xs'>in the NGT "
+"Sign %(glossposn)s of %(glosscount)s <span class='hidden-xs'>in the FinSL "
 "Dictionary"
 msgstr ""
 
@@ -2066,7 +2075,7 @@ msgstr "Tuntematon kieli"
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:165
 msgid "Unknown Dialect"
-msgstr "Tuntematon murre"
+msgstr "Tuntematon alue"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:180
@@ -2828,15 +2837,15 @@ msgid ""
 "there are other keywords that belong with this sign? Please write your "
 "comments or new keyword/s below."
 msgstr ""
-"Anna palautetta viittomasta. Onko muita avainsanoja jotka kuuluvat tähän viittomaan? "
-"Kirjoita kommenttisi ja avainsanat alapuolelle."
+"Anna palautetta viittomasta. Onko muita avainsanoja jotka kuuluvat tähän "
+"viittomaan? Kirjoita kommenttisi ja avainsanat alapuolelle."
 
 #: signbank/feedback/models.py:319
 msgid ""
 "Is there a keyword or keyword/s that DO NOT belong with this sign? Please "
 "provide the list of keywords below"
-msgstr "Eikö joku avainsana kuulu tähän viittomaan? Listaa avainsanat "
-"alapuolelle"
+msgstr ""
+"Eikö joku avainsana kuulu tähän viittomaan? Listaa avainsanat alapuolelle"
 
 #. Translators: Feedback question
 #: signbank/feedback/models.py:326
@@ -3087,15 +3096,6 @@ msgstr ""
 msgid "Meaning"
 msgstr "Merkitys"
 
-#. Translators: Gloss information
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/backup_08-2015_show.html:192
-#: signbank/feedback/templates/feedback/interpreter.html:166
-#: signbank/feedback/templates/feedback/show.html:189
-msgid "Comments"
-msgstr "Kommentit"
-
 #: signbank/feedback/templates/feedback/generalfeedback.html:11
 msgid "Thanks for your comment. We value your contribution."
 msgstr "Kiitos kommentistasi, arvostamme osallistumistanne."
@@ -3106,8 +3106,8 @@ msgid ""
 "Please enter any comments you may have about this site and click \"submit\" "
 "to send your feedback to us. We value your contributions and comments."
 msgstr ""
-"Kirjoita kommenttisi sivustosta ja paina lähetä. Arvostamme osallistumistanne "
-"ja kommenttejanne."
+"Kirjoita kommenttisi sivustosta ja paina lähetä. Arvostamme "
+"osallistumistanne ja kommenttejanne."
 
 #. Translators: Feedback
 #: signbank/feedback/templates/feedback/generalfeedback.html:26
@@ -3127,8 +3127,8 @@ msgid ""
 "NOTE: Video files can be quite large, and may take a long time to send. "
 "Please be patient when submitting this feedback."
 msgstr ""
-"HUOM: Videotiedostot voivat olla suuria ja niiden lähettämisessä "
-"saattaa kestää tovi. Kärsivällisyyttä."
+"HUOM: Videotiedostot voivat olla suuria ja niiden lähettämisessä saattaa "
+"kestää tovi. Kärsivällisyyttä."
 
 #. Translators: Header1
 #: signbank/feedback/templates/feedback/generalfeedbacksummary.html:18
@@ -3256,8 +3256,8 @@ msgid ""
 "Please fill out the required questions opposite and then click 'Submit' to "
 "report a missing sign to the %(language)s signbank."
 msgstr ""
-"Ilmoittaaksesi puuttuvan viittoman %(language)s signbankiin, täytä vastapäiset kysymykset ja "
-"paina 'Lähetä'."
+"Ilmoittaaksesi puuttuvan viittoman %(language)s signbankiin, täytä "
+"vastapäiset kysymykset ja paina 'Lähetä'."
 
 #. Translators:
 #: signbank/feedback/templates/feedback/missingsign.html:63
@@ -3311,9 +3311,9 @@ msgid ""
 "sign. Please choose either: one only (chosen from any category), or a choice "
 "from every category."
 msgstr ""
-"Käyttäen ohjetta, valitse symboli/sana joka parhaiten kuvailee tätä viittomaa. "
-"Valitse jompi kumpi: ainoastaan yksi mistä tahansa kategoriasta, tai vaihtoehto "
-"jokaisesta kategoriasta."
+"Käyttäen ohjetta, valitse symboli/sana joka parhaiten kuvailee tätä "
+"viittomaa. Valitse jompi kumpi: ainoastaan yksi mistä tahansa kategoriasta, "
+"tai vaihtoehto jokaisesta kategoriasta."
 
 #. Translators:
 #: signbank/feedback/templates/feedback/missingsign.html:191
@@ -3331,7 +3331,8 @@ msgid ""
 "example, do you think there are other or extra keyword/s that belong with "
 "this sign? If so, please include your comments below."
 msgstr ""
-"Onko lisättävää? Liittyykö viittomaan muita avainsanoja? Liitä ne kommentteihisi."
+"Onko lisättävää? Liittyykö viittomaan muita avainsanoja? Liitä ne "
+"kommentteihisi."
 
 #. Translators: Submit button
 #: signbank/feedback/templates/feedback/missingsign.html:207
@@ -3367,9 +3368,10 @@ msgid ""
 "have\n"
 " been received about any particular sign, percentage displays would be\n"
 " misleading."
-msgstr "Yhteenvetoa varten viittomasta ei ole tarpeeksi palautetta "
-"käyttäjäryhmien perusteella. Jos vastauksia ei ole tarpeeksi, "
-"prosentit saattaisivat olla harhaanjohtavia."
+msgstr ""
+"Yhteenvetoa varten viittomasta ei ole tarpeeksi palautetta käyttäjäryhmien "
+"perusteella. Jos vastauksia ei ole tarpeeksi, prosentit saattaisivat olla "
+"harhaanjohtavia."
 
 #. Translators: Title for feedback views index
 #: signbank/feedback/views.py:23
@@ -3385,7 +3387,9 @@ msgstr "Kiitos palautteestasi."
 #: signbank/pages/admin.py:20
 msgid ""
 "Example: '/about/contact/'. Make sure to have leading and trailing slashes."
-msgstr "Esimerkiksi: '/about/contact/'. Varmista että kauttaviivat löytyvät alusta ja lopusta."
+msgstr ""
+"Esimerkiksi: '/about/contact/'. Varmista että kauttaviivat löytyvät alusta "
+"ja lopusta."
 
 #. Translators: error_message for PageForm
 #: signbank/pages/admin.py:23
@@ -3393,7 +3397,8 @@ msgid ""
 "This value must contain only letters, numbers, underscores, dashes or "
 "slashes."
 msgstr ""
-"Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, viivoja tai kauttaviivoja."
+"Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, viivoja "
+"tai kauttaviivoja."
 
 #: signbank/pages/admin.py:38
 msgid "Uploaded video will be converted to Flash"
@@ -3424,8 +3429,9 @@ msgstr "pohjan nimi"
 msgid ""
 "Example: 'pages/contact_page.html'. If this isn't provided, the system will "
 "use 'pages/default.html'."
-msgstr "Esimerkiksi: 'pages/contact_page.html'. Jos tätä ei anneta, käytetään "
-"'pages/default.html'."
+msgstr ""
+"Esimerkiksi: 'pages/contact_page.html'. Jos tätä ei anneta, käytetään 'pages/"
+"default.html'."
 
 #. Translators: verbose name for publish
 #: signbank/pages/models.py:20
@@ -3442,8 +3448,8 @@ msgid ""
 "Leave blank for a top level menu entry.  Top level entries that have sub-"
 "pages should be empty as they will not be linked in the menu."
 msgstr ""
-"Jätä ylätason valikko kohta tyhjäksi. Ylätason merkintöjen joilla on alasivuja, "
-"tulisi olla tyhjiä tai niitä ei linkitetä valikkoon."
+"Jätä ylätason valikko kohta tyhjäksi. Ylätason merkintöjen joilla on "
+"alasivuja, tulisi olla tyhjiä tai niitä ei linkitetä valikkoon."
 
 #. Translators: verbose name for index
 #: signbank/pages/models.py:28
@@ -3542,8 +3548,9 @@ msgstr "Ei sivuja"
 #. Translators: exception with page request
 #: signbank/pages/views.py:41
 msgid "No pages defined. Login to <a href=\"/admin\"> to create some."
-msgstr "Sivuja ei ole määritelty. Kirjaudu admin-sivulle "
-"<a href=\"/admin\"> lisätäksesi määrityksiä."
+msgstr ""
+"Sivuja ei ole määritelty. Kirjaudu admin-sivulle <a href=\"/admin\"> "
+"lisätäksesi määrityksiä."
 
 #. Translators: label username
 #: signbank/registration/forms.py:44
@@ -3593,8 +3600,9 @@ msgstr ""
 msgid ""
 "Registration using free email addresses is prohibited. Please supply a "
 "different email address."
-msgstr "Rekisteröinti käyttäen ilmaissähköposteja on kielletty. Ole hyvä "
-"ja anna toinen sähköpostiosoite."
+msgstr ""
+"Rekisteröinti käyttäen ilmaissähköposteja on kielletty. Ole hyvä ja anna "
+"toinen sähköpostiosoite."
 
 #. Translators: ValidationError birthyear value
 #: signbank/registration/forms.py:196
@@ -3634,8 +3642,9 @@ msgstr "ei"
 msgid ""
 "Please enter a correct email and password. Note that password is case-"
 "sensitive."
-msgstr "Anna kelvollinen sähköpostiosoite ja salasana. Huomaa että salasana "
-"isoilla ja pienillä kirjaimilla on eroa."
+msgstr ""
+"Anna kelvollinen sähköpostiosoite ja salasana. Huomaa että salasana isoilla "
+"ja pienillä kirjaimilla on eroa."
 
 #. Translators: EmailAuthenticationForm: ValidationError
 #: signbank/registration/forms.py:319
@@ -3647,8 +3656,9 @@ msgstr "Tämä tunnus on ei-aktiivinen."
 msgid ""
 "Your Web browser doesn't appear to have cookies enabled. Cookies are "
 "required for logging in."
-msgstr "Selaimessasi ei nähtävästi ole Cookiesit sallittuja. Cookieseja "
-"tarvitaan sisäänkirjautumiseen."
+msgstr ""
+"Selaimessasi ei nähtävästi ole Cookiesit sallittuja. Cookieseja tarvitaan "
+"sisäänkirjautumiseen."
 
 #. Translators: RegistrationProfile field: user
 #. Django gave a warning about this: 'Setting unique=True on a ForeignKey has the same effect as using a OneToOneField.'
@@ -3800,3 +3810,9 @@ msgstr ""
 #: signbank/video/templates/addvideo.html:31
 msgid "Error:"
 msgstr "Virhe:"
+
+#~ msgid "Annotation comments"
+#~ msgstr "Annotaatiokommentit"
+
+#~ msgid "Annotation Comments:"
+#~ msgstr "Annotaatiokommentit"
