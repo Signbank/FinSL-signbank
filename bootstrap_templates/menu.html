@@ -19,7 +19,7 @@
     <ul class="nav navbar-nav">
     {# add in the top level menu items from pages #}
     {% for item in menu %}
-        {% if item.url == "/admin/" and not perms.is_staff %}{# Do nothing if item.url is admin and user not is_staff #}
+        {% if item.url == "/admin/" and not request.user.is_staff %}{# Do nothing if item.url is admin and user not is_staff #}
         {% else %}
             {% if item.children %}
                 <li class='dropdown'>
