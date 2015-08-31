@@ -19,11 +19,12 @@ from signbank.dictionary.forms import *
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
-
+"""
 @permission_required('dictionary.add_gloss')
 def add_gloss(request):
-    """Create a new gloss and redirect to the edit view"""
-
+"""
+#    """Create a new gloss and redirect to the edit view"""
+"""
     if request.method == "POST":
 
         form = GlossCreateForm(request.POST)
@@ -71,6 +72,19 @@ def add_gloss(request):
                                       context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
+"""
+@permission_required('dictionary.add_gloss')
+def add_gloss(request):
+    if request.method == 'POST':
+        form = GlossCreateForm(request.POST)
+        if form.is_valid():
+            new_gloss = form.save()
+            return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
+    else:
+        form = GlossCreateForm()
+    return render_to_response('dictionary/add_gloss.html',
+                              {'add_gloss_form': form},
+                              context_instance=RequestContext(request))
 
 
 def update_gloss(request, glossid):

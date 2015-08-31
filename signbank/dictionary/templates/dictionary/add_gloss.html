@@ -19,30 +19,8 @@
 
      <form action='{% url "dictionary:add_gloss" %}' method='post'>
          {% csrf_token %}
-         <table class='table' style='width: 400px;'>
-             <tr>
-                 {# Translation: Glosses ID #}
-                 <th><label for='id_idgloss'>{% blocktrans %}Gloss{% endblocktrans %}</label></th><td>{{add_gloss_form.idgloss}}</td>
-             </tr>
-             <tr>
-                 {# Translation: Glosses annotation ID JKL #}
-                 <th><label for='id_annotation_idgloss_jkl'>{% blocktrans %}Gloss JKL{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_jkl}}</td>
-             </tr>
-             <tr>
-                 {# Translation: Glosses annotation ID JKL in English #}
-                 <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Gloss JKL English{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_jkl_en}}</td>
-             </tr>
-             <tr>
-                 {# Translation: Glosses annotation ID HKI #}
-                 <th><label for='id_annotation_idgloss_hki'>{% blocktrans %}Gloss HKI{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_hki}}</td>
-             </tr>
-             <tr>
-                 {# Translation: Glosses annotation ID HKI in English #}
-                 <th><label for='id_annotation_idgloss_hki_en'>{% blocktrans %}Gloss HKI English{% endblocktrans %}</label></th><td>{{add_gloss_form.annotation_idgloss_hki_en}}</td>
-             </tr>
-         </table>
-     {# Translation: Add new sign button #}
-     <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'>
+         {% bootstrap_form add_gloss_form layout='inline' %}
+         <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'>
      </form>
       {% endif %}
 
