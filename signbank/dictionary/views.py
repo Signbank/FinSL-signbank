@@ -19,16 +19,7 @@ from django.contrib.admin.views.decorators import user_passes_test
 
 from django.utils.translation import ugettext_lazy as _
 
-def login_required_config(f):
-    """like @login_required if the ALWAYS_REQUIRE_LOGIN setting is True"""
-
-    if settings.ALWAYS_REQUIRE_LOGIN:
-        return login_required(f)
-    else:
-        return f
-
-
-@login_required_config
+@login_required(login_url='/accounts/login/')
 def index(request):
     """Default view showing a browse/search entry
     point to the dictionary"""
@@ -40,7 +31,7 @@ def index(request):
                                },
                               context_instance=RequestContext(request))
 
-@login_required_config
+@login_required(login_url='/accounts/login/')
 # Default values for keyword_english and n_en are None
 # n is the amount of hits we get for one keyword
 def word(request, keyword, n, keyword_english=None, n_en=None):
@@ -147,7 +138,7 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
                               context_instance=RequestContext(request))
 
 
-@login_required_config
+@login_required(login_url='/accounts/login/')
 def gloss(request, idgloss):
     """View of a gloss - mimics the word view, really for admin use
        when we want to preview a particular gloss"""
@@ -244,7 +235,7 @@ def gloss(request, idgloss):
                               context_instance=RequestContext(request))
 
 
-@login_required_config
+@login_required(login_url='/accounts/login/')
 def search(request):
     """Handle keyword search form submission"""
 

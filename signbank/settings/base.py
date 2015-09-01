@@ -220,9 +220,6 @@ GLOSS_VIDEO_DIRECTORY = "video"
 # form on the sign view
 QUICK_UPDATE_GLOSS_FIELDS = ['language', 'dialect']
 
-# should we always require a login for viewing dictionary content
-ALWAYS_REQUIRE_LOGIN = True
-
 # do we allow people to register for the site
 ALLOW_REGISTRATION = True
 

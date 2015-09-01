@@ -23,7 +23,7 @@ def index(request):
                                   'title': _("Leave Feedback")},
                               context_instance=RequestContext(request))
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def generalfeedback(request):
     feedback = GeneralFeedback()
     valid = False
@@ -56,7 +56,7 @@ def generalfeedback(request):
                               )
 
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def missingsign(request):
     posted = False  # was the feedback posted?
 
@@ -130,7 +130,7 @@ def showfeedback(request):
                               context_instance=RequestContext(request))
 
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def glossfeedback(request, glossid):
     gloss = get_object_or_404(Gloss, idgloss=glossid)
 
@@ -152,7 +152,7 @@ def glossfeedback(request, glossid):
 
 
 # Feedback on individual signs
-@login_required
+@login_required(login_url='/accounts/login/')
 def signfeedback(request, keyword, n):
     """View or give feedback on a sign"""
 

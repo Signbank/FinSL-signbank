@@ -57,7 +57,7 @@ def addvideo(request):
     return redirect(url)
 
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def deletevideo(request, videoid):
     """Remove the video for this gloss, if there is an older version
     then reinstate that as the current video (act like undo)"""
