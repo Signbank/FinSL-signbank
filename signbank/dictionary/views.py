@@ -238,16 +238,20 @@ def gloss(request, idgloss):
 @login_required(login_url='/accounts/login/')
 def search(request):
     """Handle keyword search form submission"""
-
+    """
     if not (request.user.is_staff) and len(request.user.groups.filter(name="Publisher")) == 0 and len(
             request.user.groups.filter(name="Editor")) == 0:
         # Translators: Message sent if user is not allowed to see requested page.
         return HttpResponse(_('You are not allowed to see this page.'))
+    """
+    if not request.user.has_perm('dictionary.search_gloss'):
+        # Translators: If user doesn't have permission search_gloss, show this text.
+        return HttpResponse(_('You are not allowed to see this page.'))
+
 
     form = UserSignSearchForm(request.GET.copy())
 
     if form.is_valid():
-
         """
         These two redirects 'if glossQuery & if query' basically make the rest of this search method
         useless. But keeping them for reference is the public search needs to be enabled at some point.
