@@ -19,60 +19,7 @@ from signbank.dictionary.forms import *
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
-"""
-@permission_required('dictionary.add_gloss')
-def add_gloss(request):
-"""
-#    """Create a new gloss and redirect to the edit view"""
-"""
-    if request.method == "POST":
 
-        form = GlossCreateForm(request.POST)
-
-        # Check that idgloss field is not empty
-        if not request.POST['idgloss']:
-            # Translators: Warning message in Add Gloss
-            return render_to_response('dictionary/warning.html', {'warning': _('Gloss field is empty')},
-                                      context_instance=RequestContext(request))
-        # Check that the idgloss is unique
-        if len(Gloss.objects.filter(idgloss=request.POST['idgloss'])) != 0:
-            # Translators: warning message in Add Gloss
-            return render_to_response('dictionary/warning.html', {'warning': _('Gloss not unique')},
-                                      context_instance=RequestContext(request))
-
-        # Check that one of JKL Gloss or HKI Gloss has a value
-        if not (request.POST['annotation_idgloss_jkl'] or request.POST['annotation_idgloss_hki']):
-            # Translators: Warning message in Add Gloss
-            return render_to_response('dictionary/warning.html', {'warning': _('Missing JKL or HKI Gloss')},
-                                      context_instance=RequestContext(request))
-
-        # If this field has value, then proceed
-        if request.POST['annotation_idgloss_jkl']:
-            # Check that the JKL annotation gloss is unique
-            if len(Gloss.objects.filter(annotation_idgloss_jkl=request.POST['annotation_idgloss_jkl'])) != 0:
-                # Translators: warning message in Add Gloss
-                return render_to_response('dictionary/warning.html', {'warning': _('Gloss JKL not unique')},
-                                          context_instance=RequestContext(request))
-        # If this field has value, then proceed
-        if request.POST['annotation_idgloss_hki']:
-            # Check that the HKI annotation gloss is unique
-            if len(Gloss.objects.filter(annotation_idgloss_hki=request.POST['annotation_idgloss_hki'])) != 0:
-                # Translators: warning message in Add Gloss
-                return render_to_response('dictionary/warning.html', {'warning': _('Gloss HKI not unique')},
-                                          context_instance=RequestContext(request))
-
-        if form.is_valid():
-
-            gloss = form.save()
-
-            return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}) + '?edit')
-        else:
-            return render_to_response('dictionary/add_gloss_form.html',
-                                      {'add_gloss_form': form},
-                                      context_instance=RequestContext(request))
-
-    return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
-"""
 @permission_required('dictionary.add_gloss')
 def add_gloss(request):
     if request.method == 'POST':
@@ -85,7 +32,6 @@ def add_gloss(request):
     return render_to_response('dictionary/add_gloss.html',
                               {'add_gloss_form': form},
                               context_instance=RequestContext(request))
-
 
 def update_gloss(request, glossid):
     """View to update a gloss model from the jeditable jquery form

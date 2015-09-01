@@ -4,7 +4,6 @@
 {% load i18n %}
 
 {% block content %}
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -15,16 +14,19 @@
 
    {% if perms.dictionary.add_gloss %}
    {# Translation: #}
-   <p>{% blocktrans %}Please provide some initial data{% endblocktrans %}:</p>
-
+   <h3>{% blocktrans %}Please provide some initial data{% endblocktrans %}:</h3>
      <form action='{% url "dictionary:add_gloss" %}' method='post'>
          {% csrf_token %}
-         {% bootstrap_form add_gloss_form layout='inline' %}
+
+         {% bootstrap_field add_gloss_form.idgloss set_required=True %}
+         {% bootstrap_field add_gloss_form.annotation_idgloss_jkl set_required=False %}
+         {% bootstrap_field add_gloss_form.annotation_idgloss_jkl_en set_required=False %}
+         {% bootstrap_field add_gloss_form.annotation_idgloss_hki set_required=False %}
+         {% bootstrap_field add_gloss_form.annotation_idgloss_hki_en set_required=False %}
+
          <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'>
      </form>
       {% endif %}
-
 </body>
 </html>
-
 {% endblock %}

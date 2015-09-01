@@ -36,35 +36,39 @@ class GlossModelForm(forms.ModelForm):
         # fields are defined in settings.py
         fields = settings.QUICK_UPDATE_GLOSS_FIELDS
 
-"""
 class GlossCreateForm(forms.ModelForm):
-"""
-#    """Form for creating a new gloss from scratch"""
-"""
-    # TODO: Change add gloss things here
-    #idgloss = forms.CharField(label=_('ID Gloss'), widget=forms.TextInput(attrs={'class': 'control-label'}))
-
-    class Meta:
-        model = Gloss
-        fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                  'annotation_idgloss_hki_en']
-"""
-
-class GlossCreateForm(forms.ModelForm):
-    """Form for creating a new gloss from scratch"""
+    """
+    Form for creating a new gloss.
+    This form also overrides the ModelForm validations.
+    """
     attrs_reqd_focus = {'class': 'form-control', 'autofocus': '', 'required': ''}
     attrs_default = {'class': 'form-control'}
 
-    idgloss = forms.CharField(label=_('Gloss'), widget=forms.TextInput(attrs=attrs_reqd_focus))
-    annotation_idgloss_jkl = forms.CharField(label=_('Gloss JKL'), widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_hki = forms.CharField(label=_('Gloss HKI'), widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_hki_en = forms.CharField(label=_('Gloss HKI English'), widget=forms.TextInput(attrs=attrs_default))
+    idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
+    annotation_idgloss_jkl = forms.CharField(label=_('Gloss JKL'), required=False, widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), required=False, widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_hki = forms.CharField(label=_('Gloss HKI'), required=False, widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_hki_en = forms.CharField(label=_('Gloss HKI English'), required=False, widget=forms.TextInput(attrs=attrs_default))
 
     class Meta:
         model = Gloss
         fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
                   'annotation_idgloss_hki_en']
+
+    def clean(self):
+        """
+        Validating that either annotation_idgloss_jkl or annotation_idgloss_hki is provided
+        """
+        cleaned_data = super(GlossCreateForm, self).clean()
+        gloss_jkl = cleaned_data.get('annotation_idgloss_jkl')
+        gloss_hki = cleaned_data.get('annotation_idgloss_hki')
+
+        if not (gloss_jkl or gloss_hki):
+            # If either of gloss_jkl or gloss_hki not provided
+            # Translators: Add gloss: error, user did not provide one of the required fields, jkl, hki or both
+            msg = _('Must provide either Gloss JKL or Gloss HKI')
+            self.add_error('annotation_idgloss_jkl', msg)
+            self.add_error('annotation_idgloss_hki', msg)
 
     def clean_idgloss(self):
         """
@@ -84,28 +88,50 @@ class GlossCreateForm(forms.ModelForm):
         Validates that the annotation_idgloss_jkl value has not been taken yet.
 
         """
-        try:
-            gloss = Gloss.objects.get(
-                annotation_idgloss_jkl__exact=self.cleaned_data['annotation_idgloss_jkl'])
-        except Gloss.DoesNotExist:
+        if len(self.cleaned_data['annotation_idgloss_jkl']) > 0:
+            try:
+                gloss = Gloss.objects.get(
+                    annotation_idgloss_jkl__exact=self.cleaned_data['annotation_idgloss_jkl'])
+            except Gloss.DoesNotExist:
+                return self.cleaned_data['annotation_idgloss_jkl']
+            raise forms.ValidationError(
+                # Translators: exception ValidationError
+                _(u'This Gloss JKL value is already taken. Please choose another.'), code='not_unique')
+        else:
             return self.cleaned_data['annotation_idgloss_jkl']
-        raise forms.ValidationError(
-            # Translators: exception ValidationError
-            _(u'This Gloss JKL value is already taken. Please choose another.'), code='not_unique')
+
+    def clean_annotation_idgloss_jkl_en(self):
+        """
+        Overrides the default validations for annotation_idgloss_jkl_en
+        Currently we don't want to validate this field
+
+        """
+        return self.cleaned_data['annotation_idgloss_jkl_en']
 
     def clean_annotation_idgloss_hki(self):
         """
         Validates that the annotation_idgloss_jkl value has not been taken yet.
 
         """
-        try:
-            gloss = Gloss.objects.get(
-                annotation_idgloss_hki__exact=self.cleaned_data['annotation_idgloss_hki'])
-        except Gloss.DoesNotExist:
+        if len(self.cleaned_data['annotation_idgloss_hki']) > 0:
+            try:
+                gloss = Gloss.objects.get(
+                    annotation_idgloss_hki__exact=self.cleaned_data['annotation_idgloss_hki'])
+            except Gloss.DoesNotExist:
+                return self.cleaned_data['annotation_idgloss_hki']
+            raise forms.ValidationError(
+                # Translators: exception ValidationError
+                _(u'This Gloss HKI value is already taken. Please choose another.'), code='not_unique')
+        else:
             return self.cleaned_data['annotation_idgloss_hki']
-        raise forms.ValidationError(
-            # Translators: exception ValidationError
-            _(u'This Gloss HKI value is already taken. Please choose another.'), code='not_unique')
+
+    def clean_annotation_idgloss_hki_en(self):
+        """
+        Overrides the default validations for annotation_idgloss_hki_en
+        Currently we don't want to validate this field
+
+        """
+        return self.cleaned_data['annotation_idgloss_hki_en']
 
 
 class VideoUpdateForm(forms.Form):
