@@ -76,3 +76,15 @@ html {
     background-color: #ecf0f1;
     border-radius: 4px;
 }
+
+#footer a {
+    color: #828282;
+}
+#footer a:focus {
+    color: #575757;
+}
+#copyright {
+    height: 60px;
+    background-color: #f5f5f5;
+    padding-top: 15px;
+}

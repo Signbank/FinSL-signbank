@@ -6,7 +6,7 @@
 {% block content %}
     {% if perms.dictionary.add_gloss %}
     <div id="addgloss">
-        {# Translation: #}
+        {# Translators: #}
         <h3>{% blocktrans %}Please provide some initial data{% endblocktrans %}:</h3>
         <form action='{% url "dictionary:add_gloss" %}' method='post'>
             {% csrf_token %}
@@ -22,5 +22,8 @@
             <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'>
         </form>
     </div>
+    {% else %}
+    {# Translators: Message that appears if user doesn't have proper user rights to view this page. #}
+    <p>{% blocktrans %}You do not have sufficient user rights to view this page.{% endblocktrans %}</p>
     {% endif %}
 {% endblock %}
