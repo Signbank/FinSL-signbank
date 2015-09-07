@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CV_RESOURCE AUTHOR="" DATE="{% now "c" %}" VERSION="0.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00130975-001"
+        LANG_ID="und" LANG_LABEL="undetermined (und)"/>
+    <CONTROLLED_VOCABULARY CV_ID="dictionary-export-elan">
+        <DESCRIPTION LANG_REF="und"/>
+        {% for object in query_set %}
+            <CV_ENTRY_ML CVE_ID="cveid{{object.pk}}">
+                <CVE_VALUE DESCRIPTION="{{object.annotation_comments}}" LANG_REF="und">{{object.idgloss}}</CVE_VALUE>
+            </CV_ENTRY_ML>
+         {% endfor %}
+        </CONTROLLED_VOCABULARY>
+</CV_RESOURCE>
