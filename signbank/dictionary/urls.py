@@ -48,6 +48,9 @@ urlpatterns = patterns('',
                        url(r'^ajax/gloss/(?P<prefix>.*)$',
                            'signbank.dictionary.adminviews.gloss_ajax_complete', name='gloss_complete'),
 
+                       url(r'^xml/glosslist/$',
+                           'signbank.dictionary.adminviews.gloss_list_xml', name='gloss_list_xml'),
+
                        # These views are disabled simply because there is no use for them right now
                        #url(r'^missingvideo.html$', 'signbank.dictionary.views.missing_video_view'),
                        #url(r'^import_videos/$', 'signbank.dictionary.views.import_videos'),

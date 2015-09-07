@@ -14,6 +14,8 @@ from signbank.feedback.forms import *
 from signbank.video.forms import VideoUploadForGlossForm
 from tagging.models import Tag, TaggedItem
 
+from django.template.loader import render_to_string
+
 
 class GlossListView(ListView):
     model = Gloss
@@ -451,3 +453,14 @@ def gloss_ajax_complete(request, prefix):
             g.annotation_idgloss_jkl, 'sn': g.sn, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
+
+def gloss_list_xml(self):
+    """Returns all entries in dictionarys idgloss fields in XML form that is supported by ELAN"""
+    # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
+    return my_serialize(Gloss.objects.all())
+
+def my_serialize(query_set):
+    xml = render_to_string('dictionary/xml_glosslist_template.xml', {'query_set': query_set})
+    from django.shortcuts import render_to_response
+    return HttpResponse(xml, content_type="text/xml")
+
