@@ -18,8 +18,9 @@ This README would normally document whatever steps are necessary to get your app
     
 ### Wikipages ###
 
-You can see our wiki at (https://bitbucket.org/heilniem/signbank-fi/wiki/Home)
-You can find information about installing Signbank-fi, its requirement and how to integrate it to ELAN.
+You can see our wiki at https://bitbucket.org/heilniem/signbank-fi/wiki/Home
+
+You can for example find information about installing Signbank-fi, its requirements and how to integrate it to ELAN.
 
 ### How do I get Signbank-fi set up? ###
 
