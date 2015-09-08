@@ -5,15 +5,21 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 *   ** Quick summary **
-    * This is a repository for Signbank-fi, a sign language Gloss database.
+    * This is a repository for Signbank-fi (FinSL Signbank), a sign language Gloss database.
     * This version of Signbank is adjusted for the needs of Finnish sign language researchers.
-    * Signbank-fi is based on Dutch Signbank (https://github.com/Woseseltops/signbank), which is a fork of Australian Signbank (https://bitbucket.org/stevecassidy/signbank).
-    * Signbank-fi is easy to translate to various languages, it uses Django's translation engine paired with django-modeltranslation. 
+    * FinSL Signbank is based on Dutch NGT Signbank (https://github.com/Woseseltops/signbank), which is a fork of Australian Auslan Signbank (https://bitbucket.org/stevecassidy/signbank).
+    * Easy to translate to various languages, it uses Django's translation engine paired with django-modeltranslation.
+    * Can export Glosses directly to ELAN's controlled vocabulary
     * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
 
 *   ** Version **
 
     * Signbank-fi is currently in development.
+    
+### Wikipages ###
+
+You can see our wiki at (https://bitbucket.org/heilniem/signbank-fi/wiki/Home)
+You can find information about installing Signbank-fi, its requirement and how to integrate it to ELAN.
 
 ### How do I get Signbank-fi set up? ###
 
