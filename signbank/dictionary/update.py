@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.db.models.fields import NullBooleanField
+from django.utils import timezone
 
 from signbank.log import debug
 from tagging.models import TaggedItem, Tag
@@ -25,7 +26,11 @@ def add_gloss(request):
     if request.method == 'POST':
         form = GlossCreateForm(request.POST)
         if form.is_valid():
-            new_gloss = form.save()
+            new_gloss = form.save(commit=False)
+            new_gloss.created_at = timezone.now()
+            new_gloss.created_by = request.user
+            new_gloss.updated_by = request.user
+            new_gloss.save()
             return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
     else:
         form = GlossCreateForm()

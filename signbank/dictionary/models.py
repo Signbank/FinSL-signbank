@@ -18,6 +18,7 @@ import json
 from collections import OrderedDict
 from django.utils.translation import ugettext_lazy as _
 from signbank.dictionary.choicelists import *
+from django.contrib.auth.models import User
 # from signbank.video.models import GlossVideo
 
 class Translation(models.Model):
@@ -480,6 +481,11 @@ minor or insignificant ways that can be ignored."""))
     # to be a primary key, also defines a sequence - need to keep the sequence
     # and allow gaps between numbers for inserting later signs
 
+    # Fields representing creation datetime, updated_at datetime, creator and updater
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, related_name='created_by_user')
+    updated_at = models.DateTimeField(auto_now=True)
+    updated_by = models.ForeignKey(User, related_name='updated_by_user')
 
     # ### Phonology fields
     # Translators: Gloss models field: handedness, verbose name
