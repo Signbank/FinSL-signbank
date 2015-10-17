@@ -8,7 +8,7 @@
     <div id="addgloss">
         {# Translators: #}
         <h3>{% blocktrans %}Please provide some initial data{% endblocktrans %}:</h3>
-        <form action='{% url "dictionary:add_gloss" %}' method='post'>
+        <form enctype="multipart/form-data" action='{% url "dictionary:add_gloss" %}' method='post'>
             {% csrf_token %}
 
             {% bootstrap_field add_gloss_form.idgloss set_required=True %}
@@ -17,7 +17,7 @@
             {% bootstrap_field add_gloss_form.annotation_idgloss_hki set_required=False %}
             {% bootstrap_field add_gloss_form.annotation_idgloss_hki_en set_required=False %}
 
-
+            {% bootstrap_field add_gloss_form.videofile set_required=False %}
 
             <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'>
         </form>

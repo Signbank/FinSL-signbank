@@ -49,11 +49,12 @@ class GlossCreateForm(forms.ModelForm):
     annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), required=False, widget=forms.TextInput(attrs=attrs_default))
     annotation_idgloss_hki = forms.CharField(label=_('Gloss HKI'), required=False, widget=forms.TextInput(attrs=attrs_default))
     annotation_idgloss_hki_en = forms.CharField(label=_('Gloss HKI English'), required=False, widget=forms.TextInput(attrs=attrs_default))
+    videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
 
     class Meta:
         model = Gloss
         fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                  'annotation_idgloss_hki_en']
+                  'annotation_idgloss_hki_en', 'videofile']
 
     def clean(self):
         """
@@ -133,6 +134,9 @@ class GlossCreateForm(forms.ModelForm):
         """
         return self.cleaned_data['annotation_idgloss_hki_en']
 
+    def clean_videofile(self):
+        # TODO: implement a check here to make sure the file is a video, or not something unintented
+        return self.cleaned_data['videofile']
 
 class VideoUpdateForm(forms.Form):
     """Form to allow update of the video for a sign"""

@@ -19,19 +19,27 @@ from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
-
+from signbank.video.views import addvideo
 
 @permission_required('dictionary.add_gloss')
 def add_gloss(request):
     if request.method == 'POST':
-        form = GlossCreateForm(request.POST)
+        form = GlossCreateForm(request.POST, request.FILES)
         if form.is_valid():
             new_gloss = form.save(commit=False)
-            new_gloss.created_at = timezone.now()
             new_gloss.created_by = request.user
             new_gloss.updated_by = request.user
             new_gloss.save()
-            return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
+
+            # This here is a supposedly at least working, what it does is
+            # make it possible to add a video to a gloss directly from add_gloss page
+            # TODO: Refactor this when a cleaner way is found
+            request.POST['gloss_id'] = new_gloss.pk
+            redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/'
+            request.POST['redirect'] = redirecturl
+            addvideo(request)
+            #return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
+            return HttpResponseRedirect(redirecturl)
     else:
         form = GlossCreateForm()
     return render_to_response('dictionary/add_gloss.html',
