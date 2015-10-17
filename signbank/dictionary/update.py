@@ -35,7 +35,7 @@ def add_gloss(request):
             # make it possible to add a video to a gloss directly from add_gloss page
             # TODO: Refactor this when a cleaner way is found
             request.POST['gloss_id'] = new_gloss.pk
-            redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/'
+            redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/?edit'
             request.POST['redirect'] = redirecturl
             addvideo(request)
             #return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
