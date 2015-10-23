@@ -8,7 +8,6 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from modeltranslation.admin import TranslationAdmin
 
-
 from signbank.log import debug
 
 
@@ -18,10 +17,10 @@ class PageForm(forms.ModelForm):
         label=_("URL"), max_length=100, regex=r'^[-\w/]+$',
         # Translators: Help_text for PageForm
         help_text=_("Example: '/about/contact/'. Make sure to have leading"
-                                       " and trailing slashes."),
+                    " and trailing slashes."),
         # Translators: error_message for PageForm
         error_message=_("This value must contain only letters, numbers,"
-                                           " underscores, dashes or slashes."))
+                        " underscores, dashes or slashes."))
 
     class Meta:
         model = Page
@@ -56,14 +55,15 @@ class PageVideoInline(admin.TabularInline):
     model = PageVideo
     extra = 1
 
+
 # Adds SummernoteModelAdmin and TranslationAdmin (Modeltranslation), the settings are for Summernote
 class PageAdmin(SummernoteModelAdmin, TranslationAdmin):
     form = PageForm
     fieldsets = (
         (None, {
-         'fields': ('url', 'title', 'parent', 'index', 'publish', 'content')}),
+            'fields': ('url', 'title', 'parent', 'index', 'publish', 'content')}),
         (_('Advanced options'), {
-         'classes': ('collapse',), 'fields': ('group_required', 'template_name')}),
+            'classes': ('collapse',), 'fields': ('group_required', 'template_name')}),
     )
     list_display = ('url', 'title', 'parent', 'index')
     list_filter = ('publish', 'group_required')

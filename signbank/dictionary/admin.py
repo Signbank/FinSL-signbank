@@ -8,15 +8,18 @@ from django.utils.translation import ugettext_lazy as _
 class KeywordAdmin(VersionAdmin):
     search_fields = ['^text']
 
+
 class TranslationInline(admin.TabularInline):
     model = Translation
     extra = 1
     raw_id_fields = ['translation']
 
+
 class TranslationEnglishInline(admin.TabularInline):
     model = TranslationEnglish
     extra = 1
     raw_id_fields = ['translation_english']
+
 
 class RelationToOtherSignInline(admin.TabularInline):
     model = Relation
@@ -66,7 +69,8 @@ class GlossAdmin(VersionAdmin):
                                            'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
                                 'classes': ('collapse',)},),
                  (
-                 'Semantics', {'fields': ('iconic_image', 'named_entity', 'semantic_field'), 'classes': ('collapse',)}),
+                     'Semantics',
+                     {'fields': ('iconic_image', 'named_entity', 'semantic_field'), 'classes': ('collapse',)}),
                  ('Frequency', {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True
@@ -97,9 +101,11 @@ class LanguageAdmin(VersionAdmin):
     model = Language
     inlines = [DialectInline]
 
+
 class FieldChoiceAdmin(admin.ModelAdmin):
     model = FieldChoice
     list_display = ('field', 'english_name', 'machine_value')
+
 
 admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)

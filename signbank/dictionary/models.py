@@ -10,6 +10,7 @@ import tagging
 import os
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.core.exceptions import FieldDoesNotExist
 
 from signbank.dictionary.choicelists import *
 
@@ -108,8 +109,12 @@ class Keyword(models.Model):
         # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is
         # on
         try:
+            from tagging.models import Tag
+        except ImportError:
+            pass
+        try:
             crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
-        except:
+        except tagging.models.Tag.DoesNotExist:
             crudetag = None
 
         safe = (not request.user.is_authenticated()
@@ -166,8 +171,13 @@ class KeywordEnglish(models.Model):
         # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is
         # on
         try:
+            from tagging.models import Tag
+        except ImportError:
+            pass
+
+        try:
             crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
-        except:
+        except tagging.models.Tag.DoesNotExist:
             crudetag = None
 
         safe = (not request.user.is_authenticated()
@@ -369,7 +379,7 @@ class Gloss(models.Model):
         for f in self._meta.fields:
             try:
                 d[f.name] = self._meta.get_field(f.name).verbose_name
-            except:
+            except FieldDoesNotExist:
                 pass
 
         return d
@@ -654,15 +664,6 @@ minor or insignificant ways that can be ignored."""))
         else:
             return None
 
-        # TODO: Find out the mystery of this line, it is unreachable, just like everything behind it
-        """video_with_gloss = self.get_video_gloss()
-
-        try:
-            video = video_with_gloss.glossvideo_set.get(version__exact=0)
-            return video
-        except:
-            return None
-        """
 
     def count_videos(self):
         """Return a count of the number of videos we have 
@@ -758,7 +759,8 @@ minor or insignificant ways that can be ignored."""))
 
         return json.dumps(d)
 
-    def dialect_choices(self):
+    @staticmethod
+    def dialect_choices():
         """Return JSON for dialect choices"""
 
         d = dict()
@@ -767,7 +769,8 @@ minor or insignificant ways that can be ignored."""))
 
         return json.dumps(d)
 
-    def get_choice_lists(self):
+    @staticmethod
+    def get_choice_lists():
         """Return JSON for the location choice list"""
 
         choice_lists = {}

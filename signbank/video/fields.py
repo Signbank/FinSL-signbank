@@ -37,7 +37,7 @@ class UploadedFLVFile(UploadedFile):
 
     def seek(self, *args): return self.file.seek(*args)
 
-    def tell(self, *args): return self.file.tell(*args)
+    def tell(self, *args): return self.file.tell()
 
     def __iter__(self): return iter(self.file)
 
@@ -176,7 +176,7 @@ class VideoUploadToFLVField(forms.FileField):
         try:
             s = os.stat(targetfile)
             fsize = s.st_size
-            if (fsize == 0):
+            if fsize == 0:
                 os.remove(targetfile)
                 # Translators: Error message
                 errormsg = _("Conversion of video failed: please try to use a diffent format")

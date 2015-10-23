@@ -10,7 +10,7 @@ for n, line in enumerate(open(filepath)):
 
     if column[row].strip() not in choices and column[row].strip() != '?':
         choices.append(column[row].strip())
-    #	elif column[25] not in choices and column[25] != '?':
+    # elif column[25] not in choices and column[25] != '?':
     #		choices.append(column[25]);
 
     if investigate:

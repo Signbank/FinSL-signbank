@@ -217,7 +217,7 @@ def update_gloss(request, glossid):
                     os.rename(glossvideo.videofile.path, new_path_full)
                     glossvideo.videofile.name = new_path
                     glossvideo.save()
-                except:
+                except IOError:
                     #gloss.idgloss = old_idgloss
                     pass
 
@@ -275,7 +275,7 @@ def update_relation(gloss, field, value):
 
     try:
         rel = Relation.objects.get(id=relid)
-    except:
+    except Relation.DoesNotExist:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Bad Relation ID"), relid, content_type='text/plain')
 
@@ -291,7 +291,7 @@ def update_relation(gloss, field, value):
         #rel.role = value
         try:
             rel.role = FieldChoice.objects.get(machine_value=value)
-        except:
+        except FieldChoice.DoesNotExist:
             rel.role = value
         rel.save()
         #newvalue = rel.get_role_display()
@@ -322,7 +322,7 @@ def update_relationtoforeignsign(gloss, field, value):
 
     try:
         rel = RelationToForeignSign.objects.get(id=relid)
-    except:
+    except RelationToForeignSign.DoesNotExist:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Bad RelationToForeignSign ID"), relid,
                                       content_type='text/plain')
@@ -410,7 +410,7 @@ def update_definition(request, gloss, field, value):
     (what, defid) = field.split('_')
     try:
         defn = Definition.objects.get(id=defid)
-    except:
+    except Definition.DoesNotExist:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Bad Definition ID"), defid, content_type='text/plain')
 
@@ -464,7 +464,7 @@ def add_relation(request):
 
             try:
                 source = Gloss.objects.get(pk=int(sourceid))
-            except:
+            except Gloss.DoesNotExist:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest(_("Source gloss not found."), content_type='text/plain')
 
@@ -502,7 +502,7 @@ def add_relationtoforeignsign(request):
 
             try:
                 gloss = Gloss.objects.get(pk=int(sourceid))
-            except:
+            except Gloss.DoesNotExist:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest(_("Source gloss not found."), content_type='text/plain')
 
@@ -575,7 +575,7 @@ def update_morphology_definition(gloss, field, value):
 
     try:
         morph_def = MorphologyDefinition.objects.get(id=morph_def_id)
-    except:
+    except MorphologyDefinition.DoesNotExist:
         # Translators: HttpResponseBadRequest
         return HttpResponseBadRequest("%s '%s'" % _("Bad Morphology Definition ID"), morph_def_id,
                                       content_type='text/plain')

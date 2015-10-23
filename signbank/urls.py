@@ -9,6 +9,7 @@ from signbank.dictionary.models import Gloss
 from signbank.dictionary.adminviews import GlossListView, GlossDetailView
 
 from django.contrib import admin
+
 admin.autodiscover()
 
 from adminsite import publisher_admin
@@ -20,7 +21,6 @@ if settings.SHOW_NUMBERSIGNS:
 else:
     numbersigns_view = TemplateView.as_view(
         template_name='numbersigns/underconstruction.html')
-
 
 urlpatterns = patterns('',
 
@@ -36,7 +36,7 @@ urlpatterns = patterns('',
 
                        url(r'^video/', include('signbank.video.urls')),
 
-                       #(r'^register.html', 'signbank.views.index'),
+                       # (r'^register.html', 'signbank.views.index'),
                        url(r'^logout.html', 'django.contrib.auth.views.logout',
                            {'next_page': "/"}, "logout"),
 
@@ -44,7 +44,7 @@ urlpatterns = patterns('',
                        url(r'^signs/dictionary/$',
                            'signbank.dictionary.views.search'),
                        url(r'^signs/search/$', permission_required('dictionary.search_gloss')
-                           (GlossListView.as_view())),
+                       (GlossListView.as_view())),
                        url(r'^signs/add/$', 'signbank.dictionary.views.add_new_sign'),
                        url(r'^signs/import_csv/$',
                            'signbank.dictionary.views.import_csv'),

@@ -31,7 +31,7 @@ def page(request, url='/'):
     # deal with the lack of a root page
     try:
         f = Page.objects.get(url__exact=url)
-    except:
+    except Page.DoesNotExist:
         # no page, if we're after the root page then serve a default page
         if url == '/':
 

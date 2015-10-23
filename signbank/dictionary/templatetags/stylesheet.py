@@ -12,7 +12,7 @@ def primary_css():
     try:
         from django.conf import settings
         return settings.PRIMARY_CSS
-    except:
+    except NameError:
         return ''
 
 

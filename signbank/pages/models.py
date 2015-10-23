@@ -15,14 +15,16 @@ class Page(models.Model):
     # Translators: verbose name for template_name
     template_name = models.CharField(_('template name'), max_length=70, blank=True,
                                      # Translators: help_text for template_name
-                                     help_text=_("Example: 'pages/contact_page.html'. If this isn't provided, the system will use 'pages/default.html'."))
+                                     help_text=_(
+                                         "Example: 'pages/contact_page.html'. If this isn't provided, the system will use 'pages/default.html'."))
     # Translators: verbose name for publish
     publish = models.BooleanField(_('publish'),
                                   # # Translators: help_text for publish
                                   help_text=_("If this is checked, the page will be included in the site menus."))
     parent = models.ForeignKey('self', blank=True, null=True,
                                # Translators: help_text for parent
-                               help_text=_("Leave blank for a top level menu entry.  Top level entries that have sub-pages should be empty as they will not be linked in the menu."))
+                               help_text=_(
+                                   "Leave blank for a top level menu entry.  Top level entries that have sub-pages should be empty as they will not be linked in the menu."))
     index = models.IntegerField(
         # Translators: verbose name for index
         _('ordering index'), default=0,
@@ -30,8 +32,9 @@ class Page(models.Model):
         help_text=_('Used to order pages in the menu'))
     # Removed null=True from group_required, since django gave a warning that it has no effect on manytomanyfield
     group_required = models.ManyToManyField(Group, blank=True,
-        # Translators: help_text for group_required
-        help_text=_("This page will only be visible to members of these groups, leave blank to allow anyone to access."))
+                                            # Translators: help_text for group_required
+                                            help_text=_(
+                                                "This page will only be visible to members of these groups, leave blank to allow anyone to access."))
 
     class Meta:
         # Translators: verbose name for Page

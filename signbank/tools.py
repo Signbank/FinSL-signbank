@@ -4,20 +4,20 @@ import shutil
 from HTMLParser import HTMLParser
 from django.contrib.admin.views.decorators import user_passes_test
 
-#==========================
+# ==========================
 # Constants
-#==========================
+# ==========================
 
 ROOT = '/var/www2/signbank/live/'
 SB_VIDEO_FOLDER = ROOT + 'writable/glossvideo/'
 
-#==========================
+
+# ==========================
 # Functions
-#==========================
+# ==========================
 
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def video_to_signbank(source_folder, gloss, extension):
-
     # Add a dot before the extension if needed
     if extension[0] != '.':
         extension = '.' + extension
@@ -50,12 +50,13 @@ def video_to_signbank(source_folder, gloss, extension):
 
     return overwritten, was_allowed
 
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
-def unescape(string):
 
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
+def unescape(string):
     return HTMLParser().unescape(string)
 
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
+
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def compare_valuedict_to_gloss(valuedict, gloss):
     """Takes a dict of arbitrary key-value pairs, and compares them to a gloss"""
 
@@ -157,7 +158,8 @@ def compare_valuedict_to_gloss(valuedict, gloss):
 
     return differences
 
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
+
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def reload_signbank(request=None):
     """Functions to clear the cache of Apache, also works as view"""
 
@@ -166,7 +168,6 @@ def reload_signbank(request=None):
 
     # If this is an HTTP request, give an HTTP response
     if request is not None:
-
         # Javascript to reload the page three times
         js = """<script>
         xmlHttp = new XMLHttpRequest();

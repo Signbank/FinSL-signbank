@@ -48,7 +48,6 @@ class Command(BaseCommand):
         'sym': 'phonology:symmetrical',
         'para': 'phonology:parallel',
         'onehand': 'phonology:onehand',
-        'para': 'phonology:parallel',
 
         'crudetf': 'lexis:crude',
         'doubtlextf': 'lexis:doubtlex',

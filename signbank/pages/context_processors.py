@@ -53,4 +53,4 @@ def find_children(page, currentURL, user):
         result.append(
             {'url': page.url, 'title': page.title, 'children': children, 'current': isCurrent})
 
-    return (result, anyCurrent)
+    return result, anyCurrent

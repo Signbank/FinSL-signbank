@@ -42,7 +42,7 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
     # stuff here, which may not always be sent.
     try:
         n_en = int(n_en)
-    except:
+    except ValueError:
         pass
 
     if request.GET.has_key('feedbackmessage'):
@@ -242,9 +242,8 @@ def search(request):
 
         try:
             term = smart_unicode(term)
-        except:
-            # if the encoding didn't work this is
-            # a strange unicode or other string
+        except UnicodeError:
+            # if the encoding didn't work this is a strange unicode or other string
             # and it won't match anything in the dictionary
             words = []
 
@@ -259,7 +258,7 @@ def search(request):
 
         try:
             crudetag = Tag.objects.get(name='lexis:crude')
-        except:
+        except Tag.DoesNotExist:
             crudetag = None
 
         if safe and crudetag is not None:
@@ -419,7 +418,7 @@ def add_new_sign(request):
                               context_instance=RequestContext(request))
 
 def import_csv(request):
-    if not (request.user.is_staff) and len(request.user.groups.filter(name="Publisher")) == 0:
+    if not request.user.is_staff and len(request.user.groups.filter(name="Publisher")) == 0:
         # Translators: import_csv: not allowed to see requested page (Might not be useful to translate)
         return HttpResponse(_('You are not allowed to see this page.'))
 
