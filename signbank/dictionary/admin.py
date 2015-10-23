@@ -54,12 +54,13 @@ from django.utils.translation import ugettext_lazy as _
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
+
     fieldsets = ((None, {'fields': (
         'idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
         'annotation_idgloss_hki_en', 'annotation_comments', 'language', 'dialect', 'url_field')},),
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
-                 ('Created/Updated', {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')}),
+                 ('Created/Updated', {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
                  ('Phonology', {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                            'relation_between_articulators', 'absolute_orientation_palm',
                                            'absolute_orientation_fingers', 'relative_orientation_movement',
@@ -82,6 +83,23 @@ class GlossAdmin(VersionAdmin):
         'language', 'dialect', 'in_web_dictionary', 'strong_handshape']
     inlines = [RelationInline, RelationToForeignSignInline,
                DefinitionInline, TranslationInline, TranslationEnglishInline]
+
+    def save_model(self, request, obj, form, change):
+        """Sets created_by and updated_by as the original requests user"""
+        obj.created_by = request.user
+        obj.updated_by = request.user
+        obj.save()
+
+    def save_formset(self, request, form, formset, change):
+        """Saves the formsets created_by and updated_by with request.user"""
+        if formset.model == Gloss:
+            instances = formset.save(commit=False)
+            for instance in instances:
+                instance.created_by = request.user
+                instance.updated_by = request.user
+                instance.save()
+        else:
+            formset.save()
 
 
 class RegistrationProfileAdmin(admin.ModelAdmin):
