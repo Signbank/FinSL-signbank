@@ -73,8 +73,6 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, videourl)):
         videourl = None
 
-    # TODO: Currently disabled, TEMPORARILY, because was causing problems testing something else
-    # trans.homophones = trans.gloss.relation_sources.filter(role='homophone')
 
     # work out the number of this gloss and the total number
     gloss = trans.gloss
@@ -90,11 +88,7 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
         glosscount = 0
         glossposn = 0
 
-    # navigation gives us the next and previous signs
-    nav = gloss.navigation(request.user.has_perm('dictionary.search_gloss'))
-
     # the gloss update form for staff
-
     if request.user.has_perm('dictionary.search_gloss'):
         update_form = GlossModelForm(instance=trans.gloss)
         video_form = VideoUploadForGlossForm(initial={'gloss_id': trans.gloss.pk,
@@ -117,7 +111,6 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
                                'n': n,
                                'total': total,
                                'matches': range(1, total + 1),
-                               'navigation': nav,
                                # lastmatch is a construction of the url for this word
                                # view that we use to pass to gloss pages
                                # could do with being a fn call to generate this
@@ -132,7 +125,6 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
                                'feedback': True,
                                'feedbackmessage': feedbackmessage,
                                'tagform': TagUpdateForm(),
-                               'SIGN_NAVIGATION': settings.SIGN_NAVIGATION,
                                'DEFINITION_FIELDS': settings.DEFINITION_FIELDS,
                                },
                               context_instance=RequestContext(request))
@@ -188,9 +180,6 @@ def gloss(request, idgloss):
         glosscount = 0
         glossposn = 0
 
-    # navigation gives us the next and previous signs
-    nav = gloss.navigation(request.user.has_perm('dictionary.search_gloss'))
-
     # the gloss update form for staff
     update_form = None
 
@@ -224,12 +213,10 @@ def gloss(request, idgloss):
                                'gloss': gloss,
                                'glosscount': glosscount,
                                'glossposn': glossposn,
-                               'navigation': nav,
                                'update_form': update_form,
                                'videoform': video_form,
                                'tagform': TagUpdateForm(),
                                'feedbackmessage': feedbackmessage,
-                               'SIGN_NAVIGATION': settings.SIGN_NAVIGATION,
                                'DEFINITION_FIELDS': settings.DEFINITION_FIELDS,
                                },
                               context_instance=RequestContext(request))

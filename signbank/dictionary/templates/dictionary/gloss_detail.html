@@ -44,34 +44,12 @@
 
 <div id="signinfo" class='navbar navbar-default navbar-collapse'>
    
-    <div class='btn-group'>
-        {% if SIGN_NAVIGATION %}
-        
-            {% if navigation.prev %}
-            {# Translators: Navigation - previous #}
-            <a class='btn navbar-btn btn-default' href="{% url 'dictionary:admin_gloss_view' pk=navigation.prev.id %}">&laquo; {% blocktrans %}Previous Sign{% endblocktrans %}
-            </a>
-            {% endif %}
-            {# Translators: Sign x of n(amount) #}
-            <button class='btn navbar-btn'>{% blocktrans %}Sign {{glossposn}} of {{glosscount}} in the dictionary{% endblocktrans %}</button>
-            
-            {% if navigation.next %}
-            {# Translators: Navigation - next #}
-            <a class="btn navbar-btn btn-default"
-               href="{% url 'dictionary:admin_gloss_view' pk=navigation.next.id %}">{% blocktrans %}Next Sign{% endblocktrans %} &raquo;</a>
-            {% endif %}
-         {% else %}
-           
-         {% endif %}
-    </div>
-
     {% if gloss.idgloss %}
-    {# Translators: Public view (mode?) #}
-    <a class='btn btn-default navbar-btn' href="{% url 'root_page' %}dictionary/gloss/{{gloss.idgloss}}.html">{% blocktrans %}Public View{% endblocktrans %}</a>
+        {# Translators: Public view (mode?) #}
+        <a class='btn btn-default navbar-btn' href="{% url 'root_page' %}dictionary/gloss/{{gloss.idgloss}}.html">{% blocktrans %}Public View{% endblocktrans %}</a>
     {% endif %}
     
     {% if perms.dictionary.change_gloss %}
-    
     <div class='pull-right'>
          {# Translators: Text that appears when editing is on #}
          <span id='edit_message' style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>

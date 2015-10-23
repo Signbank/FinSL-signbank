@@ -186,11 +186,6 @@ ANON_SAFE_SEARCH = False
 # do we show the tag based search for anonymous users?
 ANON_TAG_SEARCH = False
 
-# TODO: I think this can be removed. This would allow the removal of gloss.sn too
-# do we display the previous/next links to signs, requires gloss.sn to be
-# used consistently
-SIGN_NAVIGATION = False
-
 # TODO: Do something with these, remove or see if they need correction?
 # which definition fields do we show and in what order?
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',

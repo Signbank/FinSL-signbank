@@ -389,13 +389,7 @@ class GlossDetailView(DetailView):
         context['definitionform'] = DefinitionForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
-        context['navigation'] = context['gloss'].navigation(True)
         context['interpform'] = InterpreterFeedbackForm()
-        context['SIGN_NAVIGATION'] = settings.SIGN_NAVIGATION
-        if settings.SIGN_NAVIGATION:
-            context['glosscount'] = Gloss.objects.count()
-            context['glossposn'] = Gloss.objects.filter(
-                sn__lt=context['gloss'].sn).count() + 1
 
         # Pass info about which fields we want to see
         gl = context['gloss']

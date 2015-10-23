@@ -661,87 +661,15 @@ minor or insignificant ways that can be ignored."""))
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
 
-    def navigation(self, is_staff):
-        """Return a gloss navigation structure that can be used to
-        generate next/previous links from within a template page"""
-
-        result = dict()
-        result['next'] = self.next_dictionary_gloss(is_staff)
-        result['prev'] = self.prev_dictionary_gloss(is_staff)
-        return result
-
-    def admin_next_gloss(self):
-        """next gloss in the admin view, shortcut for next_dictionary_gloss with staff=True"""
-
-        return self.next_dictionary_gloss(True)
-
-    def admin_prev_gloss(self):
-        """previous gloss in the admin view, shortcut for prev_dictionary_gloss with staff=True"""
-
-        return self.prev_dictionary_gloss(True)
-
-    # TODO: See if this is really needed, 'sn' seems like a dirty way to determine order
-    def next_dictionary_gloss(self, staff=False):
-        """Find the next gloss in dictionary order"""
-        if self.sn == None:
-            return None
-        elif staff:
-            set = Gloss.objects.filter(sn__gt=self.sn).order_by('sn')
-        else:
-            set = Gloss.objects.filter(
-                sn__gt=self.sn, in_web_dictionary__exact=True).order_by('sn')
-        if set:
-            return set[0]
-        else:
-            return None
-
-    # TODO: See if this is really needed, 'sn' seems like a dirty way to determine order
-    def prev_dictionary_gloss(self, staff=False):
-        """Find the previous gloss in dictionary order"""
-        if self.sn == None:
-            return None
-        elif staff:
-            set = Gloss.objects.filter(sn__lt=self.sn).order_by('-sn')
-        else:
-            set = Gloss.objects.filter(
-                sn__lt=self.sn, in_web_dictionary__exact=True).order_by('-sn')
-        if set:
-            return set[0]
-        else:
-            return None
 
     def get_absolute_url(self):
         return "/dictionary/gloss/%s.html" % self.idgloss
 
-    def homophones(self):
-        """Return the set of homophones for this gloss ordered by sense number"""
-
-        if self.sense == 1:
-            relations = Relation.objects.filter(
-                role="homophone", target__exact=self).order_by('source__sense')
-            homophones = [rel.source for rel in relations]
-            homophones.insert(0, self)
-            return homophones
-        elif self.sense > 1:
-            # need to find the root and see how many senses it has
-            homophones = self.relation_sources.filter(
-                role='homophone', target__sense__exact=1)
-            if len(homophones) > 0:
-                root = homophones[0].target
-                return root.homophones()
-        return []
-
     def get_video_gloss(self):
+        # This method was used for finding a gloss that has the video, removed code but saved the comment below
         """Work out the gloss that might have the video for this sign, usually the sign number but
         if we're a sense>1 then we look at the homophone with sense=1
         Return the gloss instance."""
-
-        if self.sense > 1:
-            homophones = self.relation_sources.filter(
-                role='homophone', target__sense__exact=1)
-            # should be only zero or one of these
-            if len(homophones) > 0:
-                return homophones[0].target
         return self
 
     def get_video(self):
@@ -756,13 +684,15 @@ minor or insignificant ways that can be ignored."""))
             return None
 
         # TODO: Find out the mystery of this line, it is unreachable, just like everything behind it
-        video_with_gloss = self.get_video_gloss()
+
+        """video_with_gloss = self.get_video_gloss()
 
         try:
             video = video_with_gloss.glossvideo_set.get(version__exact=0)
             return video
         except:
             return None
+        """
 
     def count_videos(self):
         """Return a count of the number of videos we have 
@@ -772,7 +702,7 @@ minor or insignificant ways that can be ignored."""))
         return video_with_gloss.glossvideo_set.count()
 
     def get_video_url(self):
-        """Return  the url of the video for this gloss which may be that of a homophone"""
+        """Return  the url of the video for this gloss"""
 
         #return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
         video = self.get_video()

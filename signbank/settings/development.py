@@ -13,9 +13,6 @@ PRIMARY_CSS = "bootstrap_css/signbank.css"
 # defines the aspect ratio for videos
 #VIDEO_ASPECT_RATIO = 360.0/640.0
 
-# show/don't show sign navigation
-SIGN_NAVIGATION = False
-
 # show the number signs page or an under construction page?
 #SHOW_NUMBERSIGNS = False
 

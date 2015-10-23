@@ -30,29 +30,6 @@
     {% endif %}
 
     <div id="signinfo" class='navbar navbar-default navbar-collapse'>
-    
-        <div class='btn-group'>
-            {% if SIGN_NAVIGATION %}
-        
-                {% if navigation.prev %}
-                {# Translators: Navigation  #}
-                <a class='btn navbar-btn btn-default' href="{% url 'root_page' %}dictionary/gloss/{{navigation.prev.idgloss}}.html?lastmatch={{lastmatch}}">&laquo; <span class='hidden-xs'>{% blocktrans %}Previous Sign{% endblocktrans %}</span></a>
-           
-                {% endif %}
-                {# Translators: Sign x of n(signs) #}
-                <button class='btn navbar-btn'>{% blocktrans %}Sign {{glossposn}} of {{glosscount}} <span class='hidden-xs'>in the FinSL Dictionary{% endblocktrans %}</span></button>
-            
-                {% if navigation.next %}
-                {# Translators: Navigation #}
-                <a class="btn navbar-btn btn-default"
-                   href="{% url 'root_page' %}dictionary/gloss/{{navigation.next.idgloss}}.html?lastmatch={{lastmatch}}"><span class='hidden-xs'>{% blocktrans %}Next Sign{% endblocktrans %}</span> &raquo;</a>
-                {% endif %}
-             {% else %}
-           
-             {% endif %}
-        </div>
-   
-   
         <div class='pull-right'>
             {% ifequal viewname "words" %}
             {# Translators: Navbar text #}
@@ -73,7 +50,6 @@
                 {% endif %}
             {% endifequal %}
         </div>
-    
     
         {% if perms.dictionary.search_gloss %}
         <div class='btn-group'>
