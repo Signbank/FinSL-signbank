@@ -36,7 +36,7 @@ def generalfeedback(request):
             if form.cleaned_data.has_key('comment'):
                 feedback.comment = form.cleaned_data['comment']
 
-            if form.cleaned_data.has_key('video') and form.cleaned_data['video'] != None:
+            if form.cleaned_data.has_key('video') and form.cleaned_data['video'] is not None:
                 feedback.video = form.cleaned_data['video']
 
             feedback.save()
@@ -72,7 +72,7 @@ def missingsign(request):
             # either we get video of the new sign or we get the
             # description via the form
 
-            if form.cleaned_data.has_key('video') and form.cleaned_data['video'] != None:
+            if form.cleaned_data.has_key('video') and form.cleaned_data['video'] is not None:
                 fb.video = form.cleaned_data['video']
 
             else:

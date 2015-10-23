@@ -165,7 +165,7 @@ def reload_signbank(request=None):
     os.utime(WSGI_FILE, None)
 
     # If this is an HTTP request, give an HTTP response
-    if request != None:
+    if request is not None:
 
         # Javascript to reload the page three times
         js = """<script>

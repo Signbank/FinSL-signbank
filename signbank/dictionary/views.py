@@ -262,7 +262,7 @@ def search(request):
         except:
             crudetag = None
 
-        if safe and crudetag != None:
+        if safe and crudetag is not None:
 
             crude = TaggedItem.objects.get_by_model(Gloss, crudetag)
             # remove crude words from result

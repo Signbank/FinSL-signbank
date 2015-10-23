@@ -36,6 +36,7 @@ class GlossModelForm(forms.ModelForm):
         # fields are defined in settings.py
         fields = settings.QUICK_UPDATE_GLOSS_FIELDS
 
+
 class GlossCreateForm(forms.ModelForm):
     """
     Form for creating a new gloss.
@@ -45,10 +46,14 @@ class GlossCreateForm(forms.ModelForm):
     attrs_default = {'class': 'form-control'}
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
-    annotation_idgloss_jkl = forms.CharField(label=_('Gloss JKL'), required=False, widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), required=False, widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_hki = forms.CharField(label=_('Gloss HKI'), required=False, widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_hki_en = forms.CharField(label=_('Gloss HKI English'), required=False, widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_jkl = forms.CharField(label=_('Gloss JKL'), required=False,
+                                             widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), required=False,
+                                                widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_hki = forms.CharField(label=_('Gloss HKI'), required=False,
+                                             widget=forms.TextInput(attrs=attrs_default))
+    annotation_idgloss_hki_en = forms.CharField(label=_('Gloss HKI English'), required=False,
+                                                widget=forms.TextInput(attrs=attrs_default))
     videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
 
     class Meta:
@@ -138,6 +143,7 @@ class GlossCreateForm(forms.ModelForm):
         # TODO: implement a check here to make sure the file is a video, or not something unintented
         return self.cleaned_data['videofile']
 
+
 class VideoUpdateForm(forms.Form):
     """Form to allow update of the video for a sign"""
     videofile = VideoUploadToFLVField()
@@ -145,8 +151,9 @@ class VideoUpdateForm(forms.Form):
 
 class TagUpdateForm(forms.Form):
     """Form to add a new tag to a gloss"""
-    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None, to_field_name='name', widget=forms.Select(attrs={'class': 'form-control'}))
-    #tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=[(t, t) for t in Tag.objects.all()])
+    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None, to_field_name='name',
+                                 widget=forms.Select(attrs={'class': 'form-control'}))
+    # tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=[(t, t) for t in Tag.objects.all()])
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
 
@@ -206,9 +213,9 @@ class GlossSearchForm(forms.ModelForm):
     HKIGloss = forms.CharField(label=_("Gloss HKI"))
     # Translators: GlossSearchForm label
     HKIenglishGloss = forms.CharField(label=_("Gloss HKI English"))
-    #tags = forms.MultipleChoiceField(choices=Tag.objects.all())
+    # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
-    #nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
+    # nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
     nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
     # Translators: GlossSearchForm label
@@ -218,8 +225,7 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     hasvideo = forms.ChoiceField(label=_('Has Video'), choices=YESNOCHOICES)
     # Translators: GlossSearchForm label
-    defspublished = forms.ChoiceField(
-        label=_("All Definitions Published"), choices=YESNOCHOICES)
+    defspublished = forms.ChoiceField(label=_("All Definitions Published"), choices=YESNOCHOICES)
     # Translators: GlossSearchForm label
     defsearch = forms.CharField(label=_('Search Definition/Notes'))
     # defrole = forms.ChoiceField(label='Search Definition/Note Type', choices=ROLE_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
@@ -281,7 +287,8 @@ class GlossSearchForm(forms.ModelForm):
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',
                   'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
                   'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'mouth_gesture',
-                  'mouthing', 'phonetic_variation', 'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences')
+                  'mouthing', 'phonetic_variation', 'iconic_image', 'named_entity', 'semantic_field',
+                  'number_of_occurences')
 
 
 class DefinitionForm(forms.ModelForm):
@@ -299,7 +306,9 @@ class RelationForm(forms.ModelForm):
     # Translators: RelationForm label
     targetid = forms.CharField(label=_('Target Gloss'))
     # Note that to_field_name has to be unique!
-    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'), to_field_name='machine_value', empty_label=None, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'),
+                                  to_field_name='machine_value', empty_label=None,
+                                  widget=forms.Select(attrs=ATTRS_FOR_FORMS))
 
     class Meta:
         model = Relation
@@ -327,13 +336,15 @@ class RelationToForeignSignForm(forms.ModelForm):
 class MorphologyForm(forms.ModelForm):
     # Translators: MorphologyForm label
     parent_gloss_id = forms.CharField(label=_('Parent Gloss'))
-    #role = forms.ChoiceField(label=_('Type'), choices=build_choice_list(
+    # role = forms.ChoiceField(label=_('Type'), choices=build_choice_list(
     #    'MorphologyType'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
 
     # Note that to_field_name has to be unique!
-    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'), to_field_name='machine_value', empty_label=None, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+    role = forms.ModelChoiceField(label=_('Type'), queryset=FieldChoice.objects.filter(field='MorphologyType'),
+                                  to_field_name='machine_value', empty_label=None,
+                                  widget=forms.Select(attrs=ATTRS_FOR_FORMS))
 
-    #role = forms.ChoiceField(label=_('Type'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
+    # role = forms.ChoiceField(label=_('Type'), widget=forms.Select(attrs=ATTRS_FOR_FORMS))
     # Translators: MorphologyForm label
     morpheme_id = forms.CharField(label=_('Morpheme'))
 

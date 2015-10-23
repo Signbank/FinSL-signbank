@@ -24,7 +24,7 @@ def cd(s):
     pat = r'(\d+\.)(.*)'
 
     m = re.match(pat, s)
-    if m != None:
+    if m is not None:
         gr = m.groups()
         return c(gr[1].strip())
 

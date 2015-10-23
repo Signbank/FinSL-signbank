@@ -182,7 +182,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
             newname = self.videofile.name
             while os.path.exists(os.path.join(storage.location, newname)):
                 self.version += 1
-                newname = newname + ".bak"
+                newname += ".bak"
 
         # now do the renaming
 
@@ -190,7 +190,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
                   os.path.join(storage.location, newname))
         # also remove the post image if present, it will be regenerated
         poster = self.poster_path(create=False)
-        if poster != None:
+        if poster is not None:
             os.unlink(poster)
         self.videofile.name = newname
         self.save()

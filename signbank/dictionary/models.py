@@ -1,25 +1,18 @@
-"""Models for the Signbank dictionary database.
+"""Models for the Signbank dictionary database."""
 
-These are refactored from the original database to 
-normalise the data and hopefully make it more
-manageable.  
+import json
+from collections import OrderedDict
 
-"""
-
-from django.db.models import Q
 from django.db import models, OperationalError
 from django.conf import settings
 from django.http import Http404
 import tagging
-
-import sys
 import os
-import json
-from collections import OrderedDict
 from django.utils.translation import ugettext_lazy as _
-from signbank.dictionary.choicelists import *
 from django.contrib.auth.models import User
-# from signbank.video.models import GlossVideo
+
+from signbank.dictionary.choicelists import *
+
 
 class Translation(models.Model):
     """A first language (Finnish) translation equivalent of a sign"""
@@ -662,7 +655,6 @@ minor or insignificant ways that can be ignored."""))
             return None
 
         # TODO: Find out the mystery of this line, it is unreachable, just like everything behind it
-
         """video_with_gloss = self.get_video_gloss()
 
         try:
@@ -684,7 +676,7 @@ minor or insignificant ways that can be ignored."""))
 
         #return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
         video = self.get_video()
-        if video != None:
+        if video is not None:
             # return video.get_absolute_url()
             return self.get_absolute_url()
         else:
@@ -693,7 +685,7 @@ minor or insignificant ways that can be ignored."""))
     def has_video(self):
         """Test to see if the video for this sign is present"""
 
-        return self.get_video() != None
+        return self.get_video() is not None
 
     def published_definitions(self):
         """Return a query set of just the published definitions for this gloss
