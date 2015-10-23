@@ -1,5 +1,4 @@
 from django.conf.urls import *
-from signbank.dictionary.models import *
 
 urlpatterns = patterns('',
                        # Feedback index

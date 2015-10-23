@@ -1,12 +1,10 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect
-from django.template import Context, RequestContext
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.conf import settings
-from models import Video, GlossVideo
-from forms import VideoUploadForm, VideoUploadForGlossForm
-from convertvideo import extract_frame
 
+from models import GlossVideo
+from forms import VideoUploadForGlossForm
 from signbank.dictionary.models import Gloss
 
 

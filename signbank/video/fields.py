@@ -1,22 +1,20 @@
-from django.core.files.uploadedfile import UploadedFile
-from django.forms.utils import ValidationError
-from django import forms
-from django.conf import settings
-import sys
-import os
 import time
 import signal
 from subprocess import Popen, PIPE
 from tempfile import mkstemp
-from signbank.log import debug
 import shutil
-import stat
-
-from django.core.mail import mail_admins, EmailMessage
-from signbank.video.convertvideo import convert_video
-
 from logging import debug
+
+from django.core.files.uploadedfile import UploadedFile
+from django.forms.utils import ValidationError
+from django import forms
+from django.conf import settings
+import os
+import stat
+from django.core.mail import EmailMessage
 from django.utils.translation import ugettext_lazy as _
+
+from signbank.video.convertvideo import convert_video
 
 
 class UploadedFLVFile(UploadedFile):

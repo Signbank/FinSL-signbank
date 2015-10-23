@@ -1,5 +1,7 @@
 from django.contrib import admin
-from models import Video, GlossVideo
+
+from models import GlossVideo
+
 
 # admin.site.register(Video)
 

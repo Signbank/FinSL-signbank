@@ -1,9 +1,9 @@
 from django.utils import unittest
 from django.core.files import File
 from django.conf import settings
-from models import Video, GlossVideo
 import os
-import shutil
+
+from models import Video, GlossVideo
 
 
 class VideoTests(unittest.TestCase):

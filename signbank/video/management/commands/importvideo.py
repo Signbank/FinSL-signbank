@@ -1,11 +1,10 @@
 """Convert a video file to flv"""
 
-from django.core.exceptions import ImproperlyConfigured
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
-from signbank.video.models import GlossVideo
-from models import Gloss
 import os
+
+from signbank.video.models import GlossVideo
 
 
 class Command(BaseCommand):

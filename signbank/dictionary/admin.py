@@ -1,8 +1,7 @@
 from django.contrib import admin
-from signbank.dictionary.models import *
 from reversion.admin import VersionAdmin
-from tagging.models import TaggedItem
-from django.utils.translation import ugettext_lazy as _
+
+from signbank.dictionary.models import *
 
 
 class KeywordAdmin(VersionAdmin):

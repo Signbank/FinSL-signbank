@@ -11,12 +11,12 @@ except (ImportError, NameError):
     # FFMPEG_OPTIONS = ["-vcodec", "libx264", "-an", "-vpre", "hq", "-crf", "22", "-threads", "0"]
     FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
-import sys
-import os
 import time
 import signal
 import shutil
 from subprocess import Popen, PIPE
+
+import os
 import re
 
 

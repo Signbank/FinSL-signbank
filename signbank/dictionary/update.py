@@ -1,25 +1,19 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
-from django.template import Context, RequestContext, loader
-from django.http import Http404
+from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
-from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.db.models.fields import NullBooleanField
-from django.utils import timezone
-
-from signbank.log import debug
-from tagging.models import TaggedItem, Tag
-import os
-import shutil
+from tagging.models import TaggedItem
 import re
+from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
 
 from signbank.video.models import GlossVideo
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
-from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import ObjectDoesNotExist
 from signbank.video.views import addvideo
+
 
 @permission_required('dictionary.add_gloss')
 def add_gloss(request):

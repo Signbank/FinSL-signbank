@@ -14,8 +14,6 @@ from django.contrib.auth import views as auth_views
 # local imports
 from views import activate, register, mylogin
 from forms import *
-from models import UserProfile
-
 
 urlpatterns = patterns('',
                        # Activation keys get matched by \w+ instead of the more specific

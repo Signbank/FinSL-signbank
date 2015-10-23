@@ -1,11 +1,9 @@
 """Convert a video file to flv"""
 
-from django.core.exceptions import ImproperlyConfigured
-from django.core.management.base import BaseCommand, CommandError
-from signbank.video.convertvideo import convert_video
-
+from django.core.management.base import BaseCommand
 import os
-import time
+
+from signbank.video.convertvideo import convert_video
 
 
 class Command(BaseCommand):

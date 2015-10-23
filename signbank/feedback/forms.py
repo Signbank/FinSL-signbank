@@ -1,8 +1,8 @@
 from django import forms
-from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
+
 from signbank.video.fields import VideoUploadToFLVField
 from signbank.feedback.models import *
-from django.utils.translation import ugettext_lazy as _
 
 __author__ = 'heilniem'
 

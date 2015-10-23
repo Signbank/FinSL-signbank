@@ -1,7 +1,7 @@
-from views import page
 from django.http import Http404
 from django.conf import settings
-from signbank.log import debug
+
+from views import page
 
 
 class PageFallbackMiddleware(object):

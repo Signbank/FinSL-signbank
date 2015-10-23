@@ -1,7 +1,6 @@
 """Set up default groups and permissions"""
 
-from django.core.management.base import BaseCommand, CommandError
-from signbank.dictionary.models import Gloss
+from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User, Group, Permission
 
 change_gloss = Permission.objects.get(

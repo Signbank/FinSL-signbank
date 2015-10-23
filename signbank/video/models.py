@@ -4,19 +4,14 @@ keep track of uploaded videos and converted versions
 
 from django.db import models
 from django.conf import settings
-import sys
 import os
-import time
-import shutil
-from django.utils.deconstruct import deconstructible
 from django.utils.translation import ugettext_lazy as _
-
-from convertvideo import extract_frame, convert_video, ffmpeg
-
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseServerError
+
+from convertvideo import extract_frame, convert_video
 from signbank.dictionary.models import Gloss
 
-from django.http import HttpResponseServerError
 
 # TODO: Check if this is ok to inherit from object, had to fix this to make migration possible
 class VideoPosterMixin(object):

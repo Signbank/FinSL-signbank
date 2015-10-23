@@ -111,7 +111,7 @@ class Keyword(models.Model):
         try:
             from tagging.models import Tag
         except ImportError:
-            pass
+            import tagging
         try:
             crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
         except tagging.models.Tag.DoesNotExist:
@@ -173,7 +173,7 @@ class KeywordEnglish(models.Model):
         try:
             from tagging.models import Tag
         except ImportError:
-            pass
+            import tagging
 
         try:
             crudetag = tagging.models.Tag.objects.get(name='lexis:crude')

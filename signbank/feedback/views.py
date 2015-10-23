@@ -1,17 +1,11 @@
-import os
-from models import *
-from signbank.feedback.forms import *
-from django import forms
 from django.shortcuts import render_to_response, get_object_or_404, redirect
-from django.template import Context, RequestContext, loader
+from django.template import RequestContext
 from django.conf import settings
-from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, permission_required
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
-import time
+from signbank.feedback.forms import *
 
 
 def index(request):

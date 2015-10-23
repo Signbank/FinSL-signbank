@@ -1,20 +1,17 @@
+import csv
+
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.db.models.fields import NullBooleanField
 from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
-import csv
-import re
+from tagging.models import Tag, TaggedItem
+from django.template.loader import render_to_string
 
-from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
-from signbank.feedback.models import *
 from signbank.feedback.forms import *
 from signbank.video.forms import VideoUploadForGlossForm
-from tagging.models import Tag, TaggedItem
-
-from django.template.loader import render_to_string
 
 
 class GlossListView(ListView):
@@ -452,6 +449,5 @@ def gloss_list_xml(self):
 
 def my_serialize(query_set):
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'query_set': query_set})
-    from django.shortcuts import render_to_response
     return HttpResponse(xml, content_type="text/xml")
 

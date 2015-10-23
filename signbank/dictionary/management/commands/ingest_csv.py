@@ -1,12 +1,11 @@
 """Ingest data from a CSV file dumped from filemaker"""
 
-from django.core.exceptions import ImproperlyConfigured
-from django.core.management.base import BaseCommand, CommandError
-from signbank.dictionary.models import *
-import codecs
+from django.core.management.base import BaseCommand
 from unicodecsv import DictReader
 import re
 from tagging.models import Tag, TaggedItem
+
+from signbank.dictionary.models import *
 
 
 def c(s):

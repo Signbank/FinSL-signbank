@@ -3,15 +3,14 @@ Forms and validation code for user registration.
 
 """
 
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.conf import settings
+import re
 
 from models import RegistrationProfile, UserProfile
 
-import re
 alnum_re = re.compile(r'^\w+$')
 
 
@@ -278,7 +277,6 @@ class RegistrationFormSB(RegistrationFormUniqueEmail):
         return new_user
 
 
-from django.views.decorators.cache import never_cache
 from django.contrib.auth import authenticate
 
 

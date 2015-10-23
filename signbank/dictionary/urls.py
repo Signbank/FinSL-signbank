@@ -1,8 +1,5 @@
 from django.conf.urls import *
-from django.contrib.auth.decorators import login_required, permission_required
-
-from signbank.dictionary.models import *
-from signbank.dictionary.forms import *
+from django.contrib.auth.decorators import permission_required
 
 from signbank.dictionary.adminviews import GlossListView, GlossDetailView
 
