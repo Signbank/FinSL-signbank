@@ -91,7 +91,7 @@ class VideoPosterMixin(object):
             poster_path = self.poster_path(create=False)
             if poster_path:
                 os.unlink(poster_path)
-        except:
+        except IOError:
             pass
 
 

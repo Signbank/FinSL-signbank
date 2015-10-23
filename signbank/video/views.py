@@ -104,9 +104,7 @@ def iframe(request, videoid):
         videourl = glossvideo.get_absolute_url()
 
         posterurl = glossvideo.poster_url()
-    except:
-        gloss = None
-        glossvideo = None
+    except Gloss.DoesNotExist:
         videourl = None
         posterurl = None
 
