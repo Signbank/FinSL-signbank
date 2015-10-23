@@ -61,7 +61,7 @@ class GlossListView(ListView):
         # We want to manually set which fields to export here
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                      'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness', 'strong_handshape',
+                      'annotation_idgloss_hki_en', 'annotation_comments', 'handedness', 'strong_handshape',
                       'weak_handshape', 'handshape_change', 'relation_between_articulators', 'location',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'contact_type',
@@ -157,9 +157,6 @@ class GlossListView(ListView):
                     Q(annotation_idgloss_hki__istartswith=val) | \
                     Q(annotation_idgloss_hki_en__istartswith=val)
 
-            if re.match('^\d+$', val):
-                query = query | Q(sn__exact=val)
-
             qs = qs.filter(query)
             # print "A: ", len(qs)
 
@@ -203,7 +200,7 @@ class GlossListView(ListView):
             qs = qs.filter(definition__published=val)
 
         fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                      'annotation_idgloss_hki_en', 'annotation_comments', 'sense', 'handedness',
+                      'annotation_idgloss_hki_en', 'annotation_comments', 'handedness',
                       'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
@@ -437,14 +434,14 @@ def gloss_ajax_complete(request, prefix):
 
     # TODO: See where this is used, is it safe to add more things here
     query = Q(idgloss__istartswith=prefix) | \
-            Q(annotation_idgloss_jkl__istartswith=prefix) | \
-            Q(sn__startswith=prefix)
+            Q(annotation_idgloss_jkl__istartswith=prefix)
     qs = Gloss.objects.filter(query)
 
     result = []
+    # TODO: Do we need to add annotation_idgloss_hki here too?
     for g in qs:
         result.append({'idgloss': g.idgloss, 'annotation_idgloss_jkl':
-            g.annotation_idgloss_jkl, 'sn': g.sn, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
+            g.annotation_idgloss_jkl, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
 

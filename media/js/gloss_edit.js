@@ -224,7 +224,7 @@ function glosstypeahead(target) {
           source: gloss_bloodhound.ttAdapter(),
           templates: {
               suggestion: function(gloss) {
-                  return("<p><strong>" + gloss.idgloss + "</strong> (SN: " + gloss.sn + ")</p>");
+                  return("<p><strong>" + gloss.idgloss + "</strong></p>");
               }
           }
       });

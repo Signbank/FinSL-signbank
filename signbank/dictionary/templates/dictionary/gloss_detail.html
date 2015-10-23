@@ -205,24 +205,6 @@
         </table>
 			 
     {% if perms.dictionary.view_advanced_properties %}
-        <!--   
-    <div class="panel panel-default">
-
-        <div class='panel-heading'>
-            <div class='panel-title'>
-                <a data-toggle='collapse' data-parent='#definition' href='#basicProperties'>Basic Properties</a>
-            </div>
-        </div>
-            
-   #Auslan fields not used for NGT
-        <div id="basicProperties" class="panel-collapse collapse">
-            <table class='table table-condensed'>
-                <tr><th>Sense Number</th><td class='edit edit_int'  id='sense'>{% value gloss.sense %}</td></tr>
-            </table>
-         </div>       
-    </div>
-        -->
-
    <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
@@ -293,7 +275,7 @@
                        <td style="width:2em;"></td>
                        <td style="width:12em;">{{morphologyform.role}}</td>
                        {# Translators: Placeholder #}
-                       <td><input class='form-control glosstypeahead' placeholder='{% blocktrans %}SN/ID Gloss/Annotation ID Gloss{% endblocktrans %}' name='morpheme_id'></td>
+                       <td><input class='form-control glosstypeahead' placeholder='{% blocktrans %}ID Gloss/Annotation ID Gloss{% endblocktrans %}' name='morpheme_id'></td>
                        {# Translators: Submit button  #}
                        <td><input class='btn btn-primary' value='{% blocktrans %}Add Morphology Definition{% endblocktrans %}' type='submit'></td>
                    </tr>
@@ -401,7 +383,7 @@
                        <tr>
                            <td>{{relationform.role}}</td>
                            {# Translators:  #}
-                           <td><input class='form-control glosstypeahead' placeholder='{% blocktrans %}SN/ID Gloss/Annotation ID Gloss{% endblocktrans %}' name='targetid'></td>
+                           <td><input class='form-control glosstypeahead' placeholder='{% blocktrans %}ID Gloss/Annotation ID Gloss{% endblocktrans %}' name='targetid'></td>
                            {# Translators: Submit button #}
                            <td><input class='btn btn-primary' value='{% blocktrans %}Add Relation{% endblocktrans %}' type='submit'></td>
                        </tr>

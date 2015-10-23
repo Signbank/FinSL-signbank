@@ -461,27 +461,7 @@ minor or insignificant ways that can be ignored."""))
     dialect = models.ManyToManyField(Dialect)
     # This field type is a guess.
 
-    # ###
-    # Translators: Gloss models field: sense, verbose name
-    sense = models.IntegerField(_("Sense Number"), null=True, blank=True,
-                                # Translators: Help text for Gloss models field: sense
-                                help_text=_(
-                                    """If there is more than one sense of a sign enter a number here,
-                                       all signs with sense>1 will use the same video as sense=1"""))
-    sense.list_filter_sense = True
-
-    # TODO: See if this can be removed
-    # Translators: Gloss models field: sn, verbose name
-    sn = models.IntegerField(_("Sign Number"),
-                             # Translators: Help text for Gloss models field: sn
-                             help_text=_(
-                                 "Sign Number must be a unique integer and defines the ordering of signs in the dictionary"),
-                             null=True, blank=True, unique=True)
-    # this is a sign number - was trying
-    # to be a primary key, also defines a sequence - need to keep the sequence
-    # and allow gaps between numbers for inserting later signs
-
-    # Fields representing creation datetime, updated_at datetime, creator and updater
+    # Fields representing creation time, updated_at time, creator and updater
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, related_name='created_by_user')
     updated_at = models.DateTimeField(auto_now=True)
@@ -663,13 +643,11 @@ minor or insignificant ways that can be ignored."""))
 
 
     def get_absolute_url(self):
+        """Returns an url with the gloss name (ending with .html), used for 'public view' of gloss @ word template"""
         return "/dictionary/gloss/%s.html" % self.idgloss
 
     def get_video_gloss(self):
-        # This method was used for finding a gloss that has the video, removed code but saved the comment below
-        """Work out the gloss that might have the video for this sign, usually the sign number but
-        if we're a sense>1 then we look at the homophone with sense=1
-        Return the gloss instance."""
+        # This method was used for finding a gloss that has the video TODO: Can this be removed?
         return self
 
     def get_video(self):

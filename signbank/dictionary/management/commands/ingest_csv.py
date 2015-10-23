@@ -315,10 +315,10 @@ class Command(BaseCommand):
                         elif row['B92 rel'] == 'phsame':
                             Tag.objects.add_tag(gloss, 'B92:present')
 
-                    if row['B92 sn'] != '':
+                    """if row['B92 sn'] != '':
                         dfn = Definition(
                             gloss=gloss, text=row['B92 sn'], role='B92 sn', count=1)
-                        dfn.save()
+                        dfn.save()"""
 
                     gloss.language.add(lang_bsl)
 

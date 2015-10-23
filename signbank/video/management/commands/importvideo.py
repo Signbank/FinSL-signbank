@@ -4,6 +4,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from signbank.video.models import GlossVideo
+from models import Gloss
 import os
 
 
@@ -43,19 +44,10 @@ def import_existing_gloss_videos(path):
     for dir in os.listdir(os.path.join(basedir, path)):
         if os.path.isdir(os.path.join(basedir, path, dir)):
             for videofile in os.listdir(os.path.join(basedir, path, dir)):
-                (gloss_sn, ext) = os.path.splitext(videofile)
+                ext = os.path.splitext(videofile)
                 if ext in ['.mp4']:
                     id += 1
                     fullpath = os.path.join(path, dir, videofile)
-                    try:
-                        gloss = Gloss.objects.get(sn=gloss_sn)
-
-                        version = 0
-                        print id, fullpath, gloss
-                        cursor.execute("insert into video_glossvideo (id, videofile, gloss, version) values (%s, %s, %s, %s)", [
-                                       id, fullpath, gloss.pk, version])
-                    except:
-                        print "No gloss for ", gloss_sn
                 else:
                     print 'skipping ', videofile
 

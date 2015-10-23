@@ -24,13 +24,8 @@ def addvideo(request):
 
             vfile = form.cleaned_data['videofile']
 
-            # construct a filename for the video, use sn
-            # if present, otherwise use idgloss+gloss id
-            # TODO: This seems to cause the problem with adding video to a gloss that has sn (sign number)
-            if gloss.sn != None:
-                vfile.name = str(gloss.sn) + ".mp4"
-            else:
-                vfile.name = gloss.idgloss + "-" + str(gloss.pk) + ".mp4"
+            # construct a filename for the video, use idgloss+gloss id
+            vfile.name = gloss.idgloss + "-" + str(gloss.pk) + ".mp4"
 
             redirect_url = form.cleaned_data['redirect']
 

@@ -73,20 +73,8 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, videourl)):
         videourl = None
 
-
-    # work out the number of this gloss and the total number
+    # work out the number of this gloss and the total number TODO: is this needed
     gloss = trans.gloss
-    if gloss.sn != None:
-        if request.user.has_perm('dictionary.search_gloss'):
-            glosscount = Gloss.objects.count()
-            glossposn = Gloss.objects.filter(sn__lt=gloss.sn).count() + 1
-        else:
-            glosscount = Gloss.objects.filter(in_web_dictionary__exact=True).count()
-            glossposn = Gloss.objects.filter(
-                in_web_dictionary__exact=True, sn__lt=gloss.sn).count() + 1
-    else:
-        glosscount = 0
-        glossposn = 0
 
     # the gloss update form for staff
     if request.user.has_perm('dictionary.search_gloss'):
@@ -120,8 +108,7 @@ def word(request, keyword, n, keyword_english=None, n_en=None):
                                'update_form': update_form,
                                'videoform': video_form,
                                #'gloss': gloss,
-                               'glosscount': glosscount,
-                               'glossposn': glossposn,
+                               'glosscount': 0,
                                'feedback': True,
                                'feedbackmessage': feedbackmessage,
                                'tagform': TagUpdateForm(),
@@ -168,18 +155,6 @@ def gloss(request, idgloss):
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, videourl)):
         videourl = None
 
-    if gloss.sn != None:
-        if request.user.has_perm('dictionary.search_gloss'):
-            glosscount = Gloss.objects.count()
-            glossposn = Gloss.objects.filter(sn__lt=gloss.sn).count() + 1
-        else:
-            glosscount = Gloss.objects.filter(in_web_dictionary__exact=True).count()
-            glossposn = Gloss.objects.filter(
-                in_web_dictionary__exact=True, sn__lt=gloss.sn).count() + 1
-    else:
-        glosscount = 0
-        glossposn = 0
-
     # the gloss update form for staff
     update_form = None
 
@@ -211,8 +186,7 @@ def gloss(request, idgloss):
                                'viewname': word,
                                'feedback': None,
                                'gloss': gloss,
-                               'glosscount': glosscount,
-                               'glossposn': glossposn,
+                               'glosscount': 0, #TODO: needed?
                                'update_form': update_form,
                                'videoform': video_form,
                                'tagform': TagUpdateForm(),
