@@ -26,7 +26,7 @@ msgstr "Käyttöoikeus evätty"
 #. Translators: Text for error page 403
 #: bootstrap_templates/403.html:9
 msgid "You do not have permission to view the requested page."
-msgstr "Sinulla ei ole oikeuksia nähdä sivua"
+msgstr "Sinulla ei ole oikeuksia nähdä sivua."
 
 #. Translators: Error 404 page
 #: bootstrap_templates/404.html:7
