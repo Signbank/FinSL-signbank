@@ -223,7 +223,7 @@ yesnoChoices = (
 import string
 
 
-def t(message):
+def t(message): # TODO: Find out what this method it for, and delete it. Why would you need to substitute these?
     """Replace $country and $language in message with dat from settings"""
 
     tpl = string.Template(message)
@@ -237,9 +237,9 @@ class RegistrationFormSB(RegistrationFormUniqueEmail):
     """
     username = forms.CharField(widget=forms.HiddenInput, required=False)
     # Translators: RegistrationForm: firstname
-    firstname = forms.CharField(label=_(t("Firstname")), max_length=50)
+    firstname = forms.CharField(label=_("Firstname"), max_length=50)
     # Translators: RegistrationForm: lastname
-    lastname = forms.CharField(label=_(t("Lastname")), max_length=50)
+    lastname = forms.CharField(label=_("Lastname"), max_length=50)
 
     def save(self, profile_callback=None):
         """
@@ -287,7 +287,7 @@ class EmailAuthenticationForm(forms.Form):
     username/password logins.
     """
     # Translators: EmailAuthenticationForm: email
-    email = forms.CharField(label=_("Email"), max_length=100)
+    email = forms.CharField(label=_("Email/Username"), max_length=100)
     # Translators: EmailAuthenticationForm: password
     password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
 

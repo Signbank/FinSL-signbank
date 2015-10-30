@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-30 11:48+0200\n"
+"POT-Creation-Date: 2015-10-30 14:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,8 +88,8 @@ msgstr "Kirjaudu sisään"
 #. Translators: Email - in login form
 #. Translators: EmailAuthenticationForm: email
 #: bootstrap_templates/loginform.html:15 signbank/registration/forms.py:290
-msgid "Email"
-msgstr "Sähköposti"
+msgid "Email/Username"
+msgstr "Email/Käyttäjätunnus"
 
 #. Translators: Password text - in login form
 #. Translators: label password1
@@ -2821,8 +2821,9 @@ msgid ""
 "other signed language related issues? The <a href=\"generalfeedback.html"
 "\">General Feedback</a> form is just the place to do it."
 msgstr ""
-"Haluatko kertoa mielipiteesi %(language)s Signbankista tai jostain muusta viittomakielisestä ongelmasta? <a href=\"generalfeedback.html"
-"\">Yleisen palautteen lomakkeella</a> voit antaa tästä palautetta."
+"Haluatko kertoa mielipiteesi %(language)s Signbankista tai jostain muusta "
+"viittomakielisestä ongelmasta? <a href=\"generalfeedback.html\">Yleisen "
+"palautteen lomakkeella</a> voit antaa tästä palautetta."
 
 #. Translators: Feedback
 #. Translators Report Missing Sign title
@@ -2840,9 +2841,9 @@ msgid ""
 "Signbank. If an addition you suggest is accepted, other visitors to Signbank "
 "will then also be able to provide feedback on your sign."
 msgstr ""
-"Jos tiedät viittoman joka ei ole Signbankissa, käytä <a href="
-"\"missingsign.html\">Ilmoita puuttuva viittoma</a> lomaketta. Pyrimme lisäämään "
-"viittomia palautteen perusteella."
+"Jos tiedät viittoman joka ei ole Signbankissa, käytä <a href=\"missingsign."
+"html\">Ilmoita puuttuva viittoma</a> lomaketta. Pyrimme lisäämään viittomia "
+"palautteen perusteella."
 
 #. Translators: Header1
 #: signbank/feedback/templates/feedback/interpreter.html:6
@@ -3051,8 +3052,7 @@ msgid ""
 "You may either upload a video that shows the missing sign or fill in details "
 "in a form.  In either case, you should enter a meaning and any comments you "
 "might have in the text boxes at the bottom of the form."
-msgstr ""
-"Lähetä video puuttuvasta viittomasta tai täytä tiedot lomakkeeseen."
+msgstr "Lähetä video puuttuvasta viittomasta tai täytä tiedot lomakkeeseen."
 
 #. Translators: Button
 #: signbank/feedback/templates/feedback/missingsign.html:76
@@ -3422,6 +3422,16 @@ msgstr ""
 msgid "no"
 msgstr "ei"
 
+#. Translators: RegistrationForm: firstname
+#: signbank/registration/forms.py:240
+msgid "Firstname"
+msgstr "Etunimi"
+
+#. Translators: RegistrationForm: lastname
+#: signbank/registration/forms.py:242
+msgid "Lastname"
+msgstr "Sukunimi"
+
 #. Translators: EmailAuthenticationForm: ValidationError
 #: signbank/registration/forms.py:314
 msgid ""
@@ -3600,6 +3610,9 @@ msgstr "Tiedosto:"
 #: signbank/video/templates/addvideo.html:31
 msgid "Error:"
 msgstr "Virhe:"
+
+#~ msgid "Email"
+#~ msgstr "Sähköposti"
 
 #~ msgid "More than one"
 #~ msgstr "Enemmän kuin yksi"
