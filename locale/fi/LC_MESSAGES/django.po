@@ -1,7 +1,7 @@
-# FINNISH SIGNBANKS TRANSLATION FILE.
+# FINNISH SIGNBANK TRANSLATION FILE.
 # Copyright (C) 2015 CENTER OF SIGN LANGUAGE AT UNIVERSITY OF JYVÄSKYLÄ.
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <henri.nieminen@gmail.com>, 2015.
+# HENRI NIEMINEN <henri.nieminen@gmail.com>, 2015.
 #
 #, fuzzy
 msgid ""
