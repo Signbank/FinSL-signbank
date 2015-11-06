@@ -2,7 +2,8 @@
 {% load bootstrap3 %}
 {% load stylesheet %}
 {% load i18n %}
-<html>
+{# Simple if to control the html tag language code #}
+<html {% if LANGUAGE_CODE == "fi" %}lang="fi"{% else %}lang="en"{% endif %}>
   <head>
     <title>{% block bootstrap3_title %}Signbank{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

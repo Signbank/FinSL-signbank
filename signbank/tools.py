@@ -181,3 +181,33 @@ def reload_signbank(request=None):
         from django.http import HttpResponse
 
         return HttpResponse(js)
+
+
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
+def infopage(request):
+
+    from signbank.dictionary.models import Gloss, Translation, TranslationEnglish, Keyword, KeywordEnglish
+    glosscount = Gloss.objects.all().count()
+    translations_total = Translation.objects.all().count()
+    translations_distinct = Keyword.objects.all().count()
+    translations_en_total = TranslationEnglish.objects.all().count()
+    translations_en_distinct = KeywordEnglish.objects.all().count()
+    try:
+        from signbank.settings.settings_secret import ELAN_URL
+        elan_url = ELAN_URL
+    except:
+        elan_url = ""
+    from signbank.video.models import GlossVideo
+    video_count_total =  GlossVideo.objects.all().count()
+
+    from django.shortcuts import render_to_response
+    from django.template import RequestContext
+    return render_to_response("../bootstrap_templates/infopage.html",
+                              {'glosscount': glosscount,
+                              'translations_total': translations_total,
+                              'translations_distinct': translations_distinct,
+                              'translations_en_total': translations_en_total,
+                              'translations_en_distinct': translations_en_distinct,
+                               'elan_url': elan_url,
+                               'video_count_total': video_count_total},
+                              context_instance=RequestContext(request))

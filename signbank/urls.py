@@ -66,6 +66,10 @@ urlpatterns = patterns('',
                        url(r'reload_signbank/$',
                            'signbank.tools.reload_signbank'),
 
+                       # Infopage
+                       url(r'infopage/',
+                           'signbank.tools.infopage'),
+
                        # TODO: Review the sanity of this implementation, it sounds completely crazy, but it also works
                        # This URL is supposed to grab every url not grabbed by any url before.
                        # The reason is to forward user created static pages inside the app to a view 'page'.
