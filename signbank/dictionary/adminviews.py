@@ -146,40 +146,42 @@ class GlossListView(ListView):
 
         if get.has_key('search') and get['search'] != '':
             val = get['search']
-            # It seems that you are supposed to add the searchable fields here
-            # TODO: Add all needed search fields here
-            query = Q(idgloss__istartswith=val) | \
-                    Q(annotation_idgloss_jkl__istartswith=val) | \
-                    Q(annotation_idgloss_jkl_en__istartswith=val) | \
-                    Q(annotation_idgloss_hki__istartswith=val) | \
-                    Q(annotation_idgloss_hki_en__istartswith=val)
+
+            # Add fields you want to search logically with GET.search usin | (OR) and & (AND)
+            # Search for glosses containing a string, casesensitive with icontains
+            # If first doesn't match, it is supposed to try the next one, because of OR (|)
+            query = Q(idgloss__icontains=val) | \
+                    Q(annotation_idgloss_jkl__icontains=val) | \
+                    Q(annotation_idgloss_jkl_en__icontains=val) | \
+                    Q(annotation_idgloss_hki__icontains=val) | \
+                    Q(annotation_idgloss_hki_en__icontains=val)
 
             qs = qs.filter(query)
             # print "A: ", len(qs)
 
         if get.has_key('JKLGloss') and get['JKLGloss'] != '':
             val = get['JKLGloss']
-            qs = qs.filter(annotation_idgloss_jkl__istartswith=val)
+            qs = qs.filter(annotation_idgloss_jkl__icontains=val)
 
         if get.has_key('JKLenglishGloss') and get['JKLenglishGloss'] != '':
             val = get['JKLenglishGloss']
-            qs = qs.filter(annotation_idgloss_jkl_en__istartswith=val)
+            qs = qs.filter(annotation_idgloss_jkl_en__icontains=val)
 
         if get.has_key('HKIGloss') and get['HKIGloss'] != '':
             val = get['HKIGloss']
-            qs = qs.filter(annotation_idgloss_hki__istartswith=val)
+            qs = qs.filter(annotation_idgloss_hki__icontains=val)
 
         if get.has_key('HKIenglishGloss') and get['HKIenglishGloss'] != '':
             val = get['HKIenglishGloss']
-            qs = qs.filter(annotation_idgloss_hki_en__istartswith=val)
+            qs = qs.filter(annotation_idgloss_hki_en__icontains=val)
 
         if get.has_key('keyword') and get['keyword'] != '':
             val = get['keyword']
-            qs = qs.filter(translation__translation__text__istartswith=val)
+            qs = qs.filter(translation__translation__text__icontains=val)
 
         if get.has_key('keyword_eng') and get['keyword_eng'] != '':
             val = get['keyword_eng']
-            qs = qs.filter(translationenglish__translation_english__text__istartswith=val)
+            qs = qs.filter(translationenglish__translation_english__text__icontains=val)
 
         if get.has_key('in_web_dictionary') and get['in_web_dictionary'] != 'unspecified':
             val = get['in_web_dictionary'] == 'yes'
@@ -196,16 +198,19 @@ class GlossListView(ListView):
 
             qs = qs.filter(definition__published=val)
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                      'annotation_idgloss_hki_en', 'annotation_comments', 'handedness',
-                      'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
+        # A list of phonology fieldnames
+        fieldnames = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
-                      'alternating_movement',
-                      'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'phonology_other',
-                      'mouth_gesture', 'mouthing', 'phonetic_variation',
-                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'in_web_dictionary',
+                      'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
+                      'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
+                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
                       'is_proposed_new_sign']
+        """These were removed from fieldnames because they are not needed there:
+        'idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+                      'annotation_idgloss_hki_en', 'annotation_comments', 'in_web_dictionary',
+        """
+
 
         # Language and basic property filters
         vals = get.getlist('dialect', [])
