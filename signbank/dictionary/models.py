@@ -656,14 +656,19 @@ minor or insignificant ways that can be ignored."""))
     def get_video(self):
         """Return the video object for this gloss or None if no video available"""
 
-        video_path = 'glossvideo/' + \
-                     unicode(self.idgloss[:2]) + '/' + unicode(self.idgloss) + '-' + unicode(self.pk) + '.mp4'
+        video_path = self.get_video_path()
 
-        if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
+        #if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
+        if os.path.isfile(os.path.join(settings.MEDIA_ROOT, video_path)):
             return video_path
         else:
             return None
 
+
+    def get_video_path(self):
+        """return 'glossvideo/' + \
+                     unicode(self.idgloss[:2]) + '/' + unicode(self.idgloss) + '-' + unicode(self.pk) + '.mp4'"""
+        return os.path.join('glossvideo',unicode(self.idgloss[:2]), (unicode(self.idgloss)+'-'+unicode(self.pk)+'.mp4'))
 
     def count_videos(self):
         """Return a count of the number of videos we have 

@@ -204,15 +204,26 @@ def update_gloss(request, glossid):
             # TODO: Implement this as a method, and place it someplace useful
             if field == 'idgloss' and newvalue != old_idgloss:
                 try:
-                    glossvideo = GlossVideo.objects.get(gloss=gloss)
-                    new_path = 'glossvideo/' + unicode(gloss.idgloss[:2]) + '/' + \
-                           unicode(gloss) + '-' + unicode(gloss.pk) + '.mp4'
-                    new_path_full = settings.MEDIA_ROOT + '/' + new_path
-                    os.rename(glossvideo.videofile.path, new_path_full)
-                    glossvideo.videofile.name = new_path
-                    glossvideo.save()
+                    glossvideos = GlossVideo.objects.filter(gloss=gloss)
+                    for vfile in glossvideos:
+                        # See if file has .bak added by reversion
+                        if not vfile.videofile.path.endswith('.bak'):
+                            new_path = gloss.get_video_path()
+                        else:
+                            # If filename has .bak, count how many times it has it and add it to the end of new_path
+                            bakcount = unicode(vfile.videofile.path).count('.bak') * '.bak'
+                            new_path = gloss.get_video_path() + bakcount
+
+                        new_path_full = os.path.join(settings.MEDIA_ROOT + '/' + new_path)
+                        os.rename(vfile.videofile.path, new_path_full)
+                        vfile.videofile.name = new_path
+                        vfile.save()
+
+                except ObjectDoesNotExist:
+                    # If gloss has no video, do nothing (don't need to do anything)
+                    pass
                 except IOError:
-                    #gloss.idgloss = old_idgloss
+                    # gloss.idgloss = old_idgloss
                     pass
 
         return HttpResponse(newvalue, content_type='text/plain')

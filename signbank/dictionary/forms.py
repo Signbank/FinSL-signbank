@@ -140,7 +140,9 @@ class GlossCreateForm(forms.ModelForm):
         return self.cleaned_data['annotation_idgloss_hki_en']
 
     def clean_videofile(self):
-        # TODO: implement a check here to make sure the file is a video, or not something unintented
+        # Checking here that the file ends with .mp4 TODO: See if more checks are needed, like filetype, codec
+        if not self.cleaned_data['videofile'].name.endswith('.mp4'):
+            raise forms.ValidationError('File is not a mp4. Please upload only mp4 files')
         return self.cleaned_data['videofile']
 
 
