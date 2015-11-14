@@ -214,8 +214,8 @@ def update_gloss(request, glossid):
                             bakcount = unicode(vfile.videofile.path).count('.bak') * '.bak'
                             new_path = gloss.get_video_path() + bakcount
 
-                        new_path_full = os.path.join(settings.MEDIA_ROOT + '/' + new_path)
-                        os.rename(vfile.videofile.path, new_path_full)
+                        new_path_full = os.path.join(settings.MEDIA_ROOT, new_path)
+                        os.renames(vfile.videofile.path, new_path_full)
                         vfile.videofile.name = new_path
                         vfile.save()
 
