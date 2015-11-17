@@ -44,11 +44,11 @@ html {
     height: 70px;
     float: left;
 }
-.col-md-4 {
+.col-md-4, .col-md-6 {
     padding-bottom: 5px;
     padding-left: 0px;
 }
-.col-sm-6 {
+.col-sm-6, .col-sm-12 {
     padding-bottom: 5px;
     padding-left: 0px;
 }
