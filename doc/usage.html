@@ -6,44 +6,7 @@
 <p>
     {% blocktrans trimmed %}This page gives a brief overview of the functionality of the Signbank website.{% endblocktrans %}
 </p>
-{# Translator: Page header2 #}
-<h2>{% blocktrans %}Public View{% endblocktrans %}</h2>
 
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}A user who is not logged in will be able to perform a keyword search and will
-    see pages that match a given keyword; each page represents one sign and links
-    are provided to other matches for that keyword.  Keyword searches are based on
-    the start of the word, so a search for 'ab' will find all keywords starting with those letters.{% endblocktrans %}
-</p>
-
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}The view shown to a public user includes the video for the sign (if any), the
-    keywords associated with the sign, and a list of definitions (noun, verb etc).
-    The definitions that are shown on this page can be customised for a given Signbank
-    site; for example, it is possible to show no definitions at all, even if they have
-    been entered into the database.{% endblocktrans %}
-</p>
-
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}This page can be configured to show links to the next/previous sign in the dictionary.
-    These links will only work reliably if sign numbers have been used consistently 
-    in the dictionary since these define the order of signs.  These links can be turned
-    off for a particular Signbank.{% endblocktrans %}
-</p>
-
-{# Translator: Page header2 #}
-<h2>{% blocktrans %}Logged In Public View{% endblocktrans %}</h2>
-
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}A member of the public can register for the site and is then given the option
-    of providing feedback on individual signs.  Feedback can include uploading a video.
-    The feedback and any video is only ever visible to staff and is never made publicly
-    available.{% endblocktrans %}
-</p>
 
 {# Translator: Page header2 #}
 <h2>{% blocktrans %}Staff Access{% endblocktrans %}</h2>
@@ -54,30 +17,8 @@
     are summarised later.  This section gives a summary of all of the different staff capabilities.{% endblocktrans %}
 <p>
 
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}At present, a user can only be given staff status by the administrator (Steve Cassidy),
-    in the future some level of control over this may be added to the normal site owner capabilities.
-    For now, please send a request to change a user's status to me.{% endblocktrans %}
-</p>
-
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}Once a staff user is logged in they will see an additional menu containing links to staff only options.
-    Other pages (such as this one) can also be limited to certain groups of users.{% endblocktrans %}
-</p>
-
 {# Translator: Page header3 #}
 <h3>{% blocktrans %}Sign Search{% endblocktrans %}</h3>
-
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}Staff have access to a more advanced search page for signs that includes all fields associated
-    with signs and associated tags.  The search form is shown at the top of the page, by default only
-    the Gloss and keyword search boxes are visible. There is an "Advanced Search" bar
-    which will show more search options when clicked. Below the search from there is
-    also an option to add a new sign.{% endblocktrans %}
-</p>
 
 {# Translator:#}
 <p>
@@ -94,7 +35,7 @@
 <p>
     {% blocktrans trimmed %}Searches in the form use an implicit AND between fields - that is, if you enter 'ab'
     in the Gloss field and 'dry' in the keyword field you would see signs with an ID Gloss
-    starting with 'ab' which also have a keyword 'dry' (eg. ABSORB in BSL Signbank).{% endblocktrans %}
+    starting with 'ab' which also have a keyword 'dry'.{% endblocktrans %}
 </p>
 
 {# Translator:#}
@@ -177,23 +118,8 @@
     the drop down list and enter the target sign as above.  When you click "Add Relation" the page
     will refresh, you will need to click on the "Relations to Other Signs" tab to see the new entry.{% endblocktrans %}
 </p>
-{# Translator: Page header3 #}
-<h3>{% blocktrans %}Definitions and Notes{% endblocktrans %}</h3>
-<p>
-    {% blocktrans trimmed %}In the "Definitions/Notes" tab a list of defnitions or notes is shown. Each of these has
-    a "Role" label such as "As a Noun", "Private Note" etc.  and an integer "Index" that defines
-    the order within the category when they are listed on the public pages.   Each entry also has
-    a "Published" field which controls whether the definition or note can be shown in the public
-    view.  A definition/note can also be deleted by clicking on the trashcan icon at the start
-    of each row.{% endblocktrans %}
-</p>
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}Below the list of definitions/notes in edit mode is a form to create a new entry.  As with the
-    relation form, the page will refresh when you submit this form and you will need to click on
-    the "Definitions/Notes" tab again to view the change.  By default, new definitions have the
-    Published field set to No.{% endblocktrans %}
-</p>
+
+
 {# Translator: Page header3 #}
 <h3>{% blocktrans %}Video{% endblocktrans %}</h3>
 {# Translator:#}
@@ -227,24 +153,4 @@
 
 {# Translator: Page header2 #}
 <h2>{% blocktrans %}Permissions{% endblocktrans %}</h2>
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}It will be possible to finely control the level of access for different groups of users. At
-    present we have three groups:{% endblocktrans %}
-</p>
-
-<ul>
-    {# Translator: Access that editors can have #}
-    <li>{% blocktrans %}Editor: full edit access, can change anything, upload and delete videos etc.{% endblocktrans %}</li>
-    {# Translator: Access that researchers can have #}
-    <li>{% blocktrans %}Researcher: full search access to see the detailed view of signs, no edit access.{% endblocktrans %}</li>
-    {# Translator: Access that general public can have #}
-    <li>{% blocktrans %}Public: only keyword search and the ability to leave feedback on signs.{% endblocktrans %}</li>
-</ul>
-
-{# Translator:#}
-<p>
-    {% blocktrans trimmed %}In future we will develop a richer set of user levels, we've had some discussion about
-    this and will make a proposal for feedback.{% endblocktrans %}
-</p>
 
