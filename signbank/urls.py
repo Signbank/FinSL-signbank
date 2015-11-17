@@ -11,13 +11,6 @@ admin.autodiscover()
 
 from adminsite import publisher_admin
 
-# TODO: Remove this
-if settings.SHOW_NUMBERSIGNS:
-    numbersigns_view = TemplateView.as_view(
-        template_name='numbersigns/numbersigns.html')
-else:
-    numbersigns_view = TemplateView.as_view(
-        template_name='numbersigns/underconstruction.html')
 
 urlpatterns = patterns('',
 

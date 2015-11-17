@@ -220,10 +220,6 @@ ALLOW_REGISTRATION = True
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-# show the number signs page or an under construction page?
-# TODO: remove this
-SHOW_NUMBERSIGNS = True
-
 LOGIN_REDIRECT_URL = '/'
 
 # location of ffmpeg, used to convert uploaded videos
