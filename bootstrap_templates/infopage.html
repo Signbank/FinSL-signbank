@@ -20,29 +20,32 @@
                 <div id="statistics">
                     <table class="table table-bordered">
                         <tr>
-                            <td>Total number of glosses</td>
+                            <td>Glosses</td>
                             <td>{{glosscount}}</td>
                         </tr>
+                         <tr>
+                            <td>Glosses with video</td>
+                            <td>{{glosses_with_video}}</td>
+                        </tr>
                         <tr>
-                            <td>Total number of Finnish translations</td>
+                            <td>Total number of videos (one gloss can have many)</td>
+                            <td>{{video_count_total}}</td>
+                        </tr>
+                        <tr>
+                            <td>Finnish translation equivalents</td>
                             <td>{{translations_total}}</td>
                         </tr>
                         <tr>
-                            <td>Total number of different Finnish translations</td>
-                            <td>{{translations_distinct}}</td>
+                            <td>Finnish keywords</td>
+                            <td>{{keywords}}</td>
                         </tr>
                         <tr>
-                            <td>Total number of English translations</td>
+                            <td>English translations equivalents</td>
                             <td>{{translations_en_total}}</td>
                         </tr>
-                                            <tr>
-                            <td>Total number of different English translations</td>
-                            <td>{{translations_en_distinct}}</td>
-                        </tr>
-                                                </tr>
                         <tr>
-                            <td>Amount of videos we have (one gloss can have many versions)</td>
-                            <td>{{video_count_total}}</td>
+                            <td>English keywords</td>
+                            <td>{{keywords_en}}</td>
                         </tr>
                     </table>
                 </div>
@@ -50,8 +53,8 @@
             <div class="col-md-6">
                 <div id="ELANinfo">
                     <dd class="dl-horizontal">
-                      <dt>ELAN link</dt>
-                      <dd><a href="{{elan_url}}">{{elan_url}}</a></dd>
+                      <dt>ELAN externally controlled vocabulary link</dt>
+                      <dd><a href="{{elan_url}}">{{elan_ecv_url}}</a></dd>
                       <dt>Signbank Wiki</dt>
                       <dd><a href ="https://bitbucket.org/heilniem/signbank-fi/wiki/Home">https://bitbucket.org/heilniem/signbank-fi/wiki/Home</a></dd>
                     </dl>
