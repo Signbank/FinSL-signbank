@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:22+0200\n"
+"POT-Creation-Date: 2015-11-18 15:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,11 +78,48 @@ msgstr "Infosivu"
 
 #: bootstrap_templates/infopage.html:13
 msgid ""
-"On this page you can find all kinds of useful information.\n"
-"                    We have collected some numerical information about our "
-"database and some useful links aswell."
+"On this page you can find all kinds of useful information. We have collected "
+"some numerical information about our database and some useful links aswell."
 msgstr ""
-"Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme tärkeitä linkkejä."
+"Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme tärkeitä "
+"linkkejä."
+
+#. Translators: This is verbose_name_plural, so it has to be plural here
+#: bootstrap_templates/infopage.html:23 signbank/dictionary/models.py:353
+msgid "Glosses"
+msgstr "Glossit"
+
+#: bootstrap_templates/infopage.html:27
+msgid "Glosses with video"
+msgstr "Glosseja joilla video"
+
+#: bootstrap_templates/infopage.html:31
+msgid "Total number of videos (one gloss can have many)"
+msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
+
+#: bootstrap_templates/infopage.html:35
+msgid "Finnish translation equivalents"
+msgstr "Käännövastineita suomeksi"
+
+#: bootstrap_templates/infopage.html:39
+msgid "Finnish keywords"
+msgstr "Suomenkielisiä vastineita"
+
+#: bootstrap_templates/infopage.html:43
+msgid "English translations equivalents"
+msgstr "Käännösvastineita englanniksi"
+
+#: bootstrap_templates/infopage.html:47
+msgid "English keywords"
+msgstr "Käännöksiä englanniksi"
+
+#: bootstrap_templates/infopage.html:56
+msgid "ELAN externally controlled vocabulary link"
+msgstr "Linkki ELANin externally controlled vocalubaryyn"
+
+#: bootstrap_templates/infopage.html:58
+msgid "Signbank Wiki"
+msgstr "Signbankin Wikisivut"
 
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
 #: bootstrap_templates/infopage.html:67
@@ -806,11 +843,6 @@ msgstr "Lainaviittoma"
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:464
 msgid "Gloss in related language"
 msgstr "Glossi liittyvässä kielessä"
-
-#. Translators: This is verbose_name_plural, so it has to be plural here
-#: signbank/dictionary/models.py:353
-msgid "Glosses"
-msgstr "Glossit"
 
 #. Translators: Gloss permissions
 #: signbank/dictionary/models.py:357
@@ -3467,9 +3499,6 @@ msgstr "Virhe:"
 
 #~ msgid "Search the SignBank Dictionary"
 #~ msgstr "Etsi Signbankista"
-
-#~ msgid "SignBank"
-#~ msgstr "Signbank"
 
 #~ msgid "Email"
 #~ msgstr "Sähköposti"

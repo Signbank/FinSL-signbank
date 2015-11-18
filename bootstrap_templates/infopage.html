@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h3>{% blocktrans %}Information page{% endblocktrans %}</h3>
-                <p>{% blocktrans %}On this page you can find all kinds of useful information.
+                <p>{% blocktrans trimmed %}On this page you can find all kinds of useful information.
                     We have collected some numerical information about our database and some useful links aswell.{% endblocktrans %}</p>
             </div>
         </div>
@@ -20,31 +20,31 @@
                 <div id="statistics">
                     <table class="table table-bordered">
                         <tr>
-                            <td>Glosses</td>
+                            <td>{% blocktrans %}Glosses{% endblocktrans %}</td>
                             <td>{{glosscount}}</td>
                         </tr>
                          <tr>
-                            <td>Glosses with video</td>
+                            <td>{% blocktrans %}Glosses with video{% endblocktrans %}</td>
                             <td>{{glosses_with_video}}</td>
                         </tr>
                         <tr>
-                            <td>Total number of videos (one gloss can have many)</td>
+                            <td>{% blocktrans %}Total number of videos (one gloss can have many){% endblocktrans %}</td>
                             <td>{{video_count_total}}</td>
                         </tr>
                         <tr>
-                            <td>Finnish translation equivalents</td>
+                            <td>{% blocktrans %}Finnish translation equivalents{% endblocktrans %}</td>
                             <td>{{translations_total}}</td>
                         </tr>
                         <tr>
-                            <td>Finnish keywords</td>
+                            <td>{% blocktrans %}Finnish keywords{% endblocktrans %}</td>
                             <td>{{keywords}}</td>
                         </tr>
                         <tr>
-                            <td>English translations equivalents</td>
+                            <td>{% blocktrans %}English translations equivalents{% endblocktrans %}</td>
                             <td>{{translations_en_total}}</td>
                         </tr>
                         <tr>
-                            <td>English keywords</td>
+                            <td>{% blocktrans %}English keywords{% endblocktrans %}</td>
                             <td>{{keywords_en}}</td>
                         </tr>
                     </table>
@@ -53,9 +53,9 @@
             <div class="col-md-6">
                 <div id="ELANinfo">
                     <dd class="dl-horizontal">
-                      <dt>ELAN externally controlled vocabulary link</dt>
+                      <dt>{% blocktrans %}ELAN externally controlled vocabulary link{% endblocktrans %}</dt>
                       <dd><a href="{{elan_url}}">{{elan_ecv_url}}</a></dd>
-                      <dt>Signbank Wiki</dt>
+                      <dt>{% blocktrans %}Signbank Wiki{% endblocktrans %}</dt>
                       <dd><a href ="https://bitbucket.org/heilniem/signbank-fi/wiki/Home">https://bitbucket.org/heilniem/signbank-fi/wiki/Home</a></dd>
                     </dl>
                 </div>
