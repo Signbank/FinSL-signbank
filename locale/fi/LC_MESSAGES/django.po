@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-30 14:07+0200\n"
+"POT-Creation-Date: 2015-11-18 15:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,22 +55,40 @@ msgstr ""
 "pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
 
 #. Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here!
-#: bootstrap_templates/baselayout.html:23
 #: bootstrap_templates/baselayout.html:24
 #: bootstrap_templates/baselayout.html:25
-#: bootstrap_templates/baselayout.html:55
+#: bootstrap_templates/baselayout.html:26
+#: bootstrap_templates/baselayout.html:56
 msgid "FinSL Signbank"
 msgstr "FinSL Signbank"
 
 #. Translators: License text in the footer of the site
-#: bootstrap_templates/baselayout.html:57
+#: bootstrap_templates/baselayout.html:58
 msgid "is licensed under a"
 msgstr "on lisensoitu lisenssillä: "
 
 #. Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this)
-#: bootstrap_templates/baselayout.html:59
+#: bootstrap_templates/baselayout.html:60
 msgid "Creative Commons BY-NC-SA 4.0 International License"
 msgstr "Creative Commons BY-NC-SA 4.0 International License"
+
+#: bootstrap_templates/infopage.html:12
+msgid "Information page"
+msgstr "Infosivu"
+
+#: bootstrap_templates/infopage.html:13
+msgid ""
+"On this page you can find all kinds of useful information.\n"
+"                    We have collected some numerical information about our "
+"database and some useful links aswell."
+msgstr ""
+"Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme tärkeitä linkkejä."
+
+#. Translators: Message that appears if user doesn't have proper user rights to view this page.
+#: bootstrap_templates/infopage.html:67
+#: signbank/dictionary/templates/dictionary/add_gloss.html:27
+msgid "You do not have sufficient user rights to view this page."
+msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
 #: bootstrap_templates/langbar.html:8
 msgid "Logout"
@@ -150,7 +168,7 @@ msgid "Search translation"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Submit button (press to search)
-#: bootstrap_templates/menu.html:48 doc/usage.html:71
+#: bootstrap_templates/menu.html:48 doc/usage.html:21
 msgid "Sign Search"
 msgstr "Hae"
 
@@ -261,16 +279,6 @@ msgstr "Sähköposti:"
 msgid "Reset my password"
 msgstr "Muuta salasana"
 
-#. Translators: Heading for searchlayout
-#: bootstrap_templates/searchlayout.html:8
-msgid "English words matching"
-msgstr "Englanninkieliset täsmäävät sanat"
-
-#. Translators: Text search content in searchlayout
-#: bootstrap_templates/searchlayout.html:14
-msgid "SEARCH CONTENT"
-msgstr "ETSI SISÄLTÖÄ"
-
 #: doc/usage.html:4
 msgid "Signbank User Guide"
 msgstr "Signbankin käyttöohje"
@@ -281,87 +289,18 @@ msgid ""
 "website."
 msgstr "Tämä sivu antaa yleiskuvan Signbankin toiminnoista."
 
-#. Translators: Public view (mode?)
-#: doc/usage.html:10
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:49
-msgid "Public View"
-msgstr "Julkinen näkymä"
-
-#: doc/usage.html:14
-msgid ""
-"A user who is not logged in will be able to perform a keyword search and "
-"will see pages that match a given keyword; each page represents one sign and "
-"links are provided to other matches for that keyword.  Keyword searches are "
-"based on the start of the word, so a search for 'ab' will find all keywords "
-"starting with those letters."
-msgstr ""
-
-#: doc/usage.html:22
-msgid ""
-"The view shown to a public user includes the video for the sign (if any), "
-"the keywords associated with the sign, and a list of definitions (noun, verb "
-"etc). The definitions that are shown on this page can be customised for a "
-"given Signbank site; for example, it is possible to show no definitions at "
-"all, even if they have been entered into the database."
-msgstr ""
-
-#: doc/usage.html:31
-msgid ""
-"This page can be configured to show links to the next/previous sign in the "
-"dictionary. These links will only work reliably if sign numbers have been "
-"used consistently in the dictionary since these define the order of signs.  "
-"These links can be turned off for a particular Signbank."
-msgstr ""
-
-#: doc/usage.html:38
-msgid "Logged In Public View"
-msgstr ""
-
-#: doc/usage.html:42
-msgid ""
-"A member of the public can register for the site and is then given the "
-"option of providing feedback on individual signs.  Feedback can include "
-"uploading a video. The feedback and any video is only ever visible to staff "
-"and is never made publicly available."
-msgstr ""
-
-#: doc/usage.html:49
+#: doc/usage.html:12
 msgid "Staff Access"
 msgstr ""
 
-#: doc/usage.html:53
+#: doc/usage.html:16
 msgid ""
 "A number of different levels of staff access are possible, the different "
 "capabilities are summarised later.  This section gives a summary of all of "
 "the different staff capabilities."
 msgstr ""
 
-#: doc/usage.html:59
-msgid ""
-"At present, a user can only be given staff status by the administrator "
-"(Steve Cassidy), in the future some level of control over this may be added "
-"to the normal site owner capabilities. For now, please send a request to "
-"change a user's status to me."
-msgstr ""
-
-#: doc/usage.html:66
-msgid ""
-"Once a staff user is logged in they will see an additional menu containing "
-"links to staff only options. Other pages (such as this one) can also be "
-"limited to certain groups of users."
-msgstr ""
-
-#: doc/usage.html:75
-msgid ""
-"Staff have access to a more advanced search page for signs that includes all "
-"fields associated with signs and associated tags.  The search form is shown "
-"at the top of the page, by default only the Gloss and keyword search boxes "
-"are visible. There is an \"Advanced Search\" bar which will show more search "
-"options when clicked. Below the search from there is also an option to add a "
-"new sign."
-msgstr ""
-
-#: doc/usage.html:84
+#: doc/usage.html:25
 msgid ""
 "The Search Gloss field allows a search on either ID Gloss or Annotation ID "
 "Gloss.  The search is on the first characters of these fields so entering "
@@ -373,15 +312,14 @@ msgid ""
 "hit Enter or click on the Search button to perform the search."
 msgstr ""
 
-#: doc/usage.html:95
+#: doc/usage.html:36
 msgid ""
 "Searches in the form use an implicit AND between fields - that is, if you "
 "enter 'ab' in the Gloss field and 'dry' in the keyword field you would see "
-"signs with an ID Gloss starting with 'ab' which also have a keyword "
-"'dry' (eg. ABSORB in BSL Signbank)."
+"signs with an ID Gloss starting with 'ab' which also have a keyword 'dry'."
 msgstr ""
 
-#: doc/usage.html:102
+#: doc/usage.html:43
 msgid ""
 "Search results are shown in the list below the form, a summary of the number "
 "of matches to the search term is also shown.  The results are shown in a "
@@ -391,7 +329,7 @@ msgid ""
 "details of the sign."
 msgstr ""
 
-#: doc/usage.html:111
+#: doc/usage.html:52
 msgid ""
 "Another option from this page is to export a version of the search results "
 "as a CSV (spreadsheet) file.   If you click on this button instead of the "
@@ -401,11 +339,11 @@ msgid ""
 "file."
 msgstr ""
 
-#: doc/usage.html:119
+#: doc/usage.html:60
 msgid "Sign Detail View"
 msgstr ""
 
-#: doc/usage.html:123
+#: doc/usage.html:64
 msgid ""
 "If you click on a sign in the search results you will be taken to a detailed "
 "view of that sign, this is a variation on the view shown to the public but "
@@ -413,7 +351,7 @@ msgid ""
 "user with the required permissions to edit the sign entry."
 msgstr ""
 
-#: doc/usage.html:130
+#: doc/usage.html:71
 msgid ""
 "The sign detail page shows a video if one has been uploaded for this sign. "
 "Below the video is a list of  <strong>tags</strong> that have been "
@@ -423,7 +361,7 @@ msgid ""
 "added by the site administrator (but adding them is straightforward)."
 msgstr ""
 
-#: doc/usage.html:138
+#: doc/usage.html:79
 msgid ""
 "On the right of the page the properties of the sign are listed. These are "
 "grouped together and by default only the basic properties are shown. "
@@ -435,11 +373,11 @@ msgid ""
 "'value not yet entered' and 'this field does not apply to this sign'."
 msgstr ""
 
-#: doc/usage.html:146
+#: doc/usage.html:87
 msgid "Editing"
 msgstr ""
 
-#: doc/usage.html:148
+#: doc/usage.html:89
 msgid ""
 "If the user has the required permission, a blue \"Enable Edit\" button shows "
 "at the top right of the page.  When clicked, this will turn red and enable "
@@ -451,7 +389,7 @@ msgid ""
 "previous value.  All changes take effect immediately."
 msgstr ""
 
-#: doc/usage.html:157
+#: doc/usage.html:98
 msgid ""
 "The \"Delete Sign\" button will show a dialogue box that asks the user to "
 "confirm the deletion of the sign entry.  Clicking on \"Confirm Delete\" will "
@@ -459,11 +397,11 @@ msgid ""
 "will return to the sign page."
 msgstr ""
 
-#: doc/usage.html:162
+#: doc/usage.html:103
 msgid "Relations"
 msgstr "Suhteet"
 
-#: doc/usage.html:164
+#: doc/usage.html:105
 msgid ""
 "In the \"Relations to Other Signs\" tab, any relations such as Synonyn, "
 "Homonym etc are show. The target sign is shown as the sign number followed "
@@ -478,7 +416,7 @@ msgid ""
 "also be deleted by clicking on the trashcan icon at the start of each line."
 msgstr ""
 
-#: doc/usage.html:176
+#: doc/usage.html:117
 msgid ""
 "Below the list of relations in edit mode is a form to create a new relation. "
 "Select the role from the drop down list and enter the target sign as above.  "
@@ -486,36 +424,12 @@ msgid ""
 "click on the \"Relations to Other Signs\" tab to see the new entry."
 msgstr ""
 
-#: doc/usage.html:181
-msgid "Definitions and Notes"
-msgstr ""
-
-#: doc/usage.html:183
-msgid ""
-"In the \"Definitions/Notes\" tab a list of defnitions or notes is shown. "
-"Each of these has a \"Role\" label such as \"As a Noun\", \"Private Note\" "
-"etc.  and an integer \"Index\" that defines the order within the category "
-"when they are listed on the public pages.   Each entry also has a \"Published"
-"\" field which controls whether the definition or note can be shown in the "
-"public view.  A definition/note can also be deleted by clicking on the "
-"trashcan icon at the start of each row."
-msgstr ""
-
-#: doc/usage.html:192
-msgid ""
-"Below the list of definitions/notes in edit mode is a form to create a new "
-"entry.  As with the relation form, the page will refresh when you submit "
-"this form and you will need to click on the \"Definitions/Notes\" tab again "
-"to view the change.  By default, new definitions have the Published field "
-"set to No."
-msgstr ""
-
 #. Translators: PageVideoForm label
-#: doc/usage.html:198 signbank/pages/admin.py:32
+#: doc/usage.html:124 signbank/pages/admin.py:32
 msgid "Video"
 msgstr ""
 
-#: doc/usage.html:201
+#: doc/usage.html:127
 msgid ""
 "In edit mode, a form to allow upload of video will be shown below the video "
 "for the sign. Select a file and click \"Upload Video\" and the page will "
@@ -528,7 +442,7 @@ msgid ""
 "one video then no video will be shown for the sign."
 msgstr ""
 
-#: doc/usage.html:211
+#: doc/usage.html:137
 msgid ""
 "Videos uploaded should be saved in a web friendly format. Technically this "
 "is H264 encoded video, but most programs that save video for the web will "
@@ -539,46 +453,19 @@ msgid ""
 "slower to play, eg. on the mobile version of the site)."
 msgstr ""
 
-#: doc/usage.html:220
+#: doc/usage.html:146
 msgid "Tags"
 msgstr ""
 
-#: doc/usage.html:223
+#: doc/usage.html:149
 msgid ""
 "Below the video forms is a list of tags associated with this sign.  In edit "
 "mode a small red cross will appear in each tag. Clicking on this cross will "
 "delete the tag.  New tags can be added via the dropdown menu below the tags."
 msgstr ""
 
-#: doc/usage.html:229
+#: doc/usage.html:155
 msgid "Permissions"
-msgstr ""
-
-#: doc/usage.html:232
-msgid ""
-"It will be possible to finely control the level of access for different "
-"groups of users. At present we have three groups:"
-msgstr ""
-
-#: doc/usage.html:238
-msgid ""
-"Editor: full edit access, can change anything, upload and delete videos etc."
-msgstr ""
-
-#: doc/usage.html:240
-msgid ""
-"Researcher: full search access to see the detailed view of signs, no edit "
-"access."
-msgstr ""
-
-#: doc/usage.html:242
-msgid "Public: only keyword search and the ability to leave feedback on signs."
-msgstr ""
-
-#: doc/usage.html:247
-msgid ""
-"In future we will develop a richer set of user levels, we've had some "
-"discussion about this and will make a proposal for feedback."
 msgstr ""
 
 #. Translators: verbose_name_plural
@@ -612,39 +499,41 @@ msgid "Translations containing"
 msgstr "Sisältyvät käännökset"
 
 #. Translators: UserSignSearchForm
+#. Translators: admin_gloss_list header
 #: signbank/dictionary/forms.py:29
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:155
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
 msgid "Search"
 msgstr "Haku"
 
 #. Translators: GlossSearchForm label
 #. Translators: Gloss models field: idgloss, verbose name
-#: signbank/dictionary/forms.py:48 signbank/dictionary/forms.py:207
+#: signbank/dictionary/forms.py:48 signbank/dictionary/forms.py:209
 #: signbank/dictionary/models.py:407
 msgid "Gloss"
 msgstr "Glossi"
 
 #. Translators: GlossSearchForm label
 #. Translators: Gloss models field: annotation_idgloss_jkl, verbose name
-#: signbank/dictionary/forms.py:49 signbank/dictionary/forms.py:209
+#: signbank/dictionary/forms.py:49 signbank/dictionary/forms.py:211
 #: signbank/dictionary/models.py:416
 msgid "Gloss JKL"
 msgstr "Glossi JKL"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:51 signbank/dictionary/forms.py:211
+#: signbank/dictionary/forms.py:51 signbank/dictionary/forms.py:213
 msgid "Gloss JKL English"
 msgstr "Glossi JKL English"
 
 #. Translators: GlossSearchForm label
 #. Translators: Gloss models field: annotation_idgloss_hki, verbose name
-#: signbank/dictionary/forms.py:53 signbank/dictionary/forms.py:213
+#: signbank/dictionary/forms.py:53 signbank/dictionary/forms.py:215
 #: signbank/dictionary/models.py:435
 msgid "Gloss HKI"
 msgstr "Glossi HKI"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:55 signbank/dictionary/forms.py:215
+#: signbank/dictionary/forms.py:55 signbank/dictionary/forms.py:217
 msgid "Gloss HKI English"
 msgstr "Glossi HKI English"
 
@@ -673,12 +562,12 @@ msgid "This Gloss HKI value is already taken. Please choose another."
 msgstr "Tämä Glossi HKI arvo on jo käytössä. Ole hyvä ja valitse toinen."
 
 #. Translators: YESNOCHOICES
-#: signbank/dictionary/forms.py:162
+#: signbank/dictionary/forms.py:164
 msgid "Unspecified"
 msgstr "Määrittelemätön"
 
 #. Translators: YESNOCHOICES
-#: signbank/dictionary/forms.py:164 signbank/dictionary/forms.py:249
+#: signbank/dictionary/forms.py:166 signbank/dictionary/forms.py:251
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -688,7 +577,7 @@ msgstr "Kyllä"
 #. Translators: useChoices
 #. Translators: suggestedChoices
 #. Translators: correctChoices
-#: signbank/dictionary/forms.py:166 signbank/dictionary/forms.py:249
+#: signbank/dictionary/forms.py:168 signbank/dictionary/forms.py:251
 #: signbank/feedback/models.py:19 signbank/feedback/models.py:62
 #: signbank/feedback/models.py:73 signbank/feedback/models.py:86
 #: signbank/feedback/models.py:99
@@ -696,158 +585,158 @@ msgid "No"
 msgstr "Ei"
 
 #. Translators: YESNOCHOICES
-#: signbank/dictionary/forms.py:170
+#: signbank/dictionary/forms.py:172
 msgid "Unknown"
 msgstr "Tuntematon"
 
 #. Translators: YESNOCHOICES
-#: signbank/dictionary/forms.py:172
+#: signbank/dictionary/forms.py:174
 msgid "True"
 msgstr "Tosi"
 
 #. Translators: YESNOCHOICES
-#: signbank/dictionary/forms.py:174
+#: signbank/dictionary/forms.py:176
 msgid "False"
 msgstr "Epätosi"
 
 #. Translators: RELATION_ROLE_CHOICES
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/forms.py:178 signbank/dictionary/forms.py:198
+#: signbank/dictionary/forms.py:180 signbank/dictionary/forms.py:200
 msgid "All"
 msgstr "Kaikki"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:180 signbank/dictionary/models.py:814
+#: signbank/dictionary/forms.py:182 signbank/dictionary/models.py:819
 msgid "Homonym"
 msgstr "Homonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:182 signbank/dictionary/models.py:816
+#: signbank/dictionary/forms.py:184 signbank/dictionary/models.py:821
 msgid "Synonym"
 msgstr "Synonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:184 signbank/dictionary/models.py:818
+#: signbank/dictionary/forms.py:186 signbank/dictionary/models.py:823
 msgid "Variant"
 msgstr "Variantti"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:186 signbank/dictionary/models.py:820
+#: signbank/dictionary/forms.py:188 signbank/dictionary/models.py:825
 msgid "Antonym"
 msgstr "Antonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:188 signbank/dictionary/models.py:822
+#: signbank/dictionary/forms.py:190 signbank/dictionary/models.py:827
 msgid "Hyponym"
 msgstr "Hyponyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:190 signbank/dictionary/models.py:824
+#: signbank/dictionary/forms.py:192 signbank/dictionary/models.py:829
 msgid "Hypernym"
 msgstr "Hypernyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:192 signbank/dictionary/models.py:826
+#: signbank/dictionary/forms.py:194 signbank/dictionary/models.py:831
 msgid "See Also"
 msgstr "Katso myös"
 
 #. Translators: This is a choice option that probably represents nothing, don't translate if not needed to.
-#: signbank/dictionary/forms.py:196 signbank/dictionary/forms.py:201
+#: signbank/dictionary/forms.py:198 signbank/dictionary/forms.py:203
 msgid "---------"
 msgstr ""
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:222
+#: signbank/dictionary/forms.py:224
 msgid "Translations"
 msgstr "Käännösvastineet"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:224
+#: signbank/dictionary/forms.py:226
 msgid "Translations English"
 msgstr "Käännösvastineet englanniksi"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:226
+#: signbank/dictionary/forms.py:228
 msgid "Has Video"
 msgstr "Video on"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:228
+#: signbank/dictionary/forms.py:230
 msgid "All Definitions Published"
 msgstr "Kaikki julkaistut määritelmät"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:230
+#: signbank/dictionary/forms.py:232
 msgid "Search Definition/Notes"
 msgstr "Etsi määritelmiä/merkintöjä"
 
-#: signbank/dictionary/forms.py:235
+#: signbank/dictionary/forms.py:237
 msgid "Search for gloss of related signs"
 msgstr "Etsi yhteenkuuluvien viittomien glossia"
 
-#: signbank/dictionary/forms.py:238
+#: signbank/dictionary/forms.py:240
 msgid "Search for gloss of foreign signs"
 msgstr "Etsi vieraskielisen viittoman glossia"
 
-#: signbank/dictionary/forms.py:241
+#: signbank/dictionary/forms.py:243
 msgid "Search for gloss with this as morpheme"
 msgstr "Etsi glossia jolla on tämä morfeemi"
 
-#: signbank/dictionary/forms.py:245
+#: signbank/dictionary/forms.py:247
 msgid "Phonology other"
 msgstr "Fonologia muu"
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:248
+#: signbank/dictionary/forms.py:250
 msgid "Related to foreign sign or not"
 msgstr "Liittyykö vieraskieliseen viittomaan"
 
-#: signbank/dictionary/forms.py:252
+#: signbank/dictionary/forms.py:254
 msgid "Type of relation"
 msgstr "Relaation tyyppi"
 
-#: signbank/dictionary/forms.py:255
+#: signbank/dictionary/forms.py:257
 msgid "Has morpheme type"
 msgstr "Morfeenityyppi löytyy"
 
-#: signbank/dictionary/forms.py:260
+#: signbank/dictionary/forms.py:262
 msgid "Repeating Movement"
 msgstr "Toistuva liike"
 
 #. Translators: Gloss models field: alternating_movement, verbose name
-#: signbank/dictionary/forms.py:264 signbank/dictionary/models.py:572
+#: signbank/dictionary/forms.py:266 signbank/dictionary/models.py:572
 msgid "Alternating Movement"
 msgstr "Vaihteleva liike"
 
-#: signbank/dictionary/forms.py:268
+#: signbank/dictionary/forms.py:270
 msgid "Is a proposed new sign"
 msgstr "On ehdotettu uusi viittoma"
 
-#: signbank/dictionary/forms.py:271
+#: signbank/dictionary/forms.py:273
 msgid "Is in Web dictionary"
 msgstr "On verkkosanakirjassa"
 
-#: signbank/dictionary/forms.py:274
+#: signbank/dictionary/forms.py:276
 msgid "Note type"
 msgstr "Merkinnän tyyppi"
 
-#: signbank/dictionary/forms.py:277
+#: signbank/dictionary/forms.py:279
 msgid "Note contains"
 msgstr "Merkintä sisältää"
 
 #. Translators: RelationForm label
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:305 signbank/dictionary/forms.py:323
+#: signbank/dictionary/forms.py:307 signbank/dictionary/forms.py:325
 msgid "Source Gloss"
 msgstr "Lähdeglossi"
 
 #. Translators: RelationForm label
-#: signbank/dictionary/forms.py:307
+#: signbank/dictionary/forms.py:309
 msgid "Target Gloss"
 msgstr "Kohdeglossi"
 
 #. Translators:
-#: signbank/dictionary/forms.py:309 signbank/dictionary/forms.py:343
+#: signbank/dictionary/forms.py:311 signbank/dictionary/forms.py:345
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:221
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:534
 msgid "Type"
@@ -856,24 +745,24 @@ msgstr "Tyyppi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:326 signbank/dictionary/models.py:275
+#: signbank/dictionary/forms.py:328 signbank/dictionary/models.py:275
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:410
 msgid "Related Language"
 msgstr "Lainattu kieli"
 
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:328
+#: signbank/dictionary/forms.py:330
 msgid "Gloss in Related Language"
 msgstr "Glossi lainatussa kielessä"
 
 #. Translators: MorphologyForm label
-#: signbank/dictionary/forms.py:338
+#: signbank/dictionary/forms.py:340
 msgid "Parent Gloss"
 msgstr "Emoglossi"
 
 #. Translators: MorphologyForm label
 #. Translators:
-#: signbank/dictionary/forms.py:349
+#: signbank/dictionary/forms.py:351
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:223
 msgid "Morpheme"
 msgstr "Morfeemi"
@@ -1214,19 +1103,16 @@ msgstr "Onko tämä ehdotettu uusi viittoma?"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/add_gloss.html:10
-msgid "Please provide some initial data"
-msgstr "Kirjoita Glossin alustavat tiedot"
+#, fuzzy
+#| msgid "Gloss"
+msgid "Add a Gloss"
+msgstr "Glossi"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/add_gloss.html:22
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:39
 msgid "Add New Sign"
 msgstr "Lisää uusi Glossi"
-
-#. Translators: Message that appears if user doesn't have proper user rights to view this page.
-#: signbank/dictionary/templates/dictionary/add_gloss.html:27
-msgid "You do not have sufficient user rights to view this page."
-msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
 #. Translators: ID Gloss - add gloss form title
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:21
@@ -1258,36 +1144,40 @@ msgstr "Glossi HKI English"
 msgid "Signbank: Search Signs"
 msgstr "Signbank: Etsi viittomia"
 
-#. Translators: Search by language
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:125
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:133
 msgid "Search by Language and Basic Properties"
 msgstr "Etsi kielellä ja perusominaisuuksilla"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:159
 msgid "CSV"
 msgstr "CSV"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:159
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:161
 msgid "Reset"
 msgstr "Tyhjennä"
 
 #. Translators: How many results to fit per page
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:164
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:166
 msgid "Results per page"
 msgstr "Tuloksia per sivu"
 
 #. Translators: How many matches out of possible
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:184
 msgid "Number of matches:"
 msgstr "Hakutuloksia:"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:184
 msgid "out of"
 msgstr "/"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:195
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:197
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
+
+#. Translators: Public view (mode?)
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:49
+msgid "Public View"
+msgstr "Julkinen näkymä"
 
 #. Translators: Text that appears when editing is on
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:55
@@ -1925,68 +1815,68 @@ msgid "Unknown field"
 msgstr "Tuntematon kenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:274
+#: signbank/dictionary/update.py:285
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:278 signbank/dictionary/update.py:326
+#: signbank/dictionary/update.py:289 signbank/dictionary/update.py:337
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:302 signbank/dictionary/update.py:600
+#: signbank/dictionary/update.py:313 signbank/dictionary/update.py:611
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:306 signbank/dictionary/update.py:346
-#: signbank/dictionary/update.py:604
+#: signbank/dictionary/update.py:317 signbank/dictionary/update.py:357
+#: signbank/dictionary/update.py:615
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:321
+#: signbank/dictionary/update.py:332
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:409
+#: signbank/dictionary/update.py:420
 msgid "Bad Definition ID"
 msgstr "Epäkelpo määritelmän ID"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:413
+#: signbank/dictionary/update.py:424
 msgid "Definition doesn't match gloss"
 msgstr "Määritelmä ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:463 signbank/dictionary/update.py:501
+#: signbank/dictionary/update.py:474 signbank/dictionary/update.py:512
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:475
+#: signbank/dictionary/update.py:486
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:513
+#: signbank/dictionary/update.py:524
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
-#: signbank/dictionary/update.py:561
+#: signbank/dictionary/update.py:572
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:574
+#: signbank/dictionary/update.py:585
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:579
+#: signbank/dictionary/update.py:590
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
@@ -3276,54 +3166,9 @@ msgid "Page Video"
 msgstr "Sivun video"
 
 #. Translators: Edit button
-#: signbank/pages/templates/pages/default.html:49
-#: signbank/pages/templates/pages/howhelp.html:44
+#: signbank/pages/templates/pages/default.html:23
 msgid "[Edit]"
 msgstr "[Editoi]"
-
-#. Translators: Link title
-#: signbank/pages/templates/pages/mainpage.html:9
-#: signbank/pages/templates/pages/medical.html:10
-msgid "Search the SignBank Dictionary"
-msgstr "Etsi Signbankista"
-
-#. Translators: Link text
-#: signbank/pages/templates/pages/mainpage.html:11
-#: signbank/pages/templates/pages/medical.html:12
-msgid "SignBank"
-msgstr "Signbank"
-
-#. Translators: Link title
-#: signbank/pages/templates/pages/mainpage.html:13
-#: signbank/pages/templates/pages/medical.html:14
-msgid "Search the Medical SignBank"
-msgstr ""
-
-#. Translators: Link text
-#: signbank/pages/templates/pages/mainpage.html:15
-#: signbank/pages/templates/pages/medical.html:16
-msgid "Medical SignBank"
-msgstr ""
-
-#. Translators: Link title
-#: signbank/pages/templates/pages/mainpage.html:17
-msgid "Explore Finger Spelling Signs"
-msgstr ""
-
-#. Translators: Link text
-#: signbank/pages/templates/pages/mainpage.html:19
-msgid "Finger<br> Spelling"
-msgstr ""
-
-#. Translators: Link title
-#: signbank/pages/templates/pages/mainpage.html:21
-msgid "Explore Number Signs"
-msgstr ""
-
-#. Translators: Link text
-#: signbank/pages/templates/pages/mainpage.html:23
-msgid "Number<br>Signs"
-msgstr ""
 
 #. Translators: exception with page request
 #: signbank/pages/views.py:40
@@ -3610,6 +3455,21 @@ msgstr "Tiedosto:"
 #: signbank/video/templates/addvideo.html:31
 msgid "Error:"
 msgstr "Virhe:"
+
+#~ msgid "English words matching"
+#~ msgstr "Englanninkieliset täsmäävät sanat"
+
+#~ msgid "SEARCH CONTENT"
+#~ msgstr "ETSI SISÄLTÖÄ"
+
+#~ msgid "Please provide some initial data"
+#~ msgstr "Kirjoita Glossin alustavat tiedot"
+
+#~ msgid "Search the SignBank Dictionary"
+#~ msgstr "Etsi Signbankista"
+
+#~ msgid "SignBank"
+#~ msgstr "Signbank"
 
 #~ msgid "Email"
 #~ msgstr "Sähköposti"
