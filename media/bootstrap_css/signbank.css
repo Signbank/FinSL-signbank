@@ -61,6 +61,11 @@ html {
     position: relative;
     margin-bottom: 5px;
 }
+.languageform {
+    float: right;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 #login {
     position: relative;
     margin: auto;
