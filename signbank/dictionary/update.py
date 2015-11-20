@@ -45,12 +45,13 @@ def update_gloss(request, glossid):
     We are sent one field and value at a time, return the new value
     once we've updated it."""
 
+    # Make sure that the user has the rights to change a gloss
     if not request.user.has_perm('dictionary.change_gloss'):
         # Translators: HttpResponseForbidden for update_gloss
         return HttpResponseForbidden(_("Gloss Update Not Allowed"))
 
     if request.method == "POST":
-
+        # TODO: Change all field checks from startswith to equals
         gloss = get_object_or_404(Gloss, id=glossid)
         old_idgloss = unicode(gloss)
 
@@ -67,13 +68,16 @@ def update_gloss(request, glossid):
         # in case we need multiple values
         values = request.POST.getlist('value[]')
 
-        # validate
-        # field is a valid field
-        # value is a valid value for field
-        # NOTICE: if you edit some field names, it can break things. Some fiels are checked with startswith!
+        # If field is 'deletegloss', delete the gloss and things related to it
         if field == 'deletegloss':
             if value == 'confirmed':
                 # delete the gloss and redirect back to gloss list
+                glosses_videos = GlossVideo.objects.filter(gloss=gloss)
+                # Delete all the objects of GlossVideo that match the Gloss we try to delete.
+                for video in glosses_videos:
+                    # When deleting the object, a signal is sent and catched at video.GlossVideo
+                    # The signal handling will delete the videofile
+                    video.delete()
                 gloss.delete()
                 return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
 

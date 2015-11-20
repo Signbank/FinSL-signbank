@@ -4,6 +4,7 @@ keep track of uploaded videos and converted versions
 
 from django.db import models
 from django.conf import settings
+from django.dispatch import receiver
 import os
 from django.utils.translation import ugettext_lazy as _
 from django.core.files.storage import FileSystemStorage
@@ -140,14 +141,6 @@ class GlossVideo(models.Model, VideoPosterMixin):
     # Translators: GlossVideo: version
     version = models.IntegerField(_("Version"), default=0)
 
-    def get_mobile_url(self):
-        """Return a URL to serve the mobile version of this
-        video, this uses MEDIA_MOBILE_URL as a prefix
-        rather than MEDIA_URL but is otherwise the same"""
-
-        url = self.get_absolute_url()
-        return url.replace(settings.MEDIA_URL, settings.MEDIA_MOBILE_URL)
-
     def reversion(self, revert=False):
         """We have a new version of this video so increase
         the version count here and rename the video
@@ -192,3 +185,11 @@ class GlossVideo(models.Model, VideoPosterMixin):
 
     def __unicode__(self):
         return self.videofile.name
+
+
+@receiver(models.signals.pre_delete, sender=GlossVideo)
+def delete_on_delete(sender, instance, **kwargs):
+    """On signal delete, use pre_delete to delete the videofile. This will happen when a GlossVideo object is deleted"""
+    if instance.videofile:
+        if os.path.isfile(instance.videofile.path):
+            os.remove(instance.videofile.path)
