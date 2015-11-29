@@ -372,6 +372,16 @@ class GlossListView(ListView):
             qs = qs.filter(pk__in=pks_for_glosses_with_these_definitions)
 
             # print "Final :", len(qs)
+
+        # Set order_by from GET
+        if get.has_key('order_by'):
+            order = get['order_by']
+            if get.has_key('order'):
+                if get['order'] == 'desc':
+                    qs = qs.order_by("-" + order)
+            else:
+                qs = qs.order_by(order)
+
         return qs
 
 
