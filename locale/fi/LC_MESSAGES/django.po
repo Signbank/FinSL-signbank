@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-30 18:00+0200\n"
+"POT-Creation-Date: 2015-11-30 18:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,46 +136,46 @@ msgid "Login"
 msgstr "Kirjaudu"
 
 #. Translators: Text sign in - login form
-#: bootstrap_templates/loginform.html:10
+#: bootstrap_templates/loginform.html:8
 msgid "Sign In"
 msgstr "Kirjaudu sisään"
 
 #. Translators: Email - in login form
 #. Translators: EmailAuthenticationForm: email
-#: bootstrap_templates/loginform.html:17 signbank/registration/forms.py:290
+#: bootstrap_templates/loginform.html:14 signbank/registration/forms.py:290
 msgid "Email/Username"
 msgstr "Email/Käyttäjätunnus"
 
 #. Translators: Password text - in login form
 #. Translators: label password1
 #. Translators: EmailAuthenticationForm: password
-#: bootstrap_templates/loginform.html:27 signbank/registration/forms.py:52
+#: bootstrap_templates/loginform.html:24 signbank/registration/forms.py:52
 #: signbank/registration/forms.py:292
 msgid "Password"
 msgstr "Salasana"
 
 #. Translators: Sign in button in login form
-#: bootstrap_templates/loginform.html:37
+#: bootstrap_templates/loginform.html:34
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
 #. Translators: Text register - in login form
 #. Translators: Register link
-#: bootstrap_templates/loginform.html:45 bootstrap_templates/loginform.html:51
+#: bootstrap_templates/loginform.html:42 bootstrap_templates/loginform.html:47
 msgid "Register"
 msgstr "Rekisteröidy"
 
 #. Translators: Text in login form
-#: bootstrap_templates/loginform.html:49
+#: bootstrap_templates/loginform.html:45
 msgid "To register for an account, press the button below."
 msgstr "Rekisteröidy painamalla alla olevaa nappia."
 
 #. Translators: Title lost password - in login form
-#: bootstrap_templates/loginform.html:56
+#: bootstrap_templates/loginform.html:52
 msgid "Lost Password?"
 msgstr "Unohtunut salasana?"
 
-#: bootstrap_templates/loginform.html:59
+#: bootstrap_templates/loginform.html:55
 msgid ""
 "If you've lost or forgotten your password, enter your email address here and "
 "we'll reset it and send you a reminder."
@@ -183,12 +183,12 @@ msgstr ""
 "Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
 "tähän, niin lähetämme sinulle uuden salasanan."
 
-#: bootstrap_templates/loginform.html:65
+#: bootstrap_templates/loginform.html:60
 msgid "Email"
 msgstr "Sähköposti"
 
 #. Translators: Request password button
-#: bootstrap_templates/loginform.html:70
+#: bootstrap_templates/loginform.html:65
 msgid "Request Password"
 msgstr "Palauta salasana"
 
@@ -198,19 +198,23 @@ msgid "Toggle navigation"
 msgstr "Navigointi"
 
 #. Translators: Placeholder text in a search textfield
-#: bootstrap_templates/menu.html:43
+#: bootstrap_templates/menu.html:49
 msgid "Search gloss"
 msgstr "Etsi glossia"
 
 #. Translators: Placeholder text in a search textfield
-#: bootstrap_templates/menu.html:46
+#: bootstrap_templates/menu.html:54
 msgid "Search translation"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Submit button (press to search)
-#: bootstrap_templates/menu.html:48 doc/usage.html:21
-msgid "Sign Search"
-msgstr "Hae"
+#. Translators: UserSignSearchForm
+#. Translators: admin_gloss_list header
+#: bootstrap_templates/menu.html:58 signbank/dictionary/forms.py:29
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
+msgid "Search"
+msgstr "Haku"
 
 #. Translators: Edit page button in baselayout
 #: bootstrap_templates/pages/default.html:10
@@ -339,6 +343,10 @@ msgid ""
 "capabilities are summarised later.  This section gives a summary of all of "
 "the different staff capabilities."
 msgstr ""
+
+#: doc/usage.html:21
+msgid "Sign Search"
+msgstr "Hae"
 
 #: doc/usage.html:25
 msgid ""
@@ -537,14 +545,6 @@ msgstr "Sisältyvät Glossit"
 #: signbank/dictionary/forms.py:26
 msgid "Translations containing"
 msgstr "Sisältyvät käännökset"
-
-#. Translators: UserSignSearchForm
-#. Translators: admin_gloss_list header
-#: signbank/dictionary/forms.py:29
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
-msgid "Search"
-msgstr "Haku"
 
 #. Translators: GlossSearchForm label
 #. Translators: Gloss models field: idgloss, verbose name
@@ -3494,86 +3494,3 @@ msgstr "Tiedosto:"
 #: signbank/video/templates/addvideo.html:31
 msgid "Error:"
 msgstr "Virhe:"
-
-#~ msgid "Register for free to provide feedback on the Signbank."
-#~ msgstr "Rekisteröidy ilmaiseksi antaaksesi palautetta Signbankista"
-
-#~ msgid "English words matching"
-#~ msgstr "Englanninkieliset täsmäävät sanat"
-
-#~ msgid "SEARCH CONTENT"
-#~ msgstr "ETSI SISÄLTÖÄ"
-
-#~ msgid "Please provide some initial data"
-#~ msgstr "Kirjoita Glossin alustavat tiedot"
-
-#~ msgid "Search the SignBank Dictionary"
-#~ msgstr "Etsi Signbankista"
-
-#~ msgid "More than one"
-#~ msgstr "Enemmän kuin yksi"
-
-#~ msgid "Sign Number"
-#~ msgstr "Viittoman numero"
-
-#~ msgid ""
-#~ "A sign with that Sign Number already exists. Please choose a different "
-#~ "Sign Number."
-#~ msgstr ""
-#~ "Viittoma tuolla numerolla on jo olemassa. Ole hyvä ja valitse toinen "
-#~ "numero."
-
-#~ msgid "Search by Morphology"
-#~ msgstr "Etsi morfologialla"
-
-#~ msgid "Search by Phonology"
-#~ msgstr "Etsi fonologialla"
-
-#~ msgid "Search by Semantics"
-#~ msgstr "Etsi semantiikalla"
-
-#~ msgid "Search by Relation"
-#~ msgstr "Etsi suhteilla"
-
-#~ msgid "Search by Publication Status and Notes"
-#~ msgstr "Etsi julkaisun ja muistiinpanojen perusteella"
-
-#~ msgid ""
-#~ "Number of matches: %(page_obj.paginator.count)s out of %(glosscount)s"
-#~ msgstr "Osumia: %(page_obj.paginator.count)s %(glosscount)s :stä"
-
-#~ msgid "Translation equivalents in English"
-#~ msgstr "Käännösvastineet englanniksi"
-
-#~ msgid "Previous Sign"
-#~ msgstr "Edellinen glossi"
-
-#~ msgid "Next Sign"
-#~ msgstr "Seuraava viittoma"
-
-#~ msgid "Gloss field is empty"
-#~ msgstr "Glossikenttä on tyhjä"
-
-#~ msgid "Gloss not unique"
-#~ msgstr "Glossi ei ole uniikki"
-
-#~ msgid "Missing JKL or HKI Gloss"
-#~ msgstr "JKL tai HKI Glossi puuttuu"
-
-#~ msgid "Gloss JKL not unique"
-#~ msgstr "Glossi JKL ei ole uniikki"
-
-#~ msgid "Gloss HKI not unique"
-#~ msgstr "Glossi HKI ei ole uniikki"
-
-#~ msgid "SN value must be integer"
-#~ msgstr "SN arvon täytyy olla kokonaisluku"
-
-#~ msgid "SN value already taken for gloss"
-#~ msgstr "SN arvo on jo käytössä"
-
-#~ msgid "Annotation comments"
-#~ msgstr "Annotaatiokommentit"
-
-#~ msgid "Annotation Comments:"
-#~ msgstr "Annotaatiokommentit"
