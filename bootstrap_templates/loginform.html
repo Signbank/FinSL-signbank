@@ -2,95 +2,71 @@
 {% load i18n %}
 
 {% if not user.is_authenticated %}
- <div class='row'>
-  <div id="loginforms" class="col-md-6 col-md-offset-3">
+<div class='row'>
+    <div id="loginforms" class="col-md-8 col-md-offset-2">
+        {# Translators: Text sign in - login form #}
+        <h3>{% blocktrans %}Sign In{% endblocktrans %}</h3>
+        <div class="well well-lg">
+            <form id="loginform" name="login" method="post" action="/accounts/login/">
+                {% csrf_token %}
+                <div class='form-group'>
+                    {# Translators: Email - in login form #}
+                    <label for="email">{% blocktrans %}Email/Username{% endblocktrans%}:
+                    </label>
+                    <input class="form-control" type="text" name="email">
 
-  <form class='form-horizontal' id="loginform" name="login" method="post" action="/accounts/login/">
-    {% csrf_token %}
-    <fieldset id='signin'>
-    {# Translators: Text sign in - login form #}
-    <legend>{% blocktrans %}Sign In{% endblocktrans %}</legend>
-        <div class='form-group'>
-            {# Translators: Email - in login form #}
-            <label for="email" class="col-sm-2 control-label">{% blocktrans %}Email/Username{% endblocktrans %}:</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" name="email">
-            </div>
-            {% if form.email.errors %}
-            <div class='alert alert-danger'>{{form.email.errors}}</div>
-            {% endif %}
+                    {% if form.email.errors %}
+                    <div class='alert alert-danger'>{{form.email.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class='form-group'>
+                    {# Translators: Password text - in login form #}
+                    <label for="password">{% blocktrans %}Password{% endblocktrans%}:
+                    </label>
+                    <input class="form-control" type="password" name="password">
+                    {% if form.password.errors %}
+                    <div class='alert alert-danger'>{{form.password.errors}}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {# Translators: Sign in button in login form #}
+                    <button type="submit" class="btn btn-primary">{% blocktrans %}Sign in{% endblocktrans %}</button>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
         </div>
-        <div class='form-group'>
-            {# Translators: Password text - in login form #}
-            <label for="password" class="col-sm-2 control-label">{% blocktrans %}Password{% endblocktrans %}:</label>
-            <div class="col-sm-10">
-                <input  class="form-control" type="password" name="password" >
-            </div>
-            {% if form.password.errors %}
-            <div class='alert alert-danger'>{{form.password.errors}}</div>
-            {% endif %}
+
+        {% if allow_registration %}
+        {# Translators: Text register - in login form #}
+        <h3>{% blocktrans %}Register{% endblocktrans%}</h3>
+        <div class="well well-lg">
+            {# Translators: Text in login form #}
+            <p>{% blocktrans %}To register for an account, press the button below.{% endblocktrans %}</p>
+            {# Translators: Register link #}
+            <a class='btn btn-info' href="/accounts/register/">{% blocktrans %}Register{% endblocktrans %}</a>
         </div>
+        {% endif %}
 
-        <div class="form-group">
-           <div class="col-sm-offset-2 col-sm-10">
-             {# Translators: Sign in button in login form #}
-             <button type="submit" class="btn btn-primary">{% blocktrans %}Sign in{% endblocktrans %}</button>
-           </div>
-        </div>
-
-    </fieldset>
-
-    <input type="hidden" name="next" value="{{ next }}" >
-
-  </form>
-
-{% if allow_registration %}
-  <fieldset id='register'>
-     {# Translators: Text register - in login form #}
-     <legend>{% blocktrans %}Register{% endblocktrans%}</legend>
-
-    {# Translators: Text in login form #}
-    <p>{% blocktrans %}Register for free to provide feedback on the Signbank.{% endblocktrans %}
-        {# Translators: Register link #}
-        <a class='btn btn-default' href="/accounts/register/">{% blocktrans %}Register{% endblocktrans %}</a>
-    </p>
-    </fieldset>
-{% endif %}
-
-    <fieldset id='lostpw'>
-      {# Translators: Title lost password - in login form #}
-      <legend>{% blocktrans %}Lost Password{% endblocktrans %}</legend>
-      {# Translators: Text for lost password #}
-      <p>{% blocktrans trimmed %}If you've lost or forgotten your password, enter your email
-      address here and we'll reset it and send you a reminder.{% endblocktrans %}</p>
-
-      <form class='form-horizontal' id="passwordresetform" action="/accounts/password/reset/" method="POST">
-          {% csrf_token %}
-          <div class='form-group'>
-            <div class='form-group'>
-                <label for="email" class="col-sm-2 control-label">Email:</label>
-                <div class="col-sm-10">
+        {# Translators: Title lost password - in login form #}
+        <h3>{% blocktrans %}Lost Password?{% endblocktrans %}</h3>
+        {# Translators: Text for lost password #}
+        <div class="well well-lg">
+            <p>{% blocktrans trimmed %}If you've lost or forgotten your password, enter your email
+                address here and we'll reset it and send you a reminder.{% endblocktrans %}</p>
+            <form id="passwordresetform" action="/accounts/password/reset/" method="POST">
+                {% csrf_token %}
+                <div class='form-group'>
+                    <label for="email">{% blocktrans %}Email{% endblocktrans %}:</label>
                     <input class="form-control" type="text" name="email">
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                   {# Translators: Request password button #}
-                   <button type="submit" class="btn btn-default">{% blocktrans %}Request Password{% endblocktrans %}</button>
+                <div class="form-group">
+                    {# Translators: Request password button #}
+                    <button type="submit" class="btn btn-warning">{% blocktrans %}Request Password{% endblocktrans %}
+                    </button>
                 </div>
-            </div>
-          </div>
-      </form>
-    </fieldset>
+            </form>
+        </div>
     </div>
-
 </div>
-
-
-
-
-
-
-
 {% endif %}

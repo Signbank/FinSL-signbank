@@ -3,21 +3,22 @@
 {% load i18n %}
 
 {% block content %}
-<form class='form-horizontal' method="post" action="">
-      
-    {% csrf_token %}
-    <div id='registrationform'  class="col-md-6 col-md-offset-3"> 
-    
-        {% bootstrap_form form %}
-        
-        {% buttons %}
-        <button type="submit" class="btn btn-primary">
-            {# Translators: Submit button text (bootstrap) #}
-            {% bootstrap_icon "star" %} {% blocktrans %}Submit{% endblocktrans %}
-        </button>
-        {% endbuttons %}
+<div id='registrationform' class="col-md-8 col-md-offset-2">
+    <h3>{% blocktrans %}Register an account{% endblocktrans %}</h3>
+
+    <div class="well well-lg">
+        <form method="post" action="">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-info">
+                {# Translators: Submit button text (bootstrap) #}
+                {% blocktrans %}Submit{% endblocktrans %}
+            </button>
+            {% endbuttons %}
+        </form>
     </div>
-  </form>
+</div>
 {% endblock %}
 
 

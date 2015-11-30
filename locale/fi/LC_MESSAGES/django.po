@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0200\n"
+"POT-Creation-Date: 2015-11-30 18:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,20 +136,20 @@ msgid "Login"
 msgstr "Kirjaudu"
 
 #. Translators: Text sign in - login form
-#: bootstrap_templates/loginform.html:12
+#: bootstrap_templates/loginform.html:10
 msgid "Sign In"
 msgstr "Kirjaudu sisään"
 
 #. Translators: Email - in login form
 #. Translators: EmailAuthenticationForm: email
-#: bootstrap_templates/loginform.html:15 signbank/registration/forms.py:290
+#: bootstrap_templates/loginform.html:17 signbank/registration/forms.py:290
 msgid "Email/Username"
 msgstr "Email/Käyttäjätunnus"
 
 #. Translators: Password text - in login form
 #. Translators: label password1
 #. Translators: EmailAuthenticationForm: password
-#: bootstrap_templates/loginform.html:25 signbank/registration/forms.py:52
+#: bootstrap_templates/loginform.html:27 signbank/registration/forms.py:52
 #: signbank/registration/forms.py:292
 msgid "Password"
 msgstr "Salasana"
@@ -161,31 +161,34 @@ msgstr "Kirjaudu sisään"
 
 #. Translators: Text register - in login form
 #. Translators: Register link
-#: bootstrap_templates/loginform.html:50 bootstrap_templates/loginform.html:55
+#: bootstrap_templates/loginform.html:45 bootstrap_templates/loginform.html:51
 msgid "Register"
 msgstr "Rekisteröidy"
 
 #. Translators: Text in login form
-#: bootstrap_templates/loginform.html:53
-msgid "Register for free to provide feedback on the Signbank."
-msgstr "Rekisteröidy ilmaiseksi antaaksesi palautetta Signbankista"
+#: bootstrap_templates/loginform.html:49
+msgid "To register for an account, press the button below."
+msgstr "Rekisteröidy painamalla alla olevaa nappia."
 
 #. Translators: Title lost password - in login form
-#: bootstrap_templates/loginform.html:62
-msgid "Lost Password"
-msgstr "Salasana unohtunut"
+#: bootstrap_templates/loginform.html:56
+msgid "Lost Password?"
+msgstr "Unohtunut salasana?"
 
-#. Translators: Text for lost password
-#: bootstrap_templates/loginform.html:64
+#: bootstrap_templates/loginform.html:59
 msgid ""
 "If you've lost or forgotten your password, enter your email address here and "
 "we'll reset it and send you a reminder."
 msgstr ""
 "Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
-"tähän ja lähetämme sinulle uuden salasanan."
+"tähän, niin lähetämme sinulle uuden salasanan."
+
+#: bootstrap_templates/loginform.html:65
+msgid "Email"
+msgstr "Sähköposti"
 
 #. Translators: Request password button
-#: bootstrap_templates/loginform.html:80
+#: bootstrap_templates/loginform.html:70
 msgid "Request Password"
 msgstr "Palauta salasana"
 
@@ -1202,7 +1205,7 @@ msgstr "Hakutuloksia:"
 msgid "out of"
 msgstr "/"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:197
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:200
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
@@ -1827,88 +1830,88 @@ msgid "Sign Definition"
 msgstr "Viittoman määritelmä"
 
 #. Translators: HttpResponseForbidden for update_gloss
-#: signbank/dictionary/update.py:50
+#: signbank/dictionary/update.py:51
 msgid "Gloss Update Not Allowed"
 msgstr "Glossin päivittäminen ei ole sallittua"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:117
+#: signbank/dictionary/update.py:121
 msgid "Uknown Language"
 msgstr "Tuntematon kieli"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:132
+#: signbank/dictionary/update.py:136
 msgid "Unknown Dialect"
 msgstr "Tuntematon alue"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:150
+#: signbank/dictionary/update.py:154
 msgid "Unknown field"
 msgstr "Tuntematon kenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:285
+#: signbank/dictionary/update.py:289
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:289 signbank/dictionary/update.py:337
+#: signbank/dictionary/update.py:293 signbank/dictionary/update.py:341
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:313 signbank/dictionary/update.py:611
+#: signbank/dictionary/update.py:317 signbank/dictionary/update.py:615
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:317 signbank/dictionary/update.py:357
-#: signbank/dictionary/update.py:615
+#: signbank/dictionary/update.py:321 signbank/dictionary/update.py:361
+#: signbank/dictionary/update.py:619
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:332
+#: signbank/dictionary/update.py:336
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:420
+#: signbank/dictionary/update.py:424
 msgid "Bad Definition ID"
 msgstr "Epäkelpo määritelmän ID"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:424
+#: signbank/dictionary/update.py:428
 msgid "Definition doesn't match gloss"
 msgstr "Määritelmä ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:474 signbank/dictionary/update.py:512
+#: signbank/dictionary/update.py:478 signbank/dictionary/update.py:516
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:486
+#: signbank/dictionary/update.py:490
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:524
+#: signbank/dictionary/update.py:528
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
-#: signbank/dictionary/update.py:572
+#: signbank/dictionary/update.py:576
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:585
+#: signbank/dictionary/update.py:589
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:590
+#: signbank/dictionary/update.py:594
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
@@ -3417,6 +3420,10 @@ msgstr ""
 "sähköpostia antamaanne osoitteeseen. Lue sähköpostista ohjeet rekisteröinnin "
 "loppuun saattamiseen."
 
+#: signbank/registration/templates/registration/registration_form.html:7
+msgid "Register an account"
+msgstr "Rekisteröidy "
+
 #. Translators: Debug message
 #: signbank/video/fields.py:121
 msgid "Converted to mp4: "
@@ -3464,12 +3471,12 @@ msgid "Video conversion failed on Auslan"
 msgstr "Videon muuntaminen epäonnistui"
 
 #. Translators: Video: videofile
-#: signbank/video/models.py:99
+#: signbank/video/models.py:100
 msgid "Video file in h264 mp4 format"
 msgstr "Videotiedosto h264 mp4 muodossa"
 
 #. Translators: GlossVideo: version
-#: signbank/video/models.py:141
+#: signbank/video/models.py:142
 msgid "Version"
 msgstr "Versio"
 
@@ -3488,6 +3495,9 @@ msgstr "Tiedosto:"
 msgid "Error:"
 msgstr "Virhe:"
 
+#~ msgid "Register for free to provide feedback on the Signbank."
+#~ msgstr "Rekisteröidy ilmaiseksi antaaksesi palautetta Signbankista"
+
 #~ msgid "English words matching"
 #~ msgstr "Englanninkieliset täsmäävät sanat"
 
@@ -3499,9 +3509,6 @@ msgstr "Virhe:"
 
 #~ msgid "Search the SignBank Dictionary"
 #~ msgstr "Etsi Signbankista"
-
-#~ msgid "Email"
-#~ msgstr "Sähköposti"
 
 #~ msgid "More than one"
 #~ msgstr "Enemmän kuin yksi"
