@@ -10,9 +10,9 @@
     <input name="next" type="hidden" value="{{ redirect_to }}" />
     <input name="language" type="hidden" value="{{ language.code }}" />
     {% if language.code == 'en' %}
-    <input type="image" src="{{ STATIC_URL }}images/flags/32/GB.png" width="32" alt="{{ language.code }}" {% if not LANGUAGE_CODE == 'en' %}style="filter:opacity(50%);"{% endif %} />
+    <input type="image" src="{{ STATIC_URL }}images/flags/32/GB.png" width="32" alt="{{ language.name }}" {% if not LANGUAGE_CODE == 'en' %}style="filter:opacity(50%);"{% endif %} />
     {% else %}
-    <input type="image" src="{{ STATIC_URL }}images/flags/32/{{ language.code|upper }}.png" width="32" alt="{{ language.code }}"  {% if not language.code == LANGUAGE_CODE %}style="filter:opacity(50%);"{% endif %} />
+    <input type="image" src="{{ STATIC_URL }}images/flags/32/{{ language.code|upper }}.png" width="32" alt="{{ language.name }}"  {% if not language.code == LANGUAGE_CODE %}style="filter:opacity(50%);"{% endif %} />
     {% endif %}
 </form>
 {% endfor %}
