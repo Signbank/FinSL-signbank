@@ -1,5 +1,6 @@
 from django.contrib import admin
 from reversion.admin import VersionAdmin
+from django.contrib.admin.util import flatten_fieldsets
 from django.utils.translation import ugettext_lazy as _
 
 from signbank.dictionary.models import *
@@ -48,15 +49,12 @@ class RelationInline(admin.TabularInline):
     extra = 1
 
 
-from django.utils.translation import ugettext_lazy as _
-
-
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
 
     fieldsets = ((None, {'fields': (
-        'idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+        'locked', 'idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
         'annotation_idgloss_hki_en', 'annotation_comments', 'language', 'dialect', 'url_field')},),
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
@@ -76,13 +74,33 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
+    list_display = ['idgloss', 'locked', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
                     'annotation_idgloss_hki_en']
     search_fields = ['^idgloss', '^annotation_idgloss_jkl']
     list_filter = [
         'language', 'dialect', 'in_web_dictionary', 'strong_handshape']
     inlines = [RelationInline, RelationToForeignSignInline,
                DefinitionInline, TranslationInline, TranslationEnglishInline]
+
+    def get_readonly_fields(self, request, obj=None):
+        """Sets all fields readonly (except 'locked'), if locked == True
+        This is done to be able to set an object locked in django admin (so that you cannot edit it)
+        """
+        # Check if obj (hopefully an Gloss object) has locked set True
+        if not obj.locked:
+            return self.readonly_fields
+
+        # See if fields have been declared
+        if self.declared_fieldsets:
+            flattened_fieldsets = flatten_fieldsets(self.declared_fieldsets)
+            # Find and remove 'locked' so that it will not be readonly
+            if 'locked' in flattened_fieldsets: flattened_fieldsets.remove('locked')
+            return flattened_fieldsets
+        else:
+            return list(set(
+                [field.name for field in self.opts.local_fields] +
+                [field.name for field in self.opts.local_many_to_many]
+            ))
 
     def save_model(self, request, obj, form, change):
         """Sets created_by and updated_by as the original requests user"""

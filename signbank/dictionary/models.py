@@ -367,6 +367,8 @@ class Gloss(models.Model):
             ('can_delete_published', _('Can delete pub signs and defs')),
             # Translators: Gloss permissions
             ('view_advanced_properties', _('Include all properties in sign detail view')),
+            # Translators: Gloss permissions
+            ('lock_gloss', _('Can lock and unlock Gloss from editing')),
         )
 
     def __unicode__(self):
@@ -402,6 +404,10 @@ class Gloss(models.Model):
                 result.append((fname, getattr(self, field)))
 
         return result
+
+    ### Fields begin ###
+
+    locked = models.BooleanField(_("Locked"), default=False)
 
     # Translators: Gloss models field: idgloss, verbose name
     idgloss = models.CharField(_("Gloss"), max_length=60,
@@ -449,7 +455,7 @@ minor or insignificant ways that can be ignored."""))
     This is the English name for the corresponding Jyvaskyla Gloss"""))
 
     # Languages that this gloss is part of
-    language = models.ManyToManyField(Language)
+    language = models.ManyToManyField(Language, blank=True)
 
     # Translators: Gloss models field: annotation_comments, verbose name
     annotation_comments = models.CharField(
@@ -461,7 +467,7 @@ minor or insignificant ways that can be ignored."""))
     ########
 
     # One or more regional dialects that this gloss is used in
-    dialect = models.ManyToManyField(Dialect)
+    dialect = models.ManyToManyField(Dialect, blank=True)
     # This field type is a guess.
 
     # Fields representing creation time, updated_at time, creator and updater

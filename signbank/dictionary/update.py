@@ -50,6 +50,10 @@ def update_gloss(request, glossid):
         # Translators: HttpResponseForbidden for update_gloss
         return HttpResponseForbidden(_("Gloss Update Not Allowed"))
 
+    # If the Gloss object is locked, don't allow editing it
+    if get_object_or_404(Gloss, id=glossid).locked:
+        return HttpResponseForbidden(_("Gloss Update Not Allowed: Gloss is locked from editing"))
+
     if request.method == "POST":
         # TODO: Change all field checks from startswith to equals
         gloss = get_object_or_404(Gloss, id=glossid)
