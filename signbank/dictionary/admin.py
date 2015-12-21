@@ -83,24 +83,18 @@ class GlossAdmin(VersionAdmin):
                DefinitionInline, TranslationInline, TranslationEnglishInline]
 
     def get_readonly_fields(self, request, obj=None):
-        """Sets all fields readonly (except 'locked'), if locked == True
-        This is done to be able to set an object locked in django admin (so that you cannot edit it)
+        """Adds 'locked' to 'readonly_fields' if user does not have permission to edit it
+        This is done to be able to set an object locked in django admin (so that a regular user can't edit it)
         """
-        # Check if obj (hopefully an Gloss object) has locked set True
-        if not obj.locked:
+        # If obj is not None (and exists), return only the variable 'readonly_fields'
+        if obj is None:
             return self.readonly_fields
 
-        # See if fields have been declared
-        if self.declared_fieldsets:
-            flattened_fieldsets = flatten_fieldsets(self.declared_fieldsets)
-            # Find and remove 'locked' so that it will not be readonly
-            if 'locked' in flattened_fieldsets: flattened_fieldsets.remove('locked')
-            return flattened_fieldsets
-        else:
-            return list(set(
-                [field.name for field in self.opts.local_fields] +
-                [field.name for field in self.opts.local_many_to_many]
-            ))
+        # If user doesn't have permission 'dictionary.lock_gloss' add it to readonly_fields
+        if not request.user.has_perm('dictionary.lock_gloss'):
+            self.readonly_fields += ('locked',)
+        return self.readonly_fields
+
 
     def save_model(self, request, obj, form, change):
         """Sets created_by and updated_by as the original requests user"""
@@ -122,7 +116,7 @@ class GlossAdmin(VersionAdmin):
 
 class RegistrationProfileAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'activation_key_expired',)
-    search_fields = ('user__username', 'user__first_name',)
+    search_fiel1ds = ('user__username', 'user__first_name',)
 
 
 class DialectInline(admin.TabularInline):
