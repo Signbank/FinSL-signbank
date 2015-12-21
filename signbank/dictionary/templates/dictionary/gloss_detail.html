@@ -107,7 +107,7 @@
             <div id="playergloss">
                 <video id="glossvid{{gloss.id}}" width="450" preload="auto" controls autoplay muted>
                     {# Had to put that t-value in the url to get around browser/server caching the videos issue #}
-                    <source src="{{ STATIC_URL }}{{gloss.get_video}}?t={% now " U" %}" type="video/mp4">
+                    <source src="{{ STATIC_URL }}{{gloss.get_video}}?id={{gloss.get_video_id}}" type="video/mp4">
                     {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                 </video>
             </div>

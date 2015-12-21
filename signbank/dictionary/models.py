@@ -694,6 +694,12 @@ minor or insignificant ways that can be ignored."""))
         else:
             return ""
 
+
+    def get_video_id(self):
+        """Returns video.glossvideo.id"""
+        from signbank.video.models import GlossVideo
+        return GlossVideo.objects.get(gloss=self,version=0).id
+
     def has_video(self):
         """Test to see if the video for this sign is present"""
 
