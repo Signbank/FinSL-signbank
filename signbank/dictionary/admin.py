@@ -1,6 +1,5 @@
 from django.contrib import admin
 from reversion.admin import VersionAdmin
-from django.contrib.admin.util import flatten_fieldsets
 from django.utils.translation import ugettext_lazy as _
 
 from signbank.dictionary.models import *
