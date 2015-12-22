@@ -202,7 +202,7 @@ UPLOAD_URL = MEDIA_URL + "upload/"
 # Location for comment videos relative to MEDIA_ROOT
 COMMENT_VIDEO_LOCATION = "comments"
 # Location for videos associated with pages
-PAGES_VIDEO_LOCATION = 'pages'
+PAGES_VIDEO_LOCATION = "pages"
 # location for upload of videos relative to MEDIA_ROOT
 # videos are stored here prior to copying over to the main
 # storage location
@@ -223,7 +223,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
 
 # location of ffmpeg, used to convert uploaded videos
-FFMPEG_PROGRAM = "/home/heilniem/ffmpeg-2.6.3-64bit-static/ffmpeg"
+FFMPEG_PROGRAM = "../ffmpeg"
 FFMPEG_TIMEOUT = 60
 FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 

@@ -7,7 +7,7 @@ try:
     FFMPEG_OPTIONS = settings.FFMPEG_OPTIONS
 except (ImportError, NameError):
     # TODO: This needs to point to the correct location
-    FFMPEG_PROGRAM = "/Applications/ffmpegX.app/Contents/Resources/ffmpeg"
+    FFMPEG_PROGRAM = "../ffmpeg"
     # FFMPEG_OPTIONS = ["-vcodec", "libx264", "-an", "-vpre", "hq", "-crf", "22", "-threads", "0"]
     FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
