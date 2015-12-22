@@ -69,4 +69,5 @@ urlpatterns = patterns('',
                        url(r'(.*)',
                            'signbank.pages.views.page'),
 
-                       ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                       ) # This might be needed in development:
+                        # """+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""
