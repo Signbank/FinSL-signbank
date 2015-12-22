@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib import admin
 from signbank.pages.models import Page, PageVideo
-from signbank.video.fields import VideoUploadToFLVField
 from django.utils.translation import ugettext_lazy as _
+
 
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -29,13 +29,7 @@ class PageForm(forms.ModelForm):
 
 class PageVideoForm(forms.ModelForm):
     # Translators: PageVideoForm label
-    video = VideoUploadToFLVField(label=_('Video'),
-                                  required=True,
-                                  prefix='pages',
-                                  # Translators: help_text for PageVideoForm
-                                  help_text=_(
-                                      "Uploaded video will be converted to Flash"),
-                                  widget=admin.widgets.AdminFileWidget)
+    video = forms.FileField()
 
     class Meta:
         model = PageVideo
