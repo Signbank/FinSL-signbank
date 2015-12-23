@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.contrib.auth.models import Group
+from django.dispatch import receiver
+import os
 
 
 class Page(models.Model):
@@ -72,3 +74,10 @@ def copy_flatpages():
         p = Page(url=fp.url, title=fp.title,
                  content=fp.content, publish=False, index=0)
         p.save()
+
+@receiver(models.signals.pre_delete, sender=PageVideo)
+def delete_on_delete(sender, instance, **kwargs):
+    """On signal delete, use pre_delete to delete the video. This will happen when a PageVideo object is deleted"""
+    if instance.video:
+        if os.path.isfile(instance.video.path):
+            os.remove(instance.video.path)
