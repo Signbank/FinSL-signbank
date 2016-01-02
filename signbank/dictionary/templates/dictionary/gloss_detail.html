@@ -264,6 +264,16 @@
                                                                                     target="_blank">{{ gloss.url_field }}</a>{% endif %}
                 </td>
             </tr>
+            <tr>
+                <th>{% blocktrans %}Created:{% endblocktrans %}</th>
+                <td id='created'>{% if gloss.created_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.created_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.created_by.first_name }} {{ gloss.created_by.last_name }}{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>{% blocktrans %}Updated:{% endblocktrans %}</th>
+                <td id='updated'>{% if gloss.updated_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.first_name }} {{ gloss.updated_by.last_name }}{% endif %}
+                </td>
+            </tr>
         </table>
 
         {% if perms.dictionary.view_advanced_properties %}
