@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-02 13:43+0200\n"
+"POT-Creation-Date: 2016-01-02 14:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,19 +198,19 @@ msgid "Toggle navigation"
 msgstr "Navigointi"
 
 #. Translators: Placeholder text in a search textfield
-#: bootstrap_templates/menu.html:49
+#: bootstrap_templates/menu.html:48
 msgid "Search gloss"
 msgstr "Etsi glossia"
 
 #. Translators: Placeholder text in a search textfield
-#: bootstrap_templates/menu.html:54
+#: bootstrap_templates/menu.html:53
 msgid "Search translation"
 msgstr "Etsi käännösvastinetta"
 
 #. Translators: Submit button (press to search)
 #. Translators: UserSignSearchForm
 #. Translators: admin_gloss_list header
-#: bootstrap_templates/menu.html:58 signbank/dictionary/forms.py:29
+#: bootstrap_templates/menu.html:57 signbank/dictionary/forms.py:29
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
 msgid "Search"
@@ -1144,7 +1144,6 @@ msgstr "Onko tämä ehdotettu uusi viittoma?"
 
 #. Translators:
 #: signbank/dictionary/templates/dictionary/add_gloss.html:10
-
 msgid "Add a Gloss"
 msgstr "Lisää Glossi"
 
@@ -1378,11 +1377,11 @@ msgstr "URL:"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:268
 msgid "Created:"
-msgstr ""
+msgstr "Luotu:"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:273
 msgid "Updated:"
-msgstr ""
+msgstr "Päivitetty:"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:285
 msgid "Morphology"
