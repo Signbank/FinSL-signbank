@@ -23,13 +23,13 @@
     req.done(function(json_data) {
         for (var key in json_data) {
             if (json_data.hasOwnProperty(key)) {
-                var li = document.createElement("li");
-                var a = document.createElement('a');
-                a.href = '/dictionary/gloss/' + json_data[key].id + '/';
+                var a = document.createElement("a");
+                a.setAttribute("class", "btn btn-default");
+                a.style["float"] = "none";
+                a.href = "/dictionary/gloss/" + json_data[key].id + "/";
                 var linktext = document.createTextNode(json_data[key].gloss);
                 a.appendChild(linktext);
-                li.appendChild(a);
-                $( "#results-inline" ).append(li);
+                $( "#results-inline" ).append(a);
             }
         }
     });
@@ -65,9 +65,12 @@
 
 {% block content %}
 
-<div id="searchresults">
-    <ul id="results-inline" class="list-inline">
-    </ul>
+<div id="searchresults" style="overflow-y:hidden;">
+    {% if request.session.search_results %}{# See if search_results in sessions is empty #}
+    <strong>{% blocktrans %}Search results:{% endblocktrans %}</strong>
+    <div id="results-inline" class="btn-group" role="group" aria-label="search results" style="white-space:nowrap;">
+    </div>
+    {% endif %}
 </div>
 
 <div id="signinfo" class='navbar navbar-default navbar-collapse'>
