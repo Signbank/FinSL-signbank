@@ -215,7 +215,7 @@ def search(request):
     if form.is_valid():
         """
         These two redirects 'if glossQuery & if query' basically make the rest of this search method
-        useless. But keeping them for reference is the public search needs to be enabled at some point.
+        useless. But keeping them for reference if the public search needs to be enabled at some point.
         """
 
         glossQuery = form.cleaned_data['glossQuery']

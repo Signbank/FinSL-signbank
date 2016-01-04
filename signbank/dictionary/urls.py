@@ -44,6 +44,8 @@ urlpatterns = patterns('',
                            'signbank.dictionary.tagviews.taglist_json'),
                        url(r'^ajax/gloss/(?P<prefix>.*)$',
                            'signbank.dictionary.adminviews.gloss_ajax_complete', name='gloss_complete'),
+                       url(r'^ajax/searchresults/$',
+                           'signbank.dictionary.adminviews.gloss_ajax_search_results', name='ajax_search_results'),
 
                        url(r'^xml/glosslist/$',
                            'signbank.dictionary.adminviews.gloss_list_xml', name='gloss_list_xml'),

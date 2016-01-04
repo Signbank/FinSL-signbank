@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
 from tagging.models import Tag, TaggedItem
 from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 from signbank.dictionary.forms import *
 from signbank.feedback.forms import *
@@ -382,6 +383,18 @@ class GlossListView(ListView):
             else:
                 qs = qs.order_by(order)
 
+        # Saving querysets results to sessions, these results can then be used elsewhere (like in gloss_detail)
+        # Flush the previous queryset (just in case)
+        self.request.session['search_results'] = None
+        # Make sure that the QuerySet has filters applied (user is searching for something instead of showing all results [objects.all()])
+        # TODO: Future me or future other developer, it could be useful to find a better way to do this, if one exists
+        if hasattr(qs.query.where, 'children') and len(qs.query.where.children) > 0:
+            items = []
+            for item in qs:
+                items.append(dict(id = item.id, gloss = item.idgloss))
+
+            self.request.session['search_results'] = items
+
         return qs
 
 
@@ -439,6 +452,10 @@ class GlossDetailView(DetailView):
 
         return context
 
+def gloss_ajax_search_results(request):
+    """Returns a JSON list of glosses that match the previous search stored in sessions"""
+
+    return JsonResponse(request.session['search_results'], safe=False)
 
 def gloss_ajax_complete(request, prefix):
     """Return a list of glosses matching the search term

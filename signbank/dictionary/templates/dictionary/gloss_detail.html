@@ -12,26 +12,48 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
 
+<script type="text/javascript">
+    // This script gets and inserts the users last searched items on the gloss page
+    var search_results_url = '{% url 'dictionary:ajax_search_results' %}';
+    var req = $.ajax({
+        url: search_results_url,
+        dataType: "json",
+        context: document.body
+    })
+    req.done(function(json_data) {
+        for (var key in json_data) {
+            if (json_data.hasOwnProperty(key)) {
+                var li = document.createElement("li");
+                var a = document.createElement('a');
+                a.href = '/dictionary/gloss/' + json_data[key].id + '/';
+                var linktext = document.createTextNode(json_data[key].gloss);
+                a.appendChild(linktext);
+                li.appendChild(a);
+                $( "#results-inline" ).append(li);
+            }
+        }
+    });
+
+</script>
 
 {% if perms.dictionary.change_gloss %}
 
 <script type='text/javascript'>
     
      var edit_post_url = '{% url 'dictionary:update_gloss' gloss.id %}';
-     var definition_role_choices = {{gloss.definition_role_choices_json|safe}}
-     var handshape_choices = {{gloss.handshape_choices_json|safe}}
-     var location_choices = {{gloss.location_choices_json|safe}}
-     var palm_orientation_choices = {{gloss.palm_orientation_choices_json|safe}}
-     var relative_orientation_choices = {{gloss.relative_orientation_choices_json|safe}}
-     var secondary_location_choices = {{gloss.secondary_location_choices_json|safe}}
-     var relation_role_choices = {{gloss.relation_role_choices_json|safe}}
+     var definition_role_choices = {{gloss.definition_role_choices_json|safe}};
+     var handshape_choices = {{gloss.handshape_choices_json|safe}};
+     var location_choices = {{gloss.location_choices_json|safe}};
+     var palm_orientation_choices = {{gloss.palm_orientation_choices_json|safe}};
+     var relative_orientation_choices = {{gloss.relative_orientation_choices_json|safe}};
+     var secondary_location_choices = {{gloss.secondary_location_choices_json|safe}};
+     var relation_role_choices = {{gloss.relation_role_choices_json|safe}};
      var languages = {{gloss.language_choices|safe}};
      var dialects = {{gloss.dialect_choices|safe}};
     
      var choice_lists = {{gloss.get_choice_lists|safe}};
     
     var csrf_token = '{{csrf_token}}';
-      
 
 </script>
 <script type='text/javascript' src="{{ STATIC_URL }}js/gloss_edit.js"></script>
@@ -42,6 +64,11 @@
 
 
 {% block content %}
+
+<div id="searchresults">
+    <ul id="results-inline" class="list-inline">
+    </ul>
+</div>
 
 <div id="signinfo" class='navbar navbar-default navbar-collapse'>
     {% if gloss.idgloss %}
