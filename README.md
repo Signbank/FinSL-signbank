@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-*   ** Quick summary **
+*   **Quick summary**
     * This is a repository for Signbank-fi (FinSL Signbank), a sign language Gloss database.
     * This version of Signbank is adjusted for the needs of Finnish sign language researchers.
     * FinSL Signbank is based on Dutch NGT Signbank (https://github.com/Signbank/NGT-signbank), which is a fork of Australian Auslan Signbank (https://github.com/Signbank/Auslan-signbank).
@@ -12,7 +12,7 @@ This README would normally document whatever steps are necessary to get your app
     * Can export Glosses directly to ELAN's controlled vocabulary
     * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
 
-*   ** Version **
+*   **Version**
 
     * FinSL-signbank is currently in development.
     
@@ -24,7 +24,7 @@ You can for example find information about installing Signbank-fi, its requireme
 
 ### How do I get Signbank-fi set up? ###
 
-*   ** Summary of set up **
+*   **Summary of setup**
 
 To install FinSL-signbank do:
 
@@ -39,11 +39,11 @@ Before you can get FinSL-signbank working, you must change some paths in:
     signbank/settings/base.py  
     signbank/settings/development.py                              
 
-* ** Dependencies **
+* **Dependencies**
 
     See *requirements.txt*
 
-*   ** Database configuration **
+*   **Database configuration**
 
 Django should make all the needed database configurations apart from setting up a database.
 
@@ -51,11 +51,11 @@ Django should make all the needed database configurations apart from setting up 
 
 You can use sqlite3 for development
 
-*   ** How to run tests **
+*   **How to run tests**
 
 Tests are not yet available.
 
-*   ** Deployment instructions **
+*   **Deployment instructions**
 
 ### Translations ###
 
