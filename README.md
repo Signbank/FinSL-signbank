@@ -7,18 +7,18 @@ This README would normally document whatever steps are necessary to get your app
 *   ** Quick summary **
     * This is a repository for Signbank-fi (FinSL Signbank), a sign language Gloss database.
     * This version of Signbank is adjusted for the needs of Finnish sign language researchers.
-    * FinSL Signbank is based on Dutch NGT Signbank (https://github.com/Woseseltops/signbank), which is a fork of Australian Auslan Signbank (https://bitbucket.org/stevecassidy/signbank).
+    * FinSL Signbank is based on Dutch NGT Signbank (https://github.com/Signbank/NGT-signbank), which is a fork of Australian Auslan Signbank (https://github.com/Signbank/Auslan-signbank).
     * Easy to translate to various languages, it uses Django's translation engine paired with django-modeltranslation.
     * Can export Glosses directly to ELAN's controlled vocabulary
     * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
 
 *   ** Version **
 
-    * Signbank-fi is currently in development.
+    * FinSL-signbank is currently in development.
     
 ### Wikipages ###
 
-You can see our wiki at https://bitbucket.org/heilniem/signbank-fi/wiki/Home
+You can see our wiki at https://github.com/Signbank/FinSL-signbank/wiki
 
 You can for example find information about installing Signbank-fi, its requirements and how to integrate it to ELAN.
 
@@ -26,7 +26,7 @@ You can for example find information about installing Signbank-fi, its requireme
 
 *   ** Summary of set up **
 
-To install Signbank-fi do:
+To install FinSL-signbank do:
 
     pip install -r /path/to/requirements.txt
     python bin/develop.py migrate
@@ -34,7 +34,7 @@ To install Signbank-fi do:
 
 *   ** Configuration **
 
-Before you can get Signbank-fi working, you must change some paths in:  
+Before you can get FinSL-signbank working, you must change some paths in:
 
     signbank/settings/base.py  
     signbank/settings/development.py                              
@@ -59,7 +59,7 @@ Tests are not yet available.
 
 ### Translations ###
 
-Signbank-fi uses djangos translation features and fetches strings to translate into django.po.
+FinSL-signbank uses djangos translation features and fetches strings to translate into django.po.
 
 You can create new locales by:
 
