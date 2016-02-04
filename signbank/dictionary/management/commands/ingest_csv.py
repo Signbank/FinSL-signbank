@@ -179,7 +179,6 @@ class Command(BaseCommand):
 
                     print row['annotation idgloss'], row['idgloss']
                     gloss = Gloss()
-                    gloss.annotation_idgloss_jkl = row['annotation idgloss jkl']
                     gloss.bsltf = True
                     gloss.in_web_dictionary = False
                     gloss.asltf = row['asltf']
@@ -192,8 +191,8 @@ class Command(BaseCommand):
 
                     if row['idgloss'] != '':
                         gloss.idgloss = row['idgloss']
-                    else:
-                        gloss.idgloss = gloss.annotation_idgloss_jkl
+                    # else:
+                    #    gloss.idgloss = gloss.annotation_idgloss_jkl # TODO: Wrong variable name
 
                     if row['strong_handshape'] != '':
                         if row['strong_handshape'] == '0':

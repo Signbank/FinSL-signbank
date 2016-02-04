@@ -46,35 +46,23 @@ class GlossCreateForm(forms.ModelForm):
     attrs_default = {'class': 'form-control'}
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
-    annotation_idgloss_jkl = forms.CharField(label=_('Gloss JKL'), required=False,
-                                             widget=forms.TextInput(attrs=attrs_default))
+    # TODO: Change the name of this variable to the correct one
     annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), required=False,
-                                                widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_hki = forms.CharField(label=_('Gloss HKI'), required=False,
-                                             widget=forms.TextInput(attrs=attrs_default))
-    annotation_idgloss_hki_en = forms.CharField(label=_('Gloss HKI English'), required=False,
                                                 widget=forms.TextInput(attrs=attrs_default))
     videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
 
     class Meta:
         model = Gloss
-        fields = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                  'annotation_idgloss_hki_en', 'videofile']
+        # TODO: edit jkl_en variable name to match the correct one
+        fields = ['idgloss', 'annotation_idgloss_jkl_en', 'videofile']
 
     def clean(self):
         """
-        Validating that either annotation_idgloss_jkl or annotation_idgloss_hki is provided
+        We were validating that either annotation_idgloss_jkl or annotation_idgloss_hki is provided
         """
-        cleaned_data = super(GlossCreateForm, self).clean()
-        gloss_jkl = cleaned_data.get('annotation_idgloss_jkl')
-        gloss_hki = cleaned_data.get('annotation_idgloss_hki')
+        # TODO: See if this clean method is needed anymore
+        # cleaned_data = super(GlossCreateForm, self).clean()
 
-        if not (gloss_jkl or gloss_hki):
-            # If either of gloss_jkl or gloss_hki not provided
-            # Translators: Add gloss: error, user did not provide one of the required fields, jkl, hki or both
-            msg = _('Must provide either Gloss JKL or Gloss HKI')
-            self.add_error('annotation_idgloss_jkl', msg)
-            self.add_error('annotation_idgloss_hki', msg)
 
     def clean_idgloss(self):
         """
@@ -89,23 +77,8 @@ class GlossCreateForm(forms.ModelForm):
             # Translators: exception ValidationError
             _(u'This Gloss value is already taken. Please choose another.'), code='not_unique')
 
-    def clean_annotation_idgloss_jkl(self):
-        """
-        Validates that the annotation_idgloss_jkl value has not been taken yet.
 
-        """
-        if len(self.cleaned_data['annotation_idgloss_jkl']) > 0:
-            try:
-                gloss = Gloss.objects.get(
-                    annotation_idgloss_jkl__exact=self.cleaned_data['annotation_idgloss_jkl'])
-            except Gloss.DoesNotExist:
-                return self.cleaned_data['annotation_idgloss_jkl']
-            raise forms.ValidationError(
-                # Translators: exception ValidationError
-                _(u'This Gloss JKL value is already taken. Please choose another.'), code='not_unique')
-        else:
-            return self.cleaned_data['annotation_idgloss_jkl']
-
+    # TODO: change the name of this method to match the variable
     def clean_annotation_idgloss_jkl_en(self):
         """
         Overrides the default validations for annotation_idgloss_jkl_en
@@ -114,30 +87,6 @@ class GlossCreateForm(forms.ModelForm):
         """
         return self.cleaned_data['annotation_idgloss_jkl_en']
 
-    def clean_annotation_idgloss_hki(self):
-        """
-        Validates that the annotation_idgloss_jkl value has not been taken yet.
-
-        """
-        if len(self.cleaned_data['annotation_idgloss_hki']) > 0:
-            try:
-                gloss = Gloss.objects.get(
-                    annotation_idgloss_hki__exact=self.cleaned_data['annotation_idgloss_hki'])
-            except Gloss.DoesNotExist:
-                return self.cleaned_data['annotation_idgloss_hki']
-            raise forms.ValidationError(
-                # Translators: exception ValidationError
-                _(u'This Gloss HKI value is already taken. Please choose another.'), code='not_unique')
-        else:
-            return self.cleaned_data['annotation_idgloss_hki']
-
-    def clean_annotation_idgloss_hki_en(self):
-        """
-        Overrides the default validations for annotation_idgloss_hki_en
-        Currently we don't want to validate this field
-
-        """
-        return self.cleaned_data['annotation_idgloss_hki_en']
 
     def clean_videofile(self):
         # Checking here that the file ends with .mp4 TODO: See if more checks are needed, like filetype, codec
@@ -282,8 +231,7 @@ class GlossSearchForm(forms.ModelForm):
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                  'annotation_idgloss_hki_en', 'language', 'dialect', 'in_web_dictionary',
+        fields = ('idgloss', 'annotation_idgloss_jkl_en', 'language', 'dialect', 'in_web_dictionary', # TODO: Correct jkl_en variable name
                   'is_proposed_new_sign', 'strong_handshape', 'weak_handshape', 'location',
                   'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm',
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',

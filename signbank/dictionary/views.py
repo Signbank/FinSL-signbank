@@ -356,10 +356,12 @@ def missing_video_view(request):
     return render_to_response("dictionary/missingvideo.html",
                               {'glosses': glosses})
 
-# No idea what this method is for. Do not user it.
+
+# No idea what this method is for. Do not use it.
+"""
 @user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def import_videos(request):
-    video_folder = '/var/www2/signbank/live/writable/import_videos/' # TODO: Change this folder / check what this is for
+    video_folder = '/var/www2/signbank/live/writable/import_videos/' # TODO: Change this folder
 
     out = '<p>Imported</p><ul>'
     overwritten_files = '<p>Overwritten</p><ul>'
@@ -371,7 +373,7 @@ def import_videos(request):
         extension = parts[-1]
 
         try:
-            gloss = Gloss.objects.get(annotation_idgloss_jkl=idgloss)
+            gloss = Gloss.objects.get(annotation_idgloss_jkl=idgloss) # TODO: If this is used, change variable name
         except ObjectDoesNotExist:
             return HttpResponse(
                 # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
@@ -385,7 +387,7 @@ def import_videos(request):
         if not was_allowed:
             return HttpResponse(
                 # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
-                _('Failed two overwrite ') + gloss.annotation_idgloss_jkl +
+                _('Failed two overwrite ') + gloss.annotation_idgloss_jkl + # TODO: If this is used, change var name
                 # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
                 _('. Maybe this file is not owned by the webserver?'))
 
@@ -398,6 +400,8 @@ def import_videos(request):
     overwritten_files += '</ul>'
 
     return HttpResponse(out + overwritten_files)
+"""
+
 
 @user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def try_code(request):

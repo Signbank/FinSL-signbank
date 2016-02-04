@@ -58,8 +58,7 @@ class GlossListView(ListView):
         #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                      'annotation_idgloss_hki_en', 'annotation_comments', 'handedness', 'strong_handshape',
+        fieldnames = ['idgloss', 'annotation_idgloss_jkl_en', 'annotation_comments', 'handedness', 'strong_handshape', # TODO: Change jkl_en variable name
                       'weak_handshape', 'handshape_change', 'relation_between_articulators', 'location',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'contact_type',
@@ -152,29 +151,15 @@ class GlossListView(ListView):
             # Search for glosses containing a string, casesensitive with icontains
             # If first doesn't match, it is supposed to try the next one, because of OR (|)
             query = Q(idgloss__icontains=val) | \
-                    Q(annotation_idgloss_jkl__icontains=val) | \
-                    Q(annotation_idgloss_jkl_en__icontains=val) | \
-                    Q(annotation_idgloss_hki__icontains=val) | \
-                    Q(annotation_idgloss_hki_en__icontains=val)
+                    Q(annotation_idgloss_jkl_en__icontains=val) # TODO: Change this variable name to correct one
 
             qs = qs.filter(query)
             # print "A: ", len(qs)
 
-        if get.has_key('JKLGloss') and get['JKLGloss'] != '':
-            val = get['JKLGloss']
-            qs = qs.filter(annotation_idgloss_jkl__icontains=val)
-
+        # TODO: Change the variable name to the correct one
         if get.has_key('JKLenglishGloss') and get['JKLenglishGloss'] != '':
             val = get['JKLenglishGloss']
             qs = qs.filter(annotation_idgloss_jkl_en__icontains=val)
-
-        if get.has_key('HKIGloss') and get['HKIGloss'] != '':
-            val = get['HKIGloss']
-            qs = qs.filter(annotation_idgloss_hki__icontains=val)
-
-        if get.has_key('HKIenglishGloss') and get['HKIenglishGloss'] != '':
-            val = get['HKIenglishGloss']
-            qs = qs.filter(annotation_idgloss_hki_en__icontains=val)
 
         if get.has_key('keyword') and get['keyword'] != '':
             val = get['keyword']
@@ -207,9 +192,9 @@ class GlossListView(ListView):
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
                       'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
                       'is_proposed_new_sign']
+        # TODO: change jkl_en variable name
         """These were removed from fieldnames because they are not needed there:
-        'idgloss', 'annotation_idgloss_jkl', 'annotation_idgloss_jkl_en', 'annotation_idgloss_hki',
-                      'annotation_idgloss_hki_en', 'annotation_comments', 'in_web_dictionary',
+        'idgloss', 'annotation_idgloss_jkl_en', 'annotation_comments', 'in_web_dictionary',
         """
 
 
@@ -462,15 +447,13 @@ def gloss_ajax_complete(request, prefix):
     as a JSON structure suitable for typeahead."""
 
     # TODO: See where this is used, is it safe to add more things here
-    query = Q(idgloss__istartswith=prefix) | \
-            Q(annotation_idgloss_jkl__istartswith=prefix)
+    query = Q(idgloss__istartswith=prefix)
     qs = Gloss.objects.filter(query)
 
     result = []
-    # TODO: Do we need to add annotation_idgloss_hki here too?
+
     for g in qs:
-        result.append({'idgloss': g.idgloss, 'annotation_idgloss_jkl':
-            g.annotation_idgloss_jkl, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
+        result.append({'idgloss': g.idgloss, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
 

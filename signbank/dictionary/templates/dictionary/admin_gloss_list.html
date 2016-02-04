@@ -86,28 +86,11 @@ function clearForm(myFormElement) {
                         <input name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_jkl'>{{searchform.JKLGloss.label}}</label>
-                        <input name='JKLGloss' class='form-control' {% if searchform.JKLGloss.value %}value='{{searchform.JKLGloss.value}}' {% endif %}>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_hki'>{{searchform.HKIGloss.label}}</label>
-                        <input name='HKIGloss' class='form-control' {% if searchform.HKIGloss.value %}value='{{searchform.HKIGloss.value}}' {% endif %}>
-                    </div>
-                </div>
+                {# TODO: Change JKLenglishGloss variable name (and annotation_idgloss_jkl_en too) #}
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_annotation_idgloss_jkl_en'>{{searchform.JKLenglishGloss.label}}</label>
                         <input name='JKLenglishGloss' class='form-control' {% if searchform.JKLenglishGloss.value %}value='{{searchform.JKLenglishGloss.value}}' {% endif %}>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_hki_en'>{{searchform.HKIenglishGloss.label}}</label>
-                        <input name='HKIenglishGloss' class='form-control' {% if searchform.HKIenglishGloss.value %}value='{{searchform.HKIenglishGloss.value}}' {% endif %}>
                     </div>
                 </div>
                  <div class="col-md-4 col-sm-6">
@@ -194,7 +177,7 @@ function clearForm(myFormElement) {
            {% if forloop.counter == 1 %}
                 <th>{{ name }} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&order_by=idgloss{% if request.GET.order == 'desc' %}&order=asc{% else %}&order=desc{% endif %}">
                     <span class="{% if request.GET.order == 'desc' %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
-           {% elif forloop.counter == 3 %}
+           {% elif forloop.counter == 2 %}
                {# This inserts the desired name for the table label - translation equivalents #}
                <th>{{ name }}</th>
                <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
@@ -213,7 +196,7 @@ function clearForm(myFormElement) {
                 {% if forloop.first %}{# This forloop.counter adds links to first columns #}
                 <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
                 {# This forloop.counter adds regular values, and then adds after them translation equiv values #}
-                {% elif forloop.counter == 3 %}
+                {% elif forloop.counter == 2 %}
                 <td>{{ value }}</td>
                 <td>
                 {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
