@@ -192,7 +192,7 @@ class Command(BaseCommand):
                     if row['idgloss'] != '':
                         gloss.idgloss = row['idgloss']
                     # else:
-                    #    gloss.idgloss = gloss.annotation_idgloss_jkl # TODO: Wrong variable name
+                    #    gloss.idgloss = gloss.idgloss
 
                     if row['strong_handshape'] != '':
                         if row['strong_handshape'] == '0':

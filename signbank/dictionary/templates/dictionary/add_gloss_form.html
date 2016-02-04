@@ -18,16 +18,14 @@
                  <table class='table'>
                      <tr>
                          {# Translators: ID Gloss - add gloss form title #}
-                         <th><label for='id_idgloss'>{% blocktrans %}Lemma ID Gloss{% endblocktrans %}</label></th>
-                         {# Translators: Annotation ID Gloss (English) - add gloss form title #}
-                         {# TODO: Correct jkl_en var name #}
-                         <th><label for='id_annotation_idgloss_jkl_en'>{% blocktrans %}Annotation ID Gloss JKL (English){% endblocktrans %}</label></th>
+                         <th><label for='id_idgloss'>{% blocktrans %}ID Gloss{% endblocktrans %}</label></th>
+                         {# Translators: Gloss in English - add gloss form title #}
+                         <th><label for='id_idgloss_en'>{% blocktrans %}Gloss in English{% endblocktrans %}</label></th>
                          <th></th>
                      </tr>
                      <tr>
                          <td>{{add_gloss_form.idgloss}}</td>
-                        {# TODO: Change this variables name #}
-                         <td>{{add_gloss_form.annotation_idgloss_jkl_en}}</td>
+                         <td>{{add_gloss_form.idgloss_en}}</td>
                          {# Translators: Button #}
                          <td><input class='btn btn-primary' type='submit' value='{% blocktrans %}Add New Sign{% endblocktrans %}'></td>
                      </tr>

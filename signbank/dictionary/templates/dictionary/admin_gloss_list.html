@@ -86,11 +86,10 @@ function clearForm(myFormElement) {
                         <input name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
                     </div>
                 </div>
-                {# TODO: Change JKLenglishGloss variable name (and annotation_idgloss_jkl_en too) #}
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_idgloss_jkl_en'>{{searchform.JKLenglishGloss.label}}</label>
-                        <input name='JKLenglishGloss' class='form-control' {% if searchform.JKLenglishGloss.value %}value='{{searchform.JKLenglishGloss.value}}' {% endif %}>
+                        <label class='input-group-addon' for='id_idgloss_en'>{{searchform.idgloss_en.label}}</label>
+                        <input name='idgloss_en' class='form-control' {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}>
                     </div>
                 </div>
                  <div class="col-md-4 col-sm-6">

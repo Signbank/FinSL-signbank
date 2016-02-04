@@ -193,7 +193,7 @@ DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
 
 ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_comments']
 # If you want to show English glosses, add these back to ADMIN_RESULT_FIELDS:
-# 'annotation_idgloss_jkl_en' # TODO: Before using this, change variable name to correct one
+# 'idgloss_en'
 
 # location and URL for uploaded files
 UPLOAD_ROOT = MEDIA_ROOT + "upload/"

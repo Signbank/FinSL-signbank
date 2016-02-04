@@ -6,7 +6,7 @@ from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
 
-# TODO: Remove these until a sane usecase is figured out
+# TODO: Remove these unless a sane usecase is figured out
 # category choices are tag values that we'll restrict search to
 CATEGORY_CHOICES = (
     # Translators: These are CATEGORY_CHOICES
@@ -46,15 +46,13 @@ class GlossCreateForm(forms.ModelForm):
     attrs_default = {'class': 'form-control'}
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
-    # TODO: Change the name of this variable to the correct one
-    annotation_idgloss_jkl_en = forms.CharField(label=_('Gloss JKL English'), required=False,
+    idgloss_en = forms.CharField(label=_('Gloss in English'), required=False,
                                                 widget=forms.TextInput(attrs=attrs_default))
     videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
 
     class Meta:
         model = Gloss
-        # TODO: edit jkl_en variable name to match the correct one
-        fields = ['idgloss', 'annotation_idgloss_jkl_en', 'videofile']
+        fields = ['idgloss', 'idgloss_en', 'videofile']
 
     def clean(self):
         """
@@ -78,14 +76,13 @@ class GlossCreateForm(forms.ModelForm):
             _(u'This Gloss value is already taken. Please choose another.'), code='not_unique')
 
 
-    # TODO: change the name of this method to match the variable
-    def clean_annotation_idgloss_jkl_en(self):
+    def clean_idgloss_en(self):
         """
-        Overrides the default validations for annotation_idgloss_jkl_en
-        Currently we don't want to validate this field
+        Overrides the default validations for idgloss_en.
+        Currently we don't want to validate this field.
 
         """
-        return self.cleaned_data['annotation_idgloss_jkl_en']
+        return self.cleaned_data['idgloss_en']
 
 
     def clean_videofile(self):
@@ -157,7 +154,7 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     search = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
-    JKLenglishGloss = forms.CharField(label=_("Gloss JKL English")) # TODO: Change the name of this variable
+    idgloss_en = forms.CharField(label=_("Gloss in English"))
     # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
     # nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
@@ -225,7 +222,7 @@ class GlossSearchForm(forms.ModelForm):
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'annotation_idgloss_jkl_en', 'language', 'dialect', 'in_web_dictionary', # TODO: Correct jkl_en variable name
+        fields = ('idgloss', 'idgloss_en', 'language', 'dialect', 'in_web_dictionary',
                   'is_proposed_new_sign', 'strong_handshape', 'weak_handshape', 'location',
                   'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm',
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',

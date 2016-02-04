@@ -58,7 +58,7 @@ class GlossListView(ListView):
         #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
 
-        fieldnames = ['idgloss', 'annotation_idgloss_jkl_en', 'annotation_comments', 'handedness', 'strong_handshape', # TODO: Change jkl_en variable name
+        fieldnames = ['idgloss', 'idgloss_en', 'annotation_comments', 'handedness', 'strong_handshape',
                       'weak_handshape', 'handshape_change', 'relation_between_articulators', 'location',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'contact_type',
@@ -151,15 +151,13 @@ class GlossListView(ListView):
             # Search for glosses containing a string, casesensitive with icontains
             # If first doesn't match, it is supposed to try the next one, because of OR (|)
             query = Q(idgloss__icontains=val) | \
-                    Q(annotation_idgloss_jkl_en__icontains=val) # TODO: Change this variable name to correct one
+                    Q(idgloss_en__icontains=val)
 
             qs = qs.filter(query)
-            # print "A: ", len(qs)
 
-        # TODO: Change the variable name to the correct one
-        if get.has_key('JKLenglishGloss') and get['JKLenglishGloss'] != '':
-            val = get['JKLenglishGloss']
-            qs = qs.filter(annotation_idgloss_jkl_en__icontains=val)
+        if get.has_key('idgloss_en') and get['idgloss_en'] != '':
+            val = get['idgloss_en']
+            qs = qs.filter(idgloss_en__icontains=val)
 
         if get.has_key('keyword') and get['keyword'] != '':
             val = get['keyword']
@@ -192,9 +190,9 @@ class GlossListView(ListView):
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
                       'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
                       'is_proposed_new_sign']
-        # TODO: change jkl_en variable name
+
         """These were removed from fieldnames because they are not needed there:
-        'idgloss', 'annotation_idgloss_jkl_en', 'annotation_comments', 'in_web_dictionary',
+        'idgloss', 'idgloss_en', 'annotation_comments', 'in_web_dictionary',
         """
 
 

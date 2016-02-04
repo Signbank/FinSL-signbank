@@ -53,7 +53,7 @@ class GlossAdmin(VersionAdmin):
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
 
     fieldsets = ((None, {'fields': (
-        'locked', 'idgloss', 'annotation_idgloss_jkl_en', 'annotation_comments', 'language', 'dialect', 'url_field')},), # TODO: Change idgloss_jkl_en variable name
+        'locked', 'idgloss', 'idgloss_en', 'annotation_comments', 'language', 'dialect', 'url_field')},),
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
                  ('Created/Updated', {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
@@ -72,7 +72,7 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'locked', 'annotation_idgloss_jkl_en'] # TODO: Change jkl_en variable name
+    list_display = ['idgloss', 'locked', 'idgloss_en']
     search_fields = ['^idgloss']
     list_filter = [
         'language', 'dialect', 'in_web_dictionary', 'strong_handshape']

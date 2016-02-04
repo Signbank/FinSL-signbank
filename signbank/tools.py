@@ -24,8 +24,7 @@ def video_to_signbank(source_folder, gloss, extension):
         extension = '.' + extension
 
     # Figure out some names
-    # TODO: Fix this, idgloss_jkl will be/is remoe
-    annotation_id = gloss.annotation_idgloss_jkl
+    annotation_id = gloss.idgloss_en
     pk = str(gloss.pk)
     destination_folder = SB_VIDEO_FOLDER + annotation_id[:2] + '/'
 

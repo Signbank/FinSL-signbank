@@ -373,7 +373,7 @@ def import_videos(request):
         extension = parts[-1]
 
         try:
-            gloss = Gloss.objects.get(annotation_idgloss_jkl=idgloss) # TODO: If this is used, change variable name
+            gloss = Gloss.objects.get(idgloss=idgloss)
         except ObjectDoesNotExist:
             return HttpResponse(
                 # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
@@ -387,7 +387,7 @@ def import_videos(request):
         if not was_allowed:
             return HttpResponse(
                 # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
-                _('Failed two overwrite ') + gloss.annotation_idgloss_jkl + # TODO: If this is used, change var name
+                _('Failed two overwrite ') + gloss.idgloss +
                 # Translators: HttpResponse if import_videos fails (Might not be useful to translate)
                 _('. Maybe this file is not owned by the webserver?'))
 

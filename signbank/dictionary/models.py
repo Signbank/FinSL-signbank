@@ -45,7 +45,7 @@ class Translation(models.Model):
         search_fields = ['gloss__idgloss']
 
 
-# TODO: remove
+# TODO: Change this implementation. Make one class only or use an abstract class.
 class TranslationEnglish(models.Model):
     """English translation equivalent of a sign"""
 
@@ -137,7 +137,7 @@ class Keyword(models.Model):
 
         return (trans, len(alltrans))
 
-# TODO: remove
+# TODO: Change this implementation. Make one class only or use an abstrat class.
 class KeywordEnglish(models.Model):
     """A keyword that is a possible translation equivalent of a sign"""
 
@@ -410,29 +410,23 @@ class Gloss(models.Model):
 
     locked = models.BooleanField(_("Locked"), default=False)
 
-    # Translators: Gloss models field: idgloss, verbose name
+    # Gloss in Finnish. This is the unique identifying name of a Gloss.
+    # Translators: Gloss field: idgloss, verbose name
     idgloss = models.CharField(_("Gloss"), max_length=60,
-                               # Translators: Help text for Gloss models field: idgloss
-                               help_text=_("""
-    This is the unique identifying name of an entry of a sign form in the
-database. No two Sign Entry Names can be exactly the same, but a "Sign
-Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
+                               # Translators: Help text for Gloss field: idgloss
+                               help_text=_("""This is the unique identifying name of a Gloss."""))
 
-
-    # ID gloss for JKL Gloss' translation to English
-    # Translators: Gloss models field: annotation_idgloss_jkl_en (english), verbose name
-    # TODO: change to english gloss
-    annotation_idgloss_jkl_en = models.CharField(_("Gloss JKL (Eng)"), blank=True, max_length=60,
-                                                 # Translators: Help text for Gloss models field: annotation_idgloss_jkl_en (english)
-                                                 help_text=_("""
-    This is the English name for the corresponding Jyvaskyla Gloss"""))
+    # Gloss in English. This is the English name of a Gloss.
+    # Translators: Gloss field: idgloss_en (english), verbose name
+    idgloss_en = models.CharField(_("Gloss JKL (Eng)"), blank=True, max_length=60,
+                                                 # Translators: Help text for Gloss field: idgloss_en (english)
+                                                 help_text=_("""This is the English name for the Gloss"""))
 
     # Languages that this gloss is part of
     language = models.ManyToManyField(Language, blank=True)
 
     # Translators: Gloss models field: annotation_comments, verbose name
-    annotation_comments = models.CharField(
-        _("Comments"), max_length=200, blank=True)
+    annotation_comments = models.CharField(_("Comments"), max_length=200, blank=True)
 
     # Translators: Gloss models field: url
     url_field = models.URLField(_("URL"), max_length=200, blank=True, unique=False)
@@ -441,7 +435,6 @@ Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
     # One or more regional dialects that this gloss is used in
     dialect = models.ManyToManyField(Dialect, blank=True)
-    # This field type is a guess.
 
     # Fields representing creation time, updated_at time, creator and updater
     created_at = models.DateTimeField(auto_now_add=True)
@@ -449,7 +442,7 @@ Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(User, related_name='updated_by_user')
 
-    # ### Phonology fields
+    # ### Phonology fields ###
     # Translators: Gloss models field: handedness, verbose name
     # handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("handedness"),
     #                               max_length=5)  # handednessChoices <- use this if you want static
@@ -658,8 +651,6 @@ Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
     def get_video_url(self):
         """Return  the url of the video for this gloss"""
-
-        #return '/home/wessel/signbank/signbank/video/testmedia/AANBELLEN-320kbits.mp4'  # TODO: Remove this line?
         video = self.get_video()
         if video is not None:
             # return video.get_absolute_url()
@@ -725,7 +716,7 @@ Entry Name" can be (and often is) the same as the Annotation Idgloss."""))
 
         return self.options_to_json(relative_orientation_choices)
 
-    def secondary_location_choices_json(self):  # TODO: see if these can be removed
+    def secondary_location_choices_json(self):
         """Return JSON for the secondary location (BSL) choice list"""
 
         return self.options_to_json(BSLsecondLocationChoices)
