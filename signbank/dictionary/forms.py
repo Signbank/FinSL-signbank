@@ -157,13 +157,7 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     search = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
-    JKLGloss = forms.CharField(label=_("Gloss JKL"))
-    # Translators: GlossSearchForm label
-    JKLenglishGloss = forms.CharField(label=_("Gloss JKL English"))
-    # Translators: GlossSearchForm label
-    HKIGloss = forms.CharField(label=_("Gloss HKI"))
-    # Translators: GlossSearchForm label
-    HKIenglishGloss = forms.CharField(label=_("Gloss HKI English"))
+    JKLenglishGloss = forms.CharField(label=_("Gloss JKL English")) # TODO: Change the name of this variable
     # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
     # nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
