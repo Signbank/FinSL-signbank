@@ -418,7 +418,7 @@ class Gloss(models.Model):
 
     # Gloss in English. This is the English name of a Gloss.
     # Translators: Gloss field: idgloss_en (english), verbose name
-    idgloss_en = models.CharField(_("Gloss JKL (Eng)"), blank=True, max_length=60,
+    idgloss_en = models.CharField(_("Gloss in English"), blank=True, max_length=60,
                                                  # Translators: Help text for Gloss field: idgloss_en (english)
                                                  help_text=_("""This is the English name for the Gloss"""))
 
