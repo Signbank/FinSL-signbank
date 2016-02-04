@@ -556,8 +556,6 @@ msgstr "Glossi"
 #. Translators: Gloss in English - add gloss form title
 #: signbank/dictionary/forms.py:49 signbank/dictionary/forms.py:157
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
-#, fuzzy
-#| msgid "Gloss JKL English"
 msgid "Gloss in English"
 msgstr "Glossi englanniksi"
 
