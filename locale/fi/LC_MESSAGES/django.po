@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-04 15:34+0200\n"
+"POT-Creation-Date: 2016-02-07 14:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -553,8 +553,10 @@ msgid "Gloss"
 msgstr "Glossi"
 
 #. Translators: GlossSearchForm label
+#. Translators: Gloss field: idgloss_en (english), verbose name
 #. Translators: Gloss in English - add gloss form title
 #: signbank/dictionary/forms.py:49 signbank/dictionary/forms.py:157
+#: signbank/dictionary/models.py:421
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
 msgid "Gloss in English"
 msgstr "Glossi englanniksi"
@@ -859,17 +861,12 @@ msgstr "Lukittu"
 #. Translators: Help text for Gloss field: idgloss
 #: signbank/dictionary/models.py:417
 msgid "This is the unique identifying name of a Gloss."
-msgstr ""
-
-#. Translators: Gloss field: idgloss_en (english), verbose name
-#: signbank/dictionary/models.py:421
-msgid "Gloss JKL (Eng)"
-msgstr "Glossi JKL (Eng)"
+msgstr "Glossin uniikki nimi"
 
 #. Translators: Help text for Gloss field: idgloss_en (english)
 #: signbank/dictionary/models.py:423
 msgid "This is the English name for the Gloss"
-msgstr ""
+msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: annotation_comments, verbose name
 #. Translators:
@@ -1123,6 +1120,22 @@ msgstr "/"
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:260
+msgid "Row colors:"
+msgstr "Rivien värit:"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:261
+msgid "Gloss is locked"
+msgstr "Glossi on lukittu"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:262
+msgid "Gloss has a video"
+msgstr "Glossilla on video"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:263
+msgid "Gloss does not have a video"
+msgstr "Glossilla ei ole videota"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:70
 msgid "Search results:"
