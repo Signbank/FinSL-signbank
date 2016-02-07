@@ -190,7 +190,8 @@ function clearForm(myFormElement) {
     </thead>
     <tbody>
     {% for gloss in object_list %}
-        <tr {% if gloss.locked %}class="warning"{% elif gloss.has_video %}class="success"{% endif %}>
+        {# Here we decide/change the row background colors #}
+        <tr {% if gloss.locked %}class="success"{% elif gloss.has_video %}class="warning"{% else %}class="danger"{% endif %}>
             {% for name, value in gloss.admin_fields %}
                 {% if forloop.first %}{# This forloop.counter adds links to first columns #}
                 <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
@@ -251,6 +252,17 @@ function clearForm(myFormElement) {
 
         {% endif %}
     </span>
+</div>
+{# Bootstrap3 responsive table for explaining the color meanings #}
+<div id="row-color-explanation" class="table-responsive">
+    <table class="table">
+        <tr>
+        <td><strong>{% blocktrans %}Row colors:{% endblocktrans %}</strong></td>
+        <td class="success">{% blocktrans %}Gloss is locked{% endblocktrans %}</td>
+        <td class="warning">{% blocktrans %}Gloss has a video{% endblocktrans %}</td>
+        <td class="danger">{% blocktrans %}Gloss does not have a video{% endblocktrans %}</td>
+        </tr>
+    </table>
 </div>
 
 
