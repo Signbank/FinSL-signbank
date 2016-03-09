@@ -23,11 +23,14 @@ class GlossListView(ListView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(GlossListView, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
+        # Add in a QuerySet
         context['searchform'] = GlossSearchForm(self.request.GET)
         context['glosscount'] = Gloss.objects.all().count()
-        context['add_gloss_form'] = GlossCreateForm()
         context['ADMIN_RESULT_FIELDS'] = settings.ADMIN_RESULT_FIELDS
+        if not self.request.GET.has_key('order'):
+            context['order'] = 'idgloss'
+        else:
+            context['order'] = self.request.GET.get('order')
         return context
 
     def get_paginate_by(self, queryset):
@@ -140,14 +143,12 @@ class GlossListView(ListView):
         # get query terms from self.request
         qs = Gloss.objects.all()
 
-        # print "QS:", len(qs)
-
         get = self.request.GET
 
         if get.has_key('search') and get['search'] != '':
             val = get['search']
 
-            # Add fields you want to search logically with GET.search usin | (OR) and & (AND)
+            # Add fields you want to search logically with GET.search using | (OR) and & (AND)
             # Search for glosses containing a string, casesensitive with icontains
             # If first doesn't match, it is supposed to try the next one, because of OR (|)
             query = Q(idgloss__icontains=val) | \
@@ -357,14 +358,18 @@ class GlossListView(ListView):
 
             # print "Final :", len(qs)
 
-        # Set order_by from GET
-        if get.has_key('order_by'):
-            order = get['order_by']
-            if get.has_key('order'):
-                if get['order'] == 'desc':
-                    qs = qs.order_by("-" + order)
+        # Set order according to GET field 'order'
+        if get.has_key('order'):
+            qs = qs.order_by(get['order'])
+        else:
+            qs = qs.order_by('idgloss')
+            """
+            qs = qs.order_by("-" + order)
+            elif get['order'] == 'asc:':
+                qs = qs.order_by("+" + order)
             else:
                 qs = qs.order_by(order)
+            """
 
         # Saving querysets results to sessions, these results can then be used elsewhere (like in gloss_detail)
         # Flush the previous queryset (just in case)
