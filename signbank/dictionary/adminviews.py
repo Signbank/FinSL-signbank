@@ -18,7 +18,7 @@ from signbank.video.forms import VideoUploadForGlossForm
 class GlossListView(ListView):
     model = Gloss
     template_name = 'dictionary/admin_gloss_list.html'
-    paginate_by = 500
+    paginate_by = 100
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -363,13 +363,6 @@ class GlossListView(ListView):
             qs = qs.order_by(get['order'])
         else:
             qs = qs.order_by('idgloss')
-            """
-            qs = qs.order_by("-" + order)
-            elif get['order'] == 'asc:':
-                qs = qs.order_by("+" + order)
-            else:
-                qs = qs.order_by(order)
-            """
 
         # Saving querysets results to sessions, these results can then be used elsewhere (like in gloss_detail)
         # Flush the previous queryset (just in case)
