@@ -240,22 +240,17 @@
             {# Translators: Information about a Gloss #}
             <tr>
                 <th>{% blocktrans %}Gloss in English:{% endblocktrans %}</th>
-                <td class='edit edit_text' id='idgloss_en'>{% value gloss.idgloss_en %}
-                </td>
+                <td class='edit edit_text' id='idgloss_en'>{% value gloss.idgloss_en %}</td>
             </tr>
             {# Translators: Information about a Gloss #}
             <tr>
                 <th>{% blocktrans %}Translation equivalents in Finnish:{% endblocktrans %}</th>
-                <td class='edit edit_text' id='keywords'>
-                    {% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </td>
+                <td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
             </tr>
             {# Translators: Information about a Gloss #}
             <tr>
                 <th>{% blocktrans %}Translation equivalents in English:{% endblocktrans %}</th>
-                <td class='edit edit_text' id='keywords_english'>
-                    {% for trn in gloss.translationenglish_set.all %}{{ trn.translation_english.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </td>
+                <td class='edit edit_text' id='keywords_english'>{% for trn in gloss.translationenglish_set.all %}{{ trn.translation_english.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
             </tr>
             {# Translators: Information about a Gloss #}
             <tr>
@@ -265,16 +260,12 @@
             {# Translators: Information about a Gloss #}
             <tr>
                 <th>{% blocktrans %}Language:{% endblocktrans %}</th>
-                <td class='edit edit_language' id='language'>
-                    {% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </td>
+                <td class='edit edit_language' id='language'>{% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
             </tr>
             {# Translators: Information about a Gloss #}
             <tr>
                 <th>{% blocktrans %}Dialect:{% endblocktrans %}</th>
-                <td class='edit edit_dialect' id='dialect'>
-                    {% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </td>
+                <td class='edit edit_dialect' id='dialect'>{% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
             </tr>
             <tr>
                 <th>{% blocktrans %}URL:{% endblocktrans %}</th>
@@ -285,13 +276,11 @@
             </tr>
             <tr>
                 <th>{% blocktrans %}Created:{% endblocktrans %}</th>
-                <td id='created'>{% if gloss.created_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.created_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.created_by.first_name }} {{ gloss.created_by.last_name }}{% endif %}
-                </td>
+                <td id='created'>{% if gloss.created_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.created_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.created_by.first_name }} {{ gloss.created_by.last_name }}{% endif %}</td>
             </tr>
             <tr>
                 <th>{% blocktrans %}Updated:{% endblocktrans %}</th>
-                <td id='updated'>{% if gloss.updated_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.first_name }} {{ gloss.updated_by.last_name }}{% endif %}
-                </td>
+                <td id='updated'>{% if gloss.updated_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.first_name }} {{ gloss.updated_by.last_name }}{% endif %}</td>
             </tr>
         </table>
 
