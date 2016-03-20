@@ -92,11 +92,13 @@ function toggle_edit() {
     if ($('#enable_edit').hasClass('edit_enabled')) {
         disable_edit();
         $('#enable_edit').removeClass('edit_enabled');
-        $('#enable_edit').text('Edit');
+        // This variable (enable_edit_button_text) should exist in the template
+        $('#enable_edit').text(enable_edit_button_text);
     } else {
         enable_edit();
         $('#enable_edit').addClass('edit_enabled');
-        $('#enable_edit').text('Save');
+        // This variable (disable_edit_button_text) should exist in the template
+        $('#enable_edit').text(disable_edit_button_text);
     }
 }
 
@@ -119,8 +121,9 @@ function configure_edit() {
     $.fn.editable.defaults['indicator'] = 'Saving...';
     $.fn.editable.defaults['tooltip'] = 'Click to edit...';
     $.fn.editable.defaults['placeholder'] = '-';
-    $.fn.editable.defaults['submit'] = '<button class="btn btn-primary" type="submit">Ok</button>';
-    $.fn.editable.defaults['cancel'] = '<button class="btn btn-default" type="cancel">Cancel</button>';
+    // save_button_text and cancel_button_text variables should exist in template (inside blocktrans tags)!
+    $.fn.editable.defaults['submit'] = '<button class="btn btn-primary" type="submit">'+save_button_text+'</button>';
+    $.fn.editable.defaults['cancel'] = '<button class="btn btn-default" type="cancel">'+cancel_button_text+'</button>';
     $.fn.editable.defaults['width'] = 'none';
     $.fn.editable.defaults['height'] = 'none';
     $.fn.editable.defaults['submitdata'] = {'csrfmiddlewaretoken': csrf_token};

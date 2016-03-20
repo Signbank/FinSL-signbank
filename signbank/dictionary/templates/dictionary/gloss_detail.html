@@ -13,6 +13,12 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
 
 <script type="text/javascript">
+    // These variables are used in gloss_edit.js
+    var enable_edit_button_text = "{% blocktrans %}Enable Edit{% endblocktrans %}"
+    var disable_edit_button_text = "{% blocktrans %}Disable Edit{% endblocktrans %}"
+    var save_button_text = "{% blocktrans %}Save{% endblocktrans %}"
+    var cancel_button_text = "{% blocktrans %}Cancel{% endblocktrans %}"
+
     // This script gets and inserts the users last searched items on the gloss page
     var search_results_url = '{% url 'dictionary:ajax_search_results' %}';
     var req = $.ajax({
@@ -91,7 +97,7 @@
                 data-target='#delete_gloss_modal'>{% blocktrans %}Delete Sign{% endblocktrans %}
         </button>
         {# Translators: Button #}
-        <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Edit{% endblocktrans %}</button>
+        <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
 
         <div class="modal fade" id="delete_gloss_modal" tabindex="-1" role="dialog" aria-labelledby="#modalTitle"
              aria-hidden="true">
@@ -107,20 +113,19 @@
                             associated records. It cannot be undone.{% endblocktrans %}</p>
                     </div>
                     <form action='{% url 'dictionary:update_gloss' gloss.id %}' method='post'>
-                    {% csrf_token %}
-                    <input type='hidden' name='id' value='deletegloss'>
-                    <input type='hidden' name='value' value='confirmed'>
+                        {% csrf_token %}
+                        <input type='hidden' name='id' value='deletegloss'>
+                        <input type='hidden' name='value' value='confirmed'>
 
-                    <div class="modal-footer">
-                        {# Translators: Button #}
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}
-                        </button>
-                        {# Translators: Confirmation button #}
-                        <input type="submit" class="btn btn-primary"
-                               value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
-                    </div>
+                        <div class="modal-footer">
+                            {# Translators: Button #}
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}
+                            </button>
+                            {# Translators: Confirmation button #}
+                            <input type="submit" class="btn btn-primary"
+                                   value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
+                        </div>
                     </form>
-
                 </div>
             </div>
         </div>
