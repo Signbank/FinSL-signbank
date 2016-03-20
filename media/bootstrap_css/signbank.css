@@ -93,3 +93,6 @@ html {
     background-color: #f5f5f5;
     padding-top: 15px;
 }
+.edit_text input, .edit_url input {
+    width: 100%;
+}
