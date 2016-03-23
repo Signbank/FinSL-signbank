@@ -16,9 +16,10 @@ from signbank.dictionary.choicelists import *
 
 class Dataset(models.Model):
     """A dataset, can be public/private and can be of only one language"""
-    name = models.CharField(unique=True, blank=False, null=False)
+    name = models.CharField(unique=True, blank=False, null=False, max_length=60)
     is_public = models.BooleanField(default=False, help_text="Tells whether this dataset is public or private")
-    language = models.ForeignKey(Language)
+    language = models.ForeignKey("Language")
+    description = models.TextField()
 
 class Translation(models.Model):
     """A first language (Finnish) translation equivalent of a sign"""
@@ -355,6 +356,7 @@ def get_choices_with_int(field):
 
 class Gloss(models.Model):
     class Meta:
+        unique_together = (("idgloss", "dataset"),)
         # Translators: This is verbose_name_plural, so it has to be plural here
         verbose_name_plural = _("Glosses")
         ordering = ['idgloss']
@@ -414,6 +416,8 @@ class Gloss(models.Model):
     ### Fields begin ###
 
     locked = models.BooleanField(_("Locked"), default=False)
+
+    dataset = models.ForeignKey("Dataset")
 
     # Gloss in Finnish. This is the unique identifying name of a Gloss.
     # Translators: Gloss field: idgloss, verbose name

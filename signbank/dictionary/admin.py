@@ -53,7 +53,7 @@ class GlossAdmin(VersionAdmin):
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
 
     fieldsets = ((None, {'fields': (
-        'locked', 'idgloss', 'idgloss_en', 'annotation_comments', 'language', 'dialect', 'url_field')},),
+        'dataset', 'locked', 'idgloss', 'idgloss_en', 'annotation_comments', 'dialect', 'url_field')},),
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
                  ('Created/Updated', {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
