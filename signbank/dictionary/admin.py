@@ -5,6 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 from signbank.dictionary.models import *
 
 
+class DatasetAdmin(admin.ModelAdmin):
+    model = Dataset
+    list_display = ('name', 'is_public', 'language',)
+
 class KeywordAdmin(VersionAdmin):
     search_fields = ['^text']
 
@@ -75,7 +79,7 @@ class GlossAdmin(VersionAdmin):
     list_display = ['idgloss', 'locked', 'idgloss_en']
     search_fields = ['^idgloss']
     list_filter = [
-        'language', 'dialect', 'in_web_dictionary', 'strong_handshape']
+        'dialect', 'in_web_dictionary', 'strong_handshape']
     inlines = [RelationInline, RelationToForeignSignInline,
                DefinitionInline, TranslationInline, TranslationEnglishInline]
 
@@ -142,3 +146,4 @@ admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(KeywordEnglish, KeywordAdmin)
 admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
+admin.site.register(Dataset, DatasetAdmin)

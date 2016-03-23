@@ -222,7 +222,7 @@ class GlossSearchForm(forms.ModelForm):
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'idgloss_en', 'language', 'dialect', 'in_web_dictionary',
+        fields = ('idgloss', 'idgloss_en', 'dialect', 'in_web_dictionary',
                   'is_proposed_new_sign', 'strong_handshape', 'weak_handshape', 'location',
                   'handedness', 'annotation_comments', 'relation_between_articulators', 'absolute_orientation_palm',
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',

@@ -213,7 +213,7 @@ GLOSS_VIDEO_DIRECTORY = "video"
 
 # which fields from the Gloss model should be included in the quick update
 # form on the sign view
-QUICK_UPDATE_GLOSS_FIELDS = ['language', 'dialect']
+QUICK_UPDATE_GLOSS_FIELDS = ['dialect']
 
 # do we allow people to register for the site
 ALLOW_REGISTRATION = True
