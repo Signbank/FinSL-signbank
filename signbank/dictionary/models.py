@@ -21,6 +21,9 @@ class Dataset(models.Model):
     language = models.ForeignKey("Language")
     description = models.TextField()
 
+    def __unicode__(self):
+        return self.name
+
 class Translation(models.Model):
     """A first language (Finnish) translation equivalent of a sign"""
 
