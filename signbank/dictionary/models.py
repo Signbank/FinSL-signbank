@@ -14,6 +14,11 @@ from django.core.exceptions import FieldDoesNotExist
 
 from signbank.dictionary.choicelists import *
 
+class Dataset(models.Model):
+    """A dataset, can be public/private and can be of only one language"""
+    name = models.CharField(unique=True, blank=False, null=False)
+    is_public = models.BooleanField(default=False, help_text="Tells whether this dataset is public or private")
+    language = models.ForeignKey(Language)
 
 class Translation(models.Model):
     """A first language (Finnish) translation equivalent of a sign"""
@@ -421,9 +426,6 @@ class Gloss(models.Model):
     idgloss_en = models.CharField(_("Gloss in English"), blank=True, max_length=60,
                                                  # Translators: Help text for Gloss field: idgloss_en (english)
                                                  help_text=_("""This is the English name for the Gloss"""))
-
-    # Languages that this gloss is part of
-    language = models.ManyToManyField(Language, blank=True)
 
     # Translators: Gloss models field: annotation_comments, verbose name
     annotation_comments = models.CharField(_("Comments"), max_length=200, blank=True)
