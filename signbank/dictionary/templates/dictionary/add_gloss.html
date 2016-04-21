@@ -11,6 +11,8 @@
         <form enctype="multipart/form-data" action='{% url "dictionary:add_gloss" %}' method='post'>
             {% csrf_token %}
 
+            {% bootstrap_field add_gloss_form.dataset set_required=True %}
+
             {% bootstrap_field add_gloss_form.idgloss set_required=True %}
             {% bootstrap_field add_gloss_form.idgloss_en set_required=False %}
 

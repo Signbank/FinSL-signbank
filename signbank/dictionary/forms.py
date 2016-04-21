@@ -44,6 +44,8 @@ class GlossCreateForm(forms.ModelForm):
     """
     attrs_reqd_focus = {'class': 'form-control', 'autofocus': '', 'required': ''}
     attrs_default = {'class': 'form-control'}
+    from .models import Dataset
+    dataset = forms.ModelChoiceField(label=_('Dataset'), required=True, queryset=Dataset.objects.all(), empty_label=None)
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
     idgloss_en = forms.CharField(label=_('Gloss in English'), required=False,
@@ -52,7 +54,7 @@ class GlossCreateForm(forms.ModelForm):
 
     class Meta:
         model = Gloss
-        fields = ['idgloss', 'idgloss_en', 'videofile']
+        fields = ['dataset', 'idgloss', 'idgloss_en', 'videofile']
 
     def clean(self):
         """
