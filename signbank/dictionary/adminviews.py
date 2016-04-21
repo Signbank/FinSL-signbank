@@ -72,9 +72,11 @@ class GlossListView(ListView):
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         writer = csv.writer(response)
-        header = ['Signbank ID'] + [f.verbose_name for f in fields]
 
-        for extra_column in ['Languages', 'Dialects', 'Keywords', 'Morphology', 'Relations to other signs',
+        # Defines the headings for the file. Signbank ID and Dataset are set first.
+        header = ['Signbank ID'] + ['Dataset'] + [f.verbose_name for f in fields]
+
+        for extra_column in ['Language', 'Dialects', 'Keywords', 'Morphology', 'Relations to other signs',
                              'Relations to foreign signs', ]:
             header.append(extra_column)
 
@@ -82,6 +84,8 @@ class GlossListView(ListView):
 
         for gloss in self.get_queryset():
             row = [unicode(gloss.pk)]
+            # Adding Dataset information for the gloss
+            row.append(unicode(gloss.dataset))
             for f in fields:
 
                 # Try the value of the choicelist
@@ -99,9 +103,9 @@ class GlossListView(ListView):
 
                     row.append(value)
 
-            # get languages
-            languages = [language.name for language in gloss.language.all()]
-            row.append(", ".join(languages))
+            # get language
+            language = gloss.dataset.language
+            row.append(unicode(language))
 
             # get dialects
             dialects = [dialect.name for dialect in gloss.dialect.all()]
