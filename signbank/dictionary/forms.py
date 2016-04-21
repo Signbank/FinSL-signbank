@@ -74,7 +74,7 @@ class GlossCreateForm(forms.ModelForm):
             return self.cleaned_data['idgloss']
         raise forms.ValidationError(
             # Translators: exception ValidationError
-            _(u'This Gloss value already exists in the chosen Dataset. Please choose another value for Glosss.'),
+            _(u'This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
             code='not_unique')
 
 
