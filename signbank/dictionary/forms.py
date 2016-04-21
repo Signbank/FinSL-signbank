@@ -58,24 +58,24 @@ class GlossCreateForm(forms.ModelForm):
 
     def clean(self):
         """
-        We were validating that either annotation_idgloss_jkl or annotation_idgloss_hki is provided
+        Validate the form data.
         """
-        # TODO: See if this clean method is needed anymore
-        # cleaned_data = super(GlossCreateForm, self).clean()
+        pass # Nothing here at the moment.
 
 
     def clean_idgloss(self):
         """
-        Validates that the idgloss value has not been taken yet.
+        Validates that the idgloss value in the chosen Dataset has not been taken yet.
 
         """
         try:
-            gloss = Gloss.objects.get(idgloss__exact=self.cleaned_data['idgloss'])
+            gloss = Gloss.objects.get(idgloss__exact=self.cleaned_data['idgloss'], dataset=self.cleaned_data['dataset'])
         except Gloss.DoesNotExist:
             return self.cleaned_data['idgloss']
         raise forms.ValidationError(
             # Translators: exception ValidationError
-            _(u'This Gloss value is already taken. Please choose another.'), code='not_unique')
+            _(u'This Gloss value already exists in the chosen Dataset. Please choose another value for Glosss.'),
+            code='not_unique')
 
 
     def clean_idgloss_en(self):
