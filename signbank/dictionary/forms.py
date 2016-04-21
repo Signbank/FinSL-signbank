@@ -5,6 +5,7 @@ from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, Rel
 from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
+from .models import Dataset
 
 # TODO: Remove these unless a sane usecase is figured out
 # category choices are tag values that we'll restrict search to
@@ -44,7 +45,7 @@ class GlossCreateForm(forms.ModelForm):
     """
     attrs_reqd_focus = {'class': 'form-control', 'autofocus': '', 'required': ''}
     attrs_default = {'class': 'form-control'}
-    from .models import Dataset
+
     dataset = forms.ModelChoiceField(label=_('Dataset'), required=True, queryset=Dataset.objects.all(), empty_label=None)
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
@@ -154,20 +155,28 @@ ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
+    dataset = forms.ModelChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), empty_label=None, required=False)
+    # Translators: GlossSearchForm label
     search = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
     idgloss_en = forms.CharField(label=_("Gloss in English"))
+    # Translators: GlossSearchForm label
+    keyword = forms.CharField(label=_('Translations'))
+    # Translators: GlossSearchForm label
+    keyword_eng = forms.CharField(label=_('Translations English'))
+
     # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
     # nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
     nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
-    # Translators: GlossSearchForm label
-    keyword = forms.CharField(label=_('Translations'))
-    # Translators: GlossSearchForm label
-    keyword_eng = forms.CharField(label=_('Translations English'))
+
     # Translators: GlossSearchForm label
     hasvideo = forms.ChoiceField(label=_('Has Video'), choices=YESNOCHOICES)
+
+    # These have been disabled until they are later needed
+    # TODO: To enable these, uncomment them.
+    """
     # Translators: GlossSearchForm label
     defspublished = forms.ChoiceField(label=_("All Definitions Published"), choices=YESNOCHOICES)
     # Translators: GlossSearchForm label
@@ -198,7 +207,6 @@ class GlossSearchForm(forms.ModelForm):
     hasMorphemeOfType = forms.ChoiceField(
         label=_('Has morpheme type'), choices=MORPHEME_ROLE_CHOICES, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
 
-    # ,widget=forms.Select(attrs=ATTRS_FOR_FORMS));
     # Translators: GlossSearchForm label
     repeated_movement = forms.ChoiceField(
         label=_('Repeating Movement'), choices=NULLBOOLEANCHOICES)
@@ -219,6 +227,7 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     definitionContains = forms.CharField(
         label=_('Note contains'), widget=forms.TextInput(attrs=ATTRS_FOR_FORMS))
+    """
 
     class Meta:
         ATTRS_FOR_FORMS = {'class': 'form-control'}

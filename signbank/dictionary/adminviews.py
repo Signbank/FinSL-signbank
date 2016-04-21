@@ -145,6 +145,11 @@ class GlossListView(ListView):
 
         get = self.request.GET
 
+        # TODO: This might need fixing if we move dataset choosing outside of search page
+        if get.has_key('dataset') and get['dataset'] != '':
+            val = get['dataset']
+            qs = qs.filter(dataset=val)
+
         if get.has_key('search') and get['search'] != '':
             val = get['search']
 

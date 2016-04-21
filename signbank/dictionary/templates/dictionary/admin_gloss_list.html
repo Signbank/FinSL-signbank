@@ -80,6 +80,9 @@ function clearForm(myFormElement) {
     <form name='adminsearch' id='adminsearch'>
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-2 col-sm-6">
+                    {% bootstrap_field searchform.dataset set_required=False %}
+                </div>
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss'>{{searchform.search.label}}</label>
