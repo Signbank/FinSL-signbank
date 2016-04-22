@@ -103,7 +103,7 @@ class GlossListView(ListView):
 
                     row.append(value)
 
-            # get language
+            # get language, adding only one language. Used to add several but requirement changed.
             language = gloss.dataset.language
             row.append(unicode(language))
 
@@ -149,10 +149,10 @@ class GlossListView(ListView):
 
         get = self.request.GET
 
-        # TODO: This might need fixing if we move dataset choosing outside of search page
-        if get.has_key('dataset') and get['dataset'] != '':
-            val = get['dataset']
-            qs = qs.filter(dataset=val)
+        # Search for multiple datasets (if provided)
+        vals = get.getlist('dataset', [])
+        if vals != []:
+            qs = qs.filter(dataset__in=vals)
 
         if get.has_key('search') and get['search'] != '':
             val = get['search']
@@ -199,7 +199,7 @@ class GlossListView(ListView):
                       'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
                       'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
-                      'is_proposed_new_sign']
+                      'is_proposed_new_sign',]
 
         """These were removed from fieldnames because they are not needed there:
         'idgloss', 'idgloss_en', 'annotation_comments', 'in_web_dictionary',
@@ -213,7 +213,8 @@ class GlossListView(ListView):
 
         vals = get.getlist('language', [])
         if vals != []:
-            qs = qs.filter(language__in=vals)
+            # Get languages from dataset
+            qs = qs.filter(dataset__language__in=vals)
 
         if get.has_key('annotation_comments') and get['annotation_comments'] != '':
             qs = qs.filter(annotation_comments__icontains=get['annotation_comments'])

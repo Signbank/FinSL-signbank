@@ -6,6 +6,7 @@ from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
 from .models import Dataset
+from .models import Language
 
 # TODO: Remove these unless a sane usecase is figured out
 # category choices are tag values that we'll restrict search to
@@ -155,7 +156,9 @@ ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
-    dataset = forms.ModelChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), empty_label=None, required=False)
+    dataset = forms.ModelMultipleChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), required=False)
+    # Translators: GlossSearchForm label
+    language = forms.ModelMultipleChoiceField(label=_('Language'), queryset=Language.objects.all())
     # Translators: GlossSearchForm label
     search = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
@@ -240,7 +243,7 @@ class GlossSearchForm(forms.ModelForm):
                   'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
                   'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'mouth_gesture',
                   'mouthing', 'phonetic_variation', 'iconic_image', 'named_entity', 'semantic_field',
-                  'number_of_occurences')
+                  'number_of_occurences',)
 
 
 class DefinitionForm(forms.ModelForm):

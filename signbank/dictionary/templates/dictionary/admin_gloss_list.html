@@ -81,30 +81,30 @@ function clearForm(myFormElement) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 col-sm-6">
-                    {% bootstrap_field searchform.dataset set_required=False %}
+                    {% bootstrap_field searchform.dataset set_required=False bound_css_class="not-bound" form_group_class="form-group" label_class="input-group-addon" %}
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss'>{{searchform.search.label}}</label>
-                        <input name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
+                        <input id="id_idgloss" name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss_en'>{{searchform.idgloss_en.label}}</label>
-                        <input name='idgloss_en' class='form-control' {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}>
+                        <input id="id_idgloss_en" name='idgloss_en' class='form-control' {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}>
                     </div>
                 </div>
                  <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
-                        <input name='keyword' class='form-control' {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}>
+                        <input id="id_keyword" name='keyword' class='form-control' {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                    <div class='input-group'>
                         <label class='input-group-addon' for='id_annotation_comments'>{{searchform.annotation_comments.label}}</label>
-                        <input name='annotation_comments' class='form-control' {% if searchform.annotation_comments.value %}value='{{searchform.annotation_comments.value}}' {% endif %}>
+                        <input id="id_annotation_comments" name='annotation_comments' class='form-control' {% if searchform.annotation_comments.value %}value='{{searchform.annotation_comments.value}}' {% endif %}>
                    </div>
                 </div>
             </div>
