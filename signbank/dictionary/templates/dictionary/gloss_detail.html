@@ -8,9 +8,11 @@
 {% endblock %}
 
 {% block extrajs %}
+{% if perms.dictionary.change_gloss %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.mini.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
+{% endif %}
 
 <script type="text/javascript">
     // These variables are used in gloss_edit.js
@@ -88,7 +90,6 @@
 
 {% endif %}
 {% endblock %}
-
 
 {% block content %}
 
@@ -237,10 +238,11 @@
 
 
         </div>
-        <!-- Advanced properties start -->
-        {% include "dictionary/gloss_detail_advanced.html" %}
-        <!-- Advanced properties end -->
+
     </div>
+    <!-- Advanced properties start -->
+    {% include "dictionary/gloss_detail_advanced.html" %}
+    <!-- Advanced properties end -->
 </div>
 
 {% endblock %}
