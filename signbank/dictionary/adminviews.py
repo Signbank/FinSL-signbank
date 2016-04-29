@@ -159,9 +159,7 @@ class GlossListView(ListView):
 
             # Add fields you want to search logically with GET.search using | (OR) and & (AND)
             # Search for glosses containing a string, casesensitive with icontains
-            # If first doesn't match, it is supposed to try the next one, because of OR (|)
-            query = Q(idgloss__icontains=val) | \
-                    Q(idgloss_en__icontains=val)
+            query = Q(idgloss__icontains=val)
 
             qs = qs.filter(query)
 
