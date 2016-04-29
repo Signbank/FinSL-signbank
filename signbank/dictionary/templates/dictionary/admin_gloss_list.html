@@ -81,7 +81,14 @@ function clearForm(myFormElement) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 col-sm-6">
-                    {% bootstrap_field searchform.dataset set_required=False bound_css_class="not-bound" %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {% bootstrap_label searchform.dataset.label %}
+                        </div>
+                        <div class="panel-body">
+                            {% bootstrap_field searchform.dataset set_required=False show_label=False bound_css_class="not-bound" %}
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class='input-group'>
