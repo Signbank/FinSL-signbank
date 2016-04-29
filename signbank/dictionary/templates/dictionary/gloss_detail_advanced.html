@@ -1,6 +1,8 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
+{# This file is meant to be included in gloss_detail.html #}
+{# The purpose of this file is to make gloss_detail easier to handle #}
 <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
     {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
