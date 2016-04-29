@@ -185,7 +185,7 @@
 
             <table class='table table-condensed'>
                 {# Translators: Information about a Gloss #}
-                <tr>
+                <tr {% if gloss.locked %}class="success"{% elif gloss.has_video %}class="warning"{% else %}class="danger"{% endif %}>
                     <th>{% blocktrans %}Gloss:{% endblocktrans %}</th>
                     <td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td>
                 </tr>
