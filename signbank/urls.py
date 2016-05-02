@@ -11,63 +11,56 @@ admin.autodiscover()
 
 from adminsite import publisher_admin
 
+urlpatterns = [
+    # Root page
+    url(r'^$', 'signbank.pages.views.page',
+        name='root_page'),
 
-urlpatterns = patterns('',
+    # This allows to change the translations site language
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
-                       url(r'^$', 'signbank.pages.views.page',
-                           name='root_page'),
+    # Include dictionary/, feedback/ and video/ urls
+    url(r'^dictionary/',
+        include('signbank.dictionary.urls', namespace='dictionary')),
+    url(r'^feedback/', include('signbank.feedback.urls')),
+    url(r'^video/', include('signbank.video.urls')),
 
-                       # This allows to change the translations site language
-                       url(r'^i18n/', include('django.conf.urls.i18n')),
+    # Login and logout pages
+    url(r'^login/', 'django.contrib.auth.views.login'),
+    url(r'^logout/', 'django.contrib.auth.views.logout',
+        {'next_page': "/"}, "logout"),
 
-                       url(r'^dictionary/',
-                           include('signbank.dictionary.urls', namespace='dictionary')),
-                       url(r'^feedback/', include('signbank.feedback.urls')),
+    # Hardcoding a number of special urls:
+    url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view())),
+    url(r'^signs/add/$', 'signbank.dictionary.views.add_new_sign'),
+    url(r'^signs/import_csv/$',
+        'signbank.dictionary.views.import_csv'),
+    url(r'^feedback/overview/$',
+        'signbank.feedback.views.showfeedback'),
 
-                       url(r'^video/', include('signbank.video.urls')),
+    url(r'^accounts/',
+        include('signbank.registration.urls')),
+    url(r'^admin/doc/',
+        include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 
-                       # (r'^register.html', 'signbank.views.index'),
-                       url(r'^logout.html', 'django.contrib.auth.views.logout',
-                           {'next_page': "/"}, "logout"),
+    # Speciall admin sub site for Publisher role
+    url(r'^publisher/', include(publisher_admin.urls)),
 
-                       # Hardcoding a number of special urls:
-                       url(r'^signs/dictionary/$',
-                           'signbank.dictionary.views.search'),
-                       url(r'^signs/search/$', permission_required('dictionary.search_gloss')
-                       (GlossListView.as_view())),
-                       url(r'^signs/add/$', 'signbank.dictionary.views.add_new_sign'),
-                       url(r'^signs/import_csv/$',
-                           'signbank.dictionary.views.import_csv'),
-                       url(r'^feedback/overview/$',
-                           'signbank.feedback.views.showfeedback'),
+    # Summernote urls, Summernote is the WYSIWYG editor currently used in Signbank
+    url(r'^summernote/', include('django_summernote.urls')),
 
-                       # (r'^accounts/login/', 'django.contrib.auth.views.login'),
+    # This URL runs a script on tools.py that reloads signbank app via 'touch signbank/wsgi.py'
+    url(r'reload_signbank/$',
+        'signbank.tools.reload_signbank'),
 
-                       url(r'^accounts/',
-                           include('signbank.registration.urls')),
-                       url(r'^admin/doc/',
-                           include('django.contrib.admindocs.urls')),
-                       url(r'^admin/', include(admin.site.urls)),
+    # Infopage, where we store some links and statistics
+    url(r'infopage/',
+        'signbank.tools.infopage'),
 
-                       # special admin sub site
-                       url(r'^publisher/', include(publisher_admin.urls)),
+    # This url is meant to capture 'pages', so that we can use il8n language switching
+    url(r'^(?P<url>.*)$',
+        'signbank.pages.views.page'),
 
-                       url(r'^summernote/', include('django_summernote.urls')),
-
-                       # This URL runs a script on tools.py that reloads signbank app
-                       # It simply runs: 'touch signbank/wsgi.py'
-                       url(r'reload_signbank/$',
-                           'signbank.tools.reload_signbank'),
-
-                       # Infopage
-                       url(r'infopage/',
-                           'signbank.tools.infopage'),
-
-                       # TODO: Review the sanity of this implementation, it sounds completely crazy, but it also works
-                       # This URL is supposed to grab every url not grabbed by any url before.
-                       # The reason is to forward user created static pages inside the app to a view 'page'.
-                       url(r'(.*)',
-                           'signbank.pages.views.page'),
-
-                       ) # This might be needed in development:
-                        # """+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""
+]  # This might be needed in development, use it with caution:
+# """+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""

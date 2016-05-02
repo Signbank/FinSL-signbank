@@ -25,7 +25,6 @@ body {
 /* Set the fixed height of the footer here */
 #footer {
     height: 60px;
-    /*background-color: #f5f5f5;*/
     text-align: center;
     clear: both;
 }
@@ -178,7 +177,7 @@ body {
     border-style:solid;
     border-width:12px 12px 12px 0;      
 }
-.tag:after{
+.tag:after {
     content:"";
     position:absolute;
     top:10px;
@@ -207,7 +206,7 @@ td .tag {
     padding: 0px 10px 0px 8px;
 }
 
-// typeahead dropdown styling
+/* These styles are for typeahead script */
 .typeahead,
 .tt-query,
 .tt-hint {

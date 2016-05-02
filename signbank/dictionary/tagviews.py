@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 import json
 
 from tagging.models import Tag, TaggedItem
@@ -15,7 +16,7 @@ def taglist_json(request):
 
     return HttpResponse(json.dumps(tags), content_type='application/json')
 
-
+@login_required
 def taglist(request, tag=None):
     """View of a list of tags or a list of signs with a given tag"""
 

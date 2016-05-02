@@ -447,10 +447,8 @@ def gloss_ajax_search_results(request):
     return JsonResponse(request.session['search_results'], safe=False)
 
 def gloss_ajax_complete(request, prefix):
-    """Return a list of glosses matching the search term
-    as a JSON structure suitable for typeahead."""
+    """Return a list of glosses matching the search term as a JSON structure suitable for typeahead."""
 
-    # TODO: See where this is used, is it safe to add more things here
     query = Q(idgloss__istartswith=prefix)
     qs = Gloss.objects.filter(query)
 

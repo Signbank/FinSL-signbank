@@ -1,5 +1,4 @@
 from django import forms
-from signbank.video.fields import VideoUploadToFLVField
 from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, RelationToForeignSign, \
     MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice
 from django.conf import settings
@@ -7,36 +6,6 @@ from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
 from .models import Dataset
 from .models import Language
-
-# TODO: Remove these unless a sane usecase is figured out
-# category choices are tag values that we'll restrict search to
-CATEGORY_CHOICES = (
-    # Translators: These are CATEGORY_CHOICES
-    ('all', _('All Signs')),
-    # Translators: These are CATEGORY_CHOICES
-    ('semantic:health', _('Only Health Related Signs')),
-    # Translators: These are CATEGORY_CHOICES
-    ('semantic:education', _('Only Education Related Signs'))
-)
-
-
-class UserSignSearchForm(forms.Form):
-    # Translators: UserSignSearchForm
-    glossQuery = forms.CharField(label=_('Glosses containing'), max_length=100,
-                                 required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    # Translators: UserSignSearchForm
-    query = forms.CharField(label=_('Translations containing'), max_length=100,
-                            required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    # Translators: UserSignSearchForm
-    category = forms.ChoiceField(label=_('Search'), choices=CATEGORY_CHOICES,
-                                 required=False, widget=forms.Select(attrs={'class': 'form-control'}))
-
-
-class GlossModelForm(forms.ModelForm):
-    class Meta:
-        model = Gloss
-        # fields are defined in settings.py
-        fields = settings.QUICK_UPDATE_GLOSS_FIELDS
 
 
 class GlossCreateForm(forms.ModelForm):
@@ -94,11 +63,6 @@ class GlossCreateForm(forms.ModelForm):
         if self.cleaned_data['videofile'] and not self.cleaned_data['videofile'].name.endswith('.mp4'):
             raise forms.ValidationError('File is not a mp4. Please upload only mp4 files')
         return self.cleaned_data['videofile']
-
-
-class VideoUpdateForm(forms.Form):
-    """Form to allow update of the video for a sign"""
-    videofile = VideoUploadToFLVField()
 
 
 class TagUpdateForm(forms.Form):

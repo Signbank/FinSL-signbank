@@ -1,24 +1,24 @@
 from django.conf.urls import *
 
-urlpatterns = patterns('',
-                       # Feedback index
-                       (r'^$', 'signbank.feedback.views.index'),
+urlpatterns = [
+    # Feedback index
+    url(r'^$', 'signbank.feedback.views.index'),
 
-                       # Show feedback
-                       (r'^show.html', 'signbank.feedback.views.showfeedback'),
-                       (r'showfeedback/', 'signbank.feedback.views.showfeedback'),
-                       # Missing sign feedback
-                       (r'^missingsign.html', 'signbank.feedback.views.missingsign'),
-                       (r'^missingsign/', 'signbank.feedback.views.missingsign'),
-                       # General feedback about the site
-                       (r'^generalfeedback.html', 'signbank.feedback.views.generalfeedback'),
-                       (r'^site/', 'signbank.feedback.views.generalfeedback'),
-                       # Sign feedback
-                       (r'^sign/(?P<keyword>.+)-(?P<n>\d+).html$', 'signbank.feedback.views.signfeedback'),
-                       # Gloss feedback
-                       (r'^gloss/(?P<glossid>.+).html$', 'signbank.feedback.views.glossfeedback'),
+    # Show feedback
+    url(r'^show.html', 'signbank.feedback.views.showfeedback'),
+    url(r'showfeedback/', 'signbank.feedback.views.showfeedback'),
+    # Missing sign feedback
+    url(r'^missingsign.html', 'signbank.feedback.views.missingsign'),
+    url(r'^missingsign/', 'signbank.feedback.views.missingsign'),
+    # General feedback about the site
+    url(r'^generalfeedback.html', 'signbank.feedback.views.generalfeedback'),
+    url(r'^site/', 'signbank.feedback.views.generalfeedback'),
+    # Sign feedback
+    url(r'^sign/(?P<keyword>.+)-(?P<n>\d+).html$', 'signbank.feedback.views.signfeedback'),
+    # Gloss feedback
+    url(r'^gloss/(?P<glossid>.+).html$', 'signbank.feedback.views.glossfeedback'),
 
-                       # Delete feedback
-                       (r'^(?P<kind>general|sign|missingsign)/delete/(?P<id>\d+)$',
-                        'signbank.feedback.views.delete'),
-                       )
+    # Delete feedback
+    url(r'^(?P<kind>general|sign|missingsign)/delete/(?P<id>\d+)$',
+     'signbank.feedback.views.delete'),
+]
