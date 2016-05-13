@@ -1,6 +1,6 @@
 django==1.8.13
 django-tagging==0.3.6
-django-reversion
+django-reversion==1.10.2
 django-bootstrap3==7.0.1
 django-summernote==0.8.5
 unicodecsv==0.14.1
