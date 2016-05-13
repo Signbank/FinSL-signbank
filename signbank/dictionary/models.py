@@ -6,6 +6,7 @@ from collections import OrderedDict
 from django.db import models, OperationalError
 from django.conf import settings
 from django.http import Http404
+from tagging.registry import register
 import tagging
 import os
 from django.utils.translation import ugettext_lazy as _
@@ -795,8 +796,8 @@ class Gloss(models.Model):
 
 # Register Gloss for tags
 try:
-    tagging.register(Gloss)
-except tagging.AlreadyRegistered:
+    register(Gloss)
+except tagging.registry.AlreadyRegistered:
     pass
 
 RELATION_ROLE_CHOICES = (
