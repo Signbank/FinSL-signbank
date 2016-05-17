@@ -253,6 +253,7 @@ class Language(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=50)
+    language_code = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text="ISO 639-3 language code, set as 'und' if you don't have a code.")
     description = models.TextField()
 
     def __unicode__(self):

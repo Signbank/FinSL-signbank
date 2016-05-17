@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
     <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00130975-001"
         LANG_ID="und" LANG_LABEL="undetermined (und)"/>
-    <CONTROLLED_VOCABULARY CV_ID="dictionary-export-elan">
+    <CONTROLLED_VOCABULARY CV_ID="{{dataset.name}}">
         <DESCRIPTION LANG_REF="und"/>
-        {% for object in query_set %}
-            <CV_ENTRY_ML CVE_ID="cveid{{object.pk}}">
-                <CVE_VALUE DESCRIPTION="{{object.annotation_comments}}" LANG_REF="und">{{object.idgloss}}</CVE_VALUE>
+        {% for gloss in query_set %}
+            <CV_ENTRY_ML CVE_ID="glossid{{gloss.pk}}">
+                <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="und">{{gloss.idgloss}}</CVE_VALUE>
             </CV_ENTRY_ML>
          {% endfor %}
         </CONTROLLED_VOCABULARY>

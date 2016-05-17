@@ -459,12 +459,13 @@ def gloss_ajax_complete(request, prefix):
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
 
-def gloss_list_xml(self):
+def gloss_list_xml(self, dataset):
     """Returns all entries in dictionarys idgloss fields in XML form that is supported by ELAN"""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
-    return my_serialize(Gloss.objects.all())
+    dataset = Dataset.objects.get(id=dataset)
+    return my_serialize(dataset, Gloss.objects.filter(dataset=dataset))
 
-def my_serialize(query_set):
-    xml = render_to_string('dictionary/xml_glosslist_template.xml', {'query_set': query_set})
+def my_serialize(dataset, query_set):
+    xml = render_to_string('dictionary/xml_glosslist_template.xml', {'query_set': query_set, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 

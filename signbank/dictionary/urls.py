@@ -38,8 +38,8 @@ urlpatterns = [
     url(r'^tag/(?P<tag>[^/]*)/?$',
         'signbank.dictionary.tagviews.taglist'),
 
-    # XML api url
-    url(r'^xml/glosslist/$',
+    # XML ecv (externally controlled vocabulary) export for ELAN
+    url(r'^ecv/(?P<dataset>\d+)$',
         'signbank.dictionary.adminviews.gloss_list_xml', name='gloss_list_xml'),
 
     # Main views for dictionary search page and gloss detail page, these used to be 'admin' views
