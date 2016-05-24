@@ -12,7 +12,7 @@ html {
     padding-left: 1em;
     padding-right: 1em;
     background: #2980b9;
-    height: 80px;
+    height: 60px;
     clear: both;
     position: relative;
     margin: 0px;
@@ -22,23 +22,27 @@ html {
     float: left;
     color: #133a53;
 }
+#header h1 {
+    margin-top: 10px;
+}
 #logoholder {
     float: left;
     position: relative;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 10px;
-    padding-left: 10px;
 }
 #logojy {
     max-width: 123px;
     max-height: 60px;
     float: left;
+    padding-left: 10px
 }
 #logokl {
     max-width: 187px;
     max-height: 60px;
     float: left;
+    padding-left: 10px
 }
 .col-md-4, .col-md-6 {
     padding-bottom: 5px;
@@ -48,23 +52,24 @@ html {
     padding-bottom: 5px;
     padding-left: 0px;
 }
+#headertitle {
+    float: left;
+}
 #langbar {
-    position: relative;
     float: right;
-    padding-top: 8px;
+    padding-top: 10px;
 }
 #langselect {
-    position: relative;
-    margin-bottom: 5px;
+    float: left;
 }
 .languageform {
-    float: right;
+    float: left;
     padding-left: 5px;
-    padding-right: 5px;
+    overflow: hidden;
 }
 #login {
-    position: relative;
-    margin: auto;
+    float: right;
+    padding-left: 10px;
     overflow: visible;
     z-index: 9999;
 }

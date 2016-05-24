@@ -21,8 +21,11 @@
             <div id="rightcontentborder"></div>
             {# Translators: This is the main Heading for the whole site #}
             <div id='header'>
-                <a  href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
-                {% include 'langbar.html' %}
+
+                    <div id="headertitle">
+                    <a  href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
+                    </div>
+                    {% include 'langbar.html' %}
 
             </div>
 
