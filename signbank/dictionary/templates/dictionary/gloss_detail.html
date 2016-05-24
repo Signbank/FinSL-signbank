@@ -102,7 +102,9 @@
 </div>
 
 <div id="signinfo" class='navbar navbar-default navbar-collapse'>
-
+    <div id="datasetname" class="pull-left">
+        <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="label label-default">{% blocktrans %}{{dataset}}{% endblocktrans %}</span></h4>
+    </div>
     {% if perms.dictionary.change_gloss %}
     <div class='pull-right'>
         {% if not gloss.locked %}
@@ -212,13 +214,15 @@
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Language:{% endblocktrans %}</th>
-                    <td class='edit edit_language' id='language'>{% for lang in gloss.language.all %}{{lang.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    <td class='edit edit_language' id='language'>{{dataset.language}}</td>
                 </tr>
                 {# Translators: Information about a Gloss #}
+                <!-- {# Removed Dialect for now, uncomment these lines if you want to show dialect #}
                 <tr>
                     <th>{% blocktrans %}Dialect:{% endblocktrans %}</th>
                     <td class='edit edit_dialect' id='dialect'>{% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                 </tr>
+                -->
                 <tr>
                     <th>{% blocktrans %}URL:{% endblocktrans %}</th>
                     <td class='edit edit_url' id='url_field'>{% if gloss.url_field %}<a id='urlout'

@@ -394,13 +394,12 @@ class GlossDetailView(DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(GlossDetailView, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
+        context['dataset'] = self.get_object().dataset
         context['tagform'] = TagUpdateForm()
         context['videoform'] = VideoUploadForGlossForm()
         context['definitionform'] = DefinitionForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
-        context['interpform'] = InterpreterFeedbackForm()
 
         # Pass info about which fields we want to see
         gl = context['gloss']
