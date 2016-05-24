@@ -21,14 +21,8 @@
             <div id="rightcontentborder"></div>
             {# Translators: This is the main Heading for the whole site #}
             <div id='header'>
-                <a class="hidden-xs hidden-sm" href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
-                <a class="visible-sm" href="{% url "root_page" %}"><h1 class="h2">{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
-                <a class="visible-xs" href="{% url "root_page" %}"><h1 class="h5">{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
+                <a  href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
                 {% include 'langbar.html' %}
-                <div id='logoholder' class='visible-lg visible-md visible-sm hidden-xs'>
-                    <div id='logojy' class='visible-lg visible-md visible-sm hidden-xs'></div>
-                    <div id='logokl' class='visible-lg visible-md hidden-sm hidden-xs'></div>
-                </div>
 
             </div>
 
@@ -45,20 +39,20 @@
 
     <div id="footer">
        <div class='container'>
-          <div id="copyright">
-          <!--
-          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+           <div class="row">
+               <div id="logoholder">
+                        <img id="logojy" src="{{ STATIC_URL }}/bootstrap_css/images/jy_text_50.png" class="img-responsive logo" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
+                        <img id="logokl" src="{{ STATIC_URL }}/bootstrap_css/images/kl-logo-fi-50.png" class="img-responsive " alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
+               </div>
+                <div id="copyright">
 
-              <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
-              -->
-              {# Translators: IMPORTANT: This will change the footer text for every page. Enter the desired name of this Signbank here! #}
-              <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">{% blocktrans %}FinSL Signbank{% endblocktrans %} </span>
-              {# Translators: License text in the footer of the site #}
-              {% blocktrans %}is licensed under a{% endblocktrans %}
-              {# Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this) #}
-              <a rel="license" class="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> {% trans "Creative Commons BY-NC-SA 4.0 International License" noop %}</a>.
-          </div>
-       </div>
+                  {# Translators: License text in the footer of the site. IMPORTANT: This will change the footer text for every page. #}
+                  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">{% blocktrans %}FinSL Signbank's license:{% endblocktrans %} </span>
+                  {# Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this) #}
+                  <a rel="license" class="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> {% trans "Creative Commons BY-NC-SA 4.0 International License" noop %}</a>.
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src='{{ STATIC_URL}}js/jquery-1.11.0.min.js'></script>
