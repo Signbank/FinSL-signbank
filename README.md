@@ -1,32 +1,38 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
+This is a repository for FinSL-signbank, a web application for storing *Sign language* Glosses with videos.
+The purpose of FinSL-signbank is to make the sign language annotation process more efficient, and to be able to store Glosses.
+
 *   **Quick summary**
-    * This is a repository for Signbank-fi (FinSL Signbank), a sign language Gloss database.
-    * This version of Signbank is adjusted for the needs of Finnish sign language researchers.
-    * FinSL Signbank is based on Dutch NGT Signbank (https://github.com/Signbank/NGT-signbank), which is a fork of Australian Auslan Signbank (https://github.com/Signbank/Auslan-signbank).
-    * Easy to translate to various languages, it uses Django's translation engine paired with django-modeltranslation.
-    * Can export Glosses directly to ELAN's controlled vocabulary
-    * Signbank is built on django-framework version 1.8 and it is working on python 2.7.
+    * FinSL-signbank is being developed based on the needs of Finnish sign language researchers
+    * This application can be used for any Sign language(s) if the requirements are similar.
+    * Signbank was originally developed by Steve Cassidy (https://github.com/Signbank/Auslan-signbank)
+    * FinSL-Signbank is being developed based on NGT Signbank (https://github.com/Signbank/NGT-signbank), NGT Signbank is a fork of Auslan Signbank.
+   
+*   **Main features**
+    * Store Glosses with videos and relevant data.
+    * Interface easily translatable to multiple languages.
+    * Export Glosses as XML directly to ELAN (https://tla.mpi.nl/tools/tla-tools/elan/).
+    * Holds multiple datasets, even of the same language.
+    * Search from within multiple datasets or just from one at a time.
 
-*   **Version**
-
-    * FinSL-signbank is currently in development.
+*   **About the application**
+    * Built with django-framework 1.8 and python 2.7.
+    * Currently in development and no official releases exist yet..
     
-### Wikipages ###
+### Wiki ###
 
-You can see our wiki at https://github.com/Signbank/FinSL-signbank/wiki
+You can find our wiki at https://github.com/Signbank/FinSL-signbank/wiki
 
-You can for example find information about installing Signbank-fi, its requirements and how to integrate it to ELAN.
+The wiki has useful information considering FinSL-Signbank:
+    * How to setup FinSL-signbank (pretty detailed guide).
+    * How to export Glosses from FinSL-signbank to ELAN.
 
-### How do I get Signbank-fi set up? ###
+### Summary of setup ###
 
-*   **Summary of setup**
-
-To install FinSL-signbank do:
+To install and test FinSL-signbank on linux:
 
     pip install -r /path/to/requirements.txt
     python bin/develop.py migrate
@@ -41,7 +47,7 @@ Before you can get FinSL-signbank working, you must change some paths in:
 
 * **Dependencies**
 
-    See *requirements.txt*
+    See https://github.com/Signbank/FinSL-signbank/blob/master/requirements.txt
 
 *   **Database configuration**
 
