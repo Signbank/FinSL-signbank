@@ -27,8 +27,8 @@ The purpose of FinSL-signbank is to make the sign language annotation process mo
 You can find our wiki at https://github.com/Signbank/FinSL-signbank/wiki
 
 The wiki has useful information considering FinSL-Signbank:
-    * How to setup FinSL-signbank (pretty detailed guide).
-    * How to export Glosses from FinSL-signbank to ELAN.
+* How to setup FinSL-signbank (pretty detailed guide).
+* How to export Glosses from FinSL-signbank to ELAN.
 
 ### Summary of setup ###
 
@@ -38,9 +38,9 @@ To install and test FinSL-signbank on linux:
     python bin/develop.py migrate
     python bin/develop.py runserver 127.0.0.1:8000
 
-*   ** Configuration **
+*   **Configuration**
 
-Before you can get FinSL-signbank working, you must change some paths in:
+Before you can get FinSL-signbank working, change some paths in:
 
     signbank/settings/base.py  
     signbank/settings/development.py                              
@@ -51,11 +51,11 @@ Before you can get FinSL-signbank working, you must change some paths in:
 
 *   **Database configuration**
 
-Django should make all the needed database configurations apart from setting up a database.
+Once you have created a database, and correctly configured the database in the settings, you are ready to migrate:
 
     python bin/develop.py migrate
 
-You can use sqlite3 for development
+*If you just want to test the application, we recommend using Sqlite3 as the database (as it is easy to set up)*
 
 *   **How to run tests**
 
@@ -63,9 +63,12 @@ Tests are not yet available.
 
 *   **Deployment instructions**
 
+These can be found in our wiki:
+https://github.com/Signbank/FinSL-signbank/wiki/Install
+
 ### Translations ###
 
-FinSL-signbank uses djangos translation features and fetches strings to translate into django.po.
+FinSL-signbank uses djangos translation feature and fetches translatable strings into django.po.
 
 You can create new locales by:
 
@@ -88,33 +91,20 @@ This is what the whole thing for one string/text looks like:
 
 ```
 
-
-
-After you have written your translations, do:
+After you have written your translations, run:
 
     python bin/develop.py compilemessages yourlocale
 
 This will compile the translations you wrote into django.po to django.mo file.
+Remember to restart your server when doing this to make sure the new translations are in use.
 
 ### Contribution guidelines ###
 
-This repository might not be actively maintained and that makes contribution a little harder.
 If you want to contribute to the project, contact the repository administrator or University of Jyväskylä's Sign language centre.
-
-* Writing tests
-
-If you are willing to contribute to this repository, writing tests would be a good way to help.
-
-Before doing anything, contact the admin of this repository for discussion.
-
-* Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
-* **Repo owner or admin**
-
-Henri Nieminen, admin of this repository
+@henrinie is admin of this repository.
 
 * **Other community or team contact**
 
