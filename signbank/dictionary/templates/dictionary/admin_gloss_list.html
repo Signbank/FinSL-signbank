@@ -90,25 +90,25 @@ function clearForm(myFormElement) {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss'>{{searchform.search.label}}</label>
                         <input id="id_idgloss" name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss_en'>{{searchform.idgloss_en.label}}</label>
                         <input id="id_idgloss_en" name='idgloss_en' class='form-control' {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}>
                     </div>
                 </div>
-                 <div class="col-md-4 col-sm-6">
+                 <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
                         <input id="id_keyword" name='keyword' class='form-control' {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 col-sm-12 searchinput">
                    <div class='input-group'>
                         <label class='input-group-addon' for='id_annotation_comments'>{{searchform.annotation_comments.label}}</label>
                         <input id="id_annotation_comments" name='annotation_comments' class='form-control' {% if searchform.annotation_comments.value %}value='{{searchform.annotation_comments.value}}' {% endif %}>

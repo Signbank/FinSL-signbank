@@ -20,35 +20,35 @@
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
             {# Translators: This is the main Heading for the whole site #}
-            <div id='header'>
-
-                    <div id="headertitle">
+            <div id="header" class="container-fluid">
+                <div class="row">
+                    <div id="headertitle" class="col-md-4">
                     <a  href="{% url "root_page" %}"><h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a>
                     </div>
-                    {% include 'langbar.html' %}
-
+                    <div id="langbar" class="col-md-8">
+                        {% include 'langbar.html' %}
+                    </div>
+                </div>
             </div>
-
-            {% include 'menu.html' %}
-
+            <div id="menu" class="container-fluid">
+                <div class="row">
+                    {% include 'menu.html' %}
+                </div>
+            </div>
             {% bootstrap_messages %}
-
             <div role='main'>
             {% block content %}(no content){% endblock %}
             </div>
-
         </div>
     </div>
-
     <div id="footer">
-       <div class='container'>
-           <div class="row">
-               <div id="logoholder">
+       <div id="footercontainer" class="container">
+           <div class="row footerbg">
+               <div id="logoholder" class="col-md-4">
                         <img id="logojy" src="{{ STATIC_URL }}/bootstrap_css/images/jy_text_50.png" class="img-responsive logo" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
                         <img id="logokl" src="{{ STATIC_URL }}/bootstrap_css/images/kl-logo-fi-50.png" class="img-responsive " alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
                </div>
-                <div id="copyright">
-
+                <div id="license" class="col-md-8">
                   {# Translators: License text in the footer of the site. IMPORTANT: This will change the footer text for every page. #}
                   <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">{% blocktrans %}FinSL Signbank's license:{% endblocktrans %} </span>
                   {# Translators: This is the license used. Translations on this won't take any effect. (Modify the code to change this) #}

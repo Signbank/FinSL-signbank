@@ -12,10 +12,11 @@ html {
     padding-left: 1em;
     padding-right: 1em;
     background: #2980b9;
-    height: 60px;
+    min-height: 60px;
     clear: both;
     position: relative;
-    margin: 0px;
+    margin: 0 -1px 0 -1px; /* To match the border of menu / nav */
+
 }
 #header a {
     text-decoration: none;
@@ -24,6 +25,45 @@ html {
 }
 #header h1 {
     margin-top: 10px;
+}
+#headertitle {
+    float: left;
+}
+#langbar {
+    float: right;
+    padding-top: 10px;
+}
+#langselect {
+    float: right;
+}
+.languageform {
+    float: left;
+    padding-left: 5px;
+}
+#login {
+    float: right;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+#menu {
+    padding-left: 1em;
+    padding-right: 1em;
+    clear: both;
+    position: relative;
+}
+#footer a {
+    color: #828282;
+}
+#footer a:focus {
+    color: #575757;
+}
+#footercontainer {
+    min-height: 70px;
+}
+.footerbg {
+    background-color: #f5f5f5;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 #logoholder {
     float: left;
@@ -44,34 +84,15 @@ html {
     float: left;
     padding-left: 10px
 }
-.col-md-4, .col-md-6 {
+#license {
+    padding-top: 15px;
+}
+.searchinput {
     padding-bottom: 5px;
     padding-left: 0px;
 }
-.col-sm-6, .col-sm-12 {
-    padding-bottom: 5px;
-    padding-left: 0px;
-}
-#headertitle {
-    float: left;
-}
-#langbar {
-    float: right;
-    padding-top: 10px;
-}
-#langselect {
-    float: left;
-}
-.languageform {
-    float: left;
-    padding-left: 5px;
-    overflow: hidden;
-}
-#login {
-    float: right;
-    padding-left: 10px;
-    overflow: visible;
-    z-index: 9999;
+.edit_text input, .edit_url input {
+    width: 100%;
 }
 .uploadvid {
     padding: 10px;
@@ -81,20 +102,4 @@ html {
     padding-left: 5px;
     background-color: #ecf0f1;
     border-radius: 4px;
-}
-
-#footer a {
-    color: #828282;
-}
-#footer a:focus {
-    color: #575757;
-}
-#copyright {
-    height: 100%;
-    min-height: 70px;
-    background-color: #f5f5f5;
-    padding-top: 15px;
-}
-.edit_text input, .edit_url input {
-    width: 100%;
 }

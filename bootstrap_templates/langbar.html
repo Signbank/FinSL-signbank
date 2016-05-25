@@ -1,15 +1,13 @@
 {% load i18n %}
-<div id="langbar">
-    <div id="langselect">{% include 'setlang.html' %}</div>
-    <div id="login">
-        {% if user.is_authenticated %}
-        {# Translators: Logout link #}
-        <a class="btn btn-info btn-xs" role="button" href="{% url 'logout' %}" style="margin-top:3px;float:right;">
-            {% blocktrans %}Logout{% endblocktrans%} ({{ user.first_name }} {{ user.last_name }})</a>
-        {% else %}
-        {# Translators: Login link #}
-        <a class="btn btn-info btn-xs" role="button" href="/accounts/login/?next=/" style="margin-top:3px;float:right;">
-            {% blocktrans %}Login{%endblocktrans %}</a>
-        {% endif %}
-    </div>
+<div id="login">
+    {% if user.is_authenticated %}
+    {# Translators: Logout link #}
+    <a class="btn btn-info btn-xs" role="button" href="{% url 'logout' %}">
+        {% blocktrans %}Logout{% endblocktrans%} ({{ user.first_name }} {{ user.last_name }})</a>
+    {% else %}
+    {# Translators: Login link #}
+    <a class="btn btn-info btn-xs" role="button" href="/accounts/login/?next=/">
+        {% blocktrans %}Login{%endblocktrans %}</a>
+    {% endif %}
 </div>
+<div id="langselect">{% include 'setlang.html' %}</div>
