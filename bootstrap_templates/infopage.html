@@ -53,10 +53,12 @@
             <div class="col-md-6">
                 <div id="ELANinfo">
                     <dd class="dl-horizontal">
-                      <dt>{% blocktrans %}ELAN externally controlled vocabulary link{% endblocktrans %}</dt>
-                      <dd><a href="{{elan_ecv_url}}" target="_blank">{{elan_ecv_url}}</a></dd>
-                      <dt>{% blocktrans %}Signbank Wiki{% endblocktrans %}</dt>
-                      <dd><a href ="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">https://github.com/Signbank/FinSL-signbank/wiki</a></dd>
+                        <dt>{% blocktrans %}ELAN externally controlled vocabulary links{% endblocktrans %}</dt>
+                        {% for dataset in datasets %}
+                        <dd>{{ dataset.name }}: <a href="http://{{ request.get_host }}/dictionary/ecv/{{ dataset.pk }}" target="_blank">http://{{ request.get_host }}/dictionary/ecv/{{ dataset.pk }}</a></dd>
+                        {% endfor %}
+                        <dt>{% blocktrans %}Signbank Wiki{% endblocktrans %}</dt>
+                        <dd><a href ="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">https://github.com/Signbank/FinSL-signbank/wiki</a></dd>
                     </dl>
                 </div>
             </div>

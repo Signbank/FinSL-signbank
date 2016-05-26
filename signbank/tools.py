@@ -187,7 +187,7 @@ def reload_signbank(request=None):
 @user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def infopage(request):
 
-    from signbank.dictionary.models import Gloss, Translation, TranslationEnglish, Keyword, KeywordEnglish
+    from signbank.dictionary.models import Gloss, Translation, TranslationEnglish, Keyword, KeywordEnglish, Dataset
     glosscount = Gloss.objects.all().count()
     glosses_with_video = 0
     for g in Gloss.objects.all():
@@ -197,14 +197,9 @@ def infopage(request):
     keywords = Keyword.objects.all().count()
     translations_en_total = TranslationEnglish.objects.all().count()
     keywords_en = KeywordEnglish.objects.all().count()
-    try:
-        from signbank.settings.settings_secret import ELAN_URL
-        elan_ecv_url = ELAN_URL
-    except:
-        elan_ecv_url = ""
+    datasets = Dataset.objects.all()
     from signbank.video.models import GlossVideo
-    video_count_total =  GlossVideo.objects.all().count()
-
+    video_count_total = GlossVideo.objects.all().count()
 
     return render(request, "../bootstrap_templates/infopage.html",
                               {'glosscount': glosscount,
@@ -213,5 +208,5 @@ def infopage(request):
                               'keywords': keywords,
                               'translations_en_total': translations_en_total,
                               'keywords_en': keywords_en,
-                               'elan_ecv_url': elan_ecv_url,
-                               'video_count_total': video_count_total})
+                               'video_count_total': video_count_total,
+                               'datasets': datasets, })
