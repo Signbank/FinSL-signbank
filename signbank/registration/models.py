@@ -18,6 +18,9 @@ from django.contrib.sites.models import Site
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+# TODO: Remove this module and install the latest version to the environment as a 3rd party package.
+# This is some old version of the django-registration application.
+
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
 

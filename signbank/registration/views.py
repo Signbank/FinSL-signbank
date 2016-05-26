@@ -108,7 +108,6 @@ from django.contrib.sites.models import Site, RequestSite
 def mylogin(request, template_name='registration/login.html', redirect_field_name=REDIRECT_FIELD_NAME):
     """Displays the login form and handles the login action."""
 
-    # TODO: Check if this is working correctly
     # Replaced request.REQUEST with request.GET.get
     # Get the url to forward to after login
     # If GET has the value, use it, else use POST to get the url
