@@ -1,5 +1,4 @@
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 EMAIL_HOST = "smtp.webfaction.com"
 EMAIL_HOST_USER = "stevecassidy"
 EMAIL_HOST_PASSWORD = "k399doopl"
@@ -20,8 +19,6 @@ MEDIA_URL = 'http://www.auslan.org.au/media/auslan-video/'
 # trailing slash.
 ADMIN_MEDIA_PREFIX = 'http://djangomedia.stevecassidy.webfactional.com/'
 
-# Ditto for static files from the Auslan site (css, etc) with trailing slash
-AUSLAN_STATIC_PREFIX = "http://www.auslan.org.au/media/auslan-static/"
 
 # location of ffmpeg, used to convert uploaded videos
 FFMPEG_PROGRAM = "/home/stevecassidy/bin/ffmpeg.sh"

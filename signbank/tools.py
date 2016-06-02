@@ -1,4 +1,4 @@
-from settings.development import WSGI_FILE
+from settings.production import WSGI_FILE
 import os
 import shutil
 from HTMLParser import HTMLParser
@@ -201,7 +201,7 @@ def infopage(request):
     from signbank.video.models import GlossVideo
     video_count_total = GlossVideo.objects.all().count()
 
-    return render(request, "../bootstrap_templates/infopage.html",
+    return render(request, "../templates/infopage.html",
                               {'glosscount': glosscount,
                                'glosses_with_video': glosses_with_video,
                               'translations_total': translations_total,

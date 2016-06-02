@@ -93,14 +93,14 @@ class RegistrationForm(forms.Form):
         supplied.
 
         """
-        # TODO: line: "barf" gives error, what is it?
+
         new_user = RegistrationProfile.objects.create_inactive_user(username=self.cleaned_data['username'],
                                                                     password=self.cleaned_data[
                                                                         'password1'],
                                                                     email=self.cleaned_data[
                                                                         'email'],
                                                                     profile_callback=profile_callback)
-        #barf
+
         return new_user
 
 
@@ -219,16 +219,6 @@ yesnoChoices = (
     (1, _('yes')),
     # Translators: yesnoChoices
     (0, _('no')))
-
-import string
-
-
-def t(message): # TODO: Find out what this method it for, and delete it. Why would you need to substitute these?
-    """Replace $country and $language in message with dat from settings"""
-
-    tpl = string.Template(message)
-    return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
-
 
 class RegistrationFormSB(RegistrationFormUniqueEmail):
 

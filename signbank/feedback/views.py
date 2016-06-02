@@ -11,8 +11,6 @@ from signbank.feedback.forms import *
 def index(request):
     return render_to_response('feedback/index.html',
                               {
-                                  'language': settings.LANGUAGE_NAME,
-                                  'country': settings.COUNTRY_NAME,
                                   # Translators: Title for feedback views index
                                   'title': _("Leave Feedback")},
                               context_instance=RequestContext(request))
@@ -40,8 +38,6 @@ def generalfeedback(request):
 
     return render_to_response("feedback/generalfeedback.html",
                               {
-                                  'language': settings.LANGUAGE_NAME,
-                                  'country': settings.COUNTRY_NAME,
                                   # Translators: General Feedback title
                                   'title': _("General Feedback"),
                                   'form': form,
@@ -94,8 +90,6 @@ def missingsign(request):
 
     return render_to_response('feedback/missingsign.html',
                               {
-                                  'language': settings.LANGUAGE_NAME,
-                                  'country': settings.COUNTRY_NAME,
                                   # Translators Report Missing Sign title
                                   'title': _("Report a Missing Sign"),
                                   'posted': posted,
@@ -230,7 +224,6 @@ def recordsignfeedback(request, trans, n, total, trans_en, n_en, total_en):
                                'valid': valid,
                                'sourcepage': sourcepage,
                                'lastmatch': lastmatch,
-                               'language': settings.LANGUAGE_NAME,
                                },
                               context_instance=RequestContext(request))
 

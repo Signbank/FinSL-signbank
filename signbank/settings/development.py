@@ -1,33 +1,40 @@
 from signbank.settings.base import *
+# settings.base imports settings_secret
+# The following settings are defined in settings_secret:
+# SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, 'bootstrap_templates'),
+# Debug should be True in development but not in production!
+DEBUG = True
+
+# A list of directories where Django looks for translation files.
+LOCALE_PATHS = (
+    '/home/heilniem/signbank-fi/locale',
 )
 
-# To test emailing, use this to show emails in the console
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+# Example: "/var/www/example.com/static/"
+STATIC_ROOT = ''
+# This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
+# is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, "media"),
+)
 
-PRIMARY_CSS = "bootstrap_css/signbank.css"
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
+# URL that handles the media served from MEDIA_ROOT, used for managing stored files.
+# It must end in a slash if set to a non-empty value.
+MEDIA_URL = '/media/'
 
-# defines the aspect ratio for videos
-# VIDEO_ASPECT_RATIO = 360.0/640.0
-
-# do we show the 'advanced search' form and implement 'safe' search?
-# ADVANCED_SEARCH = False
-
-# which definition fields do we show and in what order?
-# DEFINITION_FIELDS = []
-
-
-# ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_idgloss']
-
-# Fixes the problem with merge TODO: Is this needed anymore?
-# SOUTH_MIGRATION_MODULES = {
-#    'tagging': 'tagging.south_migrations',
-# }
-
-
+# Within MEDIA_ROOT we store newly uploaded gloss videos in this directory
 GLOSS_VIDEO_DIRECTORY = 'glossvideo'
+
+# location and URL for uploaded files
+UPLOAD_ROOT = MEDIA_ROOT + "upload/"
+UPLOAD_URL = MEDIA_URL + "upload/"
+
+# To test emailing, use this to show emails in the console
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGGING = {
     'version': 1,
@@ -48,29 +55,6 @@ LOGGING = {
     },
 }
 
-import mimetypes
-
-mimetypes.add_type("video/mp4", ".mov", True)
-
-
-# a list of tags we're allowed to use
-XALLOWED_TAGS = ['',
-                 'workflow:needs video',
-                 'workflow:redo video',
-                 'workflow:problematic',
-                 'corpus:attested',
-                 'lexis:doubtlex',
-                 'phonology:alternating',
-                 'phonology:dominant hand only',
-                 'phonology:double handed',
-                 'phonology:forearm rotation',
-                 'phonology:handshape change',
-                 'phonology:onehand',
-                 'phonology:parallel',
-                 'phonology:symmetrical',
-                 'phonology:two handed',
-                 ]
-
-DATABASE_NAME = '/home/heilniem/signbank-fi/signbank.db'
-# TODO: Fix where this points at
-WSGI_FILE = '/var/www2/signbank/live/virtualenv/signbank/lib/python2.7/site-packages/signbank/wsgi.py'
+# Turn on lots of logging
+DO_LOGGING = True
+LOG_FILENAME = "debug.log"

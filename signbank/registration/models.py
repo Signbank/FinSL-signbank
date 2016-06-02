@@ -241,15 +241,6 @@ class RegistrationProfile(models.Model):
 
 from django.contrib.auth import models as authmodels
 
-import string
-
-
-def t(message):
-    """Replace $country and $language in message with dat from settings"""
-
-    tpl = string.Template(message)
-    return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
-
 class UserProfile(models.Model):
 
     """Extended profile for users of the site"""

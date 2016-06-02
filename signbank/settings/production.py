@@ -1,28 +1,76 @@
 from signbank.settings.base import *
-from signbank.settings.local import *
+# settings.base imports settings_secret
+# The following settings are defined in settings_secret:
+# SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
 
-DEBUG = True
-TEMPLATE_DEBUG = False
+# IMPORTANT: Debug should always be False in production
+DEBUG = False
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cabici_pg',
-        'USER': 'cabici_pg',
-        'PASSWORD': 'pigeon59',
-        'HOST': '',
-        'PORT': '',
+# IMPORTANT: The hostname that this signbank runs on, this prevents HTTP Host header attacks
+ALLOWED_HOSTS = ['signbank.csc.fi']
+
+# A list of directories where Django looks for translation files.
+LOCALE_PATHS = (
+    '/home/signbank/signbank-fi/locale',
+)
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+# Example: "/var/www/example.com/static/"
+STATIC_ROOT = ''
+# This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
+# is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, "media"),
+)
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+MEDIA_ROOT = '/home/signbank/signbank-fi/media'
+# URL that handles the media served from MEDIA_ROOT, used for managing stored files.
+# It must end in a slash if set to a non-empty value.
+MEDIA_URL = '/media/'
+
+# Within MEDIA_ROOT we store newly uploaded gloss videos in this directory
+GLOSS_VIDEO_DIRECTORY = 'glossvideo'
+
+# Location and URL for uploaded files.
+UPLOAD_ROOT = MEDIA_ROOT + "upload/"
+UPLOAD_URL = MEDIA_URL + "upload/"
+
+# The backend to use for sending emails.
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error when DEBUG=False.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
     }
 }
 
+# Turn on lots of logging
+DO_LOGGING = False
+LOG_FILENAME = "debug.log"
 
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = "/home/stevecassidy/webapps/cabicinet_static/"
-
-# should be customised on the production server and not kept in VC
-SECRET_KEY = '^g=q21r_nnmbz49d!vs*2gvplfsd((02l-y9b@&amp;t3k2r3c$*u&amp;2la5!%s'
-
-ALLOWED_HOSTS = ['cabici.net']
+# This points to the wsgi.py file that is used in tools.py to make web server "reload" the application.
+WSGI_FILE = '/home/signbank/signbank-fi/signbank/wsgi.py'

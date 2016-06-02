@@ -1,73 +1,55 @@
 from signbank.settings.settings_secret import *
-# Django settings for signbank project.
-
+from django.utils.translation import ugettext_lazy as _
 import os
+# Django settings for Signbank project.
+# *** In development run bin/development.py to use development settings.
+# *** In production run bin/production.py to use production settings.
+# settings_secret.py is imported in this settings file, you should put the sensitive information in that file.
 
+# Absolute path to the base directory of the application.
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+# Path to the project directory.
 PROJECT_DIR = os.path.dirname(BASE_DIR)
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
+# A list in the same format as ADMINS that specifies who should get broken link notifications
+# when BrokenLinkEmailsMiddleware is enabled. ADMINS are set in secret_settings.
 MANAGERS = ADMINS
 
+# A string representing the time zone for this installation.
 TIME_ZONE = 'Europe/Helsinki'
 
-# LANGUAGE_CODE = 'en-us'
+# A string representing the language code for this installation. This should be in standard language ID format.
+# For example, U.S. English is "en-us".
 LANGUAGE_CODE = 'fi'
 
+# The ID, as an integer, of the current site in the django_site database table.
 SITE_ID = 1
+# A boolean that specifies whether Django's translation system should be enabled.
 USE_I18N = True
+# A boolean that specifies if localized formatting of data will be enabled by default or not.
 USE_L10N = True
+# A boolean that specifies if datetimes will be timezone-aware by default or not.
 USE_TZ = True
-
-LOCALE_PATHS = (
-    '/home/heilniem/signbank-fi/locale',
-)
-
+# A list of all available languages.
+# The list is a list of two-tuples in the format (language code, language name) - for example, ('ja', 'Japanese').
 LANGUAGES = (
-    ('fi', 'Finnish'),
-    ('en', 'English'),
+    ('fi', _('Finnish')),
+    ('en', _('English')),
 )
 
-MEDIA_ROOT = '/home/heilniem/signbank-fi/media'
-MEDIA_URL = '/media/'
-
-# Ditto for static files from the Auslan site (css, etc) with trailing slash
-AUSLAN_STATIC_PREFIX = "/static/"
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
+# URL to use when referring to static files located in STATIC_ROOT.
+# Example: "/static/" or "http://static.example.com/"
 STATIC_URL = '/static/'
-
-# Additional locations of static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, "media"),
-)
-
-
-# List of finder classes that know how to find static files in
-# various locations.
+# The list of finder backends that know how to find static files in various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+# Used by stylesheet.py to allow usage of the template tag {% primary_css %]
+PRIMARY_CSS = "bootstrap_css/signbank.css"
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    #     'django.template.loaders.eggs.Loader',
-)
-# The order of middleware classes is critical
+# A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -81,40 +63,50 @@ MIDDLEWARE_CLASSES = (
     'reversion.middleware.RevisionMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.template.context_processors.debug",
-    "django.template.context_processors.media",
-    "django.template.context_processors.static",
-    "django.template.context_processors.i18n",
-    "django.template.context_processors.tz",
-    "django.template.context_processors.request",
-    "django.contrib.auth.context_processors.auth",
-    "django.contrib.messages.context_processors.messages",
-    "signbank.pages.context_processors.menu",
-    "django.template.context_processors.csrf",
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            # insert your TEMPLATE_DIRS here
+            os.path.join(PROJECT_DIR, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.csrf',
+                'signbank.pages.context_processors.menu',
+            ],
+        },
+    },
+]
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, 'templates'),
-)
-
-# Email backend used to send email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# add the Email backend to allow logins using email as username
+# A list of authentication backend classes (as strings) to use when attempting to authenticate a user.
 AUTHENTICATION_BACKENDS = (
     "signbank.registration.EmailBackend",
     "django.contrib.auth.backends.ModelBackend",
 )
 
+# A list of IP addresses, as strings: Allow the debug() context processor to add some variables to the template context.
 INTERNAL_IPS = ('127.0.0.1',)
 
+# A string representing the full Python import path to your root URLconf. For example: "mydjangoapps.urls".
 ROOT_URLCONF = 'signbank.urls'
 
-# Python dotted path to the WSGI application used by Django's runserver.
+# The full Python path of the WSGI application object that Django's built-in servers (e.g. runserver) will use.
 WSGI_APPLICATION = 'signbank.wsgi.application'
 
-# The order of apps matters!
+# A list of strings designating all applications that are enabled in this Django installation.
+# Dotted Python path to: an application configuration class (preferred), or a package containing an application.
+# The order of the apps matter!
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,90 +128,26 @@ INSTALLED_APPS = (
     'tagging',
 )
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
-
-# TODO: Test the logging and improve it
-# turn on lots of logging or not
-DO_LOGGING = False
-LOG_FILENAME = "debug.log"
-
-# Application settings for signbank
-
-# Settings controlling page contents
-
-# what do we call this signbank?
-LANGUAGE_NAME = "FinSL"
-COUNTRY_NAME = "Finland"
-
-# do we implement safe search for anonymous users?
-# if True, any gloss that is tagged lexis:crude will be removed from
-# search results for users who are not logged in
+# If True, any gloss that is tagged lexis:crude will be removed from search results for users who are not logged in.
 ANON_SAFE_SEARCH = False
 
-# do we show the tag based search for anonymous users?
-ANON_TAG_SEARCH = False
-
-# TODO: Do something with these, remove or see if they need correction?
-# which definition fields do we show and in what order?
-DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
-                     'deictic', 'modifier', 'question', 'augment', 'note']
-
+# Set the fields to show in search results (translation equivalents are defined in the template)
 ADMIN_RESULT_FIELDS = ['idgloss', 'idgloss_en', 'annotation_comments']
-# If you want to show English glosses, add these back to ADMIN_RESULT_FIELDS:
-# 'idgloss_en'
 
-# location and URL for uploaded files
-UPLOAD_ROOT = MEDIA_ROOT + "upload/"
-UPLOAD_URL = MEDIA_URL + "upload/"
-
-# Location for comment videos relative to MEDIA_ROOT
+# Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
 COMMENT_VIDEO_LOCATION = "comments"
-# Location for videos associated with pages
+# Location for videos associated with pages, pages videos are uploaded for a static page.
 PAGES_VIDEO_LOCATION = "pages"
-# location for upload of videos relative to MEDIA_ROOT
-# videos are stored here prior to copying over to the main
+# Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main
 # storage location
 VIDEO_UPLOAD_LOCATION = "upload"
 
-# within MEDIA_ROOT we store newly uploaded videos in this directory
-GLOSS_VIDEO_DIRECTORY = "video"
-
-# which fields from the Gloss model should be included in the quick update
-# form on the sign view
-QUICK_UPDATE_GLOSS_FIELDS = ['dialect']
-
-# do we allow people to register for the site
+# Allow people to register to the site. This is related to django-registration (which is included in source atm).
 ALLOW_REGISTRATION = True
-
+# How many days a user has until activation time expires. Django-registration related setting.
 ACCOUNT_ACTIVATION_DAYS = 7
 
+# The URL where requests are redirected after login when the contrib.auth.login view gets no next parameter.
 LOGIN_REDIRECT_URL = '/'
 
 # location of ffmpeg, used to convert uploaded videos
@@ -227,16 +155,11 @@ FFMPEG_PROGRAM = "../ffmpeg"
 FFMPEG_TIMEOUT = 60
 FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
 
-# defines the aspect ratio for videos
+# Defines the aspect ratio for videos
 VIDEO_ASPECT_RATIO = 3.0 / 4.0
 
-# settings for django-tagging
+# For django-tagging: force tags to be lowercase.
 FORCE_LOWERCASE_TAGS = True
 
-# TODO: Redo
-# a list of tags we're allowed to use
-ALLOWED_TAGS = ['',
-                'workflow:needs video',
-                'workflow:redo video',
-                'workflow:problematic',
-                ]
+import mimetypes
+mimetypes.add_type("video/mp4", ".mov", True)

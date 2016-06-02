@@ -7,100 +7,6 @@ import string
 
 # models to represent the feedback from users in the site
 
-# Translators: isAuslanChoices
-isAuslanChoices = ((1, _("yes")),
-                   # Translators: isAuslanChoices
-                   (2, _("Perhaps")),
-                   # Translators: isAuslanChoices
-                   (3, _("Don't know")),
-                   # Translators: isAuslanChoices
-                   (4, _("Don't think so")),
-                   # Translators: isAuslanChoices
-                   (5, _("No")),
-                   # Translators: isAuslanChoices
-                   (0, _("N/A"))
-                   )
-
-# TODO: Implement Finnish choices here, or remove the whole thing
-if settings.LANGUAGE_NAME == "BSL":
-    whereusedChoices = (('Belfast', 'Belfast'),
-                        ('Birmingham', 'Birmingham'),
-                        ('Bristol', 'Bristol'),
-                        ('Cardiff', 'Cardiff'),
-                        ('Glasgow', 'Glasgow'),
-                        ('London', 'London'),
-                        ('Manchester', 'Manchester'),
-                        ('Newcastle', 'Newcastle'),
-                        ('Other', 'Other (note in comments)'),
-                        ("Don't Know", "Don't Know"),
-                        ('N/A', 'N/A'),
-                        )
-else:
-    whereusedChoices = (('auswide', 'Australia Wide'),
-                        ('dialectN', 'Dialect Sign (North)'),
-                        ('dialectS', 'Dialect Sign (South)'),
-                        ('nsw', "New South Wales"),
-                        ('vic', "Victoria"),
-                        ('qld', "Queensland"),
-                        ('wa', "Western Australia"),
-                        ('sa', "South Australia"),
-                        ('tas', "Tasmania"),
-                        ('nt', "Northern Territory"),
-                        ('act', "Australian Capital Territory"),
-                        ('dk', "Don't Know"),
-                        ('n/a', "N/A")
-                        )
-# Translators: likedChoices (feedback)
-likedChoices = ((1, _("yes")),
-                # Translators: likedChoices
-                (2, _("A little")),
-                # Translators: likedChoices
-                (3, _("Don't care")),
-                # Translators: likedChoices
-                (4, _("Not much")),
-                # Translators: likedChoices
-                (5, _("No")),
-                # Translators: likedChoices
-                (0, _("N/A"))
-                )
-# Translators: useChoices (feedback)
-useChoices = ((1, _("yes")),
-              # Translators: useChoices
-              (2, _("Sometimes")),
-              # Translators: useChoices
-              (3, _("Not Often")),
-              # Translators: useChoices
-              (4, _("No")),
-              # Translators: useChoices
-              (0, _("N/A"))
-              )
-# Translators: suggestedChoices (feedback)
-suggestedChoices = ((1, _("yes")),
-                    # Translators: suggestedChoices
-                    (2, _("Sometimes")),
-                    # Translators: suggestedChoices
-                    (3, _("Don't Know")),
-                    # Translators: suggestedChoices
-                    (4, _("Perhaps")),
-                    # Translators: suggestedChoices
-                    (5, _("No")),
-                    # Translators: suggestedChoices
-                    (0, _("N/A"))
-                    )
-# Translators: correctChoices (feedback)
-correctChoices = ((1, _("yes")),
-                  # Translators: correctChoices
-                  (2, _("Mostly Correct")),
-                  # Translators: correctChoices
-                  (3, _("Don't Know")),
-                  # Translators: correctChoices
-                  (4, _("Mostly Wrong")),
-                  # Translators: correctChoices
-                  (5, _("No")),
-                  # Translators: correctChoices
-                  (0, _("N/A"))
-                  )
-
 handformChoices = (
     # Translators: Handform choice (feedback)
     (1, _('One handed')),
@@ -257,13 +163,6 @@ handinteractionChoices = ((0, _('None')),
                           )
 
 
-def t(message):
-    """Replace $country and $language in message with dat from settings"""
-
-    tpl = string.Template(message)
-    return tpl.substitute(country=settings.COUNTRY_NAME, language=settings.LANGUAGE_NAME)
-
-
 STATUS_CHOICES = (('unread', 'unread'),
                   ('read', 'read'),
                   ('deleted', 'deleted'),
@@ -318,22 +217,6 @@ class SignFeedback(models.Model):
         _(
             "Is there a keyword or keyword/s that DO NOT belong with this sign? Please provide the list of keywords below"),
         blank=True)
-    # Translators: Question (sign feedback)
-    isAuslan = models.IntegerField(
-        _(t("Is this sign an $language Sign?")), choices=isAuslanChoices)
-    # Translators: Question (sign feedback)
-    whereused = models.CharField(
-        _("Where is this sign used?"), max_length=10, choices=whereusedChoices)
-    # Translators: Question (sign feedback)
-    like = models.IntegerField(_("Do you like this sign?"), choices=likedChoices)
-    # Translators: Question (sign feedback)
-    use = models.IntegerField(_("Do you use this sign?"), choices=useChoices)
-    # Translators: Question (sign feedback)
-    suggested = models.IntegerField(
-        _("If this sign is a suggested new sign, would you use it?"), default=3, choices=suggestedChoices)
-    # Translators: Question (sign feedback)
-    correct = models.IntegerField(
-        _("Is the information about the sign correct?"), choices=correctChoices)
     # Translators: Question (sign feedback)
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='unread')

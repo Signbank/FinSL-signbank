@@ -680,25 +680,6 @@ class Gloss(models.Model):
 
         return self.get_video() is not None
 
-    def published_definitions(self):
-        """Return a query set of just the published definitions for this gloss
-        also filter out those fields not in DEFINITION_FIELDS"""
-
-        defs = self.definition_set.filter(published__exact=True)
-
-        return [d for d in defs if d.role in settings.DEFINITION_FIELDS]
-
-    def definitions(self):
-        """Gather together the definitions for this gloss"""
-
-        defs = dict()
-        for d in self.definition_set.all().order_by('count'):
-            if not defs.has_key(d.role):
-                defs[d.role] = []
-
-            defs[d.role].append(d.text)
-        return defs
-
     def options_to_json(self, options):
         """Convert an options list to a json dict"""
 
