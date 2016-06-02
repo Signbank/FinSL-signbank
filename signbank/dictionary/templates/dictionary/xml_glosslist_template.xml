@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CV_RESOURCE AUTHOR="" DATE="{% now "c" %}" VERSION="0.2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
-    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00130975-001"
-        LANG_ID="und" LANG_LABEL="undetermined (und)"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138509-001" LANG_ID="fin" LANG_LABEL="Finnish (fin)"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138502-001" LANG_ID="eng" LANG_LABEL="English (eng)"/>
     <CONTROLLED_VOCABULARY CV_ID="{{dataset.name}}">
-        <DESCRIPTION LANG_REF="und"/>
+        <DESCRIPTION LANG_REF="fin"/>
+        <DESCRIPTION LANG_REF="eng"/>
         {% for gloss in query_set %}
             <CV_ENTRY_ML CVE_ID="glossid{{gloss.pk}}">
-                <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="und">{{gloss.idgloss}}</CVE_VALUE>
+                <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="fin">{{gloss.idgloss}}</CVE_VALUE>
+                <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="eng">{{gloss.idgloss_en}}</CVE_VALUE>
             </CV_ENTRY_ML>
          {% endfor %}
         </CONTROLLED_VOCABULARY>
