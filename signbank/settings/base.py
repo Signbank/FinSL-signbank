@@ -191,7 +191,7 @@ ANON_TAG_SEARCH = False
 DEFINITION_FIELDS = ['general', 'noun', 'verb', 'interact',
                      'deictic', 'modifier', 'question', 'augment', 'note']
 
-ADMIN_RESULT_FIELDS = ['idgloss', 'annotation_comments']
+ADMIN_RESULT_FIELDS = ['idgloss', 'idgloss_en', 'annotation_comments']
 # If you want to show English glosses, add these back to ADMIN_RESULT_FIELDS:
 # 'idgloss_en'
 
