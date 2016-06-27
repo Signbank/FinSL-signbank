@@ -73,16 +73,16 @@ html {
     padding-right: 10px;
 }
 #logojy {
-    max-width: 123px;
-    max-height: 60px;
+    max-width: 140px;
+    max-height: 70px;
     float: left;
     padding-left: 10px
 }
 #logokl {
     max-width: 187px;
-    max-height: 60px;
+    max-height: 70px;
     float: left;
-    padding-left: 10px
+    padding-left: 30px
 }
 #license {
     padding-top: 15px;
