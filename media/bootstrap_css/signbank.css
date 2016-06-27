@@ -76,13 +76,12 @@ html {
     max-width: 140px;
     max-height: 70px;
     float: left;
-    padding-left: 10px
+    margin-right: 20px;
 }
 #logokl {
     max-width: 187px;
     max-height: 70px;
     float: left;
-    padding-left: 30px
 }
 #license {
     padding-top: 15px;
