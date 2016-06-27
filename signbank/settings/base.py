@@ -132,7 +132,9 @@ INSTALLED_APPS = (
 ANON_SAFE_SEARCH = False
 
 # Set the fields to show in search results (translation equivalents are defined in the template)
-ADMIN_RESULT_FIELDS = ['idgloss', 'idgloss_en', 'annotation_comments']
+ADMIN_RESULT_FIELDS = ['dataset', 'idgloss', 'idgloss_en', 'annotation_comments']
+# Fields that are sortable in admin_search_results template
+SORTABLE_FIELDS = ['idgloss', 'idgloss_en']
 
 # Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
 COMMENT_VIDEO_LOCATION = "comments"

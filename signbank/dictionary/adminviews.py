@@ -27,6 +27,7 @@ class GlossListView(ListView):
         context['searchform'] = GlossSearchForm(self.request.GET)
         context['glosscount'] = Gloss.objects.all().count()
         context['ADMIN_RESULT_FIELDS'] = settings.ADMIN_RESULT_FIELDS
+        context['SORTABLE_FIELDS'] = settings.SORTABLE_FIELDS
         if not self.request.GET.has_key('order'):
             context['order'] = 'idgloss'
         else:

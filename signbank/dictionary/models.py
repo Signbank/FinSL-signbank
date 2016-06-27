@@ -410,11 +410,11 @@ class Gloss(models.Model):
             # First, try to give the human readable choice value back
             try:
                 result.append(
-                    (fname, getattr(self, 'get_' + field + '_display')()))
+                    (fname, getattr(self, 'get_' + field + '_display')(), field))
 
             # If that doesn't work, give the raw value back
             except AttributeError:
-                result.append((fname, getattr(self, field)))
+                result.append((fname, getattr(self, field), field))
 
         return result
 

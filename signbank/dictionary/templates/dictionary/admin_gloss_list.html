@@ -178,39 +178,44 @@ function clearForm(myFormElement) {
 {% if object_list %}
 <table class='table table-condensed'>
     <thead>
-      <tr>
-         {% for name, value in object_list.0.admin_fields %}
-            {# The number in the forloop counter means where to insert the table title for these fields #}
-            {% if forloop.counter == 1 %}
-                <th>{{ name }} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'idgloss' or request.GET.order == 'idgloss' %}&order=-idgloss{% else %}&order=idgloss{% endif %}">
+        <tr>
+            {% for name, value, field in object_list.0.admin_fields %} {# Name = verbose_name, value = fields value, field = hardcoded fieldname #}
+            {% if field in SORTABLE_FIELDS %} {# If field in settings.SORTABLE_FIELDS, add sort link #}
+                <th>{{ name }} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == field or request.GET.order == field %}&order=-{{field}}{% else %}&order={{field}}{% endif %}">
                     <span class="{% if request.GET.order|slice:":1" == "-" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
-            {% elif forloop.counter == 2 %}
-               {# This inserts the desired name for the second label - and adds translation equivalents after it #}
-               <th>{{ name }}</th>
-               <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
+            {% elif field == 'annotation_comments' %}
+                {# Add 'Translation equivalents' just before 'annotation_comments' #}
+                <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
+                <th>{{ name }}</th>
             {% else %}
-               <th>{{ name }}</th>
+                <th>{{ name }}</th>
             {% endif %}
-         {% endfor %}
-           <th>Tags</th>
-      </tr>
+            {% endfor %}
+                <th>Tags</th>
+        </tr>
     </thead>
     <tbody>
     {% for gloss in object_list %}
         {# Here we decide/change the row background colors #}
         <tr {% if gloss.locked %}class="success"{% elif gloss.has_video %}class="warning"{% else %}class="danger"{% endif %}>
-            {% for name, value in gloss.admin_fields %}
-                {% if forloop.first %}{# This forloop.counter adds links to first columns #}
+            {% for name, value, field in gloss.admin_fields %}
+                {% if field == 'idgloss' or field == 'idgloss_en' %}{# Make these fields links #}
                 <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
-                {# This forloop.counter adds regular values, and then adds after them translation equiv values #}
-                {% elif forloop.counter == 2 %}
-                <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{ value }}</a></td>
-                <td>
-                {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
-                    {% if forloop.last %}{{ translation.translation }}
-                    {% else %}{{ translation.translation }},{% endif %}
-                {% endfor %}
+                {% elif field == 'annotation_comments' %}
+                <td> {# First add translation equivalents before annotation_comments #}
+                {% if request.LANGUAGE_CODE == 'fi' %} {# if language is Finnish, use finnish translantion equivalents #}
+                    {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
+                        {% if forloop.last %}{{ translation.translation }}
+                        {% else %}{{ translation.translation }},{% endif %}
+                    {% endfor %}
+                {% else %} {# if language not Finnish, use English translation equivalents #}
+                    {% for translationenglish in gloss.translationenglish_set.all %}
+                        {% if forloop.last %}{{ translationenglish.translation_english }}
+                        {% else %}{{ translationenglish.translation_english }},{% endif %}
+                    {% endfor %}
+                {% endif %}
                 </td>
+                <td>{{ value }}</td> {# Now add annotation_comments #}
                 {% else %}
                 <td>{{ value }}</td>
                 {% endif %}
