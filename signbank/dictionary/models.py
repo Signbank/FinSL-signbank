@@ -648,6 +648,13 @@ class Gloss(models.Model):
             return None
 
 
+    def get_gloss_videos(self):
+        """Return a list of videos for a Gloss"""
+        # TODO: This is only for testing, remove this todo when it is done
+        from signbank.video.models import GlossVideo
+        return GlossVideo.objects.filter(gloss=self)
+
+
     def get_video_path(self):
         """return 'glossvideo/' + \
                      unicode(self.idgloss[:2]) + '/' + unicode(self.idgloss) + '-' + unicode(self.pk) + '.mp4'"""

@@ -161,11 +161,16 @@
                 {% if gloss.get_video %}
                 <!-- {{ gloss.get_video }} -->
                 <div id="playergloss">
-                    <video id="glossvid{{gloss.id}}" width="450" preload="auto" controls autoplay muted>
-                        {# Had to put that id-value in the url to get around browser/server caching the videos issue #}
-                        <source src="{{ STATIC_URL }}{{gloss.get_video}}?id={{gloss.get_video_id}}" type="video/mp4">
-                        {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                    </video>
+                    {% for glossvideo in gloss.get_gloss_videos %}
+                        {% if forloop.first %}
+                            <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="auto" controls autoplay muted>
+                        {% else %}
+                            <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="metadata" controls muted>
+                        {% endif %}
+                                <source src="{{ STATIC_URL }}{{glossvideo.videofile}}" type="video/mp4">
+                                {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                            </video>
+                    {% endfor %}
                 </div>
                 {% else %}
                 <div id="player">
