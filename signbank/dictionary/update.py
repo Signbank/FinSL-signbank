@@ -42,23 +42,23 @@ def add_gloss(request):
 
 def update_gloss(request, glossid):
     """View to update a gloss model from the jeditable jquery form
-    We are sent one field and value at a time, return the new value
-    once we've updated it."""
+    We are sent one field and value at a time, return the new value once we've updated it."""
 
     # Make sure that the user has the rights to change a gloss
     if not request.user.has_perm('dictionary.change_gloss'):
         # Translators: HttpResponseForbidden for update_gloss
         return HttpResponseForbidden(_("Gloss Update Not Allowed"))
 
-    # If the Gloss object is locked, don't allow editing it
-    if get_object_or_404(Gloss, id=glossid).locked:
+    # Get the gloss object or raise a Http404 exception if the object does not exist.
+    gloss = get_object_or_404(Gloss, id=glossid)
+
+    # If the Gloss object is locked, don't allow editing it.
+    if gloss.locked:
         return HttpResponseForbidden(_("Gloss Update Not Allowed: Gloss is locked from editing"))
 
     if request.method == "POST":
-        # TODO: Change all field checks from startswith to equals
         gloss = get_object_or_404(Gloss, id=glossid)
         old_idgloss = unicode(gloss)
-
 
         field = request.POST.get('id', '')
         value = request.POST.get('value', '')
@@ -110,23 +110,8 @@ def update_gloss(request, glossid):
 
             return update_morphology_definition(gloss, field, value)
 
-        elif field == 'language':
-            # expecting possibly multiple values
-
-            try:
-                gloss.language.clear()
-                for value in values:
-                    lang = Language.objects.get(name=value)
-                    gloss.language.add(lang)
-                gloss.save()
-                newvalue = ", ".join([unicode(g) for g in gloss.language.all()])
-            except:
-                # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest("%s %s" % _("Uknown Language"), values, content_type='text/plain')
-
         elif field == 'dialect':
             # expecting possibly multiple values
-
             try:
                 gloss.dialect.clear()
                 for value in values:
@@ -174,9 +159,6 @@ def update_gloss(request, glossid):
                 gloss.save()
                 newvalue = ''
             else:
-
-                # TODO: Check these changes later on
-                # gloss.__setattr__(field, value)
                 # See if the field is a ForeignKey
                 if gloss._meta.get_field_by_name(field)[0].get_internal_type() == "ForeignKey":
                     gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
@@ -209,30 +191,9 @@ def update_gloss(request, glossid):
 
             # If field is idgloss and if the value has changed
             # Then change the filename on system and in glossvideo.videofile
-            # TODO: Implement this as a method, and place it someplace useful
             if field == 'idgloss' and newvalue != old_idgloss:
-                try:
-                    glossvideos = GlossVideo.objects.filter(gloss=gloss)
-                    for vfile in glossvideos:
-                        # See if file has .bak added by reversion
-                        if not vfile.videofile.path.endswith('.bak'):
-                            new_path = gloss.get_video_path()
-                        else:
-                            # If filename has .bak, count how many times it has it and add it to the end of new_path
-                            bakcount = unicode(vfile.videofile.path).count('.bak') * '.bak'
-                            new_path = gloss.get_video_path() + bakcount
+                GlossVideo.rename_glosses_videos(gloss)
 
-                        new_path_full = os.path.join(settings.MEDIA_ROOT, new_path)
-                        os.renames(vfile.videofile.path, new_path_full)
-                        vfile.videofile.name = new_path
-                        vfile.save()
-
-                except ObjectDoesNotExist:
-                    # If gloss has no video, do nothing (don't need to do anything)
-                    pass
-                except IOError:
-                    # gloss.idgloss = old_idgloss
-                    pass
 
         return HttpResponse(newvalue, content_type='text/plain')
 

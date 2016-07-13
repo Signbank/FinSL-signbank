@@ -22,21 +22,26 @@ def addvideo(request):
 
             vfile = form.cleaned_data['videofile']
 
-            # construct a filename for the video, use idgloss+gloss id
-            vfile.name = gloss.idgloss + "-" + str(gloss.pk) + ".mp4"
+            video = GlossVideo(gloss=gloss)
+            # Save the GlossVideo to get a primary key
+            video.save()
 
-            redirect_url = form.cleaned_data['redirect']
+            # Construct a filename for the video
+            vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk)
 
             # deal with any existing video for this sign
-            oldvids = GlossVideo.objects.filter(gloss=gloss)
-            for v in oldvids:
-                v.reversion()
+            #oldvids = GlossVideo.objects.filter(gloss=gloss)
+            #for v in oldvids:
+            #    v.reversion()
 
-            video = GlossVideo(videofile=vfile, gloss=gloss)
+            video.videofile=vfile
             video.save()
 
             # TODO: provide some feedback that it worked (if
             # immediate display of video isn't working)
+
+            redirect_url = form.cleaned_data['redirect']
+
             return redirect(redirect_url)
 
     # if we can't process the form, just redirect back to the
@@ -97,7 +102,7 @@ def iframe(request, videoid):
 
     try:
         gloss = Gloss.objects.get(pk=videoid)
-        glossvideo = gloss.get_video()
+        glossvideo = gloss.get_video() # TODO: Why is this getting the video from 'dictionary.gloss'?
 
         videourl = glossvideo.get_absolute_url()
 

@@ -22,28 +22,6 @@ def keyword_value_list(request, prefix=None):
     kwds_list = [k.text for k in kwds]
     return HttpResponse("\n".join(kwds_list), content_type='text/plain')
 
-# Used by missing_video_view
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
-def missing_video_list():
-    """A list of signs that don't have an
-    associated video file"""
-
-    glosses = Gloss.objects.filter(in_web_dictionary__exact=True)
-    for gloss in glosses:
-        if not gloss.has_video():
-            yield gloss
-
-# Don't find any use for this method
-# I guess it looks for missing videos
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
-def missing_video_view(request):
-    """A view for the above list"""
-
-    glosses = missing_video_list()
-
-    return render_to_response("dictionary/missingvideo.html",
-                              {'glosses': glosses})
-
 
 @user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
 def try_code(request):

@@ -8,13 +8,9 @@ from django.dispatch import receiver
 import os
 from django.utils.translation import ugettext_lazy as _
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponseServerError
-
 from convertvideo import extract_frame, convert_video
-from signbank.dictionary.models import Gloss
 
 
-# TODO: Check if this is ok to inherit from object, had to fix this to make migration possible
 class VideoPosterMixin(object):
     """Base class for video models that adds a method
     for generating poster images
@@ -109,7 +105,7 @@ import shutil
 class GlossVideoStorage(FileSystemStorage):
     """Implement our shadowing video storage system"""
 
-    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
+    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.STATIC_URL): # TODO: base_url: media or static?
         super(GlossVideoStorage, self).__init__(location, base_url)
 
     def get_valid_name(self, name):
@@ -133,7 +129,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
 
     videofile = models.FileField(
         "video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
-    gloss = models.ForeignKey(Gloss)
+    gloss = models.ForeignKey('dictionary.Gloss')
 
     # video version, version = 0 is always the one that will be displayed
     # we will increment the version (via reversion) if a new video is added
@@ -141,47 +137,60 @@ class GlossVideo(models.Model, VideoPosterMixin):
     # Translators: GlossVideo: version
     version = models.IntegerField(_("Version"), default=0)
 
+    # TODO: Keep this or not?
     def reversion(self, revert=False):
         """We have a new version of this video so increase
-        the version count here and rename the video
-        to video.mp4.bak.V where V is the version number
-
+        the version count
         unless revert=True, in which case we go the other
-        way and decrease the version number, if version=0
-        we delete ourselves"""
+        way and decrease the version number"""
 
         if revert:
-            print "REVERT VIDEO", self.videofile.name, self.version
-            if self.version == 0:
-                print "DELETE VIDEO VIA REVERSION", self.videofile.name
-                self.delete_files()
-                self.delete()
-                return
-            else:
-                # remove .bak from filename and decrement the version
-                (newname, bak) = os.path.splitext(self.videofile.name)
-                if bak != '.bak':
-                    # hmm, something bad happened
-                    #raise Http500()
-                    raise HttpResponseServerError()
-                self.version -= 1
+            self.version -= 1
         else:
-            # find a name for the backup, a filename that isn't used already
-            newname = self.videofile.name
-            while os.path.exists(os.path.join(storage.location, newname)):
-                self.version += 1
-                newname += ".bak"
+            self.version += 1
 
-        # now do the renaming
-
-        os.rename(os.path.join(storage.location, self.videofile.name),
-                  os.path.join(storage.location, newname))
-        # also remove the post image if present, it will be regenerated
+        # Remove the post image if present, it will be regenerated
         poster = self.poster_path(create=False)
         if poster is not None:
             os.unlink(poster)
-        self.videofile.name = newname
         self.save()
+
+    @staticmethod
+    def create_filename(idgloss, glosspk, videopk):
+        """Returns a correctly named filename"""
+        return idgloss + "-" + str(glosspk) + "_vid" + str(videopk) + ".mp4"
+
+    @staticmethod
+    def gloss_has_videos(gloss):
+        """Returns True if the specified Gloss has any videos"""
+        return True if GlossVideo.objects.filter(gloss=gloss).exists() else False
+
+    @staticmethod
+    def get_glosses_videos(gloss):
+        """Returns all glossvideos for selected Gloss"""
+        return GlossVideo.objects.filter(gloss=gloss)
+
+    @staticmethod
+    def rename_glosses_videos(gloss):
+        """Renames the filenames of selected Glosses videos to match the Gloss name"""
+        glossvideos = GlossVideo.objects.filter(gloss=gloss)
+        for glossvideo in glossvideos:
+            # Create the base filename for the video based on the new gloss.idgloss
+            new_filename = GlossVideo.create_filename(gloss.idgloss, gloss.pk, glossvideo.pk)
+
+            # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
+            new_path = os.path.join('glossvideo',unicode(gloss.idgloss[:2]), new_filename)
+
+            try:
+                # Rename the file in the system, get old_path from glossvideo.videofile.path, join new_path with MEDIA_ROOT
+                os.renames(glossvideo.videofile.path, os.path.join(settings.MEDIA_ROOT, new_path))
+            except IOError:
+                # If there is a problem moving the file, don't change glossvideo.videofile, it would not match
+                continue
+
+            # Change the glossvideo.videofile to the new path
+            glossvideo.videofile = new_path
+            glossvideo.save()
 
     def __unicode__(self):
         return self.videofile.name

@@ -158,18 +158,14 @@
         <div id="leftblock" class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 
             <div id="videocontainer">
-                {% if gloss.get_video %}
+                {% if gloss.has_videos %}
                 <!-- {{ gloss.get_video }} -->
                 <div id="playergloss">
                     {% for glossvideo in gloss.get_gloss_videos %}
-                        {% if forloop.first %}
-                            <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="auto" controls autoplay muted>
-                        {% else %}
-                            <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="metadata" controls muted>
-                        {% endif %}
-                                <source src="{{ STATIC_URL }}{{glossvideo.videofile}}" type="video/mp4">
-                                {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                            </video>
+                        <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="metadata" controls muted>
+                            <source src="{{ STATIC_URL }}{{glossvideo.videofile}}" type="video/mp4">
+                            {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                        </video>
                     {% endfor %}
                 </div>
                 {% else %}
