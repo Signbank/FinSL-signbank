@@ -6,52 +6,29 @@
 <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
     {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
-    <div id="editvideodata" class="panel panel-default">
-        <div class='editform'>
-            <div class="uploadvid">
-                <fieldset>
-                    {# Translators: Upload/Add new video to Signbank #}
-                    <legend>{% blocktrans %}Upload New Video{% endblocktrans %}</legend>
+        <div id="editvideodata" class="panel panel-default">
+            <div class='editform'>
+                <div class="uploadvid">
+                    <fieldset>
+                        {# Translators: Upload/Add new video to Signbank #}
+                        <legend>{% blocktrans %}Upload New Video{% endblocktrans %}</legend>
+                        <form action="/video/upload/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type='hidden' name='redirect' value='{{request.path}}?edit'>
 
-                    <form action="/video/upload/" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input type='hidden' name='redirect' value='{{request.path}}?edit'>
+                            {{videoform.videofile}}
 
-                        {{videoform.videofile}}
-
-                        <input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
-                        {# Translators: Submit button #}
-                        <input class='btn btn-primary' type='submit'
-                               value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
-
-                    </form>
-                </fieldset>
+                            <input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
+                            {# Translators: Submit button #}
+                            <input class='btn btn-primary' type='submit'
+                                   value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
+                        </form>
+                    </fieldset>
+                </div>
             </div>
-
-            {% if perms.dictionary.update_video and gloss.count_videos > 0 %}
-            <div class="uploadvid">
-                <fieldset>
-                    {# Translators: #}
-                    <legend>{% blocktrans %}Delete/Revert Video{% endblocktrans %}</legend>
-                    <form action="/video/delete/{{gloss.pk}}" method='post'>
-                        {# Translators: #}
-                        <em>{% blocktrans %}This will delete the most recent upload and restore the most recent earlier
-                            version.{% endblocktrans %}</em>
-                        {# Translators: #}
-                        <p>{% blocktrans %}We have {% endblocktrans %}{{gloss.count_videos}} {% blocktrans %}videos for
-                            this sign.{% endblocktrans %}</p>
-                        {# Translators: Submit button #}
-                        {% csrf_token %}<input class='btn btn-danger' id='delete_video' type='submit'
-                                               value='{% blocktrans %}Delete/Revert this video{% endblocktrans %}'>
-                    </form>
-                </fieldset>
-            </div>
-            {% endif %}
-        </div>
-        {% endif %}
-
         {% include "dictionary/glosstags.html" %}
         </div>
+    {% endif %}
     </div>
 
     {% if perms.dictionary.view_advanced_properties %}
