@@ -83,7 +83,7 @@ def update_gloss(request, glossid):
                     # The signal handling will delete the videofile
                     video.delete()
                 gloss.delete()
-                return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
+                return HttpResponseRedirect(reverse('admin_gloss_list'))
 
         if field.startswith('definition'):
 
