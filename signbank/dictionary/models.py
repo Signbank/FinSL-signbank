@@ -12,6 +12,7 @@ import os
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.exceptions import FieldDoesNotExist
+from signbank.video.models import GlossVideo
 
 from signbank.dictionary.choicelists import *
 
@@ -627,65 +628,14 @@ class Gloss(models.Model):
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
 
-
-    def get_absolute_url(self):
-        """Returns an url with the gloss name (ending with .html), used for 'public view' of gloss @ word template"""
-        return "/dictionary/gloss/%s.html" % self.idgloss
-
-    def get_video_gloss(self):
-        # This method was used for finding a gloss that has the video TODO: Can this be removed?
-        return self
-
-    def get_video(self):
-        """Return the video object for this gloss or None if no video available"""
-
-        video_path = self.get_video_path()
-
-        #if os.path.isfile(settings.MEDIA_ROOT + '/' + video_path):
-        if os.path.isfile(os.path.join(settings.MEDIA_ROOT, video_path)):
-            return video_path
-        else:
-            return None
-
+    def has_videos(self):
+        """Returns True if the Gloss has any videos (video.GlossVideo)"""
+        return GlossVideo.gloss_has_videos(self)
 
     def get_gloss_videos(self):
         """Return a list of videos for a Gloss"""
-        # TODO: This is only for testing, remove this todo when it is done
-        from signbank.video.models import GlossVideo
-        return GlossVideo.objects.filter(gloss=self)
+        return GlossVideo.get_glosses_videos(self)
 
-
-    def get_video_path(self):
-        """return 'glossvideo/' + \
-                     unicode(self.idgloss[:2]) + '/' + unicode(self.idgloss) + '-' + unicode(self.pk) + '.mp4'"""
-        return os.path.join('glossvideo',unicode(self.idgloss[:2]), (unicode(self.idgloss)+'-'+unicode(self.pk)+'.mp4'))
-
-    def count_videos(self):
-        """Return a count of the number of videos we have 
-        for this video - ie. the number of versions stored"""
-
-        video_with_gloss = self.get_video_gloss()
-        return video_with_gloss.glossvideo_set.count()
-
-    def get_video_url(self):
-        """Return  the url of the video for this gloss"""
-        video = self.get_video()
-        if video is not None:
-            # return video.get_absolute_url()
-            return self.get_absolute_url()
-        else:
-            return ""
-
-
-    def get_video_id(self):
-        """Returns video.glossvideo.id"""
-        from signbank.video.models import GlossVideo
-        return GlossVideo.objects.get(gloss=self,version=0).id
-
-    def has_video(self):
-        """Test to see if the video for this sign is present"""
-
-        return self.get_video() is not None
 
     def options_to_json(self, options):
         """Convert an options list to a json dict"""

@@ -188,17 +188,17 @@ def reload_signbank(request=None):
 def infopage(request):
 
     from signbank.dictionary.models import Gloss, Translation, TranslationEnglish, Keyword, KeywordEnglish, Dataset
+    from signbank.video.models import GlossVideo
     glosscount = Gloss.objects.all().count()
     glosses_with_video = 0
     for g in Gloss.objects.all():
-        if g.has_video():
+        if GlossVideo.objects.filter(gloss=g).exists(): # This can probably be refactored to one query only.
             glosses_with_video += 1
     translations_total = Translation.objects.all().count()
     keywords = Keyword.objects.all().count()
     translations_en_total = TranslationEnglish.objects.all().count()
     keywords_en = KeywordEnglish.objects.all().count()
     datasets = Dataset.objects.all()
-    from signbank.video.models import GlossVideo
     video_count_total = GlossVideo.objects.all().count()
 
     return render(request, "../templates/infopage.html",
