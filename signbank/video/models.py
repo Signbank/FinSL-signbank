@@ -105,7 +105,7 @@ import shutil
 class GlossVideoStorage(FileSystemStorage):
     """Implement our shadowing video storage system"""
 
-    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.STATIC_URL): # TODO: base_url: media or static?
+    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.STATIC_URL):  # TODO: base_url: media or static?
         super(GlossVideoStorage, self).__init__(location, base_url)
 
     def get_valid_name(self, name):
@@ -179,7 +179,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
             new_filename = GlossVideo.create_filename(gloss.idgloss, gloss.pk, glossvideo.pk)
 
             # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
-            new_path = os.path.join('glossvideo',unicode(gloss.idgloss[:2]), new_filename)
+            new_path = os.path.join('glossvideo', unicode(gloss.idgloss[:2]), new_filename)
 
             try:
                 # Rename the file in the system, get old_path from glossvideo.videofile.path, join new_path with MEDIA_ROOT

@@ -9,7 +9,6 @@ import re
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
-from signbank.video.models import GlossVideo
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from signbank.video.views import addvideo

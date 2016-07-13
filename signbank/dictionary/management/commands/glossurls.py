@@ -13,4 +13,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         for gloss in Gloss.objects.all():
-            print gloss.id, gloss.get_video_url()
+            print gloss.id, gloss.get_video_url() # TODO: This will not work, get_video_url is removed from gloss

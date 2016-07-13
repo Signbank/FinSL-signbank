@@ -23,7 +23,7 @@ def keyword_value_list(request, prefix=None):
     return HttpResponse("\n".join(kwds_list), content_type='text/plain')
 
 
-@user_passes_test(lambda u:u.is_staff, login_url='/accounts/login/')
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def try_code(request):
     """A view for the developer to try out things"""
 
@@ -37,10 +37,12 @@ def try_code(request):
 
     return HttpResponse('OK')
 
+
 @login_required
 def add_new_sign(request):
     return render_to_response('dictionary/add_gloss.html', {'add_gloss_form': GlossCreateForm()},
                               context_instance=RequestContext(request))
+
 
 @login_required
 def import_csv(request):
