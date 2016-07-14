@@ -197,7 +197,7 @@ function clearForm(myFormElement) {
     <tbody>
     {% for gloss in object_list %}
         {# Here we decide/change the row background colors #}
-        <tr {% if gloss.locked %}class="success"{% elif gloss.has_video %}class="warning"{% else %}class="danger"{% endif %}>
+        <tr {% if gloss.locked %}class="success"{% elif gloss.has_videos %}class="warning"{% else %}class="danger"{% endif %}>
             {% for name, value, field in gloss.admin_fields %}
                 {% if field == 'idgloss' or field == 'idgloss_en' %}{# Make these fields links #}
                 <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
