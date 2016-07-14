@@ -191,7 +191,11 @@ def update_gloss(request, glossid):
             # If field is idgloss and if the value has changed
             # Then change the filename on system and in glossvideo.videofile
             if field == 'idgloss' and newvalue != old_idgloss:
-                GlossVideo.rename_glosses_videos(gloss)
+                try:
+                    GlossVideo.rename_glosses_videos(gloss)
+                except (OSError, IOError):
+                    # Catch error, but don't do anything for now.
+                    pass
 
 
         return HttpResponse(newvalue, content_type='text/plain')

@@ -1,7 +1,4 @@
-""" Models for the video application
-keep track of uploaded videos and converted versions
-"""
-
+""" Models for the video application keep track of uploaded videos and converted versions"""
 from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
@@ -180,13 +177,22 @@ class GlossVideo(models.Model, VideoPosterMixin):
 
             # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
             new_path = os.path.join('glossvideo', unicode(gloss.idgloss[:2]), new_filename)
+            full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
+
+            if os.path.isfile(full_new_path) or glossvideo.videofile == new_path:
+                # If a file already exists at the new_full_path, continue to the next iteration of loop.
+                # If glossvideo.videofile is already the same as new_path, continue to the next iteration of loop.
+                continue
 
             try:
-                # Rename the file in the system, get old_path from glossvideo.videofile.path, join new_path with MEDIA_ROOT
-                os.renames(glossvideo.videofile.path, os.path.join(settings.MEDIA_ROOT, new_path))
+                # Rename the file in the system, get old_path from glossvideo.videofile.path.
+                os.renames(glossvideo.videofile.path, full_new_path)
             except IOError:
                 # If there is a problem moving the file, don't change glossvideo.videofile, it would not match
                 continue
+            except OSError:
+                # If the sourcefile does not exist, raise OSError
+                raise OSError(str(glossvideo.pk) + ' ' + str(glossvideo.videofile))
 
             # Change the glossvideo.videofile to the new path
             glossvideo.videofile = new_path
@@ -202,3 +208,4 @@ def delete_on_delete(sender, instance, **kwargs):
     if instance.videofile:
         if os.path.isfile(instance.videofile.path):
             os.remove(instance.videofile.path)
+
