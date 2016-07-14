@@ -58,6 +58,10 @@ urlpatterns = [
     url(r'infopage/',
         'signbank.tools.infopage'),
 
+    # Incase you need to run this command from web (if for example only webserver has user rights to the folder)
+    # uncomment the following line. It updates videofilenames to match the current filenaming policy.
+    #url(r'refresh_videofilenames/$', 'signbank.tools.refresh_videofilenames'),
+
     # This url is meant to capture 'pages', so that we can use il8n language switching
     url(r'^(?P<url>.*)$',
         'signbank.pages.views.page'),

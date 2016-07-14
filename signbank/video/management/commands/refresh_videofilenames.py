@@ -9,6 +9,7 @@ def eprint(*args, **kwargs):
     """Printing errors in a way that supports python3 too"""
     print(*args, file=sys.stderr, **kwargs)
 
+
 class Command(BaseCommand):
     help = 'Moves GlossVideos to correct folders and renames the filenames to the correct format.'
     args = ''
@@ -21,7 +22,6 @@ class Command(BaseCommand):
             Using this function instead of GlossVideo.objects.all() because it holds the filenaming convention.
             Also this hopefully makes sure that we don't rename GlossVideos based on possibly outdated foreignkey data,
             because we want to name GlossVideos according to Gloss coupled with GlossVideo.pk.
-
             """
             try:
                 GlossVideo.rename_glosses_videos(gloss)

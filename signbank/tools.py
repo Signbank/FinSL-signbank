@@ -185,6 +185,15 @@ def reload_signbank(request=None):
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
+def refresh_videofilenames(request=None):
+    from django.core.management import call_command
+    call_command('refresh_videofilenames', verbosity=3, interactive=False)
+    from django.http import HttpResponse
+
+    return HttpResponse("Done refreshing video filenames.")
+
+
+@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def infopage(request):
 
     from signbank.dictionary.models import Gloss, Translation, TranslationEnglish, Keyword, KeywordEnglish, Dataset
