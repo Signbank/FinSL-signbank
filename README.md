@@ -1,85 +1,86 @@
-# README #
+# FinSL-signbank
 
-### What is this repository for? ###
+**Store *Sign language* Gloss data with videos.**
 
-This is a repository for FinSL-signbank, a web application for storing *Sign language* Glosses with videos.
-The purpose of FinSL-signbank is to make the sign language annotation process more efficient, and to be able to store Glosses.
+FinSL-signbank is a web application that aims to make the sign language annotation process more efficient.
 
-*   **Quick summary**
-    * FinSL-signbank is being developed based on the needs of Finnish sign language researchers
-    * This application can be used for any Sign language(s) if the requirements are similar.
-    * Signbank was originally developed by Steve Cassidy (https://github.com/Signbank/Auslan-signbank)
-    * FinSL-Signbank is being developed based on NGT Signbank (https://github.com/Signbank/NGT-signbank), NGT Signbank is a fork of Auslan Signbank.
-   
-*   **Main features**
-    * Store Glosses with videos and relevant data.
-    * Interface easily translatable to multiple languages.
-    * Export Glosses as XML directly to ELAN (https://tla.mpi.nl/tools/tla-tools/elan/).
-    * Holds multiple datasets, even of the same language.
-    * Search from within multiple datasets or just from one at a time.
+Documentation is available at [https://github.com/Signbank/FinSL-signbank/wiki][wiki]
 
-*   **About the application**
-    * Built with django-framework 1.8 and python 2.7.
-    * Currently in development and no official releases exist yet..
-    
-### Wiki ###
+# Overview
 
-You can find our wiki at https://github.com/Signbank/FinSL-signbank/wiki
+FinSL-signbank is being developed based on the needs of Finnish sign language researchers. It can be used for any sign language(s) that share similar requirements.
+Signbank was originally developed by Steve Cassidy [https://github.com/Signbank/Auslan-signbank][auslan-signbank]. FinSL-Signbank is being developed based on NGT Signbank [https://github.com/Signbank/NGT-signbank][ngt-signbank], NGT Signbank is a fork of Auslan Signbank.
 
-The wiki has useful information considering FinSL-Signbank:
-* How to setup FinSL-signbank (pretty detailed guide).
-* How to export Glosses from FinSL-signbank to ELAN.
+Main features:
+* Store Gloss data with multiple videos per Gloss.
+* Interface easily translatable to multiple languages.
+* Export Glosses as XML directly to [ELAN][elan-link].
+* Can store multiple datasets, even of the same language.
+* Search from multiple datasets or just from one at a time.
 
-### Summary of setup ###
+# Requirements
 
-To install and test FinSL-signbank on linux:
+* Python (2.7)
+* Django (1.8)
 
-    pip install -r /path/to/requirements.txt
-    python bin/develop.py migrate
-    python bin/develop.py runserver 127.0.0.1:8000
+Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
 
-*   **Configuration**
+# Documentation
+
+You can find documentation in our [wiki][wiki].
+
+# Installation
+
+To install FinSL-signbank on linux with all the dependencies:
+
+    pip install -r /path/to/finsl-signbank/requirements.txt
+
+**Configuration**
 
 Before you can get FinSL-signbank working, change some paths in:
 
-    signbank/settings/base.py  
-    signbank/settings/development.py                              
+    signbank/settings/base.py
+    signbank/settings/development.py
 
-* **Dependencies**
+Rename settings_secret.py.template to settings_secret.py and fill in the necessary information:
 
-    See https://github.com/Signbank/FinSL-signbank/blob/master/requirements.txt
+    mv settings_secret.py.template settings_secret.py
 
-*   **Database configuration**
+**Database configuration**
 
 Once you have created a database, and correctly configured the database in the settings, you are ready to migrate:
 
     python bin/develop.py migrate
 
-*If you just want to test the application, we recommend using Sqlite3 as the database (as it is easy to set up)*
+*If you just want to test the application, we recommend using [Sqlite3][sqlitelink] as the database (as it is fast and easy to set up)*
 
-*   **How to run tests**
+**Running the application**
 
-Tests are not yet available.
+When you are ready to test your FinSL-Signbank installation, run:
 
-*   **Deployment instructions**
+    python bin/develop.py runserver 127.0.0.1:8000
 
-These can be found in our wiki:
-https://github.com/Signbank/FinSL-signbank/wiki/Install
+Then open your web browser on http://127.0.0.1:8000
 
-### Translations ###
+When you are ready to run FinSL-signbank on a web server or in a production environment, check out the documentation for instructions at [https://github.com/Signbank/FinSL-signbank/wiki/Install][wiki-install]
+Remember to fill in the settings for production in
+    
+    signbank/settings/production.py
 
-FinSL-signbank uses djangos translation feature and fetches translatable strings into django.po.
+# Translations
 
-You can create new locales by:
+FinSL-signbank uses djangos internalization and localization features to make the interface easily translatable to multiple languages.
+
+You can create new locales by running:
 
     python bin/develop.py makemessages yourlocale
 
-This creates django.po file for the locale you chose. Write translations inside msgstr:
+This creates django.po file for the locale you chose. Write your translations inside the quotes msgstr:
 
     msgstr ""
     For example: msgstr "My translation of the text"
 
-This is what the whole thing for one string/text looks like:
+An example of one translated string/text:
 
 ```
 #!bash
@@ -87,7 +88,7 @@ This is what the whole thing for one string/text looks like:
     #. Translators: Button
     #: signbank/dictionary/templates/dictionary/gloss_detail.html:78
     msgid "Delete Sign"
-    msgstr ""
+    msgstr "Your_translation_here"
 
 ```
 
@@ -96,18 +97,17 @@ After you have written your translations, run:
     python bin/develop.py compilemessages yourlocale
 
 This will compile the translations you wrote into django.po to django.mo file.
-Remember to restart your server when doing this to make sure the new translations are in use.
+Remember to restart/refresh your server when doing this to make sure the new translations are in use.
 
-### Contribution guidelines ###
+# Contribution
 
-If you want to contribute to the project, contact the repository administrator or University of Jyväskylä's Sign language centre.
+If you want to contribute to the project, contact the repository administrator @henrinie or [University of Jyväskylä's Sign language centre][vkk-english].
 
-### Who do I talk to? ###
-
-@henrinie is admin of this repository.
-
-* **Other community or team contact**
-
-University of Jyväskylä, Sign language center (http://viittomakielenkeskus.jyu.fi/inenglish.html)
-
-Finnish Association of the Deaf (http://www.kuurojenliitto.fi/en)
+[requirements.txt]: https://github.com/Signbank/FinSL-signbank/blob/master/requirements.txt
+[vkk-english]: http://viittomakielenkeskus.jyu.fi/inenglish.html
+[wiki]: https://github.com/Signbank/FinSL-signbank/wiki
+[wiki-install]: https://github.com/Signbank/FinSL-signbank/wiki/Install
+[auslan-signbank]: https://github.com/Signbank/Auslan-signbank
+[ngt-signbank]: https://github.com/Signbank/NGT-signbank
+[elan-link]: https://tla.mpi.nl/tools/tla-tools/elan/
+[sqlite-link]: https://www.sqlite.org/
