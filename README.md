@@ -1,36 +1,36 @@
-# README #
+# FinSL-signbank
 
-### What is this repository for? ###
+**Store *Sign language* Gloss data with videos.**
+FinSL-signbank aims to make the sign language annotation process more efficient.
 
-This is a repository for FinSL-signbank, a web application for storing *Sign language* Glosses with videos.
-The purpose of FinSL-signbank is to make the sign language annotation process more efficient, and to be able to store Glosses.
+Documentation is available at [https://github.com/Signbank/FinSL-signbank/wiki](https://github.com/Signbank/FinSL-signbank/wiki) 
 
-*   **Quick summary**
-    * FinSL-signbank is being developed based on the needs of Finnish sign language researchers
-    * This application can be used for any Sign language(s) if the requirements are similar.
-    * Signbank was originally developed by Steve Cassidy (https://github.com/Signbank/Auslan-signbank)
-    * FinSL-Signbank is being developed based on NGT Signbank (https://github.com/Signbank/NGT-signbank), NGT Signbank is a fork of Auslan Signbank.
-   
-*   **Main features**
-    * Store Glosses with videos and relevant data.
-    * Interface easily translatable to multiple languages.
-    * Export Glosses as XML directly to ELAN (https://tla.mpi.nl/tools/tla-tools/elan/).
-    * Holds multiple datasets, even of the same language.
-    * Search from within multiple datasets or just from one at a time.
+# Overview
 
-*   **About the application**
-    * Built with django-framework 1.8 and python 2.7.
-    * Currently in development and no official releases exist yet..
-    
-### Wiki ###
+FinSL-signbank is being developed based on the needs of Finnish sign language researchers. It can be used for any sign language(s) that share similar requirements.
+Signbank was originally developed by Steve Cassidy (https://github.com/Signbank/Auslan-signbank). FinSL-Signbank is being developed based on NGT Signbank (https://github.com/Signbank/NGT-signbank), NGT Signbank is a fork of Auslan Signbank.
+
+Main features:
+* Store Gloss data with multiple videos per Gloss.
+* Interface easily translatable to multiple languages.
+* Export Glosses as XML directly to ELAN (https://tla.mpi.nl/tools/tla-tools/elan/).
+* Can store multiple datasets, even of the same language.
+* Search from multiple datasets or just from one at a time.
+
+# Requirements
+
+* Python (2.7)
+* Django (1.8)
+
+# Documentation
 
 You can find our wiki at https://github.com/Signbank/FinSL-signbank/wiki
 
-The wiki has useful information considering FinSL-Signbank:
+The wiki has useful information about FinSL-Signbank:
 * How to setup FinSL-signbank (pretty detailed guide).
 * How to export Glosses from FinSL-signbank to ELAN.
 
-### Summary of setup ###
+# Installation
 
 To install and test FinSL-signbank on linux:
 
@@ -66,7 +66,7 @@ Tests are not yet available.
 These can be found in our wiki:
 https://github.com/Signbank/FinSL-signbank/wiki/Install
 
-### Translations ###
+# Translations
 
 FinSL-signbank uses djangos translation feature and fetches translatable strings into django.po.
 
@@ -74,12 +74,12 @@ You can create new locales by:
 
     python bin/develop.py makemessages yourlocale
 
-This creates django.po file for the locale you chose. Write translations inside msgstr:
+This creates django.po file for the locale you chose. Write your translations inside msgstr:
 
     msgstr ""
     For example: msgstr "My translation of the text"
 
-This is what the whole thing for one string/text looks like:
+This is an example of one translated string/text:
 
 ```
 #!bash
@@ -87,7 +87,7 @@ This is what the whole thing for one string/text looks like:
     #. Translators: Button
     #: signbank/dictionary/templates/dictionary/gloss_detail.html:78
     msgid "Delete Sign"
-    msgstr ""
+    msgstr "Your_translation_here"
 
 ```
 
@@ -98,16 +98,6 @@ After you have written your translations, run:
 This will compile the translations you wrote into django.po to django.mo file.
 Remember to restart your server when doing this to make sure the new translations are in use.
 
-### Contribution guidelines ###
+# Contribution
 
-If you want to contribute to the project, contact the repository administrator or University of Jyväskylä's Sign language centre.
-
-### Who do I talk to? ###
-
-@henrinie is admin of this repository.
-
-* **Other community or team contact**
-
-University of Jyväskylä, Sign language center (http://viittomakielenkeskus.jyu.fi/inenglish.html)
-
-Finnish Association of the Deaf (http://www.kuurojenliitto.fi/en)
+If you want to contribute to the project, contact the repository administrator @henrinie or University of Jyväskylä's Sign language centre (http://viittomakielenkeskus.jyu.fi/inenglish.html).
