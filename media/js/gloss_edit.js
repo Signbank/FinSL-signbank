@@ -214,7 +214,10 @@ function configure_edit() {
 var gloss_bloodhound = new Bloodhound({
       datumTokenizer: function(d) { return d.tokens; },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: '/dictionary/ajax/gloss/%QUERY'
+      remote: {
+        url: '/dictionary/ajax/gloss/%QUERY',
+        wildcard: '%QUERY'
+      },
     });
      
 gloss_bloodhound.initialize();
@@ -223,11 +226,11 @@ function glosstypeahead(target) {
 
      $(target).typeahead(null, {
           name: 'glosstarget',
-          displayKey: 'pk',
+          display: 'pk',
           source: gloss_bloodhound.ttAdapter(),
           templates: {
               suggestion: function(gloss) {
-                  return("<p><strong>" + gloss.idgloss + "</strong></p>");
+                  return("<div><strong>" + gloss.idgloss + "</strong></div>");
               }
           }
       });
