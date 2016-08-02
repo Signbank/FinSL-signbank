@@ -2,7 +2,7 @@
 
 **Store *Sign language* Gloss data with videos.**
 
-FinSL-signbank is a web application that aims to make the sign language annotation process more efficient.
+FinSL-signbank is a web application that aims to make the *sign language* annotation process more efficient.
 
 Documentation is available at [https://github.com/Signbank/FinSL-signbank/wiki][wiki]
 
@@ -101,7 +101,7 @@ Remember to restart/refresh your server when doing this to make sure the new tra
 
 # Contribution
 
-If you want to contribute to the project, contact the repository administrator @henrinie or [University of Jyväskylä's Sign language centre][vkk-english].
+If you want to contribute to the project, contact the repository administrator [@henrinie][admin] or [University of Jyväskylä's Sign language centre][vkk-english].
 
 [requirements.txt]: https://github.com/Signbank/FinSL-signbank/blob/master/requirements.txt
 [vkk-english]: http://viittomakielenkeskus.jyu.fi/inenglish.html
@@ -111,3 +111,4 @@ If you want to contribute to the project, contact the repository administrator @
 [ngt-signbank]: https://github.com/Signbank/NGT-signbank
 [elan-link]: https://tla.mpi.nl/tools/tla-tools/elan/
 [sqlite-link]: https://www.sqlite.org/
+[admin]: https://github.com/henrinie
