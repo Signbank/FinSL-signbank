@@ -9,9 +9,9 @@
 
 {% block extrajs %}
 {% if perms.dictionary.change_gloss %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.mini.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.mini.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
 {% endif %}
 
 <script type="text/javascript">
@@ -62,37 +62,31 @@
 
         }
     });
-
 </script>
 
 {% if perms.dictionary.change_gloss %}
+    <script type='text/javascript'>
 
-<script type='text/javascript'>
-    
-     var edit_post_url = '{% url 'dictionary:update_gloss' gloss.id %}';
-     var definition_role_choices = {{gloss.definition_role_choices_json|safe}};
-     var handshape_choices = {{gloss.handshape_choices_json|safe}};
-     var location_choices = {{gloss.location_choices_json|safe}};
-     var palm_orientation_choices = {{gloss.palm_orientation_choices_json|safe}};
-     var relative_orientation_choices = {{gloss.relative_orientation_choices_json|safe}};
-     var secondary_location_choices = {{gloss.secondary_location_choices_json|safe}};
-     var relation_role_choices = {{gloss.relation_role_choices_json|safe}};
-     var languages = {{gloss.language_choices|safe}};
-     var dialects = {{gloss.dialect_choices|safe}};
-    
-     var choice_lists = {{gloss.get_choice_lists|safe}};
-    
-    var csrf_token = '{{csrf_token}}';
+         var edit_post_url = '{% url 'dictionary:update_gloss' gloss.id %}';
+         var definition_role_choices = {{gloss.definition_role_choices_json|safe}};
+         var handshape_choices = {{gloss.handshape_choices_json|safe}};
+         var location_choices = {{gloss.location_choices_json|safe}};
+         var palm_orientation_choices = {{gloss.palm_orientation_choices_json|safe}};
+         var relative_orientation_choices = {{gloss.relative_orientation_choices_json|safe}};
+         var secondary_location_choices = {{gloss.secondary_location_choices_json|safe}};
+         var relation_role_choices = {{gloss.relation_role_choices_json|safe}};
+         var languages = {{gloss.language_choices|safe}};
+         var dialects = {{gloss.dialect_choices|safe}};
 
-</script>
-<script type='text/javascript' src="{{ STATIC_URL }}js/gloss_edit.js"></script>
+         var choice_lists = {{gloss.get_choice_lists|safe}};
 
-
+         var csrf_token = '{{csrf_token}}';
+    </script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/gloss_edit.js"></script>
 {% endif %}
 {% endblock %}
 
 {% block content %}
-
 <div id="searchresults" style="overflow-y:hidden;">
     {% if request.session.search_results %}{# See if search_results in sessions is empty #}
     <strong>{% blocktrans %}Search results:{% endblocktrans %}</strong>
@@ -158,34 +152,54 @@
         <div id="leftblock" class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 
             <div id="videocontainer">
+                <div class="player">
                 {% if gloss.has_videos %}
-                <!-- {{ gloss.get_video }} -->
-                <div id="playergloss">
                     {% for glossvideo in gloss.get_gloss_videos %}
                         <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="metadata" controls muted>
                             <source src="{{ STATIC_URL }}{{glossvideo.videofile}}" type="video/mp4">
                             {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                         </video>
                     {% endfor %}
-                </div>
+
                 {% else %}
-                <div id="player">
                     {% if LANGUAGE_CODE == 'fi' %}
                     <img id='novideo' src='{{ STATIC_URL }}images/no-video-fi.png'>
                     {% else %}
                     <img id='novideo' src='{{ STATIC_URL }}images/no-video.png'>
                     {% endif %}
-                    <!-- {{ gloss.get_video }} -->
-                </div>
-
                 {% endif %}
+                </div>
             </div>
 
+            <div>
+                <div id="editvideodata" class="panel panel-default">
+                    {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
+                    <div class='editform'>
+                        <div class="uploadvid">
+                            <fieldset>
+                                {# Translators: Upload/Add new video to Signbank #}
+                                <legend>{% blocktrans %}Upload New Video{% endblocktrans %}</legend>
+                                <form action="/video/upload/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type='hidden' name='redirect' value='{{request.path}}?edit'>
 
+                                    {{videoform.videofile}}
+
+                                    <input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
+                                    {# Translators: Submit button #}
+                                    <input class='btn btn-primary' type='submit'
+                                           value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
+                                </form>
+                            </fieldset>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% include "dictionary/glosstags.html" %}
+                </div>
+            </div>
         </div>
 
         <div class='panel-group col-lg-7 col-md-6 col-sm-12 col-xs-12' id='definition'>
-
             <table class='table table-condensed'>
                 {# Translators: Information about a Gloss #}
                 <tr {% if gloss.locked %}class="success"{% elif gloss.has_videos %}class="warning"{% else %}class="danger"{% endif %}>
@@ -226,9 +240,10 @@
                 -->
                 <tr>
                     <th>{% blocktrans %}URL:{% endblocktrans %}</th>
-                    <td class='edit edit_url' id='url_field'>{% if gloss.url_field %}<a id='urlout'
-                                                                                        href="{{ gloss.url_field }}"
-                                                                                        target="_blank">{{ gloss.url_field }}</a>{% endif %}
+                    <td class='edit edit_url' id='url_field'>
+                        {% if gloss.url_field %}
+                        <a id='urlout' href="{{ gloss.url_field }}" target="_blank">{{ gloss.url_field }}</a>
+                        {% endif %}
                     </td>
                 </tr>
                 <tr>
@@ -241,13 +256,13 @@
                 </tr>
             </table>
 
-
+            <!-- Advanced properties start -->
+            {% include "dictionary/gloss_detail_advanced.html" %}
+            <!-- Advanced properties end -->
         </div>
 
     </div>
-    <!-- Advanced properties start -->
-    {% include "dictionary/gloss_detail_advanced.html" %}
-    <!-- Advanced properties end -->
+
 </div>
 
 {% endblock %}

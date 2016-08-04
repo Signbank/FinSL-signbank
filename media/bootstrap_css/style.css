@@ -55,18 +55,19 @@ body {
 #videocontainer {
     margin: auto;
 }
-#videocontainer #player {
+#videocontainer .player {
     margin: auto;
     background-color: white;
+    margin-bottom: 5px;
 }
-#playergloss {
-    margin: auto;
-    background-color: white;
-}
-#playergloss video {
+.player video {
     border-style: solid;
     border-color: #F0F0F0;
     border-width: 0px 1px 1px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
 }
 .videocontainer {
     margin: auto;
