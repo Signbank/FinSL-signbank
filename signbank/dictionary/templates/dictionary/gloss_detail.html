@@ -156,7 +156,7 @@
                 {% if gloss.has_videos %}
                     {% for glossvideo in gloss.get_gloss_videos %}
                         <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="metadata" controls muted>
-                            <source src="{{ STATIC_URL }}{{glossvideo.videofile}}" type="video/mp4">
+                            <source src="{{ STATIC_URL }}{{glossvideo.videofile|urlencode}}" type="video/mp4">
                             {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                         </video>
                     {% endfor %}
