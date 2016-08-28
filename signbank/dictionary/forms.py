@@ -274,3 +274,4 @@ class MorphologyForm(forms.ModelForm):
 
 class CSVUploadForm(forms.Form):
     file = forms.FileField()
+    dataset = forms.ModelChoiceField(queryset=Dataset.objects.all(), empty_label=None)

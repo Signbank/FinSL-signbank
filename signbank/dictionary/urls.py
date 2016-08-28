@@ -24,6 +24,12 @@ urlpatterns = [
     url(r'^update/gloss/',
         'signbank.dictionary.update.add_gloss', name='add_gloss'),
 
+    # CSV import urls
+    url(r'^import/csv/$',
+        'signbank.dictionary.update.import_gloss_csv', name='import_gloss_csv'),
+    url(r'^import/csv/confirm/$',
+        'signbank.dictionary.update.confirm_import_gloss_csv', name='confirm_import_gloss_csv'),
+
     # AJAX urls
     url(r'^ajax/keyword/(?P<prefix>.*)$',
         'signbank.dictionary.views.keyword_value_list'),

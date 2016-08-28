@@ -1,0 +1,34 @@
+{% extends 'baselayout.html' %}
+{% load stylesheet %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+    {% if perms.dictionary.import_csv %}
+    <div id="import-csv">
+        {# Translators: #}
+        <h3>{% blocktrans %}Import Glosses from a CSV file{% endblocktrans %}:</h3>
+
+        <ul>
+            <li>{% blocktrans %}CSV-file should be constructed so that the first column is idgloss (meaning gloss) and the
+                second column is idgloss_en (meaning gloss in english){% endblocktrans %}</li>
+            <li>{% blocktrans %}The first row of the file will not be added because it is expected to be the column
+                headers.{% endblocktrans %}</li>
+        </ul>
+
+        <form enctype="multipart/form-data" action='{% url "dictionary:import_gloss_csv" %}' method='post'>
+            {% csrf_token %}
+
+            {% bootstrap_field import_csv_form.dataset set_required=True %}
+            {% bootstrap_field import_csv_form.file set_required=True %}
+            <h4><span class="label label-danger">{% blocktrans %}Make sure that you selected the correct
+                Dataset before submitting!{% endblocktrans %}</span></h4>
+            <br>
+            <input class='btn btn-primary' type='submit' value='{% blocktrans %}Import glosses from CSV{% endblocktrans %}'>
+        </form>
+    </div>
+    {% else %}
+    {# Translators: Message that appears if user doesn't have proper user rights to view this page. #}
+    <p>{% blocktrans %}You do not have sufficient user rights to view this page.{% endblocktrans %}</p>
+    {% endif %}
+{% endblock %}

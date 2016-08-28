@@ -1,11 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
 from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import permission_required
+from django.contrib import messages
+from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models.fields import NullBooleanField
 from tagging.models import TaggedItem
-import re
+import re, csv
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -626,3 +627,89 @@ def add_tag(request, glossid):
             print form.as_table()
 
     return response
+
+
+@login_required
+@permission_required('dictionary.import_csv')
+def import_gloss_csv(request):
+    """
+    Check which objects exist and which not. Then show the user a list of glosses that will be added if user confirms.
+    Store the glosses to be added into sessions.
+    """
+    glosses_new = []
+    glosses_exists = []
+    # Make sure that the session variables are flushed when using this view
+    if 'dataset_id' in request.session: del request.session['dataset_id']
+    if 'glosses_new' in request.session: del request.session['glosses_new']
+    if request.method == 'POST':
+        form = CSVUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            dataset = form.cleaned_data['dataset']
+            try:
+                glossreader = csv.reader(form.cleaned_data['file'], delimiter=',', quotechar='"')
+                for row in glossreader:
+                    if glossreader.line_num == 1:
+                        continue
+                    try:
+                        gloss = Gloss.objects.get(dataset=dataset, idgloss=row[0])
+                        glosses_exists.append(gloss)
+                    except:
+                        glosses_new.append((row[0], row[1]))
+                        request.session['dataset_id'] = dataset.id
+                        request.session['glosses_new'] = glosses_new
+
+            except csv.Error:
+                pass # Can't open file
+
+            return render(request, "dictionary/import_gloss_csv_confirmation.html",
+                          {#'import_csv_form': CSVUploadForm(),
+                           'glosses_new': glosses_new,
+                           'glosses_exists': glosses_exists,
+                            'dataset': dataset,})
+        else:
+            csv_form = CSVUploadForm()
+            # Set a message to be shown so that the user knows what is going on.
+            messages.add_message(request, messages.ERROR, _('The provided CSV-file does not meet the requirements '
+                                                            'or there is some other problem.'))
+            return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': csv_form}, )
+    else:
+        csv_form = CSVUploadForm()
+        return render(request, "dictionary/import_gloss_csv.html",
+                      {'import_csv_form': csv_form}, )
+
+
+@login_required
+@permission_required('dictionary.import_csv')
+def confirm_import_gloss_csv(request):
+    """This view adds the data to database if the user confirms the action"""
+    if request.method == 'POST':
+        if 'cancel' in request.POST:
+            # If user cancels adding data, flush session variables
+            if 'dataset_id' in request.session: del request.session['dataset_id']
+            if 'glosses_new' in request.session: del request.session['glosses_new']
+            # Set a message to be shown so that the user knows what is going on.
+            messages.add_message(request, messages.WARNING, _('Cancelled adding CSV data.'))
+            return HttpResponseRedirect(reverse('dictionary:import_gloss_csv'))
+
+        elif 'confirm' in request.POST:
+            glosses_added = []
+            dataset = None
+            if 'glosses_new' and 'dataset_id' in request.session:
+                dataset = Dataset.objects.get(id=request.session['dataset_id'])
+                for gloss in request.session['glosses_new']:
+                    new_gloss = Gloss(dataset=dataset, idgloss=gloss[0], idgloss_en=gloss[1],
+                                      created_by=request.user, updated_by=request.user)
+                    new_gloss.save()
+                    glosses_added.append((new_gloss.idgloss, new_gloss.idgloss_en))
+                # Flush request.session['glosses_new'] and request.session['dataset']
+                del request.session['glosses_new']
+                del request.session['dataset_id']
+                # Set a message to be shown so that the user knows what is going on.
+                messages.add_message(request, messages.SUCCESS, _('Glosses were added succesfully.'))
+            return render(request, "dictionary/import_gloss_csv_confirmation.html", {'glosses_added': glosses_added,
+                                                                                     'dataset': dataset.name})
+        else:
+            return HttpResponseRedirect(reverse('dictionary:import_gloss_csv'))
+    else:
+        # If request method is not POST, redirect to the import form
+        return HttpResponseRedirect(reverse('dictionary:import_gloss_csv'))
