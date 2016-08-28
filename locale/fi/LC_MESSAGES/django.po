@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 11:54+0300\n"
+"POT-Creation-Date: 2016-08-28 14:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,304 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#. Translators: Title for error page 403
-#: bootstrap_templates/403.html:7
-msgid "Permission Denied"
-msgstr "Käyttöoikeus evätty"
-
-#. Translators: Text for error page 403
-#: bootstrap_templates/403.html:9
-msgid "You do not have permission to view the requested page."
-msgstr "Sinulla ei ole oikeuksia nähdä pyytämääsi sivua."
-
-#. Translators: Error 404 page
-#: bootstrap_templates/404.html:7
-msgid ""
-"The requested page was not found on the server. Please use\n"
-"the menu above to navigate to another part of the site. \n"
-"If you continue to experience problems, please contact\n"
-"the webmaster at "
-msgstr ""
-"Pyydettyä sivua ei löytynyt palvelimelta. Ole hyvä\n"
-"ja käytä valikkoa siirtyäksesi jollekkin toiselle sivulle.\n"
-"Jos ongelmat jatkuvat, ota yhteyttä sivuston ylläpitoon "
-
-#. Translators: Title of page - error 500
-#: bootstrap_templates/500.html:10
-msgid "Server Error"
-msgstr "Palvelinvirhe"
-
-#. Translators: Information about error 500
-#: bootstrap_templates/500.html:12
-msgid ""
-"There's been an error. It's been reported to the site administrators\n"
-"via e-mail and should be fixed shortly. Thanks for your patience. "
-msgstr ""
-"Tapahtui virhe. Virheestä on tiedotettu ylläpidolle, ja se\n"
-"pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
-
-#: bootstrap_templates/baselayout.html:26
-msgid "FinSL Signbank"
-msgstr "FinSL Signbank"
-
-#: bootstrap_templates/baselayout.html:48
-msgid "University of Jyväskylä"
-msgstr "Jyväskylän yliopisto"
-
-#: bootstrap_templates/baselayout.html:49
-msgid "Finnish Association of the Deaf"
-msgstr "Kuurojen liitto"
-
-#: bootstrap_templates/infopage.html:12
-msgid "Information page"
-msgstr "Infosivu"
-
-#: bootstrap_templates/infopage.html:13
-msgid ""
-"On this page you can find all kinds of useful information. We have collected "
-"some numerical information about our database and some useful links aswell."
-msgstr ""
-"Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme tärkeitä "
-"linkkejä."
-
-#. Translators: This is verbose_name_plural, so it has to be plural here
-#: bootstrap_templates/infopage.html:23 signbank/dictionary/models.py:366
-msgid "Glosses"
-msgstr "Glossit"
-
-#: bootstrap_templates/infopage.html:27
-msgid "Glosses with video"
-msgstr "Glossit joilla video"
-
-#: bootstrap_templates/infopage.html:31
-msgid "Total number of videos (one gloss can have many)"
-msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
-
-#: bootstrap_templates/infopage.html:35
-msgid "Finnish translation equivalents"
-msgstr "Käännövastineita suomeksi"
-
-#: bootstrap_templates/infopage.html:39
-msgid "Finnish keywords"
-msgstr "Suomenkielisiä vastineita"
-
-#: bootstrap_templates/infopage.html:43
-msgid "English translations equivalents"
-msgstr "Käännösvastineita englanniksi"
-
-#: bootstrap_templates/infopage.html:47
-msgid "English keywords"
-msgstr "Käännöksiä englanniksi"
-
-#: bootstrap_templates/infopage.html:56
-msgid "ELAN externally controlled vocabulary links"
-msgstr "ELAN externally controlled vocalubary linkit"
-
-#: bootstrap_templates/infopage.html:60
-msgid "Signbank Wiki"
-msgstr "Signbankin Wikisivut"
-
-#. Translators: Message that appears if user doesn't have proper user rights to view this page.
-#: bootstrap_templates/infopage.html:69
-#: signbank/dictionary/templates/dictionary/add_gloss.html:26
-msgid "You do not have sufficient user rights to view this page."
-msgstr "Sinulla ei ole oikeuksia nähdä sivua"
-
-#: bootstrap_templates/langbar.html:6
-msgid "Logout"
-msgstr "Kirjaudu ulos"
-
-#: bootstrap_templates/langbar.html:10
-msgid "Login"
-msgstr "Kirjaudu"
-
-#. Translators: Text sign in - login form
-#: bootstrap_templates/loginform.html:8
-msgid "Sign In"
-msgstr "Kirjaudu sisään"
-
-#. Translators: Email - in login form
-#. Translators: EmailAuthenticationForm: email
-#: bootstrap_templates/loginform.html:14 signbank/registration/forms.py:290
-msgid "Email/Username"
-msgstr "Email/Käyttäjätunnus"
-
-#. Translators: Password text - in login form
-#. Translators: label password1
-#. Translators: EmailAuthenticationForm: password
-#: bootstrap_templates/loginform.html:24 signbank/registration/forms.py:52
-#: signbank/registration/forms.py:292
-msgid "Password"
-msgstr "Salasana"
-
-#. Translators: Sign in button in login form
-#: bootstrap_templates/loginform.html:34
-msgid "Sign in"
-msgstr "Kirjaudu sisään"
-
-#. Translators: Text register - in login form
-#. Translators: Register link
-#: bootstrap_templates/loginform.html:42 bootstrap_templates/loginform.html:47
-msgid "Register"
-msgstr "Rekisteröidy"
-
-#. Translators: Text in login form
-#: bootstrap_templates/loginform.html:45
-msgid "To register for an account, press the button below."
-msgstr "Rekisteröidy painamalla alla olevaa nappia."
-
-#. Translators: Title lost password - in login form
-#: bootstrap_templates/loginform.html:52
-msgid "Lost Password?"
-msgstr "Unohtunut salasana?"
-
-#: bootstrap_templates/loginform.html:55
-msgid ""
-"If you've lost or forgotten your password, enter your email address here and "
-"we'll reset it and send you a reminder."
-msgstr ""
-"Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
-"tähän, niin lähetämme sinulle uuden salasanan."
-
-#: bootstrap_templates/loginform.html:60
-msgid "Email"
-msgstr "Sähköposti"
-
-#. Translators: Request password button
-#: bootstrap_templates/loginform.html:65
-msgid "Request Password"
-msgstr "Palauta salasana"
-
-#. Translators: Button to toggle navigation
-#: bootstrap_templates/menu.html:9
-msgid "Toggle navigation"
-msgstr "Navigointi"
-
-#. Translators: Placeholder text in a search textfield
-#: bootstrap_templates/menu.html:48
-msgid "Search gloss"
-msgstr "Etsi glossia"
-
-#. Translators: Placeholder text in a search textfield
-#: bootstrap_templates/menu.html:53
-msgid "Search translation"
-msgstr "Etsi käännösvastinetta"
-
-#. Translators: Submit button (press to search)
-#. Translators: admin_gloss_list header
-#: bootstrap_templates/menu.html:57
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:149
-msgid "Search"
-msgstr "Haku"
-
-#. Translators: Edit page button in baselayout
-#: bootstrap_templates/pages/default.html:10
-msgid "Edit Page"
-msgstr "Muokkaa"
-
-#: bootstrap_templates/registration/password_reset_complete.html:5
-#: bootstrap_templates/registration/password_reset_complete.html:9
-msgid "Password reset complete"
-msgstr "Salasanan nollaus valmis"
-
-#: bootstrap_templates/registration/password_reset_complete.html:11
-msgid "Your password has been set.  You may go ahead and log in now."
-msgstr "Salasanasi on asetettu. Voitte jatkaa kirjautumalla."
-
-#: bootstrap_templates/registration/password_reset_complete.html:13
-msgid "Log in"
-msgstr "Kirjaudu"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:5
-#: bootstrap_templates/registration/password_reset_form.html:4
-#: bootstrap_templates/registration/password_reset_form.html:6
-#: bootstrap_templates/registration/password_reset_form.html:10
-msgid "Password reset"
-msgstr "Salasanan nollaus"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:13
-msgid "Enter new password"
-msgstr "Kirjoita uusi salasana"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:15
-msgid ""
-"Please enter your new password twice so we can verify you typed it in "
-"correctly."
-msgstr ""
-"Olkaa hyvä ja kirjoittakaa salasananne kahdesti, jotta voimme varmistaa että "
-"se on kirjoitettu oikein."
-
-#: bootstrap_templates/registration/password_reset_confirm.html:19
-msgid "New password:"
-msgstr "Uusi salasana"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:22
-msgid "Confirm password:"
-msgstr "Vahvista salasana:"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:24
-msgid "Change my password"
-msgstr "Muuta salasanaa"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:29
-msgid "Password reset unsuccessful"
-msgstr "Salasanan nollaus epäonnistui"
-
-#: bootstrap_templates/registration/password_reset_confirm.html:31
-msgid ""
-"The password reset link was invalid, possibly because it has already been "
-"used.  Please request a new password reset."
-msgstr ""
-"Salasanan nollauslinkki oli epäkelpo, se on saatettu jo käyttää.Ole hyvä ja "
-"pyydä uutta salasanan nollaamista."
-
-#: bootstrap_templates/registration/password_reset_done.html:5
-msgid "An email has been sent to your address with a new password."
-msgstr "Uusi salasana on lähetetty teidän sähköpostiinne."
-
-#: bootstrap_templates/registration/password_reset_email.html:2
-#, python-format
-msgid ""
-"You're receiving this email because you requested a password reset for your "
-"user account at %(site_name)s."
-msgstr ""
-"Olette saaneet tämän sähköpostin koska käyttäjätunnuksellanne pyydettiin "
-"salasanan nollaamista %(site_name)ssa."
-
-#: bootstrap_templates/registration/password_reset_email.html:4
-msgid "Please go to the following page and choose a new password:"
-msgstr "Menkää tälle sivulle ja valitkaa uusi salasana:"
-
-#: bootstrap_templates/registration/password_reset_email.html:9
-msgid "Thanks for using our site!"
-msgstr "Kiitos!"
-
-#: bootstrap_templates/registration/password_reset_email.html:11
-#, python-format
-msgid "The %(site_name)s team"
-msgstr "%(site_name)s tiimi"
-
-#: bootstrap_templates/registration/password_reset_form.html:4
-msgid "Home"
-msgstr "Etusivu"
-
-#: bootstrap_templates/registration/password_reset_form.html:12
-msgid ""
-"Forgotten your password? Enter your e-mail address below, and we'll reset "
-"your password and e-mail the new one to you."
-msgstr ""
-"Oletko unohtanut salasanasi? Kirjoita sähköpostiosoitteesi alapuolelle ja me "
-"lähetämme sinulle uuden salasanan sähköpostitse."
-
-#: bootstrap_templates/registration/password_reset_form.html:17
-msgid "E-mail address:"
-msgstr "Sähköposti:"
-
-#: bootstrap_templates/registration/password_reset_form.html:17
-msgid "Reset my password"
-msgstr "Muuta salasana"
 
 #: doc/usage.html:4
 msgid "Signbank User Guide"
@@ -515,14 +217,15 @@ msgstr "Suhde toisiin Glosseihin"
 
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:19 signbank/dictionary/forms.py:123
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:106
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:100
 msgid "Dataset"
 msgstr "Aineisto"
 
 #. Translators: GlossSearchForm label
 #. Translators: Gloss field: idgloss, verbose name
 #: signbank/dictionary/forms.py:21 signbank/dictionary/forms.py:127
-#: signbank/dictionary/models.py:429
+#: signbank/dictionary/models.py:431
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
 msgid "Gloss"
 msgstr "Glossi"
 
@@ -530,7 +233,7 @@ msgstr "Glossi"
 #. Translators: Gloss field: idgloss_en (english), verbose name
 #. Translators: Gloss in English - add gloss form title
 #: signbank/dictionary/forms.py:22 signbank/dictionary/forms.py:129
-#: signbank/dictionary/models.py:435
+#: signbank/dictionary/models.py:437
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
 msgid "Gloss in English"
 msgstr "Glossi englanniksi"
@@ -559,14 +262,7 @@ msgid "Yes"
 msgstr "Kyllä"
 
 #. Translators: YESNOCHOICES
-#. Translators: isAuslanChoices
-#. Translators: likedChoices
-#. Translators: useChoices
-#. Translators: suggestedChoices
-#. Translators: correctChoices
-#: signbank/dictionary/forms.py:82 signbank/feedback/models.py:19
-#: signbank/feedback/models.py:62 signbank/feedback/models.py:73
-#: signbank/feedback/models.py:86 signbank/feedback/models.py:99
+#: signbank/dictionary/forms.py:82
 msgid "No"
 msgstr "Ei"
 
@@ -592,37 +288,37 @@ msgid "All"
 msgstr "Kaikki"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:96 signbank/dictionary/models.py:806
+#: signbank/dictionary/forms.py:96 signbank/dictionary/models.py:745
 msgid "Homonym"
 msgstr "Homonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:98 signbank/dictionary/models.py:808
+#: signbank/dictionary/forms.py:98 signbank/dictionary/models.py:747
 msgid "Synonym"
 msgstr "Synonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:100 signbank/dictionary/models.py:810
+#: signbank/dictionary/forms.py:100 signbank/dictionary/models.py:749
 msgid "Variant"
 msgstr "Variantti"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:102 signbank/dictionary/models.py:812
+#: signbank/dictionary/forms.py:102 signbank/dictionary/models.py:751
 msgid "Antonym"
 msgstr "Antonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:104 signbank/dictionary/models.py:814
+#: signbank/dictionary/forms.py:104 signbank/dictionary/models.py:753
 msgid "Hyponym"
 msgstr "Hyponyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:106 signbank/dictionary/models.py:816
+#: signbank/dictionary/forms.py:106 signbank/dictionary/models.py:755
 msgid "Hypernym"
 msgstr "Hypernyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:108 signbank/dictionary/models.py:818
+#: signbank/dictionary/forms.py:108 signbank/dictionary/models.py:757
 msgid "See Also"
 msgstr "Katso myös"
 
@@ -664,16 +360,16 @@ msgstr "Kohdeglossi"
 
 #. Translators:
 #: signbank/dictionary/forms.py:228 signbank/dictionary/forms.py:262
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:73
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:455
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:22
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:395
 msgid "Type"
 msgstr "Tyyppi"
 
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:245 signbank/dictionary/models.py:287
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:300
+#: signbank/dictionary/forms.py:245 signbank/dictionary/models.py:288
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:241
 msgid "Related Language"
 msgstr "Lainattu kieli"
 
@@ -690,106 +386,115 @@ msgstr "Emoglossi"
 #. Translators: MorphologyForm label
 #. Translators:
 #: signbank/dictionary/forms.py:268
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:75
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:24
 msgid "Morpheme"
 msgstr "Morfeemi"
 
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/models.py:216
+#: signbank/dictionary/models.py:217
 msgid "Note"
 msgstr "Merkintä"
 
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/models.py:218
+#: signbank/dictionary/models.py:219
 msgid "Private Note"
 msgstr "Yksityinen merkintä"
 
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/models.py:220
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:164
+#: signbank/dictionary/models.py:221
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
 msgid "Phonology"
 msgstr "Fonologia"
 
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/models.py:222
+#: signbank/dictionary/models.py:223
 msgid "To Do"
 msgstr "Tehtävää"
 
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/models.py:224
+#: signbank/dictionary/models.py:225
 msgid "Suggestion for other gloss"
 msgstr "Ehdotus toiselle glossille"
 
 #. Translators: RelationToForeignSign field verbose name
-#: signbank/dictionary/models.py:285
+#: signbank/dictionary/models.py:286
 msgid "Loan Sign"
 msgstr "Lainaviittoma"
 
 #. Translators: Equivalent Gloss in related language
-#: signbank/dictionary/models.py:290
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:302
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:368
+#: signbank/dictionary/models.py:291
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:243
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:309
 msgid "Gloss in related language"
 msgstr "Glossi liittyvässä kielessä"
 
+#. Translators: This is verbose_name_plural, so it has to be plural here
+#: signbank/dictionary/models.py:367 templates/infopage.html:23
+msgid "Glosses"
+msgstr "Glossit"
+
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:370
+#: signbank/dictionary/models.py:371
 msgid "Can Update Video"
 msgstr "Voi päivittää videon"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:372
+#: signbank/dictionary/models.py:373
 msgid "Can Search/View Full Gloss Details"
 msgstr "Voi etsiä/nähdä Glossin täydet tiedot"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:374
+#: signbank/dictionary/models.py:375
 msgid "Can export sign details as CSV"
 msgstr "Voi viedä viittomien tiedot CSV muodossa"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:376
+#: signbank/dictionary/models.py:377
 msgid "Can publish signs and definitions"
 msgstr "Voi julkaista viittomia ja määritelmiä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:378
+#: signbank/dictionary/models.py:379
 msgid "Can delete unpub signs or defs"
 msgstr "Voi poistaa ei-julkisia viittomia ja määritelmiä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:380
+#: signbank/dictionary/models.py:381
 msgid "Can delete pub signs and defs"
 msgstr "Voi poistaa julkisia viittomia ja määritelmiä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:382
+#: signbank/dictionary/models.py:383
 msgid "Include all properties in sign detail view"
 msgstr "Sisällytä kaikki ominaisuudet viittoman tarkassa näkymässä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:384
+#: signbank/dictionary/models.py:385
 msgid "Can lock and unlock Gloss from editing"
 msgstr "Voi lukita ja avata Glossin muokkauksen"
 
-#: signbank/dictionary/models.py:423
+#: signbank/dictionary/models.py:386
+msgid "Can import glosses from a CSV file"
+msgstr "Voi tuoda glosseja CSV-tiedostosta"
+
+#: signbank/dictionary/models.py:425
 msgid "Locked"
 msgstr "Lukittu"
 
 #. Translators: Help text for Gloss field: idgloss
-#: signbank/dictionary/models.py:431
+#: signbank/dictionary/models.py:433
 msgid "This is the unique identifying name of a Gloss."
 msgstr "Glossin uniikki nimi."
 
 #. Translators: Help text for Gloss field: idgloss_en (english)
-#: signbank/dictionary/models.py:437
+#: signbank/dictionary/models.py:439
 msgid "This is the English name for the Gloss"
 msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: annotation_comments, verbose name
 #. Translators:
 #. Translators: Gloss information
-#: signbank/dictionary/models.py:440
+#: signbank/dictionary/models.py:442
 #: signbank/feedback/templates/feedback/interpreter.html:166
 #: signbank/feedback/templates/feedback/show.html:189
 msgid "Comments"
@@ -798,7 +503,7 @@ msgstr "Kommentit"
 #. Translators: Gloss models field: url
 #. Translators: Label for PageForm
 #. Translators: verbose name for url
-#: signbank/dictionary/models.py:443 signbank/pages/admin.py:17
+#: signbank/dictionary/models.py:445 signbank/pages/admin.py:17
 #: signbank/pages/models.py:11
 msgid "URL"
 msgstr "Internetosoite"
@@ -806,21 +511,21 @@ msgstr "Internetosoite"
 #. Translators: Gloss models field: handedness, verbose name
 #. handedness = models.CharField(_("Handedness"), blank=True, null=True, choices=build_choice_list("handedness"),
 #. max_length=5)  # handednessChoices <- use this if you want static
-#: signbank/dictionary/models.py:460
+#: signbank/dictionary/models.py:462
 msgid "Handedness"
 msgstr "Kätisyys"
 
 #. Translators: Gloss models field: strong_handshape, verbose name
 #. strong_handshape = models.CharField(_("Strong Hand"), blank=True, null=True, choices=build_choice_list("handshape"),
 #. max_length=5)
-#: signbank/dictionary/models.py:466
+#: signbank/dictionary/models.py:468
 msgid "Strong Hand"
 msgstr "Dominoiva käsi"
 
 #. Translators: Gloss models field: weak_handshape, verbose name
 #. weak_handshape = models.CharField(_("Weak Hand"), null=True, choices=build_choice_list("handshape"), blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:473
+#: signbank/dictionary/models.py:475
 msgid "Weak Hand"
 msgstr "Ei-dominoiva käsi"
 
@@ -829,7 +534,7 @@ msgstr "Ei-dominoiva käsi"
 #. _("Location"), choices=build_choice_list("location"), null=True, blank=True, max_length=20)
 #. Translators:
 #. Translators: Gloss information
-#: signbank/dictionary/models.py:480
+#: signbank/dictionary/models.py:482
 #: signbank/feedback/templates/feedback/interpreter.html:148
 #: signbank/feedback/templates/feedback/show.html:171
 msgid "Location"
@@ -839,7 +544,7 @@ msgstr "Paikka"
 #. relation_between_articulators = models.CharField(
 #. _("Relation between Articulators"), choices=build_choice_list("relation_between_articulators"),
 #. null=True, blank=True, max_length=5)
-#: signbank/dictionary/models.py:488
+#: signbank/dictionary/models.py:490
 msgid "Relation Between Articulators"
 msgstr "Artikulaattorien välinen suhde"
 
@@ -847,7 +552,7 @@ msgstr "Artikulaattorien välinen suhde"
 #. absolute_orientation_palm = models.CharField(_("Absolute Orientation: Palm"),
 #. choices=build_choice_list("relation_between_articulators"), null=True,
 #. blank=True, max_length=5)
-#: signbank/dictionary/models.py:499
+#: signbank/dictionary/models.py:501
 msgid "Absolute Orientation: Palm"
 msgstr "Absoluuttinen orientaatio: kämmen"
 
@@ -856,7 +561,7 @@ msgstr "Absoluuttinen orientaatio: kämmen"
 #. choices=build_choice_list("absolute_orientation_fingers"),
 #. null=True,
 #. blank=True, max_length=5)
-#: signbank/dictionary/models.py:508
+#: signbank/dictionary/models.py:510
 msgid "Absolute Orientation: Fingers"
 msgstr "Absoluuttinen orientaatio: sormet"
 
@@ -865,7 +570,7 @@ msgstr "Absoluuttinen orientaatio: sormet"
 #. choices=build_choice_list("relative_orientation_movement"),
 #. null=True,
 #. blank=True, max_length=5)
-#: signbank/dictionary/models.py:518
+#: signbank/dictionary/models.py:520
 msgid "Relative Orientation: Movement"
 msgstr "Absoluuttinen orientaatio: liike"
 
@@ -874,7 +579,7 @@ msgstr "Absoluuttinen orientaatio: liike"
 #. choices=build_choice_list("relative_orientation_location"),
 #. null=True,
 #. blank=True, max_length=5)
-#: signbank/dictionary/models.py:529
+#: signbank/dictionary/models.py:531
 msgid "Relative Orientation: Location"
 msgstr "Absoluuttinen orientaatio: paikka"
 
@@ -882,7 +587,7 @@ msgstr "Absoluuttinen orientaatio: paikka"
 #. orientation_change = models.CharField(_("Orientation Change"), choices=build_choice_list("orientation_change"),
 #. null=True, blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:539
+#: signbank/dictionary/models.py:541
 msgid "Orientation Change"
 msgstr "Orientaation muutos"
 
@@ -890,17 +595,17 @@ msgstr "Orientaation muutos"
 #. handshape_change = models.CharField(_("Handshape Change"), choices=build_choice_list("handshape_change"), null=True,
 #. blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:548
+#: signbank/dictionary/models.py:550
 msgid "Handshape Change"
 msgstr "Käsimuodon muutos"
 
 #. Translators: Gloss models field: repeated_movement, verbose name
-#: signbank/dictionary/models.py:553
+#: signbank/dictionary/models.py:555
 msgid "Repeated Movement"
 msgstr "Toistollinen liike"
 
 #. Translators: Gloss models field: alternating_movement, verbose name
-#: signbank/dictionary/models.py:555
+#: signbank/dictionary/models.py:557
 msgid "Alternating Movement"
 msgstr "Vaihteleva liike"
 
@@ -908,7 +613,7 @@ msgstr "Vaihteleva liike"
 #. movement_shape = models.CharField(_("Movement Shape"), choices=build_choice_list("movement_shape"), null=True,
 #. blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:561
+#: signbank/dictionary/models.py:563
 msgid "Movement Shape"
 msgstr "Liikkeen muoto"
 
@@ -916,7 +621,7 @@ msgstr "Liikkeen muoto"
 #. movement_direction = models.CharField(_("Movement Direction"), choices=build_choice_list("movement_direction"),
 #. null=True, blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:568
+#: signbank/dictionary/models.py:570
 msgid "Movement Direction"
 msgstr "Liikkeen suunta"
 
@@ -924,46 +629,46 @@ msgstr "Liikkeen suunta"
 #. movement_manner = models.CharField(_("Movement Manner"), choices=build_choice_list("movement_manner"), null=True,
 #. blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:576
+#: signbank/dictionary/models.py:578
 msgid "Movement Manner"
 msgstr "Liikkeen tapa"
 
 #. Translators: Gloss models field: contact_type, verbose name
 #. contact_type = models.CharField(_("Contact Type"), choices=build_choice_list("contact_type"), null=True, blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:582
+#: signbank/dictionary/models.py:584
 msgid "Contact Type"
 msgstr "Kontaktityyppi"
 
 #. Translators: Gloss models field: phonology_other verbose name
-#: signbank/dictionary/models.py:587
+#: signbank/dictionary/models.py:589
 msgid "Phonology Other"
 msgstr "Fonologia muu"
 
 #. Translators: Gloss models field: mouth_gesture, verbose name
-#: signbank/dictionary/models.py:590
+#: signbank/dictionary/models.py:592
 msgid "Mouth Gesture"
 msgstr "Huulio"
 
 #. Translators: Gloss models field: mouthing, verbose name
-#: signbank/dictionary/models.py:592
+#: signbank/dictionary/models.py:594
 msgid "Mouthing"
 msgstr "Huulio sanahahmo"
 
 #. Translators: Gloss models field: phonetic_variation, verbose name
-#: signbank/dictionary/models.py:594
+#: signbank/dictionary/models.py:596
 msgid "Phonetic Variation"
 msgstr "Foneettinen variaatio"
 
 #. Translators: Gloss models field: iconic_image, verbose name
-#: signbank/dictionary/models.py:598
+#: signbank/dictionary/models.py:600
 msgid "Iconic Image"
 msgstr ""
 
 #. Translators: Gloss models field: named_entity, verbose name
 #. named_entity = models.CharField(_("Named Entity"), choices=build_choice_list("named_entity"), null=True, blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:602
+#: signbank/dictionary/models.py:604
 msgid "Named Entity"
 msgstr "Nimetty kohde"
 
@@ -971,25 +676,25 @@ msgstr "Nimetty kohde"
 #. semantic_field = models.CharField(_("Semantic Field"), choices=build_choice_list("semantic_field"), null=True,
 #. blank=True,
 #. max_length=5)
-#: signbank/dictionary/models.py:609
+#: signbank/dictionary/models.py:611
 msgid "Semantic Field"
 msgstr "Semanttinen kenttä"
 
-#: signbank/dictionary/models.py:616
+#: signbank/dictionary/models.py:618
 msgid "Number of Occurrences"
 msgstr "Esiintymien määrä"
 
 #. Translators: Help text for Gloss models field: number_of_occurences
-#: signbank/dictionary/models.py:618
+#: signbank/dictionary/models.py:620
 msgid "Number of occurences in annotation materials"
 msgstr "Havaintojen määrä annotaatiomateriaaleissa"
 
 #. Translators: Gloss models field: in_web_dictionary, verbose name
-#: signbank/dictionary/models.py:622
+#: signbank/dictionary/models.py:624
 msgid "In the Web dictionary"
 msgstr "Verkkosanakirjassa"
 
-#: signbank/dictionary/models.py:625
+#: signbank/dictionary/models.py:627
 msgid "Is this a proposed new sign?"
 msgstr "Onko tämä ehdotettu uusi viittoma?"
 
@@ -1004,6 +709,13 @@ msgstr "Lisää Glossi"
 msgid "Add New Sign"
 msgstr "Lisää uusi Glossi"
 
+#. Translators: Message that appears if user doesn't have proper user rights to view this page.
+#: signbank/dictionary/templates/dictionary/add_gloss.html:26
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:32
+#: templates/infopage.html:69
+msgid "You do not have sufficient user rights to view this page."
+msgstr "Sinulla ei ole oikeuksia nähdä sivua"
+
 #. Translators: ID Gloss - add gloss form title
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:21
 msgid "ID Gloss"
@@ -1013,6 +725,14 @@ msgstr "Glossi"
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:5
 msgid "Signbank: Search Signs"
 msgstr "Signbank: Etsi viittomia"
+
+#. Translators: admin_gloss_list header
+#. Translators: Submit button (press to search)
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:149
+#: templates/menu.html:57
+msgid "Search"
+msgstr "Haku"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:125
 msgid "Search by Language and Basic Properties"
@@ -1040,29 +760,29 @@ msgstr "Hakutuloksia:"
 msgid "out of"
 msgstr "/"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:190
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:188
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:267
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:272
 msgid "Row colors:"
 msgstr "Rivien värit:"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:268
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:273
 msgid "Gloss is locked"
 msgstr "Glossi on lukittu"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:269
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:274
 msgid "Gloss has a video"
 msgstr "Glossilla on video"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:270
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:275
 msgid "Gloss does not have a video"
 msgstr "Glossilla ei ole videota"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:19
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:119
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:113
 msgid "Enable Edit"
 msgstr "Muokkaus päälle"
 
@@ -1076,33 +796,34 @@ msgstr "Tallenna"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:22
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:141
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:108
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:242
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:333
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:490
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:135
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:54
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:183
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:274
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:428
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:40
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:98
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:92
 msgid "Search results:"
 msgstr "Hakutulokset:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:113
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:107
 msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:116
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:110
 msgid "Delete Sign"
 msgstr "Poista Glossi"
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:127
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:121
 msgid "Delete This Sign"
 msgstr "Poista tämä Glossi"
 
 #. Translators: Text in Gloss
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:131
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:125
 msgid ""
 "This action will delete this sign and all associated records. It cannot be "
 "undone."
@@ -1110,140 +831,107 @@ msgstr ""
 "Tämä toiminto poistaa Glossin ja kaikki siihen liittyvät tiedot. Toimintoa "
 "ei voi peruuttaa."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:145
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:112
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:246
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:337
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:494
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:139
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:58
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:187
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:278
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:432
 msgid "Confirm Delete"
 msgstr "Hyväksy poistaminen"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:167
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:160
 #: signbank/feedback/templates/feedback/show.html:68
 #: signbank/feedback/templates/feedback/show.html:154
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:191
-msgid "Gloss:"
-msgstr "Glossi:"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:196
-msgid "Gloss in English:"
-msgstr "Glossi englanniksi:"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:201
-msgid "Translation equivalents in Finnish:"
-msgstr "Käännösvastineet suomeksi"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:206
-msgid "Translation equivalents in English:"
-msgstr "Käännösvastineet englanniksi"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:211
-msgid "Comments:"
-msgstr "Kommentit"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:216
-msgid "Language:"
-msgstr "Kieli:"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:222
-msgid "Dialect:"
-msgstr "Alue:"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:227
-msgid "URL:"
-msgstr "URL:"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:234
-msgid "Created:"
-msgstr "Luotu:"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:238
-msgid "Updated:"
-msgstr "Päivitetty:"
-
 #. Translators: Upload/Add new video to Signbank
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:14
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:181
 msgid "Upload New Video"
 msgstr "Lähetä uusi video"
 
 #. Translators: VideoUploadForGlossForm
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:25
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:191
 #: signbank/video/forms.py:18
 msgid "Upload Video"
 msgstr "Lähetä video"
 
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:35
-msgid "Delete/Revert Video"
-msgstr "Poista/Palauta video"
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:206
+msgid "Gloss:"
+msgstr "Glossi:"
 
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:38
-msgid ""
-"This will delete the most recent upload and restore the most recent earlier\n"
-"                            version."
-msgstr ""
-"Tämä toiminto poistaa uusimman videon ja palauttaa sitä edellisen version."
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:211
+msgid "Gloss in English:"
+msgstr "Glossi englanniksi:"
 
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:41
-msgid "We have "
-msgstr ""
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:216
+msgid "Translation equivalents in Finnish:"
+msgstr "Käännösvastineet suomeksi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:41
-msgid ""
-"videos for\n"
-"                            this sign."
-msgstr "videota tälle glossille."
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:221
+msgid "Translation equivalents in English:"
+msgstr "Käännösvastineet englanniksi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:45
-msgid "Delete/Revert this video"
-msgstr "Poista/Palauta tämä video"
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:226
+msgid "Comments:"
+msgstr "Kommentit"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:64
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:231
+msgid "Language:"
+msgstr "Kieli:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:237
+msgid "Dialect:"
+msgstr "Alue:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:242
+msgid "URL:"
+msgstr "URL:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:250
+msgid "Created:"
+msgstr "Luotu:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:254
+msgid "Updated:"
+msgstr "Päivitetty:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:14
 msgid "Morphology"
 msgstr "Morfologia"
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:92
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:38
 msgid "Delete This Morphology"
 msgstr "Poista tämä morfologia"
 
 #. Translators: Question
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:96
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:322
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:42
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:263
 msgid ""
 "Are you sure you want to delete this? This cannot be\n"
-"                                                undone."
+"                                            undone."
 msgstr "Haluatko varmasti poistaa tämän? Toimintoa ei voi peruuttaa."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:144
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:273
-msgid "ID Gloss/Annotation ID Gloss"
-msgstr "ID Glossi"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:148
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:91
 msgid "Add Morphology Definition"
 msgstr "Lisää morfologia"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:187
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:128
 msgid "Semantics"
 msgstr "Semantiikka"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:208
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:149
 msgid "Relations to Other Signs"
 msgstr "Suhteet viittomiin"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:226
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:318
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:167
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:259
 msgid "Delete This Relation"
 msgstr "Poista suhde"
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:230
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:171
 #, python-format
 msgid ""
 "This action will delete the <strong>%(rel.get_role_display)s</strong> "
@@ -1252,78 +940,82 @@ msgstr ""
 "Tämä toiminto poistaa <strong>%(rel.get_role_display)s</strong> suhteen "
 "%(rel.source)s:n ja %(rel.target)s:n välillä. Sitä ei voida peruuttaa."
 
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:214
+msgid "ID Gloss/Annotation ID Gloss"
+msgstr "ID Glossi"
+
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:276
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:217
 msgid "Add Relation"
 msgstr "Lisää suhde"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:290
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:231
 msgid "Relations to Foreign Signs"
 msgstr "Suhteet vieraskielisiin viittomiin"
 
 #. Translators: Loan from another language(?)
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:298
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:239
 msgid "Loan"
 msgstr "Laina"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:364
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:305
 msgid "Related language"
 msgstr "Lainattu kieli"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:372
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:313
 msgid "Add Relation to Foreign Sign"
 msgstr "Lisää suhde vieraskieliseen viittomaan"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:387
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:327
 msgid "Frequency"
 msgstr "Frekvenssi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:408
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:348
 msgid "Publication Status"
 msgstr "Julkaisun tilanne"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:418
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:358
 msgid "In Web Dictionary"
 msgstr "Verkkosanakirjassa"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:425
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:365
 msgid "Proposed New Sign"
 msgstr "Ehdotettu uusi viittoma"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:440
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:380
 msgid "Notes"
 msgstr "Muistiinpanot"
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:451
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:391
 msgid "Published"
 msgstr "Julkaistu"
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:453
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:393
 msgid "Index"
 msgstr "Indeksi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:456
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:396
 msgid "Text"
 msgstr "Teksti"
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:475
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:413
 msgid "Delete This Note"
 msgstr "Poista muistiinpano"
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:480
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:418
 msgid "This action will delete this note. It cannot be undone."
 msgstr "Tämä poistaa muistiinpanon, eikä sitä voida peruuttaa."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:530
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:465
 msgid "Enter new note"
 msgstr "Kirjoita muistiinpano"
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:538
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:473
 msgid "Save New"
 msgstr "Lisää"
 
@@ -1382,6 +1074,65 @@ msgstr "Tee muutoksia"
 msgid "Changes are live."
 msgstr "Muutokset ovat voimassa."
 
+#. Translators:
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:10
+msgid "Import Glosses from a CSV file"
+msgstr "Tuo Glosseja CSV-tiedostosta"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:13
+msgid ""
+"CSV-file should be constructed so that the first column is idgloss (meaning "
+"gloss) and the\n"
+"                second column is idgloss_en (meaning gloss in english)"
+msgstr ""
+"CSV-tiedosto tulee muodostaa siten, että ensimmäinen sarake on idgloss "
+"ja toinen sarake on idgloss_en (glossi englanniksi)"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:15
+msgid ""
+"The first row of the file will not be added because it is expected to be the "
+"column\n"
+"                headers."
+msgstr ""
+"CSV-tiedoston ensimmäistä riviä ei lisätä glossina, koska sen oletetaan "
+"sisältävän sarakkeiden otsikot."
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:24
+msgid ""
+"Make sure that you selected the correct\n"
+"                Dataset before submitting!"
+msgstr ""
+"Varmista että olet valinnut oikean Aineiston ennen lomakkeen lähettämistä!"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:27
+msgid "Import glosses from CSV"
+msgstr "Tuo glosseja CSV-tiedostosta"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:9
+msgid "Glosses to be added to"
+msgstr "Seuraavat glossit lisätään"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:23
+msgid "Glosses that will not be added because they already exist in"
+msgstr "Näitä glosseja ei lisätä, koska ne löytyvät jo tietokannasta"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:30
+msgid "No glosses can be added!"
+msgstr "Yhtään glossia ei voida lisätä!"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:31
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:56
+msgid "Return to the form"
+msgstr "Palaa CSV-lomakkeeseen"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:39
+msgid "Confirm"
+msgstr "Hyväksy"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:45
+msgid "The following glosses were added to"
+msgstr "Seuraavat glossit lisättiin"
+
 #. Translators: Welcome message
 #: signbank/dictionary/templates/dictionary/index.html:7
 #, python-format
@@ -1392,252 +1143,181 @@ msgid ""
 msgstr ""
 
 #. Translators: HttpResponseForbidden for update_gloss
-#: signbank/dictionary/update.py:51
+#: signbank/dictionary/update.py:50
 msgid "Gloss Update Not Allowed"
 msgstr "Glossin päivittäminen ei ole sallittua"
 
-#: signbank/dictionary/update.py:55
+#: signbank/dictionary/update.py:57
 msgid "Gloss Update Not Allowed: Gloss is locked from editing"
 msgstr "Glossin päivittäminen ei ole sallittua: Glossi on lukittu"
 
 #. Translators: HttpResponseBadRequest
 #: signbank/dictionary/update.py:125
-msgid "Uknown Language"
-msgstr "Tuntematon kieli"
-
-#. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:140
 msgid "Unknown Dialect"
 msgstr "Tuntematon alue"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:158
+#: signbank/dictionary/update.py:143
 msgid "Unknown field"
 msgstr "Tuntematon kenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:293
+#: signbank/dictionary/update.py:258
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:297 signbank/dictionary/update.py:345
+#: signbank/dictionary/update.py:262 signbank/dictionary/update.py:310
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:321 signbank/dictionary/update.py:619
+#: signbank/dictionary/update.py:286 signbank/dictionary/update.py:584
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:325 signbank/dictionary/update.py:365
-#: signbank/dictionary/update.py:623
+#: signbank/dictionary/update.py:290 signbank/dictionary/update.py:330
+#: signbank/dictionary/update.py:588
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:340
+#: signbank/dictionary/update.py:305
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:428
+#: signbank/dictionary/update.py:393
 msgid "Bad Definition ID"
 msgstr "Epäkelpo määritelmän ID"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:432
+#: signbank/dictionary/update.py:397
 msgid "Definition doesn't match gloss"
 msgstr "Määritelmä ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:482 signbank/dictionary/update.py:520
+#: signbank/dictionary/update.py:447 signbank/dictionary/update.py:485
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:494
+#: signbank/dictionary/update.py:459
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:532
+#: signbank/dictionary/update.py:497
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
-#: signbank/dictionary/update.py:580
+#: signbank/dictionary/update.py:545
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:593
+#: signbank/dictionary/update.py:558
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:598
+#: signbank/dictionary/update.py:563
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
+#: signbank/dictionary/update.py:672
+msgid ""
+"The provided CSV-file does not meet the requirements or there is some other "
+"problem."
+msgstr ""
+"Annettu CSV-tiedosto ei ole vaatimusten mukainen tai havaittiin joku muu ongelma."
+
+#: signbank/dictionary/update.py:691
+msgid "Cancelled adding CSV data."
+msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
+
+#: signbank/dictionary/update.py:708
+msgid "Glosses were added succesfully."
+msgstr "Glossit lisättiin onnistuneesti."
+
 #. Translators: import_csv: not allowed to see requested page (Might not be useful to translate)
-#: signbank/dictionary/views.py:71
+#: signbank/dictionary/views.py:51
 msgid "You are not allowed to see this page."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua."
 
 #. Translators: keywordnotbelong, label name
-#: signbank/feedback/forms.py:49
+#: signbank/feedback/forms.py:32
 msgid "List keywords"
 msgstr "Keyword lista"
 
-#: signbank/feedback/forms.py:56
+#: signbank/feedback/forms.py:39
 msgid "How many hands are used to make this sign?"
 msgstr "Montaako kättä viittomassa käytetään?"
 
-#: signbank/feedback/forms.py:59
+#: signbank/feedback/forms.py:42
 msgid "What is the handshape?"
 msgstr "Mikä on käsimuoto?"
 
-#: signbank/feedback/forms.py:62
+#: signbank/feedback/forms.py:45
 msgid "What is the handshape of the left hand?"
 msgstr "Mikä on vasemman käden käsimuoto?"
 
-#: signbank/feedback/forms.py:65
+#: signbank/feedback/forms.py:48
 msgid "Choose the location of the sign on, or near the body"
 msgstr "Onko viittoma lähellä vai kaukana kehosta"
 
-#: signbank/feedback/forms.py:68
+#: signbank/feedback/forms.py:51
 msgid "Choose the location of the right hand on, or near the left hand"
 msgstr "Onko oikea käsi vasemman päällä vai lähellä vasenta kättä"
 
-#: signbank/feedback/forms.py:72
+#: signbank/feedback/forms.py:55
 msgid "Contact between hands and body"
 msgstr "Käsien ja kehon välinen kontakti"
 
-#: signbank/feedback/forms.py:75
+#: signbank/feedback/forms.py:58
 msgid "Interaction between hands"
 msgstr "Käsien interaktio"
 
-#: signbank/feedback/forms.py:78
+#: signbank/feedback/forms.py:61
 msgid "Movement direction of the hand(s)"
 msgstr "Käsien liikkeen suunta"
 
-#: signbank/feedback/forms.py:81
+#: signbank/feedback/forms.py:64
 msgid "Type of movement"
 msgstr "Liikkeen tyyppi"
 
-#: signbank/feedback/forms.py:84
+#: signbank/feedback/forms.py:67
 msgid "Small movements of the hand(s) and fingers"
 msgstr "Pienet käden ja sormien liikkeet"
 
-#: signbank/feedback/forms.py:87
+#: signbank/feedback/forms.py:70
 msgid "Number of movements"
 msgstr "Liikkeiden määrä"
 
 #. Translators: Missing sign feedback (meaning)
-#: signbank/feedback/forms.py:89
+#: signbank/feedback/forms.py:72
 msgid "Sign Meaning"
 msgstr "Viittoman merkitys"
 
 #. Translators: Missing sign feedback (comments)
-#: signbank/feedback/forms.py:94
+#: signbank/feedback/forms.py:77
 msgid "Further Details"
 msgstr "Lisätietoa"
 
-#. Translators: isAuslanChoices
-#. Translators: likedChoices (feedback)
-#. Translators: useChoices (feedback)
-#. Translators: suggestedChoices (feedback)
-#. Translators: correctChoices (feedback)
-#. Translators: yesnoChoices
-#: signbank/feedback/models.py:11 signbank/feedback/models.py:54
-#: signbank/feedback/models.py:67 signbank/feedback/models.py:78
-#: signbank/feedback/models.py:91 signbank/registration/forms.py:219
-msgid "yes"
-msgstr "kyllä"
-
-#. Translators: isAuslanChoices
-#. Translators: suggestedChoices
-#: signbank/feedback/models.py:13 signbank/feedback/models.py:84
-msgid "Perhaps"
-msgstr "Ehkä"
-
-#. Translators: isAuslanChoices
-#: signbank/feedback/models.py:15
-msgid "Don't know"
-msgstr "En tiedä"
-
-#. Translators: isAuslanChoices
-#: signbank/feedback/models.py:17
-msgid "Don't think so"
-msgstr "En usko"
-
-#. Translators: isAuslanChoices
-#. Translators: likedChoices
-#. Translators: useChoices
-#. Translators: suggestedChoices
-#. Translators: correctChoices
-#: signbank/feedback/models.py:21 signbank/feedback/models.py:64
-#: signbank/feedback/models.py:75 signbank/feedback/models.py:88
-#: signbank/feedback/models.py:101
-msgid "N/A"
-msgstr ""
-
-#. Translators: likedChoices
-#: signbank/feedback/models.py:56
-msgid "A little"
-msgstr "Vähän"
-
-#. Translators: likedChoices
-#: signbank/feedback/models.py:58
-msgid "Don't care"
-msgstr "En välitä"
-
-#. Translators: likedChoices
-#: signbank/feedback/models.py:60
-msgid "Not much"
-msgstr "Ei paljon"
-
-#. Translators: useChoices
-#. Translators: suggestedChoices
-#: signbank/feedback/models.py:69 signbank/feedback/models.py:80
-msgid "Sometimes"
-msgstr "Joskus"
-
-#. Translators: useChoices
-#: signbank/feedback/models.py:71
-msgid "Not Often"
-msgstr "Harvoin"
-
-#. Translators: suggestedChoices
-#. Translators: correctChoices
-#: signbank/feedback/models.py:82 signbank/feedback/models.py:95
-msgid "Don't Know"
-msgstr "En tiedä"
-
-#. Translators: correctChoices
-#: signbank/feedback/models.py:93
-msgid "Mostly Correct"
-msgstr "Oikein"
-
-#. Translators: correctChoices
-#: signbank/feedback/models.py:97
-msgid "Mostly Wrong"
-msgstr "Väärin"
-
 #. Translators: Handform choice (feedback)
-#: signbank/feedback/models.py:106
+#: signbank/feedback/models.py:12
 msgid "One handed"
 msgstr "Yksikätinen"
 
 #. Translators: Handform choice (feedback)
-#: signbank/feedback/models.py:108
+#: signbank/feedback/models.py:14
 msgid "Two handed (same shape for each hand)"
 msgstr "Kaksikätinen (samalla käsimuodolla)"
 
 #. Translators: Handform choice (feedback)
-#: signbank/feedback/models.py:110
+#: signbank/feedback/models.py:16
 msgid "Two handed (diffent shapes for each hand)"
 msgstr "Kaksikätinen (eri käsimuodoilla)"
 
@@ -1650,489 +1330,489 @@ msgstr "Kaksikätinen (eri käsimuodoilla)"
 #. Translators: repetitionChoices
 #. Translators: relativelocationChoices
 #. Translators: handinteractionChoices
-#: signbank/feedback/models.py:113 signbank/feedback/models.py:176
-#: signbank/feedback/models.py:198 signbank/feedback/models.py:205
-#: signbank/feedback/models.py:217 signbank/feedback/models.py:224
-#: signbank/feedback/models.py:235 signbank/feedback/models.py:241
-#: signbank/feedback/models.py:251
+#: signbank/feedback/models.py:19 signbank/feedback/models.py:82
+#: signbank/feedback/models.py:104 signbank/feedback/models.py:111
+#: signbank/feedback/models.py:123 signbank/feedback/models.py:130
+#: signbank/feedback/models.py:141 signbank/feedback/models.py:147
+#: signbank/feedback/models.py:157
 msgid "None"
 msgstr "Ei yhtään"
 
 #. Translators: handShapeChoices
-#: signbank/feedback/models.py:115
+#: signbank/feedback/models.py:21
 msgid "Animal"
 msgstr "Eläin"
 
-#: signbank/feedback/models.py:116
+#: signbank/feedback/models.py:22
 msgid "Animal-flick"
 msgstr ""
 
-#: signbank/feedback/models.py:117
+#: signbank/feedback/models.py:23
 msgid "Bad"
 msgstr ""
 
-#: signbank/feedback/models.py:118
+#: signbank/feedback/models.py:24
 msgid "Ball"
 msgstr ""
 
-#: signbank/feedback/models.py:119
+#: signbank/feedback/models.py:25
 msgid "Cup"
 msgstr ""
 
-#: signbank/feedback/models.py:120
+#: signbank/feedback/models.py:26
 msgid "Cup-flush"
 msgstr ""
 
-#: signbank/feedback/models.py:121
+#: signbank/feedback/models.py:27
 msgid "Cup-thumb"
 msgstr ""
 
-#: signbank/feedback/models.py:122
+#: signbank/feedback/models.py:28
 msgid "Eight"
 msgstr ""
 
-#: signbank/feedback/models.py:123
+#: signbank/feedback/models.py:29
 msgid "Eight-hook"
 msgstr ""
 
-#: signbank/feedback/models.py:124
+#: signbank/feedback/models.py:30
 msgid "Fist-A"
 msgstr ""
 
-#: signbank/feedback/models.py:125
+#: signbank/feedback/models.py:31
 msgid "Fist-S"
 msgstr ""
 
-#: signbank/feedback/models.py:126
+#: signbank/feedback/models.py:32
 msgid "Flat"
 msgstr ""
 
-#: signbank/feedback/models.py:127
+#: signbank/feedback/models.py:33
 msgid "Flat-bent"
 msgstr ""
 
-#: signbank/feedback/models.py:128
+#: signbank/feedback/models.py:34
 msgid "Flat-B"
 msgstr ""
 
-#: signbank/feedback/models.py:129
+#: signbank/feedback/models.py:35
 msgid "Flat-flush"
 msgstr ""
 
-#: signbank/feedback/models.py:130
+#: signbank/feedback/models.py:36
 msgid "Flick"
 msgstr ""
 
-#: signbank/feedback/models.py:131
+#: signbank/feedback/models.py:37
 msgid "Flick-gay"
 msgstr ""
 
-#: signbank/feedback/models.py:132
+#: signbank/feedback/models.py:38
 msgid "Four"
 msgstr ""
 
-#: signbank/feedback/models.py:133
+#: signbank/feedback/models.py:39
 msgid "Five"
 msgstr ""
 
-#: signbank/feedback/models.py:134
+#: signbank/feedback/models.py:40
 msgid "Good"
 msgstr ""
 
-#: signbank/feedback/models.py:135
+#: signbank/feedback/models.py:41
 msgid "Good-6"
 msgstr ""
 
-#: signbank/feedback/models.py:136
+#: signbank/feedback/models.py:42
 msgid "Gun"
 msgstr ""
 
-#: signbank/feedback/models.py:137
+#: signbank/feedback/models.py:43
 msgid "Gun-hook"
 msgstr ""
 
-#: signbank/feedback/models.py:138
+#: signbank/feedback/models.py:44
 msgid "Hook"
 msgstr ""
 
-#: signbank/feedback/models.py:139
+#: signbank/feedback/models.py:45
 msgid "Kneel"
 msgstr ""
 
-#: signbank/feedback/models.py:140
+#: signbank/feedback/models.py:46
 msgid "Letter-C"
 msgstr ""
 
-#: signbank/feedback/models.py:141
+#: signbank/feedback/models.py:47
 msgid "Letter-M"
 msgstr ""
 
-#: signbank/feedback/models.py:142
+#: signbank/feedback/models.py:48
 msgid "Letter-N"
 msgstr ""
 
-#: signbank/feedback/models.py:143
+#: signbank/feedback/models.py:49
 msgid "Love"
 msgstr ""
 
-#: signbank/feedback/models.py:144
+#: signbank/feedback/models.py:50
 msgid "Middle"
 msgstr ""
 
-#: signbank/feedback/models.py:145
+#: signbank/feedback/models.py:51
 msgid "Mother"
 msgstr ""
 
-#: signbank/feedback/models.py:146
+#: signbank/feedback/models.py:52
 msgid "Nine"
 msgstr ""
 
-#: signbank/feedback/models.py:147
+#: signbank/feedback/models.py:53
 msgid "Point-1"
 msgstr ""
 
-#: signbank/feedback/models.py:148
+#: signbank/feedback/models.py:54
 msgid "Point-D"
 msgstr ""
 
-#: signbank/feedback/models.py:149
+#: signbank/feedback/models.py:55
 msgid "Point-flush"
 msgstr ""
 
-#: signbank/feedback/models.py:150
+#: signbank/feedback/models.py:56
 msgid "Okay-flat"
 msgstr ""
 
-#: signbank/feedback/models.py:151
+#: signbank/feedback/models.py:57
 msgid "Okay-F"
 msgstr ""
 
-#: signbank/feedback/models.py:152
+#: signbank/feedback/models.py:58
 msgid "Okay-O"
 msgstr ""
 
-#: signbank/feedback/models.py:153
+#: signbank/feedback/models.py:59
 msgid "Old-seven"
 msgstr ""
 
-#: signbank/feedback/models.py:154
+#: signbank/feedback/models.py:60
 msgid "Plane"
 msgstr ""
 
-#: signbank/feedback/models.py:155
+#: signbank/feedback/models.py:61
 msgid "Perth"
 msgstr ""
 
-#: signbank/feedback/models.py:156
+#: signbank/feedback/models.py:62
 msgid "Round-O"
 msgstr ""
 
-#: signbank/feedback/models.py:157
+#: signbank/feedback/models.py:63
 msgid "Round-flat"
 msgstr ""
 
-#: signbank/feedback/models.py:158
+#: signbank/feedback/models.py:64
 msgid "Round-E"
 msgstr ""
 
-#: signbank/feedback/models.py:159
+#: signbank/feedback/models.py:65
 msgid "Rude"
 msgstr ""
 
-#: signbank/feedback/models.py:160
+#: signbank/feedback/models.py:66
 msgid "Salt"
 msgstr ""
 
-#: signbank/feedback/models.py:161
+#: signbank/feedback/models.py:67
 msgid "Salt-flick"
 msgstr ""
 
-#: signbank/feedback/models.py:162
+#: signbank/feedback/models.py:68
 msgid "Small"
 msgstr ""
 
-#: signbank/feedback/models.py:163
+#: signbank/feedback/models.py:69
 msgid "Soon"
 msgstr ""
 
-#: signbank/feedback/models.py:164
+#: signbank/feedback/models.py:70
 msgid "Spoon"
 msgstr ""
 
-#: signbank/feedback/models.py:165
+#: signbank/feedback/models.py:71
 msgid "Spoon-hook"
 msgstr ""
 
-#: signbank/feedback/models.py:166
+#: signbank/feedback/models.py:72
 msgid "Spoon-thumb"
 msgstr ""
 
-#: signbank/feedback/models.py:167
+#: signbank/feedback/models.py:73
 msgid "Thick"
 msgstr ""
 
-#: signbank/feedback/models.py:168
+#: signbank/feedback/models.py:74
 msgid "Three"
 msgstr ""
 
-#: signbank/feedback/models.py:169
+#: signbank/feedback/models.py:75
 msgid "Three-hook"
 msgstr ""
 
-#: signbank/feedback/models.py:170
+#: signbank/feedback/models.py:76
 msgid "Two"
 msgstr ""
 
-#: signbank/feedback/models.py:171
+#: signbank/feedback/models.py:77
 msgid "Wish"
 msgstr ""
 
-#: signbank/feedback/models.py:172
+#: signbank/feedback/models.py:78
 msgid "Write"
 msgstr ""
 
-#: signbank/feedback/models.py:173
+#: signbank/feedback/models.py:79
 msgid "Write-flat"
 msgstr ""
 
-#: signbank/feedback/models.py:177
+#: signbank/feedback/models.py:83
 msgid "Top of head"
 msgstr ""
 
-#: signbank/feedback/models.py:178
+#: signbank/feedback/models.py:84
 msgid "Forehead"
 msgstr ""
 
-#: signbank/feedback/models.py:179
+#: signbank/feedback/models.py:85
 msgid "Temple"
 msgstr ""
 
-#: signbank/feedback/models.py:180
+#: signbank/feedback/models.py:86
 msgid "Eyes"
 msgstr ""
 
-#: signbank/feedback/models.py:181
+#: signbank/feedback/models.py:87
 msgid "Nose"
 msgstr ""
 
-#: signbank/feedback/models.py:182
+#: signbank/feedback/models.py:88
 msgid "Whole of face"
 msgstr ""
 
-#: signbank/feedback/models.py:183
+#: signbank/feedback/models.py:89
 msgid "Cheekbone"
 msgstr ""
 
-#: signbank/feedback/models.py:184
+#: signbank/feedback/models.py:90
 msgid "Ear"
 msgstr ""
 
-#: signbank/feedback/models.py:185
+#: signbank/feedback/models.py:91
 msgid "Cheek"
 msgstr ""
 
-#: signbank/feedback/models.py:186
+#: signbank/feedback/models.py:92
 msgid "Mouth and lips"
 msgstr ""
 
-#: signbank/feedback/models.py:187
+#: signbank/feedback/models.py:93
 msgid "Chin"
 msgstr ""
 
-#: signbank/feedback/models.py:188
+#: signbank/feedback/models.py:94
 msgid "Neck"
 msgstr ""
 
-#: signbank/feedback/models.py:189
+#: signbank/feedback/models.py:95
 msgid "Shoulder"
 msgstr ""
 
-#: signbank/feedback/models.py:190
+#: signbank/feedback/models.py:96
 msgid "Chest"
 msgstr ""
 
-#: signbank/feedback/models.py:191
+#: signbank/feedback/models.py:97
 msgid "Stomach"
 msgstr ""
 
-#: signbank/feedback/models.py:192
+#: signbank/feedback/models.py:98
 msgid "Waist"
 msgstr ""
 
-#: signbank/feedback/models.py:193
+#: signbank/feedback/models.py:99
 msgid "Lower waist"
 msgstr ""
 
-#: signbank/feedback/models.py:194
+#: signbank/feedback/models.py:100
 msgid "Upper arm"
 msgstr ""
 
-#: signbank/feedback/models.py:195
+#: signbank/feedback/models.py:101
 msgid "Elbow"
 msgstr ""
 
-#: signbank/feedback/models.py:199
+#: signbank/feedback/models.py:105
 msgid "Contact at start of movement"
 msgstr ""
 
-#: signbank/feedback/models.py:200
+#: signbank/feedback/models.py:106
 msgid "Contact at end of movement"
 msgstr ""
 
-#: signbank/feedback/models.py:201
+#: signbank/feedback/models.py:107
 msgid "Two contacts (tap)"
 msgstr ""
 
-#: signbank/feedback/models.py:202
+#: signbank/feedback/models.py:108
 msgid "Contact during (rub/stroke)"
 msgstr ""
 
-#: signbank/feedback/models.py:206
+#: signbank/feedback/models.py:112
 msgid "Up"
 msgstr ""
 
-#: signbank/feedback/models.py:207
+#: signbank/feedback/models.py:113
 msgid "Down"
 msgstr ""
 
-#: signbank/feedback/models.py:208
+#: signbank/feedback/models.py:114
 msgid "Up and down"
 msgstr ""
 
-#: signbank/feedback/models.py:209
+#: signbank/feedback/models.py:115
 msgid "Left"
 msgstr ""
 
-#: signbank/feedback/models.py:210
+#: signbank/feedback/models.py:116
 msgid "Right"
 msgstr ""
 
-#: signbank/feedback/models.py:211
+#: signbank/feedback/models.py:117
 msgid "Side to side"
 msgstr ""
 
-#: signbank/feedback/models.py:212
+#: signbank/feedback/models.py:118
 msgid "Away"
 msgstr ""
 
-#: signbank/feedback/models.py:213
+#: signbank/feedback/models.py:119
 msgid "Towards"
 msgstr ""
 
-#: signbank/feedback/models.py:214
+#: signbank/feedback/models.py:120
 msgid "To and fro"
 msgstr ""
 
-#: signbank/feedback/models.py:218
+#: signbank/feedback/models.py:124
 msgid "Straight"
 msgstr ""
 
-#: signbank/feedback/models.py:219
+#: signbank/feedback/models.py:125
 msgid "Curved"
 msgstr ""
 
-#: signbank/feedback/models.py:220
+#: signbank/feedback/models.py:126
 msgid "Circle"
 msgstr ""
 
-#: signbank/feedback/models.py:221
+#: signbank/feedback/models.py:127
 msgid "Zig-zag"
 msgstr ""
 
-#: signbank/feedback/models.py:225
+#: signbank/feedback/models.py:131
 msgid "Straighten from bent"
 msgstr ""
 
-#: signbank/feedback/models.py:226
+#: signbank/feedback/models.py:132
 msgid "Bend fingers"
 msgstr ""
 
-#: signbank/feedback/models.py:227
+#: signbank/feedback/models.py:133
 msgid "Nod at wrist"
 msgstr ""
 
-#: signbank/feedback/models.py:228
+#: signbank/feedback/models.py:134
 msgid "Straighten fingers"
 msgstr ""
 
-#: signbank/feedback/models.py:229
+#: signbank/feedback/models.py:135
 msgid "Open handshape"
 msgstr ""
 
-#: signbank/feedback/models.py:230
+#: signbank/feedback/models.py:136
 msgid "Close handshape"
 msgstr ""
 
-#: signbank/feedback/models.py:231
+#: signbank/feedback/models.py:137
 msgid "Wriggle fingers"
 msgstr ""
 
-#: signbank/feedback/models.py:232
+#: signbank/feedback/models.py:138
 msgid "Crumble fingers"
 msgstr ""
 
-#: signbank/feedback/models.py:236
+#: signbank/feedback/models.py:142
 msgid "Do the movement once"
 msgstr ""
 
-#: signbank/feedback/models.py:237
+#: signbank/feedback/models.py:143
 msgid "Do the movement twice"
 msgstr ""
 
-#: signbank/feedback/models.py:238
+#: signbank/feedback/models.py:144
 msgid "Repeat the movement several times"
 msgstr ""
 
-#: signbank/feedback/models.py:242
+#: signbank/feedback/models.py:148
 msgid "Forearm"
 msgstr ""
 
-#: signbank/feedback/models.py:243
+#: signbank/feedback/models.py:149
 msgid "Wrist"
 msgstr ""
 
-#: signbank/feedback/models.py:244
+#: signbank/feedback/models.py:150
 msgid "Pulse"
 msgstr ""
 
-#: signbank/feedback/models.py:245
+#: signbank/feedback/models.py:151
 msgid "Back of hand"
 msgstr ""
 
-#: signbank/feedback/models.py:246
+#: signbank/feedback/models.py:152
 msgid "Palm"
 msgstr ""
 
-#: signbank/feedback/models.py:247
+#: signbank/feedback/models.py:153
 msgid "Sides of hand"
 msgstr ""
 
-#: signbank/feedback/models.py:248
+#: signbank/feedback/models.py:154
 msgid "Fingertips"
 msgstr ""
 
-#: signbank/feedback/models.py:253
+#: signbank/feedback/models.py:159
 msgid "Alternate hands (one moves, then the other moves)"
 msgstr ""
 
-#: signbank/feedback/models.py:254
+#: signbank/feedback/models.py:160
 msgid "Move the hands towards each other"
 msgstr ""
 
-#: signbank/feedback/models.py:255
+#: signbank/feedback/models.py:161
 msgid "Move the hands away from each other"
 msgstr ""
 
-#: signbank/feedback/models.py:256
+#: signbank/feedback/models.py:162
 msgid "The hands cross over each other"
 msgstr ""
 
-#: signbank/feedback/models.py:279
+#: signbank/feedback/models.py:178
 msgid "Can View Interpreter Feedback"
 msgstr ""
 
 #. Translators: Sign feedback instructions
-#: signbank/feedback/models.py:314
+#: signbank/feedback/models.py:213
 #: signbank/feedback/templates/feedback/signfeedback.html:17
 msgid ""
 "Please give us your comments about this sign. For example: do you think "
@@ -2142,44 +1822,12 @@ msgstr ""
 "Anna palautetta viittomasta. Onko muita avainsanoja jotka kuuluvat tähän "
 "viittomaan? Kirjoita kommenttisi ja avainsanat alapuolelle."
 
-#: signbank/feedback/models.py:319
+#: signbank/feedback/models.py:218
 msgid ""
 "Is there a keyword or keyword/s that DO NOT belong with this sign? Please "
 "provide the list of keywords below"
 msgstr ""
 "Eikö joku avainsana kuulu tähän viittomaan? Listaa avainsanat alapuolelle"
-
-#. Translators: Feedback question
-#: signbank/feedback/models.py:326
-#: signbank/feedback/templates/feedback/signfeedback.html:44
-msgid "Where is this sign used?"
-msgstr "Missä viittomaa käytetään?"
-
-#. Translators: Question (sign feedback)
-#. Translators: Feedback question
-#: signbank/feedback/models.py:328
-#: signbank/feedback/templates/feedback/signfeedback.html:49
-msgid "Do you like this sign?"
-msgstr "Pidätkö tästä viittomasta?"
-
-#. Translators: Question (sign feedback)
-#. Translators: Feedback question
-#: signbank/feedback/models.py:330
-#: signbank/feedback/templates/feedback/signfeedback.html:54
-msgid "Do you use this sign?"
-msgstr "Käytätkö tätä viittomaa?"
-
-#. Translators: Feedback question
-#: signbank/feedback/models.py:333
-#: signbank/feedback/templates/feedback/signfeedback.html:60
-msgid "If this sign is a suggested new sign, would you use it?"
-msgstr "Käyttäisitkö tätä uutena viittomana?"
-
-#. Translators: Feedback question
-#: signbank/feedback/models.py:336
-#: signbank/feedback/templates/feedback/signfeedback.html:65
-msgid "Is the information about the sign correct?"
-msgstr "Onko viittoman tiedot oikein?"
 
 #: signbank/feedback/templates/feedback/generalfeedback.html:11
 msgid "Thanks for your comment. We value your contribution."
@@ -2193,7 +1841,7 @@ msgstr "Kiitos kommentistasi, arvostamme osallistumistanne."
 #: signbank/feedback/templates/feedback/index.html:30
 #: signbank/feedback/templates/feedback/interpreter.html:25
 #: signbank/feedback/templates/feedback/show.html:48
-#: signbank/feedback/views.py:46
+#: signbank/feedback/views.py:42
 msgid "General Feedback"
 msgstr "Yleinen palaute"
 
@@ -2298,7 +1946,7 @@ msgstr ""
 #. Translators: Feedback
 #. Translators Report Missing Sign title
 #: signbank/feedback/templates/feedback/index.html:38
-#: signbank/feedback/views.py:100
+#: signbank/feedback/views.py:94
 msgid "Report a Missing Sign"
 msgstr "Ilmoita puuttuva viittoma"
 
@@ -2618,6 +2266,31 @@ msgstr "Valinnaiset kysymykset"
 msgid "Is this sign an %(language)s Sign?"
 msgstr "Onko tämä %(language)s:n viittoma?"
 
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:44
+msgid "Where is this sign used?"
+msgstr "Missä viittomaa käytetään?"
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:49
+msgid "Do you like this sign?"
+msgstr "Pidätkö tästä viittomasta?"
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:54
+msgid "Do you use this sign?"
+msgstr "Käytätkö tätä viittomaa?"
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:60
+msgid "If this sign is a suggested new sign, would you use it?"
+msgstr "Käyttäisitkö tätä uutena viittomana?"
+
+#. Translators: Feedback question
+#: signbank/feedback/templates/feedback/signfeedback.html:65
+msgid "Is the information about the sign correct?"
+msgstr "Onko viittoman tiedot oikein?"
+
 #. Translators: Feedback
 #: signbank/feedback/templates/feedback/viewsignfeedback.html:11
 msgid ""
@@ -2632,12 +2305,12 @@ msgstr ""
 "harhaanjohtavia."
 
 #. Translators: Title for feedback views index
-#: signbank/feedback/views.py:17
+#: signbank/feedback/views.py:15
 msgid "Leave Feedback"
 msgstr "Anna palautetta"
 
 #. Translators: Thank you message for recording signfeedback
-#: signbank/feedback/views.py:212 signbank/feedback/views.py:218
+#: signbank/feedback/views.py:206 signbank/feedback/views.py:212
 msgid "Thank you. Your feedback has been saved."
 msgstr "Kiitos palautteestasi."
 
@@ -2768,6 +2441,14 @@ msgstr "Käyttäjänimi"
 msgid "Your Email Address"
 msgstr "Sähköpostiosoitteesi"
 
+#. Translators: label password1
+#. Translators: EmailAuthenticationForm: password
+#. Translators: Password text - in login form
+#: signbank/registration/forms.py:52 signbank/registration/forms.py:282
+#: templates/loginform.html:24
+msgid "Password"
+msgstr "Salasana"
+
 #. Translators: label password2
 #: signbank/registration/forms.py:55
 msgid "Password (again)"
@@ -2839,22 +2520,33 @@ msgid "years old! Please enter your real birth year"
 msgstr ""
 
 #. Translators: yesnoChoices
+#: signbank/registration/forms.py:219
+msgid "yes"
+msgstr "kyllä"
+
+#. Translators: yesnoChoices
 #: signbank/registration/forms.py:221
 msgid "no"
 msgstr "ei"
 
 #. Translators: RegistrationForm: firstname
-#: signbank/registration/forms.py:240
+#: signbank/registration/forms.py:230
 msgid "Firstname"
 msgstr "Etunimi"
 
 #. Translators: RegistrationForm: lastname
-#: signbank/registration/forms.py:242
+#: signbank/registration/forms.py:232
 msgid "Lastname"
 msgstr "Sukunimi"
 
+#. Translators: EmailAuthenticationForm: email
+#. Translators: Email - in login form
+#: signbank/registration/forms.py:280 templates/loginform.html:14
+msgid "Email/Username"
+msgstr "Email/Käyttäjätunnus"
+
 #. Translators: EmailAuthenticationForm: ValidationError
-#: signbank/registration/forms.py:314
+#: signbank/registration/forms.py:304
 msgid ""
 "Please enter a correct email and password. Note that password is case-"
 "sensitive."
@@ -2863,12 +2555,12 @@ msgstr ""
 "ja pienillä kirjaimilla on eroa."
 
 #. Translators: EmailAuthenticationForm: ValidationError
-#: signbank/registration/forms.py:317
+#: signbank/registration/forms.py:307
 msgid "This account is inactive."
 msgstr "Tämä tunnus on ei-aktiivinen."
 
 #. Translators: EmailAuthenticationForm: ValidationError
-#: signbank/registration/forms.py:324
+#: signbank/registration/forms.py:314
 msgid ""
 "Your Web browser doesn't appear to have cookies enabled. Cookies are "
 "required for logging in."
@@ -2965,6 +2657,14 @@ msgstr ""
 msgid "Register an account"
 msgstr "Rekisteröidy "
 
+#: signbank/settings/base.py:36
+msgid "Finnish"
+msgstr "Suomi"
+
+#: signbank/settings/base.py:37
+msgid "English"
+msgstr "Englanti"
+
 #. Translators: Debug message
 #: signbank/video/fields.py:121
 msgid "Converted to mp4: "
@@ -3012,12 +2712,12 @@ msgid "Video conversion failed on Auslan"
 msgstr "Videon muuntaminen epäonnistui"
 
 #. Translators: Video: videofile
-#: signbank/video/models.py:100
+#: signbank/video/models.py:93
 msgid "Video file in h264 mp4 format"
 msgstr "Videotiedosto h264 mp4 muodossa"
 
 #. Translators: GlossVideo: version
-#: signbank/video/models.py:142
+#: signbank/video/models.py:135
 msgid "Version"
 msgstr "Versio"
 
@@ -3035,6 +2735,325 @@ msgstr "Tiedosto:"
 #: signbank/video/templates/addvideo.html:31
 msgid "Error:"
 msgstr "Virhe:"
+
+#. Translators: Title for error page 403
+#: templates/403.html:7
+msgid "Permission Denied"
+msgstr "Käyttöoikeus evätty"
+
+#. Translators: Text for error page 403
+#: templates/403.html:9
+msgid "You do not have permission to view the requested page."
+msgstr "Sinulla ei ole oikeuksia nähdä pyytämääsi sivua."
+
+#. Translators: Error 404 page
+#: templates/404.html:7
+msgid ""
+"The requested page was not found on the server. Please use\n"
+"the menu above to navigate to another part of the site. \n"
+"If you continue to experience problems, please contact\n"
+"the webmaster at "
+msgstr ""
+"Pyydettyä sivua ei löytynyt palvelimelta. Ole hyvä\n"
+"ja käytä valikkoa siirtyäksesi jollekkin toiselle sivulle.\n"
+"Jos ongelmat jatkuvat, ota yhteyttä sivuston ylläpitoon "
+
+#. Translators: Title of page - error 500
+#: templates/500.html:10
+msgid "Server Error"
+msgstr "Palvelinvirhe"
+
+#. Translators: Information about error 500
+#: templates/500.html:12
+msgid ""
+"There's been an error. It's been reported to the site administrators\n"
+"via e-mail and should be fixed shortly. Thanks for your patience. "
+msgstr ""
+"Tapahtui virhe. Virheestä on tiedotettu ylläpidolle, ja se\n"
+"pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
+
+#: templates/baselayout.html:26
+msgid "FinSL Signbank"
+msgstr "FinSL Signbank"
+
+#: templates/baselayout.html:48
+msgid "University of Jyväskylä"
+msgstr "Jyväskylän yliopisto"
+
+#: templates/baselayout.html:49
+msgid "Finnish Association of the Deaf"
+msgstr "Kuurojen liitto"
+
+#: templates/infopage.html:12
+msgid "Information page"
+msgstr "Infosivu"
+
+#: templates/infopage.html:13
+msgid ""
+"On this page you can find all kinds of useful information. We have collected "
+"some numerical information about our database and some useful links aswell."
+msgstr ""
+"Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme tärkeitä "
+"linkkejä."
+
+#: templates/infopage.html:27
+msgid "Glosses with video"
+msgstr "Glossit joilla video"
+
+#: templates/infopage.html:31
+msgid "Total number of videos (one gloss can have many)"
+msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
+
+#: templates/infopage.html:35
+msgid "Finnish translation equivalents"
+msgstr "Käännövastineita suomeksi"
+
+#: templates/infopage.html:39
+msgid "Finnish keywords"
+msgstr "Suomenkielisiä vastineita"
+
+#: templates/infopage.html:43
+msgid "English translations equivalents"
+msgstr "Käännösvastineita englanniksi"
+
+#: templates/infopage.html:47
+msgid "English keywords"
+msgstr "Käännöksiä englanniksi"
+
+#: templates/infopage.html:56
+msgid "ELAN externally controlled vocabulary links"
+msgstr "ELAN externally controlled vocalubary linkit"
+
+#: templates/infopage.html:60
+msgid "Signbank Wiki"
+msgstr "Signbankin Wikisivut"
+
+#: templates/langbar.html:6
+msgid "Logout"
+msgstr "Kirjaudu ulos"
+
+#: templates/langbar.html:10
+msgid "Login"
+msgstr "Kirjaudu"
+
+#. Translators: Text sign in - login form
+#: templates/loginform.html:8
+msgid "Sign In"
+msgstr "Kirjaudu sisään"
+
+#. Translators: Sign in button in login form
+#: templates/loginform.html:34
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
+#. Translators: Text register - in login form
+#. Translators: Register link
+#: templates/loginform.html:42 templates/loginform.html.py:47
+msgid "Register"
+msgstr "Rekisteröidy"
+
+#. Translators: Text in login form
+#: templates/loginform.html:45
+msgid "To register for an account, press the button below."
+msgstr "Rekisteröidy painamalla alla olevaa nappia."
+
+#. Translators: Title lost password - in login form
+#: templates/loginform.html:52
+msgid "Lost Password?"
+msgstr "Unohtunut salasana?"
+
+#: templates/loginform.html:55
+msgid ""
+"If you've lost or forgotten your password, enter your email address here and "
+"we'll reset it and send you a reminder."
+msgstr ""
+"Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
+"tähän, niin lähetämme sinulle uuden salasanan."
+
+#: templates/loginform.html:60
+msgid "Email"
+msgstr "Sähköposti"
+
+#. Translators: Request password button
+#: templates/loginform.html:65
+msgid "Request Password"
+msgstr "Palauta salasana"
+
+#. Translators: Button to toggle navigation
+#: templates/menu.html:9
+msgid "Toggle navigation"
+msgstr "Navigointi"
+
+#. Translators: Placeholder text in a search textfield
+#: templates/menu.html:48
+msgid "Search gloss"
+msgstr "Etsi glossia"
+
+#. Translators: Placeholder text in a search textfield
+#: templates/menu.html:53
+msgid "Search translation"
+msgstr "Etsi käännösvastinetta"
+
+#. Translators: Edit page button in baselayout
+#: templates/pages/default.html:10
+msgid "Edit Page"
+msgstr "Muokkaa"
+
+#: templates/registration/password_reset_complete.html:5
+#: templates/registration/password_reset_complete.html:9
+msgid "Password reset complete"
+msgstr "Salasanan nollaus valmis"
+
+#: templates/registration/password_reset_complete.html:11
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr "Salasanasi on asetettu. Voitte jatkaa kirjautumalla."
+
+#: templates/registration/password_reset_complete.html:13
+msgid "Log in"
+msgstr "Kirjaudu"
+
+#: templates/registration/password_reset_confirm.html:5
+#: templates/registration/password_reset_form.html:4
+#: templates/registration/password_reset_form.html:6
+#: templates/registration/password_reset_form.html:10
+msgid "Password reset"
+msgstr "Salasanan nollaus"
+
+#: templates/registration/password_reset_confirm.html:13
+msgid "Enter new password"
+msgstr "Kirjoita uusi salasana"
+
+#: templates/registration/password_reset_confirm.html:15
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"Olkaa hyvä ja kirjoittakaa salasananne kahdesti, jotta voimme varmistaa että "
+"se on kirjoitettu oikein."
+
+#: templates/registration/password_reset_confirm.html:19
+msgid "New password:"
+msgstr "Uusi salasana"
+
+#: templates/registration/password_reset_confirm.html:22
+msgid "Confirm password:"
+msgstr "Vahvista salasana:"
+
+#: templates/registration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr "Muuta salasanaa"
+
+#: templates/registration/password_reset_confirm.html:29
+msgid "Password reset unsuccessful"
+msgstr "Salasanan nollaus epäonnistui"
+
+#: templates/registration/password_reset_confirm.html:31
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"Salasanan nollauslinkki oli epäkelpo, se on saatettu jo käyttää.Ole hyvä ja "
+"pyydä uutta salasanan nollaamista."
+
+#: templates/registration/password_reset_done.html:5
+msgid "An email has been sent to your address with a new password."
+msgstr "Uusi salasana on lähetetty teidän sähköpostiinne."
+
+#: templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"Olette saaneet tämän sähköpostin koska käyttäjätunnuksellanne pyydettiin "
+"salasanan nollaamista %(site_name)ssa."
+
+#: templates/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "Menkää tälle sivulle ja valitkaa uusi salasana:"
+
+#: templates/registration/password_reset_email.html:9
+msgid "Thanks for using our site!"
+msgstr "Kiitos!"
+
+#: templates/registration/password_reset_email.html:11
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "%(site_name)s tiimi"
+
+#: templates/registration/password_reset_form.html:4
+msgid "Home"
+msgstr "Etusivu"
+
+#: templates/registration/password_reset_form.html:12
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll reset "
+"your password and e-mail the new one to you."
+msgstr ""
+"Oletko unohtanut salasanasi? Kirjoita sähköpostiosoitteesi alapuolelle ja me "
+"lähetämme sinulle uuden salasanan sähköpostitse."
+
+#: templates/registration/password_reset_form.html:17
+msgid "E-mail address:"
+msgstr "Sähköposti:"
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset my password"
+msgstr "Muuta salasana"
+
+#~ msgid "Delete/Revert Video"
+#~ msgstr "Poista/Palauta video"
+
+#~ msgid ""
+#~ "This will delete the most recent upload and restore the most recent "
+#~ "earlier\n"
+#~ "                            version."
+#~ msgstr ""
+#~ "Tämä toiminto poistaa uusimman videon ja palauttaa sitä edellisen version."
+
+#~ msgid ""
+#~ "videos for\n"
+#~ "                            this sign."
+#~ msgstr "videota tälle glossille."
+
+#~ msgid "Delete/Revert this video"
+#~ msgstr "Poista/Palauta tämä video"
+
+#~ msgid "Uknown Language"
+#~ msgstr "Tuntematon kieli"
+
+#~ msgid "Perhaps"
+#~ msgstr "Ehkä"
+
+#~ msgid "Don't know"
+#~ msgstr "En tiedä"
+
+#~ msgid "Don't think so"
+#~ msgstr "En usko"
+
+#~ msgid "A little"
+#~ msgstr "Vähän"
+
+#~ msgid "Don't care"
+#~ msgstr "En välitä"
+
+#~ msgid "Not much"
+#~ msgstr "Ei paljon"
+
+#~ msgid "Sometimes"
+#~ msgstr "Joskus"
+
+#~ msgid "Not Often"
+#~ msgstr "Harvoin"
+
+#~ msgid "Don't Know"
+#~ msgstr "En tiedä"
+
+#~ msgid "Mostly Correct"
+#~ msgstr "Oikein"
+
+#~ msgid "Mostly Wrong"
+#~ msgstr "Väärin"
 
 #, fuzzy
 #~| msgid "Dataset"
@@ -3193,9 +3212,6 @@ msgstr "Virhe:"
 #~ msgid "New Video"
 #~ msgstr "Uusi video"
 
-#~ msgid "Confirm"
-#~ msgstr "Hyväksy"
-
 #, fuzzy
 #~| msgid "NGT: sign for %(translation)s"
 #~ msgid "FinSL: sign for %(translation)s"
@@ -3203,9 +3219,6 @@ msgstr "Virhe:"
 
 #~ msgid "Matches for the word <em>%(translation|safe)s"
 #~ msgstr "Hakutulokset sanalle <em>%(translation|safe)s"
-
-#~ msgid "Return to Matches"
-#~ msgstr "Palaa hakutuloksiin"
 
 #~ msgid "Detail View"
 #~ msgstr "Yksityiskohtainen näkymä"
