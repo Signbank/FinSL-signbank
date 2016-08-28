@@ -383,7 +383,7 @@ class Gloss(models.Model):
             ('view_advanced_properties', _('Include all properties in sign detail view')),
             # Translators: Gloss permissions
             ('lock_gloss', _('Can lock and unlock Gloss from editing')),
-            ('dictionary.import_csv', _('Can import glosses from a CSV file')),
+            ('import_csv', _('Can import glosses from a CSV file')),
         )
 
     def __unicode__(self):
