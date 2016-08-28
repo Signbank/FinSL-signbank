@@ -79,6 +79,8 @@ html {
     margin-right: 20px;
 }
 #logokl {
+    padding-top: 25px;
+    padding-bottom: 9px;
     max-width: 187px;
     max-height: 70px;
     float: left;
