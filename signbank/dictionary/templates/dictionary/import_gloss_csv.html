@@ -10,10 +10,12 @@
         <h3>{% blocktrans %}Import Glosses from a CSV file{% endblocktrans %}:</h3>
 
         <ul>
-            <li>{% blocktrans %}CSV-file should be constructed so that the first column is idgloss (meaning gloss) and the
-                second column is idgloss_en (meaning gloss in english){% endblocktrans %}</li>
+            <li>{% blocktrans %}CSV-file should be constructed so that the first column is idgloss (gloss) and
+                optionally the second column is idgloss_en (gloss in english){% endblocktrans %}</li>
             <li>{% blocktrans %}The first row of the file will not be added because it is expected to be the column
                 headers.{% endblocktrans %}</li>
+            <li>{% blocktrans %}The CSV-file's character set needs to be UTF-8. When exporting the CSV-file,
+                make sure that you select UTF-8 charset.{% endblocktrans %}</li>
         </ul>
 
         <form enctype="multipart/form-data" action='{% url "dictionary:import_gloss_csv" %}' method='post'>

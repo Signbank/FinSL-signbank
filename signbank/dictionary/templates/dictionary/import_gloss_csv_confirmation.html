@@ -7,6 +7,7 @@
 {% if perms.dictionary.import_csv %}
     {% if glosses_new %}
     <h3>{% blocktrans %}Glosses to be added to{% endblocktrans %} <span class="label label-default">{{dataset}}</span></h3>
+    <p>{% blocktrans %}Total number of glosses to be added:{% endblocktrans %} {{glosses_new|length}}</p>
     <table class="table">
         <th>Gloss</th>
         <th>Gloss in English</th>

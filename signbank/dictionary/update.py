@@ -638,28 +638,42 @@ def import_gloss_csv(request):
     """
     glosses_new = []
     glosses_exists = []
-    # Make sure that the session variables are flushed when using this view
+    # Make sure that the session variables are flushed before using this view.
     if 'dataset_id' in request.session: del request.session['dataset_id']
     if 'glosses_new' in request.session: del request.session['glosses_new']
+
     if request.method == 'POST':
         form = CSVUploadForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.cleaned_data['dataset']
             try:
                 glossreader = csv.reader(form.cleaned_data['file'], delimiter=',', quotechar='"')
+            except csv.Error as e:
+                # Can't open file, remove session variables
+                if 'dataset_id' in request.session: del request.session['dataset_id']
+                if 'glosses_new' in request.session: del request.session['glosses_new']
+                # Set a message to be shown so that the user knows what is going on.
+                messages.add_message(request, messages.ERROR, _('Cannot open the file:' + unicode(e)))
+                return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': CSVUploadForm()}, )
+            else:
                 for row in glossreader:
                     if glossreader.line_num == 1:
+                        # Skip first line of CSV file.
                         continue
                     try:
+                        # Find out if the gloss already exists, if it does add to list of glosses not to be added.
                         gloss = Gloss.objects.get(dataset=dataset, idgloss=row[0])
                         glosses_exists.append(gloss)
-                    except:
-                        glosses_new.append((row[0], row[1]))
-                        request.session['dataset_id'] = dataset.id
-                        request.session['glosses_new'] = glosses_new
-
-            except csv.Error:
-                pass # Can't open file
+                    except Gloss.DoesNotExist:
+                        # If gloss is not already in list, add glossdata to list of glosses to be added as a tuple.
+                        if not any(row[0] in s for s in glosses_new):
+                            glosses_new.append(tuple(row))
+                    except IndexError:
+                        # If row[0] does not exist, continue to next iteration of loop.
+                        continue
+                # Store dataset's id and the list of glosses to be added in session.
+                request.session['dataset_id'] = dataset.id
+                request.session['glosses_new'] = glosses_new
 
             return render(request, "dictionary/import_gloss_csv_confirmation.html",
                           {#'import_csv_form': CSVUploadForm(),
@@ -667,15 +681,14 @@ def import_gloss_csv(request):
                            'glosses_exists': glosses_exists,
                             'dataset': dataset,})
         else:
-            csv_form = CSVUploadForm()
-            # Set a message to be shown so that the user knows what is going on.
+            # If form is not valid, set a error message and return to the original form.
             messages.add_message(request, messages.ERROR, _('The provided CSV-file does not meet the requirements '
                                                             'or there is some other problem.'))
-            return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': csv_form}, )
+            return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': CSVUploadForm()}, )
     else:
-        csv_form = CSVUploadForm()
+        # If request type is not POST, return to the original form.
         return render(request, "dictionary/import_gloss_csv.html",
-                      {'import_csv_form': csv_form}, )
+                      {'import_csv_form': CSVUploadForm()}, )
 
 
 @login_required
@@ -697,10 +710,20 @@ def confirm_import_gloss_csv(request):
             if 'glosses_new' and 'dataset_id' in request.session:
                 dataset = Dataset.objects.get(id=request.session['dataset_id'])
                 for gloss in request.session['glosses_new']:
-                    new_gloss = Gloss(dataset=dataset, idgloss=gloss[0], idgloss_en=gloss[1],
-                                      created_by=request.user, updated_by=request.user)
-                    new_gloss.save()
-                    glosses_added.append((new_gloss.idgloss, new_gloss.idgloss_en))
+
+                    # If the Gloss does not already exist, continue adding.
+                    if not Gloss.objects.filter(dataset=dataset, idgloss=gloss[0]).exists():
+                        try:
+                            new_gloss = Gloss(dataset=dataset, idgloss=gloss[0], idgloss_en=gloss[1],
+                                          created_by=request.user, updated_by=request.user)
+                        except IndexError:
+                            # If we get IndexError, idgloss_en was probably not provided
+                            new_gloss = Gloss(dataset=dataset, idgloss=gloss[0],
+                                              created_by=request.user, updated_by=request.user)
+
+                        new_gloss.save()
+                        glosses_added.append((new_gloss.idgloss, new_gloss.idgloss_en))
+
                 # Flush request.session['glosses_new'] and request.session['dataset']
                 del request.session['glosses_new']
                 del request.session['dataset_id']

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-28 14:25+0300\n"
+"POT-Creation-Date: 2016-09-01 16:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -711,7 +711,7 @@ msgstr "Lisää uusi Glossi"
 
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
 #: signbank/dictionary/templates/dictionary/add_gloss.html:26
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:32
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:34
 #: templates/infopage.html:69
 msgid "You do not have sufficient user rights to view this page."
 msgstr "Sinulla ei ole oikeuksia nähdä sivua"
@@ -801,7 +801,7 @@ msgstr "Tallenna"
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:183
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:274
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:428
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:40
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:41
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -1081,12 +1081,12 @@ msgstr "Tuo Glosseja CSV-tiedostosta"
 
 #: signbank/dictionary/templates/dictionary/import_gloss_csv.html:13
 msgid ""
-"CSV-file should be constructed so that the first column is idgloss (meaning "
-"gloss) and the\n"
-"                second column is idgloss_en (meaning gloss in english)"
+"CSV-file should be constructed so that the first column is idgloss (gloss) "
+"and\n"
+"                optionally the second column is idgloss_en (gloss in english)"
 msgstr ""
-"CSV-tiedosto tulee muodostaa siten, että ensimmäinen sarake on idgloss "
-"ja toinen sarake on idgloss_en (glossi englanniksi)"
+"CSV-tiedosto tulee muodostaa siten, että ensimmäinen sarake on idgloss ja "
+"valinnaisesti toinen sarake on idgloss_en (glossi englanniksi)."
 
 #: signbank/dictionary/templates/dictionary/import_gloss_csv.html:15
 msgid ""
@@ -1097,14 +1097,22 @@ msgstr ""
 "CSV-tiedoston ensimmäistä riviä ei lisätä glossina, koska sen oletetaan "
 "sisältävän sarakkeiden otsikot."
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:24
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:17
+msgid ""
+"The CSV-file's character set needs to be UTF-8. When exporting the CSV-"
+"file,\n"
+"                make sure that you select UTF-8 charset."
+msgstr "CSV-tiedoston merkistön tulee olla UTF-8. Kun tuot/exporttaat CSV-"
+"tiedostoa, varmista että merkistö on UTF-8."
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:26
 msgid ""
 "Make sure that you selected the correct\n"
 "                Dataset before submitting!"
 msgstr ""
 "Varmista että olet valinnut oikean Aineiston ennen lomakkeen lähettämistä!"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:27
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:29
 msgid "Import glosses from CSV"
 msgstr "Tuo glosseja CSV-tiedostosta"
 
@@ -1112,24 +1120,28 @@ msgstr "Tuo glosseja CSV-tiedostosta"
 msgid "Glosses to be added to"
 msgstr "Seuraavat glossit lisätään"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:23
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:10
+msgid "Total number of glosses to be added:"
+msgstr "Lisättävien glossien määrä:"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:24
 msgid "Glosses that will not be added because they already exist in"
 msgstr "Näitä glosseja ei lisätä, koska ne löytyvät jo tietokannasta"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:30
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:31
 msgid "No glosses can be added!"
 msgstr "Yhtään glossia ei voida lisätä!"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:31
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:56
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:32
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:57
 msgid "Return to the form"
 msgstr "Palaa CSV-lomakkeeseen"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:39
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:40
 msgid "Confirm"
 msgstr "Hyväksy"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:45
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:46
 msgid "The following glosses were added to"
 msgstr "Seuraavat glossit lisättiin"
 
@@ -1227,18 +1239,23 @@ msgstr "Epäkelpo ID morfologialle"
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
-#: signbank/dictionary/update.py:672
+#: signbank/dictionary/update.py:656
+msgid "Cannot open the file:"
+msgstr ""
+
+#: signbank/dictionary/update.py:685
 msgid ""
 "The provided CSV-file does not meet the requirements or there is some other "
 "problem."
 msgstr ""
-"Annettu CSV-tiedosto ei ole vaatimusten mukainen tai havaittiin joku muu ongelma."
+"Annettu CSV-tiedosto ei ole vaatimusten mukainen tai havaittiin joku muu "
+"ongelma."
 
-#: signbank/dictionary/update.py:691
+#: signbank/dictionary/update.py:704
 msgid "Cancelled adding CSV data."
 msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
 
-#: signbank/dictionary/update.py:708
+#: signbank/dictionary/update.py:731
 msgid "Glosses were added succesfully."
 msgstr "Glossit lisättiin onnistuneesti."
 
