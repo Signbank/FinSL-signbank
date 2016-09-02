@@ -13,16 +13,13 @@ class KeywordAdmin(VersionAdmin):
     search_fields = ['^text']
 
 
+class TranslationAdmin (VersionAdmin):
+    search_fields = ['^text']
+
 class TranslationInline(admin.TabularInline):
     model = Translation
     extra = 1
-    raw_id_fields = ['translation']
-
-
-class TranslationEnglishInline(admin.TabularInline):
-    model = TranslationEnglish
-    extra = 1
-    raw_id_fields = ['translation_english']
+    raw_id_fields = ['keyword']
 
 
 class RelationToOtherSignInline(admin.TabularInline):
@@ -80,7 +77,7 @@ class GlossAdmin(VersionAdmin):
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'dialect',)
     inlines = [RelationInline, RelationToForeignSignInline,
-               DefinitionInline, TranslationInline, TranslationEnglishInline]
+               DefinitionInline, TranslationInline,]
 
     def get_readonly_fields(self, request, obj=None):
         """Adds 'locked' to 'readonly_fields' if user does not have permission to edit it
@@ -141,8 +138,7 @@ admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
 admin.site.register(Keyword, KeywordAdmin)
-# Add the same admin interface to KeywordEnglish
-admin.site.register(KeywordEnglish, KeywordAdmin)
+admin.site.register(Translation, TranslationAdmin)
 admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
 admin.site.register(Dataset, DatasetAdmin)

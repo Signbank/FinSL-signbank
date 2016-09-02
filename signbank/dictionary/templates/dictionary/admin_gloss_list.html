@@ -203,17 +203,10 @@ function clearForm(myFormElement) {
                 <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{value}}</a></td>
                 {% elif field == 'annotation_comments' %}
                 <td> {# First add translation equivalents before annotation_comments #}
-                {% if request.LANGUAGE_CODE == 'fi' %} {# if language is Finnish, use finnish translantion equivalents #}
-                    {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
-                        {% if forloop.last %}{{ translation.translation }}
-                        {% else %}{{ translation.translation }},{% endif %}
+                    {% for translation in gloss.get_translations %}{# Set a comma after all items except the last one #}
+                        {% if forloop.last %}{{ translation.keyword }}
+                        {% else %}{{ translation.keyword }},{% endif %}
                     {% endfor %}
-                {% else %} {# if language not Finnish, use English translation equivalents #}
-                    {% for translationenglish in gloss.translationenglish_set.all %}
-                        {% if forloop.last %}{{ translationenglish.translation_english }}
-                        {% else %}{{ translationenglish.translation_english }},{% endif %}
-                    {% endfor %}
-                {% endif %}
                 </td>
                 <td>{{ value }}</td> {# Now add annotation_comments #}
                 {% else %}

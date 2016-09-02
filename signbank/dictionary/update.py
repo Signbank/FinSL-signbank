@@ -89,13 +89,13 @@ def update_gloss(request, glossid):
 
             return update_definition(request, gloss, field, value)
 
-        elif field == 'keywords':
+        elif field == 'keywords_fin':
 
-            return update_keywords(gloss, field, value)
+            return update_keywords(gloss, field, value, language=Language.objects.get(language_code='fin'))
 
-        elif field == 'keywords_english':
+        elif field == 'keywords_eng':
 
-            return update_keywords_english(gloss, field, value)
+            return update_keywords(gloss, field, value, language=Language.objects.get(language_code='eng'))
 
         elif field.startswith('relationforeign'):
 
@@ -202,45 +202,22 @@ def update_gloss(request, glossid):
         return HttpResponse(newvalue, content_type='text/plain')
 
 
-# Updates keywords for the 1st language
-def update_keywords(gloss, field, value):
-    """Update the keyword field"""
+def update_keywords(gloss, field, value, language):
+    """Update the keyword field for the selected language"""
 
     kwds = [k.strip() for k in value.split(',')]
     # remove current keywords
-    current_trans = gloss.translation_set.all()
+    current_trans = gloss.translation_set.filter(language=language)
     # current_kwds = [t.translation for t in current_trans]
     current_trans.delete()
     # add new keywords
     for i in range(len(kwds)):
         (kobj, created) = Keyword.objects.get_or_create(text=kwds[i])
-        trans = Translation(gloss=gloss, translation=kobj, index=i)
+        trans = Translation(gloss=gloss, keyword=kobj, index=i, language=language)
         trans.save()
 
     newvalue = ", ".join(
-        [t.translation.text for t in gloss.translation_set.all()])
-
-    return HttpResponse(newvalue, content_type='text/plain')
-
-
-# Updates English keywords
-# The reason this method is copied is to keep it simpler.
-def update_keywords_english(gloss, field, value):
-    """Update the keyword field"""
-
-    kwds = [k.strip() for k in value.split(',')]
-    # remove current keywords
-    current_trans = gloss.translationenglish_set.all()
-    # current_kwds = [t.translation for t in current_trans]
-    current_trans.delete()
-    # add new keywords
-    for i in range(len(kwds)):
-        (kobj, created) = KeywordEnglish.objects.get_or_create(text=kwds[i])
-        trans = TranslationEnglish(gloss=gloss, translation_english=kobj, index=i)
-        trans.save()
-
-    newvalue = ", ".join(
-        [t.translation_english.text for t in gloss.translationenglish_set.all()])
+        [t.keyword.text for t in gloss.translation_set.filter(language=language)])
 
     return HttpResponse(newvalue, content_type='text/plain')
 

@@ -11,7 +11,7 @@ admin.site.register(GeneralFeedback, GeneralFeedbackAdmin)
 
 
 class SignFeedbackAdmin(admin.ModelAdmin):
-    list_display = ['user', 'date', 'translation', 'translation_english']
+    list_display = ['user', 'date', 'translation']
     list_filter = ['user']
 
 

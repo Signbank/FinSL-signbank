@@ -131,12 +131,8 @@ def glossfeedback(request, glossid):
         trans = Translation()
     else:
         trans = allkwds[0]
-    if len(allkwds_en) == 0:
-        trans_en = TranslationEnglish()
-    else:
-        trans_en = allkwds_en[0]
 
-    return recordsignfeedback(request, trans, 1, len(allkwds), trans_en, 1, len(allkwds_en))
+    return recordsignfeedback(request, trans, 1, len(allkwds))
 
 
 # Feedback on individual signs

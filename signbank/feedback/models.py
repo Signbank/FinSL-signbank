@@ -206,7 +206,6 @@ class SignFeedback(models.Model):
 
     # Added null=True, blank=True because there might be no translation for a Gloss
     translation = models.ForeignKey(Translation, editable=False, null=True, blank=True)
-    translation_english = models.ForeignKey(TranslationEnglish, editable=False, null=True, blank=True)
     # Translators: Question (sign feedback)
     comment = models.TextField(
         _(

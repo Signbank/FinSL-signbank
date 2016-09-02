@@ -196,26 +196,26 @@ def refresh_videofilenames(request=None):
 @user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
 def infopage(request):
 
-    from signbank.dictionary.models import Gloss, Translation, TranslationEnglish, Keyword, KeywordEnglish, Dataset
+    from signbank.dictionary.models import Gloss, Translation, Keyword, Dataset, Language
     from signbank.video.models import GlossVideo
     glosscount = Gloss.objects.all().count()
     glosses_with_video = 0
     for g in Gloss.objects.all():
         if GlossVideo.objects.filter(gloss=g).exists(): # This can probably be refactored to one query only.
             glosses_with_video += 1
-    translations_total = Translation.objects.all().count()
-    keywords = Keyword.objects.all().count()
-    translations_en_total = TranslationEnglish.objects.all().count()
-    keywords_en = KeywordEnglish.objects.all().count()
+    lang_fin = Language.objects.get(language_code='fin')
+    lang_eng = Language.objects.get(language_code='eng')
+    translations_fin_total = Translation.objects.filter(language=lang_fin).count()
+    translations_eng_total = Translation.objects.filter(language=lang_eng).count()
+    keywords_total = Keyword.objects.all().count()
     datasets = Dataset.objects.all()
     video_count_total = GlossVideo.objects.all().count()
 
     return render(request, "../templates/infopage.html",
                               {'glosscount': glosscount,
                                'glosses_with_video': glosses_with_video,
-                              'translations_total': translations_total,
-                              'keywords': keywords,
-                              'translations_en_total': translations_en_total,
-                              'keywords_en': keywords_en,
+                              'translations_fin_total': translations_fin_total,
+                              'translations_eng_total': translations_eng_total,
+                              'keywords_total': keywords_total,
                                'video_count_total': video_count_total,
                                'datasets': datasets, })

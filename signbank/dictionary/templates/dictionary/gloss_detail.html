@@ -214,12 +214,12 @@
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Translation equivalents in Finnish:{% endblocktrans %}</th>
-                    <td class='edit edit_text' id='keywords'>{% for trn in gloss.translation_set.all %}{{ trn.translation.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    <td class='edit edit_text' id='keywords_fin'>{% for trans in translations_fin %}{{ trans.keyword|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                 </tr>
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Translation equivalents in English:{% endblocktrans %}</th>
-                    <td class='edit edit_text' id='keywords_english'>{% for trn in gloss.translationenglish_set.all %}{{ trn.translation_english.text|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    <td class='edit edit_text' id='keywords_eng'>{% for trans in translations_eng %}{{ trans.keyword|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                 </tr>
                 {# Translators: Information about a Gloss #}
                 <tr>

@@ -113,7 +113,7 @@ class GlossListView(ListView):
             row.append(", ".join(dialects))
 
             # get translations
-            trans = [t.translation.text for t in gloss.translation_set.all()]
+            trans = [t.keyword.text for t in gloss.translation_set.all()]
             row.append(", ".join(trans))
 
             # get morphology
@@ -167,14 +167,13 @@ class GlossListView(ListView):
         if get.has_key('idgloss_en') and get['idgloss_en'] != '':
             val = get['idgloss_en']
             qs = qs.filter(idgloss_en__icontains=val)
-
         if get.has_key('keyword') and get['keyword'] != '':
             val = get['keyword']
-            qs = qs.filter(translation__translation__text__icontains=val)
+            qs = qs.filter(translation__keyword__text__icontains=val, translation__language__language_code='fin')
 
         if get.has_key('keyword_eng') and get['keyword_eng'] != '':
             val = get['keyword_eng']
-            qs = qs.filter(translationenglish__translation_english__text__icontains=val)
+            qs = qs.filter(translation__keyword__text__icontains=val,  translation__language__language_code='eng')
 
         if get.has_key('in_web_dictionary') and get['in_web_dictionary'] != 'unspecified':
             val = get['in_web_dictionary'] == 'yes'
@@ -401,6 +400,10 @@ class GlossDetailView(DetailView):
         context['definitionform'] = DefinitionForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
+        context['translations_fin'] = Translation.objects.filter(gloss=context['gloss'],
+                                                                 language=Language.objects.get(language_code='fin'))
+        context['translations_eng'] = Translation.objects.filter(gloss=context['gloss'],
+                                                                 language=Language.objects.get(language_code='eng'))
 
         # Pass info about which fields we want to see
         gl = context['gloss']

@@ -16,6 +16,7 @@ from signbank.video.models import GlossVideo
 
 from signbank.dictionary.choicelists import *
 
+
 class Dataset(models.Model):
     """A dataset, can be public/private and can be of only one language"""
     name = models.CharField(unique=True, blank=False, null=False, max_length=60)
@@ -26,190 +27,40 @@ class Dataset(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Translation(models.Model):
-    """A first language (Finnish) translation equivalent of a sign"""
+    """A translation equivalent of a sign in selected language."""
 
     gloss = models.ForeignKey("Gloss")
-    translation = models.ForeignKey("Keyword")
+    language = models.ForeignKey("Language")
+    keyword = models.ForeignKey("Keyword")
     index = models.IntegerField("Index")
 
     def __unicode__(self):
-        return self.gloss.idgloss + '-' + self.translation.text
-
-    def get_absolute_url(self):
-        """Return a URL for a view of this translation."""
-
-        alltrans = self.translation.translation_set.all()
-        idx = 0
-        for tr in alltrans:
-            if tr == self:
-                return "/dictionary/words/" + str(self.translation) + "-" + str(idx + 1) + ".html"
-
-            idx += 1
-        return "/dictionary/"
+        return self.gloss.idgloss + '-' + self.keyword.text
 
     class Meta:
+        unique_together = (("gloss", "language", "keyword"),)
         ordering = ['gloss', 'index']
 
     class Admin:
-        list_display = ['gloss', 'translation']
-        search_fields = ['gloss__idgloss']
-
-
-# TODO: Change this implementation. Make one class only or use an abstract class.
-class TranslationEnglish(models.Model):
-    """English translation equivalent of a sign"""
-
-    gloss = models.ForeignKey("Gloss")
-    translation_english = models.ForeignKey("KeywordEnglish")
-    index = models.IntegerField("Index")
-
-    def __unicode__(self):
-        return self.gloss.idgloss + '-' + self.translation_english.text
-
-    def get_absolute_url(self):
-        """Return a URL for a view of this translation."""
-
-        alltrans = self.translationenglish.translation_english_set.all()
-        idx = 0
-        for tr in alltrans:
-            if tr == self:
-                return "/dictionary/words/" + str(self.translation_english) + "-" + str(idx + 1) + ".html"
-
-            idx += 1
-        return "/dictionary/"
-
-    class Meta:
-        ordering = ['gloss', 'index']
-
-    class Admin:
-        list_display = ['gloss', 'translation_english']
+        list_display = ['gloss', 'keyword']
         search_fields = ['gloss__idgloss']
 
 
 class Keyword(models.Model):
-    """A keyword that is a possible translation equivalent of a sign"""
-
-    def __unicode__(self):
-        return self.text
+    """A keyword that stores the text for translation(s)"""
 
     text = models.CharField(max_length=100, unique=True)
 
-    def in_web_dictionary(self):
-        """Return True if some gloss associated with this
-        keyword is in the web version of the dictionary"""
-
-        return len(self.translation_set.filter(gloss__in_web_dictionary__exact=True)) != 0
+    def __unicode__(self):
+        return self.text
 
     class Meta:
         ordering = ['text']
 
     class Admin:
         search_fields = ['text']
-
-    def match_request(self, request, n):
-        """Find the translation matching a keyword request given an index 'n'
-        response depends on login status
-        Returns a tuple (translation, count) where count is the total number
-        of matches."""
-
-        if request.user.has_perm('dictionary.search_gloss'):
-            alltrans = self.translation_set.all()
-        else:
-            alltrans = self.translation_set.filter(gloss__inWeb__exact=True)
-
-        # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is
-        # on
-        try:
-            from tagging.models import Tag
-        except ImportError:
-            import tagging
-        try:
-            crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
-        except tagging.models.Tag.DoesNotExist:
-            crudetag = None
-
-        safe = (not request.user.is_authenticated()
-                ) and settings.ANON_SAFE_SEARCH
-        if safe and crudetag:
-            alltrans = [
-                tr for tr in alltrans if not crudetag in tagging.models.Tag.objects.get_for_object(tr.gloss)]
-
-        # if there are no translations, generate a 404
-        if len(alltrans) == 0:
-            raise Http404
-
-        # take the nth translation if n is in range
-        # otherwise take the last
-        if n - 1 < len(alltrans):
-            trans = alltrans[n - 1]
-        else:
-            trans = alltrans[len(alltrans) - 1]
-
-        return (trans, len(alltrans))
-
-# TODO: Change this implementation. Make one class only or use an abstrat class.
-class KeywordEnglish(models.Model):
-    """A keyword that is a possible translation equivalent of a sign"""
-
-    def __unicode__(self):
-        return self.text
-
-    text = models.CharField(max_length=100, unique=True)
-
-    def in_web_dictionary(self):
-        """Return True if some gloss associated with this
-        keyword is in the web version of the dictionary"""
-
-        return len(self.translation_english_set.filter(gloss__in_web_dictionary__exact=True)) != 0
-
-    class Meta:
-        ordering = ['text']
-
-    class Admin:
-        search_fields = ['text']
-
-    def match_request_english(self, request, n):
-        """Find the translation matching a keyword request given an index 'n'
-        response depends on login status
-        Returns a tuple (translation, count) where count is the total number
-        of matches."""
-
-        if request.user.has_perm('dictionary.search_gloss'):
-            alltrans = self.translation_english_set.all()
-        else:
-            alltrans = self.translation_english_set.filter(gloss__inWeb__exact=True)
-
-        # remove crude signs for non-authenticated users if ANON_SAFE_SEARCH is
-        # on
-        try:
-            from tagging.models import Tag
-        except ImportError:
-            import tagging
-
-        try:
-            crudetag = tagging.models.Tag.objects.get(name='lexis:crude')
-        except tagging.models.Tag.DoesNotExist:
-            crudetag = None
-
-        safe = (not request.user.is_authenticated()
-                ) and settings.ANON_SAFE_SEARCH
-        if safe and crudetag:
-            alltrans = [
-                tr for tr in alltrans if not crudetag in tagging.models.Tag.objects.get_for_object(tr.gloss)]
-
-        # if there are no translations, generate a 404
-        if len(alltrans) == 0:
-            raise Http404
-
-        # take the nth translation if n is in range
-        # otherwise take the last
-        if n - 1 < len(alltrans):
-            trans = alltrans[n - 1]
-        else:
-            trans = alltrans[len(alltrans) - 1]
-
-        return (trans, len(alltrans))
 
 
 DEFN_ROLE_CHOICES = (
@@ -254,7 +105,9 @@ class Language(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=50)
-    language_code = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text="ISO 639-3 language code, set as 'und' if you don't have a code.")
+    language_code = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
+        """ISO 639-3 language code, set as 'und' if you don't have a code. Please set this correctly to get translation
+        equivalents to work in search."""))
     description = models.TextField()
 
     def __unicode__(self):
@@ -420,7 +273,15 @@ class Gloss(models.Model):
 
         return result
 
-    ### Fields begin ###
+    def get_translations(self):
+        """Returns translations for the gloss based on the currently selected language."""
+        from django.utils.translation import get_language
+        # Comparing language_code's beginning case sensitively to get_language(),
+        # because language_code is 3 chars long and get_language() returns two chars long language code.
+        return Translation.objects.filter(gloss=self, language=Language.objects.get(
+            language_code__istartswith=get_language()))
+
+    # *** Fields begin ***
 
     locked = models.BooleanField(_("Locked"), default=False)
 
