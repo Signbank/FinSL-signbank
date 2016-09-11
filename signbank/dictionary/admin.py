@@ -9,12 +9,14 @@ class DatasetAdmin(admin.ModelAdmin):
     model = Dataset
     list_display = ('name', 'is_public', 'language',)
 
+
 class KeywordAdmin(VersionAdmin):
     search_fields = ['^text']
 
 
-class TranslationAdmin (VersionAdmin):
+class TranslationAdmin(VersionAdmin):
     search_fields = ['^text']
+
 
 class TranslationInline(admin.TabularInline):
     model = Translation
@@ -30,9 +32,6 @@ class RelationToOtherSignInline(admin.TabularInline):
 class RelationToForeignSignInline(admin.TabularInline):
     model = RelationToForeignSign
     extra = 1
-
-
-# raw_id_fields = ['other_lang_gloss']
 
 
 class DefinitionInline(admin.TabularInline):
@@ -73,7 +72,7 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'locked', 'idgloss_en']
+    list_display = ['idgloss', 'dataset', 'locked', 'idgloss_en']
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'dialect',)
     inlines = [RelationInline, RelationToForeignSignInline,
@@ -91,7 +90,6 @@ class GlossAdmin(VersionAdmin):
         if not request.user.has_perm('dictionary.lock_gloss'):
             self.readonly_fields += ('locked',)
         return self.readonly_fields
-
 
     def save_model(self, request, obj, form, change):
         """Sets created_by and updated_by as the original requests user"""
@@ -113,7 +111,7 @@ class GlossAdmin(VersionAdmin):
 
 class RegistrationProfileAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'activation_key_expired',)
-    search_fiel1ds = ('user__username', 'user__first_name',)
+    search_fields = ('user__username', 'user__first_name',)
 
 
 class DialectInline(admin.TabularInline):
