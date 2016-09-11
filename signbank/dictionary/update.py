@@ -78,7 +78,7 @@ def update_gloss(request, glossid):
                 # delete the gloss and redirect back to gloss list
                 glosses_videos = GlossVideo.objects.filter(gloss=gloss)
                 # Delete all the objects of GlossVideo that match the Gloss we try to delete.
-                for video in glosses_videos:
+                for video in glosses_videos: # TODO: Move this into video app
                     # When deleting the object, a signal is sent and catched at video.GlossVideo
                     # The signal handling will delete the videofile
                     video.delete()
@@ -210,9 +210,8 @@ def update_keywords(gloss, field, value, language_code):
     try:
         language = Language.objects.get(language_code=language_code)
     except Language.DoesNotExist:
-        raise Language.DoesNotExist(_('The required language with language_code does not exist: '  + language_code +
-                                      '  To solve this issue, please add a Language with the following language_code: '
-                                      + language_code))
+        return HttpResponseBadRequest(_('A Language does not exist with language_code: ') + language_code,
+                                      content_type='text/plain')
 
     kwds = [k.strip() for k in value.split(',')]
     # remove current keywords
