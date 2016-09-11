@@ -91,11 +91,12 @@ def update_gloss(request, glossid):
 
         elif field == 'keywords_fin':
 
-            return update_keywords(gloss, field, value, language=Language.objects.get(language_code='fin'))
+            return update_keywords(gloss, field, value, language_code='fin')
 
         elif field == 'keywords_eng':
 
-            return update_keywords(gloss, field, value, language=Language.objects.get(language_code='eng'))
+            return update_keywords(gloss, field, value, language_code='eng')
+
 
         elif field.startswith('relationforeign'):
 
@@ -202,8 +203,16 @@ def update_gloss(request, glossid):
         return HttpResponse(newvalue, content_type='text/plain')
 
 
-def update_keywords(gloss, field, value, language):
+def update_keywords(gloss, field, value, language_code):
     """Update the keyword field for the selected language"""
+
+    # Try to get the language object based on the language_code. Raise exception if it does not exist.
+    try:
+        language = Language.objects.get(language_code=language_code)
+    except Language.DoesNotExist:
+        raise Language.DoesNotExist(_('The required language with language_code does not exist: '  + language_code +
+                                      '  To solve this issue, please add a Language with the following language_code: '
+                                      + language_code))
 
     kwds = [k.strip() for k in value.split(',')]
     # remove current keywords

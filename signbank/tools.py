@@ -203,10 +203,9 @@ def infopage(request):
     for g in Gloss.objects.all():
         if GlossVideo.objects.filter(gloss=g).exists(): # This can probably be refactored to one query only.
             glosses_with_video += 1
-    lang_fin = Language.objects.get(language_code='fin')
-    lang_eng = Language.objects.get(language_code='eng')
-    translations_fin_total = Translation.objects.filter(language=lang_fin).count()
-    translations_eng_total = Translation.objects.filter(language=lang_eng).count()
+
+    translations_fin_total = Translation.objects.filter(language__language_code='fin').count()
+    translations_eng_total = Translation.objects.filter(language__language_code='eng').count()
     keywords_total = Keyword.objects.all().count()
     datasets = Dataset.objects.all()
     video_count_total = GlossVideo.objects.all().count()

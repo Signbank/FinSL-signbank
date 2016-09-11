@@ -278,8 +278,7 @@ class Gloss(models.Model):
         from django.utils.translation import get_language
         # Comparing language_code's beginning case sensitively to get_language(),
         # because language_code is 3 chars long and get_language() returns two chars long language code.
-        return Translation.objects.filter(gloss=self, language=Language.objects.get(
-            language_code__istartswith=get_language()))
+        return Translation.objects.filter(gloss=self, language__language_code__istartswith=get_language())
 
     # *** Fields begin ***
 
