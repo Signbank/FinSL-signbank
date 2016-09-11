@@ -16,6 +16,7 @@ class KeywordAdmin(VersionAdmin):
 
 class TranslationAdmin(VersionAdmin):
     search_fields = ['^text']
+    list_filter = ('gloss__dataset',)
 
 
 class TranslationInline(admin.TabularInline):
