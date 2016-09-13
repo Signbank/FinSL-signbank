@@ -400,8 +400,7 @@ class GlossDetailView(DetailView):
         context['definitionform'] = DefinitionForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
-        context['translations_fin'] = Translation.objects.filter(gloss=context['gloss'], language__language_code='fin')
-        context['translations_eng'] = Translation.objects.filter(gloss=context['gloss'], language__language_code='eng')
+        context['translation_languages_and_translations'] = context['gloss'].get_translations_for_translation_languages()
 
         # Pass info about which fields we want to see
         gl = context['gloss']

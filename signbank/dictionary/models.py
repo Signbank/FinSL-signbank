@@ -18,10 +18,12 @@ from signbank.dictionary.choicelists import *
 
 
 class Dataset(models.Model):
-    """A dataset, can be public/private and can be of only one language"""
+    """A dataset, can be public/private and can be of only one SignLanguage"""
     name = models.CharField(unique=True, blank=False, null=False, max_length=60)
-    is_public = models.BooleanField(default=False, help_text="Tells whether this dataset is public or private")
-    language = models.ForeignKey("Language")
+    is_public = models.BooleanField(default=False, help_text="Is this dataset is public or private?")
+    signlanguage = models.ForeignKey("SignLanguage")
+    translation_languages =  models.ManyToManyField("Language", help_text="These languages are shown as options"
+                                                                          "for translation equivalents.")
     description = models.TextField()
 
     def __unicode__(self):
@@ -30,7 +32,6 @@ class Dataset(models.Model):
 
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
-
     gloss = models.ForeignKey("Gloss")
     language = models.ForeignKey("Language")
     keyword = models.ForeignKey("Keyword")
@@ -99,19 +100,32 @@ class Definition(models.Model):
 
 
 class Language(models.Model):
-    """A sign language name"""
+    """A written language, used for translations in written languages."""
+    name = models.CharField(max_length=50)
+    language_code_2char = models.CharField(unique=False, blank=False, null=False, max_length=2, help_text=_(
+        """ISO 639-1 language code (2 characters long) of a written language."""))
+    language_code_3char = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
+        """ISO 639-3 language code (3 characters long) of a written language."""))
+    description = models.TextField()
 
     class Meta:
         ordering = ['name']
 
+    def __unicode__(self):
+        return self.name
+
+
+class SignLanguage(models.Model):
+    """A sign language."""
     name = models.CharField(max_length=50)
-    language_code = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
-        """ISO 639-3 language code, set as 'und' if you don't have a code. Please set this correctly to get translation
-        equivalents to work in search."""))
-    description = models.TextField()
+    language_code_3char = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
+        """ISO 639-3 language code (3 characters long) of a sign language."""))
+
+    class Meta:
+        ordering = ['name']
 
     def __unicode__(self):
-        return unicode(self.name)
+        return self.name
 
 
 class Dialect(models.Model):
@@ -120,7 +134,7 @@ class Dialect(models.Model):
     class Meta:
         ordering = ['language', 'name']
 
-    language = models.ForeignKey(Language)
+    language = models.ForeignKey("SignLanguage")
     name = models.CharField(max_length=50)
     description = models.TextField()
 
@@ -274,11 +288,28 @@ class Gloss(models.Model):
         return result
 
     def get_translations(self):
-        """Returns translations for the gloss based on the currently selected language."""
+        """Returns translations for the gloss based on the users currently selected language."""
         from django.utils.translation import get_language
-        # Comparing language_code's beginning case sensitively to get_language(),
-        # because language_code is 3 chars long and get_language() returns two chars long language code.
-        return Translation.objects.filter(gloss=self, language__language_code__istartswith=get_language())
+        try:
+            language = Language.objects.get(language_code_2char__iexact=get_language())
+        except Language.ObjectDoesNotExist:
+            # If users currently selected language does not exist as a Language, try to filter for English Translations.
+            return Translation.objects.filter(gloss=self, language__language_code_2char__iexact='en')
+        else:
+            return Translation.objects.filter(gloss=self, language=language)
+
+    def get_translation_languages(self):
+        """Returns translation languages that are set for the Dataset of the Gloss."""
+        return Language.objects.filter(dataset=self.dataset)
+
+    def get_translations_for_translation_languages(self):
+        """Returns a zipped list of translation languages and translations."""
+        translation_list = []
+        translation_languages = self.get_translation_languages()
+        for language in translation_languages:
+            translation_list.append(Translation.objects.filter(gloss=self, language=language))
+        return zip(translation_languages, translation_list)
+
 
     # *** Fields begin ***
 

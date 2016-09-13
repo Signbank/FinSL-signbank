@@ -89,14 +89,10 @@ def update_gloss(request, glossid):
 
             return update_definition(request, gloss, field, value)
 
-        elif field == 'keywords_fin':
+        elif field.startswith('keywords_'):
 
-            return update_keywords(gloss, field, value, language_code='fin')
-
-        elif field == 'keywords_eng':
-
-            return update_keywords(gloss, field, value, language_code='eng')
-
+            language_code_2char = field.split('_')[1]
+            return update_keywords(gloss, field, value, language_code_2char=language_code_2char)
 
         elif field.startswith('relationforeign'):
 
@@ -199,18 +195,17 @@ def update_gloss(request, glossid):
                     # Catch error, but don't do anything for now.
                     pass
 
-
         return HttpResponse(newvalue, content_type='text/plain')
 
 
-def update_keywords(gloss, field, value, language_code):
+def update_keywords(gloss, field, value, language_code_2char):
     """Update the keyword field for the selected language"""
 
     # Try to get the language object based on the language_code. Raise exception if it does not exist.
     try:
-        language = Language.objects.get(language_code=language_code)
+        language = Language.objects.get(language_code_2char=language_code_2char)
     except Language.DoesNotExist:
-        return HttpResponseBadRequest(_('A Language does not exist with language_code: ') + language_code,
+        return HttpResponseBadRequest(_('A Language does not exist with language_code: ') + language_code_2char,
                                       content_type='text/plain')
 
     kwds = [k.strip() for k in value.split(',')]

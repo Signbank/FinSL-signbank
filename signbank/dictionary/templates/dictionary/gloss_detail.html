@@ -211,6 +211,7 @@
                     <th>{% blocktrans %}Gloss in English:{% endblocktrans %}</th>
                     <td class='edit edit_text' id='idgloss_en'>{% value gloss.idgloss_en %}</td>
                 </tr>
+                <!--
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Translation equivalents in Finnish:{% endblocktrans %}</th>
@@ -221,6 +222,13 @@
                     <th>{% blocktrans %}Translation equivalents in English:{% endblocktrans %}</th>
                     <td class='edit edit_text' id='keywords_eng'>{% for trans in translations_eng %}{{ trans.keyword|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                 </tr>
+                -->
+                {% for translation_language, translations in translation_languages_and_translations %}
+                <tr>
+                    <th>{% blocktrans %}Translations in {% endblocktrans %}{{ translation_language.name }}:</th>
+                    <td class='edit edit_text' id='keywords_{{ translation_language.language_code_2char }}'>{% for trans in translations %}{{ trans.keyword|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                </tr>
+                {% endfor %}
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Comments:{% endblocktrans %}</th>

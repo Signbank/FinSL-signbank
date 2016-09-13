@@ -7,7 +7,7 @@ from signbank.dictionary.models import *
 
 class DatasetAdmin(admin.ModelAdmin):
     model = Dataset
-    list_display = ('name', 'is_public', 'language',)
+    list_display = ('name', 'is_public', 'signlanguage',)
 
 
 class KeywordAdmin(VersionAdmin):
@@ -125,6 +125,10 @@ class DialectAdmin(VersionAdmin):
 
 class LanguageAdmin(VersionAdmin):
     model = Language
+
+
+class SignLanguageAdmin(VersionAdmin):
+    model = SignLanguage
     inlines = [DialectInline]
 
 
@@ -135,6 +139,7 @@ class FieldChoiceAdmin(admin.ModelAdmin):
 
 admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
+admin.site.register(SignLanguage, SignLanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
 admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Translation, TranslationAdmin)
