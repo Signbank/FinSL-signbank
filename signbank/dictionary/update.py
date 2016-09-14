@@ -207,6 +207,11 @@ def update_keywords(gloss, field, value, language_code_2char):
     except Language.DoesNotExist:
         return HttpResponseBadRequest(_('A Language does not exist with language_code: ') + language_code_2char,
                                       content_type='text/plain')
+    except Language.MultipleObjectsReturned:
+        return HttpResponseBadRequest(_('Multiple Languages with the same language_code exist, cannot edit because it '
+                                        'is unclear which language to edit.'),
+                                      content_type='text/plain')
+
 
     kwds = [k.strip() for k in value.split(',')]
     # remove current keywords

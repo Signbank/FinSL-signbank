@@ -9,6 +9,8 @@ from django.core.exceptions import PermissionDenied
 from tagging.models import Tag, TaggedItem
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.utils.translation import get_language
+from django.db.models import Prefetch
 
 from signbank.dictionary.forms import *
 from signbank.feedback.forms import *
@@ -27,7 +29,6 @@ class GlossListView(ListView):
         context['searchform'] = GlossSearchForm(self.request.GET)
         context['glosscount'] = Gloss.objects.all().count()
         context['ADMIN_RESULT_FIELDS'] = settings.ADMIN_RESULT_FIELDS
-        context['SORTABLE_FIELDS'] = settings.SORTABLE_FIELDS
         if not self.request.GET.has_key('order'):
             context['order'] = 'idgloss'
         else:
@@ -383,6 +384,11 @@ class GlossListView(ListView):
                 items.append(dict(id = item.id, gloss = item.idgloss))
 
             self.request.session['search_results'] = items
+
+        # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
+        qs = qs.prefetch_related(Prefetch('translation_set', queryset=Translation.objects.filter(
+            language__language_code_2char__iexact=get_language())),
+                                 Prefetch('dataset'))
 
         return qs
 
