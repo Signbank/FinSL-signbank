@@ -106,7 +106,7 @@ class GlossListView(ListView):
                     row.append(value)
 
             # get language, adding only one language. Used to add several but requirement changed.
-            language = gloss.dataset.language
+            language = gloss.dataset.signlanguage
             row.append(unicode(language))
 
             # get dialects
@@ -169,12 +169,15 @@ class GlossListView(ListView):
             val = get['idgloss_en']
             qs = qs.filter(idgloss_en__icontains=val)
         if get.has_key('keyword') and get['keyword'] != '':
-            val = get['keyword']
-            qs = qs.filter(translation__keyword__text__icontains=val, translation__language__language_code='fin')
+            if get.has_key('trans_lang') and get['trans_lang'] != '':
+                val = get['keyword']
+                lang = get['trans_lang']
+                qs = qs.filter(translation__keyword__text__icontains=val, translation__language__in=lang)
 
+        # TODO: Remove
         if get.has_key('keyword_eng') and get['keyword_eng'] != '':
             val = get['keyword_eng']
-            qs = qs.filter(translation__keyword__text__icontains=val,  translation__language__language_code='eng')
+            qs = qs.filter(translation__keyword__text__icontains=val,  translation__language__language_code_3char='eng')
 
         if get.has_key('in_web_dictionary') and get['in_web_dictionary'] != 'unspecified':
             val = get['in_web_dictionary'] == 'yes'

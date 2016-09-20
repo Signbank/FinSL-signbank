@@ -105,6 +105,7 @@ function clearForm(myFormElement) {
                  <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
+                        {% bootstrap_field searchform.trans_lang set_required=False show_label=False bound_css_class="not-bound" %}
                         <input id="id_keyword" name='keyword' class='form-control' {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}>
                     </div>
                 </div>
