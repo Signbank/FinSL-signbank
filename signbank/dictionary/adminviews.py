@@ -218,6 +218,11 @@ class GlossListView(ListView):
             # Get languages from dataset
             qs = qs.filter(dataset__language__in=vals)
 
+        vals = get.getlist('signlanguage', [])
+        if vals != []:
+            # Get sign languages from dataset
+            qs = qs.filter(dataset__signlanguage__in=vals)
+
         if get.has_key('annotation_comments') and get['annotation_comments'] != '':
             qs = qs.filter(annotation_comments__icontains=get['annotation_comments'])
 

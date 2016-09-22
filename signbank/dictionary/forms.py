@@ -6,6 +6,7 @@ from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
 from .models import Dataset
 from .models import Language
+from .models import SignLanguage
 
 
 class GlossCreateForm(forms.ModelForm):
@@ -122,7 +123,7 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     dataset = forms.ModelMultipleChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), required=False)
     # Translators: GlossSearchForm label
-    language = forms.ModelMultipleChoiceField(label=_('Language'), queryset=Language.objects.all())
+    signlanguage = forms.ModelMultipleChoiceField(label=_('Sign language'), queryset=SignLanguage.objects.all())
     # Translators: GlossSearchForm label
     search = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
