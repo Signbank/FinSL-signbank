@@ -4,6 +4,19 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 
 
+def generate_signlanguage(apps, schema_editor):
+    """
+    Trying to generate a SignLanguage so that migrating is possible when app already has data.
+    If the state of the app in the previous migration has a dataset, it is impossible to reference to SignLanguage,
+    as the ForeignKey, because one does not exist. Here we try to create it, if objects.get does not find one.
+    """
+    SignLanguageModel = apps.get_model('dictionary', 'SignLanguage')
+    try:
+        SignLanguageModel.objects.get(id=1)
+    except SignLanguageModel.DoesNotExist:
+        SignLanguageModel.objects.create(id=1, name='TestSignLanguage', language_code_3char='tst')
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -22,6 +35,8 @@ class Migration(migrations.Migration):
                 'ordering': ['name'],
             },
         ),
+        migrations.RunPython(generate_signlanguage, reverse_code=migrations.RunPython.noop),
+
         migrations.RemoveField(
             model_name='dataset',
             name='language',
