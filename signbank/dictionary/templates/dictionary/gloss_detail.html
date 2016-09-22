@@ -162,11 +162,9 @@
                     {% endfor %}
 
                 {% else %}
-                    {% if LANGUAGE_CODE == 'fi' %}
-                    <img id='novideo' src='{{ STATIC_URL }}images/no-video-fi.png'>
-                    {% else %}
-                    <img id='novideo' src='{{ STATIC_URL }}images/no-video.png'>
-                    {% endif %}
+                    <div id="novideo" class="alert alert-danger" role="alert">
+                        <p><strong>{% blocktrans %}No videos available for this gloss.{% endblocktrans %}</strong></p>
+                    </div>
                 {% endif %}
                 </div>
             </div>
@@ -202,7 +200,7 @@
         <div class='panel-group col-lg-7 col-md-6 col-sm-12 col-xs-12' id='definition'>
             <table class='table table-condensed'>
                 {# Translators: Information about a Gloss #}
-                <tr {% if gloss.locked %}class="success"{% elif gloss.has_videos %}class="warning"{% else %}class="danger"{% endif %}>
+                <tr {% if gloss.locked %}class="success"{% endif %}>
                     <th>{% blocktrans %}Gloss:{% endblocktrans %}</th>
                     <td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td>
                 </tr>

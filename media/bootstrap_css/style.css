@@ -79,9 +79,10 @@ body {
 }
 #novideo
 {
-    border: 0;
-    margin: auto;
+    margin: 10px 0px 10px 0px;
     display: block;
+    height: 100px;
+    text-align: center;
 }
 #videoiframe {
     -webkit-border-radius: 0px 0px 10px 10px;
