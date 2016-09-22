@@ -29,7 +29,7 @@ class GlossListView(ListView):
         context['searchform'] = GlossSearchForm(self.request.GET)
         context['glosscount'] = Gloss.objects.all().count()
         context['ADMIN_RESULT_FIELDS'] = settings.ADMIN_RESULT_FIELDS
-        if not self.request.GET.has_key('order'):
+        if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
         else:
             context['order'] = self.request.GET.get('order')
@@ -156,7 +156,7 @@ class GlossListView(ListView):
         if vals != []:
             qs = qs.filter(dataset__in=vals)
 
-        if get.has_key('search') and get['search'] != '':
+        if 'search' in get and get['search'] != '':
             val = get['search']
 
             # Add fields you want to search logically with GET.search using | (OR) and & (AND)
@@ -165,40 +165,35 @@ class GlossListView(ListView):
 
             qs = qs.filter(query)
 
-        if get.has_key('idgloss_en') and get['idgloss_en'] != '':
+        if 'idgloss_en' in get and get['idgloss_en'] != '':
             val = get['idgloss_en']
             qs = qs.filter(idgloss_en__icontains=val)
-        if get.has_key('keyword') and get['keyword'] != '':
-            if get.has_key('trans_lang') and get['trans_lang'] != '':
+        if 'keyword' in get and get['keyword'] != '':
+            if 'trans_lang' in get and get['trans_lang'] != '':
                 val = get['keyword']
                 lang = get['trans_lang']
                 qs = qs.filter(translation__keyword__text__icontains=val, translation__language__in=lang)
 
-        # TODO: Remove
-        if get.has_key('keyword_eng') and get['keyword_eng'] != '':
-            val = get['keyword_eng']
-            qs = qs.filter(translation__keyword__text__icontains=val,  translation__language__language_code_3char='eng')
-
-        if get.has_key('in_web_dictionary') and get['in_web_dictionary'] != 'unspecified':
+        if 'in_web_dictionary' in get and get['in_web_dictionary'] != 'unspecified':
             val = get['in_web_dictionary'] == 'yes'
             qs = qs.filter(in_web_dictionary__exact=val)
             # print "B :", len(qs)
 
-        if get.has_key('islocked') and get['islocked'] != '':
+        if 'islocked' in get and get['islocked'] != '':
             val = get['islocked'] == 'on'
             qs = qs.filter(locked=val)
 
         # If get has both keys hasvideo and hasnovideo, don't use them to query.
-        if not (get.has_key('hasvideo') and get.has_key('hasnovideo')):
-            if get.has_key('hasvideo') and get['hasvideo'] != '':
+        if not ('hasvideo' in get and 'hasnovideo' in get):
+            if 'hasvideo' in get and get['hasvideo'] != '':
                 val = get['hasvideo'] != 'on'
                 qs = qs.filter(glossvideo__isnull=val)
 
-            if get.has_key('hasnovideo') and get['hasnovideo'] != '':
+            if 'hasnovideo' in get and get['hasnovideo'] != '':
                 val = get['hasnovideo'] == 'on'
                 qs = qs.filter(glossvideo__isnull=val)
 
-        if get.has_key('defspublished') and get['defspublished'] != 'unspecified':
+        if 'defspublished' in get and get['defspublished'] != 'unspecified':
             val = get['defspublished'] == 'yes'
 
             qs = qs.filter(definition__published=val)
@@ -232,13 +227,13 @@ class GlossListView(ListView):
             # Get sign languages from dataset
             qs = qs.filter(dataset__signlanguage__in=vals)
 
-        if get.has_key('annotation_comments') and get['annotation_comments'] != '':
+        if 'annotation_comments' in get and get['annotation_comments'] != '':
             qs = qs.filter(annotation_comments__icontains=get['annotation_comments'])
 
         # phonology and semantics field filters
         for fieldname in fieldnames:
 
-            if get.has_key(fieldname):
+            if fieldname in get:
                 key = fieldname + '__exact'
                 val = get[fieldname]
 
@@ -249,11 +244,11 @@ class GlossListView(ListView):
                     kwargs = {key: val}
                     qs = qs.filter(**kwargs)
 
-        if get.has_key('defsearch') and get['defsearch'] != '':
+        if 'defsearch' in get and get['defsearch'] != '':
 
             val = get['defsearch']
 
-            if get.has_key('defrole'):
+            if 'defrole' in get:
                 role = get['defrole']
             else:
                 role = 'all'
@@ -264,7 +259,7 @@ class GlossListView(ListView):
                 qs = qs.filter(
                     definition__text__icontains=val, definition__role__exact=role)
 
-        if get.has_key('tags') and get['tags'] != '':
+        if 'tags' in get and get['tags'] != '':
             vals = get.getlist('tags')
 
             tags = []
@@ -281,7 +276,7 @@ class GlossListView(ListView):
 
         qs = qs.distinct()
 
-        if get.has_key('nottags') and get['nottags'] != '':
+        if 'nottags' in get and get['nottags'] != '':
             vals = get.getlist('nottags')
 
             # print "NOT TAGS: ", vals
@@ -299,13 +294,13 @@ class GlossListView(ListView):
 
             # print "K :", len(qs)
 
-        if get.has_key('relationToForeignSign') and get['relationToForeignSign'] != '':
+        if 'relationToForeignSign' in get and get['relationToForeignSign'] != '':
             relations = RelationToForeignSign.objects.filter(
                 other_lang_gloss__icontains=get['relationToForeignSign'])
             potential_pks = [relation.gloss.pk for relation in relations]
             qs = qs.filter(pk__in=potential_pks)
 
-        if get.has_key('hasRelationToForeignSign') and get['hasRelationToForeignSign'] != '0':
+        if 'hasRelationToForeignSign' in get and get['hasRelationToForeignSign'] != '0':
 
             pks_for_glosses_with_relations = [
                 relation.gloss.pk for relation in RelationToForeignSign.objects.all()]
@@ -318,14 +313,14 @@ class GlossListView(ListView):
             elif get['hasRelationToForeignSign'] == '2':
                 qs = qs.exclude(pk__in=pks_for_glosses_with_relations)
 
-        if get.has_key('relation') and get['relation'] != '':
+        if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
                 idgloss__icontains=get['relation'])
             relations = Relation.objects.filter(target__in=potential_targets)
             potential_pks = [relation.source.pk for relation in relations]
             qs = qs.filter(pk__in=potential_pks)
 
-        if get.has_key('hasRelation') and get['hasRelation'] != '':
+        if 'hasRelation' in get and get['hasRelation'] != '':
 
             # Find all relations with this role
             if get['hasRelation'] == 'all':
@@ -340,7 +335,7 @@ class GlossListView(ListView):
                 relation.source.pk for relation in relations_with_this_role]
             qs = qs.filter(pk__in=pks_for_glosses_with_correct_relation)
 
-        if get.has_key('morpheme') and get['morpheme'] != '':
+        if 'morpheme' in get and get['morpheme'] != '':
             potential_morphemes = Gloss.objects.filter(
                 idgloss__icontains=get['morpheme'])
             potential_morphdefs = MorphologyDefinition.objects.filter(
@@ -349,7 +344,7 @@ class GlossListView(ListView):
                 morphdef.parent_gloss.pk for morphdef in potential_morphdefs]
             qs = qs.filter(pk__in=potential_pks)
 
-        if get.has_key('hasMorphemeOfType') and get['hasMorphemeOfType'] != '':
+        if 'hasMorphemeOfType' in get and get['hasMorphemeOfType'] != '':
             morphdefs_with_correct_role = MorphologyDefinition.objects.filter(
                 role__exact=get['hasMorphemeOfType'])
             pks_for_glosses_with_morphdefs_with_correct_role = [
@@ -357,7 +352,7 @@ class GlossListView(ListView):
             qs = qs.filter(
                 pk__in=pks_for_glosses_with_morphdefs_with_correct_role)
 
-        if get.has_key('definitionRole') and get['definitionRole'] != '':
+        if 'definitionRole' in get and get['definitionRole'] != '':
 
             # Find all definitions with this role
             if get['definitionRole'] == 'all':
@@ -372,7 +367,7 @@ class GlossListView(ListView):
                 definition.gloss.pk for definition in definitions_with_this_role]
             qs = qs.filter(pk__in=pks_for_glosses_with_these_definitions)
 
-        if get.has_key('definitionContains') and get['definitionContains'] != '':
+        if 'definitionContains' in get and get['definitionContains'] != '':
             definitions_with_this_text = Definition.objects.filter(
                 text__icontains=get['definitionContains'])
 
@@ -385,7 +380,7 @@ class GlossListView(ListView):
             # print "Final :", len(qs)
 
         # Set order according to GET field 'order'
-        if get.has_key('order'):
+        if 'order' in get:
             qs = qs.order_by(get['order'])
         else:
             qs = qs.order_by('idgloss')

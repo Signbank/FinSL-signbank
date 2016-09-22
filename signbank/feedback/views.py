@@ -25,10 +25,10 @@ def generalfeedback(request):
         if form.is_valid():
 
             feedback = GeneralFeedback(user=request.user)
-            if form.cleaned_data.has_key('comment'):
+            if 'comment' in form.cleaned_data:
                 feedback.comment = form.cleaned_data['comment']
 
-            if form.cleaned_data.has_key('video') and form.cleaned_data['video'] is not None:
+            if 'video' in form.cleaned_data and form.cleaned_data['video'] is not None:
                 feedback.video = form.cleaned_data['video']
 
             feedback.save()
@@ -62,7 +62,7 @@ def missingsign(request):
             # either we get video of the new sign or we get the
             # description via the form
 
-            if form.cleaned_data.has_key('video') and form.cleaned_data['video'] is not None:
+            if 'video' in form.cleaned_data and form.cleaned_data['video'] is not None:
                 fb.video = form.cleaned_data['video']
 
             else:
@@ -153,12 +153,12 @@ def recordsignfeedback(request, trans, n, total, trans_en, n_en, total_en):
     """Do the work of recording feedback for a sign or gloss"""
 
     # get the page to return to from the get request
-    if request.GET.has_key('return'):
+    if 'return' in request.GET:
         sourcepage = request.GET['return']
     else:
         sourcepage = ""
 
-    if request.GET.has_key('lastmatch'):
+    if 'lastmatch' in request.GET:
         lastmatch = request.GET['lastmatch']
     else:
         lastmatch = None
@@ -246,7 +246,7 @@ def delete(request, kind, id):
     item.save()
 
     # return to referer
-    if request.META.has_key('HTTP_REFERER'):
+    if 'HTTP_REFERER' in request.META:
         url = request.META['HTTP_REFERER']
     else:
         url = '/'

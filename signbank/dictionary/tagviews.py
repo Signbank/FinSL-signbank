@@ -32,7 +32,7 @@ def taglist(request, tag=None):
 
         paginator = Paginator(gloss_list, 50)
 
-        if request.GET.has_key('page'):
+        if 'page' in request.GET:
 
             page = request.GET['page']
             try:
@@ -72,7 +72,7 @@ def tag_dict():
             cat = "None"
             tagname = tag.name
 
-        if cats.has_key(cat):
+        if cat in cats:
             cats[cat].append((tagname, tag.count))
         else:
             cats[cat] = [(tagname, tag.count)]

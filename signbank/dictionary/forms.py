@@ -124,7 +124,6 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     keyword = forms.CharField(label=_('Translations'))
     # Translators: GlossSearchForm label
-    keyword_eng = forms.CharField(label=_('Translations English'))
     trans_lang = forms.ModelChoiceField(required=False, empty_label=_('Choose language'), queryset=Language.objects.all())
 
     # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
