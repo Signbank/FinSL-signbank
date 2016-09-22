@@ -115,6 +115,13 @@ function clearForm(myFormElement) {
                         <input id="id_annotation_comments" name='annotation_comments' class='form-control' {% if searchform.annotation_comments.value %}value='{{searchform.annotation_comments.value}}' {% endif %}>
                    </div>
                 </div>
+                <div class="col-md-6 col-sm-12 searchcolor">
+                        <ul class="list-group list-inline">
+                          <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.islocked show_label=False set_required=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.hasvideo show_label=False set_required=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.hasnovideo show_label=False set_required=False bound_css_class="not-bound" %}</li>
+                        </ul>
+                </div>
             </div>
         </div>
 
@@ -249,21 +256,6 @@ function clearForm(myFormElement) {
         {% endif %}
     </span>
 </div>
-{# Bootstrap3 responsive table for explaining the color meanings #}
-<div id="row-color-explanation" class="table-responsive">
-    <table class="table">
-        <tr>
-        <td><strong>{% blocktrans %}Row colors:{% endblocktrans %}</strong></td>
-        <td class="success">{% blocktrans %}Gloss is locked{% endblocktrans %}</td>
-        <td class="warning">{% blocktrans %}Gloss has a video{% endblocktrans %}</td>
-        <td class="danger">{% blocktrans %}Gloss does not have a video{% endblocktrans %}</td>
-        </tr>
-    </table>
-</div>
-
-
-
-
 
 {% endif %}
 

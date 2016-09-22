@@ -89,8 +89,12 @@ html {
     padding-top: 15px;
 }
 .searchinput {
-    padding-bottom: 5px;
     padding-left: 0px;
+    padding-bottom: 5px;
+}
+.searchcolor {
+    padding-left: 5px;
+    padding-bottom: 5px;
 }
 .edit_text input, .edit_url input {
     width: 100%;

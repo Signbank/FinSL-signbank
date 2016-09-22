@@ -74,13 +74,6 @@ class TagUpdateForm(forms.Form):
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
 
-YESNOCHOICES = (
-    # Translators: YESNOCHOICES
-    ("unspecified", _("Unspecified")),
-    # Translators: YESNOCHOICES
-    ('yes', _('Yes')),
-    # Translators: YESNOCHOICES
-    ('no', _('No')))
 NULLBOOLEANCHOICES = [
     (0, '---------'),
     # Translators: YESNOCHOICES
@@ -140,8 +133,11 @@ class GlossSearchForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
     nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
 
+    islocked = forms.BooleanField(label=_('Gloss is locked'), required=False)
+
     # Translators: GlossSearchForm label
-    hasvideo = forms.ChoiceField(label=_('Has Video'), choices=YESNOCHOICES)
+    hasvideo = forms.BooleanField(label=_('Gloss has a video'), required=False)
+    hasnovideo = forms.BooleanField(label=_('Gloss does not have a video'), required=False)
 
     # These have been disabled until they are later needed
     # TODO: To enable these, uncomment them.

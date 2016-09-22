@@ -184,10 +184,19 @@ class GlossListView(ListView):
             qs = qs.filter(in_web_dictionary__exact=val)
             # print "B :", len(qs)
 
-        if get.has_key('hasvideo') and get['hasvideo'] != 'unspecified':
-            val = get['hasvideo'] == 'no'
+        if get.has_key('islocked') and get['islocked'] != '':
+            val = get['islocked'] == 'on'
+            qs = qs.filter(locked=val)
 
-            qs = qs.filter(glossvideo__isnull=val)
+        # If get has both keys hasvideo and hasnovideo, don't use them to query.
+        if not (get.has_key('hasvideo') and get.has_key('hasnovideo')):
+            if get.has_key('hasvideo') and get['hasvideo'] != '':
+                val = get['hasvideo'] != 'on'
+                qs = qs.filter(glossvideo__isnull=val)
+
+            if get.has_key('hasnovideo') and get['hasnovideo'] != '':
+                val = get['hasnovideo'] == 'on'
+                qs = qs.filter(glossvideo__isnull=val)
 
         if get.has_key('defspublished') and get['defspublished'] != 'unspecified':
             val = get['defspublished'] == 'yes'
