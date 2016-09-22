@@ -1,7 +1,7 @@
 django==1.8.14
-django-tagging==0.4.3
-django-reversion==1.10.2
-django-bootstrap3==7.0.1
+django-tagging==0.4.5
+django-reversion==2.0.6
+django-bootstrap3==7.1.0
 django-summernote==0.8.5
 unicodecsv==0.14.1
-django-modeltranslation==0.11
+django-modeltranslation==0.12
