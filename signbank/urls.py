@@ -1,14 +1,9 @@
-from django.conf.urls import *
-from django.conf import settings
+from django.conf.urls import url, include
 from django.contrib.auth.decorators import permission_required
-from django.conf.urls.static import static
-from django.views.generic import TemplateView
 from django.contrib import admin
-
 from signbank.dictionary.adminviews import GlossListView
 
 admin.autodiscover()
-
 from adminsite import publisher_admin
 
 urlpatterns = [
@@ -31,7 +26,8 @@ urlpatterns = [
         {'next_page': "/"}, "logout"),
 
     # Hardcoding a number of special urls:
-    url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view()), name='admin_gloss_list'),
+    url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view()),
+        name='admin_gloss_list'),
     url(r'^signs/add/$', 'signbank.dictionary.views.add_new_sign'),
     url(r'^signs/import_csv/$',
         'signbank.dictionary.views.import_csv'),
@@ -60,11 +56,9 @@ urlpatterns = [
 
     # Incase you need to run this command from web (if for example only webserver has user rights to the folder)
     # uncomment the following line. It updates videofilenames to match the current filenaming policy.
-    #url(r'refresh_videofilenames/$', 'signbank.tools.refresh_videofilenames'),
+    # url(r'refresh_videofilenames/$', 'signbank.tools.refresh_videofilenames'),
 
     # This url is meant to capture 'pages', so that we can use il8n language switching
     url(r'^(?P<url>.*)$',
         'signbank.pages.views.page'),
-
-]  # This might be needed in development, use it with caution:
-# """+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""
+]

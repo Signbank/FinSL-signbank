@@ -1,10 +1,9 @@
-from django.conf.urls import *
+from django.conf.urls import url
 from django.contrib.auth.decorators import permission_required
-
 from signbank.dictionary.adminviews import GlossListView, GlossDetailView
 
 urlpatterns = [
-    # Gloss search url
+    # Gloss search url for the menu search field(s)
     url(r'^search/$', permission_required('dictionary.search_gloss')
     (GlossListView.as_view()), name='menusearch'),
 
