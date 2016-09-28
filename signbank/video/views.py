@@ -48,7 +48,7 @@ def poster(request, videoid):
     """Generate a still frame for a video (if needed) and
     generate a redirect to the static server for this frame"""
 
-    video = get_object_or_404(GlossVideo, gloss_id=videoid)
+    video = get_object_or_404(GlossVideo, pk=videoid)
 
     return redirect(video.poster_url())
 
