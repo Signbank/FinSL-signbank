@@ -52,9 +52,6 @@ urlpatterns = [
     url(r'^gloss/(?P<pk>\d+)', permission_required('dictionary.search_gloss')
     (GlossDetailView.as_view()), name='admin_gloss_view'),
 
-    # These views are disabled simply because there is no use for them right now
-    # url(r'^missingvideo.html$', 'signbank.dictionary.views.missing_video_view'),
-
     # A view for the developer to try out some things
     # url(r'^try/$', 'signbank.dictionary.views.try_code'),
 ]
