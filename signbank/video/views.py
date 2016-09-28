@@ -56,6 +56,6 @@ def poster(request, videoid):
 def video(request, videoid):
     """Redirect to the video url for this videoid"""
 
-    video = get_object_or_404(GlossVideo, gloss_id=videoid)
+    video = get_object_or_404(GlossVideo, id=videoid)
 
     return redirect(video)
