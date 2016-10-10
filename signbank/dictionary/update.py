@@ -2,8 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidde
 from django.shortcuts import render, get_object_or_404
 
 # Location of reverse changes in django 1.10. TODO: Remove this after we move to 1.10 or newer.
-from django import __version__
-if __version__ < 1.10:
+from django import VERSION
+if VERSION < (1,10):
     from django.core.urlresolvers import reverse
 else:
     from django.urls import reverse
