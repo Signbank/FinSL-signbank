@@ -1,14 +1,21 @@
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import permission_required
 from django.contrib import admin
-from signbank.dictionary.adminviews import GlossListView
+# Views
+from django.contrib.auth import views as auth_views
+from .pages import views as pages_views
+from .dictionary import views as dictionary_views
+from .dictionary.adminviews import GlossListView
+from .feedback import views as feedback_views
+from .tools import reload_signbank, infopage, refresh_videofilenames
+
 
 admin.autodiscover()
 from adminsite import publisher_admin
 
 urlpatterns = [
     # Root page
-    url(r'^$', 'signbank.pages.views.page',
+    url(r'^$', pages_views.page,
         name='root_page'),
 
     # This allows to change the translations site language
@@ -22,18 +29,18 @@ urlpatterns = [
 
     # Login and logout pages
     # TODO: django.contrib.auth.views.login and logout will be removed in django 1.11
-    url(r'^login/', 'django.contrib.auth.views.login'),
-    url(r'^logout/', 'django.contrib.auth.views.logout',
+    url(r'^login/', auth_views.login),
+    url(r'^logout/', auth_views.logout,
         {'next_page': "/"}, "logout"),
 
     # Hardcoding a number of special urls:
     url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view()),
         name='admin_gloss_list'),
-    url(r'^signs/add/$', 'signbank.dictionary.views.add_new_sign'),
+    url(r'^signs/add/$', dictionary_views.add_new_sign),
     url(r'^signs/import_csv/$',
-        'signbank.dictionary.views.import_csv'),
+        dictionary_views.import_csv),
     url(r'^feedback/overview/$',
-        'signbank.feedback.views.showfeedback'),
+        feedback_views.showfeedback),
 
     url(r'^accounts/',
         include('signbank.registration.urls')),
@@ -48,18 +55,18 @@ urlpatterns = [
     url(r'^summernote/', include('django_summernote.urls')),
 
     # This URL runs a script on tools.py that reloads signbank app via 'touch signbank/wsgi.py'
-    url(r'reload_signbank/$',
-        'signbank.tools.reload_signbank'),
+    #url(r'reload_signbank/$',
+    #    reload_signbank),
 
     # Infopage, where we store some links and statistics
     url(r'infopage/',
-        'signbank.tools.infopage'),
+        infopage),
 
     # Incase you need to run this command from web (if for example only webserver has user rights to the folder)
     # uncomment the following line. It updates videofilenames to match the current filenaming policy.
-    # url(r'refresh_videofilenames/$', 'signbank.tools.refresh_videofilenames'),
+    # url(r'refresh_videofilenames/$', refresh_videofilenames),
 
     # This url is meant to capture 'pages', so that we can use il8n language switching
     url(r'^(?P<url>.*)$',
-        'signbank.pages.views.page'),
+        pages_views.page),
 ]
