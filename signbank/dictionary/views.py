@@ -3,6 +3,7 @@ import csv
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.db.models.fields import NullBooleanField
 
 from signbank.dictionary.forms import *
 from signbank.feedback.models import *
@@ -110,7 +111,7 @@ def import_csv(request):
                 continue
 
             # Replace the value for bools
-            if gloss._meta.get_field_by_name(fieldname)[0].__class__.__name__ == 'NullBooleanField':
+            if isinstance(gloss._meta.get_field(fieldname), NullBooleanField):
 
                 if new_value in ['true', 'True']:
                     new_value = True

@@ -138,8 +138,8 @@ def update_gloss(request, glossid):
                 newvalue = 'No'
 
         else:
-
-            if not field in Gloss._meta.get_all_field_names():
+            # Find if field is not in Gloss classes fields.
+            if not field in [f.name for f in Gloss._meta.get_fields()]:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest(_("Unknown field"), content_type='text/plain')
 
@@ -150,7 +150,7 @@ def update_gloss(request, glossid):
             # - tags
 
             # Translate the value if a boolean
-            if isinstance(gloss._meta.get_field_by_name(field)[0], NullBooleanField):
+            if isinstance(Gloss._meta.get_field(field), NullBooleanField):
                 newvalue = value
                 value = (value == 'Yes')
 
@@ -161,7 +161,7 @@ def update_gloss(request, glossid):
                 newvalue = ''
             else:
                 # See if the field is a ForeignKey
-                if gloss._meta.get_field_by_name(field)[0].get_internal_type() == "ForeignKey":
+                if gloss._meta.get_field(field).get_internal_type() == "ForeignKey":
                     gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
                 else:
                     gloss.__setattr__(field, value)

@@ -59,10 +59,7 @@ class GlossListView(ListView):
         response[
             'Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
 
-
-        #        fields = [f.name for f in Gloss._meta.fields]
         # We want to manually set which fields to export here
-
         fieldnames = ['idgloss', 'idgloss_en', 'annotation_comments', 'handedness', 'strong_handshape',
                       'weak_handshape', 'handshape_change', 'relation_between_articulators', 'location',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
