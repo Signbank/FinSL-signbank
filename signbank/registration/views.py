@@ -6,8 +6,7 @@ Views which allow users to create and activate accounts.
 
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
 from forms import RegistrationForm, EmailAuthenticationForm
 from models import RegistrationProfile
@@ -42,10 +41,9 @@ def activate(request, activation_key, template_name='registration/activate.html'
     activation_key = activation_key.lower(
     )  # Normalize before trying anything with it.
     account = RegistrationProfile.objects.activate_user(activation_key)
-    return render_to_response(template_name,
+    return render(request, template_name,
                               {'account': account,
-                               'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS},
-                              context_instance=RequestContext(request))
+                               'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS})
 
 
 def register(request, success_url='/accounts/register/complete/',
@@ -93,9 +91,7 @@ def register(request, success_url='/accounts/register/complete/',
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()
-    return render_to_response(template_name,
-                              {'form': form},
-                              context_instance=RequestContext(request))
+    return render(request, template_name, {'form': form})
 
 
 # a copy of the login view since we need to change the form to allow longer
@@ -133,11 +129,11 @@ def mylogin(request, template_name='registration/login.html', redirect_field_nam
         current_site = Site.objects.get_current()
     else:
         current_site = RequestSite(request)
-    return render_to_response(template_name, {
+    return render(request, template_name, {
         'form': form,
         redirect_field_name: redirect_to,
         'site': current_site,
         'site_name': current_site.name,
         'allow_registration': settings.ALLOW_REGISTRATION,
-    }, context_instance=RequestContext(request))
+    })
 mylogin = never_cache(mylogin)

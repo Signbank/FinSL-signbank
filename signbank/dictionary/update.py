@@ -1,6 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
-from django.template import RequestContext
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required, login_required
@@ -36,9 +35,7 @@ def add_gloss(request):
             return HttpResponseRedirect(redirecturl)
     else:
         form = GlossCreateForm()
-    return render_to_response('dictionary/add_gloss.html',
-                              {'add_gloss_form': form},
-                              context_instance=RequestContext(request))
+    return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': form})
 
 def update_gloss(request, glossid):
     """View to update a gloss model from the jeditable jquery form
@@ -602,11 +599,8 @@ def add_tag(request, glossid):
                 # spaces
                 Tag.objects.add_tag(thisgloss, '"%s"' % tag)
                 # response is new HTML for the tag list and form
-                response = render_to_response('dictionary/glosstags.html',
-                                              {'gloss': thisgloss,
-                                               'tagform': TagUpdateForm(),
-                                               },
-                                              context_instance=RequestContext(request))
+                response = render(request, 'dictionary/glosstags.html',
+                                  {'gloss': thisgloss, 'tagform': TagUpdateForm()})
         else:
             print "invalid form"
             print form.as_table()

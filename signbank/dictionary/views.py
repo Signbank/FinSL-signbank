@@ -1,8 +1,7 @@
 import csv
 
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
+from django.http import HttpResponse
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from signbank.dictionary.forms import *
@@ -40,8 +39,7 @@ def try_code(request):
 
 @login_required
 def add_new_sign(request):
-    return render_to_response('dictionary/add_gloss.html', {'add_gloss_form': GlossCreateForm()},
-                              context_instance=RequestContext(request))
+    return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': GlossCreateForm()})
 
 
 @login_required
@@ -129,6 +127,4 @@ def import_csv(request):
     else:
 
         stage = 0
-
-    return render_to_response('dictionary/import_csv.html', {'form': uploadform, 'stage': stage, 'changes': changes},
-                              context_instance=RequestContext(request))
+    return render(request, 'dictionary/import_csv.html', {'form': uploadform, 'stage': stage, 'changes': changes})

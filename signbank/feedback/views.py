@@ -1,5 +1,4 @@
-from django.shortcuts import render_to_response, get_object_or_404, redirect
-from django.template import RequestContext
+from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseRedirect
@@ -9,11 +8,9 @@ from signbank.feedback.forms import *
 
 
 def index(request):
-    return render_to_response('feedback/index.html',
-                              {
-                                  # Translators: Title for feedback views index
-                                  'title': _("Leave Feedback")},
-                              context_instance=RequestContext(request))
+    return render(request, 'feedback/index.html', {# Translators: Title for feedback views index
+                                  'title': _("Leave Feedback")})
+
 
 @login_required(login_url='/accounts/login/')
 def generalfeedback(request):
@@ -36,14 +33,12 @@ def generalfeedback(request):
     else:
         form = GeneralFeedbackForm()
 
-    return render_to_response("feedback/generalfeedback.html",
-                              {
-                                  # Translators: General Feedback title
+    return render(request, "feedback/generalfeedback.html",
+                              {# Translators: General Feedback title
                                   'title': _("General Feedback"),
                                   'form': form,
-                                  'valid': valid},
-                              context_instance=RequestContext(request)
-                              )
+                                  'valid': valid
+                              })
 
 
 @login_required(login_url='/accounts/login/')
@@ -88,14 +83,12 @@ def missingsign(request):
     else:
         form = MissingSignFeedbackForm()
 
-    return render_to_response('feedback/missingsign.html',
-                              {
-                                  # Translators Report Missing Sign title
+    return render(request, 'feedback/missingsign.html',
+                              {# Translators Report Missing Sign title
                                   'title': _("Report a Missing Sign"),
                                   'posted': posted,
                                   'form': form
-                              },
-                              context_instance=RequestContext(request))
+                              })
 
 
 # -----------
@@ -110,12 +103,11 @@ def showfeedback(request):
     missing = MissingSignFeedback.objects.filter(status='unread')
     signfb = SignFeedback.objects.filter(status__in=('unread', 'read'))
 
-    return render_to_response("feedback/show.html",
+    return render(request, "feedback/show.html",
                               {'general': general,
                                'missing': missing,
                                'signfb': signfb,
-                               },
-                              context_instance=RequestContext(request))
+                               })
 
 
 @login_required(login_url='/accounts/login/')
@@ -125,7 +117,6 @@ def glossfeedback(request, glossid):
     # construct a translation so we can record feedback against it
     # really should have recorded feedback for a gloss, not a sign
     allkwds = gloss.translation_set.all()
-    allkwds_en = gloss.translationenglish_set.all()
 
     if len(allkwds) == 0:
         trans = Translation()
@@ -149,7 +140,7 @@ def signfeedback(request, keyword, n):
     return recordsignfeedback(request, trans, n, total)
 
 
-def recordsignfeedback(request, trans, n, total, trans_en, n_en, total_en):
+def recordsignfeedback(request, trans, n, total):
     """Do the work of recording feedback for a sign or gloss"""
 
     # get the page to return to from the get request
@@ -209,19 +200,15 @@ def recordsignfeedback(request, trans, n, total, trans_en, n_en, total_en):
     else:
         feedback_form = SignFeedbackForm()
 
-    return render_to_response("feedback/signfeedback.html",
+    return render(request, "feedback/signfeedback.html",
                               {'translation': trans,
                                'n': n,
                                'total': total,
-                               'translation_english': trans_en,
-                               'n_en': n_en,
-                               'total_en': total_en,
                                'feedback_form': feedback_form,
                                'valid': valid,
                                'sourcepage': sourcepage,
                                'lastmatch': lastmatch,
-                               },
-                              context_instance=RequestContext(request))
+                               })
 
 
 # --------------------
