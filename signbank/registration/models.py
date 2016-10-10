@@ -18,6 +18,11 @@ from django.contrib.sites.models import Site
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth.models import User
+import re
+
+
 # TODO: Remove this module and install the latest version to the environment as a 3rd party package.
 # This is some old version of the django-registration application.
 
@@ -250,3 +255,27 @@ class UserProfile(models.Model):
 
     class Admin:
         list_display = ['user']
+
+
+# Moved from __init__.py
+email_re = re.compile(
+    # dot-atom
+    r"(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*"
+    # quoted-string
+    r'|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-\011\013\014\016-\177])*"'
+    r')@(?:[A-Z0-9-]+\.)+[A-Z]{2,6}$', re.IGNORECASE)  # domain
+
+
+class EmailBackend(ModelBackend):
+
+    """Validate using email address as the username"""
+
+    def authenticate(self, username=None, password=None):
+        if email_re.search(username):
+            try:
+                user = User.objects.get(email__iexact=username)
+                if user.check_password(password):
+                    return user
+            except User.DoesNotExist:
+                return None
+        return None

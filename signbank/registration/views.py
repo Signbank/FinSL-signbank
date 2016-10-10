@@ -98,7 +98,8 @@ def register(request, success_url='/accounts/register/complete/',
 # userids (> 30 chars) since we're using email addresses
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.views.decorators.cache import never_cache
-from django.contrib.sites.models import Site, RequestSite
+from django.contrib.sites.models import Site
+from django.contrib.sites.requests import RequestSite
 
 
 def mylogin(request, template_name='registration/login.html', redirect_field_name=REDIRECT_FIELD_NAME):
