@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^video/', include('signbank.video.urls')),
 
     # Login and logout pages
+    # TODO: django.contrib.auth.views.login and logout will be removed in django 1.11
     url(r'^login/', 'django.contrib.auth.views.login'),
     url(r'^logout/', 'django.contrib.auth.views.logout',
         {'next_page': "/"}, "logout"),

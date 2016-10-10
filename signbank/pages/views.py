@@ -49,7 +49,7 @@ def page(request, url='/'):
 
     # if len(f.group_required.all()) > 0:
     #
-    #      if not request.user.is_authenticated() :
+    #      if not request.user.is_authenticated() : # TODO: is_authenticated will be removed in django 2.0
     #          from django.contrib.auth.views import redirect_to_login
     #          return redirect_to_login(request.path)
 

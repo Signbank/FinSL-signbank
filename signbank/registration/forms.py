@@ -297,6 +297,7 @@ class EmailAuthenticationForm(forms.Form):
         password = self.cleaned_data.get('password')
 
         if email and password:
+            # TODO: In django 1.11 authenticate() will require request object as an argument
             self.user_cache = authenticate(username=email, password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(
