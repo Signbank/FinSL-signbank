@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
 import os
+import shutil
 from django.utils.translation import ugettext_lazy as _
 from django.core.files.storage import FileSystemStorage
 from convertvideo import extract_frame, convert_video
@@ -96,7 +97,7 @@ class Video(models.Model, VideoPosterMixin):
         return self.videofile.name
 
 
-import shutil
+
 
 
 class GlossVideoStorage(FileSystemStorage):
@@ -110,9 +111,7 @@ class GlossVideoStorage(FileSystemStorage):
         first two digits in the filename to partition the videos"""
 
         (targetdir, basename) = os.path.split(name)
-
-        path = os.path.join(unicode(basename)[:2], unicode(basename))
-
+        path = os.path.join(unicode(basename)[:2].upper(), unicode(basename))
         result = os.path.join(targetdir, path)
 
         return result
@@ -124,15 +123,18 @@ storage = GlossVideoStorage()
 class GlossVideo(models.Model, VideoPosterMixin):
     """A video that represents a particular idgloss"""
 
-    videofile = models.FileField(
-        "video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
-    gloss = models.ForeignKey('dictionary.Gloss')
+    videofile = models.FileField("video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
+    gloss = models.ForeignKey('dictionary.Gloss', null=True)
+    dataset = models.ForeignKey('dictionary.Dataset', null=True)
 
     # video version, version = 0 is always the one that will be displayed
     # we will increment the version (via reversion) if a new video is added
     # for this gloss
     # Translators: GlossVideo: version
     version = models.IntegerField(_("Version"), default=0)
+
+    class Meta:
+        ordering = ['videofile']
 
     # TODO: Keep this or not?
     def reversion(self, revert=False):
@@ -152,10 +154,47 @@ class GlossVideo(models.Model, VideoPosterMixin):
             os.unlink(poster)
         self.save()
 
+    def save(self, *args, **kwargs):
+        # Save object so that we can access the saved fields.
+        super(GlossVideo, self).save(*args, **kwargs)
+        # If the GlossVideo object has a Gloss set, rename that glosses videos (that aren't correctly named).
+        if self.videofile and hasattr(self, 'gloss') and self.gloss is not None:
+            self.rename_video()
+        try:
+            self.dataset = self.gloss.dataset
+        except AttributeError:
+            pass
+
+    def rename_video(self):
+        """Rename the video and the video to correct path if the glossvideo object has a foreignkey to a gloss."""
+        # Do not rename the file if glossvideo doesn't have a gloss.
+        if hasattr(self, 'gloss') and self.gloss is not None:
+            # Create the base filename for the video based on the new self.gloss.idgloss
+            new_filename = GlossVideo.create_filename(self.gloss.idgloss, self.gloss.pk, self.pk)
+            # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
+            new_path = os.path.join('glossvideo', unicode(self.gloss.idgloss[:2]).upper(), new_filename)
+            full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
+
+            # Check if a file already exists in the path we try to save to or if this file already is in that path.
+            if not (os.path.isfile(full_new_path) or self.videofile == new_path):
+                try:
+                    # Rename the file in the system, get old_path from self.videofile.path.
+                    os.renames(self.videofile.path, full_new_path)
+                except IOError:
+                    # If there is a problem moving the file, don't change self.videofile, it would not match
+                    return
+                except OSError:
+                    # If the sourcefile does not exist, raise OSError
+                    raise OSError(str(self.pk) + ' ' + unicode(self.videofile))
+
+                # Change the self.videofile to the new path
+                self.videofile = new_path
+                self.save()
+
     @staticmethod
     def create_filename(idgloss, glosspk, videopk):
         """Returns a correctly named filename"""
-        return idgloss + "-" + str(glosspk) + "_vid" + str(videopk) + ".mp4"
+        return unicode(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ".mp4"
 
     @staticmethod
     def gloss_has_videos(gloss):
@@ -172,31 +211,7 @@ class GlossVideo(models.Model, VideoPosterMixin):
         """Renames the filenames of selected Glosses videos to match the Gloss name"""
         glossvideos = GlossVideo.objects.filter(gloss=gloss)
         for glossvideo in glossvideos:
-            # Create the base filename for the video based on the new gloss.idgloss
-            new_filename = GlossVideo.create_filename(gloss.idgloss, gloss.pk, glossvideo.pk)
-
-            # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
-            new_path = os.path.join('glossvideo', unicode(gloss.idgloss[:2]), new_filename)
-            full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
-
-            if os.path.isfile(full_new_path) or glossvideo.videofile == new_path:
-                # If a file already exists at the new_full_path, continue to the next iteration of loop.
-                # If glossvideo.videofile is already the same as new_path, continue to the next iteration of loop.
-                continue
-
-            try:
-                # Rename the file in the system, get old_path from glossvideo.videofile.path.
-                os.renames(glossvideo.videofile.path, full_new_path)
-            except IOError:
-                # If there is a problem moving the file, don't change glossvideo.videofile, it would not match
-                continue
-            except OSError:
-                # If the sourcefile does not exist, raise OSError
-                raise OSError(str(glossvideo.pk) + ' ' + str(glossvideo.videofile))
-
-            # Change the glossvideo.videofile to the new path
-            glossvideo.videofile = new_path
-            glossvideo.save()
+            glossvideo.rename_video()
 
     def __unicode__(self):
         return self.videofile.name

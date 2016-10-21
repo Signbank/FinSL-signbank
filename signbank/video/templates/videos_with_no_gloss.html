@@ -1,0 +1,58 @@
+{% extends "baselayout.html" %}
+{% load i18n %}
+{% block content %}
+<div class="page-header">
+  <h2>{% blocktrans %}Videos with no gloss{% endblocktrans %} <small>{% blocktrans %}You can add a gloss for each video{% endblocktrans %}</small></h2>
+</div>
+<div id="dataset" class="panel panel-default">
+    <div class="panel-body">
+        <form id="dataset-select">
+            <h3><span class="label label-danger">{% blocktrans %}Select the dataset you want to work with!{% endblocktrans %}</span></h3>
+            <label for="id_dataset"><strong>{% blocktrans %}Dataset{% endblocktrans %}:</strong></label>
+            {{form.dataset}}
+            <input class='btn btn-primary' type='submit' value='{% blocktrans %}Ok{% endblocktrans %}'>
+        </form>
+    </div>
+</div>
+<div id="glossvideos" class="row">
+{% for video in videos %}
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{video.videofile}}</div>
+            <div class="panel-body">
+            <form id="glossvideo{{video.pk}}" method="POST" action="/video/update/">
+                {% csrf_token %}
+                <input type="hidden" name="glossvideo" value="{{video.pk}}">
+                <div id="videocontainer">
+                    <div class="player">
+                        <video id="{{video.pk}}" width="450" preload="metadata" controls muted>
+                            <source src="{{ STATIC_URL }}{{video.videofile|urlencode}}" type="video/mp4">
+                            {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                        </video>
+                    </div>
+                </div>
+                <div>
+                    <label for="id_gloss"><strong>{% blocktrans %}Gloss{% endblocktrans %}:</strong></label>
+                    {{form.gloss}}
+                    <input class='btn btn-primary' type='submit' value='{% blocktrans %}Save{% endblocktrans %}'>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        <ul class='pagination pagination-sm'>
+        {% if page_obj.has_previous %}{# Insert dataset from request #}
+            <li><a href="?page={{ page_obj.previous_page_number }}&dataset={{request.GET.dataset}}">&laquo; {% blocktrans %}previous{% endblocktrans %}</a>
+        {% endif %}
+            <li><span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}&dataset={{request.GET.dataset}}">{% blocktrans %}next{% endblocktrans %} &raquo;</a>
+        {% endif %}
+        </ul>
+    </span>
+</div>
+{% endblock %}

@@ -44,6 +44,8 @@ def add_gloss(request):
         form = GlossCreateForm()
     return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': form})
 
+
+@permission_required('dictionary.change_gloss')
 def update_gloss(request, glossid):
     """View to update a gloss model from the jeditable jquery form
     We are sent one field and value at a time, return the new value once we've updated it."""

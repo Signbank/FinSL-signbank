@@ -8,7 +8,7 @@ from models import Video, GlossVideo
 
 class VideoTests(unittest.TestCase):
     def setUp(self):
-        self.vidfilename = "signbank/video/testmedia/video.mp4"
+        self.vidfilename = "video/video/testmedia/video.mp4"
         self.videofile = File(open(self.vidfilename), "12345.mp4")
 
     def test_Video_create(self):
