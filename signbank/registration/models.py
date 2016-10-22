@@ -256,8 +256,6 @@ class UserProfile(models.Model):
     class Admin:
         list_display = ['user']
 
-
-# Moved from __init__.py
 email_re = re.compile(
     # dot-atom
     r"(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*"
