@@ -83,6 +83,9 @@ class GlossVideosNoGlossListView(ListView):
         if 'dataset' in self.request.GET and self.request.GET.get('dataset'):
             # Set queryset for form.gloss
             form.fields["gloss"].queryset = Gloss.objects.filter(dataset__pk=self.request.GET.get("dataset"))
+        else:
+            # If there is no dataset set, list only glosses that have no dataset.
+            form.fields["gloss"].queryset = Gloss.objects.filter(dataset__isnull=True)
         context['form'] = form
         return context
 
