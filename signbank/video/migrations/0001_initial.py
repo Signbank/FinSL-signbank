@@ -20,7 +20,6 @@ class Migration(migrations.Migration):
                 ('version', models.IntegerField(default=0, verbose_name='Version')),
                 ('gloss', models.ForeignKey(to='dictionary.Gloss')),
             ],
-            bases=(models.Model, signbank.video.models.VideoPosterMixin),
         ),
         migrations.CreateModel(
             name='Video',
@@ -28,6 +27,5 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('videofile', models.FileField(upload_to=b'upload', verbose_name='Video file in h264 mp4 format')),
             ],
-            bases=(models.Model, signbank.video.models.VideoPosterMixin),
         ),
     ]

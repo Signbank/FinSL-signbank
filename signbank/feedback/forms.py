@@ -1,7 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from signbank.video.fields import VideoUploadToFLVField
 from signbank.feedback.models import *
 
 __author__ = 'heilniem'
@@ -19,8 +18,6 @@ class GeneralFeedbackForm(forms.Form):
 
     comment = forms.CharField(
         widget=forms.Textarea(attrs={'cols': '64'}), required=False)
-    video = VideoUploadToFLVField(
-        required=False, widget=forms.FileInput(attrs={'size': '60'}))
 
 
 class SignFeedbackForm(forms.Form):
