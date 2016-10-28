@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-21 20:20+0300\n"
+"POT-Creation-Date: 2016-10-28 19:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -839,61 +839,73 @@ msgstr ""
 msgid "Confirm Delete"
 msgstr "Hyväksy poistaminen"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:160
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:162
 #: signbank/feedback/templates/feedback/show.html:68
 #: signbank/feedback/templates/feedback/show.html:154
 #: signbank/video/templates/videos_with_no_gloss.html:30
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:166
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:165
+msgid "Capture new poster image"
+msgstr "Kaappaa uusi poster-kuva"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:174
+msgid "Update poster image for video"
+msgstr "Päivitä poster-kuva videolle"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:186
+msgid "Save changes"
+msgstr "Tallenna muutokset"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:214
 msgid "No videos available for this gloss."
 msgstr "Tälle glossille ei ole videoita."
 
 #. Translators: Upload/Add new video to Signbank
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:179
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:227
 msgid "Upload New Video"
 msgstr "Lähetä uusi video"
 
 #. Translators: VideoUploadForGlossForm
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:189
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:237
 #: signbank/video/forms.py:19
 msgid "Upload Video"
 msgstr "Lähetä video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:204
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:252
 msgid "Gloss:"
 msgstr "Glossi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:209
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:257
 msgid "Gloss in English:"
 msgstr "Glossi englanniksi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:215
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:263
 msgid "Translations in "
 msgstr "Käännökset "
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:222
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:270
 msgid "Comments:"
 msgstr "Kommentit"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:227
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:275
 msgid "Sign language:"
 msgstr "Viittomakieli:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:233
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:281
 msgid "Dialect:"
 msgstr "Alue:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:238
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:286
 msgid "URL:"
 msgstr "URL:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:246
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:294
 msgid "Created:"
 msgstr "Luotu:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:250
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:298
 msgid "Updated:"
 msgstr "Päivitetty:"
 
@@ -1269,61 +1281,61 @@ msgid "You are not allowed to see this page."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua."
 
 #. Translators: keywordnotbelong, label name
-#: signbank/feedback/forms.py:32
+#: signbank/feedback/forms.py:29
 msgid "List keywords"
 msgstr "Keyword lista"
 
-#: signbank/feedback/forms.py:39
+#: signbank/feedback/forms.py:36
 msgid "How many hands are used to make this sign?"
 msgstr "Montaako kättä viittomassa käytetään?"
 
-#: signbank/feedback/forms.py:42
+#: signbank/feedback/forms.py:39
 msgid "What is the handshape?"
 msgstr "Mikä on käsimuoto?"
 
-#: signbank/feedback/forms.py:45
+#: signbank/feedback/forms.py:42
 msgid "What is the handshape of the left hand?"
 msgstr "Mikä on vasemman käden käsimuoto?"
 
-#: signbank/feedback/forms.py:48
+#: signbank/feedback/forms.py:45
 msgid "Choose the location of the sign on, or near the body"
 msgstr "Onko viittoma lähellä vai kaukana kehosta"
 
-#: signbank/feedback/forms.py:51
+#: signbank/feedback/forms.py:48
 msgid "Choose the location of the right hand on, or near the left hand"
 msgstr "Onko oikea käsi vasemman päällä vai lähellä vasenta kättä"
 
-#: signbank/feedback/forms.py:55
+#: signbank/feedback/forms.py:52
 msgid "Contact between hands and body"
 msgstr "Käsien ja kehon välinen kontakti"
 
-#: signbank/feedback/forms.py:58
+#: signbank/feedback/forms.py:55
 msgid "Interaction between hands"
 msgstr "Käsien interaktio"
 
-#: signbank/feedback/forms.py:61
+#: signbank/feedback/forms.py:58
 msgid "Movement direction of the hand(s)"
 msgstr "Käsien liikkeen suunta"
 
-#: signbank/feedback/forms.py:64
+#: signbank/feedback/forms.py:61
 msgid "Type of movement"
 msgstr "Liikkeen tyyppi"
 
-#: signbank/feedback/forms.py:67
+#: signbank/feedback/forms.py:64
 msgid "Small movements of the hand(s) and fingers"
 msgstr "Pienet käden ja sormien liikkeet"
 
-#: signbank/feedback/forms.py:70
+#: signbank/feedback/forms.py:67
 msgid "Number of movements"
 msgstr "Liikkeiden määrä"
 
 #. Translators: Missing sign feedback (meaning)
-#: signbank/feedback/forms.py:72
+#: signbank/feedback/forms.py:69
 msgid "Sign Meaning"
 msgstr "Viittoman merkitys"
 
 #. Translators: Missing sign feedback (comments)
-#: signbank/feedback/forms.py:77
+#: signbank/feedback/forms.py:74
 msgid "Further Details"
 msgstr "Lisätietoa"
 
@@ -2690,71 +2702,29 @@ msgstr "Englanti"
 msgid "Has gloss"
 msgstr "On glossi"
 
-#: signbank/video/admin.py:15
+#: signbank/video/admin.py:15 signbank/video/admin.py:32
 msgid "Yes"
 msgstr "Kyllä"
 
-#: signbank/video/admin.py:16
+#: signbank/video/admin.py:16 signbank/video/admin.py:33
 msgid "No"
 msgstr "Ei"
 
-#: signbank/video/admin.py:38
+#: signbank/video/admin.py:27
+msgid "Has poster"
+msgstr "On posteri"
+
+#: signbank/video/admin.py:55
 msgid "Video's dataset"
 msgstr "Videon Aineisto"
 
-#. Translators: Debug message
-#: signbank/video/fields.py:121
-msgid "Converted to mp4: "
-msgstr "Muunnettu mp4 muotoon: "
-
-#. Translators: Error message
-#: signbank/video/fields.py:133
-msgid "Video conversion failed"
-msgstr "Videon muuntaminen epäonnistui"
-
-#. Translators: Debug message
-#: signbank/video/fields.py:165
-msgid "Killing ffmpeg process"
-msgstr "Lopetetaan ffmpeg prosessi"
-
-#: signbank/video/fields.py:168
-msgid ""
-"Conversion of video took too long.  This site is only able to host "
-"relatively short videos."
-msgstr ""
-
-#. Translators: Error message
-#: signbank/video/fields.py:180
-msgid "Conversion of video failed: please try to use a diffent format"
-msgstr ""
-
-#. Translators: Error message
-#: signbank/video/fields.py:183
-msgid "Conversion of video failed: please try to use a different video format"
-msgstr "Videon muuntaminen epäonnistui: yritä uudelleen eri videoformaatilla"
-
-#. Translators: errormsg msgtxt
-#: signbank/video/fields.py:191
-msgid "Error"
-msgstr "Virhe"
-
-#. Translators: errormsg msgtxt
-#: signbank/video/fields.py:193
-msgid "Command:"
-msgstr "Komento:"
-
-#. Translators: errormsg EmailMessage
-#: signbank/video/fields.py:196
-msgid "Video conversion failed on Auslan"
-msgstr "Videon muuntaminen epäonnistui"
-
 #. Translators: Video: videofile
-#: signbank/video/models.py:94
+#: signbank/video/models.py:16
 msgid "Video file in h264 mp4 format"
 msgstr "Videotiedosto h264 mp4 muodossa"
 
 #. Translators: GlossVideo: version
-#: signbank/video/models.py:134
+#: signbank/video/models.py:55
 msgid "Version"
 msgstr "Versio"
 
@@ -3082,6 +3052,29 @@ msgstr "Sähköposti:"
 msgid "Reset my password"
 msgstr "Muuta salasana"
 
+#~ msgid "Converted to mp4: "
+#~ msgstr "Muunnettu mp4 muotoon: "
+
+#~ msgid "Video conversion failed"
+#~ msgstr "Videon muuntaminen epäonnistui"
+
+#~ msgid "Killing ffmpeg process"
+#~ msgstr "Lopetetaan ffmpeg prosessi"
+
+#~ msgid ""
+#~ "Conversion of video failed: please try to use a different video format"
+#~ msgstr ""
+#~ "Videon muuntaminen epäonnistui: yritä uudelleen eri videoformaatilla"
+
+#~ msgid "Error"
+#~ msgstr "Virhe"
+
+#~ msgid "Command:"
+#~ msgstr "Komento:"
+
+#~ msgid "Video conversion failed on Auslan"
+#~ msgstr "Videon muuntaminen epäonnistui"
+
 #~ msgid "Unspecified"
 #~ msgstr "Määrittelemätön"
 
@@ -3090,6 +3083,3 @@ msgstr "Muuta salasana"
 
 #~ msgid "Has Video"
 #~ msgstr "Video on"
-
-#~ msgid "Row colors:"
-#~ msgstr "Rivien värit:"
