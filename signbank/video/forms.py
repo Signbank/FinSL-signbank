@@ -37,6 +37,8 @@ class GlossVideoAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(GlossVideoAdminForm, self).__init__(*args, **kwargs)
+        # Set posterfile field to be not required.
+        self.fields['posterfile'].required = False
         # If GlossVideo has no Dataset, try to get it from gloss.dataset.
         if hasattr(self.instance, 'dataset') and not self.instance.dataset:
             try:
@@ -57,3 +59,9 @@ class UpdateGlossVideoForm(forms.ModelForm):
     class Meta:
         model = GlossVideo
         fields = ['dataset', 'videofile', 'gloss']
+
+
+class PosterUpload(forms.ModelForm):
+    class Meta:
+        model = GlossVideo
+        fields = ['posterfile', 'id']

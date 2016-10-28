@@ -23,11 +23,28 @@ class HasGlossFilter(admin.SimpleListFilter):
             return queryset.filter(gloss__isnull=True)
 
 
+class HasPosterFilter(admin.SimpleListFilter):
+    title = _('Has poster')
+    parameter_name = 'has_poster'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('yes', _('Yes')),
+            ('no', _('No')),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            return queryset.filter(posterfile__isnull=False)
+        if self.value() == 'no':
+            return queryset.filter(posterfile__isnull=True)
+
+
 class GlossVideoAdmin(admin.ModelAdmin):
-    fields = ('videofile', 'dataset', 'gloss', 'version')
+    fields = ('videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss',)
-    list_display = ('gloss', 'dataset_video', 'videofile', 'pk', 'version')
-    list_filter = ('gloss__dataset', (HasGlossFilter), 'dataset')
+    list_display = ('gloss', 'dataset_video', 'videofile', 'posterfile', 'pk', 'version')
+    list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter,)
     form = GlossVideoAdminForm
 
     def dataset_video(self, obj):

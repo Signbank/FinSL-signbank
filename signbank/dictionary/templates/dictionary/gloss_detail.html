@@ -112,7 +112,7 @@
         {# Translators: Button #}
         <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
 
-        <div class="modal fade" id="delete_gloss_modal" tabindex="-1" role="dialog" aria-labelledby="#modalTitle"
+        <div class="modal fade" id="delete_gloss_modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
              aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -152,21 +152,69 @@
         <div id="leftblock" class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 
             <div id="videocontainer">
-                <div class="player">
+
                 {% if gloss.has_videos %}
                     {% for glossvideo in gloss.get_gloss_videos %}
-                        <video id="gloss{{gloss.id}}-video{{glossvideo.id}}" width="450" preload="metadata" controls muted>
-                            <source src="{{ STATIC_URL }}{{glossvideo.videofile|urlencode}}" type="video/mp4">
-                            {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                        </video>
+                        <div class="player">
+                            <video id="glossvideo-{{glossvideo.pk}}" width="450" preload="metadata" controls muted
+                                   {% if glossvideo.posterfile %} poster="/static/{{glossvideo.posterfile|urlencode}}"{% endif %}>
+                                <source src="{{ STATIC_URL }}{{glossvideo.videofile|urlencode}}" type="video/mp4">
+                                {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                            </video>
+                            <div class="poster-edit" style="display:none;">
+                                <button type="button" class="btn btn-success" id="vidbtn-{{glossvideo.pk}}" onclick="grabScreenshot({{glossvideo.pk}})" data-toggle="modal" data-target="#glossvideo{{glossvideo.pk}}-Modal">{% blocktrans %}Capture new poster image{% endblocktrans %}</button>
+                                <hr>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="glossvideo{{glossvideo.pk}}-Modal" tabindex="-1" role="dialog" aria-labelledby="glossvideo{{glossvideo.pk}}-ModalLabel">
+                                <div class="modal-dialog poster-modal" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title" id="glossvideo{{glossvideo.pk}}-ModalLabel">{% blocktrans %}Update poster image for video{% endblocktrans %} {{glossvideo.videofile}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <canvas id="vidcanvas-{{glossvideo.pk}}" width="0" height="0">Your browser does not support the HTML5 canvas tag.</canvas>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form enctype="multipart/form-data" action="{% url 'video:add_poster' %}" method="post">
+                                                {% csrf_token %}
+
+                                                <input type="hidden" name="pk" value="{{glossvideo.pk}}">
+                                                <input type="hidden" name="posterfile" id="posterfile-{{glossvideo.pk}}">
+                                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <input class='btn btn-primary' type='submit' value='{% blocktrans %}Save changes{% endblocktrans %}'>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal ends -->
+                        </div>
                     {% endfor %}
+
+                    <script type="text/javascript">
+                    function grabScreenshot(glossvideo_pk) {
+                      /* This function grabs a screenshot from a desired frame in a video and adds it into a form field. */
+                      var canvas = document.getElementById("vidcanvas-"+glossvideo_pk);
+                      var video = document.getElementById("glossvideo-"+glossvideo_pk);
+                      canvas.width = video.videoWidth;
+                      canvas.height = video.videoHeight;
+                      var ctx=canvas.getContext("2d");
+                      // Draw the image into the canvas
+                      ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+                      var posterfileinput = document.getElementById("posterfile-"+glossvideo_pk);
+                      // Set the captured image data as base64 encoded into the posterfile form field.
+                      posterfileinput.value = canvas.toDataURL('image/jpeg');
+                    }
+                    </script>
 
                 {% else %}
                     <div id="novideo" class="alert alert-danger" role="alert">
                         <p><strong>{% blocktrans %}No videos available for this gloss.{% endblocktrans %}</strong></p>
                     </div>
                 {% endif %}
-                </div>
+
             </div>
 
             <div>

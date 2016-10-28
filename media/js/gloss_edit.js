@@ -67,12 +67,14 @@ function disable_edit() {
     $('.relation_delete').hide();
     $('.relationtoforeignsign_delete').hide();
     $('.morphology-definition-delete').hide();
+    // Video/poster editing
+    $('.poster-edit').hide();
 };
 
 function enable_edit() {
     $('.edit').editable('enable');
     $('.edit').css('color', 'red');
-    /* TODO: get message from django instead */
+    // we get this message within django now, so that it can be translated.
     /*$('#edit_message').text('Click on red text to edit  ');*/
     $('#edit_message').show();
     $('.editform').show();
@@ -86,6 +88,8 @@ function enable_edit() {
     $('.relation_delete').show();
     $('.relationtoforeignsign_delete').show();
     $('.morphology-definition-delete').show();
+    // Video/poster editing
+    $('.poster-edit').show();
 };
 
 function toggle_edit() {

@@ -39,15 +39,12 @@ class GlossVideoStorage(FileSystemStorage):
 storage = GlossVideoStorage()
 
 
-class GlossVideoPoster():
-
-    pass
-
-
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
 
     videofile = models.FileField("video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
+    posterfile = models.FileField("Poster file", upload_to=os.path.join(settings.GLOSS_VIDEO_DIRECTORY, "posters"),
+                                  storage=storage, null=True)
     gloss = models.ForeignKey('dictionary.Gloss', null=True)
     dataset = models.ForeignKey('dictionary.Dataset', null=True)
 
@@ -102,6 +99,12 @@ class GlossVideo(models.Model):
         """Returns a correctly named filename"""
         return unicode(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ".mp4"
 
+    def create_poster_filename(self, ext):
+        """Returns a preferred filename of posterfile. Ext is the file extension without the dot."""
+        if self.gloss:
+            return unicode(self.gloss.idgloss) + "-" + str(self.gloss.pk) + "_vid" + str(self.pk) + "_poster." + ext
+        return self.videofile.name + "." + ext
+
     @staticmethod
     def gloss_has_videos(gloss):
         """Returns True if the specified Gloss has any videos"""
@@ -118,6 +121,12 @@ class GlossVideo(models.Model):
         glossvideos = GlossVideo.objects.filter(gloss=gloss)
         for glossvideo in glossvideos:
             glossvideo.rename_video()
+
+    def has_poster(self):
+        """Returns true if the glossvideo has a poster file."""
+        if self.poster:
+            return True
+        return False
 
     def __unicode__(self):
         return self.videofile.name

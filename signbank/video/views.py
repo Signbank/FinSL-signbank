@@ -1,11 +1,13 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
+from base64 import b64decode
+from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from models import GlossVideo
 from forms import VideoUploadForGlossForm, MultipleVideoUploadForm
 from signbank.dictionary.models import Gloss
-from .forms import UpdateGlossVideoForm
+from .forms import UpdateGlossVideoForm, PosterUpload
 
 
 @permission_required('video.add_glossvideo')
@@ -40,6 +42,38 @@ def addvideo(request):
     # referring page, should just be the case of hitting
     # Upload without choosing a file but could be
     # a malicious request, if no referrer, go back to root
+    if 'HTTP_REFERER' in request.META:
+        url = request.META['HTTP_REFERER']
+    else:
+        url = '/'
+    return redirect(url)
+
+
+@permission_required('video.change_glossvideo')
+def add_poster(request):
+    """Process upload of poster file."""
+    if request.method == 'POST':
+        # Load the data into the form
+        form = PosterUpload(request.POST)
+
+        # Process the image data submitted as base64 encoded.
+        img = form.data['posterfile']
+        # Get rid of the preceding info before the filedata.
+        format, imgstr = img.split(';base64,')
+        # Get the file extension
+        ext = format.split('/')[-1]
+        # Load the base64 encoded data to a ContentFile.
+        data = ContentFile(b64decode(imgstr), name='temp.' + ext)
+
+        # Get glossvideos pk from the submitted form data
+        glossvideo_pk = form.data['pk']
+        glossvideo = GlossVideo.objects.get(pk=glossvideo_pk)
+        # Delete the existing file (we do not want to keep copies of them).
+        glossvideo.posterfile.delete()
+        # Create a desired filename for the posterfile.
+        data.name = glossvideo.create_poster_filename(ext)
+        glossvideo.posterfile = data
+        glossvideo.save()
     if 'HTTP_REFERER' in request.META:
         url = request.META['HTTP_REFERER']
     else:

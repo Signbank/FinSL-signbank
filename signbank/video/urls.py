@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^nogloss/', permission_required('video.change_glossvideo')(views.GlossVideosNoGlossListView.as_view())),
     # View that updates a glossvideo
     url(r'^update/$', permission_required('video.change_glossvideo')(views.update_glossvideo)),
+    # View that handles the upload of poster file
+    url(r'^add/poster$', permission_required('video.change_glossvideo')(views.add_poster), name='add_poster'),
 ]

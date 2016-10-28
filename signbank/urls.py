@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^dictionary/',
         include('signbank.dictionary.urls', namespace='dictionary')),
     url(r'^feedback/', include('signbank.feedback.urls')),
-    url(r'^video/', include('signbank.video.urls')),
+    url(r'^video/', include('signbank.video.urls', namespace='video')),
 
     # Login and logout pages
     # TODO: django.contrib.auth.views.login and logout will be removed in django 1.11
