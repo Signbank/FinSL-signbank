@@ -4,15 +4,15 @@ from django.contrib.auth.decorators import permission_required
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<videoid>\d+)$', views.video),
-    url(r'^poster/(?P<videoid>\d+)$', views.poster),
-    url(r'^upload/', views.addvideo),
+    url(r'^(?P<videoid>\d+)$', views.video_view),
+    url(r'^poster/(?P<videoid>\d+)$', views.poster_view),
+    url(r'^upload/', views.addvideo_view),
     # View to upload multiple videos with no foreign key to gloss.
-    url(r'^add/$', permission_required('video.change_glossvideo')(views.AddVideosView.as_view())),
+    url(r'^add/$', views.addvideos_formview),
     # View that shows a list of glossvideos with no foreign key to gloss, user can add fk to gloss for glossvideos.
-    url(r'^nogloss/', permission_required('video.change_glossvideo')(views.GlossVideosNoGlossListView.as_view())),
+    url(r'^nogloss/', views.glossvideos_nogloss_listview,
     # View that updates a glossvideo
-    url(r'^update/$', permission_required('video.change_glossvideo')(views.update_glossvideo)),
+    url(r'^update/$', views.update_glossvideo_view),
     # View that handles the upload of poster file
-    url(r'^add/poster$', permission_required('video.change_glossvideo')(views.add_poster), name='add_poster'),
+    url(r'^add/poster$', views.add_poster_view, name='add_poster')),
 ]

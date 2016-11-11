@@ -10,7 +10,6 @@ from signbank.dictionary.models import Gloss
 from .forms import UpdateGlossVideoForm, PosterUpload
 
 
-@permission_required('video.add_glossvideo')
 def addvideo(request):
     """View to present a video upload form and process the upload"""
 
@@ -49,7 +48,9 @@ def addvideo(request):
     return redirect(url)
 
 
-@permission_required('video.change_glossvideo')
+addvideo_view = permission_required('video.add_glossvideo')(addvideo)
+
+
 def add_poster(request):
     """Process upload of poster file."""
     if request.method == 'POST':
@@ -81,6 +82,9 @@ def add_poster(request):
     return redirect(url)
 
 
+add_poster_view = permission_required('video.change_glossvideo')(add_poster)
+
+
 class AddVideosView(FormView):
     """View for multiple video file upload. These videos will have no connection to glosses."""
     form_class = MultipleVideoUploadForm
@@ -99,6 +103,9 @@ class AddVideosView(FormView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
+
+addvideos_formview = permission_required('video.change_glossvideo')(AddVideosView.as_view())
 
 
 class GlossVideosNoGlossListView(ListView):
@@ -139,7 +146,9 @@ class GlossVideosNoGlossListView(ListView):
         return super(GlossVideosNoGlossListView, self).render_to_response(context)
 
 
-@permission_required('video.change_glossvideo')
+glossvideos_nogloss_listview = permission_required('video.change_glossvideo')(GlossVideosNoGlossListView.as_view())
+
+
 def update_glossvideo(request):
     """Here we process the post request for updating a glossvideo."""
     if request.method == 'POST':
@@ -153,6 +162,9 @@ def update_glossvideo(request):
     return redirect("/")
 
 
+update_glossvideo_view = permission_required('video.change_glossvideo')(update_glossvideo)
+
+
 def poster(request, videoid):
     """Generate a still frame for a video (if needed) and
     generate a redirect to the static server for this frame"""
@@ -162,9 +174,16 @@ def poster(request, videoid):
     return redirect(video.poster_url())
 
 
+poster_view = poster
+
+
 def video(request, videoid):
     """Redirect to the video url for this videoid"""
 
     video = get_object_or_404(GlossVideo, pk=videoid)
 
     return redirect(video)
+
+video_view = video
+
+

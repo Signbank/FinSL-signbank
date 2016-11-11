@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^login/', auth_views.login),
     url(r'^logout/', auth_views.logout,
         {'next_page': "/"}, "logout"),
+    # TODO: implement all these urls: url('^', include('django.contrib.auth.urls')),
 
     # Hardcoding a number of special urls:
     url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view()),
