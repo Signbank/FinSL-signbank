@@ -45,16 +45,16 @@
             <div class="form-group">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 {# Translators: Placeholder text in a search textfield #}
-                <input class='form-control' placeholder='{% blocktrans %}Search gloss{% endblocktrans %}' type="text"
-                       name="search" value="{{ search }}" maxlength="50">
+                <input class='form-control disabled' placeholder='{% blocktrans %}Search gloss{% endblocktrans %}' type="text"
+                       name="search" value="{{ search }}" maxlength="50" disabled>
             </div>
             <div class="form-group">
                 {# Translators: Placeholder text in a search textfield #}
-                <input class='form-control' placeholder='{% blocktrans %}Search translation{% endblocktrans %}'
-                       type="text" name="keyword" value="{{ keyword }}" maxlength="50">
+                <input class='form-control disabled' placeholder='{% blocktrans %}Search translation{% endblocktrans %}'
+                       type="text" name="keyword" value="{{ keyword }}" maxlength="50" disabled>
             </div>
             {# Translators: Submit button (press to search) #}
-            <button type="submit" class="btn btn-default">{% blocktrans %}Search{% endblocktrans %}</button>
+            <button type="submit" class="btn btn-default disabled" disabled>{% blocktrans %}Search{% endblocktrans %}</button>
         </form>
     </div>
     <!-- /.navbar-collapse -->
