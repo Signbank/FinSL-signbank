@@ -2,14 +2,14 @@ import csv
 
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.db.models.fields import NullBooleanField
 
 from signbank.dictionary.forms import *
 from signbank.feedback.models import *
 from signbank.dictionary.update import update_keywords
 import forms
-from signbank.tools import video_to_signbank, compare_valuedict_to_gloss
+from signbank.tools import compare_valuedict_to_gloss
 from django.contrib.admin.views.decorators import user_passes_test
 
 from django.utils.translation import ugettext_lazy as _
@@ -38,12 +38,12 @@ def try_code(request):
     return HttpResponse('OK')
 
 
-@login_required
+@permission_required('dictionary.add_gloss')
 def add_new_sign(request):
     return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': GlossCreateForm()})
 
 
-@login_required
+@permission_required('dictionary.add_gloss')
 def import_csv(request):
     if not request.user.is_staff and len(request.user.groups.filter(name="Publisher")) == 0:
         # Translators: import_csv: not allowed to see requested page (Might not be useful to translate)

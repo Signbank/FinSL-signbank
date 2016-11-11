@@ -105,7 +105,7 @@ class AddVideosView(FormView):
             return self.form_invalid(form)
 
 
-addvideos_formview = permission_required('video.change_glossvideo')(AddVideosView.as_view())
+addvideos_formview = permission_required(['video.add_glossvideo', 'video.change_glossvideo'])(AddVideosView.as_view())
 
 
 class GlossVideosNoGlossListView(ListView):
