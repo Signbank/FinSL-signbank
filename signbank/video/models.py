@@ -113,7 +113,7 @@ class GlossVideo(models.Model):
     @staticmethod
     def get_glosses_videos(gloss):
         """Returns all glossvideos for selected Gloss"""
-        return GlossVideo.objects.filter(gloss=gloss)
+        return GlossVideo.objects.filter(gloss=gloss).order_by('version')
 
     @staticmethod
     def rename_glosses_videos(gloss):

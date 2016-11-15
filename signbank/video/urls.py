@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^update/$', views.update_glossvideo_view),
     # View that handles the upload of poster file
     url(r'^add/poster$', views.add_poster_view, name='add_poster'),
+    # Change priority of video
+    url(r'^order/$', views.change_glossvideo_order, name='change_glossvideo_order'),
 ]

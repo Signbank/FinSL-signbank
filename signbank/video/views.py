@@ -187,3 +187,42 @@ def video(request, videoid):
 video_view = video
 
 
+def change_glossvideo_order(request):
+    """Moves selected glossvideos position within glosses glossvideos."""
+    videoid = request.POST["videoid"]
+    direction = request.POST["direction"]
+    video = GlossVideo.objects.get(pk=videoid)
+    videolist= list(GlossVideo.objects.filter(gloss=video.gloss).order_by('version'))
+    index = videolist.index(video)
+
+    # Set the new index based on the direction we want the move to happen to.
+    if direction == "up":
+        if index < 1:
+            newindex = 0
+        else:
+            newindex = index-1
+    if direction == "down":
+        newindex = index+1
+
+    try:
+        # Move object: Insert object into newindex and remove it from old index.
+        videolist.insert(newindex, videolist.pop(index))
+        # Save the list indexes into the 'version' field of objects.
+        for i, vid in enumerate(videolist):
+            vid.version = i
+            vid.save()
+    except ValueError:
+        # If index is out of lists range.
+        pass
+    except NameError:
+        # In case 'direction' is not defined.
+        pass
+
+    referer = request.META.get("HTTP_REFERER")
+    if "?edit" in referer:
+        return redirect(referer)
+    else:
+        return redirect(request.META.get("HTTP_REFERER") + "?edit")
+
+
+change_glossvideo_order_view = permission_required('video.change_glossvideo')(change_glossvideo_order)
