@@ -41,9 +41,9 @@ class HasPosterFilter(admin.SimpleListFilter):
 
 
 class GlossVideoAdmin(admin.ModelAdmin):
-    fields = ('videofile', 'posterfile', 'dataset', 'gloss', 'version')
+    fields = ('title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss',)
-    list_display = ('gloss', 'dataset_video', 'videofile', 'posterfile', 'pk', 'version')
+    list_display = ('gloss', 'dataset_video', 'title', 'videofile', 'posterfile', 'pk', 'version')
     list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter,)
     form = GlossVideoAdminForm
 

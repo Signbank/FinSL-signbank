@@ -139,6 +139,19 @@ def update_gloss(request, glossid):
             else:
                 newvalue = 'No'
 
+        elif field.startswith('video_title'):
+            # If editing video title, update the GlossVideo's title
+            if request.user.has_perm('video.change_glossvideo'):
+                # Get pk after string "video_title"
+                video_pk = field.split("video_title")[1]
+                newvalue = value
+                try:
+                    video = GlossVideo.objects.get(pk=video_pk)
+                    video.title = value
+                    video.save()
+                except GlossVideo.DoesNotExist:
+                    pass
+
         else:
             # Find if field is not in Gloss classes fields.
             if not field in [f.name for f in Gloss._meta.get_fields()]:
