@@ -161,19 +161,21 @@
                                 <source src="{{ STATIC_URL }}{{glossvideo.videofile|urlencode}}" type="video/mp4">
                                 {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                             </video>
-                            <div class="video-ordering">
-                                <form action="{% url 'video:change_glossvideo_order' %}" method="post">{% csrf_token %}
-                                    <button type="submit" class="btn btn-default" name="direction" value="up">
-                                        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="submit" class="btn btn-default" name="direction" value="down">
-                                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                                    </button>
-                                    <input type="hidden" name="videoid" value="{{glossvideo.pk}}">
-                                </form>
-                            </div>
-                            <div class="poster-edit" style="display:none;">
-                                <button type="button" class="btn btn-success" id="vidbtn-{{glossvideo.pk}}" onclick="grabScreenshot({{glossvideo.pk}})" data-toggle="modal" data-target="#glossvideo{{glossvideo.pk}}-Modal">{% blocktrans %}Capture new poster image{% endblocktrans %}</button>
+                            <div class="video-edit" style="display:none;">
+                                <div class="video-ordering">
+                                    <form action="{% url 'video:change_glossvideo_order' %}" method="post">{% csrf_token %}
+                                        <button type="submit" class="btn btn-default" name="direction" value="up">
+                                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="submit" class="btn btn-default" name="direction" value="down">
+                                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                        </button>
+                                        <input type="hidden" name="videoid" value="{{glossvideo.pk}}">
+                                    </form>
+                                </div>
+                                <div class="poster-edit">
+                                    <button type="button" class="btn btn-success" id="vidbtn-{{glossvideo.pk}}" onclick="grabScreenshot({{glossvideo.pk}})" data-toggle="modal" data-target="#glossvideo{{glossvideo.pk}}-Modal">{% blocktrans %}Capture new poster image{% endblocktrans %}</button>
+                                </div>
                             </div>
                             <hr>
                             <!-- Modal -->

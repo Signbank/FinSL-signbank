@@ -68,7 +68,7 @@ function disable_edit() {
     $('.relationtoforeignsign_delete').hide();
     $('.morphology-definition-delete').hide();
     // Video/poster editing
-    $('.poster-edit').hide();
+    $('.video-edit').hide();
 };
 
 function enable_edit() {
@@ -89,7 +89,7 @@ function enable_edit() {
     $('.relationtoforeignsign_delete').show();
     $('.morphology-definition-delete').show();
     // Video/poster editing
-    $('.poster-edit').show();
+    $('.video-edit').show();
 };
 
 function toggle_edit() {
