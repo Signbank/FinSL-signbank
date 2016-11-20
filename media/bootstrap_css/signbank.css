@@ -108,3 +108,9 @@ html {
     background-color: #ecf0f1;
     border-radius: 4px;
 }
+.video-ordering {
+   display: inline-block;
+}
+.poster-edit {
+   display: inline-block;
+}
