@@ -240,17 +240,13 @@ class Gloss(models.Model):
             ('search_gloss', _('Can Search/View Full Gloss Details')),
             # Translators: Gloss permissions
             ('export_csv', _('Can export sign details as CSV')),
+            ('import_csv', _('Can import glosses from a CSV file')),
             # Translators: Gloss permissions
             ('can_publish', _('Can publish signs and definitions')),
-            # Translators: Gloss permissions
-            ('can_delete_unpublished', _('Can delete unpub signs or defs')),
-            # Translators: Gloss permissions
-            ('can_delete_published', _('Can delete pub signs and defs')),
             # Translators: Gloss permissions
             ('view_advanced_properties', _('Include all properties in sign detail view')),
             # Translators: Gloss permissions
             ('lock_gloss', _('Can lock and unlock Gloss from editing')),
-            ('import_csv', _('Can import glosses from a CSV file')),
         )
 
     def __unicode__(self):

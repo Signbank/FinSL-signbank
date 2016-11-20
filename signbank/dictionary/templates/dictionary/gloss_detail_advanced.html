@@ -400,7 +400,6 @@
                     <tr>
                         <td>
                             {% if perms.dictionary.change_gloss %}
-                                {% if not def.published and perms.dictionary.can_delete_unpublished or def.published and perms.dictionary.can_delete_published %}
                                 <span class='glyphicon glyphicon-trash definition_delete' data-toggle='modal'
                                       data-target='#delete_definition_modal_{{def.id}}'></span>
 
@@ -436,7 +435,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {% endif %}
                             {% endif %}
                         </td>
                         <td {% if perms.dictionary.can_publish %}class='edit edit_check'{% endif %}
