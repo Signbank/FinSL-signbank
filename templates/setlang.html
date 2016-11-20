@@ -10,7 +10,9 @@
     <input name="next" type="hidden" value="{{ redirect_to }}" />
     <div class="btn-group" role="group" aria-label="...">
     {% for language in languages %}
-        <button type="submit" name="language" value="{{ language.code }}" class="btn btn-default{% if language.code == LANGUAGE_CODE %} active{% endif %}">{{ language.code|upper }}</button>
+        <button type="submit" name="language" value="{{ language.code }}"
+                class="btn btn-default{% if language.code == LANGUAGE_CODE %} active{% endif %}" data-toggle="tooltip"
+                data-placement="bottom" title="{{language.name_local|capfirst}}">{{ language.code|upper }}</button>
     {% endfor %}
     </div>
 </form>
