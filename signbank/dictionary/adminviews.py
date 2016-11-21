@@ -28,7 +28,6 @@ class GlossListView(ListView):
         # Add in a QuerySet
         context['searchform'] = GlossSearchForm(self.request.GET)
         context['glosscount'] = Gloss.objects.all().count()
-        context['ADMIN_RESULT_FIELDS'] = settings.ADMIN_RESULT_FIELDS
         if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
         else:

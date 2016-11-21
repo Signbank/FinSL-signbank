@@ -128,12 +128,6 @@ INSTALLED_APPS = (
     'tagging',
 )
 
-# If True, any gloss that is tagged lexis:crude will be removed from search results for users who are not logged in.
-ANON_SAFE_SEARCH = False
-
-# Set the fields to show in search results (translation equivalents are defined in the template)
-ADMIN_RESULT_FIELDS = ['dataset', 'idgloss', 'idgloss_en', 'annotation_comments']
-
 # Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
 COMMENT_VIDEO_LOCATION = "comments"
 # Location for videos associated with pages, pages videos are uploaded for a static page.
