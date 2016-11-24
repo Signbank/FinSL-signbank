@@ -1,0 +1,59 @@
+{% extends "registration/registration_base.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign in" %}{% endblock %}
+
+{% block content %}
+{# Translators: Text sign in - Log in form #}
+<h3>{% blocktrans %}Sign In{% endblocktrans %}</h3>
+<div class="well well-lg">
+    <form id="loginform" name="login" method="post" action="">
+        {% csrf_token %}
+    {% bootstrap_form form %}
+        <div class="form-group">
+            {# Translators: Sign in button in login form #}
+            <button type="submit" class="btn btn-default btn-lg">{% blocktrans %}Sign in{% endblocktrans %}</button>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+    <hr>
+    <p><strong>{% trans "Forgot your password?" %}</strong> <a href="{% url 'auth_password_reset' %}" class="btn btn-warning"
+                                               role="button">{% trans "Reset password" %}</a></p>
+    <p><strong>{% trans "Not a member?" %}</strong> <a href="{% url 'registration_register' %}" class="btn btn-info"
+                                       role="button">{% trans "Create account" %}</a></p>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% comment %}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+    A Form object representing the login form. See the forms
+    documentation for more on Form objects.
+
+``next``
+    The URL to redirect to after successful login. This may contain a
+    query string, too.
+
+``site``
+    The current Site, according to the SITE_ID setting. If you don't
+    have the site framework installed, this will be set to an instance
+    of RequestSite, which derives the site name and domain from the
+    current HttpRequest.
+
+``site_name``
+    An alias for site.name. If you don't have the site framework
+    installed, this will be set to the value of
+    request.META['SERVER_NAME']. For more on sites, see The
+    "sites" framework.
+{% endcomment %}

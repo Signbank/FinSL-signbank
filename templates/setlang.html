@@ -8,12 +8,15 @@
 {# This is a form to change the language #}
 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}" />
-    <div class="btn-group" role="group" aria-label="...">
+
+    <div class="btn-group" role="group" aria-label="{% blocktrans %}Language selection{% endblocktrans %}">
+
     {% for language in languages %}
         <button type="submit" name="language" value="{{ language.code }}"
-                class="btn btn-default{% if language.code == LANGUAGE_CODE %} active{% endif %}" data-toggle="tooltip"
+                class="btn btn-primary{% if language.code == LANGUAGE_CODE %} active{% endif %}" data-toggle="tooltip"
                 data-placement="bottom" title="{{language.name_local|capfirst}}">{{ language.code|upper }}</button>
     {% endfor %}
+
     </div>
 </form>
 

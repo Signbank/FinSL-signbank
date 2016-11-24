@@ -1,0 +1,10 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Activation Complete" %}{% endblock %}
+
+{% block content %}
+<div class="alert alert-success" role="alert">
+    <h3>{% trans "Account activation completed successfully." %}</h3>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "baselayout.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h3>{% blocktrans %}Registration closed{% endblocktrans %}</h3>
+    {# Translators: Registration closed text #}
+   <p>{% blocktrans %}Creating new user accounts is not possible at the moment, this feature is currently disabled.
+       {% endblocktrans %}</p>
+   <p>{% blocktrans %}For more information, contact the administrators of this site.{% endblocktrans %}</p>
+   
+{% endblock %}

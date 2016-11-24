@@ -91,7 +91,6 @@ TEMPLATES = [
 
 # A list of authentication backend classes (as strings) to use when attempting to authenticate a user.
 AUTHENTICATION_BACKENDS = (
-    "signbank.registration.EmailBackend",
     "django.contrib.auth.backends.ModelBackend",
 )
 
@@ -121,7 +120,6 @@ INSTALLED_APPS = (
     'django_summernote',
     'signbank.dictionary',
     'signbank.feedback',
-    'signbank.registration',
     'signbank.pages',
     'signbank.video',
     'reversion',
@@ -136,10 +134,10 @@ PAGES_VIDEO_LOCATION = "pages"
 # storage location
 VIDEO_UPLOAD_LOCATION = "upload"
 
-# Allow people to register to the site. This is related to django-registration (which is included in source atm).
-ALLOW_REGISTRATION = True
 # How many days a user has until activation time expires. Django-registration related setting.
 ACCOUNT_ACTIVATION_DAYS = 7
+# A boolean indicating whether registration of new accounts is currently permitted.
+REGISTRATION_OPEN = True
 
 # The URL where requests are redirected after login when the contrib.auth.login view gets no next parameter.
 LOGIN_REDIRECT_URL = '/'

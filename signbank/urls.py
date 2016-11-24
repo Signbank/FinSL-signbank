@@ -27,13 +27,6 @@ urlpatterns = [
     url(r'^feedback/', include('signbank.feedback.urls')),
     url(r'^video/', include('signbank.video.urls', namespace='video')),
 
-    # Login and logout pages
-    # TODO: django.contrib.auth.views.login and logout will be removed in django 1.11
-    url(r'^login/', auth_views.login),
-    url(r'^logout/', auth_views.logout,
-        {'next_page': "/"}, "logout"),
-    # TODO: implement all these urls: url('^', include('django.contrib.auth.urls')),
-
     # Hardcoding a number of special urls:
     url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view()),
         name='admin_gloss_list'),
@@ -43,8 +36,10 @@ urlpatterns = [
     url(r'^feedback/overview/$',
         feedback_views.showfeedback),
 
-    url(r'^accounts/',
-        include('signbank.registration.urls')),
+    # Registration urls for login, logout, registration, activation etc.
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
+
+    # Admin urls
     url(r'^admin/doc/',
         include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),

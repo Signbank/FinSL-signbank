@@ -42,8 +42,13 @@ html {
 }
 #login {
     float: right;
-    padding-top: 5px;
     padding-left: 10px;
+}
+.register-button {
+    margin-left: 5px;
+}
+.width-100 li, .width-100 a {
+    width: 100%;
 }
 #menu {
     padding-left: 1em;
