@@ -23,6 +23,9 @@ def addvideo(request):
             vfile = form.cleaned_data['videofile']
 
             video = GlossVideo(gloss=gloss)
+
+            if vfile: # If there is no video file, we don't want to create a glossvideo.
+                video.title = form.cleaned_data['video_title']
             # Save the GlossVideo to get a primary key
             video.save()
 

@@ -21,8 +21,9 @@ class GlossCreateForm(forms.ModelForm):
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
     idgloss_en = forms.CharField(label=_('Gloss in English'), required=False,
-                                                widget=forms.TextInput(attrs=attrs_default))
+                                 widget=forms.TextInput(attrs=attrs_default))
     videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
+    video_title = forms.CharField(label=_('Glossvideo title'), required=False)
 
     class Meta:
         model = Gloss
@@ -64,6 +65,9 @@ class GlossCreateForm(forms.ModelForm):
         if self.cleaned_data['videofile'] and not self.cleaned_data['videofile'].name.endswith('.mp4'):
             raise forms.ValidationError('File is not a mp4. Please upload only mp4 files')
         return self.cleaned_data['videofile']
+
+    def clean_video_title(self):
+        return self.cleaned_data['video_title']
 
 
 class TagUpdateForm(forms.Form):

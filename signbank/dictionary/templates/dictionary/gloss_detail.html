@@ -246,8 +246,9 @@
                                 <form action="/video/upload/" method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <input type='hidden' name='redirect' value='{{request.path}}?edit'>
+                                        {% bootstrap_field videoform.videofile %}
+                                        {% bootstrap_field videoform.video_title %}
 
-                                    {{videoform.videofile}}
 
                                     <input type='hidden' name='gloss_id' value='{{gloss.pk}}'>
                                     {# Translators: Submit button #}

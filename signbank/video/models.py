@@ -42,8 +42,6 @@ storage = GlossVideoStorage()
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
 
-
-
     title = models.CharField(blank=True, unique=False, help_text=_("Descriptive title of the contents of the video"),
                              max_length=100)
     videofile = models.FileField("video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
