@@ -138,7 +138,7 @@ function clearForm(myFormElement) {
                         <div class='col-md-6 col-sm-12 '>
                             <div class="input-group">
                             <label class='input-group-addon' for='id_signlanguage'>{{searchform.signlanguage.label}}</label>
-                            {{searchform.signlanguage}}
+                            {% bootstrap_field searchform.signlanguage set_required=False show_label=False %}
                             </div>
                         </div>
                         <div class='col-md-6 col-sm-12'>
