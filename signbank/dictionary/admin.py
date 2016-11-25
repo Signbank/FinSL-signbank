@@ -110,11 +110,6 @@ class GlossAdmin(VersionAdmin):
             formset.save()
 
 
-class RegistrationProfileAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'activation_key_expired',)
-    search_fields = ('user__username', 'user__first_name',)
-
-
 class DialectInline(admin.TabularInline):
     model = Dialect
 
