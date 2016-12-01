@@ -294,7 +294,8 @@ class Gloss(models.Model):
 
     locked = models.BooleanField(_("Locked"), default=False)
 
-    dataset = models.ForeignKey("Dataset")
+    dataset = models.ForeignKey("Dataset", verbose_name=_("Glosses dataset"),
+                                help_text=_("Dataset a gloss is part of"))
 
     # Gloss in Finnish. This is the unique identifying name of a Gloss.
     # Translators: Gloss field: idgloss, verbose name

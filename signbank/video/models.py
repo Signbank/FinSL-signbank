@@ -48,7 +48,8 @@ class GlossVideo(models.Model):
     posterfile = models.FileField("Poster file", upload_to=os.path.join(settings.GLOSS_VIDEO_DIRECTORY, "posters"),
                                   storage=storage, null=True)
     gloss = models.ForeignKey('dictionary.Gloss', null=True)
-    dataset = models.ForeignKey('dictionary.Dataset', null=True)
+    dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"),
+                                help_text=_("Dataset for a glossvideo"), null=True)
 
     # video version, version = 0 is always the one that will be displayed
     # we will increment the version (via reversion) if a new video is added
