@@ -2,12 +2,11 @@ from django.conf.urls import url, include
 from django.contrib.auth.decorators import permission_required
 from django.contrib import admin
 # Views
-#from .pages import views as pages_views
 from .dictionary import views as dictionary_views
 from .dictionary.adminviews import GlossListView
 from .feedback import views as feedback_views
 from .tools import reload_signbank, infopage, refresh_videofilenames
-from django.contrib.flatpages import views
+from django.contrib.flatpages import views as flatpages_views
 
 
 admin.autodiscover()
@@ -15,7 +14,7 @@ from adminsite import publisher_admin
 
 urlpatterns = [
     # Root page
-    url(r'^$', views.flatpage, {'url': '/'},
+    url(r'^$', flatpages_views.flatpage, {'url': '/'},
         name='root_page'),
 
     # This allows to change the translations site language
@@ -56,11 +55,10 @@ urlpatterns = [
     #url(r'reload_signbank/$',
     #    reload_signbank),
 
-
     # Incase you need to run this command from web (if for example only webserver has user rights to the folder)
     # uncomment the following line. It updates videofilenames to match the current filenaming policy.
     # url(r'refresh_videofilenames/$', refresh_videofilenames),
 
     # This is a catchall pattern, will try to match the rest of the urls with flatpages.
-    url(r'^(?P<url>.*/)$', views.flatpage),  # Keep this as the last URL in the file!
+    url(r'^(?P<url>.*/)$', flatpages_views.flatpage),  # Keep this as the last URL in the file!
 ]
