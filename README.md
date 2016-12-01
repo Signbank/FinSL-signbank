@@ -23,7 +23,7 @@ Main features:
 # Requirements
 
 * Python (2.7)
-* Django (1.8)
+* Django (1.10)
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
 
