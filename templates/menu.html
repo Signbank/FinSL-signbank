@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load flatpages %}
+{% get_flatpages as flatpages %}
 
 <nav id='navbar' class="navbar navbar-default" role="navigation">
 
@@ -17,26 +19,29 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav">
-            {# add in the top level menu items from pages #}
-            {% for item in menu %}
-            {# Do nothing if item.url is admin and user not is_staff #}
-            {% if item.url == "/admin/" and not request.user.is_staff %}
-            {% else %}
-            {% if item.children %}
+        {% for page in flatpages %}
+            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        {% if perms.gloss.search_gloss %}
+            <li><a href="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">
+                {% blocktrans %}Wiki{% endblocktrans %}</a></li>
+            <li><a href="{% url "admin_gloss_list" %}">{% blocktrans %}Search{% endblocktrans %}</a></li>
+        {% endif %}
+        {% if perms.gloss.add_gloss and perms.gloss.change_gloss %}
             <li class='dropdown'>
-                <a href="{{item.url}}" class="dropdown-toggle" data-toggle="dropdown">{{item.title}} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {% blocktrans %}Manage{% endblocktrans %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    {% for subitem in item.children %}
-                    <li {% if subitem.current %}class='active' {% endif %}><a
-                            href="{{subitem.url}}">{{subitem.title}}</a></li>
-                    {% endfor %}
+                    <li><a href="{% url "create_gloss" %}">{% blocktrans %}Create gloss{% endblocktrans %}</a></li>
+                    <li><a href="{% url "video:upload_videos" %}">{% blocktrans %}Upload videos{% endblocktrans %}</a></li>
+                    <li><a href="{% url "video:manage_videos" %}">{% blocktrans %}Manage videos{% endblocktrans %}</a></li>
+                    {% if perms.gloss.import_csv %}
+                    <li><a href="{% url "import_csv" %}">{% blocktrans %}CSV import{% endblocktrans %}</a></li>
+                    {% endif %}
+                    <li><a href="{% url "infopage" %}">{% blocktrans %}Info{% endblocktrans %}</a></li>
                 </ul>
             </li>
-            {% else %}
-            <li><a href="{{item.url}}">{{item.title}}</a></li>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+        {% endif %}
         </ul>
 
         <form class="navbar-form navbar-right" role="search" id="menusearch" name="menusearch" method="get"

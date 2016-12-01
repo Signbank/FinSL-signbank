@@ -11,6 +11,10 @@
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ user }} <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right width-100">
+            {% if request.user.is_staff %}
+            <li><a href="/admin/">{% blocktrans %}Django admin{% endblocktrans %}</a></li>
+            <li role="separator" class="divider"></li>
+            {% endif %}
             <li><a href="/accounts/password/change/">{% blocktrans %}Change password{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% blocktrans %}Sign out{% endblocktrans %}</a></li>

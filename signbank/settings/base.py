@@ -58,7 +58,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'signbank.pages.middleware.PageFallbackMiddleware',
     #    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'reversion.middleware.RevisionMiddleware',
 )
@@ -83,7 +82,6 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.template.context_processors.csrf',
-                'signbank.pages.context_processors.menu',
             ],
         },
     },
@@ -120,6 +118,7 @@ INSTALLED_APPS = (
     'django_summernote',
     'signbank.dictionary',
     'signbank.feedback',
+    'django.contrib.flatpages',
     'signbank.pages',
     'signbank.video',
     'reversion',
@@ -128,8 +127,6 @@ INSTALLED_APPS = (
 
 # Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
 COMMENT_VIDEO_LOCATION = "comments"
-# Location for videos associated with pages, pages videos are uploaded for a static page.
-PAGES_VIDEO_LOCATION = "pages"
 # Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main
 # storage location
 VIDEO_UPLOAD_LOCATION = "upload"

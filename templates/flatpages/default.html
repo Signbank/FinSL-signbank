@@ -1,0 +1,25 @@
+{% extends "baselayout.html" %}
+{% load i18n %}
+
+{% block content %}
+{% block pagecontent %}
+<div class='row'>
+    <div class="col-md-10 col-md-offset-1">
+    {{ flatpage.content }}
+    </div>
+</div>
+
+
+{% endblock %}
+{% block bottomcontent %}
+{# show the edit button if the user has permission to change pages #}
+{% if perms.flatpages.change_page %}
+<div id="editbutton">
+    {# Translators: Edit page button in baselayout #}
+    <a class='btn btn-default btn-lg' href="/publisher/flatpages/flatpage/{{flatpage.id}}/" style="width:100%;">{% blocktrans %}Edit Page{% endblocktrans %}</a>
+</div>
+{% endif %}
+
+{% endblock %}
+{% endblock %}
+

@@ -1,12 +1,12 @@
 from modeltranslation.translator import translator, TranslationOptions
-from signbank.pages.models import Page
+from django.contrib.flatpages.models import FlatPage
 
 
 # This file lists settings for django-modeltranslation.
 # Define here which fields from which models you want to add to translation.
 
-class PageTranslationOptions(TranslationOptions):
+class FlatPageTranslationOptions(TranslationOptions):
     fields = ('title', 'content',)
 
 
-translator.register(Page, PageTranslationOptions)
+translator.register(FlatPage, FlatPageTranslationOptions)

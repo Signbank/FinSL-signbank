@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-01 08:26+0200\n"
+"POT-Creation-Date: 2016-12-01 17:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -327,8 +327,8 @@ msgstr "Kommentit"
 #. Translators: Gloss models field: url
 #. Translators: Label for PageForm
 #. Translators: verbose name for url
-#: signbank/dictionary/models.py:316 signbank/pages/admin.py:17
-#: signbank/pages/models.py:11
+#: signbank/dictionary/models.py:316 signbank/pages2/admin.py:17
+#: signbank/pages2/models.py:11
 msgid "URL"
 msgstr "Internetosoite"
 
@@ -554,7 +554,7 @@ msgstr "Signbank: Etsi viittomia"
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:78
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:157
-#: templates/menu.html:57
+#: templates/menu.html:28 templates/menu.html:62
 msgid "Search"
 msgstr "Haku"
 
@@ -2156,7 +2156,7 @@ msgid "Thank you. Your feedback has been saved."
 msgstr "Kiitos palautteestasi."
 
 #. Translators: Help_text for PageForm
-#: signbank/pages/admin.py:19
+#: signbank/pages2/admin.py:19
 msgid ""
 "Example: '/about/contact/'. Make sure to have leading and trailing slashes."
 msgstr ""
@@ -2164,7 +2164,7 @@ msgstr ""
 "ja lopusta."
 
 #. Translators: error_message for PageForm
-#: signbank/pages/admin.py:22
+#: signbank/pages2/admin.py:22
 msgid ""
 "This value must contain only letters, numbers, underscores, dashes or "
 "slashes."
@@ -2172,27 +2172,27 @@ msgstr ""
 "Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, viivoja "
 "tai kauttaviivoja."
 
-#: signbank/pages/admin.py:59
+#: signbank/pages2/admin.py:59
 msgid "Advanced options"
 msgstr "Lisävaihtoehdot"
 
 #. Translators: verbose name for title
 #. Translators: verbose name for PageVideo title
-#: signbank/pages/models.py:13 signbank/pages/models.py:57
+#: signbank/pages2/models.py:13 signbank/pages2/models.py:57
 msgid "title"
 msgstr "otsikko"
 
 #. Translators: verbose name for content
-#: signbank/pages/models.py:15
+#: signbank/pages2/models.py:15
 msgid "content"
 msgstr "sisältö"
 
 #. Translators: verbose name for template_name
-#: signbank/pages/models.py:17
+#: signbank/pages2/models.py:17
 msgid "template name"
 msgstr "pohjan nimi"
 
-#: signbank/pages/models.py:20
+#: signbank/pages2/models.py:20
 msgid ""
 "Example: 'pages/contact_page.html'. If this isn't provided, the system will "
 "use 'pages/default.html'."
@@ -2201,15 +2201,15 @@ msgstr ""
 "default.html'."
 
 #. Translators: verbose name for publish
-#: signbank/pages/models.py:22
+#: signbank/pages2/models.py:22
 msgid "publish"
 msgstr "julkaise"
 
-#: signbank/pages/models.py:24
+#: signbank/pages2/models.py:24
 msgid "If this is checked, the page will be included in the site menus."
 msgstr "Jos tämä on valittuna, näytetään sivu sivuston valikossa."
 
-#: signbank/pages/models.py:28
+#: signbank/pages2/models.py:28
 msgid ""
 "Leave blank for a top level menu entry.  Top level entries that have sub-"
 "pages should be empty as they will not be linked in the menu."
@@ -2218,16 +2218,16 @@ msgstr ""
 "alasivuja, tulisi olla tyhjiä tai niitä ei linkitetä valikkoon."
 
 #. Translators: verbose name for index
-#: signbank/pages/models.py:31
+#: signbank/pages2/models.py:31
 msgid "ordering index"
 msgstr "järjestysindeksi"
 
 #. Translators: help_text for index
-#: signbank/pages/models.py:33
+#: signbank/pages2/models.py:33
 msgid "Used to order pages in the menu"
 msgstr "Käytetään sivujen järjestyksen määrittämiseen valikossa"
 
-#: signbank/pages/models.py:38
+#: signbank/pages2/models.py:38
 msgid ""
 "This page will only be visible to members of these groups, leave blank to "
 "allow anyone to access."
@@ -2236,37 +2236,37 @@ msgstr ""
 "oikeudet, jätä tämä kohta tyhjäksi."
 
 #. Translators: verbose name for Page
-#: signbank/pages/models.py:42
+#: signbank/pages2/models.py:42
 msgid "page"
 msgstr "sivu"
 
 #. Translators: verbose_name_plural for pages
-#: signbank/pages/models.py:44
+#: signbank/pages2/models.py:44
 msgid "pages"
 msgstr "sivut"
 
 #. Translators: verbose name for PageVideo number
-#: signbank/pages/models.py:59
+#: signbank/pages2/models.py:59
 msgid "number"
 msgstr "numero"
 
 #. Translators: __unicode__ return of self (PageVideo)
-#: signbank/pages/models.py:65
+#: signbank/pages2/models.py:65
 msgid "Page Video"
 msgstr "Sivun video"
 
 #. Translators: Edit button
-#: signbank/pages/templates/pages/default.html:23
+#: signbank/pages2/templates/pages/default.html:23
 msgid "[Edit]"
 msgstr "[Editoi]"
 
 #. Translators: exception with page request
-#: signbank/pages/views.py:40
+#: signbank/pages2/views.py:40
 msgid "No Pages"
 msgstr "Ei sivuja"
 
 #. Translators: exception with page request
-#: signbank/pages/views.py:42
+#: signbank/pages2/views.py:42
 msgid "No pages defined. Login to <a href=\"/admin\"> to create some."
 msgstr ""
 "Sivuja ei ole määritelty. Kirjaudu admin-sivulle <a href=\"/admin\"> "
@@ -2337,7 +2337,7 @@ msgstr "Tiedosto:"
 msgid "Error:"
 msgstr "Virhe:"
 
-#: signbank/video/templates/addvideos.html:26
+#: signbank/video/templates/addvideos.html:26 templates/menu.html:36
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
@@ -2433,6 +2433,11 @@ msgstr "Jyväskylän yliopisto"
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
+#. Translators: Edit page button in baselayout
+#: templates/flatpages/default.html:19 templates/pages/default.html:10
+msgid "Edit Page"
+msgstr "Muokkaa sivua"
+
 #: templates/infopage.html:12
 msgid "Information page"
 msgstr "Infosivu"
@@ -2473,22 +2478,26 @@ msgstr "ELAN externally controlled vocalubary linkit"
 msgid "Signbank Wiki"
 msgstr "Signbankin Wikisivut"
 
-#: templates/langbar.html:6 templates/langbar.html:16
+#: templates/langbar.html:6 templates/langbar.html:20
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: templates/langbar.html:14
+#: templates/langbar.html:15
+msgid "Django admin"
+msgstr "Djangon ylläpito"
+
+#: templates/langbar.html:18
 msgid "Change password"
 msgstr "Muuta salasana"
 
 #. Translators: Sign in button in login form
-#: templates/langbar.html:22 templates/loginform.html:34
+#: templates/langbar.html:26 templates/loginform.html:34
 #: templates/registration/login.html:5 templates/registration/login.html:16
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
 #. Translators: Title for create account
-#: templates/langbar.html:24 templates/registration/login.html:24
+#: templates/langbar.html:28 templates/registration/login.html:24
 #: templates/registration/registration_form.html:10
 #: templates/registration/registration_form.html:15
 msgid "Create account"
@@ -2544,24 +2553,43 @@ msgid "Request Password"
 msgstr "Palauta salasana"
 
 #. Translators: Button to toggle navigation
-#: templates/menu.html:9
+#: templates/menu.html:11
 msgid "Toggle navigation"
 msgstr "Navigointi"
 
+#: templates/menu.html:27
+msgid "Wiki"
+msgstr "Wiki"
+
+#: templates/menu.html:33
+msgid "Manage"
+msgstr "Hallinta"
+
+#: templates/menu.html:35
+msgid "Create gloss"
+msgstr "Luo glossi"
+
+#: templates/menu.html:37
+msgid "Manage videos"
+msgstr "Videoiden hallinta"
+
+#: templates/menu.html:39
+msgid "CSV import"
+msgstr "Tuo CSV"
+
+#: templates/menu.html:41
+msgid "Info"
+msgstr "Info"
+
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:48
+#: templates/menu.html:53
 msgid "Search gloss"
 msgstr "Etsi glossia"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:53
+#: templates/menu.html:58
 msgid "Search translation"
 msgstr "Etsi käännösvastinetta"
-
-#. Translators: Edit page button in baselayout
-#: templates/pages/default.html:10
-msgid "Edit Page"
-msgstr "Muokkaa"
 
 #: templates/registration/activate.html:4
 msgid "Activation Failure"
