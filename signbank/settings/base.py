@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'signbank.dictionary',
     'signbank.feedback',
     'django.contrib.flatpages',
-    'signbank.pages',
+    'signbank.contentpages',
     'signbank.video',
     'reversion',
     'tagging',
