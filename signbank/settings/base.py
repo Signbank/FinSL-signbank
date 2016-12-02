@@ -142,14 +142,6 @@ REGISTRATION_OPEN = True
 # The URL where requests are redirected after login when the contrib.auth.login view gets no next parameter.
 LOGIN_REDIRECT_URL = '/'
 
-# location of ffmpeg, used to convert uploaded videos
-FFMPEG_PROGRAM = "../ffmpeg"
-FFMPEG_TIMEOUT = 60
-FFMPEG_OPTIONS = ["-vcodec", "h264", "-an"]
-
-# Defines the aspect ratio for videos
-VIDEO_ASPECT_RATIO = 3.0 / 4.0
-
 # For django-tagging: force tags to be lowercase.
 FORCE_LOWERCASE_TAGS = True
 
