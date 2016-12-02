@@ -1,5 +1,7 @@
 # FinSL-signbank
 
+[![Dependency Status](https://www.versioneye.com/user/projects/583fd43dc68b120012d0f5e1/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/583fd43dc68b120012d0f5e1)
+
 **Store *Sign language* Gloss data with videos.**
 
 FinSL-signbank is a web application that aims to make the *sign language* annotation process more efficient.
@@ -21,7 +23,7 @@ Main features:
 # Requirements
 
 * Python (2.7)
-* Django (1.8)
+* Django (1.10)
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
 
