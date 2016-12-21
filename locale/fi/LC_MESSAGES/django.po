@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-21 13:20+0200\n"
+"POT-Creation-Date: 2016-12-21 16:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Suhde toisiin Glosseihin"
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:190
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:100
 #: signbank/video/templates/addvideos.html:31
-#: signbank/video/templates/videos_with_no_gloss.html:11
+#: signbank/video/templates/uploaded_glossvideos.html:11
 msgid "Dataset"
 msgstr "Aineisto"
 
@@ -38,7 +38,7 @@ msgstr "Aineisto"
 #: signbank/dictionary/models.py:302
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:191
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
-#: signbank/video/templates/videos_with_no_gloss.html:35
+#: signbank/video/templates/uploaded_glossvideos.html:51
 msgid "Gloss"
 msgstr "Glossi"
 
@@ -600,7 +600,7 @@ msgid "Disable Edit"
 msgstr "Muokkaus pois"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:21
-#: signbank/video/templates/videos_with_no_gloss.html:37
+#: signbank/video/templates/uploaded_glossvideos.html:53
 msgid "Save"
 msgstr "Tallenna"
 
@@ -652,7 +652,7 @@ msgstr "Hyväksy poistaminen"
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:165
 #: signbank/feedback/templates/feedback/show.html:68
 #: signbank/feedback/templates/feedback/show.html:154
-#: signbank/video/templates/videos_with_no_gloss.html:30
+#: signbank/video/templates/uploaded_glossvideos.html:46
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
@@ -2241,27 +2241,35 @@ msgstr "koko yhteensä"
 msgid "Send file(s)"
 msgstr "Lähetä tiedostot"
 
-#: signbank/video/templates/videos_with_no_gloss.html:5
-msgid "Videos with no gloss"
-msgstr "Videot joilla ei ole glossia"
+#: signbank/video/templates/uploaded_glossvideos.html:5
+msgid "Uploaded Glossvideos"
+msgstr "Lähetetyt Glossivideot"
 
-#: signbank/video/templates/videos_with_no_gloss.html:5
-msgid "You can add a gloss for each video"
-msgstr "Voit lisätä jokaiselle videolle glossin"
+#: signbank/video/templates/uploaded_glossvideos.html:5
+msgid "Connect Glossvideos to Glosses"
+msgstr "Yhdistä Glossivideot Glosseihin"
 
-#: signbank/video/templates/videos_with_no_gloss.html:10
+#: signbank/video/templates/uploaded_glossvideos.html:10
 msgid "Select the dataset you want to work with!"
 msgstr "Valitse aineisto jonka parissa haluat työskennellä!"
 
-#: signbank/video/templates/videos_with_no_gloss.html:13
+#: signbank/video/templates/uploaded_glossvideos.html:13
 msgid "Ok"
 msgstr ""
 
-#: signbank/video/templates/videos_with_no_gloss.html:49
+#: signbank/video/templates/uploaded_glossvideos.html:17
+msgid "Total of"
+msgstr "Yhteensä"
+
+#: signbank/video/templates/uploaded_glossvideos.html:17
+msgid "videos"
+msgstr "videoa"
+
+#: signbank/video/templates/uploaded_glossvideos.html:22
 msgid "previous"
 msgstr "edellinen"
 
-#: signbank/video/templates/videos_with_no_gloss.html:53
+#: signbank/video/templates/uploaded_glossvideos.html:28
 msgid "next"
 msgstr "seuraava"
 
@@ -2620,6 +2628,20 @@ msgstr ""
 #: templates/setlang.html:12
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#, fuzzy
+#~| msgid "Glossvideo title"
+#~ msgid "Glossvideos uploaded"
+#~ msgstr "Glossivideon otsikko"
+
+#~ msgid "Total of %(page_obj.paginator.count)s Glossvideos uploaded"
+#~ msgstr "Yhteensä %(page_obj.paginator.count)s Glossivideota"
+
+#~ msgid "Videos with no gloss"
+#~ msgstr "Videot joilla ei ole glossia"
+
+#~ msgid "You can add a gloss for each video"
+#~ msgstr "Voit lisätä jokaiselle videolle glossin"
 
 #~ msgid ""
 #~ "Example: '/about/contact/'. Make sure to have leading and trailing "

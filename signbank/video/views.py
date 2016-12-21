@@ -111,15 +111,15 @@ class AddVideosView(FormView):
 addvideos_formview = permission_required(['video.add_glossvideo', 'video.change_glossvideo'])(AddVideosView.as_view())
 
 
-class GlossVideosNoGlossListView(ListView):
+class UploadedGlossvideosListView(ListView):
     model = GlossVideo
-    template_name = 'videos_with_no_gloss.html'
+    template_name = 'uploaded_glossvideos.html'
     paginate_by = 10
     context_object_name = 'videos'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
-        context = super(GlossVideosNoGlossListView, self).get_context_data(**kwargs)
+        context = super(UploadedGlossvideosListView, self).get_context_data(**kwargs)
         page = self.request.GET.get('page')
         context['page'] = page
         # Set get params in form
@@ -146,10 +146,10 @@ class GlossVideosNoGlossListView(ListView):
         return qs
 
     def render_to_response(self, context, **response_kwargs):
-        return super(GlossVideosNoGlossListView, self).render_to_response(context)
+        return super(UploadedGlossvideosListView, self).render_to_response(context)
 
 
-glossvideos_nogloss_listview = permission_required('video.change_glossvideo')(GlossVideosNoGlossListView.as_view())
+uploaded_glossvideos_listview = permission_required('video.change_glossvideo')(UploadedGlossvideosListView.as_view())
 
 
 def update_glossvideo(request):

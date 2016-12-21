@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 <div class="page-header">
-  <h2>{% blocktrans %}Videos with no gloss{% endblocktrans %} <small>{% blocktrans %}You can add a gloss for each video{% endblocktrans %}</small></h2>
+  <h2>{% blocktrans %}Uploaded Glossvideos{% endblocktrans %} <small>{% blocktrans %}Connect Glossvideos to Glosses{% endblocktrans %}</small></h2>
 </div>
 <div id="dataset" class="panel panel-default">
     <div class="panel-body">
@@ -13,6 +13,22 @@
             <input class='btn btn-primary' type='submit' value='{% blocktrans %}Ok{% endblocktrans %}'>
         </form>
     </div>
+</div>
+<div class="pagination" style="margin:0px 0px 0px 0px;">
+    <span class="step-links">
+        <ul class="pagination pagination-sm"  style="margin:0px 0px 10px 0px;">
+        {% if page_obj.has_previous %}{# Insert dataset from request #}
+            <li><a href="?page={{ page_obj.previous_page_number }}&dataset={{request.GET.dataset}}">&laquo; {% blocktrans %}previous{% endblocktrans %}</a>
+        {% endif %}
+        {% for curpage in page_obj.paginator.page_range %}
+            <li{% if curpage == page_obj.number %} class="active"{% endif %}><a href="?page={{ curpage }}&dataset={{request.GET.dataset}}">{{ curpage }}</a>
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}&dataset={{request.GET.dataset}}">{% blocktrans %}next{% endblocktrans %} &raquo;</a>
+        {% endif %}
+        </ul>
+        <p>{% blocktrans %}Total of{% endblocktrans %} {{ page_obj.paginator.count }} {% blocktrans %}videos{% endblocktrans %}.</p>
+    </span>
 </div>
 <div id="glossvideos" class="row">
 {% for video in videos %}
@@ -42,17 +58,5 @@
     </div>
     {% endfor %}
 </div>
-<div class="pagination">
-    <span class="step-links">
-        <ul class='pagination pagination-sm'>
-        {% if page_obj.has_previous %}{# Insert dataset from request #}
-            <li><a href="?page={{ page_obj.previous_page_number }}&dataset={{request.GET.dataset}}">&laquo; {% blocktrans %}previous{% endblocktrans %}</a>
-        {% endif %}
-            <li><span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
-        {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}&dataset={{request.GET.dataset}}">{% blocktrans %}next{% endblocktrans %} &raquo;</a>
-        {% endif %}
-        </ul>
-    </span>
-</div>
+
 {% endblock %}
