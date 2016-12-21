@@ -126,6 +126,9 @@ body {
 #adminsearch #searchpanels select {
     width: 100%;
 }
+.pagination {
+   margin: 0 0 5px 0;
+}
 #paginate_by select {
     width: 100px;
 }

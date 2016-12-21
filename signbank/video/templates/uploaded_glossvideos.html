@@ -14,9 +14,9 @@
         </form>
     </div>
 </div>
-<div class="pagination" style="margin:0px 0px 0px 0px;">
+<div class="pagination">
     <span class="step-links">
-        <ul class="pagination pagination-sm"  style="margin:0px 0px 10px 0px;">
+        <ul class="pagination pagination-sm">
         {% if page_obj.has_previous %}{# Insert dataset from request #}
             <li><a href="?page={{ page_obj.previous_page_number }}&dataset={{request.GET.dataset}}">&laquo; {% blocktrans %}previous{% endblocktrans %}</a>
         {% endif %}
