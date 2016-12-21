@@ -34,7 +34,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="{% url "create_gloss" %}">{% blocktrans %}Create gloss{% endblocktrans %}</a></li>
                     <li><a href="{% url "video:upload_videos" %}">{% blocktrans %}Upload videos{% endblocktrans %}</a></li>
-                    <li><a href="{% url "video:manage_videos" %}">{% blocktrans %}Manage videos{% endblocktrans %}</a></li>
+                    <li><a href="{% url "video:manage_videos" %}">{% blocktrans %}Manage uploaded videos{% endblocktrans %}</a></li>
                     {% if perms.gloss.import_csv %}
                     <li><a href="{% url "import_csv" %}">{% blocktrans %}CSV import{% endblocktrans %}</a></li>
                     {% endif %}
