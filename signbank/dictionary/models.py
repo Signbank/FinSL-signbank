@@ -248,48 +248,6 @@ class Gloss(models.Model):
             # Translators: Gloss permissions
             ('lock_gloss', _('Can lock and unlock Gloss from editing')),
         )
-
-    def __unicode__(self):
-        return "%s" % (unicode(self.idgloss))
-
-    def field_labels(self):
-        """Return the dictionary of field labels for use in a template"""
-
-        d = dict()
-        for f in self._meta.fields:
-            try:
-                d[f.name] = self._meta.get_field(f.name).verbose_name
-            except FieldDoesNotExist:
-                pass
-
-        return d
-
-    def get_translations(self):
-        """Returns translations for the gloss based on the users currently selected language."""
-        from django.utils.translation import get_language
-        try:
-            language = Language.objects.get(language_code_2char__iexact=get_language())
-        except Language.DoesNotExist:
-            # If users currently selected language does not exist as a Language, try to filter for English Translations.
-            return Translation.objects.filter(gloss=self, language__language_code_2char__iexact='en')
-        except Language.MultipleObjectsReturned:
-            language = Language.objects.filter(language_code_2char__iexact=get_language())[0]
-
-        return Translation.objects.filter(gloss=self, language=language)
-
-    def get_translation_languages(self):
-        """Returns translation languages that are set for the Dataset of the Gloss."""
-        return Language.objects.filter(dataset=self.dataset)
-
-    def get_translations_for_translation_languages(self):
-        """Returns a zipped list of translation languages and translations."""
-        translation_list = []
-        translation_languages = self.get_translation_languages()
-        for language in translation_languages:
-            translation_list.append(Translation.objects.filter(gloss=self, language=language))
-        return zip(translation_languages, translation_list)
-
-
     # *** Fields begin ***
 
     locked = models.BooleanField(_("Locked"), default=False)
@@ -496,6 +454,47 @@ class Gloss(models.Model):
     # Translators: Gloss models field: is_proposed_new_sign, verbose name
     is_proposed_new_sign = models.NullBooleanField(
         _("Is this a proposed new sign?"), null=True, default=False)
+
+    def __unicode__(self):
+        return "%s" % (unicode(self.idgloss))
+
+    def field_labels(self):
+        """Return the dictionary of field labels for use in a template"""
+
+        d = dict()
+        for f in self._meta.fields:
+            try:
+                d[f.name] = self._meta.get_field(f.name).verbose_name
+            except FieldDoesNotExist:
+                pass
+
+        return d
+
+    def get_translations(self):
+        """Returns translations for the gloss based on the users currently selected language."""
+        from django.utils.translation import get_language
+        try:
+            language = Language.objects.get(language_code_2char__iexact=get_language())
+        except Language.DoesNotExist:
+            # If users currently selected language does not exist as a Language, try to filter for English Translations.
+            return Translation.objects.filter(gloss=self, language__language_code_2char__iexact='en')
+        except Language.MultipleObjectsReturned:
+            language = Language.objects.filter(language_code_2char__iexact=get_language())[0]
+
+        return Translation.objects.filter(gloss=self, language=language)
+
+    def get_translation_languages(self):
+        """Returns translation languages that are set for the Dataset of the Gloss."""
+        return Language.objects.filter(dataset=self.dataset)
+
+    def get_translations_for_translation_languages(self):
+        """Returns a zipped list of translation languages and translations."""
+        translation_list = []
+        translation_languages = self.get_translation_languages()
+        for language in translation_languages:
+            translation_list.append(Translation.objects.filter(gloss=self, language=language))
+        return zip(translation_languages, translation_list)
+
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
