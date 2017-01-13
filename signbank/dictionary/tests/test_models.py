@@ -15,6 +15,10 @@ class GlossTestCase(TestCase):
         self.dataset = Dataset.objects.create(name="testdataset", signlanguage=self.signlanguage)
         Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
 
+    def test_string_representation(self):
+        g = Gloss.objects.get(idgloss="testgloss")
+        self.assertEqual(unicode(g), g.idgloss)
+
     def test_locked(self):
         """Test that locking Gloss works."""
         gloss = Gloss.objects.get(idgloss="testgloss")
@@ -73,6 +77,28 @@ class GlossTestCase(TestCase):
         with self.assertRaises(DataError):
             gloss.idgloss = "afasdkfjsdalkfjdsaljfl^¨'*´`} sajfljadsklfjasdklfjsadkjflÄÖÅlöjsadkfjasdkljflaksdjfkljdsfljasdlkfjakdslkafjsdlkafjölasdjfkldsajlaköfjsdakljfklasdjfkldsjaflkajdsflökjdsalkfjadslköfjdsalökjfklsdajflkdsjlkfajöldskjflkadsjflkdsajfladslkfjdlksa"
             gloss.save()
+
+    def test_idgloss_dataset(self):
+        """Test that a Gloss cannot be created without a relation to Dataset."""
+        with self.assertRaises(IntegrityError):
+            Gloss.objects.create(idgloss="testgloss7", created_by=self.user, updated_by=self.user)
+
+    def test_idgloss_en(self):
+        """Tests the field idgloss_en."""
+        # Check that the max_length can't be exceeded.
+        with self.assertRaises(DataError):
+            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_en="äöå1@r"*10+"1", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+
+    def test_created_by(self):
+        """Tests that the created_by field functions when a gloss is created."""
+        gl = Gloss.objects.create(idgloss="testgloss_createdby", dataset=self.dataset,
+                             created_by=self.user, updated_by=self.user)
+        self.assertEquals(gl.created_by, self.user)
+
+
+
+
+
 
 
 
