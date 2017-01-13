@@ -86,7 +86,7 @@ function clearForm(myFormElement) {
                             {% bootstrap_label searchform.dataset.label %}
                         </div>
                         <div class="panel-body">
-                            {% bootstrap_field searchform.dataset set_required=False show_label=False bound_css_class="not-bound" %}
+                            {% bootstrap_field searchform.dataset show_label=False bound_css_class="not-bound" %}
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ function clearForm(myFormElement) {
                  <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
-                        {% bootstrap_field searchform.trans_lang set_required=False show_label=False bound_css_class="not-bound" %}
+                        {% bootstrap_field searchform.trans_lang show_label=False bound_css_class="not-bound" %}
                         <input id="id_keyword" name='keyword' class='form-control' {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}>
                     </div>
                 </div>
@@ -117,9 +117,9 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-6 col-sm-12 searchcolor">
                         <ul class="list-group list-inline">
-                          <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.islocked show_label=False set_required=False bound_css_class="not-bound" %}</li>
-                          <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.hasvideo show_label=False set_required=False bound_css_class="not-bound" %}</li>
-                          <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.hasnovideo show_label=False set_required=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.islocked show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.hasvideo show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.hasnovideo show_label=False bound_css_class="not-bound" %}</li>
                         </ul>
                 </div>
             </div>
@@ -138,7 +138,7 @@ function clearForm(myFormElement) {
                         <div class='col-md-6 col-sm-12 '>
                             <div class="input-group">
                             <label class='input-group-addon' for='id_signlanguage'>{{searchform.signlanguage.label}}</label>
-                            {% bootstrap_field searchform.signlanguage set_required=False show_label=False %}
+                            {% bootstrap_field searchform.signlanguage show_label=False %}
                             </div>
                         </div>
                         <div class='col-md-6 col-sm-12'>

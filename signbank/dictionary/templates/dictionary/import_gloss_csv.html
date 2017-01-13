@@ -21,8 +21,8 @@
         <form enctype="multipart/form-data" action='{% url "dictionary:import_gloss_csv" %}' method='post'>
             {% csrf_token %}
 
-            {% bootstrap_field import_csv_form.dataset set_required=True %}
-            {% bootstrap_field import_csv_form.file set_required=True %}
+            {% bootstrap_field import_csv_form.dataset %}
+            {% bootstrap_field import_csv_form.file %}
             <h4><span class="label label-danger">{% blocktrans %}Make sure that you selected the correct
                 Dataset before submitting!{% endblocktrans %}</span></h4>
             <br>
