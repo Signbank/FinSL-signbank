@@ -495,7 +495,6 @@ class Gloss(models.Model):
             translation_list.append(Translation.objects.filter(gloss=self, language=language))
         return zip(translation_languages, translation_list)
 
-
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
 
@@ -506,7 +505,6 @@ class Gloss(models.Model):
     def get_gloss_videos(self):
         """Return a list of videos for a Gloss"""
         return GlossVideo.get_glosses_videos(self)
-
 
     def options_to_json(self, options):
         """Convert an options list to a json dict"""

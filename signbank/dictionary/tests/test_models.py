@@ -93,7 +93,7 @@ class GlossTestCase(TestCase):
         """Tests that the created_by field functions when a gloss is created."""
         gl = Gloss.objects.create(idgloss="testgloss_createdby", dataset=self.dataset,
                              created_by=self.user, updated_by=self.user)
-        self.assertEquals(gl.created_by, self.user)
+        self.assertEqual(gl.created_by, self.user)
 
 
 

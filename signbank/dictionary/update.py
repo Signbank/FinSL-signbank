@@ -80,6 +80,9 @@ def update_gloss(request, glossid):
 
         # If field is 'deletegloss', delete the gloss and things related to it
         if field == 'deletegloss':
+            if not request.user.has_perm('dictionary.delete_gloss'):
+                # Translators: HttpResponseForbidden for deleting gloss without permission.
+                return HttpResponseForbidden(_("You don't have permission to delete glosses."))
             if value == 'confirmed':
                 # delete the gloss and redirect back to gloss list
                 glosses_videos = GlossVideo.objects.filter(gloss=gloss)
