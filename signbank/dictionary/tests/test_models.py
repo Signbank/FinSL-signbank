@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-from signbank.dictionary.models import Gloss, Dataset, SignLanguage
+from signbank.dictionary.models import (Gloss, Dataset, SignLanguage, Language, Keyword, Translation, Definition,
+                                        Dialect, RelationToForeignSign, FieldChoice, MorphologyDefinition)
+
 from django.contrib.auth.models import User
 
 from django.db import IntegrityError, DataError
@@ -13,11 +15,10 @@ class GlossTestCase(TestCase):
         # Migrations have id=1 already
         self.signlanguage = SignLanguage.objects.create(pk=2, name="testsignlanguage", language_code_3char="tst")
         self.dataset = Dataset.objects.create(name="testdataset", signlanguage=self.signlanguage)
-        Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.gloss = Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
 
-    def test_string_representation(self):
-        g = Gloss.objects.get(idgloss="testgloss")
-        self.assertEqual(unicode(g), g.idgloss)
+    def test_str(self):
+        self.assertEqual(unicode(self.gloss), self.gloss.idgloss)
 
     def test_locked(self):
         """Test that locking Gloss works."""
@@ -94,6 +95,116 @@ class GlossTestCase(TestCase):
         gl = Gloss.objects.create(idgloss="testgloss_createdby", dataset=self.dataset,
                              created_by=self.user, updated_by=self.user)
         self.assertEqual(gl.created_by, self.user)
+
+
+class DatasetTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username="testdata", email=None, password=None)
+        # Migrations have id=1 already
+        self.signlanguage = SignLanguage.objects.create(pk=3, name="slang", language_code_3char="tst")
+        self.dataset = Dataset.objects.create(name="dataset", signlanguage=self.signlanguage)
+
+    def test_str(self):
+        """Test unicode string representation."""
+        self.assertEqual(unicode(self.dataset), self.dataset.name)
+
+
+class TranslationTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username="testtrans", email=None, password=None)
+        self.language = Language.objects.create(name="mylang", language_code_2char="ml", language_code_3char="myl")
+        # Migrations have id=1 already for a SignLanguage
+        self.signlanguage = SignLanguage.objects.create(pk=4, name="signlang", language_code_3char="sla")
+        self.dataset = Dataset.objects.create(name="dataset", signlanguage=self.signlanguage)
+        self.gloss = Gloss.objects.create(idgloss="transgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.keyword = Keyword.objects.create(text="myword")
+        # Create a Translation
+        self.translation = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=self.keyword, index=1)
+
+    def test_str(self):
+        """Test unicode string representation."""
+        self.assertEqual(unicode(self.translation), self.gloss.idgloss + '-' + self.keyword.text)
+
+
+class KeywordTestCase(TestCase):
+    def setUp(self):
+        self.keyword = Keyword.objects.create(text="mykeyworD")
+
+    def test_str(self):
+        self.assertEqual(unicode(self.keyword), self.keyword.text)
+
+
+class DefinitionTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username="testdef", email=None, password=None)
+        self.signlanguage = SignLanguage.objects.create(pk=4, name="signl", language_code_3char="sla")
+        self.dataset = Dataset.objects.create(name="dataset2", signlanguage=self.signlanguage)
+        self.gloss = Gloss.objects.create(idgloss="defgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.definition = Definition.objects.create(gloss=self.gloss, text="test text tööt", role="note", count=10)
+
+    def test_str(self):
+        self.assertEqual(unicode(self.definition), self.gloss.idgloss + "/" + self.definition.role)
+
+
+class LanguageTestCase(TestCase):
+    def setUp(self):
+        self.language = Language.objects.create(name=u"New ÖÄ Language", language_code_2char="nl",
+                                                language_code_3char="nla", description="New language we just created")
+
+    def test_str(self):
+        self.assertEqual(unicode(self.language), self.language.name)
+
+
+class DialectTestCase(TestCase):
+    def setUp(self):
+        self.signlanguage = SignLanguage.objects.create(pk=5, name=u"sÄÄö", language_code_3char="ÄÄö")
+        self.dialect = Dialect.objects.create(language=self.signlanguage, name=u"Northern sÄÄö",
+                                              description=u"Northern sÄÄö has traditionally been used in the North Pole,"
+                                                          u"But to this day it has also spread to Greenland.")
+
+    def test_str(self):
+        self.assertEqual(unicode(self.dialect), self.signlanguage.name + "/" + self.dialect.name)
+
+
+class RelationToForeignSignTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username="testrel", email=None, password=None)
+        self.signlanguage = SignLanguage.objects.create(pk=6, name="lala", language_code_3char="lal")
+        self.dataset = Dataset.objects.create(name="relset", signlanguage=self.signlanguage)
+        self.gloss = Gloss.objects.create(idgloss="related-GLOSS", dataset=self.dataset, created_by=self.user,
+                                          updated_by=self.user)
+        self.relation = RelationToForeignSign.objects.create(gloss=self.gloss, loan=True, other_lang=u"sÄÄö",
+                                                             other_lang_gloss="Samp-GLOSS")
+
+    def test_str(self):
+        self.assertEqual(unicode(self.relation), self.gloss.idgloss + "/" + self.relation.other_lang + "," +
+                         self.relation.other_lang_gloss)
+
+
+class FieldChoiceTestCase(TestCase):
+    def setUp(self):
+        self.fieldchoice = FieldChoice.objects.create(field="field", english_name="mychoice", machine_value=1)
+
+    def test_str(self):
+        self.assertEqual(unicode(self.fieldchoice), self.fieldchoice.english_name)
+
+
+class MorphologyDefinitionTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username="usermorph", email=None, password=None)
+        self.signlanguage = SignLanguage.objects.create(pk=11, name="definitive", language_code_3char="def")
+        self.dataset = Dataset.objects.create(name="morphdata", signlanguage=self.signlanguage)
+        self.gloss = Gloss.objects.create(idgloss="morhp-gloss", dataset=self.dataset, created_by=self.user,
+                                          updated_by=self.user)
+        self.gloss2 = Gloss.objects.create(idgloss="morhp-gloss2", dataset=self.dataset, created_by=self.user,
+                                          updated_by=self.user)
+        self.fieldchoice = FieldChoice.objects.create(field="newfield", english_name="nice name", machine_value=2)
+        self.morphdef = MorphologyDefinition.objects.create(parent_gloss=self.gloss, morpheme=self.gloss2,
+                                                            role=self.fieldchoice)
+
+    def test_str(self):
+        self.assertEqual(unicode(self.morphdef), self.morphdef.morpheme.idgloss + " is " +
+                         self.morphdef.role.english_name + " of " + self.morphdef.parent_gloss.idgloss)
 
 
 
