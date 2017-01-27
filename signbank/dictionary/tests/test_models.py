@@ -8,14 +8,18 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError, DataError
 from django.db import transaction
 
+from signbank.dictionary.models import build_choice_list
+
 
 class GlossTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="test", email=None, password=None)
         # Migrations have id=1 already
+        self.language = Language.objects.create(name="glang", language_code_2char="gl", language_code_3char="gla")
         self.signlanguage = SignLanguage.objects.create(pk=2, name="testsignlanguage", language_code_3char="tst")
         self.dataset = Dataset.objects.create(name="testdataset", signlanguage=self.signlanguage)
-        self.gloss = Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.gloss = Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user,
+                                          updated_by=self.user)
 
     def test_str(self):
         self.assertEqual(unicode(self.gloss), self.gloss.idgloss)
@@ -36,7 +40,8 @@ class GlossTestCase(TestCase):
         gloss = Gloss.objects.get(idgloss="testgloss")
 
         # Create another Gloss
-        new_gloss = Gloss.objects.create(idgloss="testgloss2", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        new_gloss = Gloss.objects.create(idgloss="testgloss2", dataset=self.dataset, created_by=self.user,
+                                         updated_by=self.user)
         new_dataset = Dataset.objects.create(name="testdataset2", signlanguage=self.signlanguage)
         self.assertEqual(new_gloss.idgloss, "testgloss2")
 
@@ -76,7 +81,9 @@ class GlossTestCase(TestCase):
 
         # Test that the length of idgloss can't be too long
         with self.assertRaises(DataError):
-            gloss.idgloss = "afasdkfjsdalkfjdsaljfl^¨'*´`} sajfljadsklfjasdklfjsadkjflÄÖÅlöjsadkfjasdkljflaksdjfkljdsfljasdlkfjakdslkafjsdlkafjölasdjfkldsajlaköfjsdakljfklasdjfkldsjaflkajdsflökjdsalkfjadslköfjdsalökjfklsdajflkdsjlkfajöldskjflkadsjflkdsajfladslkfjdlksa"
+            gloss.idgloss = "afasdkfjsdalkfjdsaljfl^¨'*´`} sajfljadsklfjasdklfjsadkjflÄÖÅlöjsadkfjasdkljflaksdjfkljds"
+            "fljasdlkfjakdslkafjsdlkafjölasdjfkldsajlaköfjsdakljfklasdjfkldsjaflkajdsflökjdsalkfjadslköfjdsalökjfklsd"
+            "ajflkdsjlkfajöldskjflkadsjflkdsajfladslkfjdlksa"
             gloss.save()
 
     def test_idgloss_dataset(self):
@@ -88,13 +95,35 @@ class GlossTestCase(TestCase):
         """Tests the field idgloss_en."""
         # Check that the max_length can't be exceeded.
         with self.assertRaises(DataError):
-            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_en="äöå1@r"*10+"1", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_en="äöå1@r" * 10 + "1", dataset=self.dataset,
+                                      created_by=self.user, updated_by=self.user)
 
     def test_created_by(self):
         """Tests that the created_by field functions when a gloss is created."""
         gl = Gloss.objects.create(idgloss="testgloss_createdby", dataset=self.dataset,
-                             created_by=self.user, updated_by=self.user)
+                                  created_by=self.user, updated_by=self.user)
         self.assertEqual(gl.created_by, self.user)
+
+    def test_get_translation_languages(self):
+        """Tests function get_translation_languages()"""
+        self.dataset.translation_languages = (self.language,)
+        self.dataset.save()
+        self.assertIn(self.language, Gloss.get_translation_languages(self.gloss))
+
+    def test_get_translations_for_translation_languages(self):
+        """Test function get_translations_for_translation_languages()"""
+        keyword = Keyword.objects.create(text="akeyword")
+        keyword2 = Keyword.objects.create(text="another")
+        translation = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=keyword,
+                                                      index=2)
+        translation2 = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=keyword2, index=3)
+        self.dataset.translation_languages = (self.language,)
+        self.dataset.save()
+        unzip = zip(*Gloss.get_translations_for_translation_languages(self.gloss))
+        languages, translations = unzip[0], unzip[1]
+
+        self.assertIn(self.language, languages)
+        self.assertTrue(all(x in (translation, translation2) for x in list(*translations)))
 
 
 class DatasetTestCase(TestCase):
@@ -116,10 +145,12 @@ class TranslationTestCase(TestCase):
         # Migrations have id=1 already for a SignLanguage
         self.signlanguage = SignLanguage.objects.create(pk=4, name="signlang", language_code_3char="sla")
         self.dataset = Dataset.objects.create(name="dataset", signlanguage=self.signlanguage)
-        self.gloss = Gloss.objects.create(idgloss="transgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.gloss = Gloss.objects.create(idgloss="transgloss", dataset=self.dataset, created_by=self.user,
+                                          updated_by=self.user)
         self.keyword = Keyword.objects.create(text="myword")
         # Create a Translation
-        self.translation = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=self.keyword, index=1)
+        self.translation = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=self.keyword,
+                                                      index=1)
 
     def test_str(self):
         """Test unicode string representation."""
@@ -139,7 +170,8 @@ class DefinitionTestCase(TestCase):
         self.user = User.objects.create_user(username="testdef", email=None, password=None)
         self.signlanguage = SignLanguage.objects.create(pk=4, name="signl", language_code_3char="sla")
         self.dataset = Dataset.objects.create(name="dataset2", signlanguage=self.signlanguage)
-        self.gloss = Gloss.objects.create(idgloss="defgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.gloss = Gloss.objects.create(idgloss="defgloss", dataset=self.dataset, created_by=self.user,
+                                          updated_by=self.user)
         self.definition = Definition.objects.create(gloss=self.gloss, text="test text tööt", role="note", count=10)
 
     def test_str(self):
@@ -159,8 +191,8 @@ class DialectTestCase(TestCase):
     def setUp(self):
         self.signlanguage = SignLanguage.objects.create(pk=5, name=u"sÄÄö", language_code_3char="ÄÄö")
         self.dialect = Dialect.objects.create(language=self.signlanguage, name=u"Northern sÄÄö",
-                                              description=u"Northern sÄÄö has traditionally been used in the North Pole,"
-                                                          u"But to this day it has also spread to Greenland.")
+                                              description=u"Northern sÄÄö has traditionally been used in the North "
+                                                          u"Pole, But to this day it has also spread to Greenland.")
 
     def test_str(self):
         self.assertEqual(unicode(self.dialect), self.signlanguage.name + "/" + self.dialect.name)
@@ -197,7 +229,7 @@ class MorphologyDefinitionTestCase(TestCase):
         self.gloss = Gloss.objects.create(idgloss="morhp-gloss", dataset=self.dataset, created_by=self.user,
                                           updated_by=self.user)
         self.gloss2 = Gloss.objects.create(idgloss="morhp-gloss2", dataset=self.dataset, created_by=self.user,
-                                          updated_by=self.user)
+                                           updated_by=self.user)
         self.fieldchoice = FieldChoice.objects.create(field="newfield", english_name="nice name", machine_value=2)
         self.morphdef = MorphologyDefinition.objects.create(parent_gloss=self.gloss, morpheme=self.gloss2,
                                                             role=self.fieldchoice)
@@ -207,9 +239,20 @@ class MorphologyDefinitionTestCase(TestCase):
                          self.morphdef.role.english_name + " of " + self.morphdef.parent_gloss.idgloss)
 
 
+class FunctionsTestCase(TestCase):
+    def setUp(self):
+        field = "testField"
+        self.choices = []
+        self.choices.append(FieldChoice.objects.create(field=field, english_name="choice1", machine_value=1))
+        self.choices.append(FieldChoice.objects.create(field=field, english_name="choice_another", machine_value=2))
+        self.choices.append(FieldChoice.objects.create(field=field, english_name="full-of-choices", machine_value=3))
+        self.result = build_choice_list(field)
 
-
-
-
-
-
+    def test_build_choice_list(self):
+        machine_values, english_names = [], []
+        for bchoice in self.result:
+            machine_values.append(bchoice[0])
+            english_names.append(bchoice[1])
+        for choice in self.choices:
+            self.assertIn(str(choice.machine_value), machine_values)
+            self.assertIn(str(choice.english_name), english_names)
