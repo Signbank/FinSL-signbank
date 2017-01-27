@@ -179,39 +179,19 @@ class FieldChoice(models.Model):
         ordering = ['field', 'machine_value']
 
 
-# This method builds a list of choices from the database
+# This method builds a list of choices from FieldChoice
 def build_choice_list(field):
-    # choice_list = [('0', '-'), ('1', 'N/A')]
     choice_list = []
-
-    # Try to look for fields in FieldName and choose choices from there
-
+    # Get choices for a certain field in FieldChoices, append machine_value and english_name
     try:
         for choice in FieldChoice.objects.filter(field=field):
             choice_list.append((str(choice.machine_value), choice.english_name))
 
         return choice_list
-
-        # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
+    # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
     except OperationalError:
         pass
     return choice_list
-
-
-# This method gets choices from FieldChoice and returns them as a dict
-def get_choices(field):
-    choice_list = []
-    try:
-        for choice in FieldChoice.objects.filter(field=field):
-            choice_list.append((str(choice.machine_value), choice.english_name))
-
-        return choice_list
-
-        # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
-    except OperationalError:
-        pass
-    return choice_list
-
 
 def get_choices_with_int(field):
     choice_list = []
@@ -485,6 +465,7 @@ class Gloss(models.Model):
 
     def get_translation_languages(self):
         """Returns translation languages that are set for the Dataset of the Gloss."""
+        # Dataset is available to Language due to m2m field on Dataset for Language.
         return Language.objects.filter(dataset=self.dataset)
 
     def get_translations_for_translation_languages(self):
@@ -582,7 +563,7 @@ class Gloss(models.Model):
                           'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']:
             # Get the list of choices for this field
             # li = self._meta.get_field(fieldname).choices
-            li = get_choices(fieldname)
+            li = build_choice_list(fieldname)
 
             # Sort the list
             sorted_li = sorted(li, key=lambda x: x[1])
@@ -595,7 +576,7 @@ class Gloss(models.Model):
         # Choice lists for other models
         # choice_lists['morphology_role'] = [human_value for machine_value, human_value in
         #                                   build_choice_list('MorphologyType')]
-        choice_lists['morphology_role'] = get_choices('MorphologyType')
+        choice_lists['morphology_role'] = build_choice_list('MorphologyType')
         reformatted_morph_role = [('_' + str(value), text)
                                   for value, text in choice_lists['morphology_role']]
         choice_lists['morphology_role'] = OrderedDict(reformatted_morph_role)
