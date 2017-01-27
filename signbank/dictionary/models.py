@@ -193,7 +193,8 @@ def build_choice_list(field):
         pass
     return choice_list
 
-def get_choices_with_int(field):
+
+def build_choice_list_with_int(field):
     choice_list = []
     try:
         for choice in FieldChoice.objects.filter(field=field):
