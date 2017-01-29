@@ -131,6 +131,13 @@ class GlossTestCase(TestCase):
             field_names[field.name] = field.verbose_name
         self.assertDictEqual(Gloss.field_labels(self.gloss), field_names)
 
+    def test_get_fields(self):
+        """Test function."""
+        field_list = []
+        for field in Gloss._meta.fields:
+            field_list.append((field.name, field.value_to_string(self.gloss)))
+        self.assertListEqual(Gloss.get_fields(self.gloss), field_list)
+
 
 class DatasetTestCase(TestCase):
     def setUp(self):
