@@ -432,19 +432,6 @@ class Gloss(models.Model):
 
         return d
 
-    def get_translations(self):
-        """Returns translations for the gloss based on the users currently selected language."""
-        from django.utils.translation import get_language
-        try:
-            language = Language.objects.get(language_code_2char__iexact=get_language())
-        except Language.DoesNotExist:
-            # If users currently selected language does not exist as a Language, try to filter for English Translations.
-            return Translation.objects.filter(gloss=self, language__language_code_2char__iexact='en')
-        except Language.MultipleObjectsReturned:
-            language = Language.objects.filter(language_code_2char__iexact=get_language())[0]
-
-        return Translation.objects.filter(gloss=self, language=language)
-
     def get_translation_languages(self):
         """Returns translation languages that are set for the Dataset of the Gloss."""
         # Dataset is available to Language due to m2m field on Dataset for Language.
