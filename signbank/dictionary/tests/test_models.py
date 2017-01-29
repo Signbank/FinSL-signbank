@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-from signbank.dictionary.models import (Gloss, Dataset, SignLanguage, Language, Keyword, Translation, Definition,
-                                        Dialect, RelationToForeignSign, FieldChoice, MorphologyDefinition)
-
 from django.contrib.auth.models import User
-
 from django.db import IntegrityError, DataError
 from django.db import transaction
 
+from signbank.dictionary.models import (Gloss, Dataset, SignLanguage, Language, Keyword, Translation, Definition,
+                                        Dialect, RelationToForeignSign, FieldChoice, MorphologyDefinition)
 from signbank.dictionary.models import build_choice_list
 
 
@@ -125,6 +123,14 @@ class GlossTestCase(TestCase):
         self.assertIn(self.language, languages)
         self.assertTrue(all(x in (translation, translation2) for x in list(*translations)))
 
+    def test_field_labels(self):
+        """Test that function returns proper field labels."""
+        meta_fields = self.gloss._meta.fields
+        field_names = dict()
+        for field in meta_fields:
+            field_names[field.name] = field.verbose_name
+        self.assertDictEqual(Gloss.field_labels(self.gloss), field_names)
+
 
 class DatasetTestCase(TestCase):
     def setUp(self):
@@ -241,18 +247,18 @@ class MorphologyDefinitionTestCase(TestCase):
 
 class FunctionsTestCase(TestCase):
     def setUp(self):
-        field = "testField"
+        self.field = "testField"
+        f1 = FieldChoice.objects.create(field=self.field, english_name="choice1", machine_value=1)
+        f2 = FieldChoice.objects.create(field=self.field, english_name="choice_another", machine_value=2)
+        f3 = FieldChoice.objects.create(field=self.field, english_name="full-of-choices", machine_value=3)
         self.choices = []
-        self.choices.append(FieldChoice.objects.create(field=field, english_name="choice1", machine_value=1))
-        self.choices.append(FieldChoice.objects.create(field=field, english_name="choice_another", machine_value=2))
-        self.choices.append(FieldChoice.objects.create(field=field, english_name="full-of-choices", machine_value=3))
-        self.result = build_choice_list(field)
+        self.choices.append((str(f1.machine_value), unicode(f1)))
+        self.choices.append((str(f2.machine_value), unicode(f2)))
+        self.choices.append((str(f3.machine_value), unicode(f3)))
 
     def test_build_choice_list(self):
-        machine_values, english_names = [], []
-        for bchoice in self.result:
-            machine_values.append(bchoice[0])
-            english_names.append(bchoice[1])
-        for choice in self.choices:
-            self.assertIn(str(choice.machine_value), machine_values)
-            self.assertIn(str(choice.english_name), english_names)
+        """Test that function returns proper values."""
+        # TODO: Simulate OperationalError?
+        self.assertListEqual(build_choice_list(self.field), self.choices)
+
+

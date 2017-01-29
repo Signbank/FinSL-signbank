@@ -179,8 +179,8 @@ class FieldChoice(models.Model):
         ordering = ['field', 'machine_value']
 
 
-# This method builds a list of choices from FieldChoice
 def build_choice_list(field):
+    """This function builds a list of choices from FieldChoice."""
     choice_list = []
     # Get choices for a certain field in FieldChoices, append machine_value and english_name
     try:
@@ -191,21 +191,6 @@ def build_choice_list(field):
     # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
     except OperationalError:
         pass
-    return choice_list
-
-
-def build_choice_list_with_int(field):
-    choice_list = []
-    try:
-        for choice in FieldChoice.objects.filter(field=field):
-            choice_list.append((choice.machine_value, choice.english_name))
-
-        return choice_list
-
-        # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
-    except OperationalError:
-        pass
-    return choice_list
 
 
 class Gloss(models.Model):
@@ -441,13 +426,9 @@ class Gloss(models.Model):
 
     def field_labels(self):
         """Return the dictionary of field labels for use in a template"""
-
         d = dict()
         for f in self._meta.fields:
-            try:
-                d[f.name] = self._meta.get_field(f.name).verbose_name
-            except FieldDoesNotExist:
-                pass
+            d[f.name] = self._meta.get_field(f.name).verbose_name
 
         return d
 
