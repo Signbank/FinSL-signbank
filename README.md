@@ -1,7 +1,9 @@
 # FinSL-signbank
 
 [![Dependency Status](https://www.versioneye.com/user/projects/583fd43dc68b120012d0f5e1/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/583fd43dc68b120012d0f5e1)
-![coverage](https://github.com/Signbank/FinSL-signbank/blob/master/coverage.svg "coverage")
+![coverage](https://rawgit.com/Signbank/FinSL-signbank/master/coverage.svg)
+
+
 
 **Store *Sign language* Gloss data with videos.**
 
