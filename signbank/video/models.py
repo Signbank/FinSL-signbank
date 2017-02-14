@@ -75,8 +75,10 @@ class GlossVideo(models.Model):
         """Rename the video and the video to correct path if the glossvideo object has a foreignkey to a gloss."""
         # Do not rename the file if glossvideo doesn't have a gloss.
         if hasattr(self, 'gloss') and self.gloss is not None:
+            # Get file extensions
+            ext = os.path.splitext(self.videofile.path)[1]
             # Create the base filename for the video based on the new self.gloss.idgloss
-            new_filename = GlossVideo.create_filename(self.gloss.idgloss, self.gloss.pk, self.pk)
+            new_filename = GlossVideo.create_filename(self.gloss.idgloss, self.gloss.pk, self.pk, ext)
             # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
             new_path = os.path.join('glossvideo', unicode(self.gloss.idgloss[:2]).upper(), new_filename)
             full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
@@ -98,9 +100,9 @@ class GlossVideo(models.Model):
                 self.save()
 
     @staticmethod
-    def create_filename(idgloss, glosspk, videopk):
+    def create_filename(idgloss, glosspk, videopk, ext):
         """Returns a correctly named filename"""
-        return unicode(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ".mp4"
+        return unicode(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ext
 
     def create_poster_filename(self, ext):
         """Returns a preferred filename of posterfile. Ext is the file extension without the dot."""
