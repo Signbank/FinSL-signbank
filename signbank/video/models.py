@@ -71,6 +71,9 @@ class GlossVideo(models.Model):
         except AttributeError:
             pass
 
+    def get_absolute_url(self):
+        return settings.STATIC_URL + self.videofile.name
+
     def rename_video(self):
         """Rename the video and the video to correct path if the glossvideo object has a foreignkey to a gloss."""
         # Do not rename the file if glossvideo doesn't have a gloss.
@@ -126,6 +129,10 @@ class GlossVideo(models.Model):
         glossvideos = GlossVideo.objects.filter(gloss=gloss)
         for glossvideo in glossvideos:
             glossvideo.rename_video()
+
+    def get_extension(self):
+        """Returns videofiles extension."""
+        return os.path.splitext(self.videofile.path)[1]
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""
