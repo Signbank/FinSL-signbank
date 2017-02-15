@@ -62,7 +62,7 @@ def add_recorded_video_view(request):
         form = VideoUploadForGlossForm(request.POST, request.FILES)
         if form.is_valid():
             gloss = get_object_or_404(Gloss, pk=form.cleaned_data['gloss_id'])
-            vidfile = form.cleaned_data('videofile')
+            vidfile = form.cleaned_data['videofile']
             if vidfile:
                 GlossVideo.objects.create(gloss=gloss, videofile=vidfile)
 
@@ -73,7 +73,7 @@ def add_recorded_video_view(request):
     return redirect(url)
 
 
-add_recorded_video_view = permission_required('video.add_glossvideo')(addvideo)
+add_recorded_video_view = permission_required('video.add_glossvideo')(add_recorded_video_view)
 
 
 def add_poster(request):

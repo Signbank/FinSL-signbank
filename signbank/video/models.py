@@ -35,6 +35,9 @@ class GlossVideoStorage(FileSystemStorage):
 
         return result
 
+    def url(self, name):
+        return settings.STATIC_URL + name
+
 
 storage = GlossVideoStorage()
 
@@ -72,7 +75,7 @@ class GlossVideo(models.Model):
             pass
 
     def get_absolute_url(self):
-        return settings.STATIC_URL + self.videofile.name
+        return self.videofile.url
 
     def rename_video(self):
         """Rename the video and the video to correct path if the glossvideo object has a foreignkey to a gloss."""
