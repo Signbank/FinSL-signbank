@@ -12,6 +12,13 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.mini.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
+<script src="{{ STATIC_URL }}js/RecordRTC.min.js"></script>
+<script>
+// Reload this modal when closed, so that the uploaded videos appear on the page.
+$('#record-video-Modal').on('hidden.bs.modal', function (e) {
+    location.reload();
+})
+</script>
 {% endif %}
 
 <script type="text/javascript">
@@ -100,6 +107,9 @@
         <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="label label-default">{{dataset}}</span></h4>
     </div>
     {% if perms.dictionary.change_gloss %}
+        {% if not gloss.locked %}
+        {% include "dictionary/record_video.html" %}
+        {% endif %}
     <div class='pull-right'>
         {% if not gloss.locked %}
         {# Translators: Text that appears when editing is on #}
@@ -162,7 +172,6 @@
                             <video id="glossvideo-{{glossvideo.pk}}" width="450" preload="metadata" controls muted
                                    {% if glossvideo.posterfile %} poster="/static/{{glossvideo.posterfile|urlencode}}"{% endif %}>
                                 {% if glossvideo.get_extension == '.mp4' %}
-                                <!--<source src="{{ STATIC_URL }}{{glossvideo.videofile|urlencode}}" type="video/mp4">-->
                                 <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
                                 {% elif glossvideo.get_extension == '.webm' %}
                                 <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">

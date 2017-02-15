@@ -8,6 +8,8 @@ from models import GlossVideo
 from forms import VideoUploadForGlossForm, MultipleVideoUploadForm
 from signbank.dictionary.models import Gloss
 from .forms import UpdateGlossVideoForm, PosterUpload
+from django.http import HttpResponse
+import json
 from os.path import splitext
 
 
@@ -64,13 +66,9 @@ def add_recorded_video_view(request):
             gloss = get_object_or_404(Gloss, pk=form.cleaned_data['gloss_id'])
             vidfile = form.cleaned_data['videofile']
             if vidfile:
-                GlossVideo.objects.create(gloss=gloss, videofile=vidfile)
-
-    if 'HTTP_REFERER' in request.META:
-        url = request.META['HTTP_REFERER']
-    else:
-        url = '/'
-    return redirect(url)
+                glossvid = GlossVideo.objects.create(gloss=gloss, videofile=vidfile)
+                # Return the created GlossVideos id/pk, so that it can be used to link to the uploaded video.
+                return HttpResponse(json.dumps({'videoid': glossvid.pk}), content_type='application/json')
 
 
 add_recorded_video_view = permission_required('video.add_glossvideo')(add_recorded_video_view)
