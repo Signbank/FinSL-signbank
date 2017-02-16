@@ -50,7 +50,7 @@ STATICFILES_FINDERS = (
 PRIMARY_CSS = "bootstrap_css/signbank.css"
 
 # A list of middleware classes to use. The order of middleware classes is critical!
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,9 +58,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # Uncomment the following line when in development and you want to use django-debug-toolbar.
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'reversion.middleware.RevisionMiddleware',
-)
+]
 
 TEMPLATES = [
     {
@@ -123,6 +124,8 @@ INSTALLED_APPS = (
     'signbank.video',
     'reversion',
     'tagging',
+    # Uncomment the following line when in development and you want to use django-debug-toolbar.
+    # 'debug_toolbar',
 )
 
 # Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
@@ -144,3 +147,4 @@ FORCE_LOWERCASE_TAGS = True
 
 import mimetypes
 mimetypes.add_type("video/mp4", ".mov", True)
+mimetypes.add_type("video/webm", ".webm", True)

@@ -22,7 +22,7 @@ class Video(models.Model):
 class GlossVideoStorage(FileSystemStorage):
     """Implement our shadowing video storage system"""
 
-    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.STATIC_URL):  # Usually MEDIA_URL
+    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
         super(GlossVideoStorage, self).__init__(location, base_url)
 
     def get_valid_name(self, name):
@@ -36,7 +36,7 @@ class GlossVideoStorage(FileSystemStorage):
         return result
 
     def url(self, name):
-        return settings.STATIC_URL + name
+        return settings.MEDIA_URL + name
 
 
 storage = GlossVideoStorage()

@@ -16,15 +16,15 @@ LOCALE_PATHS = (
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/var/www/signbank/static/'
 # This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
 # is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, "media"),
+    os.path.join(PROJECT_DIR, "signbank", "static"),
 )
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_ROOT = '/home/signbank/signbank-fi/media'
+MEDIA_ROOT = '/var/www/signbank/media/'
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # It must end in a slash if set to a non-empty value.
 MEDIA_URL = '/media/'
