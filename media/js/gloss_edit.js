@@ -69,6 +69,7 @@ function disable_edit() {
     $('.morphology-definition-delete').hide();
     // Video/poster editing
     $('.video-edit').hide();
+    $('#btn-record-video').hide();
 };
 
 function enable_edit() {
@@ -90,6 +91,7 @@ function enable_edit() {
     $('.morphology-definition-delete').show();
     // Video/poster editing
     $('.video-edit').show();
+    $('#btn-record-video').show();
 };
 
 function toggle_edit() {

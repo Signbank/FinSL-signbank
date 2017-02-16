@@ -8,6 +8,9 @@ from models import GlossVideo
 from forms import VideoUploadForGlossForm, MultipleVideoUploadForm
 from signbank.dictionary.models import Gloss
 from .forms import UpdateGlossVideoForm, PosterUpload
+from django.http import HttpResponse
+import json
+from os.path import splitext
 
 
 def addvideo(request):
@@ -29,8 +32,8 @@ def addvideo(request):
             # Save the GlossVideo to get a primary key
             video.save()
 
-            # Construct a filename for the video
-            vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk)
+            # Construct a filename for the video, because it doesn't have a path yet.
+            vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk, splitext(vfile.name)[1])
             video.videofile = vfile
             video.save()
 
@@ -52,6 +55,23 @@ def addvideo(request):
 
 
 addvideo_view = permission_required('video.add_glossvideo')(addvideo)
+
+
+def add_recorded_video_view(request):
+    """Add video that is recorder in the interface."""
+    if request.method == 'POST':
+        # Load the data into the form
+        form = VideoUploadForGlossForm(request.POST, request.FILES)
+        if form.is_valid():
+            gloss = get_object_or_404(Gloss, pk=form.cleaned_data['gloss_id'])
+            vidfile = form.cleaned_data['videofile']
+            if vidfile:
+                glossvid = GlossVideo.objects.create(gloss=gloss, videofile=vidfile)
+                # Return the created GlossVideos id/pk, so that it can be used to link to the uploaded video.
+                return HttpResponse(json.dumps({'videoid': glossvid.pk}), content_type='application/json')
+
+
+add_recorded_video_view = permission_required('video.add_glossvideo')(add_recorded_video_view)
 
 
 def add_poster(request):

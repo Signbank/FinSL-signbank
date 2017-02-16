@@ -42,7 +42,11 @@
                 <div id="videocontainer">
                     <div class="player">
                         <video id="{{video.pk}}" width="450" preload="metadata" controls muted>
-                            <source src="{{ STATIC_URL }}{{video.videofile|urlencode}}" type="video/mp4">
+                            {% if video.get_extension == '.mp4' %}
+                            <source src="{{video.videofile.url|urlencode}}" type="video/mp4">
+                            {% elif video.get_extension == '.webm' %}
+                            <source src="{{video.videofile.url|urlencode}}" type="video/webm">
+                            {% endif %}
                             {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                         </video>
                     </div>
