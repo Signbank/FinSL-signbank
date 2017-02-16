@@ -19,6 +19,9 @@ $('#record-video-Modal').on('hidden.bs.modal', function (e) {
     location.reload();
 })
 </script>
+{% if not gloss.locked %}
+{% include "dictionary/record_video.html" %}
+{% endif %}
 {% endif %}
 
 <script type="text/javascript">
@@ -108,7 +111,9 @@ $('#record-video-Modal').on('hidden.bs.modal', function (e) {
     </div>
     {% if perms.dictionary.change_gloss %}
         {% if not gloss.locked %}
-        {% include "dictionary/record_video.html" %}
+        <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
+                data-target="#record-video-Modal" style="float:left; margin-left:20px;">
+            {% blocktrans %}Record a video{% endblocktrans %}</button>
         {% endif %}
     <div class='pull-right'>
         {% if not gloss.locked %}
