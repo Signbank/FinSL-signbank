@@ -36,9 +36,13 @@
         </div>
     </div>
 </div>
-
 <!--Modal ends -->
-
+<script>
+// Reload this modal when closed, so that the uploaded videos appear on the page.
+$('#record-video-Modal').on('hidden.bs.modal', function (e) {
+    location.reload();
+})
+</script>
 <script>
     (function() {
         var params = {},

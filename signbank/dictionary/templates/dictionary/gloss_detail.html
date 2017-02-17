@@ -13,12 +13,6 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
 <script src="{{ STATIC_URL }}js/RecordRTC.min.js"></script>
-<script>
-// Reload this modal when closed, so that the uploaded videos appear on the page.
-$('#record-video-Modal').on('hidden.bs.modal', function (e) {
-    location.reload();
-})
-</script>
 {% if not gloss.locked %}
 {% include "dictionary/record_video.html" %}
 {% endif %}
