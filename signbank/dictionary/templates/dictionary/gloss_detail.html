@@ -112,7 +112,7 @@ $('#record-video-Modal').on('hidden.bs.modal', function (e) {
     {% if perms.dictionary.change_gloss %}
         {% if not gloss.locked %}
         <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
-                data-target="#record-video-Modal" style="float:left; margin-left:20px;">
+                data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
             {% blocktrans %}Record a video{% endblocktrans %}</button>
         {% endif %}
     <div class='pull-right'>
@@ -122,7 +122,7 @@ $('#record-video-Modal').on('hidden.bs.modal', function (e) {
               style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
         {# Translators: Button #}
         <button id='delete_gloss_btn' class='btn btn-default navbar-btn btn-xs' data-toggle='modal'
-                data-target='#delete_gloss_modal'>{% blocktrans %}Delete Sign{% endblocktrans %}
+                data-target='#delete_gloss_modal' style="display:none;">{% blocktrans %}Delete Sign{% endblocktrans %}
         </button>
         {# Translators: Button #}
         <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
@@ -255,7 +255,7 @@ $('#record-video-Modal').on('hidden.bs.modal', function (e) {
             <div>
                 <div id="editvideodata" class="panel panel-default">
                     {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
-                    <div class='editform'>
+                    <div class='editform' style="display:none;">
                         <div class="uploadvid">
                             <fieldset>
                                 {# Translators: Upload/Add new video to Signbank #}

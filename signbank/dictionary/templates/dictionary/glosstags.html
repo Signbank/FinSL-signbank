@@ -25,7 +25,7 @@
       {% endif %}
       {% if perms.dictionary.change_gloss %}
       <div id="tagcontainer"></div>
-      <div class='editform'>
+      <div class='editform' style="display:none;">
           <form id='tagaddform' 
                 action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}" 
                 method="post" enctype="multipart/form-data">
