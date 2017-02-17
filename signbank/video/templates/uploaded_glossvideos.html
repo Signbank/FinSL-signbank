@@ -36,9 +36,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">{{video.videofile}}</div>
             <div class="panel-body">
-            <form id="glossvideo{{video.pk}}" method="POST" action="/video/update/">
+            <form id="glossvideo{{video.pk}}" class="video-form" method="POST" action="/video/update/">
                 {% csrf_token %}
-                <input type="hidden" name="glossvideo" value="{{video.pk}}">
+                <input type="hidden" name="glossvideo" class="glossvideo-pk" value="{{video.pk}}">
                 <div id="videocontainer">
                     <div class="player">
                         <video id="{{video.pk}}" width="450" preload="metadata" controls muted>
@@ -51,16 +51,50 @@
                         </video>
                     </div>
                 </div>
-                <div>
+                <div class="selection">
                     <label for="id_gloss"><strong>{% blocktrans %}Gloss{% endblocktrans %}:</strong></label>
                     {{form.gloss}}
-                    <input class='btn btn-primary' type='submit' value='{% blocktrans %}Save{% endblocktrans %}'>
+                    <input class="btn btn-primary" type="submit" value="{% blocktrans %}Save{% endblocktrans %}">
                 </div>
             </form>
             </div>
         </div>
     </div>
-    {% endfor %}
+{% endfor %}
 </div>
+<div style="text-align:center;">
+    <button type="button" id="update-multiple-videos" class="btn btn-info btn-lg"
+            style="margin-bottom:15px;"onclick="updateVideos()">
+        {%blocktrans%}Save all{%endblocktrans%}</button>
+</div>
+<script>
+// This script is used to save multiple instances at once with ajax.
+function updateVideos(){
+    var forms = document.getElementsByClassName("video-form");
+    for (var i=0; i<forms.length; i++){
+        var selected = forms[i].getElementsByTagName("select")[0];
+        // Only update the ones that don't have empty selection (have selected something).
+        if (selected.value != "") {
+            var glossvideo = forms[i].getElementsByClassName("glossvideo-pk")[0];
+            // Send ajax post request.
+            $.ajax({url: "/video/update/", type: "post", context: forms[i],
+            data:{"glossvideo": glossvideo.value, "gloss": selected.value, "csrfmiddlewaretoken": "{{csrf_token}}",
+            "ajax": "true"}}).done(function() {
+                /* Remove selected value. On soft refresh browsers keep selected item for the element that appears
+                in its place.*/
+                this.getElementsByTagName("select")[0].value = "";
+                var alert = document.createElement("div");
+                alert.className = "alert alert-success";
+                alert.innerHTML = "{%blocktrans%}GlossVideo successfully updated!{%endblocktrans%}";
+                this.parentNode.appendChild(alert);
+                this.parentNode.removeChild(this);
+            });
+        }
+    }
+    /* Do a hard reset to reset all selected values. Without this some selections may stay at their positions when
+    page is (soft) refreshed.*/
+    location.reload(true);
+}
+</script>
 
 {% endblock %}

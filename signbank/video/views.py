@@ -180,6 +180,8 @@ def update_glossvideo(request):
             glossvideo = GlossVideo.objects.get(pk=post['glossvideo'])
             glossvideo.gloss = Gloss.objects.get(pk=post['gloss'])
             glossvideo.save()
+    if "ajax" in request.POST and request.POST["ajax"] == "true":
+        return HttpResponse("OK", status=200)
     if "HTTP_REFERER" in request.META:
         return redirect(request.META["HTTP_REFERER"])
     return redirect("/")
