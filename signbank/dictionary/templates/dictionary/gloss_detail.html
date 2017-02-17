@@ -169,7 +169,7 @@
                                 <h4 class="edit edit_text" id="video_title{{glossvideo.pk}}">{{glossvideo.title}}</h4>
                             </div>
                             <video id="glossvideo-{{glossvideo.pk}}" width="450" preload="metadata" controls muted
-                                   {% if glossvideo.posterfile %} poster="/static/{{glossvideo.posterfile|urlencode}}"{% endif %}>
+                                   {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
                                 {% if glossvideo.get_extension == '.mp4' %}
                                 <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
                                 {% elif glossvideo.get_extension == '.webm' %}
