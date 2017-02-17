@@ -187,7 +187,7 @@ def update_gloss(request, glossid):
                     # If it doesn't work, go to exception and get flatchoices
                     try:
                         # valdict = dict(f.get_choices(include_blank=False))
-                        valdict = dict(get_choices_with_int(field))
+                        valdict = dict(build_choice_list(field))
                     except:
                         valdict = dict(f.flatchoices)
 

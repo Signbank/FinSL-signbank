@@ -457,8 +457,10 @@ class GlossDetailView(DetailView):
 
 def gloss_ajax_search_results(request):
     """Returns a JSON list of glosses that match the previous search stored in sessions"""
-
-    return JsonResponse(request.session['search_results'], safe=False)
+    if 'search_results' in request.session and request.session['search_results'] != '':
+        return JsonResponse(request.session['search_results'], safe=False)
+    else:
+        return HttpResponse("OK")
 
 def gloss_ajax_complete(request, prefix):
     """Return a list of glosses matching the search term as a JSON structure suitable for typeahead."""
