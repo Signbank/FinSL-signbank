@@ -9,15 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}{% primary_css %}">
     {% block extrahead %}{% endblock %}
   </head>
   <body>
-
     <div id='wrap'>
         <div class="container">
-
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
             {# Translators: This is the main Heading for the whole site #}
@@ -46,8 +44,8 @@
        <div id="footercontainer" class="container">
            <div class="row footerbg">
                <div id="logoholder" class="col-md-4">
-                        <img id="logojy" src="{{ STATIC_URL }}/bootstrap_css/images/jy_text_50.png" class="img-responsive logo" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
-                        <img id="logokl" src="{{ STATIC_URL }}/bootstrap_css/images/kl-logo-fi-50.png" class="img-responsive logo" alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
+                        <img id="logojy" src="{{ STATIC_URL }}css/images/jy_text_50.png" class="img-responsive logo" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
+                        <img id="logokl" src="{{ STATIC_URL }}css/images/kl-logo-fi-50.png" class="img-responsive logo" alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
                </div>
                 <div id="license" class="col-md-8">
 
@@ -58,7 +56,6 @@
 
     <script src='{{ STATIC_URL}}js/jquery-2.2.4.min.js'></script>
     <script src='{{ STATIC_URL}}bootstrap/js/bootstrap.min.js'></script>
-
     {% block extrajs %}{% endblock %}
   </body>
 </html>

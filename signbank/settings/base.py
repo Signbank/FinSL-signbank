@@ -47,7 +47,7 @@ STATICFILES_FINDERS = (
 )
 
 # Used by stylesheet.py to allow usage of the template tag {% primary_css %]
-PRIMARY_CSS = "bootstrap_css/signbank.css"
+PRIMARY_CSS = "css/signbank.css"
 
 # A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE = [
