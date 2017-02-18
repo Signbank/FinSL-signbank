@@ -17,11 +17,13 @@ FinSL-signbank is being developed based on the needs of Finnish sign language re
 Signbank was originally developed by Steve Cassidy [https://github.com/Signbank/Auslan-signbank][auslan-signbank]. FinSL-Signbank is being developed based on NGT Signbank [https://github.com/Signbank/NGT-signbank][ngt-signbank], NGT Signbank is a fork of Auslan Signbank.
 
 Main features:
-* Store Gloss data with multiple videos per Gloss.
+* Store Glosses with data and multiple videos per Gloss.
+* Record videos with webcam on the website.
+* Upload multiple videos at once, then connect them with Glosses later.
 * Interface easily translatable to multiple languages.
-* Export Glosses as XML directly to [ELAN][elan-link].
-* Can store multiple datasets, even of the same language.
-* Search from multiple datasets or just from one at a time.
+* Export Glosses directly to [ELAN][elan-link].
+* Store multiple datasets, even of the same language.
+*
 
 # Requirements
 
