@@ -23,7 +23,6 @@ Main features:
 * Interface easily translatable to multiple languages.
 * Export Glosses directly to [ELAN][elan-link].
 * Store multiple datasets, even of the same language.
-*
 
 # Requirements
 
