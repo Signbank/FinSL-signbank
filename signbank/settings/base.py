@@ -51,6 +51,8 @@ PRIMARY_CSS = "bootstrap_css/signbank.css"
 
 # A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE = [
+    # If want to use some of the HTTPS settings in secret_settings, enable SecurityMiddleware
+    #'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
