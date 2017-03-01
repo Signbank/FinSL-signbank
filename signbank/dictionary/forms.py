@@ -134,7 +134,7 @@ class GlossSearchForm(forms.ModelForm):
     # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
     #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
     # nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
-    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
+    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), required=False)
     nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
 
     islocked = forms.BooleanField(label=_('Gloss is locked'), required=False)

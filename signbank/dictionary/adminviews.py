@@ -260,7 +260,7 @@ class GlossListView(ListView):
 
             tags = []
             for t in vals:
-                tags.extend(Tag.objects.filter(name=t))
+                tags.extend(Tag.objects.filter(pk=t))
 
             # search is an implicit AND so intersection
             tqs = TaggedItem.objects.get_intersection_by_model(Gloss, tags)

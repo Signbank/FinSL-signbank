@@ -115,12 +115,18 @@ function clearForm(myFormElement) {
                         <input id="id_annotation_comments" name='annotation_comments' class='form-control' {% if searchform.annotation_comments.value %}value='{{searchform.annotation_comments.value}}' {% endif %}>
                    </div>
                 </div>
-                <div class="col-md-6 col-sm-12 searchcolor">
+                <div class="col-md-6 col-sm-12 searchinput searchcolor">
                         <ul class="list-group list-inline">
                           <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.islocked show_label=False bound_css_class="not-bound" %}</li>
                           <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.hasvideo show_label=False bound_css_class="not-bound" %}</li>
                           <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.hasnovideo show_label=False bound_css_class="not-bound" %}</li>
                         </ul>
+                </div>
+                <div class="col-md-4 col-sm-6 searchinput">
+                   <div class='input-group'>
+                       <label class='input-group-addon' for='id_tags'>{{searchform.tags.label}}</label>
+                       {% bootstrap_field searchform.tags show_label=False bound_css_class="not-bound" %}
+                   </div>
                 </div>
             </div>
         </div>
