@@ -159,6 +159,9 @@ class UploadedGlossvideosListView(ListView):
         if 'dataset' in get and self.request.GET.get('dataset'):
             # Filter based on param dataset
             qs = qs.filter(dataset=get['dataset'])
+        else:
+            # If no dataset is selected, show only GlossVideos that don't have a dataset.
+            qs = qs.filter(dataset__isnull=True)
         if 'page' in get:
             page = self.request.GET.get('page')
         else:
