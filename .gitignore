@@ -6,9 +6,7 @@ build/django
 *.pyc
 *.idea*
 
-media/css/.DS_Store
-
-media/css/.DS_Store
+static/css/.DS_Store
 
 signbank/settings/secret_settings.py
 

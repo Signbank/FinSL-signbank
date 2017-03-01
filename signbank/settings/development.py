@@ -58,3 +58,8 @@ LOGGING = {
 # Turn on lots of logging
 DO_LOGGING = True
 LOG_FILENAME = "debug.log"
+
+if DEBUG:
+    # Setting up debug toolbar.
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+    INSTALLED_APPS += ('debug_toolbar',)

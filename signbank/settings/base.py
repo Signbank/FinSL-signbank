@@ -60,8 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Uncomment the following line when in development and you want to use django-debug-toolbar.
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'reversion.middleware.RevisionMiddleware',
 ]
 
@@ -126,8 +124,6 @@ INSTALLED_APPS = (
     'signbank.video',
     'reversion',
     'tagging',
-    # Uncomment the following line when in development and you want to use django-debug-toolbar.
-    # 'debug_toolbar',
 )
 
 # Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
