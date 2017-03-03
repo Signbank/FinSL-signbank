@@ -56,7 +56,6 @@ def update_gloss(request, glossid):
         return HttpResponseForbidden(_("Gloss Update Not Allowed: Gloss is locked from editing"))
 
     if request.method == "POST":
-        gloss = get_object_or_404(Gloss, id=glossid)
         # Update the user on Gloss.updated_by from request.user
         gloss.updated_by = request.user
         old_idgloss = unicode(gloss)
@@ -243,7 +242,8 @@ def update_keywords(gloss, field, value, language_code_2char):
 
     newvalue = ", ".join(
         [t.keyword.text for t in gloss.translation_set.filter(language=language)])
-
+    # Save updated_by field for Gloss
+    gloss.save()
     return HttpResponse(newvalue, content_type='text/plain')
 
 
