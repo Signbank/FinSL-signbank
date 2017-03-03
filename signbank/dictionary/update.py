@@ -57,6 +57,8 @@ def update_gloss(request, glossid):
 
     if request.method == "POST":
         gloss = get_object_or_404(Gloss, id=glossid)
+        # Update the user on Gloss.updated_by from request.user
+        gloss.updated_by = request.user
         old_idgloss = unicode(gloss)
 
         field = request.POST.get('id', '')
