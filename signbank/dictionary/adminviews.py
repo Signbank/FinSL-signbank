@@ -396,8 +396,7 @@ class GlossListView(ListView):
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('translation_set', queryset=Translation.objects.filter(
             language__language_code_2char__iexact=get_language())),
-                                 Prefetch('dataset'))
-
+                                 Prefetch('dataset'), Prefetch('glossvideo_set'))
         return qs
 
 
