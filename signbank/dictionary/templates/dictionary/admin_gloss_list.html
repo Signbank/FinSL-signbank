@@ -248,7 +248,7 @@ function clearForm(myFormElement) {
                 {% endfor %}
             </td>
             <td>{{ gloss.annotation_comments }}</td>
-            <td>{% for tag in gloss.tags %}<span class='tag'>{{ tag }}</span>{% endfor %}</td>
+            <td>{% for tag in gloss.cached_tags %}<span class='tag'>{{ tag }}</span>{% endfor %}</td>
         </tr>
     {% endfor %}
   </tbody>

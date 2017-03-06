@@ -11,6 +11,8 @@ from django.template.loader import render_to_string
 from django.http import JsonResponse
 from django.utils.translation import get_language
 from django.db.models import Prefetch
+from django.contrib.contenttypes.models import ContentType
+from collections import defaultdict
 
 from signbank.dictionary.forms import *
 from signbank.feedback.forms import *
@@ -395,9 +397,28 @@ class GlossListView(ListView):
 
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('translation_set', queryset=Translation.objects.filter(
-            language__language_code_2char__iexact=get_language())),
+            language__language_code_2char__iexact=get_language()).select_related('keyword')),
                                  Prefetch('dataset'), Prefetch('glossvideo_set'))
+
+        # Add tags for each Gloss in the queryset.
+        populate_tags_for_queryset(qs)
+
         return qs
+
+
+def populate_tags_for_queryset(queryset):
+    """Inserts tags for each item in queryset."""
+    # Get the ContentType for the queryset objects.
+    content_type = ContentType.objects.get_for_model(queryset.model)
+    # Get TaggedItems of selected ContentType for all the queryset items that have TaggedItems.
+    tagged_items = TaggedItem.objects.filter(content_type=content_type,
+                                             object_id__in=queryset.values_list('pk', flat=True))
+    tagged_items = tagged_items.select_related('tag')
+    tags_map = defaultdict(list)
+    for tagged_item in tagged_items:
+        tags_map[tagged_item.object_id].append(tagged_item.tag)
+        for obj in queryset:
+            obj.cached_tags = tags_map[obj.pk]
 
 
 class GlossDetailView(DetailView):
