@@ -1,6 +1,7 @@
 from django.contrib import admin
 from reversion.admin import VersionAdmin
 from django.utils.translation import ugettext_lazy as _
+from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
 
 from signbank.dictionary.models import *
 
@@ -118,7 +119,7 @@ class DialectAdmin(VersionAdmin):
     model = Dialect
 
 
-class LanguageAdmin(VersionAdmin):
+class LanguageAdmin(VersionAdmin, ModelTranslationAdmin):
     model = Language
 
 
