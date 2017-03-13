@@ -30,6 +30,19 @@ class Dataset(models.Model):
         return self.name
 
 
+class GlossTranslations(models.Model):
+    """Store a string representation of translation equivalents of certain Language for a Gloss."""
+    gloss = models.ForeignKey("Gloss")
+    language = models.ForeignKey("Language")
+    translations = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        unique_together = (("gloss", "language"),)
+
+    def __unicode__(self):
+        return self.translations
+
+
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
     gloss = models.ForeignKey("Gloss")
@@ -442,7 +455,11 @@ class Gloss(models.Model):
         translation_list = []
         translation_languages = self.get_translation_languages()
         for language in translation_languages:
-            translation_list.append(Translation.objects.filter(gloss=self, language=language))
+            #translation_list.append(Translation.objects.filter(gloss=self, language=language))
+            try:
+                translation_list.append(GlossTranslations.objects.get(gloss=self, language=language))
+            except GlossTranslations.DoesNotExist:
+                translation_list.append("")
         return zip(translation_languages, translation_list)
 
     def get_fields(self):
