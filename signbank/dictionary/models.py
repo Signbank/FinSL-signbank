@@ -455,11 +455,22 @@ class Gloss(models.Model):
         translation_list = []
         translation_languages = self.get_translation_languages()
         for language in translation_languages:
-            #translation_list.append(Translation.objects.filter(gloss=self, language=language))
             try:
+                # Get translations from GlossTranslation object, if it exists for gloss+language.
                 translation_list.append(GlossTranslations.objects.get(gloss=self, language=language))
             except GlossTranslations.DoesNotExist:
-                translation_list.append("")
+                # If it doesn't exist, try to get translations from Translation objects.
+                translations = Translation.objects.filter(gloss=self, language=language)
+                kwd_str = ""
+                first = True
+                for trans in translations:
+                    if first:
+                        kwd_str += unicode(trans.keyword)
+                        first = False
+                    else:
+                        kwd_str += ", " + unicode(trans.keyword)
+                translation_list.append(kwd_str)
+
         return zip(translation_languages, translation_list)
 
     def get_fields(self):
