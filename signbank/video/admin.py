@@ -5,9 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class HasGlossFilter(admin.SimpleListFilter):
-
     title = _('Has gloss')
-
     parameter_name = 'has_gloss'
 
     def lookups(self, request, model_admin):
@@ -35,9 +33,11 @@ class HasPosterFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value() == 'yes':
-            return queryset.filter(posterfile__isnull=False)
+            # "null=False"
+            return queryset.exclude(posterfile='')
         if self.value() == 'no':
-            return queryset.filter(posterfile__isnull=True)
+            # "null=True"
+            return queryset.filter(posterfile='')
 
 
 class GlossVideoAdmin(admin.ModelAdmin):
