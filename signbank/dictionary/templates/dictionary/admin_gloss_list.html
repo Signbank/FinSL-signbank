@@ -149,14 +149,14 @@ function clearForm(myFormElement) {
             {# Translators: How many results to fit per page  #}
             <label for='paginate_by'>{% blocktrans %}Results per page{% endblocktrans %}</label>
             <select class='form-control' name="paginate_by">
-                <option{% if paginator.per_page == 3000 %} selected="selected"{% endif %}>3000</option>
-                <option{% if paginator.per_page == 2000 %} selected="selected"{% endif %}>2000</option>
-                <option{% if paginator.per_page == 1000 %} selected="selected"{% endif %}>1000</option>
-                <option{% if paginator.per_page == 500 %} selected="selected"{% endif %}>500</option>
-                <option{% if paginator.per_page == 100 %} selected="selected"{% endif %}>100</option>
-                <option{% if paginator.per_page == 50 %} selected="selected"{% endif %}>50</option>
-                <option{% if paginator.per_page == 25 %} selected="selected"{% endif %}>25</option>
-                <option{% if paginator.per_page == 10 %} selected="selected"{% endif %}>10</option>
+                <option{% if paginator.per_page == 3000 %} selected{% endif %}>3000</option>
+                <option{% if paginator.per_page == 2000 %} selected{% endif %}>2000</option>
+                <option{% if paginator.per_page == 1000 %} selected{% endif %}>1000</option>
+                <option{% if paginator.per_page == 500 %} selected{% endif %}>500</option>
+                <option{% if paginator.per_page == 100 %} selected{% endif %}>100</option>
+                <option{% if paginator.per_page == 50 %} selected{% endif %}>50</option>
+                <option{% if paginator.per_page == 25 %} selected{% endif %}>25</option>
+                <option{% if paginator.per_page == 10 %} selected{% endif %}>10</option>
             </select>
         </div>
 
