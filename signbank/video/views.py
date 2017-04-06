@@ -177,14 +177,26 @@ uploaded_glossvideos_listview = permission_required('video.change_glossvideo')(U
 
 def update_glossvideo(request):
     """Here we process the post request for updating a glossvideo."""
-    if request.method == 'POST':
-        post = request.POST
-        if 'gloss' in post and 'glossvideo' in post:
-            glossvideo = GlossVideo.objects.get(pk=post['glossvideo'])
-            glossvideo.gloss = Gloss.objects.get(pk=post['gloss'])
-            glossvideo.save()
-    if "ajax" in request.POST and request.POST["ajax"] == "true":
-        return HttpResponse("OK", status=200)
+    if request.is_ajax():
+        # If request is AJAX, follow this procedure.
+        if request.method == 'POST':
+            data = json.loads(request.body)
+            for item in data['updatelist']:
+                if 'gloss' in item and 'glossvideo' in item:
+                    glossvideo = GlossVideo.objects.get(pk=item['glossvideo'])
+                    glossvideo.gloss = Gloss.objects.get(pk=item['gloss'])
+                    glossvideo.save()
+            if "ajax" in data and data["ajax"] == "true":
+                # If the param 'ajax' is included, we received what we were supposed to, return OK.
+                return HttpResponse("OK", status=200)
+    else:
+        # If not AJAX, we expect one form to be submitted.
+        if request.method == 'POST':
+            post = request.POST
+            if 'gloss' in post and 'glossvideo' in post:
+                glossvideo = GlossVideo.objects.get(pk=post['glossvideo'])
+                glossvideo.gloss = Gloss.objects.get(pk=post['gloss'])
+                glossvideo.save()
     if "HTTP_REFERER" in request.META:
         return redirect(request.META["HTTP_REFERER"])
     return redirect("/")

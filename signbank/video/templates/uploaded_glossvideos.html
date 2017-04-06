@@ -101,26 +101,39 @@ $.ajaxSetup({
 // This script is used to save multiple instances at once with ajax.
 function updateVideos(){
     var forms = document.getElementsByClassName("video-form");
+    var updatelist = [];
+    var formlist = [];
     for (var i=0; i<forms.length; i++){
         var selected = forms[i].getElementsByTagName("select")[0];
         // Only update the ones that don't have empty selection (have selected something).
         if (selected.value != "") {
             var glossvideo = forms[i].getElementsByClassName("glossvideo-pk")[0];
-            // Send ajax post request.
-            $.ajax({url: "/video/update/", type: "post", context: forms[i],
-            data:{"glossvideo": glossvideo.value, "gloss": selected.value, "csrfmiddlewaretoken": csrftoken,
-            "ajax": "true"}}).done(function() {
-                /* Remove selected value. On soft refresh browsers keep selected item for the element that appears
-                in its place.*/
-                this.getElementsByTagName("select")[0].value = "";
+            // These will be saved, as they have a value set.
+            updatelist.push({"glossvideo": glossvideo.value, "gloss": selected.value});
+            // Add the current form to be "removed" from the page.
+            formlist.push(forms[i]);
+        }
+    }
+    // Send ajax post request.
+    $.ajax({url: "/video/update/", type: "post",
+    contentType: "application/json", context:{"forms":formlist},
+    data:JSON.stringify({"updatelist": updatelist,
+    "csrfmiddlewaretoken": csrftoken, "ajax": "true"})}).success(function() {
+        forms = this.forms;
+        for (var i=0; i<forms.length; i++){
+            // Set the selected value empty, to make it empty even on soft refresh.
+            var selected = forms[i].getElementsByTagName("select")[0];
+            // Only update the ones that don't have empty selection (have selected something).
+            if (selected.value != "") {
+                forms[i].getElementsByTagName("select")[0].value = "";
                 var alert = document.createElement("div");
                 alert.className = "alert alert-success";
                 alert.innerHTML = "{%blocktrans%}GlossVideo successfully updated!{%endblocktrans%}";
-                this.parentNode.appendChild(alert);
-                this.parentNode.removeChild(this);
-            });
+                forms[i].parentNode.appendChild(alert);
+                forms[i].parentNode.removeChild(forms[i]);
+            }
         }
-    }
+    });
 }
 </script>
 {% endblock %}
