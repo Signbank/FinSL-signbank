@@ -99,7 +99,7 @@ html {
 }
 .searchcolor ul {
     margin-left: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
 }
 .edit_text input, .edit_url input {
     width: 100%;
