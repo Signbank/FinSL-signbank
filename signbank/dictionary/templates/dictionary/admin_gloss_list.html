@@ -218,7 +218,7 @@ function clearForm(myFormElement) {
         <tr {% if gloss.locked %}class="success"{% elif gloss.glossvideo_set.all.exists %}class="warning"{% else %}class="danger"{% endif %}>
             <td>{{ gloss.dataset }}</td>
             <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{ gloss.idgloss }}</a></td>
-            <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{ gloss.idgloss_en }}</a></td>
+            <td>{{ gloss.idgloss_en }}</td>
             <td> {# Prefetched translations of 'language_code_2char==get_language()' for glosses #}
                 {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
                     {% if forloop.last %}{{ translation.keyword }}
