@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-07 13:15+0300\n"
+"POT-Creation-Date: 2017-04-07 14:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "Suhde toisiin Glosseihin"
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:20 signbank/dictionary/forms.py:121
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:104
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:109
 #: signbank/video/templates/addvideos.html:31
 #: signbank/video/templates/uploaded_glossvideos.html:11
 msgid "Dataset"
@@ -592,7 +592,7 @@ msgstr "Tagit"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:23
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:122
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:127
 msgid "Enable Edit"
 msgstr "Muokkaus päälle"
 
@@ -607,7 +607,7 @@ msgstr "Tallenna"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:26
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:144
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:149
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:54
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:183
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:274
@@ -616,30 +616,30 @@ msgstr "Tallenna"
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:96
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:101
 msgid "Search results:"
 msgstr "Hakutulokset:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:110
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:115
 #: signbank/dictionary/templates/dictionary/record_video.html:5
 msgid "Record a video"
 msgstr "Kuvaa video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:116
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:121
 msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:119
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:124
 msgid "Delete Sign"
 msgstr "Poista Glossi"
 
 #. Translators: Header2
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:130
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:135
 msgid "Delete This Sign"
 msgstr "Poista tämä Glossi"
 
 #. Translators: Text in Gloss
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:134
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:139
 msgid ""
 "This action will delete this sign and all associated records. It cannot be "
 "undone."
@@ -647,7 +647,7 @@ msgstr ""
 "Tämä toiminto poistaa Glossin ja kaikki siihen liittyvät tiedot. Toimintoa "
 "ei voi peruuttaa."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:148
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:153
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:58
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:187
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:278
@@ -655,78 +655,89 @@ msgstr ""
 msgid "Confirm Delete"
 msgstr "Hyväksy poistaminen"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:178
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:183
 #: signbank/feedback/templates/feedback/show.html:68
 #: signbank/feedback/templates/feedback/show.html:154
 #: signbank/video/templates/uploaded_glossvideos.html:50
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:193
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:198
 msgid "Capture new poster image"
 msgstr "Aseta aloituskuva"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:203
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:208
 msgid "Update poster image for video"
 msgstr "Päivitä aloituskuva videolle"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:214
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:219
 #: signbank/dictionary/templates/dictionary/record_video.html:34
 msgid "Close"
 msgstr "Sulje"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:215
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:220
 msgid "Save changes"
 msgstr "Tallenna muutokset"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:243
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:248
 msgid "No videos available for this gloss."
 msgstr "Tälle glossille ei ole videoita."
 
 #. Translators: Upload/Add new video to Signbank
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:256
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:261
 msgid "Upload New Video"
 msgstr "Lähetä uusi video"
 
 #. Translators: VideoUploadForGlossForm
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:267
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:272
 #: signbank/video/forms.py:19
 msgid "Upload Video"
 msgstr "Lähetä video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:282
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:287
 msgid "Gloss:"
 msgstr "Glossi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:287
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:292
 msgid "Gloss in English:"
 msgstr "Glossi englanniksi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:293
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:298
 msgid "Translations in "
 msgstr "Käännökset "
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:300
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:301
+msgid ""
+"After each translation enter a comma (,) or a semicolon (;).\n"
+"                               Usage of numbers that end with a dot (.) is "
+"allowed (e.g. 11.) and they will not be part\n"
+"                               of translations."
+msgstr ""
+"Jokaisen käännöksen jälkeen tulee syöttää pilkku (,) tai puolipiste (;).\n"
+"Numero(ide)n ja pisteen (.) yhdistelmää voidaan käyttää (esim. 11.),\n"
+"sillä niitä ei tallenneta käännöksinä."
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:310
 msgid "Comments:"
 msgstr "Kommentit"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:305
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:315
 msgid "Sign language:"
 msgstr "Viittomakieli:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:311
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:321
 msgid "Dialect:"
 msgstr "Alue:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:316
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:326
 msgid "URL:"
 msgstr "URL:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:324
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:334
 msgid "Created:"
 msgstr "Luotu:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:328
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:338
 msgid "Updated:"
 msgstr "Päivitetty:"
 

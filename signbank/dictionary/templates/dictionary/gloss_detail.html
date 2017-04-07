@@ -20,10 +20,15 @@
 
 <script type="text/javascript">
     // These variables are used in gloss_edit.js
-    var enable_edit_button_text = "{% blocktrans %}Enable Edit{% endblocktrans %}"
-    var disable_edit_button_text = "{% blocktrans %}Disable Edit{% endblocktrans %}"
-    var save_button_text = "{% blocktrans %}Save{% endblocktrans %}"
-    var cancel_button_text = "{% blocktrans %}Cancel{% endblocktrans %}"
+    var enable_edit_button_text = "{% blocktrans %}Enable Edit{% endblocktrans %}";
+    var disable_edit_button_text = "{% blocktrans %}Disable Edit{% endblocktrans %}";
+    var save_button_text = "{% blocktrans %}Save{% endblocktrans %}";
+    var cancel_button_text = "{% blocktrans %}Cancel{% endblocktrans %}";
+
+    // Initialize bootstrap3 tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
     // This script gets and inserts the users last searched items on the gloss page
     var search_results_url = '{% url 'dictionary:ajax_search_results' %}';
@@ -290,7 +295,12 @@
 
                 {% for translation_language, translations in translation_languages_and_translations %}
                 <tr>
-                    <th>{% blocktrans %}Translations in {% endblocktrans %}{{ translation_language.name }}:</th>
+                    <th>{% blocktrans %}Translations in {% endblocktrans %}{{ translation_language.name }}
+                         <span id="tooltip" class="glyphicon glyphicon-question-sign color-flatblue" aria-hidden="true"
+                               data-toggle="tooltip" data-placement="top"
+                               title="{% blocktrans %}After each translation enter a comma (,) or a semicolon (;).
+                               Usage of numbers that end with a dot (.) is allowed (e.g. 11.) and they will not be part
+                               of translations.{% endblocktrans %}"></span>:</th>
                     <td class='edit edit_text' id='keywords_{{ translation_language.language_code_2char }}'>{{ translations }}</td>
                 </tr>
                 {% endfor %}
