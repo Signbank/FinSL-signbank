@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 17:33+0200\n"
+"POT-Creation-Date: 2017-04-07 13:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,7 @@ msgstr "Aineisto"
 #: signbank/dictionary/models.py:239
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
+#: signbank/video/models.py:54
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Gloss"
 msgstr "Glossi"
@@ -58,7 +59,7 @@ msgstr "Glossin video"
 
 #: signbank/dictionary/forms.py:26 signbank/video/forms.py:20
 msgid "Glossvideo title"
-msgstr "Glossivideon otsikko"
+msgstr "Glossivideon nimi"
 
 #. Translators: exception ValidationError
 #: signbank/dictionary/forms.py:50
@@ -2212,19 +2213,19 @@ msgstr "Suomi"
 msgid "English"
 msgstr "Englanti"
 
-#: signbank/video/admin.py:9
+#: signbank/video/admin.py:8
 msgid "Has gloss"
 msgstr "On glossi"
 
-#: signbank/video/admin.py:15 signbank/video/admin.py:32
+#: signbank/video/admin.py:13 signbank/video/admin.py:30
 msgid "Yes"
 msgstr "Kyllä"
 
-#: signbank/video/admin.py:16 signbank/video/admin.py:33
+#: signbank/video/admin.py:14 signbank/video/admin.py:31
 msgid "No"
 msgstr "Ei"
 
-#: signbank/video/admin.py:27
+#: signbank/video/admin.py:25
 msgid "Has poster"
 msgstr "On posteri"
 
@@ -2238,21 +2239,57 @@ msgid "Video file in h264 mp4 format"
 msgstr "Videotiedosto h264 mp4 muodossa"
 
 #: signbank/video/models.py:48
-msgid "Descriptive title of the contents of the video"
-msgstr "Videon sisältöä kuvaava otsikko"
+msgid "Title"
+msgstr "Nimike"
 
-#: signbank/video/models.py:54
+#: signbank/video/models.py:49
+msgid "Descriptive name of the video."
+msgstr "Videon sisältöä kuvaava nimike."
+
+#: signbank/video/models.py:50
+msgid "Video file"
+msgstr "Videotiedosto"
+
+#: signbank/video/models.py:51
+msgid "Video file."
+msgstr "Videotiedosto."
+
+#: signbank/video/models.py:52
+msgid "Poster file"
+msgstr "Kuvatiedosto"
+
+#: signbank/video/models.py:53
+msgid "Still image representation of the video."
+msgstr "Kuva videosta."
+
+#: signbank/video/models.py:55
+msgid "The gloss this GlossVideo is related to."
+msgstr "Glossi johon tämä Glossivideo on liitetty."
+
+#: signbank/video/models.py:56
 msgid "Glossvideo dataset"
 msgstr "Glossivideon aineisto"
 
-#: signbank/video/models.py:55
-msgid "Dataset for a glossvideo"
-msgstr "Glossivideon aineisto"
+#: signbank/video/models.py:57
+msgid ""
+"Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
+"was uploaded."
+msgstr ""
+"Glossivideon aineisto, joka on otettu videoon liitetystä glossista tai "
+"valittu videoa lähetettäessä."
 
 #. Translators: GlossVideo: version
-#: signbank/video/models.py:61
+#: signbank/video/models.py:60
 msgid "Version"
 msgstr "Versio"
+
+#: signbank/video/models.py:61
+msgid ""
+"A number that represents the order of the Glossvideo's in a gloss page. "
+"Smaller number means higher priority."
+msgstr ""
+"Glossivideon järjestysnumero, jonka perusteella videot järjestetään "
+"glossisivulla. Pienempi numero tarkoittaa korkeampaa prioriteettia."
 
 #. Translators: Submit button
 #: signbank/video/templates/addvideo.html:15
@@ -2329,7 +2366,7 @@ msgstr "videoa"
 msgid "Save all"
 msgstr "Tallenna kaikki"
 
-#: signbank/video/templates/uploaded_glossvideos.html:118
+#: signbank/video/templates/uploaded_glossvideos.html:131
 msgid "GlossVideo successfully updated!"
 msgstr "Videon tiedot päivitetty!"
 
@@ -2536,8 +2573,6 @@ msgstr "Info"
 
 #. Translators: Placeholder text in a search textfield
 #: templates/menu.html:53
-#, fuzzy
-#| msgid "Search gloss"
 msgid "Search gloss"
 msgstr "Etsi glossia"
 
@@ -2696,6 +2731,9 @@ msgstr ""
 msgid "Language selection"
 msgstr "Kielen valinta"
 
+#~ msgid "Dataset for a glossvideo"
+#~ msgstr "Glossivideon aineisto"
+
 #~ msgctxt "do-search"
 #~ msgid "Search"
 #~ msgstr "Hae"
@@ -2732,9 +2770,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Advanced options"
 #~ msgstr "Lisävaihtoehdot"
-
-#~ msgid "title"
-#~ msgstr "otsikko"
 
 #~ msgid "content"
 #~ msgstr "sisältö"

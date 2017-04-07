@@ -45,20 +45,21 @@ storage = GlossVideoStorage()
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
 
-    title = models.CharField(blank=True, unique=False, help_text=_("Descriptive title of the contents of the video"),
-                             max_length=100)
-    videofile = models.FileField("video file", upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage)
-    posterfile = models.FileField("Poster file", upload_to=os.path.join(settings.GLOSS_VIDEO_DIRECTORY, "posters"),
-                                  storage=storage, null=True)
-    gloss = models.ForeignKey('dictionary.Gloss', null=True)
-    dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"),
-                                help_text=_("Dataset for a glossvideo"), null=True)
-
-    # video version, version = 0 is always the one that will be displayed
-    # we will increment the version (via reversion) if a new video is added
-    # for this gloss
+    title = models.CharField(_("Title"), blank=True, unique=False, max_length=100,
+                             help_text=_("Descriptive name of the video."))
+    videofile = models.FileField(_("Video file"), upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage,
+                                 help_text=_("Video file."))
+    posterfile = models.FileField(_("Poster file"), upload_to=os.path.join(settings.GLOSS_VIDEO_DIRECTORY, "posters"),
+                                  storage=storage, null=True, help_text=_("Still image representation of the video."))
+    gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
+                              help_text=_("The gloss this GlossVideo is related to."))
+    dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"), null=True,
+                                help_text=_("Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
+                                            "was uploaded."))
     # Translators: GlossVideo: version
-    version = models.IntegerField(_("Version"), default=0)
+    version = models.IntegerField(_("Version"), default=0,
+                                  help_text=_("A number that represents the order of the Glossvideo's in "
+                                              "a gloss page. Smaller number means higher priority."))
 
     class Meta:
         ordering = ['videofile']
