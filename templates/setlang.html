@@ -14,7 +14,7 @@
     {% for language in languages %}
         <button type="submit" name="language" value="{{ language.code }}"
                 class="btn btn-primary{% if language.code == LANGUAGE_CODE %} active{% endif %}" data-toggle="tooltip"
-                data-placement="bottom" title="{{language.name_local|capfirst}}">{{ language.code|upper }}</button>
+                data-placement="bottom" title="{{language.name_local|capfirst}}">{{ language.code }}</button>
     {% endfor %}
 
     </div>
