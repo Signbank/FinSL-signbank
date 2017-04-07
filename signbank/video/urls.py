@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^(?P<videoid>\d+)/$', views.video_view),
     url(r'^poster/(?P<videoid>\d+)$', views.poster_view),
     url(r'^upload/$', views.addvideo_view),
+    url(r'^upload/gloss/$', views.addvideo_gloss_view),
     url(r'^upload/recorded/$', views.add_recorded_video_view, name='add_recorded_video'),  # TODO: Confirm this
     # View to upload multiple videos with no foreign key to gloss.
     url(r'^add/$', views.addvideos_formview, name='upload_videos'),

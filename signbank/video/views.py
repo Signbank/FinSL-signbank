@@ -5,7 +5,7 @@ from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from models import GlossVideo
-from forms import VideoUploadForGlossForm, MultipleVideoUploadForm
+from forms import VideoUploadForGlossForm, VideoUploadAddGlossForm, MultipleVideoUploadForm
 from signbank.dictionary.models import Gloss
 from .forms import UpdateGlossVideoForm, PosterUpload
 from django.http import HttpResponse
@@ -16,7 +16,7 @@ from os.path import splitext
 def addvideo(request, gloss_id, redirect_url):
     """Add a video from form and process the upload"""
     if request.method == 'POST':
-        form = VideoUploadForGlossForm(request.POST, request.FILES)
+        form = VideoUploadAddGlossForm(request.POST, request.FILES)
         if form.is_valid():
             gloss = get_object_or_404(Gloss, pk=gloss_id)
             vfile = form.cleaned_data['videofile']
@@ -51,6 +51,52 @@ def addvideo(request, gloss_id, redirect_url):
 
 
 addvideo_view = permission_required('video.add_glossvideo')(addvideo)
+
+
+def addvideo_gloss(request):
+    """Add a video from form and process the upload"""
+    """View to present a video upload form and process the upload"""
+
+    if request.method == 'POST':
+
+        form = VideoUploadForGlossForm(request.POST, request.FILES)
+        if form.is_valid():
+            gloss_id = form.cleaned_data['gloss_id']
+            gloss = get_object_or_404(Gloss, pk=gloss_id)
+            vfile = form.cleaned_data['videofile']
+            video = GlossVideo(gloss=gloss)
+
+            video_title = form.cleaned_data['video_title']
+            if vfile:  # If there is no video file, we don't want to create a glossvideo.
+                if video_title:  # if video_title was provided in the form, use it
+                    video.title = form.cleaned_data['video_title']
+                else:  # Otherwise use the videos filename as the title.
+                    video.title = vfile.name
+
+            # Construct a filename for the video, because it doesn't have a path yet.
+            vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk, splitext(vfile.name)[1])
+            video.videofile = vfile
+            video.save()
+
+            # TODO: provide some feedback that it worked (if immediate display of video isn't working)
+
+            redirect_url = form.cleaned_data['redirect']
+
+            return redirect(redirect_url)
+
+    # if we can't process the form, just redirect back to the
+    # referring page, should just be the case of hitting
+    # Upload without choosing a file but could be
+    # a malicious request, if no referrer, go back to root
+    if 'HTTP_REFERER' in request.META:
+        url = request.META['HTTP_REFERER']
+    else:
+        url = '/'
+
+    return redirect(url)
+
+
+addvideo_gloss_view = permission_required('video.add_glossvideo')(addvideo_gloss)
 
 
 def add_recorded_video_view(request):
