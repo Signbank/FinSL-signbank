@@ -108,7 +108,7 @@ def add_recorded_video_view(request):
             gloss = get_object_or_404(Gloss, pk=form.cleaned_data['gloss_id'])
             vidfile = form.cleaned_data['videofile']
             if vidfile:
-                glossvid = GlossVideo.objects.create(gloss=gloss, videofile=vidfile)
+                glossvid = GlossVideo.objects.create(gloss=gloss, videofile=vidfile, dataset=gloss.dataset)
                 # Return the created GlossVideos id/pk, so that it can be used to link to the uploaded video.
                 return HttpResponse(json.dumps({'videoid': glossvid.pk}), content_type='application/json')
 
