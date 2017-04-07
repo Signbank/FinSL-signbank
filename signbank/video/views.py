@@ -122,7 +122,7 @@ class AddVideosView(FormView):
             data = form.cleaned_data
             dataset = data['dataset']
             for f in files:
-                GlossVideo.objects.create(videofile=f, dataset=dataset)
+                GlossVideo.objects.create(videofile=f, dataset=dataset, title=f.name)
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
