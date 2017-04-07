@@ -92,8 +92,14 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
-                        <label class='input-group-addon' for='id_idgloss'>{{searchform.search.label}}</label>
-                        <input id="id_idgloss" name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
+                        <label class='input-group-addon' for='id_search'>{{searchform.search.label}}</label>
+                        <input id="id_search" name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 searchinput">
+                    <div class='input-group'>
+                        <label class='input-group-addon' for='id_idgloss'>{{searchform.gloss.label}}</label>
+                        <input id="id_idgloss" name='gloss' class='form-control' {% if searchform.gloss.value %}value='{{searchform.gloss.value}}' {% endif %}>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 searchinput">

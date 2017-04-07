@@ -122,8 +122,10 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     signlanguage = forms.ModelMultipleChoiceField(label=_('Sign language'), queryset=SignLanguage.objects.all(),
                                                   required=False)
+
+    search = forms.CharField(label=_("Search"))
     # Translators: GlossSearchForm label
-    search = forms.CharField(label=_("Gloss"))
+    gloss = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
     idgloss_en = forms.CharField(label=_("Gloss in English"))
     # Translators: GlossSearchForm label

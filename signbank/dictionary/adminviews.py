@@ -156,6 +156,13 @@ class GlossListView(ListView):
 
         if 'search' in get and get['search'] != '':
             val = get['search']
+            # Searches for multiple fields at the same time. Looking if any of the fields match.
+            query = (Q(idgloss__icontains=val) | Q(idgloss_en__icontains=val) | Q(annotation_comments__icontains=val) |
+                     Q(translation__keyword__text__icontains=val))
+            qs = qs.filter(query)
+
+        if 'gloss' in get and get['gloss'] != '':
+            val = get['gloss']
 
             # Add fields you want to search logically with GET.search using | (OR) and & (AND)
             # Search for glosses containing a string, casesensitive with icontains
