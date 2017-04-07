@@ -18,8 +18,6 @@ class VideoUploadForGlossForm(forms.Form):
     # Translators: VideoUploadForGlossForm
     videofile = forms.FileField(label=_("Upload Video"))
     video_title = forms.CharField(label=_('Glossvideo title'), required=False)
-    gloss_id = forms.CharField(widget=forms.HiddenInput)
-    redirect = forms.CharField(widget=forms.HiddenInput, required=False)
 
 
 class MultipleVideoUploadForm(forms.Form):

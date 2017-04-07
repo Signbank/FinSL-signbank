@@ -24,13 +24,8 @@ def add_gloss(request):
             new_gloss.updated_by = request.user
             new_gloss.save()
 
-            # This here is a supposedly at least working, what it does is
-            # make it possible to add a video to a gloss directly from add_gloss page
-            # TODO: Refactor this when a cleaner way is found
-            request.POST['gloss_id'] = new_gloss.pk
             redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/?edit'
-            request.POST['redirect'] = redirecturl
-            addvideo(request)
+            addvideo(request, new_gloss.pk, redirecturl)
             #return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
             return HttpResponseRedirect(redirecturl)
     else:

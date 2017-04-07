@@ -13,22 +13,20 @@ import json
 from os.path import splitext
 
 
-def addvideo(request):
-    """View to present a video upload form and process the upload"""
-
+def addvideo(request, gloss_id, redirect_url):
+    """Add a video from form and process the upload"""
     if request.method == 'POST':
-
         form = VideoUploadForGlossForm(request.POST, request.FILES)
         if form.is_valid():
-            gloss_id = form.cleaned_data['gloss_id']
             gloss = get_object_or_404(Gloss, pk=gloss_id)
-
             vfile = form.cleaned_data['videofile']
-
             video = GlossVideo(gloss=gloss)
-
+            video_title = form.cleaned_data['video_title']
             if vfile: # If there is no video file, we don't want to create a glossvideo.
-                video.title = form.cleaned_data['video_title']
+                if video_title: # if video_title was provided in the form, use it
+                    video.title = form.cleaned_data['video_title']
+                else: # Otherwise use the videos filename as the title.
+                    video.title = vfile.name
             # Save the GlossVideo to get a primary key
             video.save()
 
@@ -38,8 +36,6 @@ def addvideo(request):
             video.save()
 
             # TODO: provide some feedback that it worked (if immediate display of video isn't working)
-
-            redirect_url = form.cleaned_data['redirect']
 
             return redirect(redirect_url)
 
