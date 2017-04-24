@@ -126,3 +126,7 @@ html {
 .tooltip-thumbnail {
     max-width: 280px;
 }
+/* Used in comment applications list.html template */
+section p {
+    word-wrap: break-word;
+}

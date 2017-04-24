@@ -39,6 +39,9 @@ urlpatterns = [
     # Registration urls for login, logout, registration, activation etc.
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
+    # Django-contrib-comments urls
+    url(r'^comments/', include('django_comments.urls')),
+
     # Admin urls
     url(r'^admin/doc/',
         include('django.contrib.admindocs.urls')),

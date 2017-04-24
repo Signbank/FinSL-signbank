@@ -1,0 +1,15 @@
+{% load i18n %}
+<article id="comments">
+    {% if comment_list %}
+        {% for comment in comment_list %}
+        <header id="c{{ comment.id }}">
+            <strong>{{ comment.submit_date }} - {{ comment.name }}</strong>
+        </header>
+        <section>
+            <p>{{ comment.comment }}</p>
+        </section>
+        {% endfor %}
+    {% else %}
+        <p><em>{% blocktrans %}No comments.{% endblocktrans %}</em></p>
+    {% endif %}
+</article>

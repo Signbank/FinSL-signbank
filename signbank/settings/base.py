@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'signbank.video',
     'reversion',
     'tagging',
+    'django_comments',
 )
 
 # Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
