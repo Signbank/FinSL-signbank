@@ -4,10 +4,27 @@
 {# Translators: Title for sign search page #}
 {% block bootstrap3_title %}{% blocktrans %}Signbank: Search Signs{% endblocktrans %}{% endblock %}
 {% block extrahead %}
+<link rel="stylesheet" href="/static/css/jquery-ui/jquery-ui.min.css">
 {% endblock %}
 
 {% block extrajs %}
-
+  <script src="/static/js/jquery-ui.min.js"></script>
+  <script>
+  $( function() {
+    $( document ).tooltip({
+      items: "[data-thumbnail-src]",
+      content: function() {
+        var element = $( this );
+        if ( element.is( "[data-thumbnail-src]" ) ) {
+          var src = element.attr("data-thumbnail-src");
+          if ( src != "") {
+            return "<img class='tooltip-thumbnail' alt='" + element.text() + "' src='"+src+"'>";
+          }
+        }
+      }
+    });
+  } );
+  </script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
 
     <script type='text/javascript'>
@@ -223,7 +240,9 @@ function clearForm(myFormElement) {
         {# Here we decide/change the row background colors #}
         <tr {% if gloss.locked %}class="success"{% elif gloss.glossvideo_set.all.exists %}class="warning"{% else %}class="danger"{% endif %}>
             <td>{{ gloss.dataset }}</td>
-            <td><a href="/dictionary/gloss/{{gloss.pk}}/">{{ gloss.idgloss }}</a></td>
+            {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
+            <td><a href="/dictionary/gloss/{{gloss.pk}}/"
+                   data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}">{{ gloss.idgloss }}</a></td>
             <td>{{ gloss.idgloss_en }}</td>
             <td> {# Prefetched translations of 'language_code_2char==get_language()' for glosses #}
                 {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}

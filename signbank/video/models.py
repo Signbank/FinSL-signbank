@@ -140,7 +140,7 @@ class GlossVideo(models.Model):
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""
-        if self.poster:
+        if self.posterfile:
             return True
         return False
 

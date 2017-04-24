@@ -122,3 +122,7 @@ html {
 .color-flatblue {
    color: #3498DB;
 }
+/* Controls the jQuery-UI tooltip thumbnail style */
+.tooltip-thumbnail {
+    max-width: 280px;
+}
