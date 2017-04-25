@@ -12,13 +12,15 @@
   <script>
   $( function() {
     $( document ).tooltip({
-      items: "[data-thumbnail-src]",
+      items: "[data-video-src]",
       content: function() {
         var element = $( this );
-        if ( element.is( "[data-thumbnail-src]" ) ) {
-          var src = element.attr("data-thumbnail-src");
-          if ( src != "") {
-            return "<img class='tooltip-thumbnail' alt='" + element.text() + "' src='"+src+"'>";
+        if ( element.is( "[data-video-src]" ) ) {
+          var src_video = element.attr("data-video-src");
+          var src_poster = element.attr("data-thumbnail-src");
+          var video_ext = element.attr("data-video-ext");
+          if ( src_video != "") {
+            return "<video preload='none' autoplay muted poster='"+src_poster+"' width='250'><source src='"+src_video+"' type='video/"+video_ext+"'>Your browser does not support the video tag.</video>";
           }
         }
       }
@@ -242,7 +244,8 @@ function clearForm(myFormElement) {
             <td>{{ gloss.dataset }}</td>
             {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
             <td><a href="/dictionary/gloss/{{gloss.pk}}/"
-                   data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}">{{ gloss.idgloss }}</a></td>
+                   data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                   data-video-src="{% if gloss.glossvideo_set.all.0.videofile %}{{ gloss.glossvideo_set.all.0.videofile.url }}" data-video-ext="{{ gloss.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{ gloss.idgloss }}</a></td>
             <td>{{ gloss.idgloss_en }}</td>
             <td> {# Prefetched translations of 'language_code_2char==get_language()' for glosses #}
                 {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
