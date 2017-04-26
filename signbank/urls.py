@@ -10,6 +10,7 @@ from .feedback import views as feedback_views
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment
+from .comments import latest_comments, latest_comments_page
 admin.autodiscover()
 from adminsite import publisher_admin
 
@@ -44,6 +45,12 @@ urlpatterns = [
     url(r'^comments/', include('django_comments.urls')),
     # Custom functionality added to comments app. Comment editing.
     url (r'^comments/update/(?P<id>\d+)/$', login_required(edit_comment, login_url='/accounts/login/')),
+    # Feed for latest comments.
+    url(r'^comments/latest/$', permission_required('dictionary.search_gloss')(latest_comments),
+        name='latest_comments'),
+    # Page showing feed for latest comments. Count indicates how many comments to show.
+    url(r'^comments/latest/page/(?P<count>\d+)/$', permission_required('dictionary.search_gloss')(latest_comments_page),
+        name='latest_comments_page'),
 
     # Admin urls
     url(r'^admin/doc/',

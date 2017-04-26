@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.sites.shortcuts import get_current_site
 from django.forms import ModelForm
 from django.forms.models import model_to_dict
 from django.http import HttpResponseForbidden
 from django.utils.translation import ugettext_lazy as _
 from django_comments.models import Comment
 from django_comments.forms import CommentForm
+from django_comments import get_model as django_comments_get_model
 
 
 def edit_comment(request, id):
@@ -39,4 +41,24 @@ class EditCommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ['comment']
+
+
+def latest_comments_page(request, count=20):
+    if count > 100:
+        count = 100
+    qs = django_comments_get_model().objects.filter(
+        site__pk=get_current_site(request).pk,
+        is_public=True,
+        is_removed=False,
+    ).order_by('-submit_date')[:count]
+    return render(request, 'comments/latest_comments_page.html', {'comments': qs})
+
+
+def latest_comments(request):
+    qs = django_comments_get_model().objects.filter(
+        site__pk=get_current_site(request).pk,
+        is_public=True,
+        is_removed=False,
+    ).order_by('-submit_date')[:10]
+    return render(request, 'comments/latest_comments.html', {'comments': qs})
 

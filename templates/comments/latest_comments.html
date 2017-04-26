@@ -1,0 +1,22 @@
+{% load i18n %}
+<div class="latest_comments">
+    <h2><a href="{% url 'latest_comments_page' count='20' %}">{% blocktrans %}Latest comments{% endblocktrans %}</a></h2>
+{% for comment in comments %}
+    <article class="comment">
+        <header>
+            <h4><a href="{{comment.get_absolute_url}}"><strong>{{comment.content_object}}</strong>
+                {% if comment.content_object.dataset %}{# if we some day use this elsewhere, don't want this to break #}
+                <span class="label label-default" style="display:inline-block;padding-bottom:0.2em;margin-bottom:2px;">
+                    {{comment.content_object.dataset}}</span> -
+                {% endif %}
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{comment.submit_date}}</em> -
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{comment.name}}</a></h4>
+        </header>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>{{comment.comment}}</p>
+            </div>
+        </div>
+    </article>
+{% endfor %}
+</div>

@@ -39,6 +39,7 @@
                     <li><a href="{% url "dictionary:import_gloss_csv" %}">{% blocktrans %}CSV import{% endblocktrans %}</a></li>
                     {% endif %}
                     <li><a href="{% url "infopage" %}">{% blocktrans %}Info{% endblocktrans %}</a></li>
+                    <li><a href="{% url "latest_comments_page" count="20" %}">{% blocktrans %}Latest comments{% endblocktrans %}</a></li>
                 </ul>
             </li>
         {% endif %}

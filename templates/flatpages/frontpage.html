@@ -1,17 +1,27 @@
 {% extends "flatpages/default.html" %}
-
-
+{% load i18n %}
 {% block pagecontent %}
 <div class='row'>
     <div class="col-md-8">
     {{ flatpage.content }}
     </div>
-    <div class="col-md-4">
-        <a class="twitter-timeline" data-height="1000" href="https://twitter.com/VKK_JY">Tweets by VKK_JY</a>
+    <div class="col-md-4" id="front-right">
+        {% if not perms.dictionary.search_gloss %}
+        <a class="twitter-timeline" data-height="1000" href="https://twitter.com/VKK_JY">
+            {% blocktrans %}Tweets by VKK_JY{% endblocktrans %}</a>
         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
-
+{% block extrajs %}
+    {% if perms.dictionary.search_gloss %}
+    <script type="text/javascript">
+    $(document).ready(function() {
+     $('#front-right').load('/comments/latest/');
+    });
+    </script>
+    {% endif %}
+{% endblock %}
 
 
