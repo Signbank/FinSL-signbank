@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 17:24+0300\n"
+"POT-Creation-Date: 2017-04-26 20:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: signbank/comments.py:15
+#: signbank/comments.py:17
 msgid ""
 "You are not allowed to edit this comment, because you are not the author of "
 "the comment."
@@ -564,7 +564,7 @@ msgstr "Signbank: Etsi viittomia"
 
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:166
-#: templates/menu.html:62
+#: templates/menu.html:63
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -663,7 +663,7 @@ msgstr ""
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:187
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:278
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:431
-#: templates/comments/list.html:50
+#: templates/comments/list.html:51
 msgid "Confirm Delete"
 msgstr "Hyväksy poistaminen"
 
@@ -2447,23 +2447,27 @@ msgstr "Jyväskylän yliopisto"
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
-#: templates/comments/list.html:19
+#: templates/comments/latest_comments.html:3 templates/menu.html:42
+msgid "Latest comments"
+msgstr "Uusimmat kommentit"
+
+#: templates/comments/list.html:20
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: templates/comments/list.html:26
+#: templates/comments/list.html:27
 msgid "Delete"
 msgstr "Poista"
 
-#: templates/comments/list.html:34
+#: templates/comments/list.html:35
 msgid "No comments."
 msgstr "Ei kommentteja."
 
-#: templates/comments/list.html:42
+#: templates/comments/list.html:43
 msgid "Delete comment?"
 msgstr "Poista kommentti?"
 
-#: templates/comments/list.html:62
+#: templates/comments/list.html:63
 msgid "Edit comment"
 msgstr "Muokkaa kommenttia"
 
@@ -2471,6 +2475,10 @@ msgstr "Muokkaa kommenttia"
 #: templates/flatpages/default.html:19
 msgid "Edit Page"
 msgstr "Muokkaa sivua"
+
+#: templates/flatpages/frontpage.html:11
+msgid "Tweets by VKK_JY"
+msgstr "Twiittejä @VKK_JY"
 
 #: templates/infopage.html:12
 msgid "Information page"
@@ -2621,12 +2629,12 @@ msgid "Info"
 msgstr "Info"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:53
+#: templates/menu.html:54
 msgid "Search gloss"
 msgstr "Etsi glossia"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:58
+#: templates/menu.html:59
 msgid "Search translation"
 msgstr "Etsi käännösvastinetta"
 
