@@ -49,7 +49,7 @@ urlpatterns = [
     url(r'^comments/latest/$', permission_required('dictionary.search_gloss')(latest_comments),
         name='latest_comments'),
     # Page showing feed for latest comments. Count indicates how many comments to show.
-    url(r'^comments/latest/page/(?P<count>\d+)/$', permission_required('dictionary.search_gloss')(latest_comments_page),
+    url(r'^comments/latest/(?P<count>\d+)/$', permission_required('dictionary.search_gloss')(latest_comments_page),
         name='latest_comments_page'),
 
     # Admin urls
