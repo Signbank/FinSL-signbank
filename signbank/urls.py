@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib import admin
 from django.conf import settings
 
@@ -9,10 +9,11 @@ from .dictionary.adminviews import GlossListView
 from .feedback import views as feedback_views
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
-
+from .comments import edit_comment
 admin.autodiscover()
 from adminsite import publisher_admin
 
+app_name = 'signbank'
 urlpatterns = [
     # Root page
     url(r'^$', flatpages_views.flatpage, {'url': '/'},
@@ -41,6 +42,8 @@ urlpatterns = [
 
     # Django-contrib-comments urls
     url(r'^comments/', include('django_comments.urls')),
+    # Custom functionality added to comments app. Comment editing.
+    url (r'^comments/update/(?P<id>\d+)/$', login_required(edit_comment, login_url='/accounts/login/')),
 
     # Admin urls
     url(r'^admin/doc/',

@@ -437,6 +437,10 @@ class Gloss(models.Model):
     def __unicode__(self):
         return "%s" % (unicode(self.idgloss))
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('dictionary:admin_gloss_view', args=[str(self.id)])
+
     def field_labels(self):
         """Return the dictionary of field labels for use in a template"""
         d = dict()
