@@ -1,8 +1,9 @@
 {% load i18n %}
+{% load comments %}
+{% get_comment_count for gloss as comment_count %}
 <div id="gloss-comments">
-    <h4>{% blocktrans %}Comments{% endblocktrans %}</h4>
+    <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
     <div class="well well-md">
-    {% load comments %}
     {% render_comment_list for gloss %}
     <hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
     {% if user.is_authenticated %}
