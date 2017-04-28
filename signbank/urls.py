@@ -9,8 +9,7 @@ from .dictionary.adminviews import GlossListView
 from .feedback import views as feedback_views
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
-from .comments import edit_comment
-from .comments import latest_comments, latest_comments_page
+from .comments import edit_comment, latest_comments, latest_comments_page
 admin.autodiscover()
 from adminsite import publisher_admin
 

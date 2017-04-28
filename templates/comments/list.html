@@ -7,7 +7,8 @@ function load_comment_edit(commentid) {
 <div id="comments">
     {% if comment_list %}
         {% for comment in comment_list %}
-        {% load comments %}
+        {% load tagging_tags %}
+        {% tags_for_object comment as tag_list %}
         <article class="comment">
             <header id="c{{ comment.id }}">
                 <strong>{{ comment.submit_date }} -
@@ -26,6 +27,13 @@ function load_comment_edit(commentid) {
                         style="margin-top:0px;margin-bottom:0px;
                         {% if user != comment.user and user.is_staff %}display:none;{% endif %}">{% blocktrans %}Delete{% endblocktrans %}</button>
                 {% endif %}
+            {% endif %}
+            {% if tag_list %}
+                {% for tag in tag_list %}
+            <div class="comment-tags" style="display:inline;">
+                <span class="label label-info">{{tag}}</span>
+            </div>
+                {% endfor %}
             {% endif %}
             </header>
             <p>{{ comment.comment }}</p>

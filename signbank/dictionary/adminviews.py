@@ -17,6 +17,7 @@ from collections import defaultdict
 from signbank.dictionary.forms import *
 from signbank.feedback.forms import *
 from signbank.video.forms import VideoUploadForGlossForm
+from ..comments import CommentTagForm
 
 
 class GlossListView(ListView):
@@ -439,6 +440,7 @@ class GlossDetailView(DetailView):
         context = super(GlossDetailView, self).get_context_data(**kwargs)
         context['dataset'] = self.get_object().dataset
         context['tagform'] = TagUpdateForm()
+        context['commenttagform'] = CommentTagForm()
         context['videoform'] = VideoUploadForGlossForm()
         context['definitionform'] = DefinitionForm()
         context['relationform'] = RelationForm()
@@ -484,12 +486,14 @@ class GlossDetailView(DetailView):
 
         return context
 
+
 def gloss_ajax_search_results(request):
     """Returns a JSON list of glosses that match the previous search stored in sessions"""
     if 'search_results' in request.session and request.session['search_results'] != '':
         return JsonResponse(request.session['search_results'], safe=False)
     else:
         return HttpResponse("OK")
+
 
 def gloss_ajax_complete(request, prefix):
     """Return a list of glosses matching the search term as a JSON structure suitable for typeahead."""
@@ -504,13 +508,15 @@ def gloss_ajax_complete(request, prefix):
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
 
+
 def gloss_list_xml(self, dataset):
     """Returns all entries in dictionarys idgloss fields in XML form that is supported by ELAN"""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = Dataset.objects.get(id=dataset)
-    return my_serialize(dataset, Gloss.objects.filter(dataset=dataset))
+    return serialize_glosses(dataset, Gloss.objects.filter(dataset=dataset))
 
-def my_serialize(dataset, query_set):
+
+def serialize_glosses(dataset, query_set):
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'query_set': query_set, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 

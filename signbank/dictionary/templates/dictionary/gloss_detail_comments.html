@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load bootstrap3 %}
 {% load comments %}
 {% get_comment_count for gloss as comment_count %}
 <div id="gloss-comments">
@@ -21,6 +22,7 @@
         {{ formcomment.object_pk }}
         {{ formcomment.timestamp }}
         {{ formcomment.security_hash }}
+        {% bootstrap_field commenttagform.tag %}
         <input type="hidden" name="next" value="{% url 'dictionary:admin_gloss_view' gloss.id %}">
         <button type="submit" class="btn btn-default" id="id_submit_comm">
             {% blocktrans %}Add comment{% endblocktrans %}</button>

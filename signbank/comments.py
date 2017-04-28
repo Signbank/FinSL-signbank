@@ -1,12 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.sites.shortcuts import get_current_site
 from django.forms import ModelForm
 from django.forms.models import model_to_dict
 from django.http import HttpResponseForbidden
 from django.utils.translation import ugettext_lazy as _
+from django import forms
+from django.contrib.sites.shortcuts import get_current_site
+from django.dispatch import receiver
 from django_comments.models import Comment
+from django_comments.signals import comment_was_posted
 from django_comments.forms import CommentForm
 from django_comments import get_model as django_comments_get_model
+from tagging.models import Tag
+
+
+class CommentTagForm(forms.Form):
+    """Form for tags, meant to be used when adding tags to Comments."""
+    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
+                                 widget=forms.Select(attrs={'class': 'form-control'}))
 
 
 def edit_comment(request, id):
@@ -62,3 +72,12 @@ def latest_comments(request):
     ).order_by('-submit_date')[:10]
     return render(request, 'comments/latest_comments.html', {'comments': qs})
 
+
+@receiver(comment_was_posted, sender=Comment)
+def add_tags_to_comments(sender, request, comment, **kwargs):
+    """Add tags to a comment after comment has been created."""
+    if request.method == 'POST':
+        form = CommentTagForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data["tag"]:
+                Tag.objects.add_tag(comment, form.cleaned_data["tag"].name)
