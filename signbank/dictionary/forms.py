@@ -279,3 +279,9 @@ class MorphologyForm(forms.ModelForm):
 class CSVUploadForm(forms.Form):
     file = forms.FileField()
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all(), empty_label=None)
+
+
+class GlossPublicSearchForm(forms.Form):
+    """Public search form."""
+    search = forms.CharField(label=_("Search"), required=False,
+                             widget=forms.TextInput(attrs={'placeholder': _('Search signs')}))

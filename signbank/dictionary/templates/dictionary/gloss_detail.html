@@ -2,9 +2,11 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/tagmanager.css">
+<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
 {% endblock %}
 
 {% block extrajs %}
@@ -117,7 +119,7 @@ $(document).ready(function () {
 
 <div id="signinfo" class='navbar navbar-default navbar-collapse'>
     <div id="datasetname" class="pull-left">
-        <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="label label-default">{{dataset}}</span></h4>
+        <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
     </div>
     {% if perms.dictionary.change_gloss %}
         {% if not gloss.locked %}
@@ -178,8 +180,8 @@ $(document).ready(function () {
 
             <div id="videocontainer">
 
-                {% if gloss.has_videos %}
-                    {% for glossvideo in gloss.get_gloss_videos %}
+                {% if gloss.glossvideo_set.exists %}
+                    {% for glossvideo in gloss.glossvideo_set.all %}
                         <div class="player">
                             <div class="video-title">
                                 <h4 class="edit edit_text" id="video_title{{glossvideo.pk}}">{{glossvideo.title}}</h4>

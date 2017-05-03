@@ -5,7 +5,6 @@ function load_comment_edit(commentid) {
 }
 </script>
 <div id="comments">
-    {% if comment_list %}
         {% for comment in comment_list %}
         {% load tagging_tags %}
         {% tags_for_object comment as tag_list %}
@@ -28,20 +27,17 @@ function load_comment_edit(commentid) {
                         {% if user != comment.user and user.is_staff %}display:none;{% endif %}">{% blocktrans %}Delete{% endblocktrans %}</button>
                 {% endif %}
             {% endif %}
-            {% if tag_list %}
-                {% for tag in tag_list %}
-            <div class="comment-tags" style="display:inline;">
-                <span class="label label-info">{{tag}}</span>
-            </div>
-                {% endfor %}
-            {% endif %}
+            {% for tag in tag_list %}
+                <div class="comment-tags" style="display:inline;">
+                    <span class="label label-info">{{tag}}</span>
+                </div>
+            {% endfor %}
             </header>
             <p>{{ comment.comment }}</p>
         </article>
-        {% endfor %}
-    {% else %}
+        {% empty %}
         <p><em>{% blocktrans %}No comments.{% endblocktrans %}</em></p>
-    {% endif %}
+        {% endfor %}
 </div>
 <div id="delete_comment_modal" class="modal fade delete_comment_modal" tabindex="-1" role="dialog" aria-labelledby="ConfirmCommentDeleteModal">
   <div class="modal-dialog modal-sm" role="document">

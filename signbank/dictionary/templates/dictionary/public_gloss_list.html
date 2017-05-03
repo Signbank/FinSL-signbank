@@ -1,0 +1,103 @@
+{% extends "baselayout.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="well well-sm">
+        <h2>{% blocktrans %}Search signs{% endblocktrans %}
+            <small>{% blocktrans %}By gloss or translation equivalent{% endblocktrans %}</small></h2>
+        {# Search form #}
+        <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
+            {% bootstrap_form searchform %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    {% blocktrans context "public_search" %}Search{% endblocktrans %}
+                </button>
+            {% endbuttons %}
+        </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    {% for obj in object_list %}
+    <div class="col-md-6 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{{obj.get_public_absolute_url}}">{{obj}}</a>
+                    <span class="dataset-{{obj.dataset.id}}-color label label-default">{{obj.dataset}}</span></h3>
+            </div>
+            <div class="panel-body embed-responsive embed-responsive-16by9">
+            {% if obj.glossvideo_set.all.0 %}
+                <video id="glossvideo-{{obj.glossvideo_set.all.0.pk}}" preload="metadata" controls muted
+{% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url|urlencode}}"{% endif %}>
+                {% if obj.glossvideo_set.all.0.get_extension == '.mp4' %}
+                    <source src="{{obj.glossvideo_set.all.0.videofile.url|urlencode}}" type="video/mp4">
+                {% elif obj.glossvideo_set.all.0.get_extension == '.webm' %}
+                    <source src="{{obj.glossvideo_set.all.0.videofile.url|urlencode}}" type="video/webm">
+                {% endif %}
+                    {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                </video>
+            {% else %}
+                <p><em>{% blocktrans %}No video.{% endblocktrans %}</em></p>
+            {% endif %}
+            </div>
+            <div class="panel-footer">
+
+            <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %}:</h4>
+
+            {% if obj.glosstranslations_set.exists %}
+                {{ obj.glosstranslations_set.all.0 }}
+            {% else %}
+            {% for trans in obj.translation_set.all %}
+                {{ trans.keyword }},
+                {% if forloop.last %}
+                {{ trans.keyword }}
+                {% endif %}
+            {% empty %}
+                <em>{% blocktrans %}No translations.{% endblocktrans %}</em>
+            {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+    <ul class='pagination pagination-sm'>
+        {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&laquo;</a></li>
+        {% endif %}
+        {% if  page_obj.number > 10 %}
+        <li><a>...</a></li>
+        {% endif %}
+
+        {% for p in page_obj.paginator.page_range %}
+            {% if p < page_obj.number|add:"10" and  p > page_obj.number|add:"-10" %}
+            <li {% if p == page_obj.number %}class='active'{% endif %}>
+            <a href="?page={{ p }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% if p == 0 %}Start{% else %}{{p}}{% endif %}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.paginator.num_pages > page_obj.number|add:"10" %}
+        <li><a>...</a></li>
+        <li>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{page_obj.paginator.num_pages}}</a>
+        </li>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+    </span>
+</div>
+
+{% endblock %}

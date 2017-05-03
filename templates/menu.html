@@ -46,21 +46,15 @@
         </ul>
 
         <form class="navbar-form navbar-right" role="search" id="menusearch" name="menusearch" method="get"
-              action="/dictionary/search/">
-
+              action="/dictionary/public/gloss/">
             <div class="form-group">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 {# Translators: Placeholder text in a search textfield #}
-                <input class='form-control disabled' placeholder='{% blocktrans %}Search gloss{% endblocktrans %}' type="text"
-                       name="search" value="{{ search }}" maxlength="50" disabled>
-            </div>
-            <div class="form-group">
-                {# Translators: Placeholder text in a search textfield #}
-                <input class='form-control disabled' placeholder='{% blocktrans %}Search translation{% endblocktrans %}'
-                       type="text" name="keyword" value="{{ keyword }}" maxlength="50" disabled>
+                <input class='form-control' placeholder='{% blocktrans %}Search sign{% endblocktrans %}' type="text"
+                       name="search" value="{{ search }}" maxlength="50">
             </div>
             {# Translators: Submit button (press to search) #}
-            <button type="submit" class="btn btn-default disabled" disabled>{% blocktrans context "search-button" %}Search{% endblocktrans %}</button>
+            <button type="submit" class="btn btn-default">{% blocktrans context "search-button" %}Search{% endblocktrans %}</button>
         </form>
     </div>
     <!-- /.navbar-collapse -->

@@ -1,10 +1,12 @@
 {% extends "baselayout.html" %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% load staticfiles %}
 {# Translators: Title for sign search page #}
 {% block bootstrap3_title %}{% blocktrans %}Signbank: Search Signs{% endblocktrans %}{% endblock %}
 {% block extrahead %}
-<link rel="stylesheet" href="/static/css/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
 {% endblock %}
 
 {% block extrajs %}
@@ -241,7 +243,7 @@ function clearForm(myFormElement) {
     {% for gloss in object_list %}
         {# Here we decide/change the row background colors #}
         <tr {% if gloss.locked %}class="success"{% elif gloss.glossvideo_set.all.exists %}class="warning"{% else %}class="danger"{% endif %}>
-            <td>{{ gloss.dataset }}</td>
+            <td><span class="dataset-{{gloss.dataset.id}}-color label label-default">{{ gloss.dataset }}</span></td>
             {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
             <td><a href="/dictionary/gloss/{{gloss.pk}}/"
                    data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}"

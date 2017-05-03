@@ -62,7 +62,7 @@ class GlossVideo(models.Model):
                                               "a gloss page. Smaller number means higher priority."))
 
     class Meta:
-        ordering = ['videofile']
+        ordering = ['version']
 
     def save(self, *args, **kwargs):
         # Save object so that we can access the saved fields.
@@ -116,16 +116,6 @@ class GlossVideo(models.Model):
         if self.gloss:
             return unicode(self.gloss.idgloss) + "-" + str(self.gloss.pk) + "_vid" + str(self.pk) + "_poster." + ext
         return self.videofile.name + "." + ext
-
-    @staticmethod
-    def gloss_has_videos(gloss):
-        """Returns True if the specified Gloss has any videos"""
-        return True if GlossVideo.objects.filter(gloss=gloss).exists() else False
-
-    @staticmethod
-    def get_glosses_videos(gloss):
-        """Returns all glossvideos for selected Gloss"""
-        return GlossVideo.objects.filter(gloss=gloss).order_by('version')
 
     @staticmethod
     def rename_glosses_videos(gloss):

@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib.auth.decorators import permission_required
 # Views
 from . import adminviews
+from . import publicviews
 from . import update
 from . import views
 from . import tagviews
@@ -55,6 +56,10 @@ urlpatterns = [
     url(r'^list/$', permission_required('dictionary.search_gloss')(adminviews.GlossListView.as_view())),
     url(r'^gloss/(?P<pk>\d+)', permission_required('dictionary.search_gloss')
     (adminviews.GlossDetailView.as_view()), name='admin_gloss_view'),
+
+    # Public views for dictionary
+    url(r'^public/gloss/$', publicviews.GlossListPublicView.as_view(), name='public_gloss_list'),
+    url(r'^public/gloss/(?P<pk>\d+)', publicviews.GlossDetailPublicView.as_view(), name='public_gloss_view'),
 
     # A view for the developer to try out some things
     # url(r'^try/$', views.try_code),

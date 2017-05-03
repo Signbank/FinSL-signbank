@@ -10,4 +10,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for gloss in Gloss.objects.all():
-            print gloss.id, GlossVideo.get_glosses_videos(gloss)
+            print(gloss.id, gloss.glossvideo_set.all() or None)

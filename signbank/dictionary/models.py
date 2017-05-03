@@ -6,6 +6,7 @@ from collections import OrderedDict
 from django.db import models, OperationalError
 from django.conf import settings
 from django.http import Http404
+from django.urls import reverse
 from tagging.registry import register
 import tagging
 import os
@@ -437,9 +438,12 @@ class Gloss(models.Model):
     def __unicode__(self):
         return "%s" % (unicode(self.idgloss))
 
-    def get_absolute_url(self):
-        from django.urls import reverse
+    def get_admin_absolute_url(self):
         return reverse('dictionary:admin_gloss_view', args=[str(self.id)])
+
+    def get_public_absolute_url(self):
+        return reverse('dictionary:public_gloss_view', args=[str(self.id)])
+
 
     def field_labels(self):
         """Return the dictionary of field labels for use in a template"""
@@ -479,14 +483,6 @@ class Gloss(models.Model):
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
-
-    def has_videos(self):
-        """Returns True if the Gloss has any videos (video.GlossVideo)"""
-        return GlossVideo.gloss_has_videos(self)
-
-    def get_gloss_videos(self):
-        """Return a list of videos for a Gloss"""
-        return GlossVideo.get_glosses_videos(self)
 
     def options_to_json(self, options):
         """Convert an options list to a json dict"""
