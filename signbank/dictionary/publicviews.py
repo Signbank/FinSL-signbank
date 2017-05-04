@@ -15,16 +15,18 @@ class GlossListPublicView(ListView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(GlossListPublicView, self).get_context_data(**kwargs)
-        if self.request.GET.has_key("search"):
-            context["searchform"] = GlossPublicSearchForm(self.request.GET)
-        else:
-            context["searchform"] = GlossPublicSearchForm()
+        context["searchform"] = GlossPublicSearchForm(self.request.GET)
         return context
 
     def get_queryset(self):
-        # get query terms from self.request
+        # Get queryset
         qs = super(GlossListPublicView, self).get_queryset()
         get = self.request.GET
+
+        # Exclude datasets that are not public.
+        qs = qs.exclude(dataset__is_public=False)
+        # Exclude glosses that are not 'locked'.
+        qs = qs.exclude(locked=False)
 
         # Search for multiple datasets (if provided)
         vals = get.getlist('dataset', [])

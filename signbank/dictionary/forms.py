@@ -285,3 +285,6 @@ class GlossPublicSearchForm(forms.Form):
     """Public search form."""
     search = forms.CharField(label=_("Search"), required=False,
                              widget=forms.TextInput(attrs={'placeholder': _('Search signs')}))
+    dataset = forms.ModelMultipleChoiceField(queryset=Dataset.objects.filter(is_public=True), required=False,
+                                             label=_("Lexicon"), widget=forms.CheckboxSelectMultiple(),
+                                             help_text=_("You can limit the search to these lexicons."))

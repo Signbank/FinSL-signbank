@@ -14,7 +14,18 @@
             <small>{% blocktrans %}By gloss or translation equivalent{% endblocktrans %}</small></h2>
         {# Search form #}
         <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
-            {% bootstrap_form searchform %}
+            {% bootstrap_field searchform.search bound_css_class="not-bound" %}
+            <div class="form-group">
+                {% bootstrap_label searchform.dataset.label label_for="id_dataset" label_class="control-label" %}
+                <div id="id_dataset">
+                {% for checkbox in searchform.dataset %}{# Doing this manually so that we can add 'span label'. #}
+                <div class="checkbox" style="display: inline-block;margin-top:0px;"><label for="{{checkbox.id_for_label}}">
+                    {{ checkbox.tag }} <span class="dataset-{{checkbox.data.value}}-color label label-default">{{ checkbox.choice_label }}</span></label>
+                </div>
+                {% endfor %}
+                    <div class="help-block" style="display:inline-block;">{{searchform.dataset.help_text}}</div>
+                </div>
+            </div>
             {% buttons %}
                 <button type="submit" class="btn btn-primary">
                     {% blocktrans context "public_search" %}Search{% endblocktrans %}

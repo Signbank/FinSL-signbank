@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-03 19:51+0300\n"
+"POT-Creation-Date: 2017-05-04 15:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,37 +99,37 @@ msgid "All"
 msgstr "Kaikki"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:94 signbank/dictionary/models.py:595
+#: signbank/dictionary/forms.py:94 signbank/dictionary/models.py:591
 msgid "Homonym"
 msgstr "Homonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:96 signbank/dictionary/models.py:597
+#: signbank/dictionary/forms.py:96 signbank/dictionary/models.py:593
 msgid "Synonym"
 msgstr "Synonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:98 signbank/dictionary/models.py:599
+#: signbank/dictionary/forms.py:98 signbank/dictionary/models.py:595
 msgid "Variant"
 msgstr "Variantti"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:100 signbank/dictionary/models.py:601
+#: signbank/dictionary/forms.py:100 signbank/dictionary/models.py:597
 msgid "Antonym"
 msgstr "Antonyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:102 signbank/dictionary/models.py:603
+#: signbank/dictionary/forms.py:102 signbank/dictionary/models.py:599
 msgid "Hyponym"
 msgstr "Hyponyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:104 signbank/dictionary/models.py:605
+#: signbank/dictionary/forms.py:104 signbank/dictionary/models.py:601
 msgid "Hypernym"
 msgstr "Hypernyymi"
 
 #. Translators: RELATION_ROLE_CHOICES
-#: signbank/dictionary/forms.py:106 signbank/dictionary/models.py:607
+#: signbank/dictionary/forms.py:106 signbank/dictionary/models.py:603
 msgid "See Also"
 msgstr "Katso myös"
 
@@ -219,6 +219,14 @@ msgstr "Morfeemi"
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:13
 msgid "Search signs"
 msgstr "Hae viittomia"
+
+#: signbank/dictionary/forms.py:289
+msgid "Lexicon"
+msgstr "Leksikko"
+
+#: signbank/dictionary/forms.py:290
+msgid "You can limit the search to these lexicons."
+msgstr "Voit rajata hakua näihin leksikoihin."
 
 #. Translators: DEFN_ROLE_CHOICES
 #: signbank/dictionary/models.py:83
@@ -339,7 +347,7 @@ msgstr "Glossin nimi englanniksi"
 #: signbank/dictionary/models.py:251
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:238
 #: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:6
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:53
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:54
 #: signbank/feedback/templates/feedback/interpreter.html:166
 #: signbank/feedback/templates/feedback/show.html:189
 msgid "Comments"
@@ -598,7 +606,7 @@ msgid "out of"
 msgstr "/"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:237
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:18
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:19
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
@@ -675,8 +683,8 @@ msgid "Confirm Delete"
 msgstr "Hyväksy poistaminen"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:196
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:41
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:44
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:42
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:55
 #: signbank/feedback/templates/feedback/show.html:68
 #: signbank/feedback/templates/feedback/show.html:154
 #: signbank/video/templates/uploaded_glossvideos.html:50
@@ -1020,11 +1028,11 @@ msgstr "Hyväksy"
 msgid "The following glosses were added to"
 msgstr "Seuraavat glossit lisättiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:22
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:23
 msgid "<em>No translations.</em>"
 msgstr "<em>Ei käännösvastineita.</em>"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:71
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:72
 #: templates/comments/list.html:39
 msgid "No comments."
 msgstr "Ei kommentteja."
@@ -1033,21 +1041,21 @@ msgstr "Ei kommentteja."
 msgid "By gloss or translation equivalent"
 msgstr "Glossilla tai käännösvastineella"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:20
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:31
 msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:47
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:58
 msgid "No video."
 msgstr "Ei videoa."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:52
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:63
 msgctxt "publicglosslist"
 msgid "Translations"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:63
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:74
 msgid "No translations."
 msgstr "Ei käännösvastineita."
 
