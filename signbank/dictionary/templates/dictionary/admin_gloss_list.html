@@ -242,12 +242,16 @@ function clearForm(myFormElement) {
     <tbody>
     {% for gloss in object_list %}
         {# Here we decide/change the row background colors #}
-        <tr {% if gloss.locked %}class="success"{% elif gloss.glossvideo_set.all.exists %}class="warning"{% else %}class="danger"{% endif %}>
+        <tr {% if gloss.locked %}class="success"{% elif gloss.glossvideo_set.exists %}class="warning"{% else %}class="danger"{% endif %}>
             <td><span class="dataset-{{gloss.dataset.id}}-color label label-default">{{ gloss.dataset }}</span></td>
             {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
             <td><a href="/dictionary/gloss/{{gloss.pk}}/"
                    data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}"
-                   data-video-src="{% if gloss.glossvideo_set.all.0.videofile %}{{ gloss.glossvideo_set.all.0.videofile.url }}" data-video-ext="{{ gloss.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{ gloss.idgloss }}</a></td>
+                   data-video-src="{% if gloss.glossvideo_set.all.0.videofile %}{{ gloss.glossvideo_set.all.0.videofile.url }}"
+                   data-video-ext="{{ gloss.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{ gloss.idgloss }}</a>
+                {% if gloss.glossvideo_set.count > 1 %}<span class="glyphicon glyphicon-film" aria-hidden="true"
+                                                             title="{% blocktrans %}Videos{% endblocktrans %}" style="margin-left:5px;"></span>
+                <span class="sr-only">{% blocktrans context "sr-videos" %}Videos{% endblocktrans %}:</span> {{gloss.glossvideo_set.count}}{% endif %}</td>
             <td>{{ gloss.idgloss_en }}</td>
             <td> {# Prefetched translations of 'language_code_2char==get_language()' for glosses #}
                 {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}

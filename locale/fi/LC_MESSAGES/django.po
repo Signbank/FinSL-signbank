@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-04 15:26+0300\n"
+"POT-Creation-Date: 2017-05-04 17:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -614,6 +614,15 @@ msgstr "Käännösvastineet"
 msgid "Tags"
 msgstr "Tagit"
 
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:253
+msgid "Videos"
+msgstr "Videoita"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:254
+msgctxt "sr-videos"
+msgid "Videos"
+msgstr "Videoita"
+
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:36
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:140
@@ -684,7 +693,7 @@ msgstr "Hyväksy poistaminen"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:196
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:42
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:55
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:59
 #: signbank/feedback/templates/feedback/show.html:68
 #: signbank/feedback/templates/feedback/show.html:154
 #: signbank/video/templates/uploaded_glossvideos.html:50
@@ -1046,20 +1055,31 @@ msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:58
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:46
+msgctxt "videocount"
+msgid "Videos"
+msgstr "Videoita"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:47
+msgid "video."
+msgid_plural "videos."
+msgstr[0] "video."
+msgstr[1] "videota."
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:62
 msgid "No video."
 msgstr "Ei videoa."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:63
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:67
 msgctxt "publicglosslist"
 msgid "Translations"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:74
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:78
 msgid "No translations."
 msgstr "Ei käännösvastineita."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:82
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:86
 msgid "No results."
 msgstr "Ei hakutuloksia."
 
