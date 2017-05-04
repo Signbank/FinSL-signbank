@@ -25,6 +25,9 @@ class GlossCreateForm(forms.ModelForm):
     videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
     video_title = forms.CharField(label=_('Glossvideo title'), required=False)
 
+    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
+                                 widget=forms.Select(attrs={'class': 'form-control'}))
+
     class Meta:
         model = Gloss
         fields = ['dataset', 'idgloss', 'idgloss_en', 'videofile']
@@ -34,7 +37,6 @@ class GlossCreateForm(forms.ModelForm):
         Validate the form data.
         """
         pass # Nothing here at the moment.
-
 
     def clean_idgloss(self):
         """
@@ -50,7 +52,6 @@ class GlossCreateForm(forms.ModelForm):
             _(u'This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
             code='not_unique')
 
-
     def clean_idgloss_en(self):
         """
         Overrides the default validations for idgloss_en.
@@ -58,7 +59,6 @@ class GlossCreateForm(forms.ModelForm):
 
         """
         return self.cleaned_data['idgloss_en']
-
 
     def clean_videofile(self):
         # Checking here that the file ends with .mp4 TODO: See if more checks are needed, like filetype, codec

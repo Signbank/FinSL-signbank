@@ -23,6 +23,8 @@ def add_gloss(request):
             new_gloss.created_by = request.user
             new_gloss.updated_by = request.user
             new_gloss.save()
+            if form.cleaned_data["tag"]:
+                Tag.objects.add_tag(new_gloss, form.cleaned_data["tag"].name)
 
             redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/?edit'
             addvideo(request, new_gloss.pk, redirecturl)
