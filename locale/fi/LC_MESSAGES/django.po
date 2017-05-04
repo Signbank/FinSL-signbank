@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-04 17:59+0300\n"
+"POT-Creation-Date: 2017-05-04 18:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -578,7 +578,7 @@ msgstr "Signbank: Etsi viittomia"
 
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:168
-#: templates/menu.html:57
+#: templates/menu.html:58
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -2407,7 +2407,7 @@ msgstr "Tiedosto:"
 msgid "Error:"
 msgstr "Virhe:"
 
-#: signbank/video/templates/addvideos.html:26 templates/menu.html:36
+#: signbank/video/templates/addvideos.html:26 templates/menu.html:37
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
@@ -2519,7 +2519,7 @@ msgstr "Jyväskylän yliopisto"
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
-#: templates/comments/latest_comments.html:3 templates/menu.html:42
+#: templates/comments/latest_comments.html:3 templates/menu.html:43
 msgid "Latest comments"
 msgstr "Uusimmat kommentit"
 
@@ -2667,37 +2667,41 @@ msgstr "Palauta salasana"
 msgid "Toggle navigation"
 msgstr "Navigointi"
 
-#: templates/menu.html:27
+#: templates/menu.html:25
+msgid "Signs"
+msgstr "Viittomat"
+
+#: templates/menu.html:28
 msgid "Wiki"
 msgstr "Wiki"
 
-#: templates/menu.html:28
+#: templates/menu.html:29
 msgctxt "menu-link"
-msgid "Search"
-msgstr "Haku"
+msgid "Advanced Search"
+msgstr "Kehittynyt Haku"
 
-#: templates/menu.html:33
+#: templates/menu.html:34
 msgid "Manage"
 msgstr "Hallinta"
 
-#: templates/menu.html:35
+#: templates/menu.html:36
 msgid "Create gloss"
 msgstr "Luo glossi"
 
-#: templates/menu.html:37
+#: templates/menu.html:38
 msgid "Manage uploaded videos"
 msgstr "Lähetettyjen videoiden hallinta"
 
-#: templates/menu.html:39
+#: templates/menu.html:40
 msgid "CSV import"
 msgstr "Tuo CSV"
 
-#: templates/menu.html:41
+#: templates/menu.html:42
 msgid "Info"
 msgstr "Info"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:53
+#: templates/menu.html:54
 msgid "Search sign"
 msgstr "Hae viittomaa"
 
@@ -2850,6 +2854,10 @@ msgstr ""
 #: templates/setlang.html:12
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgctxt "menu-link"
+#~ msgid "Search"
+#~ msgstr "Haku"
 
 #~ msgid "Search gloss"
 #~ msgstr "Etsi glossia"
