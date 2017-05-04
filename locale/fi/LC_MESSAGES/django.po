@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-04 18:22+0300\n"
+"POT-Creation-Date: 2017-05-04 20:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -578,7 +578,7 @@ msgstr "Signbank: Etsi viittomia"
 
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:168
-#: templates/menu.html:58
+#: templates/menu.html:53
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -1068,7 +1068,7 @@ msgstr[1] "videota."
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:62
 msgid "No video."
-msgstr "Ei videoa."
+msgstr "Ei videota."
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:67
 msgctxt "publicglosslist"
@@ -2407,7 +2407,7 @@ msgstr "Tiedosto:"
 msgid "Error:"
 msgstr "Virhe:"
 
-#: signbank/video/templates/addvideos.html:26 templates/menu.html:37
+#: signbank/video/templates/addvideos.html:26 templates/menu.html:33
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
@@ -2445,7 +2445,7 @@ msgstr "Valitse aineisto jonka parissa haluat työskennellä!"
 
 #: signbank/video/templates/uploaded_glossvideos.html:13
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: signbank/video/templates/uploaded_glossvideos.html:21
 msgid "previous"
@@ -2507,19 +2507,24 @@ msgstr ""
 "Tapahtui virhe. Virheestä on tiedotettu ylläpidolle, ja se\n"
 "pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
 
+#. Translators: Site title
 #: templates/baselayout.html:25
 msgid "FinSL Signbank"
 msgstr "FinSL Signbank"
 
-#: templates/baselayout.html:47
+#: templates/baselayout.html:34
+msgid "(No content)"
+msgstr "(Ei sisältöä)"
+
+#: templates/baselayout.html:42
 msgid "University of Jyväskylä"
 msgstr "Jyväskylän yliopisto"
 
-#: templates/baselayout.html:48
+#: templates/baselayout.html:43
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
-#: templates/comments/latest_comments.html:3 templates/menu.html:43
+#: templates/comments/latest_comments.html:3 templates/menu.html:39
 msgid "Latest comments"
 msgstr "Uusimmat kommentit"
 
@@ -2663,45 +2668,45 @@ msgid "Request Password"
 msgstr "Palauta salasana"
 
 #. Translators: Button to toggle navigation
-#: templates/menu.html:11
+#: templates/menu.html:9
 msgid "Toggle navigation"
 msgstr "Navigointi"
 
-#: templates/menu.html:25
+#: templates/menu.html:21
 msgid "Signs"
 msgstr "Viittomat"
 
-#: templates/menu.html:28
+#: templates/menu.html:24
 msgid "Wiki"
 msgstr "Wiki"
 
-#: templates/menu.html:29
+#: templates/menu.html:25
 msgctxt "menu-link"
 msgid "Advanced Search"
 msgstr "Kehittynyt Haku"
 
-#: templates/menu.html:34
+#: templates/menu.html:30
 msgid "Manage"
 msgstr "Hallinta"
 
-#: templates/menu.html:36
+#: templates/menu.html:32
 msgid "Create gloss"
 msgstr "Luo glossi"
 
-#: templates/menu.html:38
+#: templates/menu.html:34
 msgid "Manage uploaded videos"
 msgstr "Lähetettyjen videoiden hallinta"
 
-#: templates/menu.html:40
+#: templates/menu.html:36
 msgid "CSV import"
 msgstr "Tuo CSV"
 
-#: templates/menu.html:42
+#: templates/menu.html:38
 msgid "Info"
 msgstr "Info"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:54
+#: templates/menu.html:49
 msgid "Search sign"
 msgstr "Hae viittomaa"
 
@@ -2904,9 +2909,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Advanced options"
 #~ msgstr "Lisävaihtoehdot"
-
-#~ msgid "content"
-#~ msgstr "sisältö"
 
 #~ msgid "template name"
 #~ msgstr "pohjan nimi"

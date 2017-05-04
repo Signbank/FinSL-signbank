@@ -1,12 +1,10 @@
 {% load i18n %}
 {% load flatpages %}
 {% get_flatpages as flatpages %}
-
-<nav id='navbar' class="navbar navbar-default" role="navigation">
-
+<nav id="navbar" class="navbar navbar-default">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
             {# Translators: Button to toggle navigation #}
             <span class="sr-only">{% blocktrans %}Toggle navigation{% endblocktrans %}</span>
             <span class="icon-bar"></span>
@@ -14,10 +12,8 @@
             <span class="icon-bar"></span>
         </button>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav">
         {% for page in flatpages %}
             <li><a href="{{ page.url }}">{{ page.title }}</a></li>
@@ -29,7 +25,7 @@
             <li><a href="{% url "admin_gloss_list" %}">{% blocktrans context "menu-link" %}Advanced Search{% endblocktrans %}</a></li>
         {% endif %}
         {% if perms.dictionary.add_gloss and perms.dictionary.change_gloss %}
-            <li class='dropdown'>
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     {% blocktrans %}Manage{% endblocktrans %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -45,14 +41,13 @@
             </li>
         {% endif %}
         </ul>
-
         <form class="navbar-form navbar-right" role="search" id="menusearch" name="menusearch" method="get"
               action="/dictionary/public/gloss/">
             <div class="form-group">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 {# Translators: Placeholder text in a search textfield #}
-                <input class='form-control' placeholder='{% blocktrans %}Search sign{% endblocktrans %}' type="text"
-                       name="search" value="{{ search }}" maxlength="50">
+                <input class="form-control" placeholder="{% blocktrans %}Search sign{% endblocktrans %}" type="text"
+                       name="search" value="{{ searchform.search.value }}" maxlength="50">
             </div>
             {# Translators: Submit button (press to search) #}
             <button type="submit" class="btn btn-default">{% blocktrans context "search-button" %}Search{% endblocktrans %}</button>

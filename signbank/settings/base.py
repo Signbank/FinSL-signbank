@@ -46,9 +46,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-# Used by stylesheet.py to allow usage of the template tag {% primary_css %]
-PRIMARY_CSS = "css/signbank.css"
-
 # A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE = [
     # If want to use some of the HTTPS settings in secret_settings, enable SecurityMiddleware
