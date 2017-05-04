@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-04 15:17+0300\n"
+"POT-Creation-Date: 2017-05-04 15:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1058,6 +1058,10 @@ msgstr "Käännösvastineet"
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:74
 msgid "No translations."
 msgstr "Ei käännösvastineita."
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:82
+msgid "No results."
+msgstr "Ei hakutuloksia."
 
 #: signbank/dictionary/templates/dictionary/record_video.html:13
 msgid "Record a video for"

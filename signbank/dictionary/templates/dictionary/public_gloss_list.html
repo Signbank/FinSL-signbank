@@ -77,6 +77,10 @@
             </div>
         </div>
     </div>
+    {% empty %}
+    <div class="col-md-12">
+        <p><em>{% blocktrans %}No results.{% endblocktrans %}</em></p>
+    </div>
     {% endfor %}
 </div>
 <div class="pagination">
