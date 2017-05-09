@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 from django.db.models import Prefetch, Q
 from django.urls import reverse
+from settings.production import MEDIA_ROOT
 
 # ==========================
 # Constants
@@ -237,7 +238,6 @@ def infopage(request):
     # Find missing files for users that are 'staff'.
     if request.user.is_staff:
         problems = list()
-        from settings.development import MEDIA_ROOT
         for vid in GlossVideo.objects.all():
             if vid.videofile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.videofile)):
                 problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
