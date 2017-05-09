@@ -242,7 +242,7 @@ def infopage(request):
             if vid.videofile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.videofile)):
                 problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
             if vid.posterfile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.posterfile)):
-                problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:glossvideo_change", args=(vid.id,))})
+                problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
         context["problems"] = problems
 
     return render(request, "../templates/infopage.html",
