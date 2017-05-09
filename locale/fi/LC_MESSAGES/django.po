@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-04 20:14+0300\n"
+"POT-Creation-Date: 2017-05-09 18:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgid "Glossvideo title"
 msgstr "Glossivideon nimi"
 
 #. Translators: exception ValidationError
-#: signbank/dictionary/forms.py:50
+#: signbank/dictionary/forms.py:52
 msgid ""
 "This Gloss value already exists in the chosen Dataset. Please choose another "
 "value for Gloss."
@@ -220,7 +220,7 @@ msgstr "Morfeemi"
 msgid "Search signs"
 msgstr "Hae viittomia"
 
-#: signbank/dictionary/forms.py:289
+#: signbank/dictionary/forms.py:289 templates/infopage.html:80
 msgid "Lexicon"
 msgstr "Leksikko"
 
@@ -281,7 +281,7 @@ msgid "Gloss in related language"
 msgstr "Glossi liittyvässä kielessä"
 
 #. Translators: This is verbose_name_plural, so it has to be plural here
-#: signbank/dictionary/models.py:214 templates/infopage.html:23
+#: signbank/dictionary/models.py:214
 msgid "Glosses"
 msgstr "Glossit"
 
@@ -554,15 +554,15 @@ msgid "Add a Gloss"
 msgstr "Lisää Glossi"
 
 #. Translators: Button
-#: signbank/dictionary/templates/dictionary/add_gloss.html:22
+#: signbank/dictionary/templates/dictionary/add_gloss.html:24
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:30
 msgid "Add New Sign"
 msgstr "Lisää uusi Glossi"
 
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
-#: signbank/dictionary/templates/dictionary/add_gloss.html:27
+#: signbank/dictionary/templates/dictionary/add_gloss.html:29
 #: signbank/dictionary/templates/dictionary/import_gloss_csv.html:34
-#: templates/infopage.html:65
+#: templates/infopage.html:115
 msgid "You do not have sufficient user rights to view this page."
 msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
@@ -578,7 +578,7 @@ msgstr "Signbank: Etsi viittomia"
 
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:168
-#: templates/menu.html:53
+#: templates/menu.html:54
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -607,6 +607,7 @@ msgstr "/"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:237
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:19
+#: templates/infopage.html:42 templates/infopage.html:98
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
@@ -1121,34 +1122,34 @@ msgid "Upload completed."
 msgstr "Video lähetetty."
 
 #. Translators: HttpResponseForbidden for update_gloss
-#: signbank/dictionary/update.py:44
+#: signbank/dictionary/update.py:46
 msgid "Gloss Update Not Allowed"
 msgstr "Glossin päivittäminen ei ole sallittua"
 
-#: signbank/dictionary/update.py:51
+#: signbank/dictionary/update.py:53
 msgid "Gloss Update Not Allowed: Gloss is locked from editing"
 msgstr "Glossin päivittäminen ei ole sallittua: Glossi on lukittu"
 
 #. Translators: HttpResponseForbidden for deleting gloss without permission.
-#: signbank/dictionary/update.py:74
+#: signbank/dictionary/update.py:76
 msgid "You don't have permission to delete glosses."
 msgstr "Sinulla ei ole käyttöoikeuksia glossien poistamiseksi."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:120
+#: signbank/dictionary/update.py:122
 msgid "Unknown Dialect"
 msgstr "Tuntematon alue"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:151
+#: signbank/dictionary/update.py:153
 msgid "Unknown field"
 msgstr "Tuntematon kenttä"
 
-#: signbank/dictionary/update.py:220
+#: signbank/dictionary/update.py:222
 msgid "A Language does not exist with language_code: "
 msgstr "Kieltä (Language) ei löydy seuraavalla kielikoodilla: "
 
-#: signbank/dictionary/update.py:224
+#: signbank/dictionary/update.py:226
 msgid ""
 "Multiple Languages with the same language_code exist, cannot edit because it "
 "is unclear which languages translations to edit."
@@ -1157,76 +1158,76 @@ msgstr ""
 "koska ei ole selvää että minkä kielen käännöksiä tulisi muokata."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:264
+#: signbank/dictionary/update.py:266
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:268 signbank/dictionary/update.py:316
+#: signbank/dictionary/update.py:270 signbank/dictionary/update.py:318
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:292 signbank/dictionary/update.py:590
+#: signbank/dictionary/update.py:294 signbank/dictionary/update.py:592
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:296 signbank/dictionary/update.py:336
-#: signbank/dictionary/update.py:594
+#: signbank/dictionary/update.py:298 signbank/dictionary/update.py:338
+#: signbank/dictionary/update.py:596
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:311
+#: signbank/dictionary/update.py:313
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:399
+#: signbank/dictionary/update.py:401
 msgid "Bad Definition ID"
 msgstr "Epäkelpo määritelmän ID"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:403
+#: signbank/dictionary/update.py:405
 msgid "Definition doesn't match gloss"
 msgstr "Määritelmä ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:453 signbank/dictionary/update.py:491
+#: signbank/dictionary/update.py:455 signbank/dictionary/update.py:493
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:465
+#: signbank/dictionary/update.py:467
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:503
+#: signbank/dictionary/update.py:505
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
-#: signbank/dictionary/update.py:551
+#: signbank/dictionary/update.py:553
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:564
+#: signbank/dictionary/update.py:566
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:569
+#: signbank/dictionary/update.py:571
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
-#: signbank/dictionary/update.py:659
+#: signbank/dictionary/update.py:661
 msgid "Cannot open the file:"
 msgstr "Ei voida avata tiedostoa:"
 
-#: signbank/dictionary/update.py:688
+#: signbank/dictionary/update.py:690
 msgid ""
 "The provided CSV-file does not meet the requirements or there is some other "
 "problem."
@@ -1234,11 +1235,11 @@ msgstr ""
 "Annettu CSV-tiedosto ei ole vaatimusten mukainen tai havaittiin joku muu "
 "ongelma."
 
-#: signbank/dictionary/update.py:707
+#: signbank/dictionary/update.py:709
 msgid "Cancelled adding CSV data."
 msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
 
-#: signbank/dictionary/update.py:734
+#: signbank/dictionary/update.py:736
 msgid "Glosses were added succesfully."
 msgstr "Glossit lisättiin onnistuneesti."
 
@@ -2553,66 +2554,66 @@ msgstr "Muokkaa sivua"
 msgid "Tweets by VKK_JY"
 msgstr "Twiittejä @VKK_JY"
 
-#: templates/infopage.html:12
-msgid "Information page"
-msgstr "Infosivu"
+#: templates/infopage.html:16 templates/menu.html:38
+msgid "Links and statistics"
+msgstr "Linkkejä ja tilastoja"
 
-#: templates/infopage.html:13
+#: templates/infopage.html:17
 msgid ""
-"On this page you can find all kinds of useful information. We have collected "
-"some numerical information about our database and some useful links aswell."
+"On this page you can find numerical data about the database, and links to "
+"externally controlled vocabularies to be used in ELAN."
 msgstr ""
-"Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme tärkeitä "
-"linkkejä."
+"Tällä sivulta löytyy numeerista tietoa tietokannasta, sekä linkit externally "
+"controlled vocabularyihin käytettäväksi ELANissa."
 
-#: templates/infopage.html:27
+#: templates/infopage.html:25
+msgid "All lexicons"
+msgstr "Kaikki leksikot"
+
+#: templates/infopage.html:30 templates/infopage.html:86
+msgid "Gloss count"
+msgstr "Glossien määrä"
+
+#: templates/infopage.html:34 templates/infopage.html:90
 msgid "Glosses with video"
 msgstr "Glossit joilla video"
 
-#: templates/infopage.html:31
-msgid "Total number of videos (one gloss can have many)"
-msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
-
-#: templates/infopage.html:35
-msgid "Finnish translation equivalents"
-msgstr "Käännövastineita suomeksi"
-
-#: templates/infopage.html:39
-msgid "English translations equivalents"
-msgstr "Käännösvastineita englanniksi"
-
-#: templates/infopage.html:43
-msgid "Total amount of keywords"
-msgstr "Käännössanojen lukumäärä"
-
-#: templates/infopage.html:52
-msgid "ELAN externally controlled vocabulary links"
-msgstr "ELAN externally controlled vocalubary linkit"
+#: templates/infopage.html:38 templates/infopage.html:94
+msgid "Video count"
+msgstr "Videoiden määrä"
 
 #: templates/infopage.html:56
+msgid "ELAN externally controlled vocabulary links"
+msgstr "ELAN externally controlled vocabulary linkit"
+
+#: templates/infopage.html:68
 msgid "Signbank Wiki"
-msgstr "Signbankin Wikisivut"
+msgstr "Signbankin wiki"
 
-#: templates/langbar.html:6 templates/langbar.html:20
-msgid "Sign out"
-msgstr "Kirjaudu ulos"
+#: templates/infopage.html:69
+msgid "Help and tutorials"
+msgstr "Apua ja ohjeita"
 
-#: templates/langbar.html:15
+#: templates/langbar.html:12
 msgid "Django admin"
 msgstr "Djangon ylläpito"
 
-#: templates/langbar.html:18
+#: templates/langbar.html:15
 msgid "Change password"
 msgstr "Muuta salasana"
 
+#: templates/langbar.html:17
+msgid "Sign out"
+msgstr "Kirjaudu ulos"
+
 #. Translators: Sign in button in login form
-#: templates/langbar.html:26 templates/loginform.html:34
+#: templates/langbar.html:23 templates/loginform.html:34
 #: templates/registration/login.html:5 templates/registration/login.html:16
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
 #. Translators: Title for create account
-#: templates/langbar.html:28 templates/registration/login.html:24
+#: templates/langbar.html:25 templates/registration/login.html:24
 #: templates/registration/registration_form.html:10
 #: templates/registration/registration_form.html:15
 msgid "Create account"
@@ -2682,8 +2683,8 @@ msgstr "Wiki"
 
 #: templates/menu.html:25
 msgctxt "menu-link"
-msgid "Advanced Search"
-msgstr "Kehittynyt Haku"
+msgid "Advanced search"
+msgstr "Kehittynyt haku"
 
 #: templates/menu.html:30
 msgid "Manage"
@@ -2700,10 +2701,6 @@ msgstr "Lähetettyjen videoiden hallinta"
 #: templates/menu.html:36
 msgid "CSV import"
 msgstr "Tuo CSV"
-
-#: templates/menu.html:38
-msgid "Info"
-msgstr "Info"
 
 #. Translators: Placeholder text in a search textfield
 #: templates/menu.html:49
@@ -2856,9 +2853,41 @@ msgstr ""
 "Uusien tunnuksien luominen ei ole sallittua kirjautuneena oleville "
 "käyttäjille!"
 
-#: templates/setlang.html:12
+#: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Info"
+#~ msgstr "Info"
+
+#~ msgid "Information page"
+#~ msgstr "Infosivu"
+
+#~ msgid ""
+#~ "On this page you can find all kinds of useful information. We have "
+#~ "collected some numerical information about our database and some useful "
+#~ "links aswell."
+#~ msgstr ""
+#~ "Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme "
+#~ "tärkeitä linkkejä."
+
+#~ msgid "Language"
+#~ msgstr "Kieli"
+
+#~ msgid "Sum"
+#~ msgstr "Summa"
+
+#~ msgid "Total number of videos (one gloss can have many)"
+#~ msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
+
+#~ msgid "Finnish translation equivalents"
+#~ msgstr "Käännövastineita suomeksi"
+
+#~ msgid "English translations equivalents"
+#~ msgstr "Käännösvastineita englanniksi"
+
+#~ msgid "Total amount of keywords"
+#~ msgstr "Käännössanojen lukumäärä"
 
 #~ msgctxt "menu-link"
 #~ msgid "Search"

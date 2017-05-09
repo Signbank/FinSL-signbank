@@ -3,7 +3,9 @@ import os
 import shutil
 from HTMLParser import HTMLParser
 from django.contrib.admin.views.decorators import user_passes_test
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
+from django.db.models import Prefetch
 
 # ==========================
 # Constants
@@ -193,28 +195,36 @@ def refresh_videofilenames(request=None):
     return HttpResponse("Done refreshing video filenames.")
 
 
-@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
+@permission_required("dictionary.search_gloss")
 def infopage(request):
-
-    from signbank.dictionary.models import Gloss, Translation, Keyword, Dataset, Language
+    from signbank.dictionary.models import Gloss, Language, Translation, Keyword, Dataset
     from signbank.video.models import GlossVideo
-    glosscount = Gloss.objects.all().count()
-    glosses_with_video = 0
-    for g in Gloss.objects.all():
-        if GlossVideo.objects.filter(gloss=g).exists(): # This can probably be refactored to one query only.
-            glosses_with_video += 1
+    context = dict()
+    context["gloss_count"] = Gloss.objects.all().count()
+    context["glossvideo_count"] = GlossVideo.objects.all().count()
+    context["glosses_with_video"] = GlossVideo.objects.filter(gloss__isnull=False).order_by("gloss_id")\
+        .distinct("gloss_id").count()
+    context["languages"] = Language.objects.all().prefetch_related("translation_set")
+    context["keyword_count"] = Keyword.objects.all().count()
 
-    translations_fi_total = Translation.objects.filter(language__language_code_2char='fi').count()
-    translations_en_total = Translation.objects.filter(language__language_code_2char='en').count()
-    keywords_total = Keyword.objects.all().count()
-    datasets = Dataset.objects.all()
-    video_count_total = GlossVideo.objects.all().count()
+    datasets_context = list()
+    datasets = Dataset.objects.all().prefetch_related("gloss_set", "translation_languages")
+    for d in datasets:
+        dset = dict()
+        dset["dataset"] = d
+        dset["gloss_count"] = Gloss.objects.filter(dataset=d).count()
+        glossvideos = GlossVideo.objects.filter(gloss__dataset=d)
+        dset["glossvideo_count"] = len(glossvideos)
+        dset["glosses_with_video"] = glossvideos.filter(gloss__isnull=False, gloss__dataset=d).order_by("gloss_id")\
+            .distinct("gloss_id").count()
+        dset["translations"] = list()
+        for language in d.translation_languages.all().prefetch_related(
+                Prefetch("translation_set", queryset=Translation.objects.filter(gloss__dataset=d))):
+            dset["translations"].append([language, language.translation_set.count()])
+        datasets_context.append(dset)
+
 
     return render(request, "../templates/infopage.html",
-                              {'glosscount': glosscount,
-                               'glosses_with_video': glosses_with_video,
-                              'translations_fi_total': translations_fi_total,
-                              'translations_en_total': translations_en_total,
-                              'keywords_total': keywords_total,
-                               'video_count_total': video_count_total,
-                               'datasets': datasets, })
+                  {'context': context,
+                   'datasets': datasets_context,
+                   })

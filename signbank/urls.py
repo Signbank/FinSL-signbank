@@ -63,7 +63,7 @@ urlpatterns = [
     url(r'^summernote/', include('django_summernote.urls')),
 
     # Infopage, where we store some links and statistics
-    url(r'infopage/', infopage, name='infopage'),
+    url(r'info/', infopage, name='infopage'),
 
     # This URL runs a script on tools.py that reloads signbank app via 'touch signbank/wsgi.py'
     #url(r'reload_signbank/$',

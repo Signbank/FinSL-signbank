@@ -2,62 +2,112 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% load staticfiles %}
 
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
+{% endblock %}
 {% block content %}
     {% if request.user.is_staff %}
     <div id="infopage" class="container-fluid">
         {# Translators: Header for infopage #}
         <div class="row">
             <div class="col-md-6">
-                <h3>{% blocktrans %}Information page{% endblocktrans %}</h3>
-                <p>{% blocktrans trimmed %}On this page you can find all kinds of useful information.
-                    We have collected some numerical information about our database and some useful links aswell.{% endblocktrans %}</p>
+                <h2>{% blocktrans %}Links and statistics{% endblocktrans %}</h2>
+                <p>{% blocktrans trimmed %}On this page you can find numerical data about the database, and
+                    links to externally controlled vocabularies to be used in ELAN.{% endblocktrans %}</p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6">
-                <div id="statistics">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% blocktrans %}All lexicons{% endblocktrans %}</h3>
+                    </div>
+                    <div class="panel-body">
                     <table class="table table-bordered">
                         <tr>
-                            <td>{% blocktrans %}Glosses{% endblocktrans %}</td>
-                            <td>{{glosscount}}</td>
+                            <td>{% blocktrans %}Gloss count{% endblocktrans %}</td>
+                            <td>{{context.gloss_count}}</td>
                         </tr>
                          <tr>
                             <td>{% blocktrans %}Glosses with video{% endblocktrans %}</td>
-                            <td>{{glosses_with_video}}</td>
+                            <td>{{context.glosses_with_video}}</td>
                         </tr>
                         <tr>
-                            <td>{% blocktrans %}Total number of videos (one gloss can have many){% endblocktrans %}</td>
-                            <td>{{video_count_total}}</td>
-                        </tr>
-                        <tr>
-                            <td>{% blocktrans %}Finnish translation equivalents{% endblocktrans %}</td>
-                            <td>{{translations_fi_total}}</td>
-                        </tr>
-                        <tr>
-                            <td>{% blocktrans %}English translations equivalents{% endblocktrans %}</td>
-                            <td>{{translations_en_total}}</td>
-                        </tr>
-                        <tr>
-                            <td>{% blocktrans %}Total amount of keywords{% endblocktrans %}</td>
-                            <td>{{keywords_total}}</td>
+                            <td>{% blocktrans %}Video count{% endblocktrans %}</td>
+                            <td>{{context.glossvideo_count}}</td>
                         </tr>
                     </table>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="ELANinfo">
-                    <dd class="dl-horizontal">
-                        <dt>{% blocktrans %}ELAN externally controlled vocabulary links{% endblocktrans %}</dt>
-                        {% for dataset in datasets %}
-                        <dd>{{ dataset.name }}: <a href="http://{{ request.get_host }}/dictionary/ecv/{{ dataset.pk }}" target="_blank">http://{{ request.get_host }}/dictionary/ecv/{{ dataset.pk }}</a></dd>
+                    <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}:</h4>
+                    <table class="table table-bordered">
+                        {% for language in context.languages %}
+                        <tr>
+                            <td>{{language}}</td>
+                            <td>{{language.translation_set.count}}</td>
+                        </tr>
                         {% endfor %}
-                        <dt>{% blocktrans %}Signbank Wiki{% endblocktrans %}</dt>
-                        <dd><a href ="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">https://github.com/Signbank/FinSL-signbank/wiki</a></dd>
-                    </dl>
+                    </table>
+                    </div>
                 </div>
             </div>
+            <div id="ELANinfo" class="col-md-6">
+                <div class="well">
+                    <h4>{% blocktrans %}ELAN externally controlled vocabulary links{% endblocktrans %}</h4>
+                    <ul>
+                        {% for dataset in datasets %}
+                        <li style="list-style-type:none;margin-bottom:2px;">
+                            <span class="dataset-{{dataset.dataset.id}}-color label label-default">
+                                {{dataset.dataset}}</span>
+                            <a href="http://{{ request.get_host }}/dictionary/ecv/{{ dataset.dataset.pk }}"
+                               target="_blank">
+                                http://{{ request.get_host }}/dictionary/ecv/{{ dataset.dataset.pk }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <h4>{% blocktrans %}Signbank Wiki{% endblocktrans %}
+                        <small>{% blocktrans %}Help and tutorials{% endblocktrans %}</small></h4>
+                    <p><a href ="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">
+                        https://github.com/Signbank/FinSL-signbank/wiki</a></p>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for dataset in datasets %}
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% blocktrans %}Lexicon{% endblocktrans %}
+                            <span class="dataset-{{dataset.dataset.id}}-color label label-default">{{dataset.dataset}}</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>{% blocktrans %}Gloss count{% endblocktrans %}</td>
+                                <td>{{dataset.gloss_count}}</td>
+                            </tr>
+                             <tr>
+                                <td>{% blocktrans %}Glosses with video{% endblocktrans %}</td>
+                                <td>{{dataset.glosses_with_video}}</td>
+                            </tr>
+                            <tr>
+                                <td>{% blocktrans %}Video count{% endblocktrans %}</td>
+                                <td>{{dataset.glossvideo_count}}</td>
+                            </tr>
+                        </table>
+                        <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}:</h4>
+                        <table class="table table-bordered">
+                            {% for language, translation_count in dataset.translations %}
+                            <tr>
+                                <td>{{language}}</td>
+                                <td>{{translation_count}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
     {% else %}
