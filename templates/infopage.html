@@ -38,6 +38,18 @@
                             <td>{% blocktrans %}Video count{% endblocktrans %}</td>
                             <td>{{context.glossvideo_count}}</td>
                         </tr>
+                        <tr>
+                            <td>{% blocktrans %}Videos not connected to a Gloss{% endblocktrans %}</td>
+                            <td>{{context.glossless_video_count}}</td>
+                        </tr>
+                        <tr>
+                            <td>{% blocktrans %}Videos with poster image{% endblocktrans %}</td>
+                            <td>{{context.glossvideo_poster_count}}</td>
+                        </tr>
+                        <tr>
+                            <td>{% blocktrans %}Videos without poster image{% endblocktrans %}</td>
+                            <td>{{context.glossvideo_noposter_count}}</td>
+                        </tr>
                     </table>
                     <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}:</h4>
                     <table class="table table-bordered">
@@ -69,7 +81,7 @@
                         <small>{% blocktrans %}Help and tutorials{% endblocktrans %}</small></h4>
                     <p><a href ="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">
                         https://github.com/Signbank/FinSL-signbank/wiki</a></p>
-            </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -94,6 +106,18 @@
                                 <td>{% blocktrans %}Video count{% endblocktrans %}</td>
                                 <td>{{dataset.glossvideo_count}}</td>
                             </tr>
+                            <tr>
+                                <td>{% blocktrans %}Videos not connected to a Gloss{% endblocktrans %}</td>
+                                <td>{{dataset.glossless_video_count}}</td>
+                            </tr>
+                            <tr>
+                                <td>{% blocktrans %}Videos with poster image{% endblocktrans %}</td>
+                                <td>{{dataset.glossvideo_poster_count}}</td>
+                            </tr>
+                            <tr>
+                                <td>{% blocktrans %}Videos without poster image{% endblocktrans %}</td>
+                                <td>{{dataset.glossvideo_noposter_count}}</td>
+                            </tr>
                         </table>
                         <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}:</h4>
                         <table class="table table-bordered">
@@ -108,6 +132,17 @@
                 </div>
             </div>
             {% endfor %}
+            {% if context.problems %}
+            <div class="col-md-6">
+                <h3>{% blocktrans %}Files that do not exist{% endblocktrans %}
+                    <small>{% blocktrans %}not in the set location{% endblocktrans %}</small></h3>
+                <ul>
+                {% for p in context.problems %}
+                    <li><a href="{% url "admin:video_glossvideo_change" p.id %}">{{p.type}} {{p.id}}, {{p.file}}</a>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
     </div>
     {% else %}

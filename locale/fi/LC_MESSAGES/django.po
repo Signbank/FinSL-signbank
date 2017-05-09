@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-09 18:08+0300\n"
+"POT-Creation-Date: 2017-05-09 19:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,7 +220,7 @@ msgstr "Morfeemi"
 msgid "Search signs"
 msgstr "Hae viittomia"
 
-#: signbank/dictionary/forms.py:289 templates/infopage.html:80
+#: signbank/dictionary/forms.py:289 templates/infopage.html:92
 msgid "Lexicon"
 msgstr "Leksikko"
 
@@ -562,7 +562,7 @@ msgstr "Lisää uusi Glossi"
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
 #: signbank/dictionary/templates/dictionary/add_gloss.html:29
 #: signbank/dictionary/templates/dictionary/import_gloss_csv.html:34
-#: templates/infopage.html:115
+#: templates/infopage.html:139
 msgid "You do not have sufficient user rights to view this page."
 msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
@@ -607,7 +607,7 @@ msgstr "/"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:237
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:19
-#: templates/infopage.html:42 templates/infopage.html:98
+#: templates/infopage.html:54 templates/infopage.html:122
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
@@ -2570,27 +2570,39 @@ msgstr ""
 msgid "All lexicons"
 msgstr "Kaikki leksikot"
 
-#: templates/infopage.html:30 templates/infopage.html:86
+#: templates/infopage.html:30 templates/infopage.html:98
 msgid "Gloss count"
-msgstr "Glossien määrä"
+msgstr "Glosseja"
 
-#: templates/infopage.html:34 templates/infopage.html:90
+#: templates/infopage.html:34 templates/infopage.html:102
 msgid "Glosses with video"
-msgstr "Glossit joilla video"
+msgstr "Glosseja joilla on video"
 
-#: templates/infopage.html:38 templates/infopage.html:94
+#: templates/infopage.html:38 templates/infopage.html:106
 msgid "Video count"
-msgstr "Videoiden määrä"
+msgstr "Videoita"
 
-#: templates/infopage.html:56
+#: templates/infopage.html:42 templates/infopage.html:110
+msgid "Videos not connected to a Gloss"
+msgstr "Videoita joilla ei ole Glossia"
+
+#: templates/infopage.html:46 templates/infopage.html:114
+msgid "Videos with poster image"
+msgstr "Videoita joilla on aloituskuva"
+
+#: templates/infopage.html:50 templates/infopage.html:118
+msgid "Videos without poster image"
+msgstr "Videoita joilla ei ole aloituskuvaa"
+
+#: templates/infopage.html:68
 msgid "ELAN externally controlled vocabulary links"
 msgstr "ELAN externally controlled vocabulary linkit"
 
-#: templates/infopage.html:68
+#: templates/infopage.html:80
 msgid "Signbank Wiki"
 msgstr "Signbankin wiki"
 
-#: templates/infopage.html:69
+#: templates/infopage.html:81
 msgid "Help and tutorials"
 msgstr "Apua ja ohjeita"
 
@@ -2857,6 +2869,9 @@ msgstr ""
 msgid "Language selection"
 msgstr "Kielen valinta"
 
+#~ msgid "Poster images"
+#~ msgstr "Aloituskuvia"
+
 #~ msgid "Info"
 #~ msgstr "Info"
 
@@ -2915,9 +2930,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Total of %(page_obj.paginator.count)s Glossvideos uploaded"
 #~ msgstr "Yhteensä %(page_obj.paginator.count)s Glossivideota"
-
-#~ msgid "Videos with no gloss"
-#~ msgstr "Videot joilla ei ole glossia"
 
 #~ msgid "You can add a gloss for each video"
 #~ msgstr "Voit lisätä jokaiselle videolle glossin"

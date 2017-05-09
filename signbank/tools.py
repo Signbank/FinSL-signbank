@@ -5,7 +5,8 @@ from HTMLParser import HTMLParser
 from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Q
+from django.urls import reverse
 
 # ==========================
 # Constants
@@ -201,9 +202,14 @@ def infopage(request):
     from signbank.video.models import GlossVideo
     context = dict()
     context["gloss_count"] = Gloss.objects.all().count()
+
     context["glossvideo_count"] = GlossVideo.objects.all().count()
     context["glosses_with_video"] = GlossVideo.objects.filter(gloss__isnull=False).order_by("gloss_id")\
         .distinct("gloss_id").count()
+    context["glossless_video_count"] = GlossVideo.objects.filter(gloss__isnull=True).count()
+    context["glossvideo_poster_count"] = GlossVideo.objects.exclude(Q(posterfile="") | Q(posterfile__isnull=True)).count()
+    context["glossvideo_noposter_count"] = context["glossvideo_count"] - context["glossvideo_poster_count"]
+
     context["languages"] = Language.objects.all().prefetch_related("translation_set")
     context["keyword_count"] = Keyword.objects.all().count()
 
@@ -213,16 +219,31 @@ def infopage(request):
         dset = dict()
         dset["dataset"] = d
         dset["gloss_count"] = Gloss.objects.filter(dataset=d).count()
-        glossvideos = GlossVideo.objects.filter(gloss__dataset=d)
-        dset["glossvideo_count"] = len(glossvideos)
-        dset["glosses_with_video"] = glossvideos.filter(gloss__isnull=False, gloss__dataset=d).order_by("gloss_id")\
+
+        dset["glossvideo_count"] = GlossVideo.objects.filter(gloss__dataset=d).count()
+        dset["glosses_with_video"] = GlossVideo.objects.filter(gloss__isnull=False, gloss__dataset=d).order_by("gloss_id")\
             .distinct("gloss_id").count()
+        dset["glossless_video_count"] = GlossVideo.objects.filter(gloss__isnull=True, dataset=d).count()
+        dset["glossvideo_poster_count"] = GlossVideo.objects.filter(dataset=d).exclude(
+            Q(posterfile="") | Q(posterfile__isnull=True)).count()
+        dset["glossvideo_noposter_count"] = dset["glossvideo_count"] - dset["glossvideo_poster_count"]
+
         dset["translations"] = list()
         for language in d.translation_languages.all().prefetch_related(
                 Prefetch("translation_set", queryset=Translation.objects.filter(gloss__dataset=d))):
             dset["translations"].append([language, language.translation_set.count()])
         datasets_context.append(dset)
 
+    # Find missing files for users that are 'staff'.
+    if request.user.is_staff:
+        problems = list()
+        from settings.development import MEDIA_ROOT
+        for vid in GlossVideo.objects.all():
+            if vid.videofile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.videofile)):
+                problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
+            if vid.posterfile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.posterfile)):
+                problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:glossvideo_change", args=(vid.id,))})
+        context["problems"] = problems
 
     return render(request, "../templates/infopage.html",
                   {'context': context,
