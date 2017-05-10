@@ -9,7 +9,6 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('feedback', '0004_remove_signfeedback_translation_english'),
         ('dictionary', '0017_auto_20160828_1417'),
     ]
 

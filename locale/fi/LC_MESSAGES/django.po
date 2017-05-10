@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-10 17:00+0300\n"
+"POT-Creation-Date: 2017-05-10 20:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,14 +342,10 @@ msgid "This is the English name for the Gloss"
 msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: annotation_comments, verbose name
-#. Translators:
-#. Translators: Gloss information
 #: signbank/dictionary/models.py:251
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:238
 #: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:6
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:54
-#: signbank/feedback/templates/feedback/interpreter.html:166
-#: signbank/feedback/templates/feedback/show.html:189
 msgid "Comments"
 msgstr "Kommentit"
 
@@ -382,11 +378,7 @@ msgstr "Ei-dominoiva käsi"
 #. Translators: Gloss models field: location, verbose name
 #. location = models.CharField(
 #. _("Location"), choices=build_choice_list("location"), null=True, blank=True, max_length=20)
-#. Translators:
-#. Translators: Gloss information
 #: signbank/dictionary/models.py:291
-#: signbank/feedback/templates/feedback/interpreter.html:148
-#: signbank/feedback/templates/feedback/show.html:171
 msgid "Location"
 msgstr "Paikka"
 
@@ -695,8 +687,6 @@ msgstr "Hyväksy poistaminen"
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:196
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:42
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:59
-#: signbank/feedback/templates/feedback/show.html:68
-#: signbank/feedback/templates/feedback/show.html:154
 #: signbank/video/templates/uploaded_glossvideos.html:50
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
@@ -903,10 +893,8 @@ msgstr "Kirjoita muistiinpano"
 msgid "Save New"
 msgstr "Lisää"
 
-#. Translators: Feedback summary
 #: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:15
 #: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:17
-#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:27
 msgid "Comment"
 msgstr "Kommentti"
 
@@ -934,12 +922,7 @@ msgid "Upload your changed CSV here:"
 msgstr "Lähetä muutettu CSV tähän:"
 
 #. Translators: Submit button
-#. Translators:
-#. Translators: Submit button
 #: signbank/dictionary/templates/dictionary/import_csv.html:16
-#: signbank/feedback/templates/feedback/generalfeedback.html:44
-#: signbank/feedback/templates/feedback/signfeedback.html:33
-#: signbank/feedback/templates/feedback/signfeedback.html:73
 msgid "Submit"
 msgstr "Lähetä"
 
@@ -1247,1065 +1230,6 @@ msgstr "Glossit lisättiin onnistuneesti."
 #: signbank/dictionary/views.py:50
 msgid "You are not allowed to see this page."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua."
-
-#. Translators: keywordnotbelong, label name
-#: signbank/feedback/forms.py:29
-msgid "List keywords"
-msgstr "Keyword lista"
-
-#: signbank/feedback/forms.py:36
-msgid "How many hands are used to make this sign?"
-msgstr "Montaako kättä viittomassa käytetään?"
-
-#: signbank/feedback/forms.py:39
-msgid "What is the handshape?"
-msgstr "Mikä on käsimuoto?"
-
-#: signbank/feedback/forms.py:42
-msgid "What is the handshape of the left hand?"
-msgstr "Mikä on vasemman käden käsimuoto?"
-
-#: signbank/feedback/forms.py:45
-msgid "Choose the location of the sign on, or near the body"
-msgstr "Onko viittoma lähellä vai kaukana kehosta"
-
-#: signbank/feedback/forms.py:48
-msgid "Choose the location of the right hand on, or near the left hand"
-msgstr "Onko oikea käsi vasemman päällä vai lähellä vasenta kättä"
-
-#: signbank/feedback/forms.py:52
-msgid "Contact between hands and body"
-msgstr "Käsien ja kehon välinen kontakti"
-
-#: signbank/feedback/forms.py:55
-msgid "Interaction between hands"
-msgstr "Käsien interaktio"
-
-#: signbank/feedback/forms.py:58
-msgid "Movement direction of the hand(s)"
-msgstr "Käsien liikkeen suunta"
-
-#: signbank/feedback/forms.py:61
-msgid "Type of movement"
-msgstr "Liikkeen tyyppi"
-
-#: signbank/feedback/forms.py:64
-msgid "Small movements of the hand(s) and fingers"
-msgstr "Pienet käden ja sormien liikkeet"
-
-#: signbank/feedback/forms.py:67
-msgid "Number of movements"
-msgstr "Liikkeiden määrä"
-
-#. Translators: Missing sign feedback (meaning)
-#: signbank/feedback/forms.py:69
-msgid "Sign Meaning"
-msgstr "Viittoman merkitys"
-
-#. Translators: Missing sign feedback (comments)
-#: signbank/feedback/forms.py:74
-msgid "Further Details"
-msgstr "Lisätietoa"
-
-#. Translators: Handform choice (feedback)
-#: signbank/feedback/models.py:12
-msgid "One handed"
-msgstr "Yksikätinen"
-
-#. Translators: Handform choice (feedback)
-#: signbank/feedback/models.py:14
-msgid "Two handed (same shape for each hand)"
-msgstr "Kaksikätinen (samalla käsimuodolla)"
-
-#. Translators: Handform choice (feedback)
-#: signbank/feedback/models.py:16
-msgid "Two handed (diffent shapes for each hand)"
-msgstr "Kaksikätinen (eri käsimuodoilla)"
-
-#. Translators: handshapeChoices
-#. Translators: locationChoices
-#. Translators: handbodycontactChoices
-#. Translators: directionChoices
-#. Translators: movementtypeChoices
-#. Translators: smallmovementChoices
-#. Translators: repetitionChoices
-#. Translators: relativelocationChoices
-#. Translators: handinteractionChoices
-#: signbank/feedback/models.py:19 signbank/feedback/models.py:82
-#: signbank/feedback/models.py:104 signbank/feedback/models.py:111
-#: signbank/feedback/models.py:123 signbank/feedback/models.py:130
-#: signbank/feedback/models.py:141 signbank/feedback/models.py:147
-#: signbank/feedback/models.py:157
-msgid "None"
-msgstr "Ei yhtään"
-
-#. Translators: handShapeChoices
-#: signbank/feedback/models.py:21
-msgid "Animal"
-msgstr "Eläin"
-
-#: signbank/feedback/models.py:22
-msgid "Animal-flick"
-msgstr ""
-
-#: signbank/feedback/models.py:23
-msgid "Bad"
-msgstr ""
-
-#: signbank/feedback/models.py:24
-msgid "Ball"
-msgstr ""
-
-#: signbank/feedback/models.py:25
-msgid "Cup"
-msgstr ""
-
-#: signbank/feedback/models.py:26
-msgid "Cup-flush"
-msgstr ""
-
-#: signbank/feedback/models.py:27
-msgid "Cup-thumb"
-msgstr ""
-
-#: signbank/feedback/models.py:28
-msgid "Eight"
-msgstr ""
-
-#: signbank/feedback/models.py:29
-msgid "Eight-hook"
-msgstr ""
-
-#: signbank/feedback/models.py:30
-msgid "Fist-A"
-msgstr ""
-
-#: signbank/feedback/models.py:31
-msgid "Fist-S"
-msgstr ""
-
-#: signbank/feedback/models.py:32
-msgid "Flat"
-msgstr ""
-
-#: signbank/feedback/models.py:33
-msgid "Flat-bent"
-msgstr ""
-
-#: signbank/feedback/models.py:34
-msgid "Flat-B"
-msgstr ""
-
-#: signbank/feedback/models.py:35
-msgid "Flat-flush"
-msgstr ""
-
-#: signbank/feedback/models.py:36
-msgid "Flick"
-msgstr ""
-
-#: signbank/feedback/models.py:37
-msgid "Flick-gay"
-msgstr ""
-
-#: signbank/feedback/models.py:38
-msgid "Four"
-msgstr ""
-
-#: signbank/feedback/models.py:39
-msgid "Five"
-msgstr ""
-
-#: signbank/feedback/models.py:40
-msgid "Good"
-msgstr ""
-
-#: signbank/feedback/models.py:41
-msgid "Good-6"
-msgstr ""
-
-#: signbank/feedback/models.py:42
-msgid "Gun"
-msgstr ""
-
-#: signbank/feedback/models.py:43
-msgid "Gun-hook"
-msgstr ""
-
-#: signbank/feedback/models.py:44
-msgid "Hook"
-msgstr ""
-
-#: signbank/feedback/models.py:45
-msgid "Kneel"
-msgstr ""
-
-#: signbank/feedback/models.py:46
-msgid "Letter-C"
-msgstr ""
-
-#: signbank/feedback/models.py:47
-msgid "Letter-M"
-msgstr ""
-
-#: signbank/feedback/models.py:48
-msgid "Letter-N"
-msgstr ""
-
-#: signbank/feedback/models.py:49
-msgid "Love"
-msgstr ""
-
-#: signbank/feedback/models.py:50
-msgid "Middle"
-msgstr ""
-
-#: signbank/feedback/models.py:51
-msgid "Mother"
-msgstr ""
-
-#: signbank/feedback/models.py:52
-msgid "Nine"
-msgstr ""
-
-#: signbank/feedback/models.py:53
-msgid "Point-1"
-msgstr ""
-
-#: signbank/feedback/models.py:54
-msgid "Point-D"
-msgstr ""
-
-#: signbank/feedback/models.py:55
-msgid "Point-flush"
-msgstr ""
-
-#: signbank/feedback/models.py:56
-msgid "Okay-flat"
-msgstr ""
-
-#: signbank/feedback/models.py:57
-msgid "Okay-F"
-msgstr ""
-
-#: signbank/feedback/models.py:58
-msgid "Okay-O"
-msgstr ""
-
-#: signbank/feedback/models.py:59
-msgid "Old-seven"
-msgstr ""
-
-#: signbank/feedback/models.py:60
-msgid "Plane"
-msgstr ""
-
-#: signbank/feedback/models.py:61
-msgid "Perth"
-msgstr ""
-
-#: signbank/feedback/models.py:62
-msgid "Round-O"
-msgstr ""
-
-#: signbank/feedback/models.py:63
-msgid "Round-flat"
-msgstr ""
-
-#: signbank/feedback/models.py:64
-msgid "Round-E"
-msgstr ""
-
-#: signbank/feedback/models.py:65
-msgid "Rude"
-msgstr ""
-
-#: signbank/feedback/models.py:66
-msgid "Salt"
-msgstr ""
-
-#: signbank/feedback/models.py:67
-msgid "Salt-flick"
-msgstr ""
-
-#: signbank/feedback/models.py:68
-msgid "Small"
-msgstr ""
-
-#: signbank/feedback/models.py:69
-msgid "Soon"
-msgstr ""
-
-#: signbank/feedback/models.py:70
-msgid "Spoon"
-msgstr ""
-
-#: signbank/feedback/models.py:71
-msgid "Spoon-hook"
-msgstr ""
-
-#: signbank/feedback/models.py:72
-msgid "Spoon-thumb"
-msgstr ""
-
-#: signbank/feedback/models.py:73
-msgid "Thick"
-msgstr ""
-
-#: signbank/feedback/models.py:74
-msgid "Three"
-msgstr ""
-
-#: signbank/feedback/models.py:75
-msgid "Three-hook"
-msgstr ""
-
-#: signbank/feedback/models.py:76
-msgid "Two"
-msgstr ""
-
-#: signbank/feedback/models.py:77
-msgid "Wish"
-msgstr ""
-
-#: signbank/feedback/models.py:78
-msgid "Write"
-msgstr ""
-
-#: signbank/feedback/models.py:79
-msgid "Write-flat"
-msgstr ""
-
-#: signbank/feedback/models.py:83
-msgid "Top of head"
-msgstr ""
-
-#: signbank/feedback/models.py:84
-msgid "Forehead"
-msgstr ""
-
-#: signbank/feedback/models.py:85
-msgid "Temple"
-msgstr ""
-
-#: signbank/feedback/models.py:86
-msgid "Eyes"
-msgstr ""
-
-#: signbank/feedback/models.py:87
-msgid "Nose"
-msgstr ""
-
-#: signbank/feedback/models.py:88
-msgid "Whole of face"
-msgstr ""
-
-#: signbank/feedback/models.py:89
-msgid "Cheekbone"
-msgstr ""
-
-#: signbank/feedback/models.py:90
-msgid "Ear"
-msgstr ""
-
-#: signbank/feedback/models.py:91
-msgid "Cheek"
-msgstr ""
-
-#: signbank/feedback/models.py:92
-msgid "Mouth and lips"
-msgstr ""
-
-#: signbank/feedback/models.py:93
-msgid "Chin"
-msgstr ""
-
-#: signbank/feedback/models.py:94
-msgid "Neck"
-msgstr ""
-
-#: signbank/feedback/models.py:95
-msgid "Shoulder"
-msgstr ""
-
-#: signbank/feedback/models.py:96
-msgid "Chest"
-msgstr ""
-
-#: signbank/feedback/models.py:97
-msgid "Stomach"
-msgstr ""
-
-#: signbank/feedback/models.py:98
-msgid "Waist"
-msgstr ""
-
-#: signbank/feedback/models.py:99
-msgid "Lower waist"
-msgstr ""
-
-#: signbank/feedback/models.py:100
-msgid "Upper arm"
-msgstr ""
-
-#: signbank/feedback/models.py:101
-msgid "Elbow"
-msgstr ""
-
-#: signbank/feedback/models.py:105
-msgid "Contact at start of movement"
-msgstr ""
-
-#: signbank/feedback/models.py:106
-msgid "Contact at end of movement"
-msgstr ""
-
-#: signbank/feedback/models.py:107
-msgid "Two contacts (tap)"
-msgstr ""
-
-#: signbank/feedback/models.py:108
-msgid "Contact during (rub/stroke)"
-msgstr ""
-
-#: signbank/feedback/models.py:112
-msgid "Up"
-msgstr ""
-
-#: signbank/feedback/models.py:113
-msgid "Down"
-msgstr ""
-
-#: signbank/feedback/models.py:114
-msgid "Up and down"
-msgstr ""
-
-#: signbank/feedback/models.py:115
-msgid "Left"
-msgstr ""
-
-#: signbank/feedback/models.py:116
-msgid "Right"
-msgstr ""
-
-#: signbank/feedback/models.py:117
-msgid "Side to side"
-msgstr ""
-
-#: signbank/feedback/models.py:118
-msgid "Away"
-msgstr ""
-
-#: signbank/feedback/models.py:119
-msgid "Towards"
-msgstr ""
-
-#: signbank/feedback/models.py:120
-msgid "To and fro"
-msgstr ""
-
-#: signbank/feedback/models.py:124
-msgid "Straight"
-msgstr ""
-
-#: signbank/feedback/models.py:125
-msgid "Curved"
-msgstr ""
-
-#: signbank/feedback/models.py:126
-msgid "Circle"
-msgstr ""
-
-#: signbank/feedback/models.py:127
-msgid "Zig-zag"
-msgstr ""
-
-#: signbank/feedback/models.py:131
-msgid "Straighten from bent"
-msgstr ""
-
-#: signbank/feedback/models.py:132
-msgid "Bend fingers"
-msgstr ""
-
-#: signbank/feedback/models.py:133
-msgid "Nod at wrist"
-msgstr ""
-
-#: signbank/feedback/models.py:134
-msgid "Straighten fingers"
-msgstr ""
-
-#: signbank/feedback/models.py:135
-msgid "Open handshape"
-msgstr ""
-
-#: signbank/feedback/models.py:136
-msgid "Close handshape"
-msgstr ""
-
-#: signbank/feedback/models.py:137
-msgid "Wriggle fingers"
-msgstr ""
-
-#: signbank/feedback/models.py:138
-msgid "Crumble fingers"
-msgstr ""
-
-#: signbank/feedback/models.py:142
-msgid "Do the movement once"
-msgstr ""
-
-#: signbank/feedback/models.py:143
-msgid "Do the movement twice"
-msgstr ""
-
-#: signbank/feedback/models.py:144
-msgid "Repeat the movement several times"
-msgstr ""
-
-#: signbank/feedback/models.py:148
-msgid "Forearm"
-msgstr ""
-
-#: signbank/feedback/models.py:149
-msgid "Wrist"
-msgstr ""
-
-#: signbank/feedback/models.py:150
-msgid "Pulse"
-msgstr ""
-
-#: signbank/feedback/models.py:151
-msgid "Back of hand"
-msgstr ""
-
-#: signbank/feedback/models.py:152
-msgid "Palm"
-msgstr ""
-
-#: signbank/feedback/models.py:153
-msgid "Sides of hand"
-msgstr ""
-
-#: signbank/feedback/models.py:154
-msgid "Fingertips"
-msgstr ""
-
-#: signbank/feedback/models.py:159
-msgid "Alternate hands (one moves, then the other moves)"
-msgstr ""
-
-#: signbank/feedback/models.py:160
-msgid "Move the hands towards each other"
-msgstr ""
-
-#: signbank/feedback/models.py:161
-msgid "Move the hands away from each other"
-msgstr ""
-
-#: signbank/feedback/models.py:162
-msgid "The hands cross over each other"
-msgstr ""
-
-#: signbank/feedback/models.py:178
-msgid "Can View Interpreter Feedback"
-msgstr ""
-
-#. Translators: Sign feedback instructions
-#: signbank/feedback/models.py:212
-#: signbank/feedback/templates/feedback/signfeedback.html:17
-msgid ""
-"Please give us your comments about this sign. For example: do you think "
-"there are other keywords that belong with this sign? Please write your "
-"comments or new keyword/s below."
-msgstr ""
-"Anna palautetta viittomasta. Onko muita avainsanoja jotka kuuluvat tähän "
-"viittomaan? Kirjoita kommenttisi ja avainsanat alapuolelle."
-
-#: signbank/feedback/models.py:217
-msgid ""
-"Is there a keyword or keyword/s that DO NOT belong with this sign? Please "
-"provide the list of keywords below"
-msgstr ""
-"Eikö joku avainsana kuulu tähän viittomaan? Listaa avainsanat alapuolelle"
-
-#: signbank/feedback/templates/feedback/generalfeedback.html:11
-msgid "Thanks for your comment. We value your contribution."
-msgstr "Kiitos kommentistasi, arvostamme osallistumistanne."
-
-#. Translators: Feedback
-#. Translators: Header3
-#. Translators: General Feedback title
-#: signbank/feedback/templates/feedback/generalfeedback.html:16
-#: signbank/feedback/templates/feedback/index.html:30
-#: signbank/feedback/templates/feedback/interpreter.html:25
-#: signbank/feedback/templates/feedback/show.html:48
-#: signbank/feedback/views.py:38
-msgid "General Feedback"
-msgstr "Yleinen palaute"
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/generalfeedback.html:19
-msgid ""
-"Please enter any comments you may have about this site and click \"submit\" "
-"to send your feedback to us. We value your contributions and comments."
-msgstr ""
-"Kirjoita kommenttisi sivustosta ja paina lähetä. Arvostamme "
-"osallistumistanne ja kommenttejanne."
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/generalfeedback.html:26
-msgid "General comments, suggestions, or anything you feel like telling us."
-msgstr "Yleiset kommentit ja ehdotukset."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/generalfeedback.html:33
-msgid "Upload your feedback as a video."
-msgstr "Lähetä palautteesi videona."
-
-#. Translators: Note about sending feedback as a video
-#. Translators:
-#: signbank/feedback/templates/feedback/generalfeedback.html:37
-#: signbank/feedback/templates/feedback/missingsign.html:90
-msgid ""
-"NOTE: Video files can be quite large, and may take a long time to send. "
-"Please be patient when submitting this feedback."
-msgstr ""
-"HUOM: Videotiedostot voivat olla suuria ja niiden lähettämisessä saattaa "
-"kestää tovi. Kärsivällisyyttä."
-
-#. Translators: Header1
-#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:18
-msgid "General feedback summary"
-msgstr "Yleisen palautteen yhteenveto"
-
-#. Translators: Feedback summary
-#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:23
-msgid "Date"
-msgstr "Päivämäärä"
-
-#. Translators: Feedback summary
-#: signbank/feedback/templates/feedback/generalfeedbacksummary.html:25
-msgid "User"
-msgstr "Käyttäjä"
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/index.html:6
-#, python-format
-msgid ""
-"%(language)s is always evolving, but thanks to the feedback we receive from "
-"the %(language)s-using community through Signbank, you will be able to help "
-"shape the language. We invite you to pass on any comments you may have, or "
-"to suggest corrections and additions to Signbank."
-msgstr ""
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/index.html:12
-#, python-format
-msgid ""
-"All comments are welcome and any information you give us about %(language)s "
-"will be taken into consideration and properly evaluated. However, due to the "
-"large number of registered users, we do not acknowledge receipt of comments, "
-"nor are we able to provide answers to specific questions about %(language)s."
-msgstr ""
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/index.html:19
-#, python-format
-msgid ""
-"Please consult the <a href=\"/about/help/\">help page</a> for system "
-"requirements for viewing this site. However, because access to %(language)s "
-"Signbank is free, we do not have the resources to offer you individual "
-"technical support regarding your computer or its operating system, your "
-"internet connection, or your browser."
-msgstr ""
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/index.html:27
-msgid "We thank you in advance for your contribution and cooperation."
-msgstr "Haluamme kiittää teitä osallistumesta ja yhteistyöstä."
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/index.html:33
-#, python-format
-msgid ""
-"Want to tell us what you think of the %(language)s Signbank website or any "
-"other signed language related issues? The <a href=\"generalfeedback.html"
-"\">General Feedback</a> form is just the place to do it."
-msgstr ""
-"Haluatko kertoa mielipiteesi %(language)s Signbankista tai jostain muusta "
-"viittomakielisestä ongelmasta? <a href=\"generalfeedback.html\">Yleisen "
-"palautteen lomakkeella</a> voit antaa tästä palautetta."
-
-#. Translators: Feedback
-#. Translators Report Missing Sign title
-#: signbank/feedback/templates/feedback/index.html:38
-#: signbank/feedback/views.py:88
-msgid "Report a Missing Sign"
-msgstr "Ilmoita puuttuva viittoma"
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/index.html:41
-msgid ""
-"If you know of a sign that isn't in Signbank, you can use the <a href="
-"\"missingsign.html\">Report a Missing Sign</a> form to describe it to us. We "
-"will attempt to add as many of your new or missing signs as possible to "
-"Signbank. If an addition you suggest is accepted, other visitors to Signbank "
-"will then also be able to provide feedback on your sign."
-msgstr ""
-"Jos tiedät viittoman joka ei ole Signbankissa, käytä <a href=\"missingsign."
-"html\">Ilmoita puuttuva viittoma</a> lomaketta. Pyrimme lisäämään viittomia "
-"palautteen perusteella."
-
-#. Translators: Header1
-#: signbank/feedback/templates/feedback/interpreter.html:6
-msgid "Interpreter Feedback Summary"
-msgstr "Tulkkipalautteen yhteenveto"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:10
-msgid "A list of signs that have at least one Interpreter Note"
-msgstr "Lista viittomista joilla on vähintään yksi tulkkipalaute"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:35
-#: signbank/feedback/templates/feedback/interpreter.html:74
-#: signbank/feedback/templates/feedback/interpreter.html:122
-#: signbank/feedback/templates/feedback/show.html:57
-#: signbank/feedback/templates/feedback/show.html:95
-#: signbank/feedback/templates/feedback/show.html:141
-msgid "View"
-msgstr "Näytä"
-
-#. Translators:  Submit button
-#. Translators: Submit button
-#: signbank/feedback/templates/feedback/interpreter.html:52
-#: signbank/feedback/templates/feedback/interpreter.html:99
-#: signbank/feedback/templates/feedback/interpreter.html:172
-#: signbank/feedback/templates/feedback/show.html:78
-#: signbank/feedback/templates/feedback/show.html:122
-#: signbank/feedback/templates/feedback/show.html:195
-msgid "Delete Comment"
-msgstr "Poista kommentti"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:60
-msgid "No general feedback posted"
-msgstr ""
-
-#. Translators: Header3
-#. Translators: Heading2
-#. Translators: View sign feedback, row
-#: signbank/feedback/templates/feedback/interpreter.html:64
-#: signbank/feedback/templates/feedback/show.html:86
-#: signbank/feedback/templates/feedback/signfeedback.html:8
-#: signbank/feedback/templates/feedback/viewsignfeedback.html:5
-msgid "Sign Feedback"
-msgstr "Palautetta glosseista"
-
-#. Translators:
-#. Translators: Link to a sign
-#: signbank/feedback/templates/feedback/interpreter.html:80
-#: signbank/feedback/templates/feedback/show.html:102
-msgid "Sign:"
-msgstr "Kirjaudu:"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:82
-#: signbank/feedback/templates/feedback/show.html:105
-msgid "Comment:"
-msgstr "Kommentti:"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:84
-#: signbank/feedback/templates/feedback/show.html:107
-msgid "Don't Belong:"
-msgstr "Ei kuulu:"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:108
-#: signbank/feedback/templates/feedback/interpreter.html:182
-msgid "No feedback posted"
-msgstr "Ei palautteita"
-
-#. Translators: Header3
-#. Translators: Heading2
-#. Translators: Header3
-#: signbank/feedback/templates/feedback/interpreter.html:112
-#: signbank/feedback/templates/feedback/missingsign.html:49
-#: signbank/feedback/templates/feedback/show.html:132
-msgid "Missing Sign Feedback"
-msgstr "Palaute puuttuvista viittomista"
-
-#. Translators:
-#. Translators: Preceding an email address
-#: signbank/feedback/templates/feedback/interpreter.html:129
-#: signbank/feedback/templates/feedback/show.html:148
-msgid "Email:"
-msgstr "Sähköposti:"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:135
-msgid ""
-"Download video</a><br> (if video does not play here you may be able to play "
-"by downloading)"
-msgstr ""
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:142
-#: signbank/feedback/templates/feedback/show.html:165
-msgid "Handform"
-msgstr "Käsimuoto"
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:144
-#: signbank/feedback/templates/feedback/show.html:167
-msgid "Handshape"
-msgstr "Käden muoto"
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:146
-#: signbank/feedback/templates/feedback/show.html:169
-msgid "Alternate Handshape"
-msgstr ""
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:150
-#: signbank/feedback/templates/feedback/show.html:173
-msgid "Relative Location"
-msgstr ""
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:152
-#: signbank/feedback/templates/feedback/show.html:175
-msgid "Hand Body Contact"
-msgstr ""
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:154
-#: signbank/feedback/templates/feedback/show.html:177
-msgid "Hand Interaction"
-msgstr ""
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:156
-#: signbank/feedback/templates/feedback/show.html:179
-msgid "Direction"
-msgstr "Suunta"
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:158
-#: signbank/feedback/templates/feedback/show.html:181
-msgid "Movement Type"
-msgstr "Liikkeen tyyppi"
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:160
-#: signbank/feedback/templates/feedback/show.html:183
-msgid "Small Movement"
-msgstr "Pieni liike"
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:162
-#: signbank/feedback/templates/feedback/show.html:185
-msgid "Repetition"
-msgstr "Toisto"
-
-#. Translators:
-#. Translators: Gloss information
-#: signbank/feedback/templates/feedback/interpreter.html:164
-#: signbank/feedback/templates/feedback/show.html:187
-msgid "Meaning"
-msgstr "Merkitys"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/interpreter.html:190
-msgid "You do not have permission to view this page"
-msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
-
-#: signbank/feedback/templates/feedback/missingsign.html:55
-msgid "Thank you for your feedback."
-msgstr "Kiitos palautteestasi."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:60
-#, python-format
-msgid ""
-"Please fill out the required questions opposite and then click 'Submit' to "
-"report a missing sign to the %(language)s signbank."
-msgstr ""
-"Ilmoittaaksesi puuttuvan viittoman %(language)s signbankiin, täytä "
-"vastapäiset kysymykset ja paina 'Lähetä'."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:63
-msgid ""
-"If verified, the site will be updated to include the new sign.  Note that "
-"this may take some time depending on the level of requests."
-msgstr ""
-"Jos viittoma hyväksytään, lisätään se tietokantaan. Tämä saattaa kestää "
-"jonkin aikaa riippuen pyynnön luonteesta."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:70
-msgid ""
-"You may either upload a video that shows the missing sign or fill in details "
-"in a form.  In either case, you should enter a meaning and any comments you "
-"might have in the text boxes at the bottom of the form."
-msgstr "Lähetä video puuttuvasta viittomasta tai täytä tiedot lomakkeeseen."
-
-#. Translators: Button
-#: signbank/feedback/templates/feedback/missingsign.html:76
-msgid "Video Comment"
-msgstr "Videokommentti"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:80
-msgid "Video Upload"
-msgstr "Lähetä video"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:85
-msgid "Upload a video of the sign."
-msgstr "Lähetä video viittomasta."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:98
-msgid "Sign Description"
-msgstr "Glossin kuvaus"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:109
-#: signbank/feedback/templates/feedback/missingsign.html:116
-#: signbank/feedback/templates/feedback/missingsign.html:125
-#: signbank/feedback/templates/feedback/missingsign.html:133
-msgid "Show Guide"
-msgstr "Näytä ohje"
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:140
-msgid ""
-"Using the guide, select the movement symbol/word that best describes this "
-"sign. Please choose either: one only (chosen from any category), or a choice "
-"from every category."
-msgstr ""
-"Käyttäen ohjetta, valitse symboli/sana joka parhaiten kuvailee tätä "
-"viittomaa. Valitse jompi kumpi: ainoastaan yksi mistä tahansa kategoriasta, "
-"tai vaihtoehto jokaisesta kategoriasta."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:191
-msgid ""
-"Please explain the meaning of the new or missing sign, or enter individual "
-"English words that have the same meaning as this sign (i.e. keywords)."
-msgstr ""
-"Selitä viittoman merkitys tai kirjoita englanninkielisiä avainsanoja joilla "
-"on sama merkitys kuin tällä viittomalla."
-
-#. Translators:
-#: signbank/feedback/templates/feedback/missingsign.html:198
-msgid ""
-"Are there any other comments you would like to give about this sign? For "
-"example, do you think there are other or extra keyword/s that belong with "
-"this sign? If so, please include your comments below."
-msgstr ""
-"Onko lisättävää? Liittyykö viittomaan muita avainsanoja? Liitä ne "
-"kommentteihisi."
-
-#. Translators: Submit button
-#: signbank/feedback/templates/feedback/missingsign.html:207
-msgid "Submit Feedback"
-msgstr "Lähetä palaute"
-
-#. Translators: Download link
-#: signbank/feedback/templates/feedback/show.html:158
-msgid "Download video"
-msgstr "Lataa video"
-
-#. Translators: Instructions if video does not play
-#: signbank/feedback/templates/feedback/show.html:159
-msgid "(if video does not play here you may be able to play by downloading)"
-msgstr "(jos video ei pyöri, voit yrittää katsoa sen lataamalla)"
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:25
-msgid "Is there a keyword or keyword/s that DO NOT belong with this sign?"
-msgstr "Onko viittomaan kuulumattomia avainsanoja?"
-
-#. Translators: Feedback instruction
-#: signbank/feedback/templates/feedback/signfeedback.html:28
-msgid "Please provide the list of keywords below"
-msgstr "Listaa avainsanat alapuolelle"
-
-#. Translators: Header3 feedback questions
-#: signbank/feedback/templates/feedback/signfeedback.html:36
-msgid "Optional Questions"
-msgstr "Valinnaiset kysymykset"
-
-#. Translators: Question considering if sign is from x sign language
-#: signbank/feedback/templates/feedback/signfeedback.html:38
-#, python-format
-msgid "Is this sign an %(language)s Sign?"
-msgstr "Onko tämä %(language)s:n viittoma?"
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:44
-msgid "Where is this sign used?"
-msgstr "Missä viittomaa käytetään?"
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:49
-msgid "Do you like this sign?"
-msgstr "Pidätkö tästä viittomasta?"
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:54
-msgid "Do you use this sign?"
-msgstr "Käytätkö tätä viittomaa?"
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:60
-msgid "If this sign is a suggested new sign, would you use it?"
-msgstr "Käyttäisitkö tätä uutena viittomana?"
-
-#. Translators: Feedback question
-#: signbank/feedback/templates/feedback/signfeedback.html:65
-msgid "Is the information about the sign correct?"
-msgstr "Onko viittoman tiedot oikein?"
-
-#. Translators: Feedback
-#: signbank/feedback/templates/feedback/viewsignfeedback.html:11
-msgid ""
-"There is currently insufficient feedback stored for this sign to generate a\n"
-" summary according to user groups. Unless a certain number of responses "
-"have\n"
-" been received about any particular sign, percentage displays would be\n"
-" misleading."
-msgstr ""
-"Yhteenvetoa varten viittomasta ei ole tarpeeksi palautetta käyttäjäryhmien "
-"perusteella. Jos vastauksia ei ole tarpeeksi, prosentit saattaisivat olla "
-"harhaanjohtavia."
-
-#. Translators: Title for feedback views index
-#: signbank/feedback/views.py:12
-msgid "Leave Feedback"
-msgstr "Anna palautetta"
-
-#. Translators: Thank you message for recording signfeedback
-#: signbank/feedback/views.py:193 signbank/feedback/views.py:199
-msgid "Thank you. Your feedback has been saved."
-msgstr "Kiitos palautteestasi."
 
 #: signbank/settings/base.py:36
 msgid "Finnish"
@@ -2888,6 +1812,312 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Thanks for your comment. We value your contribution."
+#~ msgstr "Kiitos kommentistasi, arvostamme osallistumistanne."
+
+#~ msgid "General Feedback"
+#~ msgstr "Yleinen palaute"
+
+#~ msgid ""
+#~ "Please enter any comments you may have about this site and click \"submit"
+#~ "\" to send your feedback to us. We value your contributions and comments."
+#~ msgstr ""
+#~ "Kirjoita kommenttisi sivustosta ja paina lähetä. Arvostamme "
+#~ "osallistumistanne ja kommenttejanne."
+
+#~ msgid "General comments, suggestions, or anything you feel like telling us."
+#~ msgstr "Yleiset kommentit ja ehdotukset."
+
+#~ msgid "Upload your feedback as a video."
+#~ msgstr "Lähetä palautteesi videona."
+
+#~ msgid ""
+#~ "NOTE: Video files can be quite large, and may take a long time to send. "
+#~ "Please be patient when submitting this feedback."
+#~ msgstr ""
+#~ "HUOM: Videotiedostot voivat olla suuria ja niiden lähettämisessä saattaa "
+#~ "kestää tovi. Kärsivällisyyttä."
+
+#~ msgid "General feedback summary"
+#~ msgstr "Yleisen palautteen yhteenveto"
+
+#~ msgid "Date"
+#~ msgstr "Päivämäärä"
+
+#~ msgid "User"
+#~ msgstr "Käyttäjä"
+
+#~ msgid "We thank you in advance for your contribution and cooperation."
+#~ msgstr "Haluamme kiittää teitä osallistumesta ja yhteistyöstä."
+
+#~ msgid ""
+#~ "Want to tell us what you think of the %(language)s Signbank website or "
+#~ "any other signed language related issues? The <a href=\"generalfeedback."
+#~ "html\">General Feedback</a> form is just the place to do it."
+#~ msgstr ""
+#~ "Haluatko kertoa mielipiteesi %(language)s Signbankista tai jostain muusta "
+#~ "viittomakielisestä ongelmasta? <a href=\"generalfeedback.html\">Yleisen "
+#~ "palautteen lomakkeella</a> voit antaa tästä palautetta."
+
+#~ msgid "Report a Missing Sign"
+#~ msgstr "Ilmoita puuttuva viittoma"
+
+#~ msgid ""
+#~ "If you know of a sign that isn't in Signbank, you can use the <a href="
+#~ "\"missingsign.html\">Report a Missing Sign</a> form to describe it to us. "
+#~ "We will attempt to add as many of your new or missing signs as possible "
+#~ "to Signbank. If an addition you suggest is accepted, other visitors to "
+#~ "Signbank will then also be able to provide feedback on your sign."
+#~ msgstr ""
+#~ "Jos tiedät viittoman joka ei ole Signbankissa, käytä <a href="
+#~ "\"missingsign.html\">Ilmoita puuttuva viittoma</a> lomaketta. Pyrimme "
+#~ "lisäämään viittomia palautteen perusteella."
+
+#~ msgid "Interpreter Feedback Summary"
+#~ msgstr "Tulkkipalautteen yhteenveto"
+
+#~ msgid "A list of signs that have at least one Interpreter Note"
+#~ msgstr "Lista viittomista joilla on vähintään yksi tulkkipalaute"
+
+#~ msgid "View"
+#~ msgstr "Näytä"
+
+#~ msgid "Delete Comment"
+#~ msgstr "Poista kommentti"
+
+#~ msgid "Sign Feedback"
+#~ msgstr "Palautetta glosseista"
+
+#~ msgid "Sign:"
+#~ msgstr "Kirjaudu:"
+
+#~ msgid "Comment:"
+#~ msgstr "Kommentti:"
+
+#~ msgid "Don't Belong:"
+#~ msgstr "Ei kuulu:"
+
+#~ msgid "No feedback posted"
+#~ msgstr "Ei palautteita"
+
+#~ msgid "Missing Sign Feedback"
+#~ msgstr "Palaute puuttuvista viittomista"
+
+#~ msgid "Email:"
+#~ msgstr "Sähköposti:"
+
+#~ msgid "Handform"
+#~ msgstr "Käsimuoto"
+
+#~ msgid "Handshape"
+#~ msgstr "Käden muoto"
+
+#~ msgid "Direction"
+#~ msgstr "Suunta"
+
+#~ msgid "Movement Type"
+#~ msgstr "Liikkeen tyyppi"
+
+#~ msgid "Small Movement"
+#~ msgstr "Pieni liike"
+
+#~ msgid "Repetition"
+#~ msgstr "Toisto"
+
+#~ msgid "Meaning"
+#~ msgstr "Merkitys"
+
+#~ msgid "You do not have permission to view this page"
+#~ msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
+
+#~ msgid "Thank you for your feedback."
+#~ msgstr "Kiitos palautteestasi."
+
+#~ msgid ""
+#~ "Please fill out the required questions opposite and then click 'Submit' "
+#~ "to report a missing sign to the %(language)s signbank."
+#~ msgstr ""
+#~ "Ilmoittaaksesi puuttuvan viittoman %(language)s signbankiin, täytä "
+#~ "vastapäiset kysymykset ja paina 'Lähetä'."
+
+#~ msgid ""
+#~ "If verified, the site will be updated to include the new sign.  Note that "
+#~ "this may take some time depending on the level of requests."
+#~ msgstr ""
+#~ "Jos viittoma hyväksytään, lisätään se tietokantaan. Tämä saattaa kestää "
+#~ "jonkin aikaa riippuen pyynnön luonteesta."
+
+#~ msgid ""
+#~ "You may either upload a video that shows the missing sign or fill in "
+#~ "details in a form.  In either case, you should enter a meaning and any "
+#~ "comments you might have in the text boxes at the bottom of the form."
+#~ msgstr "Lähetä video puuttuvasta viittomasta tai täytä tiedot lomakkeeseen."
+
+#~ msgid "Video Comment"
+#~ msgstr "Videokommentti"
+
+#~ msgid "Video Upload"
+#~ msgstr "Lähetä video"
+
+#~ msgid "Upload a video of the sign."
+#~ msgstr "Lähetä video viittomasta."
+
+#~ msgid "Sign Description"
+#~ msgstr "Glossin kuvaus"
+
+#~ msgid "Show Guide"
+#~ msgstr "Näytä ohje"
+
+#~ msgid ""
+#~ "Using the guide, select the movement symbol/word that best describes this "
+#~ "sign. Please choose either: one only (chosen from any category), or a "
+#~ "choice from every category."
+#~ msgstr ""
+#~ "Käyttäen ohjetta, valitse symboli/sana joka parhaiten kuvailee tätä "
+#~ "viittomaa. Valitse jompi kumpi: ainoastaan yksi mistä tahansa "
+#~ "kategoriasta, tai vaihtoehto jokaisesta kategoriasta."
+
+#~ msgid ""
+#~ "Please explain the meaning of the new or missing sign, or enter "
+#~ "individual English words that have the same meaning as this sign (i.e. "
+#~ "keywords)."
+#~ msgstr ""
+#~ "Selitä viittoman merkitys tai kirjoita englanninkielisiä avainsanoja "
+#~ "joilla on sama merkitys kuin tällä viittomalla."
+
+#~ msgid ""
+#~ "Are there any other comments you would like to give about this sign? For "
+#~ "example, do you think there are other or extra keyword/s that belong with "
+#~ "this sign? If so, please include your comments below."
+#~ msgstr ""
+#~ "Onko lisättävää? Liittyykö viittomaan muita avainsanoja? Liitä ne "
+#~ "kommentteihisi."
+
+#~ msgid "Submit Feedback"
+#~ msgstr "Lähetä palaute"
+
+#~ msgid "Download video"
+#~ msgstr "Lataa video"
+
+#~ msgid "(if video does not play here you may be able to play by downloading)"
+#~ msgstr "(jos video ei pyöri, voit yrittää katsoa sen lataamalla)"
+
+#~ msgid ""
+#~ "Please give us your comments about this sign. For example: do you think "
+#~ "there are other keywords that belong with this sign? Please write your "
+#~ "comments or new keyword/s below."
+#~ msgstr ""
+#~ "Anna palautetta viittomasta. Onko muita avainsanoja jotka kuuluvat tähän "
+#~ "viittomaan? Kirjoita kommenttisi ja avainsanat alapuolelle."
+
+#~ msgid "Is there a keyword or keyword/s that DO NOT belong with this sign?"
+#~ msgstr "Onko viittomaan kuulumattomia avainsanoja?"
+
+#~ msgid "Please provide the list of keywords below"
+#~ msgstr "Listaa avainsanat alapuolelle"
+
+#~ msgid "Optional Questions"
+#~ msgstr "Valinnaiset kysymykset"
+
+#~ msgid "Is this sign an %(language)s Sign?"
+#~ msgstr "Onko tämä %(language)s:n viittoma?"
+
+#~ msgid "Where is this sign used?"
+#~ msgstr "Missä viittomaa käytetään?"
+
+#~ msgid "Do you like this sign?"
+#~ msgstr "Pidätkö tästä viittomasta?"
+
+#~ msgid "Do you use this sign?"
+#~ msgstr "Käytätkö tätä viittomaa?"
+
+#~ msgid "If this sign is a suggested new sign, would you use it?"
+#~ msgstr "Käyttäisitkö tätä uutena viittomana?"
+
+#~ msgid "Is the information about the sign correct?"
+#~ msgstr "Onko viittoman tiedot oikein?"
+
+#~ msgid ""
+#~ "There is currently insufficient feedback stored for this sign to generate "
+#~ "a\n"
+#~ " summary according to user groups. Unless a certain number of responses "
+#~ "have\n"
+#~ " been received about any particular sign, percentage displays would be\n"
+#~ " misleading."
+#~ msgstr ""
+#~ "Yhteenvetoa varten viittomasta ei ole tarpeeksi palautetta "
+#~ "käyttäjäryhmien perusteella. Jos vastauksia ei ole tarpeeksi, prosentit "
+#~ "saattaisivat olla harhaanjohtavia."
+
+#~ msgid "List keywords"
+#~ msgstr "Keyword lista"
+
+#~ msgid "How many hands are used to make this sign?"
+#~ msgstr "Montaako kättä viittomassa käytetään?"
+
+#~ msgid "What is the handshape?"
+#~ msgstr "Mikä on käsimuoto?"
+
+#~ msgid "What is the handshape of the left hand?"
+#~ msgstr "Mikä on vasemman käden käsimuoto?"
+
+#~ msgid "Choose the location of the sign on, or near the body"
+#~ msgstr "Onko viittoma lähellä vai kaukana kehosta"
+
+#~ msgid "Choose the location of the right hand on, or near the left hand"
+#~ msgstr "Onko oikea käsi vasemman päällä vai lähellä vasenta kättä"
+
+#~ msgid "Contact between hands and body"
+#~ msgstr "Käsien ja kehon välinen kontakti"
+
+#~ msgid "Interaction between hands"
+#~ msgstr "Käsien interaktio"
+
+#~ msgid "Movement direction of the hand(s)"
+#~ msgstr "Käsien liikkeen suunta"
+
+#~ msgid "Type of movement"
+#~ msgstr "Liikkeen tyyppi"
+
+#~ msgid "Small movements of the hand(s) and fingers"
+#~ msgstr "Pienet käden ja sormien liikkeet"
+
+#~ msgid "Number of movements"
+#~ msgstr "Liikkeiden määrä"
+
+#~ msgid "Sign Meaning"
+#~ msgstr "Viittoman merkitys"
+
+#~ msgid "Further Details"
+#~ msgstr "Lisätietoa"
+
+#~ msgid "One handed"
+#~ msgstr "Yksikätinen"
+
+#~ msgid "Two handed (same shape for each hand)"
+#~ msgstr "Kaksikätinen (samalla käsimuodolla)"
+
+#~ msgid "Two handed (diffent shapes for each hand)"
+#~ msgstr "Kaksikätinen (eri käsimuodoilla)"
+
+#~ msgid "None"
+#~ msgstr "Ei yhtään"
+
+#~ msgid "Animal"
+#~ msgstr "Eläin"
+
+#~ msgid ""
+#~ "Is there a keyword or keyword/s that DO NOT belong with this sign? Please "
+#~ "provide the list of keywords below"
+#~ msgstr ""
+#~ "Eikö joku avainsana kuulu tähän viittomaan? Listaa avainsanat alapuolelle"
+
+#~ msgid "Leave Feedback"
+#~ msgstr "Anna palautetta"
+
+#~ msgid "Thank you. Your feedback has been saved."
+#~ msgstr "Kiitos palautteestasi."
 
 #~ msgid "Video's dataset"
 #~ msgstr "Videon Aineisto"

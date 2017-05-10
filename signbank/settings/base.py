@@ -115,7 +115,6 @@ INSTALLED_APPS = (
     'bootstrap3',
     'django_summernote',
     'signbank.dictionary',
-    'signbank.feedback',
     'django.contrib.flatpages',
     'signbank.contentpages',
     'signbank.video',
@@ -124,8 +123,6 @@ INSTALLED_APPS = (
     'django_comments',
 )
 
-# Location for comment videos relative to MEDIA_ROOT, comment videos are feedback videos.
-COMMENT_VIDEO_LOCATION = "comments"
 # Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main
 # storage location
 VIDEO_UPLOAD_LOCATION = "upload"
