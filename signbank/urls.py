@@ -6,7 +6,6 @@ from django.conf import settings
 # Views
 from .dictionary import views as dictionary_views
 from .dictionary.adminviews import GlossListView
-from .feedback import views as feedback_views
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment, latest_comments, latest_comments_page
@@ -22,10 +21,9 @@ urlpatterns = [
     # This allows to change the translations site language
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
-    # Include dictionary/, feedback/ and video/ urls
+    # Include dictionary/, and video/ urls
     url(r'^dictionary/',
         include('signbank.dictionary.urls', namespace='dictionary')),
-    url(r'^feedback/', include('signbank.feedback.urls')),
     url(r'^video/', include('signbank.video.urls', namespace='video')),
 
     # Hardcoding a number of special urls:
@@ -34,8 +32,6 @@ urlpatterns = [
     url(r'^signs/add/$', dictionary_views.add_new_sign, name='create_gloss'),
     # TODO: Remove this in the future
     # url(r'^signs/import_csv/$', dictionary_views.import_csv, name='old_import_csv'),
-    url(r'^feedback/overview/$',
-        feedback_views.showfeedback),
 
     # Registration urls for login, logout, registration, activation etc.
     url(r'^accounts/', include('registration.backends.hmac.urls')),

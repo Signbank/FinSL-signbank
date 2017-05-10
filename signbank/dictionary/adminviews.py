@@ -1,4 +1,4 @@
-import csv
+import csv, json
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -14,9 +14,10 @@ from django.db.models import Prefetch
 from django.contrib.contenttypes.models import ContentType
 from collections import defaultdict
 
-from signbank.dictionary.forms import *
-from signbank.feedback.forms import *
-from signbank.video.forms import VideoUploadForGlossForm
+from .forms import *
+from .models import Translation
+from ..video.forms import VideoUploadForGlossForm
+from ..video.models import GlossVideo
 from ..comments import CommentTagForm
 
 

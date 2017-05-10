@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import permission_required
 from django.db.models.fields import NullBooleanField
 
 from signbank.dictionary.forms import *
-from signbank.feedback.models import *
 from signbank.dictionary.update import update_keywords
+from .models import Keyword
 import forms
 from signbank.tools import compare_valuedict_to_gloss
 from django.contrib.admin.views.decorators import user_passes_test
