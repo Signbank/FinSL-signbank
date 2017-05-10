@@ -41,9 +41,9 @@ class HasPosterFilter(admin.SimpleListFilter):
             return queryset.filter(posterfile='')
 
 
-class GlossVideoCountFilter(admin.SimpleListFilter):
+class GlossesVideoCountFilter(admin.SimpleListFilter):
     title = _('Gloss has video count of')
-    parameter_name = 'gloss_has_multiple'
+    parameter_name = 'gloss_video_count'
 
     def lookups(self, request, model_admin):
         return (
@@ -75,7 +75,7 @@ class GlossVideoAdmin(admin.ModelAdmin):
     fields = ('title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss', 'videofile', 'title')
     list_display = ('gloss', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
-    list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossVideoCountFilter)
+    list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
     form = GlossVideoAdminForm
 
     def get_queryset(self, request):
