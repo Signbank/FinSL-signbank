@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-09 19:58+0300\n"
+"POT-Creation-Date: 2017-05-10 17:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -562,7 +562,7 @@ msgstr "Lisää uusi Glossi"
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
 #: signbank/dictionary/templates/dictionary/add_gloss.html:29
 #: signbank/dictionary/templates/dictionary/import_gloss_csv.html:34
-#: templates/infopage.html:139
+#: templates/infopage.html:150
 msgid "You do not have sufficient user rights to view this page."
 msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
@@ -2315,25 +2315,37 @@ msgstr "Suomi"
 msgid "English"
 msgstr "Englanti"
 
-#: signbank/video/admin.py:8
+#: signbank/video/admin.py:9
 msgid "Has gloss"
 msgstr "On glossi"
 
-#: signbank/video/admin.py:13 signbank/video/admin.py:30
+#: signbank/video/admin.py:14 signbank/video/admin.py:31
 msgid "Yes"
 msgstr "Kyllä"
 
-#: signbank/video/admin.py:14 signbank/video/admin.py:31
+#: signbank/video/admin.py:15 signbank/video/admin.py:32
 msgid "No"
 msgstr "Ei"
 
-#: signbank/video/admin.py:25
+#: signbank/video/admin.py:26
 msgid "Has poster"
 msgstr "On posteri"
 
-#: signbank/video/admin.py:55
-msgid "Video's dataset"
-msgstr "Videon Aineisto"
+#: signbank/video/admin.py:45
+msgid "Gloss has video count of"
+msgstr "Glossilla on videoita"
+
+#: signbank/video/admin.py:50
+msgid "More than 1"
+msgstr "Enemmän kuin 1"
+
+#: signbank/video/admin.py:51
+msgid "More than 2"
+msgstr "Enemmän kuin 2"
+
+#: signbank/video/admin.py:52
+msgid "Less than 2"
+msgstr "Vähemmän kuin 2"
 
 #. Translators: Video: videofile
 #: signbank/video/models.py:16
@@ -2606,6 +2618,14 @@ msgstr "Signbankin wiki"
 msgid "Help and tutorials"
 msgstr "Apua ja ohjeita"
 
+#: templates/infopage.html:137
+msgid "Files that do not exist"
+msgstr "Tiedostot joita ei ole olemassa"
+
+#: templates/infopage.html:138
+msgid "not in the set location"
+msgstr "niille määritellyssä hakemistossa"
+
 #: templates/langbar.html:12
 msgid "Django admin"
 msgstr "Djangon ylläpito"
@@ -2868,6 +2888,9 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Video's dataset"
+#~ msgstr "Videon Aineisto"
 
 #~ msgid "Poster images"
 #~ msgstr "Aloituskuvia"

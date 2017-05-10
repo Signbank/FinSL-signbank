@@ -1,6 +1,7 @@
 from django.contrib import admin
 from models import GlossVideo
 from .forms import GlossVideoAdminForm
+from django.db.models import Count
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -40,18 +41,45 @@ class HasPosterFilter(admin.SimpleListFilter):
             return queryset.filter(posterfile='')
 
 
+class GlossVideoCountFilter(admin.SimpleListFilter):
+    title = _('Gloss has video count of')
+    parameter_name = 'gloss_has_multiple'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('gt1', _('More than 1')),
+            ('gt2', _('More than 2')),
+            ('lt2', _('Less than 2')),
+        )
+
+    def queryset(self, request, queryset):
+
+        if self.value() == 'gt1':
+            # Returns GlossVideos that share the same Gloss.
+            gt1 = GlossVideo.objects.values("gloss").annotate(Count("id")).filter(id__count__gt=1).order_by("-id__count")
+            queryset = queryset.filter(gloss_id__in=[x["gloss"] for x in gt1])
+            return queryset
+        if self.value() == 'gt2':
+            # Returns GlossVideos of which more that two share the same Gloss.
+            gt2 = GlossVideo.objects.values("gloss").annotate(Count("id")).filter(id__count__gt=2).order_by("-id__count")
+            queryset = queryset.filter(gloss_id__in=[x["gloss"] for x in gt2])
+            return queryset
+        if self.value() == 'lt2':
+            # Returns GlossVideos that do not share glosses.
+            lt2 = GlossVideo.objects.values("gloss").annotate(Count("id")).filter(id__count__lt=2).order_by("-id__count")
+            queryset = queryset.filter(gloss_id__in=[x["gloss"] for x in lt2])
+            return queryset
+
+
 class GlossVideoAdmin(admin.ModelAdmin):
     fields = ('title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss', 'videofile', 'title')
-    list_display = ('gloss', 'dataset_video', 'title', 'videofile', 'posterfile', 'id', 'version')
-    list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter,)
+    list_display = ('gloss', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
+    list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossVideoCountFilter)
     form = GlossVideoAdminForm
 
-    def dataset_video(self, obj):
-        """Get dataset for glossvideo and modify short_description"""
-        if obj.dataset:
-            return obj.dataset
-        return None
-    dataset_video.short_description = _("Video's dataset")
+    def get_queryset(self, request):
+        qs = super(GlossVideoAdmin, self).get_queryset(request)
+        return qs.select_related("gloss", "dataset")
 
 admin.site.register(GlossVideo, GlossVideoAdmin)
