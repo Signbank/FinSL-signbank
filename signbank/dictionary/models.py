@@ -438,12 +438,14 @@ class Gloss(models.Model):
     def __unicode__(self):
         return "%s" % (unicode(self.idgloss))
 
+    def get_absolute_url(self):
+        return self.get_admin_absolute_url()
+
     def get_admin_absolute_url(self):
         return reverse('dictionary:admin_gloss_view', args=[str(self.id)])
 
     def get_public_absolute_url(self):
         return reverse('dictionary:public_gloss_view', args=[str(self.id)])
-
 
     def field_labels(self):
         """Return the dictionary of field labels for use in a template"""
