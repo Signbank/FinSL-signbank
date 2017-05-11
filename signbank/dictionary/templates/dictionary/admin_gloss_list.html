@@ -6,11 +6,10 @@
 {% block bootstrap3_title %}{% blocktrans %}Signbank: Search Signs{% endblocktrans %}{% endblock %}
 {% block extrahead %}
 <link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
-<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
 {% endblock %}
 
 {% block extrajs %}
-  <script src="/static/js/jquery-ui.min.js"></script>
+  <script src="{% static "js/jquery-ui.min.js" %}"></script>
   <script>
   $( function() {
     $( document ).tooltip({
@@ -29,7 +28,7 @@
     });
   } );
   </script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="{% static "js/typeahead.bundle.min.js" %}"></script>
 
     <script type='text/javascript'>
     

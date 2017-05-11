@@ -3,18 +3,15 @@
 {% load bootstrap3 %}
 {% load i18n %}
 {% load staticfiles %}
-
 {% block extrahead %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/tagmanager.css">
-<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/tagmanager.css" %}">
 {% endblock %}
-
 {% block extrajs %}
 {% if perms.dictionary.change_gloss %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.mini.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.checkbox.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/typeahead.bundle.min.js"></script>
-<script src="{{ STATIC_URL }}js/RecordRTC.min.js"></script>
+<script type="text/javascript" src="{% static "js/jquery.jeditable.mini.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.jeditable.checkbox.js" %}"></script>
+<script type="text/javascript" src="{% static "js/typeahead.bundle.min.js" %}"></script>
+<script src="{% static "js/RecordRTC.min.js" %}"></script>
     {% if not gloss.locked %}
 {% include "dictionary/record_video.html" %}
     {% endif %}
@@ -104,7 +101,7 @@ $(document).ready(function () {
 
          var csrf_token = '{{csrf_token}}';
     </script>
-    <script type='text/javascript' src="{{ STATIC_URL }}js/gloss_edit.js"></script>
+    <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
 {% endif %}
 {% endblock %}
 

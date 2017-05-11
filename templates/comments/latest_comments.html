@@ -8,7 +8,7 @@
         <header>
             <h4><a href="{{comment.get_absolute_url}}"><strong>{{comment.content_object}}</strong>
                 {% if comment.content_object.dataset %}{# if we some day use this elsewhere, don't want this to break #}
-                <span class="label label-default" style="display:inline-block;padding-bottom:0.2em;margin-bottom:2px;">
+                <span class="dataset-{{comment.content_object.dataset.id}}-color label label-default" style="display:inline-block;padding-bottom:0.2em;margin-bottom:2px;">
                     {{comment.content_object.dataset}}</span> -
                 {% endif %}
                 <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{comment.submit_date}}</em> -

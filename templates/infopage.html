@@ -2,11 +2,6 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
-{% load staticfiles %}
-
-{% block extrahead %}
-<link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
-{% endblock %}
 {% block content %}
     {% if request.user.is_staff %}
     <div id="infopage" class="container-fluid">
