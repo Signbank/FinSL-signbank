@@ -50,7 +50,8 @@ class GlossVideo(models.Model):
     videofile = models.FileField(_("Video file"), upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage,
                                  help_text=_("Video file."))
     posterfile = models.FileField(_("Poster file"), upload_to=os.path.join(settings.GLOSS_VIDEO_DIRECTORY, "posters"),
-                                  storage=storage, null=True, help_text=_("Still image representation of the video."))
+                                  storage=storage, blank=True, help_text=_("Still image representation of the video."),
+                                  default="")
     gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
                               help_text=_("The gloss this GlossVideo is related to."))
     dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"), null=True,
