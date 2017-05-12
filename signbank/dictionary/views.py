@@ -13,6 +13,7 @@ from signbank.tools import compare_valuedict_to_gloss
 from django.contrib.admin.views.decorators import user_passes_test
 
 from django.utils.translation import ugettext_lazy as _
+from guardian.shortcuts import get_objects_for_user
 
 
 def keyword_value_list(request, prefix=None):
@@ -40,7 +41,10 @@ def try_code(request):
 
 @permission_required('dictionary.add_gloss')
 def add_new_sign(request):
-    return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': GlossCreateForm()})
+    allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
+    form = GlossCreateForm()
+    form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+    return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': form})
 
 
 @permission_required('dictionary.add_gloss')

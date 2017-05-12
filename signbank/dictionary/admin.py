@@ -2,11 +2,12 @@ from django.contrib import admin
 from reversion.admin import VersionAdmin
 from django.utils.translation import ugettext_lazy as _
 from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
+from guardian.admin import GuardedModelAdmin
 
 from signbank.dictionary.models import *
 
 
-class DatasetAdmin(admin.ModelAdmin):
+class DatasetAdmin(GuardedModelAdmin):
     model = Dataset
     list_display = ('name', 'is_public', 'signlanguage',)
 

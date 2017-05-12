@@ -27,6 +27,11 @@ class Dataset(models.Model):
                                                                           "for translation equivalents.")
     description = models.TextField()
 
+    class Meta:
+        permissions = (
+            ('view_dataset', _('View dataset')),
+        )
+
     def __unicode__(self):
         return self.name
 

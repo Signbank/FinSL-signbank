@@ -11,6 +11,7 @@ from .forms import UpdateGlossVideoForm, PosterUpload
 from django.http import HttpResponse
 import json
 from os.path import splitext
+from guardian.shortcuts import get_objects_for_user
 
 
 def addvideo(request, gloss_id, redirect_url):
@@ -155,6 +156,13 @@ class AddVideosView(FormView):
     form_class = MultipleVideoUploadForm
     template_name = 'addvideos.html'
     success_url = '/video/add/'
+
+    def get_form(self, formclass=None):
+        form = super(AddVideosView, self).get_form()
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        # Make sure we only list datasets the user has permissions to.
+        form.fields["dataset"].queryset = form.fields["dataset"].queryset.filter(id__in=[x.id for x in allowed_datasets])
+        return form
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()

@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.db.models.fields import NullBooleanField
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.core.exceptions import PermissionDenied
 from tagging.models import Tag, TaggedItem
 from django.template.loader import render_to_string
@@ -13,6 +13,7 @@ from django.utils.translation import get_language
 from django.db.models import Prefetch
 from django.contrib.contenttypes.models import ContentType
 from collections import defaultdict
+from guardian.shortcuts import get_perms, get_objects_for_user
 
 from .forms import *
 from .models import Translation
@@ -31,6 +32,11 @@ class GlossListView(ListView):
         context = super(GlossListView, self).get_context_data(**kwargs)
         # Add in a QuerySet
         context['searchform'] = GlossSearchForm(self.request.GET)
+        # Get allowed datasets for user (django-guardian)
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        # Filter the forms dataset field for the datasets user has permission to.
+        context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+
         context['glosscount'] = Gloss.objects.all().count()
         if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
@@ -148,6 +154,10 @@ class GlossListView(ListView):
 
         # get query terms from self.request
         qs = Gloss.objects.all()
+
+        # Filter in only objects in the datasets the user has permissions to.
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        qs = qs.filter(dataset__in=allowed_datasets)
 
         get = self.request.GET
 
@@ -410,7 +420,6 @@ class GlossListView(ListView):
                                  Prefetch('dataset'),
                                  # Ordering by version to get the first versions posterfile.
                                  Prefetch('glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')))
-
         # Add tags for each Gloss in the queryset.
         populate_tags_for_queryset(qs)
 
@@ -435,6 +444,14 @@ def populate_tags_for_queryset(queryset):
 class GlossDetailView(DetailView):
     model = Gloss
     context_object_name = 'gloss'
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        # Check that the user has object level permission (django-guardian) to this objects dataset object.
+        if 'view_dataset' not in get_perms(request.user, obj.dataset):
+            return HttpResponseForbidden("not allowed", content_type="text/plain")
+
+        return super(GlossDetailView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

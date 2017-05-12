@@ -8,6 +8,7 @@ from tagging.models import TaggedItem
 import re, csv
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
+from guardian.shortcuts import get_perms, get_objects_for_user
 
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
@@ -16,6 +17,7 @@ from signbank.video.views import addvideo
 
 @permission_required('dictionary.add_gloss')
 def add_gloss(request):
+    # TODO: Is this view used anywhere?
     if request.method == 'POST':
         form = GlossCreateForm(request.POST, request.FILES)
         if form.is_valid():
@@ -32,6 +34,9 @@ def add_gloss(request):
             return HttpResponseRedirect(redirecturl)
     else:
         form = GlossCreateForm()
+        # Make sure that we will show the user only datasets the user is allowed access to.
+        allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
+        form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
     return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': form})
 
 
@@ -47,6 +52,10 @@ def update_gloss(request, glossid):
 
     # Get the gloss object or raise a Http404 exception if the object does not exist.
     gloss = get_object_or_404(Gloss, id=glossid)
+
+    # Make sure that the user has rights to edit this datasets glosses.
+    if 'view_dataset' not in get_perms(request.user, gloss.dataset):
+        return HttpResponseForbidden(_("You do not have permissions to edit Glosses of this dataset/lexicon."))
 
     # If the Gloss object is locked, don't allow editing it.
     if gloss.locked:

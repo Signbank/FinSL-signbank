@@ -88,6 +88,7 @@ TEMPLATES = [
 # A list of authentication backend classes (as strings) to use when attempting to authenticate a user.
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
+    "guardian.backends.ObjectPermissionBackend",
 )
 
 # A list of IP addresses, as strings: Allow the debug() context processor to add some variables to the template context.
@@ -121,6 +122,7 @@ INSTALLED_APPS = (
     'reversion',
     'tagging',
     'django_comments',
+    'guardian',
 )
 
 # Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main

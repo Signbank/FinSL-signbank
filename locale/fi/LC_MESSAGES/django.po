@@ -1512,7 +1512,7 @@ msgstr "Glosseja"
 
 #: templates/infopage.html:34 templates/infopage.html:102
 msgid "Glosses with video"
-msgstr "Glosseja joilla on video"
+msgstr "Glosseja, joilla on video"
 
 #: templates/infopage.html:38 templates/infopage.html:106
 msgid "Video count"
@@ -1520,7 +1520,7 @@ msgstr "Videoita"
 
 #: templates/infopage.html:42 templates/infopage.html:110
 msgid "Videos not connected to a Gloss"
-msgstr "Videoita joilla ei ole Glossia"
+msgstr "Videoita, joilla ei ole Glossia"
 
 #: templates/infopage.html:46 templates/infopage.html:114
 msgid "Videos with poster image"

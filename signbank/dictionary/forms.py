@@ -16,7 +16,7 @@ class GlossCreateForm(forms.ModelForm):
     """
     attrs_reqd_focus = {'class': 'form-control', 'autofocus': '', 'required': ''}
     attrs_default = {'class': 'form-control'}
-
+    # TODO: Check dataset permissions
     dataset = forms.ModelChoiceField(label=_('Dataset'), required=True, queryset=Dataset.objects.all(), empty_label=None)
 
     idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
