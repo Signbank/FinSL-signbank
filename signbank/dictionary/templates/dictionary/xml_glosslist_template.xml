@@ -12,5 +12,5 @@
                 <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="eng">{{gloss.idgloss_en}}</CVE_VALUE>
             </CV_ENTRY_ML>
          {% endfor %}
-        </CONTROLLED_VOCABULARY>
+    </CONTROLLED_VOCABULARY>
 </CV_RESOURCE>

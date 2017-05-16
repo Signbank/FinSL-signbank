@@ -286,9 +286,9 @@ def update_glossvideo(request):
                             # Save if user has permission to add videos to the selected dataset.
                             glossvideo.save()
                         else:
-                            errors.append(_("Video:") + " " + glossvideo + " " + _(" Gloss") + " (" +
-                                          glossvideo.gloss.dataset  + "): " + glossvideo.gloss + " " + _("Item:") + " "
-                                          + item)
+                            errors.append(_("Video:") + " " + str(glossvideo) + " " + _(" Gloss") + " (" +
+                                          str(glossvideo.gloss.dataset)  + "): " + str(glossvideo.gloss) + " " +
+                                          _("Item:") + " " + str(item))
                 if len(errors) < 1:
                     return HttpResponse("OK", status=200)
                 # If there are errors, add them to messages and raise PermissionDenied to show 403 template.
