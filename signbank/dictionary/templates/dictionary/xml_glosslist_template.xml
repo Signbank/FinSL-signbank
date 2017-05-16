@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
     <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138509-001" LANG_ID="fin" LANG_LABEL="Finnish (fin)"/>
     <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138502-001" LANG_ID="eng" LANG_LABEL="English (eng)"/>
-    <CONTROLLED_VOCABULARY CV_ID="{{dataset.name}}">
+    <CONTROLLED_VOCABULARY CV_ID="signbank-dataset-{{dataset.id}}">
         <DESCRIPTION LANG_REF="fin"/>
         <DESCRIPTION LANG_REF="eng"/>
         {% for gloss in query_set %}
