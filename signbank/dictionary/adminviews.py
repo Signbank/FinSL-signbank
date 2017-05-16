@@ -4,15 +4,16 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.db.models.fields import NullBooleanField
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import PermissionDenied
 from tagging.models import Tag, TaggedItem
 from django.template.loader import render_to_string
-from django.http import JsonResponse
 from django.utils.translation import get_language
 from django.db.models import Prefetch
 from django.contrib.contenttypes.models import ContentType
 from collections import defaultdict
+from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from guardian.shortcuts import get_perms, get_objects_for_user
 
 from .forms import *
@@ -61,7 +62,9 @@ class GlossListView(ListView):
     def render_to_csv_response(self, context):
 
         if not self.request.user.has_perm('dictionary.export_csv'):
-            raise PermissionDenied
+            msg = _("You do not have permissions to export to CSV.")
+            messages.error(self.request, msg)
+            raise PermissionDenied(msg)
 
         # Create the HttpResponse object with the appropriate CSV header.
         response = HttpResponse(content_type='text/csv')
@@ -449,8 +452,9 @@ class GlossDetailView(DetailView):
         obj = self.get_object()
         # Check that the user has object level permission (django-guardian) to this objects dataset object.
         if 'view_dataset' not in get_perms(request.user, obj.dataset):
-            return HttpResponseForbidden("not allowed", content_type="text/plain")
-
+            msg = _("You do not have permissions to view glosses of this dataset.")
+            messages.error(request, msg)
+            raise PermissionDenied(msg)
         return super(GlossDetailView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -469,7 +473,7 @@ class GlossDetailView(DetailView):
         gl = context['gloss']
         labels = gl.field_labels()
 
-        fields = {}
+        fields = dict()
 
         fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handshape_change',
                                'relation_between_articulators', 'location', 'absolute_orientation_palm',

@@ -1,13 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models.fields import NullBooleanField
 from tagging.models import TaggedItem
 import re, csv
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from guardian.shortcuts import get_perms, get_objects_for_user
 
 from signbank.dictionary.models import *
@@ -21,6 +20,12 @@ def add_gloss(request):
     if request.method == 'POST':
         form = GlossCreateForm(request.POST, request.FILES)
         if form.is_valid():
+            if 'view_dataset' not in get_perms(request.user, form.gloss.dataset):
+                # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+                msg = _("You do not have permissions to create glosses for this lexicon.")
+                messages.error(request, msg)
+                raise PermissionDenied(msg)
+
             new_gloss = form.save(commit=False)
             new_gloss.created_by = request.user
             new_gloss.updated_by = request.user
@@ -616,6 +621,11 @@ def add_tag(request, glossid):
 
     if request.method == "POST":
         thisgloss = get_object_or_404(Gloss, id=glossid)
+        if 'view_dataset' not in get_perms(request.user, thisgloss.dataset):
+            # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+            msg = _("You do not have permissions to add tags to glosses of this lexicon.")
+            messages.error(request, msg)
+            raise PermissionDenied(msg)
 
         form = TagUpdateForm(request.POST)
         if form.is_valid():
@@ -637,9 +647,8 @@ def add_tag(request, glossid):
                 response = render(request, 'dictionary/glosstags.html',
                                   {'gloss': thisgloss, 'tagform': TagUpdateForm()})
         else:
-            print "invalid form"
-            print form.as_table()
-
+            print ("invalid form")
+            print (form.as_table())
     return response
 
 
@@ -660,6 +669,13 @@ def import_gloss_csv(request):
         form = CSVUploadForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.cleaned_data['dataset']
+
+            if 'view_dataset' not in get_perms(request.user, dataset):
+                # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+                msg = _("You do not have permissions to import glosses to this lexicon.")
+                messages.error(request, msg)
+                raise PermissionDenied(msg)
+
             try:
                 glossreader = csv.reader(form.cleaned_data['file'], delimiter=',', quotechar='"')
             except csv.Error as e:

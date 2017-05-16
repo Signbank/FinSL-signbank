@@ -7,6 +7,9 @@
     <h2>{% blocktrans %}Permission Denied{% endblocktrans %}</h2>
     {# Translators: Text for error page 403 #}
     <p>{% blocktrans %}You do not have permission to view the requested page.{% endblocktrans %}</p>
+    {% if exception %}
+    <strong>{% blocktrans %}Exception:{% endblocktrans %} {{ exception }}</strong>
+    {% endif %}
     
 
 {% endblock %}
