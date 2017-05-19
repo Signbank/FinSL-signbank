@@ -236,6 +236,7 @@ class UploadedGlossvideosListView(ListView):
             if 'view_dataset' in get_perms(self.request.user, Dataset.objects.get(id=self.request.GET.get('dataset'))):
                 # If user does have permissions to selected dataset, Set queryset for form.gloss
                 form.fields["gloss"].queryset = Gloss.objects.filter(dataset__id=self.request.GET.get("dataset"))
+            context['gloss_choices'] = Gloss.objects.filter(dataset=self.request.GET.get('dataset'))
         else:
             # If there is no dataset set, list only glosses that have no dataset.
             form.fields["gloss"].queryset = Gloss.objects.filter(dataset__isnull=True)
@@ -286,12 +287,12 @@ def update_glossvideo(request):
                             # Save if user has permission to add videos to the selected dataset.
                             glossvideo.save()
                         else:
-                            errors.append("*Video: " + str(glossvideo) + " *Gloss (" + str(glossvideo.gloss.dataset) +
-                                          "): " + str(glossvideo.gloss) + " *Item:" + str(item)) + ", "
+                            errors.append("{ *Video: " + str(glossvideo)+" *Dataset: "+str(glossvideo.gloss.dataset) +
+                                          " *Gloss: "+str(glossvideo.gloss)+"}, ")
                 if len(errors) < 1:
                     return HttpResponse("OK", status=200)
                 # If there are errors, add them to messages and raise PermissionDenied to show 403 template.
-                msg = _("You do not have permissions to add videos to the lexicon of these glosses:") + " " + str(errors)
+                msg = "You do not have permissions to add videos to the lexicon of these glosses:" + " " + str(errors)
                 messages.error(request, msg)
                 raise PermissionDenied(msg)
     else:
@@ -300,16 +301,23 @@ def update_glossvideo(request):
             post = request.POST
             if 'gloss' in post and 'glossvideo' in post:
                 glossvideo = GlossVideo.objects.get(pk=post['glossvideo'])
-                glossvideo.gloss = Gloss.objects.get(pk=post['gloss'])
-                # Make sure that the user has rights to edit this datasets glosses.
-                if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
-                    # Save if user has permission to add videos to the selected dataset.
-                    glossvideo.save()
-                else:
-                    # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
-                    msg = _("You do not have permissions to add videos to the lexicon of selected gloss.")
+                try:
+                    gloss_id = int(post['gloss'])
+                except ValueError:
+                    msg = _("You did not provide the value as a number for: %s ") % str(glossvideo)
                     messages.error(request, msg)
-                    raise PermissionDenied(msg)
+                    gloss_id = None
+                if gloss_id:
+                    glossvideo.gloss = Gloss.objects.get(pk=gloss_id)
+                    # Make sure that the user has rights to edit this datasets glosses.
+                    if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
+                        # Save if user has permission to add videos to the selected dataset.
+                        glossvideo.save()
+                    else:
+                        # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+                        msg = _("You do not have permissions to add videos to the lexicon of selected gloss.")
+                        messages.error(request, msg)
+                        raise PermissionDenied(msg)
 
     if "HTTP_REFERER" in request.META:
         return redirect(request.META["HTTP_REFERER"])

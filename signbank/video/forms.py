@@ -40,6 +40,9 @@ class MultipleVideoUploadForm(forms.Form):
 
 
 class UpdateGlossVideoForm(forms.ModelForm):
+
+    gloss = forms.ModelChoiceField(queryset=Gloss.objects.all(), widget=forms.TextInput)
+
     class Meta:
         model = GlossVideo
         fields = ['dataset', 'videofile', 'gloss']

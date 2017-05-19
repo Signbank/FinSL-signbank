@@ -1,5 +1,9 @@
 {% extends "baselayout.html" %}
 {% load i18n %}
+{% load staticfiles %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
+{% endblock %}
 {% block content %}
 <div class="page-header">
   <h2>{% blocktrans %}Uploaded Glossvideos{% endblocktrans %} <small>{% blocktrans %}Connect Glossvideos to Glosses{% endblocktrans %}</small></h2>
@@ -51,9 +55,10 @@
                         </video>
                     </div>
                 </div>
-                <div class="selection">
+                <div class="ui-widget">
                     <label for="id_gloss"><strong>{% blocktrans %}Gloss{% endblocktrans %}:</strong></label>
-                    {{form.gloss}}
+                    <input name="gloss" required="" id="id_gloss" class="gloss-autocomplete" type="text">
+
                     <input class="btn btn-primary" type="submit" value="{% blocktrans %}Save{% endblocktrans %}">
                 </div>
             </form>
@@ -68,6 +73,15 @@
 </div>
 {% endblock %}
 {% block extrajs %}
+<script src="{% static "js/jquery-ui.min.js" %}"></script>
+<script>
+  $( function() {
+    var availableTags = [{% for g in gloss_choices %}{label:"{{g.idgloss}}", value:"{{g.id}}"},{% endfor %}];
+    $( ".gloss-autocomplete" ).autocomplete({
+      source: availableTags
+    });
+  } );
+</script>
 <script>
 function getCookie(name) {
     var cookieValue = null;
@@ -104,8 +118,8 @@ function updateVideos(){
     var updatelist = [];
     var formlist = [];
     for (var i=0; i<forms.length; i++){
-        var selected = forms[i].getElementsByTagName("select")[0];
-        // Only update the ones that don't have empty selection (have selected something).
+        var selected = forms[i].getElementsByClassName("gloss-autocomplete")[0];
+        // Only update the ones that don't have empty value.
         if (selected.value != "") {
             var glossvideo = forms[i].getElementsByClassName("glossvideo-pk")[0];
             // These will be saved, as they have a value set.
@@ -118,14 +132,17 @@ function updateVideos(){
     $.ajax({url: "/video/update/", type: "post",
     contentType: "application/json", context:{"forms":formlist},
     data:JSON.stringify({"updatelist": updatelist,
-    "csrfmiddlewaretoken": csrftoken, "ajax": "true"})}).success(function() {
+    "csrfmiddlewaretoken": csrftoken, "ajax": "true"}),
+     error: function (xhr, ajaxOptions, thrownError) {
+        alert(thrownError+"("+xhr.status+"): {% blocktrans %}Did you provide all values as id numbers?{% endblocktrans %}");
+     }}).success(function() {
         forms = this.forms;
         for (var i=0; i<forms.length; i++){
             // Set the selected value empty, to make it empty even on soft refresh.
-            var selected = forms[i].getElementsByTagName("select")[0];
-            // Only update the ones that don't have empty selection (have selected something).
+            var selected = "";
+            // Only update the ones that don't have empty value.
             if (selected.value != "") {
-                forms[i].getElementsByTagName("select")[0].value = "";
+                forms[i].getElementsByClassName("gloss-autocomplete")[0].value = "";
                 var alert = document.createElement("div");
                 alert.className = "alert alert-success";
                 alert.innerHTML = "{%blocktrans%}GlossVideo successfully updated!{%endblocktrans%}";
