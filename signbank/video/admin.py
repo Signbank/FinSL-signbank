@@ -1,6 +1,5 @@
 from django.contrib import admin
 from models import GlossVideo
-from .forms import GlossVideoAdminForm
 from django.db.models import Count
 from django.utils.translation import ugettext_lazy as _
 
@@ -72,11 +71,11 @@ class GlossesVideoCountFilter(admin.SimpleListFilter):
 
 
 class GlossVideoAdmin(admin.ModelAdmin):
+    raw_id_fields = ('gloss',)
     fields = ('title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss', 'videofile', 'title')
     list_display = ('gloss', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
     list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
-    form = GlossVideoAdminForm
 
     def get_queryset(self, request):
         qs = super(GlossVideoAdmin, self).get_queryset(request)

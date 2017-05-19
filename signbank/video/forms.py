@@ -39,30 +39,6 @@ class MultipleVideoUploadForm(forms.Form):
         return data
 
 
-class GlossVideoAdminForm(forms.ModelForm):
-    gloss = forms.ModelChoiceField(queryset=Gloss.objects.all(), required=False)
-    dataset = forms.ModelChoiceField(queryset=Dataset.objects.all(), required=False)
-
-    def __init__(self, *args, **kwargs):
-        super(GlossVideoAdminForm, self).__init__(*args, **kwargs)
-        # Set posterfile field to be not required.
-        self.fields['posterfile'].required = False
-        # If GlossVideo has no Dataset, try to get it from gloss.dataset.
-        if hasattr(self.instance, 'dataset') and not self.instance.dataset:
-            try:
-                self.instance.dataset = self.instance.gloss.dataset
-                self.instance.save()
-            except AttributeError:
-                pass
-        # Try to use glossvideos dataset as a filter for glosses.
-        # (If glossvideo did not have a dataset but its gloss had, glossvideo should have gloss.dataset as its dataset).
-        try:
-            self.fields['gloss'].queryset = Gloss.objects.filter(
-                dataset=self.instance.dataset)
-        except AttributeError:
-            pass
-
-
 class UpdateGlossVideoForm(forms.ModelForm):
     class Meta:
         model = GlossVideo
