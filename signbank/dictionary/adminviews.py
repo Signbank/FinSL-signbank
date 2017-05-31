@@ -17,7 +17,7 @@ from django.contrib import messages
 from guardian.shortcuts import get_perms, get_objects_for_user
 
 from .forms import *
-from .models import Translation
+from .models import Translation, GlossTranslations
 from ..video.forms import VideoUploadForGlossForm
 from ..video.models import GlossVideo
 from ..comments import CommentTagForm
@@ -535,10 +535,33 @@ def gloss_list_xml(self, dataset):
     """Returns all entries in dictionarys idgloss fields in XML form that is supported by ELAN"""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = Dataset.objects.get(id=dataset)
-    return serialize_glosses(dataset, Gloss.objects.filter(dataset=dataset))
+    return serialize_glosses(dataset,
+                             Gloss.objects.filter(dataset=dataset)
+                             .prefetch_related(
+                                 Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
+                                          .select_related('keyword', 'language')),
+                                 Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.
+                                          filter(gloss__dataset=dataset).select_related('language'))))
 
 
-def serialize_glosses(dataset, query_set):
-    xml = render_to_string('dictionary/xml_glosslist_template.xml', {'query_set': query_set, 'dataset': dataset})
+def serialize_glosses(dataset, queryset):
+    for gloss in queryset:
+        # Get Finnish translation equivalents from glosstranslations or from translation_set
+        if gloss.glosstranslations_set.exists() and "fin" in [x.language.language_code_3char for x in
+                                                              gloss.glosstranslations_set.all()]:
+            gloss.trans_fin = [x for x in gloss.glosstranslations_set.all() if x.language.language_code_3char=="fin"]
+        else:
+            gloss.trans_fin = [x.keyword.text for x in gloss.translation_set.all() if
+                               x.language.language_code_3char == "fin"]
+        # Get English translation equivalents from glosstranslations or from translation_set
+        if gloss.glosstranslations_set.exists() and "eng" in [x.language.language_code_3char for x in
+                                                              gloss.glosstranslations_set.all()]:
+            gloss.trans_eng = [x for x in gloss.glosstranslations_set.all() if
+                               x.language.language_code_3char=="eng"]
+        else:
+            gloss.trans_eng = [x.keyword.text for x in gloss.translation_set.all() if
+                               x.language.language_code_3char == "eng"]
+
+    xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 

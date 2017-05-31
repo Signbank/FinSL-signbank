@@ -6,10 +6,10 @@
     <CONTROLLED_VOCABULARY CV_ID="signbank-dataset-{{dataset.id}}">
         <DESCRIPTION LANG_REF="fin"/>
         <DESCRIPTION LANG_REF="eng"/>
-        {% for gloss in query_set %}
+        {% for gloss in queryset %}
             <CV_ENTRY_ML CVE_ID="glossid{{gloss.pk}}">
-                <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="fin">{{gloss.idgloss}}</CVE_VALUE>
-                <CVE_VALUE DESCRIPTION="{{gloss.annotation_comments}}" LANG_REF="eng">{{gloss.idgloss_en}}</CVE_VALUE>
+                <CVE_VALUE DESCRIPTION="{% for g in gloss.trans_fin %}{% if forloop.first %}{{g}}{% else %}, {{g}}{% endif %}{% endfor %}" LANG_REF="fin">{{gloss.idgloss}}</CVE_VALUE>
+                <CVE_VALUE DESCRIPTION="{% for g in gloss.trans_eng %}{% if forloop.first %}{{g}}{% else %}, {{g}}{% endif %}{% endfor %}" LANG_REF="eng">{{gloss.idgloss_en}}</CVE_VALUE>
             </CV_ENTRY_ML>
          {% endfor %}
     </CONTROLLED_VOCABULARY>
