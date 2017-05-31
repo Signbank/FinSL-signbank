@@ -20,7 +20,7 @@ def add_gloss(request):
     if request.method == 'POST':
         form = GlossCreateForm(request.POST, request.FILES)
         if form.is_valid():
-            if 'view_dataset' not in get_perms(request.user, form.gloss.dataset):
+            if 'view_dataset' not in get_perms(request.user, form.cleaned_data["dataset"]):
                 # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
                 msg = _("You do not have permissions to create glosses for this lexicon.")
                 messages.error(request, msg)
