@@ -311,14 +311,14 @@ $(document).ready(function () {
                                title="{% blocktrans %}After each translation enter a comma (,) or a semicolon (;).
                                Usage of numbers that end with a dot (.) is allowed (e.g. 11.) and they will not be part
                                of translations.{% endblocktrans %}"></span>:</th>
-                    <td class='edit edit_text' id='keywords_{{ translation_language.language_code_2char }}'>{{ translations }}</td>
+                    <td class='edit edit_area_translations' id='keywords_{{ translation_language.language_code_2char }}'>{{ translations }}</td>
                 </tr>
                 {% endfor %}
 
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Comments:{% endblocktrans %}</th>
-                    <td class='edit edit_text' id='annotation_comments'>{% value gloss.annotation_comments %}</td>
+                    <td class='edit edit_area_comments' id='annotation_comments'>{% value gloss.annotation_comments %}</td>
                 </tr>
                 {# Translators: Information about a Gloss #}
                 <tr>

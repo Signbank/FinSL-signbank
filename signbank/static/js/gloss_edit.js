@@ -152,6 +152,18 @@ function configure_edit() {
      $('.edit_area').editable(edit_post_url, { 
          type      : 'textarea'
      });
+     $('.edit_area_translations').editable(edit_post_url, {
+         type      : 'textarea',
+         width     : 400,
+         rows      : 3,
+         onblur    : 'ignore',
+     });
+     $('.edit_area_comments').editable(edit_post_url, {
+         type      : 'textarea',
+         width     : 400,
+         rows      : 3,
+         onblur    : 'ignore',
+     });
      $('.edit_url').editable(edit_post_url, {
          type      : 'text',
          data      : $('#urlout').attr('href')
