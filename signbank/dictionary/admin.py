@@ -88,7 +88,7 @@ class GlossAdmin(VersionAdmin):
     save_as = True
     list_display = ['idgloss', 'dataset', 'locked', 'idgloss_en']
     search_fields = ['^idgloss']
-    list_filter = ('dataset', 'dialect',)
+    list_filter = ('dataset', 'locked',)
     inlines = [RelationInline, RelationToForeignSignInline,
                DefinitionInline, TranslationInline,]
 
