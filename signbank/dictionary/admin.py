@@ -51,9 +51,20 @@ class RelationInline(admin.TabularInline):
     extra = 1
 
 
+def lock(modeladmin, request, queryset):
+    queryset.update(locked=True)
+lock.short_description = _("Lock selected glosses")
+
+
+def unlock(modeladmin, request, queryset):
+    queryset.update(locked=False)
+unlock.short_description = _("Unlock selected glosses")
+
+
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
+    actions = [lock, unlock]
 
     fieldsets = ((None, {'fields': (
         'dataset', 'locked', 'idgloss', 'idgloss_en', 'annotation_comments', 'dialect', 'url_field')},),
