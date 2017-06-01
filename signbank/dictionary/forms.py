@@ -226,7 +226,7 @@ class GlossRelationForm(forms.Form):
     source = forms.CharField(widget=forms.HiddenInput())
     target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(attrs={'class': 'glossrelation-autocomplete'}))
     tag = forms.ModelChoiceField(label=_("Relation type:"),
-                                 queryset=Tag.objects.filter(name__in=Tag.objects.usage_for_model((GlossRelation))),
+                                 queryset=Tag.objects.all(),
                                  required=True, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
     delete = forms.IntegerField(required=False, widget=forms.HiddenInput())
