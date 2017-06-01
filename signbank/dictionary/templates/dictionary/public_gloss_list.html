@@ -32,7 +32,7 @@
 </div>
 <div class="row">
     {% for obj in object_list %}
-    <div class="col-md-6 col-sm-12">
+    <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><a href="{{obj.get_public_absolute_url}}">{{obj}}</a>
@@ -58,9 +58,7 @@
             {% endif %}
             </div>
             <div class="panel-footer">
-
             <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %}:</h4>
-
             {% if obj.glosstranslations_set.exists %}
                 {{ obj.glosstranslations_set.all.0 }}
             {% else %}
@@ -76,6 +74,9 @@
             </div>
         </div>
     </div>
+    {# These are used to fox horizontal alignment for grid. #}
+    {% if forloop.counter|divisibleby:"4" %}<div class="clearfix visible-lg-block visible-md-block"></div>{% endif %}
+    {% if forloop.counter|divisibleby:"2" %}<div class="clearfix visible-sm-block"></div>{% endif %}
     {% empty %}
     <div class="col-md-12">
         <p><em>{% blocktrans %}No results.{% endblocktrans %}</em></p>
