@@ -4,9 +4,8 @@ from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, Rel
 from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
-from .models import Dataset
-from .models import Language
-from .models import SignLanguage
+from .models import Dataset, Language, SignLanguage, GlossRelation
+
 
 
 class GlossCreateForm(forms.ModelForm):
@@ -221,6 +220,16 @@ class DefinitionForm(forms.ModelForm):
         widgets = {
             'role': forms.Select(attrs={'class': 'form-control'}),
         }
+
+
+class GlossRelationForm(forms.Form):
+    source = forms.CharField(widget=forms.HiddenInput())
+    target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(attrs={'class': 'glossrelation-autocomplete'}))
+    tag = forms.ModelChoiceField(label=_("Relation type:"),
+                                 queryset=Tag.objects.filter(name__in=Tag.objects.usage_for_model((GlossRelation))),
+                                 required=True, to_field_name='name',
+                                 widget=forms.Select(attrs={'class': 'form-control'}))
+    delete = forms.IntegerField(required=False, widget=forms.HiddenInput())
 
 
 class RelationForm(forms.ModelForm):

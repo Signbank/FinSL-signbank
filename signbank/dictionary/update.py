@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models.fields import NullBooleanField
 from tagging.models import TaggedItem
@@ -766,3 +767,33 @@ def confirm_import_gloss_csv(request):
     else:
         # If request method is not POST, redirect to the import form
         return HttpResponseRedirect(reverse('dictionary:import_gloss_csv'))
+
+
+def gloss_relation(request):
+    """Processes Gloss Relations"""
+    if request.method == "POST":
+        form = GlossRelationForm(request.POST)
+
+        if "delete" in form.data:
+            try:
+                glossrelation = GlossRelation.objects.get(id=int(form.data["delete"]))
+                ct = ContentType.objects.get_for_model(GlossRelation)
+                TaggedItem.objects.filter(object_id=glossrelation.id, content_type=ct).delete()
+                glossrelation.delete()
+            except GlossRelation.DoesNotExist:
+                pass
+            if "HTTP_REFERER" in request.META:
+                return redirect(request.META["HTTP_REFERER"])
+            return redirect("/")
+
+        if form.is_valid():
+            source = Gloss.objects.get(id=form.cleaned_data["source"])
+            target = Gloss.objects.get(id=form.cleaned_data["target"])
+            glossrelation = GlossRelation.objects.create(source=source, target=target)
+            if form.cleaned_data["tag"]:
+                Tag.objects.add_tag(glossrelation, form.cleaned_data["tag"].name)
+            if "HTTP_REFERER" in request.META:
+                return redirect(request.META["HTTP_REFERER"])
+            return redirect("/")
+        from django.http import HttpResponseBadRequest
+        return HttpResponseBadRequest("Bad request.")

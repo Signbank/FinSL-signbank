@@ -12,6 +12,7 @@
 <script type="text/javascript" src="{% static "js/jquery.jeditable.checkbox.js" %}"></script>
 <script type="text/javascript" src="{% static "js/typeahead.bundle.min.js" %}"></script>
 <script src="{% static "js/RecordRTC.min.js" %}"></script>
+<link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
     {% if not gloss.locked %}
 {% include "dictionary/record_video.html" %}
     {% endif %}
@@ -103,6 +104,16 @@ $(document).ready(function () {
     </script>
     <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
 {% endif %}
+    {# This is for GlossRelation form #}
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    <script>
+      $( function() {
+        var availableTags = [{% for g in glossrelation_choices %}{label:"{{g.idgloss}}", value:"{{g.id}}"},{% endfor %}];
+        $( ".glossrelation-autocomplete" ).autocomplete({
+          source: availableTags
+        });
+      } );
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -349,6 +360,8 @@ $(document).ready(function () {
                     <td id='updated'>{% if gloss.updated_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.first_name }} {{ gloss.updated_by.last_name }}{% endif %}</td>
                 </tr>
             </table>
+            <!-- Gloss Relations -->
+            {% include "dictionary/gloss_detail_relations.html" %}
             <!-- Gloss Comments -->
             {% include "dictionary/gloss_detail_comments.html" %}
             <!-- Advanced properties start -->

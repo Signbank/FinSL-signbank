@@ -593,6 +593,24 @@ try:
 except tagging.registry.AlreadyRegistered:
     pass
 
+
+class GlossRelation(models.Model):
+    """Relation between two glosses"""
+
+    source = models.ForeignKey(Gloss, related_name="glossrelation_source")
+    target = models.ForeignKey(Gloss, related_name="glossrelation_target")
+
+    class Admin:
+        list_display = ['source', 'role', 'target']
+        search_fields = ['source__idgloss', 'target__idgloss']
+
+    class Meta:
+        ordering = ['source']
+
+    def __unicode__(self):
+        return unicode(self.target)
+
+
 RELATION_ROLE_CHOICES = (
     # Translators: RELATION_ROLE_CHOICES
     ('homonym', _('Homonym')),

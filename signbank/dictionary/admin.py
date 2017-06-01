@@ -145,6 +145,11 @@ class FieldChoiceAdmin(admin.ModelAdmin):
     list_display = ('field', 'english_name', 'machine_value')
 
 
+class GlossRelationAdmin(VersionAdmin):
+    raw_id_fields = ('source', 'target')
+    model = GlossRelation
+
+
 admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
@@ -154,3 +159,4 @@ admin.site.register(Translation, TranslationAdmin)
 admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
 admin.site.register(Dataset, DatasetAdmin)
+admin.site.register(GlossRelation, GlossRelationAdmin)

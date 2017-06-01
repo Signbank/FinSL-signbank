@@ -27,6 +27,8 @@ urlpatterns = [
         update.add_morphology_definition, name='add_morphologydefinition'),
     url(r'^update/gloss/',
         update.add_gloss, name='add_gloss'),
+    url(r'^update/glossrelation/',
+        update.gloss_relation, name='add_glossrelation'),
 
     # CSV import urls
     url(r'^import/csv/$',
