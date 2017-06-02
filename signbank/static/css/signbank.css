@@ -56,6 +56,10 @@ html {
     clear: both;
     position: relative;
 }
+.menu-hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 #footer a {
     color: #828282;
 }

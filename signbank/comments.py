@@ -10,13 +10,16 @@ from django_comments.models import Comment
 from django_comments.signals import comment_was_posted
 from django_comments.forms import CommentForm
 from django_comments import get_model as django_comments_get_model
-from tagging.models import Tag
+from tagging.models import Tag, TaggedItem
+from django.views.generic.list import ListView
+from guardian.shortcuts import get_objects_for_user
+from django.core.exceptions import FieldError
 
 
 class CommentTagForm(forms.Form):
     """Form for tags, meant to be used when adding tags to Comments."""
     tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
-                                 widget=forms.Select(attrs={'class': 'form-control'}))
+                                 widget=forms.Select(attrs={'class': 'form-control'}), label=_('Tag'))
 
 
 def edit_comment(request, id):
@@ -71,6 +74,44 @@ def latest_comments(request):
         is_removed=False,
     ).order_by('-submit_date')[:10]
     return render(request, 'comments/latest_comments.html', {'comments': qs})
+
+
+class CommentListView(ListView):
+    model = Comment
+    template_name = 'comments/search_comments.html'
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentListView, self).get_context_data(**kwargs)
+        context['form'] = CommentSearchForm(self.request.GET)
+        context['tag_form'] = CommentTagForm(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        qs = super(CommentListView, self).get_queryset()
+        get = self.request.GET
+        if 'comment' in get and get['comment'] != '':
+            qs = qs.filter(comment__icontains=get['comment'])
+        if 'user_name' in get and get['user_name'] != '':
+            qs = qs.filter(user_name__icontains=get['user_name'])
+        if 'tag' in get and get['tag'] != '':
+            tags = Tag.objects.filter(name=get['tag'])
+            tagged = TaggedItem.objects.get_intersection_by_model(Comment, tags)
+            qs = qs.filter(id__in=tagged)
+
+        qs = qs.filter(is_removed=False)
+
+        qs = qs.prefetch_related('content_object', 'content_object__dataset', 'user')
+        # Filter in only objects in the datasets the user has permissions to.
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        qs = qs.filter(id__in=[x.id for x in qs if x.content_object.dataset in allowed_datasets])
+
+        return qs
+
+
+class CommentSearchForm(forms.Form):
+    comment = forms.CharField(label=_('Comment'), required=False)
+    user_name = forms.CharField(label=_('Username'), required=False)
 
 
 @receiver(comment_was_posted, sender=Comment)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 18:14+0300\n"
+"POT-Creation-Date: 2017-06-02 18:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: signbank/comments.py:27
+#: signbank/comments.py:22
+#, fuzzy
+#| msgid "Tags"
+msgid "Tag"
+msgstr "Tagit"
+
+#: signbank/comments.py:30
 msgid ""
 "You are not allowed to edit this comment, because you are not the author of "
 "the comment."
 msgstr "Et voi muokata tätä kommenttia, koska et ole kommentin kirjoittaja."
+
+#: signbank/comments.py:113
+#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:15
+#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:17
+msgid "Comment"
+msgstr "Kommentti"
+
+#: signbank/comments.py:114
+msgid "Username"
+msgstr "Käyttäjän nimi"
 
 #. Translators: verbose_name_plural
 #: signbank/dictionary/admin.py:50
@@ -162,6 +178,7 @@ msgstr "Viittomakieli:"
 #. Translators: admin_gloss_list header
 #: signbank/dictionary/forms.py:125 signbank/dictionary/forms.py:295
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:98
+#: templates/comments/search_comments.html:13
 msgid "Search"
 msgstr "Haku"
 
@@ -594,7 +611,7 @@ msgstr "Signbank: Etsi viittomia"
 
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:167
-#: templates/menu.html:54
+#: templates/menu.html:58
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -916,11 +933,6 @@ msgstr "Kirjoita muistiinpano"
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:471
 msgid "Save New"
 msgstr "Lisää"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:15
-#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:17
-msgid "Comment"
-msgstr "Kommentti"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:28
 msgid "Add comment"
@@ -1278,6 +1290,18 @@ msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
 msgid "Glosses were added succesfully."
 msgstr "Glossit lisättiin onnistuneesti."
 
+#: signbank/dictionary/update.py:780
+msgid ""
+"You do not have permissions to delete relations from glosses of this lexicon."
+msgstr ""
+"Sinulla ei ole oikeuksia poistaa valitun leksikon glossien relaatioita."
+
+#: signbank/dictionary/update.py:796
+msgid ""
+"You do not have permissions to add relations to glosses of this lexicon."
+msgstr ""
+"Sinulla ei ole oikeuksia lisätä relaatioita valitun leksikon glosseille."
+
 #. Translators: import_csv: not allowed to see requested page (Might not be useful to translate)
 #: signbank/dictionary/views.py:54
 msgid "You are not allowed to see this page."
@@ -1396,7 +1420,7 @@ msgstr "Tiedosto:"
 msgid "Error:"
 msgstr "Virhe:"
 
-#: signbank/video/templates/addvideos.html:26 templates/menu.html:33
+#: signbank/video/templates/addvideos.html:26 templates/menu.html:34
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
@@ -1437,14 +1461,17 @@ msgid "Ok"
 msgstr "Ok"
 
 #: signbank/video/templates/uploaded_glossvideos.html:25
+#: templates/comments/search_comments.html:49
 msgid "previous"
 msgstr "edellinen"
 
 #: signbank/video/templates/uploaded_glossvideos.html:31
+#: templates/comments/search_comments.html:55
 msgid "next"
 msgstr "seuraava"
 
 #: signbank/video/templates/uploaded_glossvideos.html:34
+#: templates/comments/search_comments.html:58
 msgid "Total of"
 msgstr "Yhteensä"
 
@@ -1458,7 +1485,7 @@ msgstr "Tallenna kaikki"
 
 #: signbank/video/templates/uploaded_glossvideos.html:137
 msgid "Did you provide all values as id numbers?"
-msgstr ""
+msgstr "Syötitkö arvot id-numeroina?"
 
 #: signbank/video/templates/uploaded_glossvideos.html:148
 msgid "GlossVideo successfully updated!"
@@ -1488,7 +1515,7 @@ msgstr "Sinulla ei ole oikeuksia nähdä valittua leksikkoa."
 #: signbank/video/views.py:307
 #, python-format
 msgid "You did not provide the value as a number for: %s "
-msgstr ""
+msgstr "Et syöttänyt arvoa numerona: %s"
 
 #: signbank/video/views.py:318
 msgid ""
@@ -1562,7 +1589,7 @@ msgstr "Jyväskylän yliopisto"
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
-#: templates/comments/latest_comments.html:3 templates/menu.html:39
+#: templates/comments/latest_comments.html:3 templates/menu.html:42
 msgid "Latest comments"
 msgstr "Uusimmat kommentit"
 
@@ -1582,6 +1609,20 @@ msgstr "Poista kommentti?"
 msgid "Edit comment"
 msgstr "Muokkaa kommenttia"
 
+#. Translators: Title for comments search page
+#: templates/comments/search_comments.html:6
+msgid "Signbank: Search Comments"
+msgstr "Signbank: Etsi kommentteja"
+
+#: templates/comments/search_comments.html:9 templates/menu.html:43
+msgid "Search comments"
+msgstr "Etsi kommentteja"
+
+#: templates/comments/search_comments.html:58
+msgctxt "count"
+msgid "comments"
+msgstr "kommenttia"
+
 #. Translators: Edit page button in baselayout
 #: templates/flatpages/default.html:19
 msgid "Edit Page"
@@ -1591,7 +1632,7 @@ msgstr "Muokkaa sivua"
 msgid "Tweets by VKK_JY"
 msgstr "Twiittejä @VKK_JY"
 
-#: templates/infopage.html:11 templates/menu.html:38
+#: templates/infopage.html:11 templates/menu.html:40
 msgid "Links and statistics"
 msgstr "Linkkejä ja tilastoja"
 
@@ -1751,16 +1792,16 @@ msgstr "Hallinta"
 msgid "Create gloss"
 msgstr "Luo glossi"
 
-#: templates/menu.html:34
+#: templates/menu.html:35
 msgid "Manage uploaded videos"
 msgstr "Lähetettyjen videoiden hallinta"
 
-#: templates/menu.html:36
+#: templates/menu.html:38
 msgid "CSV import"
 msgstr "Tuo CSV"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:49
+#: templates/menu.html:53
 msgid "Search sign"
 msgstr "Hae viittomaa"
 
