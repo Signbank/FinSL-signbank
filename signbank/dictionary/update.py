@@ -775,6 +775,11 @@ def gloss_relation(request):
         form = GlossRelationForm(request.POST)
         if "delete" in form.data:
             glossrelation = get_object_or_404(GlossRelation, id=int(form.data["delete"]))
+            if 'view_dataset' not in get_perms(request.user, glossrelation.source.dataset):
+                # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+                msg = _("You do not have permissions to delete relations from glosses of this lexicon.")
+                messages.error(request, msg)
+                raise PermissionDenied(msg)
             ct = ContentType.objects.get_for_model(GlossRelation)
             # Delete TaggedItems and the GlossRelation
             TaggedItem.objects.filter(object_id=glossrelation.id, content_type=ct).delete()
@@ -786,6 +791,11 @@ def gloss_relation(request):
 
         if form.is_valid():
             source = get_object_or_404(Gloss, id=form.cleaned_data["source"])
+            if 'view_dataset' not in get_perms(request.user, source.dataset):
+                # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+                msg = _("You do not have permissions to add relations to glosses of this lexicon.")
+                messages.error(request, msg)
+                raise PermissionDenied(msg)
             target = get_object_or_404(Gloss, id=form.cleaned_data["target"])
             glossrelation = GlossRelation.objects.create(source=source, target=target)
             if form.cleaned_data["tag"]:
