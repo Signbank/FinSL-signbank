@@ -773,22 +773,20 @@ def gloss_relation(request):
     """Processes Gloss Relations"""
     if request.method == "POST":
         form = GlossRelationForm(request.POST)
-
         if "delete" in form.data:
-            try:
-                glossrelation = GlossRelation.objects.get(id=int(form.data["delete"]))
-                ct = ContentType.objects.get_for_model(GlossRelation)
-                TaggedItem.objects.filter(object_id=glossrelation.id, content_type=ct).delete()
-                glossrelation.delete()
-            except GlossRelation.DoesNotExist:
-                pass
+            glossrelation = get_object_or_404(GlossRelation, id=int(form.data["delete"]))
+            ct = ContentType.objects.get_for_model(GlossRelation)
+            # Delete TaggedItems and the GlossRelation
+            TaggedItem.objects.filter(object_id=glossrelation.id, content_type=ct).delete()
+            glossrelation.delete()
+
             if "HTTP_REFERER" in request.META:
                 return redirect(request.META["HTTP_REFERER"])
             return redirect("/")
 
         if form.is_valid():
-            source = Gloss.objects.get(id=form.cleaned_data["source"])
-            target = Gloss.objects.get(id=form.cleaned_data["target"])
+            source = get_object_or_404(Gloss, id=form.cleaned_data["source"])
+            target = get_object_or_404(Gloss, id=form.cleaned_data["target"])
             glossrelation = GlossRelation.objects.create(source=source, target=target)
             if form.cleaned_data["tag"]:
                 Tag.objects.add_tag(glossrelation, form.cleaned_data["tag"].name)
