@@ -4,11 +4,14 @@ from django.contrib import admin
 from django.conf import settings
 
 # Views
+from registration.backends.hmac.views import RegistrationView
 from .dictionary import views as dictionary_views
 from .dictionary.adminviews import GlossListView
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment, latest_comments, latest_comments_page
+# Forms
+from customregistration.forms import CustomUserForm
 admin.autodiscover()
 from adminsite import publisher_admin
 
@@ -34,6 +37,7 @@ urlpatterns = [
     # url(r'^signs/import_csv/$', dictionary_views.import_csv, name='old_import_csv'),
 
     # Registration urls for login, logout, registration, activation etc.
+    url(r'^accounts/register/$', RegistrationView.as_view(form_class=CustomUserForm), name='registration_register',),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     # Django-contrib-comments urls
