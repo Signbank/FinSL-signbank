@@ -9,7 +9,7 @@ from .dictionary import views as dictionary_views
 from .dictionary.adminviews import GlossListView
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
-from .comments import edit_comment, latest_comments, latest_comments_page, CommentListView
+from .comments import edit_comment, latest_comments, latest_comments_page, CommentListView, remove_tag
 # Forms
 from customregistration.forms import CustomUserForm
 admin.autodiscover()
@@ -52,6 +52,8 @@ urlpatterns = [
         name='latest_comments_page'),
     url(r'^comments/search/$', permission_required('dictionary.search_gloss')(CommentListView.as_view()),
         name='search_comments'),
+    url(r'^comments/removetag/$', permission_required('dictionary.search_gloss')(remove_tag),
+        name='remove-comment-tag'),
 
     # Admin urls
     url(r'^admin/doc/',

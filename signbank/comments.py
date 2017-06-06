@@ -34,6 +34,9 @@ def edit_comment(request, id):
         if form.is_valid():
             comment.comment = form.cleaned_data["comment"]
             comment.save()
+            if form.cleaned_data["tag"]:
+                tag = form.cleaned_data["tag"]
+                Tag.objects.add_tag(comment, tag)
         if 'HTTP_REFERER' in request.META:
             return redirect(request.META['HTTP_REFERER'])
         else:
@@ -47,10 +50,14 @@ def bind_comment(request, comment):
     """Bind the data into the form."""
     commdict = model_to_dict(comment)
     form = CommentForm(comment, commdict)
-    return render(request, 'comments/edit_comment.html', {'form': form})
+    tagform = CommentTagForm
+    return render(request, 'comments/edit_comment.html', {'form': form, 'tagform': tagform})
 
 
 class EditCommentForm(ModelForm):
+    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
+                                 widget=forms.Select(attrs={'class': 'form-control'}), label=_('Tag'))
+
     class Meta:
         model = Comment
         fields = ['comment']
@@ -112,6 +119,29 @@ class CommentListView(ListView):
 class CommentSearchForm(forms.Form):
     comment = forms.CharField(label=_('Comment'), required=False)
     user_name = forms.CharField(label=_('Username'), required=False)
+
+
+class CommentRemoveTagForm(forms.Form):
+    comment_id = forms.IntegerField(required=True, widget=forms.HiddenInput())
+    remove_tag_id = forms.IntegerField(required=False, widget=forms.HiddenInput())
+
+
+def remove_tag(request):
+    if request.method == 'POST':
+        form = CommentRemoveTagForm(request.POST)
+        if form.is_valid():
+            # Make sure that only the commenter can delete a tag.
+            comment = get_object_or_404(Comment, id=form.cleaned_data["comment_id"])
+            if not request.user == comment.user or not request.user.is_staff:
+                return HttpResponseForbidden(_("You are not allowed to edit tags of this comment, "
+                                               "because you are not the author of the comment."))
+            if form.cleaned_data["remove_tag_id"]:
+                tagged = get_object_or_404(TaggedItem, tag__id=form.cleaned_data["remove_tag_id"], object_id=comment.id)
+                tagged.delete()
+    if 'HTTP_REFERER' in request.META:
+        return redirect(request.META['HTTP_REFERER'])
+    else:
+        return redirect(request.path)
 
 
 @receiver(comment_was_posted, sender=Comment)

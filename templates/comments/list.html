@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load bootstrap3 %}
 <script type="text/javascript">
 function load_comment_edit(commentid) {
     $( "#edit_comment_body" ).load('/comments/update/'+commentid+'/');
@@ -27,11 +28,18 @@ function load_comment_edit(commentid) {
                         {% if user != comment.user and user.is_staff %}display:none;{% endif %}">{% blocktrans %}Delete{% endblocktrans %}</button>
                 {% endif %}
             {% endif %}
-            {% for tag in tag_list %}
                 <div class="comment-tags" style="display:inline;">
-                    <span class="label label-info">{{tag}}</span>
-                </div>
+            {% for tag in tag_list %}
+                    <div class="comment-tag" style="display:inline-block;">
+                        <form method="POST" action="{% url 'remove-comment-tag' %}">{% csrf_token %}
+                            <input type="hidden" name="comment_id" value="{{comment.id}}">
+                            <input type="hidden" name="remove_tag_id" value="{{tag.id}}">
+                        <span class="label label-info">{{tag.name}}
+                            <input class="btn-danger remove_comment_tag" type="submit" value="x" style="display:none;"></span>
+                        </form>
+                    </div>
             {% endfor %}
+                </div>
             </header>
             <p>{{ comment.comment }}</p>
         </article>

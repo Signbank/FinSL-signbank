@@ -72,6 +72,7 @@ function disable_edit() {
     $('#btn-record-video').hide();
     $('.comment_delete_staff').hide();
     $('.update_glossrelation').hide();
+    $('.remove_comment_tag').hide();
 };
 
 function enable_edit() {
@@ -96,6 +97,7 @@ function enable_edit() {
     $('#btn-record-video').show();
     $('.comment_delete_staff').show();
     $('.update_glossrelation').show();
+    $('.remove_comment_tag').show();
 };
 
 function toggle_edit() {
