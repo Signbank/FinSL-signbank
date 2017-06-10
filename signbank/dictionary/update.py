@@ -161,6 +161,21 @@ def update_gloss(request, glossid):
                 except GlossVideo.DoesNotExist:
                     pass
 
+        elif field.startswith('glossurl-'):
+            if field == 'glossurl-create':
+                GlossURL.objects.create(url=value, gloss_id=glossid)
+                return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
+            else:
+                if request.user.has_perm('dictionary.change_gloss'):
+                    glossurl_pk = field.split('glossurl-')[1]
+                    newvalue = value
+                    try:
+                        glossurl = GlossURL.objects.get(pk=glossurl_pk)
+                        glossurl.url = value
+                        glossurl.save()
+                    except GlossURL.DoesNotExist:
+                        pass
+
         else:
             # Find if field is not in Gloss classes fields.
             if not field in [f.name for f in Gloss._meta.get_fields()]:

@@ -54,6 +54,7 @@
 function disable_edit() {
     $('.edit').editable('disable');
     $('.edit').css('color', 'black');
+    $('.edit_url').css('color', '');
     /*$('#edit_message').text('');*/
     $('#edit_message').hide();
     $('.editform').hide();
@@ -73,6 +74,7 @@ function disable_edit() {
     $('.comment_delete_staff').hide();
     $('.update_glossrelation').hide();
     $('.remove_comment_tag').hide();
+    $('.glossurlform').hide();
 };
 
 function enable_edit() {
@@ -98,6 +100,7 @@ function enable_edit() {
     $('.comment_delete_staff').show();
     $('.update_glossrelation').show();
     $('.remove_comment_tag').show();
+    $('.glossurlform').show();
 };
 
 function toggle_edit() {
@@ -170,7 +173,6 @@ function configure_edit() {
      });
      $('.edit_url').editable(edit_post_url, {
          type      : 'text',
-         data      : $('#urlout').attr('href')
      });
      $('.edit_role').editable(edit_post_url, {
          type      : 'select',

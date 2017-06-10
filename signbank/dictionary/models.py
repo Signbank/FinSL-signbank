@@ -599,6 +599,9 @@ class GlossURL(models.Model):
     gloss = models.ForeignKey('Gloss')
     url = models.URLField(max_length=200)
 
+    def __unicode__(self):
+        return self.gloss.idgloss + " - " + self.url
+
 
 class GlossRelation(models.Model):
     """Relation between two glosses"""

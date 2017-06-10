@@ -345,13 +345,18 @@ $(document).ready(function () {
                 -->
                 <tr>
                     <th>{% blocktrans %}URL:{% endblocktrans %}</th>
-                    <td class='edit edit_url' id='url_field'>
+                    <td id='url_field'>
                         {% if gloss.url_field %}
                         <a id='urlout' href="{{ gloss.url_field }}" target="_blank">{{ gloss.url_field }}</a>
                         {% endif %}
                         {% for url in glossurls %}
-                        <a href="{{url.url}}">{{url.url}}</a>
+                        <p><a href="{{url.url}}" id="glossurl-{{url.id}}" class="edit edit_url">{{url.url}}</a></p>
                         {% endfor %}
+                        <form method="POST" action="{% url 'dictionary:update_gloss' glossid=gloss.id %}" class="glossurlform" style="display:none;">{% csrf_token %}
+                            <input type="hidden" name="id" value="glossurl-create">
+                            <input type="text" name="value">
+                            <input type="submit" value="{% blocktrans %}Add new URL{% endblocktrans %}">
+                        </form>
                     </td>
                 </tr>
                 <tr>
