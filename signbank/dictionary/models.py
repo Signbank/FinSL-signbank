@@ -594,6 +594,12 @@ except tagging.registry.AlreadyRegistered:
     pass
 
 
+class GlossURL(models.Model):
+    """URL's for gloss"""
+    gloss = models.ForeignKey('Gloss')
+    url = models.URLField(max_length=200)
+
+
 class GlossRelation(models.Model):
     """Relation between two glosses"""
 

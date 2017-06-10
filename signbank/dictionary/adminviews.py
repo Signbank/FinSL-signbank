@@ -472,6 +472,7 @@ class GlossDetailView(DetailView):
         context['glossrelation_choices'] = Gloss.objects.filter(dataset=self.get_object().dataset)
         # GlossRelations for this gloss
         context['glossrelations'] = GlossRelation.objects.filter(source=context['gloss'])
+        context['glossurls'] = GlossURL.objects.filter(gloss=context['gloss'])
         context['translation_languages_and_translations'] = context['gloss'].get_translations_for_translation_languages()
 
         # Pass info about which fields we want to see

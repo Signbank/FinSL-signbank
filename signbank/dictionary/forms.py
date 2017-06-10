@@ -1,6 +1,6 @@
 from django import forms
 from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, RelationToForeignSign, \
-    MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice
+    MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice, GlossURL
 from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
@@ -230,6 +230,12 @@ class GlossRelationForm(forms.Form):
                                  required=True, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
     delete = forms.IntegerField(required=False, widget=forms.HiddenInput())
+
+
+class GlossURLForm(forms.ModelForm):
+    class Meta:
+        model = GlossURL
+        fields = ["gloss", "url"]
 
 
 class RelationForm(forms.ModelForm):

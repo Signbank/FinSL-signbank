@@ -349,6 +349,9 @@ $(document).ready(function () {
                         {% if gloss.url_field %}
                         <a id='urlout' href="{{ gloss.url_field }}" target="_blank">{{ gloss.url_field }}</a>
                         {% endif %}
+                        {% for url in glossurls %}
+                        <a href="{{url.url}}">{{url.url}}</a>
+                        {% endfor %}
                     </td>
                 </tr>
                 <tr>

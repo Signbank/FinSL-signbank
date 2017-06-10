@@ -150,6 +150,11 @@ class GlossRelationAdmin(VersionAdmin):
     model = GlossRelation
 
 
+class GlossURLAdmin(VersionAdmin):
+    raw_id_fields = ['gloss']
+    model = GlossURL
+
+
 admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
@@ -160,3 +165,4 @@ admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
+admin.site.register(GlossURL, GlossURLAdmin)
