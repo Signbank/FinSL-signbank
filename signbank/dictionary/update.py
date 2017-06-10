@@ -718,8 +718,13 @@ def import_gloss_csv(request):
             return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': CSVUploadForm()}, )
     else:
         # If request type is not POST, return to the original form.
+        csv_form = CSVUploadForm()
+        allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
+        # Make sure we only list datasets the user has permissions to.
+        csv_form.fields["dataset"].queryset = csv_form.fields["dataset"].queryset.filter(
+            id__in=[x.id for x in allowed_datasets])
         return render(request, "dictionary/import_gloss_csv.html",
-                      {'import_csv_form': CSVUploadForm()}, )
+                      {'import_csv_form': csv_form}, )
 
 
 @login_required

@@ -7,7 +7,7 @@
 
 **Store *Sign language* Gloss data with videos.**
 
-FinSL-signbank is a web application that aims to make the *sign language* annotation process more efficient.
+FinSL-signbank is a web application that helps in organizing glosses and makes the annotation process of *sign languages* faster and more efficient.
 
 Documentation is available at [https://github.com/Signbank/FinSL-signbank/wiki][wiki]
 
@@ -17,17 +17,21 @@ FinSL-signbank is being developed based on the needs of Finnish sign language re
 Signbank was originally developed by Steve Cassidy [https://github.com/Signbank/Auslan-signbank][auslan-signbank]. FinSL-Signbank is being developed based on NGT Signbank [https://github.com/Signbank/NGT-signbank][ngt-signbank], NGT Signbank is a fork of Auslan Signbank.
 
 Main features:
-* Store Glosses with data and multiple videos per Gloss.
-* Record videos with webcam on the website.
+* Store Glosses and keep them ogranized.
+* Export Glosses directly to [ELAN][elan-link].
+* Add videos to Glosses, as many as you like.
+* Record videos with webcam on the website, makes the annotation process faster.
 * Upload multiple videos at once, then connect them with Glosses later.
 * Interface easily translatable to multiple languages.
-* Export Glosses directly to [ELAN][elan-link].
-* Store multiple datasets, even of the same language.
+* Can store multiple Lexicons, even of the same sign language.
+* Restrict access to lexicons with user permissions.
+* You can make your lexicon public and select the glosses you want to be public.
+* Add translation equivalents in any language you want.
 
 # Requirements
 
 * Python (2.7)
-* Django (1.10)
+* Django (1.11)
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
 
