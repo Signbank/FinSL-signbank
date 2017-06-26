@@ -40,7 +40,7 @@ class GlossTranslations(models.Model):
     """Store a string representation of translation equivalents of certain Language for a Gloss."""
     gloss = models.ForeignKey("Gloss")
     language = models.ForeignKey("Language")
-    translations = models.CharField(max_length=255, blank=True)
+    translations = models.TextField(blank=True)
 
     class Meta:
         unique_together = (("gloss", "language"),)
