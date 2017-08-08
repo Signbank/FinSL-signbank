@@ -1,4 +1,5 @@
 """This command lists all Glosses and a list of each Glosses GlossVideos"""
+from __future__ import unicode_literals
 from django.core.management.base import BaseCommand
 from signbank.dictionary.models import Gloss
 from signbank.video.models import GlossVideo

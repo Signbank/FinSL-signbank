@@ -1,4 +1,6 @@
-import csv, json
+from __future__ import unicode_literals
+import django.utils.six as six
+import json, csv
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -72,14 +74,7 @@ class GlossListView(ListView):
             'Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
 
         # We want to manually set which fields to export here
-        fieldnames = ['idgloss', 'idgloss_en', 'annotation_comments', 'handedness', 'strong_handshape',
-                      'weak_handshape', 'handshape_change', 'relation_between_articulators', 'location',
-                      'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
-                      'relative_orientation_location', 'orientation_change', 'contact_type',
-                      'movement_shape', 'movement_direction', 'movement_manner', 'repeated_movement',
-                      'alternating_movement', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
-                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
-                      'in_web_dictionary', 'is_proposed_new_sign']
+        fieldnames = ['idgloss', 'idgloss_en', 'annotation_comments', ]
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         writer = csv.writer(response)
@@ -87,16 +82,15 @@ class GlossListView(ListView):
         # Defines the headings for the file. Signbank ID and Dataset are set first.
         header = ['Signbank ID'] + ['Dataset'] + [f.verbose_name for f in fields]
 
-        for extra_column in ['Language', 'Dialects', 'Keywords', 'Morphology', 'Relations to other signs',
-                             'Relations to foreign signs', ]:
+        for extra_column in ['SignLanguage', 'Dialects', 'Keywords', 'Created', 'Updated']:
             header.append(extra_column)
 
         writer.writerow(header)
 
         for gloss in self.get_queryset():
-            row = [unicode(gloss.pk)]
+            row = [str(gloss.pk)]
             # Adding Dataset information for the gloss
-            row.append(unicode(gloss.dataset))
+            row.append(str(gloss.dataset))
             for f in fields:
 
                 # Try the value of the choicelist
@@ -107,49 +101,35 @@ class GlossListView(ListView):
                 except AttributeError:
                     value = getattr(gloss, f.name)
 
-                    if isinstance(value, unicode):
-                        value = unicode(value)
-                    elif not isinstance(value, str):
-                        value = unicode(value)
+                    if isinstance(value, six.text_type):
+                        value = str(value)
+                    elif not isinstance(value, bytes):
+                        value = str(value)
 
                     row.append(value)
 
-            # get language, adding only one language. Used to add several but requirement changed.
-            language = gloss.dataset.signlanguage
-            row.append(unicode(language))
+            # Get SignLanguage of Gloss
+            signlanguage = gloss.dataset.signlanguage
+            row.append(str(signlanguage))
 
             # get dialects
             dialects = [dialect.name for dialect in gloss.dialect.all()]
             row.append(", ".join(dialects))
 
             # get translations
-            trans = [t.keyword.text for t in gloss.translation_set.all()]
+            #trans = [t.keyword.text for t in gloss.translation_set.all()]
+            # The search page lists only English translations, therefore we have to query for all of them.
+            trans = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
             row.append(", ".join(trans))
 
-            # get morphology
-            morphemes = [unicode(morpheme) for morpheme in MorphologyDefinition.objects.filter(
-                parent_gloss=gloss)]
-            row.append(", ".join(morphemes))
+            # Created at and by
+            created = str(gloss.created_at)+' by: '+str(gloss.created_by)
+            row.append(created)
+            # Updated at and by
+            updated = str(gloss.updated_at)+' by: '+str(gloss.updated_by)
+            row.append(updated)
 
-            # get relations to other signs
-            relations = [
-                relation.target.idgloss for relation in Relation.objects.filter(source=gloss)]
-            row.append(", ".join(relations))
-
-            # get relations to foreign signs
-            relations = [
-                relation.other_lang_gloss for relation in RelationToForeignSign.objects.filter(gloss=gloss)]
-            row.append(", ".join(relations))
-
-            # Make it safe for weird chars
-            safe_row = []
-            for column in row:
-                try:
-                    safe_row.append(column.encode('utf-8'))
-                except AttributeError:
-                    safe_row.append(None)
-
-            writer.writerow(safe_row)
+            writer.writerow(row)
 
         return response
 
@@ -324,7 +304,7 @@ class GlossListView(ListView):
 
             pks_for_glosses_with_relations = [
                 relation.gloss.pk for relation in RelationToForeignSign.objects.all()]
-            print('pks_for_glosses', pks_for_glosses_with_relations)
+            print(('pks_for_glosses', pks_for_glosses_with_relations))
 
             # We only want glosses with a relation to a foreign sign
             if get['hasRelationToForeignSign'] == '1':

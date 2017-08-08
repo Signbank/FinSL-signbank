@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 from django.core.management.base import BaseCommand
 from signbank.video.models import GlossVideo
 from signbank.dictionary.models import Gloss

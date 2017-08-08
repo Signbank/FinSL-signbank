@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import logging
 import sys
 from django.conf import settings

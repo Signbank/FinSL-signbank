@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.contrib import admin
 from reversion.admin import VersionAdmin
 from django.utils.translation import ugettext_lazy as _

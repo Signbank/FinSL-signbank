@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm
 from django.forms.models import model_to_dict

@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
@@ -6,8 +7,8 @@ from base64 import b64decode
 from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
-from models import GlossVideo
-from forms import VideoUploadForGlossForm, VideoUploadAddGlossForm, MultipleVideoUploadForm
+from .models import GlossVideo
+from .forms import VideoUploadForGlossForm, VideoUploadAddGlossForm, MultipleVideoUploadForm
 from signbank.dictionary.models import Gloss
 from .forms import UpdateGlossVideoForm, PosterUpload
 from django.http import HttpResponse, HttpResponseForbidden

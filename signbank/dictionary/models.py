@@ -1,5 +1,5 @@
 """Models for the Signbank dictionary database."""
-
+from __future__ import unicode_literals
 import json
 from collections import OrderedDict
 
@@ -32,7 +32,7 @@ class Dataset(models.Model):
             ('view_dataset', _('View dataset')),
         )
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -45,7 +45,7 @@ class GlossTranslations(models.Model):
     class Meta:
         unique_together = (("gloss", "language"),)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.translations
 
 
@@ -56,7 +56,7 @@ class Translation(models.Model):
     keyword = models.ForeignKey("Keyword")
     index = models.IntegerField("Index")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.gloss.idgloss + '-' + self.keyword.text
 
     class Meta:
@@ -73,7 +73,7 @@ class Keyword(models.Model):
 
     text = models.CharField(max_length=100, unique=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.text
 
     class Meta:
@@ -100,8 +100,8 @@ DEFN_ROLE_CHOICES = (
 class Definition(models.Model):
     """An English text associated with a gloss. It's called a note in the web interface"""
 
-    def __unicode__(self):
-        return unicode(self.gloss) + "/" + unicode(self.role)
+    def __str__(self):
+        return str(self.gloss) + "/" + str(self.role)
 
     gloss = models.ForeignKey("Gloss")
     text = models.TextField()
@@ -130,7 +130,7 @@ class Language(models.Model):
     class Meta:
         ordering = ['name']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -143,7 +143,7 @@ class SignLanguage(models.Model):
     class Meta:
         ordering = ['name']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -157,15 +157,15 @@ class Dialect(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
 
-    def __unicode__(self):
-        return unicode(self.language.name) + "/" + unicode(self.name)
+    def __str__(self):
+        return str(self.language.name) + "/" + str(self.name)
 
 
 class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
 
-    def __unicode__(self):
-        return unicode(self.gloss) + "/" + unicode(self.other_lang) + ',' + unicode(self.other_lang_gloss)
+    def __str__(self):
+        return str(self.gloss) + "/" + str(self.other_lang) + ',' + str(self.other_lang_gloss)
 
     gloss = models.ForeignKey("Gloss")
     # Translators: RelationToForeignSign field verbose name
@@ -190,9 +190,9 @@ class FieldChoice(models.Model):
     english_name = models.CharField(max_length=50)
     machine_value = models.IntegerField(unique=True)
 
-    def __unicode__(self):
+    def __str__(self):
         # return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
-        return unicode(self.english_name)
+        return str(self.english_name)
 
     class Meta:
         ordering = ['field', 'machine_value']
@@ -209,7 +209,7 @@ def build_choice_list(field):
         return choice_list
     # Enter this exception if for example the db has no data yet (without this it is impossible to migrate)
     except OperationalError:
-        pass
+        return choice_list
 
 
 class Gloss(models.Model):
@@ -440,8 +440,8 @@ class Gloss(models.Model):
     is_proposed_new_sign = models.NullBooleanField(
         _("Is this a proposed new sign?"), null=True, default=False)
 
-    def __unicode__(self):
-        return "%s" % (unicode(self.idgloss))
+    def __str__(self):
+        return "%s" % (str(self.idgloss))
 
     def get_absolute_url(self):
         return self.get_admin_absolute_url()
@@ -480,13 +480,13 @@ class Gloss(models.Model):
                 first = True
                 for trans in translations:
                     if first:
-                        kwd_str += unicode(trans.keyword)
+                        kwd_str += str(trans.keyword)
                         first = False
                     else:
-                        kwd_str += ", " + unicode(trans.keyword)
+                        kwd_str += ", " + str(trans.keyword)
                 translation_list.append(kwd_str)
 
-        return zip(translation_languages, translation_list)
+        return list(zip(translation_languages, translation_list))
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
@@ -599,7 +599,7 @@ class GlossURL(models.Model):
     gloss = models.ForeignKey('Gloss')
     url = models.URLField(max_length=200)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.gloss.idgloss + " - " + self.url
 
 
@@ -616,8 +616,8 @@ class GlossRelation(models.Model):
     class Meta:
         ordering = ['source']
 
-    def __unicode__(self):
-        return unicode(self.target)
+    def __str__(self):
+        return str(self.target)
 
 
 RELATION_ROLE_CHOICES = (
@@ -666,8 +666,8 @@ class MorphologyDefinition(models.Model):
                              limit_choices_to={'field': 'MorphologyType'}, blank=True)
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
 
-    def __unicode__(self):
-        # return unicode(self.morpheme.idgloss) + ' is ' + unicode(self.get_role_display()) + ' of ' + unicode(
+    def __str__(self):
+        # return str(self.morpheme.idgloss) + ' is ' + str(self.get_role_display()) + ' of ' + str(
         #    self.parent_gloss.idgloss)
-        return unicode(
-            self.morpheme.idgloss + ' is ' + unicode(self.role) + ' of ' + unicode(self.parent_gloss.idgloss))
+        return str(
+            self.morpheme.idgloss + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss))

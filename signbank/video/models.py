@@ -1,4 +1,5 @@
 """ Models for the video application keep track of uploaded videos and converted versions"""
+from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
@@ -15,7 +16,7 @@ class Video(models.Model):
         # Translators: Video: videofile
         _("Video file in h264 mp4 format"), upload_to=settings.VIDEO_UPLOAD_LOCATION)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.videofile.name
 
 
@@ -30,7 +31,7 @@ class GlossVideoStorage(FileSystemStorage):
         first two digits in the filename to partition the videos"""
 
         (targetdir, basename) = os.path.split(name)
-        path = os.path.join(unicode(basename)[:2].upper(), unicode(basename))
+        path = os.path.join(str(basename)[:2].upper(), str(basename))
         result = os.path.join(targetdir, path)
 
         return result
@@ -88,7 +89,7 @@ class GlossVideo(models.Model):
             # Create the base filename for the video based on the new self.gloss.idgloss
             new_filename = GlossVideo.create_filename(self.gloss.idgloss, self.gloss.pk, self.pk, ext)
             # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
-            new_path = os.path.join('glossvideo', unicode(self.gloss.idgloss[:2]).upper(), new_filename)
+            new_path = os.path.join('glossvideo', str(self.gloss.idgloss[:2]).upper(), new_filename)
             full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
 
             # Check if a file already exists in the path we try to save to or if this file already is in that path.
@@ -101,7 +102,7 @@ class GlossVideo(models.Model):
                     return
                 except OSError:
                     # If the sourcefile does not exist, raise OSError
-                    raise OSError(str(self.pk) + ' ' + unicode(self.videofile))
+                    raise OSError(str(self.pk) + ' ' + str(self.videofile))
 
                 # Change the self.videofile to the new path
                 self.videofile = new_path
@@ -110,12 +111,12 @@ class GlossVideo(models.Model):
     @staticmethod
     def create_filename(idgloss, glosspk, videopk, ext):
         """Returns a correctly named filename"""
-        return unicode(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ext
+        return str(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ext
 
     def create_poster_filename(self, ext):
         """Returns a preferred filename of posterfile. Ext is the file extension without the dot."""
         if self.gloss:
-            return unicode(self.gloss.idgloss) + "-" + str(self.gloss.pk) + "_vid" + str(self.pk) + "_poster." + ext
+            return str(self.gloss.idgloss) + "-" + str(self.gloss.pk) + "_vid" + str(self.pk) + "_poster." + ext
         return self.videofile.name + "." + ext
 
     @staticmethod
@@ -135,7 +136,7 @@ class GlossVideo(models.Model):
             return True
         return False
 
-    def __unicode__(self):
+    def __str__(self):
         return self.videofile.name
 
 

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError, DataError
@@ -20,7 +21,7 @@ class GlossTestCase(TestCase):
                                           updated_by=self.user)
 
     def test_str(self):
-        self.assertEqual(unicode(self.gloss), self.gloss.idgloss)
+        self.assertEqual(str(self.gloss), self.gloss.idgloss)
 
     def test_locked(self):
         """Test that locking Gloss works."""
@@ -148,7 +149,7 @@ class DatasetTestCase(TestCase):
 
     def test_str(self):
         """Test unicode string representation."""
-        self.assertEqual(unicode(self.dataset), self.dataset.name)
+        self.assertEqual(str(self.dataset), self.dataset.name)
 
 
 class TranslationTestCase(TestCase):
@@ -167,7 +168,7 @@ class TranslationTestCase(TestCase):
 
     def test_str(self):
         """Test unicode string representation."""
-        self.assertEqual(unicode(self.translation), self.gloss.idgloss + '-' + self.keyword.text)
+        self.assertEqual(str(self.translation), self.gloss.idgloss + '-' + self.keyword.text)
 
 
 class KeywordTestCase(TestCase):
@@ -175,7 +176,7 @@ class KeywordTestCase(TestCase):
         self.keyword = Keyword.objects.create(text="mykeyworD")
 
     def test_str(self):
-        self.assertEqual(unicode(self.keyword), self.keyword.text)
+        self.assertEqual(str(self.keyword), self.keyword.text)
 
 
 class DefinitionTestCase(TestCase):
@@ -188,7 +189,7 @@ class DefinitionTestCase(TestCase):
         self.definition = Definition.objects.create(gloss=self.gloss, text="test text tööt", role="note", count=10)
 
     def test_str(self):
-        self.assertEqual(unicode(self.definition), self.gloss.idgloss + "/" + self.definition.role)
+        self.assertEqual(str(self.definition), self.gloss.idgloss + "/" + self.definition.role)
 
 
 class LanguageTestCase(TestCase):
@@ -197,7 +198,7 @@ class LanguageTestCase(TestCase):
                                                 language_code_3char="nla", description="New language we just created")
 
     def test_str(self):
-        self.assertEqual(unicode(self.language), self.language.name)
+        self.assertEqual(str(self.language), self.language.name)
 
 
 class DialectTestCase(TestCase):
@@ -208,7 +209,7 @@ class DialectTestCase(TestCase):
                                                           u"Pole, But to this day it has also spread to Greenland.")
 
     def test_str(self):
-        self.assertEqual(unicode(self.dialect), self.signlanguage.name + "/" + self.dialect.name)
+        self.assertEqual(str(self.dialect), self.signlanguage.name + "/" + self.dialect.name)
 
 
 class RelationToForeignSignTestCase(TestCase):
@@ -222,7 +223,7 @@ class RelationToForeignSignTestCase(TestCase):
                                                              other_lang_gloss="Samp-GLOSS")
 
     def test_str(self):
-        self.assertEqual(unicode(self.relation), self.gloss.idgloss + "/" + self.relation.other_lang + "," +
+        self.assertEqual(str(self.relation), self.gloss.idgloss + "/" + self.relation.other_lang + "," +
                          self.relation.other_lang_gloss)
 
 
@@ -231,7 +232,7 @@ class FieldChoiceTestCase(TestCase):
         self.fieldchoice = FieldChoice.objects.create(field="field", english_name="mychoice", machine_value=1)
 
     def test_str(self):
-        self.assertEqual(unicode(self.fieldchoice), self.fieldchoice.english_name)
+        self.assertEqual(str(self.fieldchoice), self.fieldchoice.english_name)
 
 
 class MorphologyDefinitionTestCase(TestCase):
@@ -248,7 +249,7 @@ class MorphologyDefinitionTestCase(TestCase):
                                                             role=self.fieldchoice)
 
     def test_str(self):
-        self.assertEqual(unicode(self.morphdef), self.morphdef.morpheme.idgloss + " is " +
+        self.assertEqual(str(self.morphdef), self.morphdef.morpheme.idgloss + " is " +
                          self.morphdef.role.english_name + " of " + self.morphdef.parent_gloss.idgloss)
 
 
@@ -259,9 +260,9 @@ class FunctionsTestCase(TestCase):
         f2 = FieldChoice.objects.create(field=self.field, english_name="choice_another", machine_value=2)
         f3 = FieldChoice.objects.create(field=self.field, english_name="full-of-choices", machine_value=3)
         self.choices = []
-        self.choices.append((str(f1.machine_value), unicode(f1)))
-        self.choices.append((str(f2.machine_value), unicode(f2)))
-        self.choices.append((str(f3.machine_value), unicode(f3)))
+        self.choices.append((str(f1.machine_value), str(f1)))
+        self.choices.append((str(f2.machine_value), str(f2)))
+        self.choices.append((str(f3.machine_value), str(f3)))
 
     def test_build_choice_list(self):
         """Test that function returns proper values."""

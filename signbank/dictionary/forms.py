@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django import forms
 from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, RelationToForeignSign, \
     MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice, GlossURL
@@ -48,7 +49,7 @@ class GlossCreateForm(forms.ModelForm):
             return self.cleaned_data['idgloss']
         raise forms.ValidationError(
             # Translators: exception ValidationError
-            _(u'This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
+            _('This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
             code='not_unique')
 
     def clean_idgloss_en(self):
