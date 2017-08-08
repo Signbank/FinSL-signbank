@@ -12,7 +12,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import get_language
 from django.db.models import Prefetch
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from collections import defaultdict
 from django.contrib import messages
 from tagging.models import Tag, TaggedItem

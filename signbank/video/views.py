@@ -11,7 +11,7 @@ from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.http import HttpResponse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 from guardian.shortcuts import get_objects_for_user, get_perms
 from .models import GlossVideo

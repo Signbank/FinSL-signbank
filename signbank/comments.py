@@ -6,7 +6,8 @@ from django.views.generic.list import ListView
 from django.forms import ModelForm
 from django.forms.models import model_to_dict
 from django.http import HttpResponseForbidden
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _lazy
 from django.contrib.sites.shortcuts import get_current_site
 from django.dispatch import receiver
 
@@ -21,7 +22,7 @@ from django_comments import get_model as django_comments_get_model
 class CommentTagForm(forms.Form):
     """Form for tags, meant to be used when adding tags to Comments."""
     tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
-                                 widget=forms.Select(attrs={'class': 'form-control'}), label=_('Tag'))
+                                 widget=forms.Select(attrs={'class': 'form-control'}), label=_lazy('Tag'))
 
 
 def edit_comment(request, id):
@@ -58,7 +59,7 @@ def bind_comment(request, comment):
 
 class EditCommentForm(ModelForm):
     tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
-                                 widget=forms.Select(attrs={'class': 'form-control'}), label=_('Tag'))
+                                 widget=forms.Select(attrs={'class': 'form-control'}), label=_lazy('Tag'))
 
     class Meta:
         model = Comment
@@ -120,8 +121,8 @@ class CommentListView(ListView):
 
 
 class CommentSearchForm(forms.Form):
-    comment = forms.CharField(label=_('Comment'), required=False)
-    user_name = forms.CharField(label=_('Username'), required=False)
+    comment = forms.CharField(label=_lazy('Comment'), required=False)
+    user_name = forms.CharField(label=_lazy('Username'), required=False)
 
 
 class CommentRemoveTagForm(forms.Form):
