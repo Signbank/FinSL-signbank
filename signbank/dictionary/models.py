@@ -1,23 +1,20 @@
+# -*- coding: utf-8 -*-
 """Models for the Signbank dictionary database."""
 from __future__ import unicode_literals
+from django.utils.encoding import python_2_unicode_compatible
 import json
 from collections import OrderedDict
 
 from django.db import models, OperationalError
-from django.conf import settings
-from django.http import Http404
 from django.urls import reverse
 from tagging.registry import register
 import tagging
-import os
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from django.core.exceptions import FieldDoesNotExist
-from signbank.video.models import GlossVideo
-
 from signbank.dictionary.choicelists import *
 
 
+@python_2_unicode_compatible
 class Dataset(models.Model):
     """A dataset, can be public/private and can be of only one SignLanguage"""
     name = models.CharField(unique=True, blank=False, null=False, max_length=60)
@@ -36,6 +33,7 @@ class Dataset(models.Model):
         return self.name
 
 
+@python_2_unicode_compatible
 class GlossTranslations(models.Model):
     """Store a string representation of translation equivalents of certain Language for a Gloss."""
     gloss = models.ForeignKey("Gloss")
@@ -49,6 +47,7 @@ class GlossTranslations(models.Model):
         return self.translations
 
 
+@python_2_unicode_compatible
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
     gloss = models.ForeignKey("Gloss")
@@ -68,6 +67,7 @@ class Translation(models.Model):
         search_fields = ['gloss__idgloss']
 
 
+@python_2_unicode_compatible
 class Keyword(models.Model):
     """A keyword that stores the text for translation(s)"""
 
@@ -97,7 +97,8 @@ DEFN_ROLE_CHOICES = (
 )
 
 
-class Definition(models.Model):
+@python_2_unicode_compatible
+class Definition(models.Model): # TODO: Remove
     """An English text associated with a gloss. It's called a note in the web interface"""
 
     def __str__(self):
@@ -118,6 +119,7 @@ class Definition(models.Model):
         search_fields = ['gloss__idgloss']
 
 
+@python_2_unicode_compatible
 class Language(models.Model):
     """A written language, used for translations in written languages."""
     name = models.CharField(max_length=50)
@@ -134,6 +136,7 @@ class Language(models.Model):
         return self.name
 
 
+@python_2_unicode_compatible
 class SignLanguage(models.Model):
     """A sign language."""
     name = models.CharField(max_length=50)
@@ -147,6 +150,7 @@ class SignLanguage(models.Model):
         return self.name
 
 
+@python_2_unicode_compatible
 class Dialect(models.Model):
     """A dialect name - a regional dialect of a given Language"""
 
@@ -161,6 +165,7 @@ class Dialect(models.Model):
         return str(self.language.name) + "/" + str(self.name)
 
 
+@python_2_unicode_compatible
 class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
 
@@ -185,6 +190,7 @@ class RelationToForeignSign(models.Model):
         search_fields = ['gloss__idgloss']
 
 
+@python_2_unicode_compatible
 class FieldChoice(models.Model):
     field = models.CharField(max_length=50)
     english_name = models.CharField(max_length=50)
@@ -192,7 +198,7 @@ class FieldChoice(models.Model):
 
     def __str__(self):
         # return self.field + ': ' + self.english_name + ' (' + str(self.machine_value) + ')'
-        return str(self.english_name)
+        return self.english_name
 
     class Meta:
         ordering = ['field', 'machine_value']
@@ -212,6 +218,7 @@ def build_choice_list(field):
         return choice_list
 
 
+@python_2_unicode_compatible
 class Gloss(models.Model):
     class Meta:
         unique_together = (("idgloss", "dataset"),)
@@ -441,7 +448,7 @@ class Gloss(models.Model):
         _("Is this a proposed new sign?"), null=True, default=False)
 
     def __str__(self):
-        return "%s" % (str(self.idgloss))
+        return self.idgloss
 
     def get_absolute_url(self):
         return self.get_admin_absolute_url()
@@ -483,7 +490,7 @@ class Gloss(models.Model):
                         kwd_str += str(trans.keyword)
                         first = False
                     else:
-                        kwd_str += ", " + str(trans.keyword)
+                        kwd_str += ", " + trans.keyword.text
                 translation_list.append(kwd_str)
 
         return list(zip(translation_languages, translation_list))
@@ -519,17 +526,17 @@ class Gloss(models.Model):
 
         return self.options_to_json(relative_orientation_choices)
 
-    def secondary_location_choices_json(self):
+    def secondary_location_choices_json(self): # TODO: Remove
         """Return JSON for the secondary location (BSL) choice list"""
 
         return self.options_to_json(BSLsecondLocationChoices)
 
-    def definition_role_choices_json(self):
+    def definition_role_choices_json(self): # TODO: Remove
         """Return JSON for the definition role choice list"""
 
         return self.options_to_json(DEFN_ROLE_CHOICES)
 
-    def relation_role_choices_json(self):
+    def relation_role_choices_json(self): # TODO: remove
         """Return JSON for the relation role choice list"""
 
         return self.options_to_json(RELATION_ROLE_CHOICES)
@@ -594,6 +601,7 @@ except tagging.registry.AlreadyRegistered:
     pass
 
 
+@python_2_unicode_compatible
 class GlossURL(models.Model):
     """URL's for gloss"""
     gloss = models.ForeignKey('Gloss')
@@ -603,6 +611,7 @@ class GlossURL(models.Model):
         return self.gloss.idgloss + " - " + self.url
 
 
+@python_2_unicode_compatible
 class GlossRelation(models.Model):
     """Relation between two glosses"""
 
@@ -638,7 +647,8 @@ RELATION_ROLE_CHOICES = (
 )
 
 
-class Relation(models.Model):
+@python_2_unicode_compatible
+class Relation(models.Model): # TODO: Remove
     """A relation between two glosses"""
 
     source = models.ForeignKey(Gloss, related_name="relation_sources")
@@ -656,7 +666,11 @@ class Relation(models.Model):
     class Meta:
         ordering = ['source']
 
+    def __str__(self):
+        return str(self.source)+' -> '+ str(self.target)
 
+
+@python_2_unicode_compatible
 class MorphologyDefinition(models.Model):
     """Tells something about morphology of a gloss"""
 
@@ -669,5 +683,4 @@ class MorphologyDefinition(models.Model):
     def __str__(self):
         # return str(self.morpheme.idgloss) + ' is ' + str(self.get_role_display()) + ' of ' + str(
         #    self.parent_gloss.idgloss)
-        return str(
-            self.morpheme.idgloss + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss))
+        return str(self.morpheme.idgloss) + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss)

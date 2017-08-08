@@ -65,7 +65,8 @@ class EditCommentForm(ModelForm):
 
 
 def latest_comments_page(request, count=20):
-    if int(count) > 100:
+    count = int(count)
+    if count > 100:
         count = 100
     qs = django_comments_get_model().objects.filter(
         site__pk=get_current_site(request).pk,

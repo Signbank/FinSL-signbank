@@ -1,5 +1,6 @@
 """ Models for the video application keep track of uploaded videos and converted versions"""
 from __future__ import unicode_literals
+from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
@@ -8,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.files.storage import FileSystemStorage
 
 
+@python_2_unicode_compatible
 class Video(models.Model):
     """A video file stored on the site"""
 
@@ -43,6 +45,7 @@ class GlossVideoStorage(FileSystemStorage):
 storage = GlossVideoStorage()
 
 
+@python_2_unicode_compatible
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
 

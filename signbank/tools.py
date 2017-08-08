@@ -131,7 +131,7 @@ def infopage(request):
     if request.user.is_staff:
         problems = list()
         for vid in GlossVideo.objects.all():
-            if vid.videofile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.videofile)):
+            if vid.videofile != "" and not os.path.isfile(MEDIA_ROOT + vid.videofile.path):
                 problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
             if vid.posterfile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.posterfile)):
                 problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
