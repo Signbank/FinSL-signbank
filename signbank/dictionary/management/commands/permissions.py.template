@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Set up default groups and permissions"""
 from __future__ import unicode_literals
 

@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from signbank.settings.base import *
 # settings.base imports settings_secret
 # The following settings are defined in settings_secret:

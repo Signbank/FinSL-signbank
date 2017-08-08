@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """This command lists all Glosses and a list of each Glosses GlossVideos"""
 from __future__ import unicode_literals
 

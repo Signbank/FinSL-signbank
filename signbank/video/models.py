@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ Models for the video application keep track of uploaded videos and converted versions"""
 from __future__ import unicode_literals
 
