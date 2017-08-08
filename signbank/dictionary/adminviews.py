@@ -1,25 +1,26 @@
 from __future__ import unicode_literals
+
 import django.utils.six as six
 import json, csv
-
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.db.models.fields import NullBooleanField
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import PermissionDenied
-from tagging.models import Tag, TaggedItem
 from django.template.loader import render_to_string
 from django.utils.translation import get_language
 from django.db.models import Prefetch
 from django.contrib.contenttypes.models import ContentType
-from collections import defaultdict
 from django.utils.translation import ugettext_lazy as _
+from collections import defaultdict
 from django.contrib import messages
+from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user
 
-from .forms import *
-from .models import Translation, GlossTranslations
+from .forms import GlossSearchForm, TagUpdateForm, GlossRelationForm, RelationForm, MorphologyForm, DefinitionForm
+from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
+    Relation, MorphologyDefinition, Definition
 from ..video.forms import VideoUploadForGlossForm
 from ..video.models import GlossVideo
 from ..comments import CommentTagForm

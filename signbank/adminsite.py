@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin

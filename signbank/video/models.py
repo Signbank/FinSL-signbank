@@ -1,11 +1,12 @@
 """ Models for the video application keep track of uploaded videos and converted versions"""
 from __future__ import unicode_literals
+
+import os
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
-import os
-from django.utils.translation import ugettext_lazy as _
 from django.core.files.storage import FileSystemStorage
 
 

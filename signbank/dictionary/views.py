@@ -1,16 +1,13 @@
 from __future__ import unicode_literals
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
-
-from signbank.dictionary.forms import *
-from signbank.dictionary.update import update_keywords
-from .models import Keyword
-from .forms import *
 from django.contrib.admin.views.decorators import user_passes_test
 
-from django.utils.translation import ugettext_lazy as _
 from guardian.shortcuts import get_objects_for_user
+from .models import Dataset, Keyword, FieldChoice
+from .forms import GlossCreateForm
 
 
 def keyword_value_list(request, prefix=None):

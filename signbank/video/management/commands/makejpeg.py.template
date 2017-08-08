@@ -1,5 +1,6 @@
 """Create JPEG images for all videos"""
 from __future__ import unicode_literals
+
 import time
 from django.core.management.base import BaseCommand
 from signbank.video.models import GlossVideo

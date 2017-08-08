@@ -1,16 +1,17 @@
 from __future__ import unicode_literals
+
+import re, csv
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models.fields import NullBooleanField
-from tagging.models import TaggedItem
-import re, csv
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
-from guardian.shortcuts import get_perms, get_objects_for_user
 
+from tagging.models import TaggedItem
+from guardian.shortcuts import get_perms, get_objects_for_user
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from signbank.video.views import addvideo

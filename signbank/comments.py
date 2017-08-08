@@ -1,20 +1,21 @@
 from __future__ import unicode_literals
+
+from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic.list import ListView
 from django.forms import ModelForm
 from django.forms.models import model_to_dict
 from django.http import HttpResponseForbidden
 from django.utils.translation import ugettext_lazy as _
-from django import forms
 from django.contrib.sites.shortcuts import get_current_site
 from django.dispatch import receiver
+
+from tagging.models import Tag, TaggedItem
+from guardian.shortcuts import get_objects_for_user
 from django_comments.models import Comment
 from django_comments.signals import comment_was_posted
 from django_comments.forms import CommentForm
 from django_comments import get_model as django_comments_get_model
-from tagging.models import Tag, TaggedItem
-from django.views.generic.list import ListView
-from guardian.shortcuts import get_objects_for_user
-from django.core.exceptions import FieldError
 
 
 class CommentTagForm(forms.Form):

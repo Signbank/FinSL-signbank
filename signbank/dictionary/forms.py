@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
+
 from django import forms
-from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, RelationToForeignSign, \
+from signbank.dictionary.models import Gloss, Definition, Relation, RelationToForeignSign, \
     MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice, GlossURL
-from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
-from .models import Dataset, Language, SignLanguage, GlossRelation
-
+from .models import Dataset, Language, SignLanguage
 
 
 class GlossCreateForm(forms.ModelForm):

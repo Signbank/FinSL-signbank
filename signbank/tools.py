@@ -1,59 +1,14 @@
 from __future__ import unicode_literals
-from .settings.production import WSGI_FILE
+
 import os
-import shutil
 from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 from django.db.models import Prefetch, Q
 from django.urls import reverse
-from .settings.production import MEDIA_ROOT
+from django.http import HttpResponse
 
-# ==========================
-# Constants
-# ==========================
-
-ROOT = '/var/www2/signbank/live/'
-SB_VIDEO_FOLDER = ROOT + 'writable/glossvideo/'
-
-
-# ==========================
-# Functions
-# ==========================
-
-@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
-def video_to_signbank(source_folder, gloss, extension):
-    # Add a dot before the extension if needed
-    if extension[0] != '.':
-        extension = '.' + extension
-
-    # Figure out some names
-    annotation_id = gloss.idgloss_en
-    pk = str(gloss.pk)
-    destination_folder = SB_VIDEO_FOLDER + annotation_id[:2] + '/'
-
-    # Create the necessary subfolder if needed
-    if not os.path.isdir(destination_folder):
-        os.mkdir(destination_folder)
-
-    # Move the file
-    source = source_folder + annotation_id + extension
-    goal = destination_folder + annotation_id + '-' + pk + extension
-
-    if os.path.isfile(goal):
-        overwritten = True
-    else:
-        overwritten = False
-
-    try:
-        shutil.copy(source, goal)
-        was_allowed = True
-    except IOError:
-        was_allowed = False
-
-    os.remove(source)
-
-    return overwritten, was_allowed
+from .settings.production import WSGI_FILE, MEDIA_ROOT
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
@@ -68,15 +23,12 @@ def reload_signbank(request=None):
         # Javascript to reload the page three times
         js = """<script>
         xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", 'http://signbank.csc.fi', false );
+        xmlHttp.open( "GET", 'https://signbank.csc.fi', false );
         xmlHttp.send( null );
         xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", 'http://signbank.csc.fi', false );
+        xmlHttp.open( "GET", 'https://signbank.csc.fi', false );
         xmlHttp.send( null );
         </script>OK"""
-
-        from django.http import HttpResponse
-
         return HttpResponse(js)
 
 

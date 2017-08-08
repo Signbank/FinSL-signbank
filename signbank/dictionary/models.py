@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Models for the Signbank dictionary database."""
+"""Models for the Signbank dictionary/corpus."""
 from __future__ import unicode_literals
+
 from django.utils.encoding import python_2_unicode_compatible
 import json
 from collections import OrderedDict

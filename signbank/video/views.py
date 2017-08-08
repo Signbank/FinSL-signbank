@@ -1,23 +1,23 @@
 from __future__ import unicode_literals
+
+import json
+from base64 import b64decode
+from os.path import splitext
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from base64 import b64decode
 from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
-from .models import GlossVideo
-from .forms import VideoUploadForGlossForm, VideoUploadAddGlossForm, MultipleVideoUploadForm
-from signbank.dictionary.models import Gloss
-from .forms import UpdateGlossVideoForm, PosterUpload
-from django.http import HttpResponse, HttpResponseForbidden
-import json
-from os.path import splitext
-from guardian.shortcuts import get_objects_for_user, get_perms
+from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 
-from ..dictionary.models import Dataset
+from guardian.shortcuts import get_objects_for_user, get_perms
+from .models import GlossVideo
+from .forms import VideoUploadForGlossForm, VideoUploadAddGlossForm, MultipleVideoUploadForm
+from ..dictionary.models import Gloss, Dataset
+from .forms import UpdateGlossVideoForm, PosterUpload
 
 
 def addvideo(request, gloss_id, redirect_url):
