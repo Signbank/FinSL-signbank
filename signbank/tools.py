@@ -9,7 +9,7 @@ from django.db.models import Prefetch, Q
 from django.urls import reverse
 from django.http import HttpResponse
 
-from .settings.production import WSGI_FILE, MEDIA_ROOT
+from .settings.production import WSGI_FILE
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
@@ -84,9 +84,9 @@ def infopage(request):
     if request.user.is_staff:
         problems = list()
         for vid in GlossVideo.objects.all():
-            if vid.videofile != "" and not os.path.isfile(MEDIA_ROOT + vid.videofile.path):
+            if vid.videofile and not os.path.isfile(vid.videofile.path):
                 problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
-            if vid.posterfile != "" and not os.path.isfile(MEDIA_ROOT + str(vid.posterfile)):
+            if vid.posterfile and not os.path.isfile(vid.posterfile.path):
                 problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
         context["problems"] = problems
 
