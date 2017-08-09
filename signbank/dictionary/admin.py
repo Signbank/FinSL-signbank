@@ -17,7 +17,7 @@ class KeywordAdmin(VersionAdmin):
 
 
 class TranslationAdmin(VersionAdmin):
-    search_fields = ['^text']
+    search_fields = ['^keyword__text', '^gloss__idgloss']
     list_filter = ('gloss__dataset',)
 
 
