@@ -5,9 +5,9 @@
 
 
 
-**Store *Sign language* Gloss data with videos.**
+**Manage your sign language dictionaries and/or corpuses.**
 
-FinSL-signbank is a web application that helps in organizing glosses and makes the annotation process of *sign languages* faster and more efficient.
+FinSL-signbank is a web application that stores and helps you organize your sign language corpus or dictionary. The aim is to make building a corpus/dictionary easier, faster and more efficient, including the annotation process of *sign languages*.
 
 Documentation is available at [https://github.com/Signbank/FinSL-signbank/wiki][wiki]
 
@@ -17,20 +17,21 @@ FinSL-signbank is being developed based on the needs of Finnish sign language re
 Signbank was originally developed by Steve Cassidy [https://github.com/Signbank/Auslan-signbank][auslan-signbank]. FinSL-Signbank is being developed based on NGT Signbank [https://github.com/Signbank/NGT-signbank][ngt-signbank], NGT Signbank is a fork of Auslan Signbank.
 
 Main features:
+* Makes it easy to manage and organize dictionaries and corpuses.
 * Store Glosses and keep them ogranized.
-* Export Glosses directly to [ELAN][elan-link].
+* Use your Glosses in [ELAN][elan-link].
 * Add videos to Glosses, as many as you like.
-* Record videos with webcam on the website, makes the annotation process faster.
+* Record videos with a webcam on the website, makes the annotation process faster.
 * Upload multiple videos at once, then connect them with Glosses later.
 * Interface easily translatable to multiple languages.
 * Can store multiple Lexicons, even of the same sign language.
-* Restrict access to lexicons with user permissions.
-* You can make your lexicon public and select the glosses you want to be public.
+* Control access to your Lexicons per user/group.
+* Make your lexicon public by selecting the glosses you want to be public.
 * Add translation equivalents in any language you want.
 
 # Requirements
 
-* Python (2.7)
+* Python 3 (3.4 recommended) or Python 2 (2.7)
 * Django (1.11)
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
@@ -43,7 +44,7 @@ You can find documentation in our [wiki][wiki].
 
 To install FinSL-signbank on linux with all the dependencies:
 
-    pip install -r /path/to/finsl-signbank/requirements.txt
+    $ pip install -r /path/to/finsl-signbank/requirements.txt
 
 **Configuration**
 
@@ -54,13 +55,13 @@ Before you can get FinSL-signbank working, change some paths in:
 
 Rename settings_secret.py.template to settings_secret.py and fill in the necessary information:
 
-    mv settings_secret.py.template settings_secret.py
+    $ mv settings_secret.py.template settings_secret.py
 
 **Database configuration**
 
 Once you have created a database, and correctly configured the database in the settings, you are ready to migrate:
 
-    python bin/develop.py migrate
+    $ python bin/develop.py migrate
 
 *If you just want to test the application, we recommend using [Sqlite3][sqlitelink] as the database (as it is fast and easy to set up)*
 
@@ -68,7 +69,7 @@ Once you have created a database, and correctly configured the database in the s
 
 When you are ready to test your FinSL-Signbank installation, run:
 
-    python bin/develop.py runserver 127.0.0.1:8000
+    $ python bin/develop.py runserver 127.0.0.1:8000
 
 Then open your web browser on http://127.0.0.1:8000
 
@@ -83,7 +84,7 @@ FinSL-signbank uses djangos internalization and localization features to make th
 
 You can create new locales by running:
 
-    python bin/develop.py makemessages yourlocale
+    $ python bin/develop.py makemessages yourlocale
 
 This creates django.po file for the locale you chose. Write your translations inside the quotes msgstr:
 
@@ -104,7 +105,7 @@ An example of one translated string/text:
 
 After you have written your translations, run:
 
-    python bin/develop.py compilemessages yourlocale
+    $ python bin/develop.py compilemessages yourlocale
 
 This will compile the translations you wrote into django.po to django.mo file.
 Remember to restart/refresh your server when doing this to make sure the new translations are in use.
