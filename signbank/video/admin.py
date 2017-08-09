@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.contrib import admin
-from models import GlossVideo
 from django.db.models import Count
 from django.utils.translation import ugettext_lazy as _
+
+from .models import GlossVideo
 
 
 class HasGlossFilter(admin.SimpleListFilter):

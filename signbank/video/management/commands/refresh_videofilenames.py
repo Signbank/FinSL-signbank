@@ -1,8 +1,10 @@
-from __future__ import print_function
+# -*- coding: utf-8 -*-
+from __future__ import print_function, unicode_literals
+
+import sys
 from django.core.management.base import BaseCommand
 from signbank.video.models import GlossVideo
 from signbank.dictionary.models import Gloss
-import sys
 
 
 def eprint(*args, **kwargs):

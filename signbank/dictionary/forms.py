@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django import forms
-from signbank.dictionary.models import Dialect, Gloss, Definition, Relation, RelationToForeignSign, \
+from signbank.dictionary.models import Gloss, Definition, Relation, RelationToForeignSign, \
     MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice, GlossURL
-from django.conf import settings
 from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
-from .models import Dataset, Language, SignLanguage, GlossRelation
-
+from .models import Dataset, Language, SignLanguage
 
 
 class GlossCreateForm(forms.ModelForm):
@@ -48,7 +49,7 @@ class GlossCreateForm(forms.ModelForm):
             return self.cleaned_data['idgloss']
         raise forms.ValidationError(
             # Translators: exception ValidationError
-            _(u'This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
+            _('This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
             code='not_unique')
 
     def clean_idgloss_en(self):

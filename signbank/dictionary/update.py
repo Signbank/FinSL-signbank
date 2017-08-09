@@ -1,15 +1,18 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+import re, csv
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models.fields import NullBooleanField
-from tagging.models import TaggedItem
-import re, csv
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
-from guardian.shortcuts import get_perms, get_objects_for_user
 
+from tagging.models import TaggedItem
+from guardian.shortcuts import get_perms, get_objects_for_user
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from signbank.video.views import addvideo
@@ -70,7 +73,7 @@ def update_gloss(request, glossid):
     if request.method == "POST":
         # Update the user on Gloss.updated_by from request.user
         gloss.updated_by = request.user
-        old_idgloss = unicode(gloss)
+        old_idgloss = str(gloss)
 
         field = request.POST.get('id', '')
         value = request.POST.get('value', '')
@@ -130,7 +133,7 @@ def update_gloss(request, glossid):
                     lang = Dialect.objects.get(name=value)
                     gloss.dialect.add(lang)
                 gloss.save()
-                newvalue = ", ".join([unicode(g.name)
+                newvalue = ", ".join([str(g.name)
                                       for g in gloss.dialect.all()])
             except:
                 # Translators: HttpResponseBadRequest
@@ -300,7 +303,7 @@ def update_relation(gloss, field, value):
         return HttpResponseBadRequest(_("Relation doesn't match gloss"), content_type='text/plain')
 
     if what == 'relationdelete':
-        print "DELETE: ", rel
+        print(("DELETE: ", rel))
         rel.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'relationrole':
@@ -318,7 +321,7 @@ def update_relation(gloss, field, value):
         if target:
             rel.target = target
             rel.save()
-            newvalue = unicode(target)
+            newvalue = str(target)
         else:
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value,
@@ -348,7 +351,7 @@ def update_relationtoforeignsign(gloss, field, value):
         return HttpResponseBadRequest(_("Relation doesn't match gloss"), content_type='text/plain')
 
     if what == 'relationforeigndelete':
-        print "DELETE: ", rel
+        print(("DELETE: ", rel))
         rel.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'relationforeign_loan':
@@ -496,7 +499,7 @@ def add_relation(request):
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest(_("Target gloss not found."), content_type='text/plain')
         else:
-            print form
+            print(form)
 
     # fallback to redirecting to the requesting page
     return HttpResponseRedirect('/')
@@ -530,7 +533,7 @@ def add_relationtoforeignsign(request):
                 reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}) + '?editrelforeign')
 
         else:
-            print form
+            print(form)
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest(_("Form not valid"), content_type='text/plain')
 
@@ -601,7 +604,7 @@ def update_morphology_definition(gloss, field, value):
         return HttpResponseBadRequest(_("Morphology Definition doesn't match gloss"), content_type='text/plain')
 
     if what == 'morphology_definition_delete':
-        print "DELETE: ", morph_def
+        print(("DELETE: ", morph_def))
         morph_def.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'morphology_definition_role':
@@ -616,7 +619,7 @@ def update_morphology_definition(gloss, field, value):
         if morpheme:
             morph_def.morpheme = morpheme
             morph_def.save()
-            newvalue = unicode(morpheme)
+            newvalue = str(morpheme)
         else:
             # Translators: HttpResponseBadRequest
             return HttpResponseBadRequest("%s '%s'" % _("Badly formed gloss identifier"), value,
@@ -664,7 +667,7 @@ def add_tag(request, glossid):
                                   {'gloss': thisgloss, 'tagform': TagUpdateForm()})
         else:
             print ("invalid form")
-            print (form.as_table())
+            print((form.as_table()))
     return response
 
 
@@ -699,7 +702,7 @@ def import_gloss_csv(request):
                 if 'dataset_id' in request.session: del request.session['dataset_id']
                 if 'glosses_new' in request.session: del request.session['glosses_new']
                 # Set a message to be shown so that the user knows what is going on.
-                messages.add_message(request, messages.ERROR, _('Cannot open the file:' + unicode(e)))
+                messages.add_message(request, messages.ERROR, _('Cannot open the file:' + str(e)))
                 return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': CSVUploadForm()}, )
             else:
                 for row in glossreader:

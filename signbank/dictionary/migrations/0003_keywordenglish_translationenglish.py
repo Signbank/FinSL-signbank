@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
             name='TranslationEnglish',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('index', models.IntegerField(verbose_name=b'Index')),
+                ('index', models.IntegerField(verbose_name='Index')),
                 ('gloss', models.ForeignKey(to='dictionary.Gloss')),
                 ('translation_english', models.ForeignKey(to='dictionary.KeywordEnglish')),
             ],

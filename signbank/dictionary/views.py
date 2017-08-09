@@ -1,19 +1,14 @@
-import csv
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
-from django.db.models.fields import NullBooleanField
-
-from signbank.dictionary.forms import *
-from signbank.dictionary.update import update_keywords
-from .models import Keyword
-import forms
-from signbank.tools import compare_valuedict_to_gloss
 from django.contrib.admin.views.decorators import user_passes_test
 
-from django.utils.translation import ugettext_lazy as _
 from guardian.shortcuts import get_objects_for_user
+from .models import Dataset, Keyword, FieldChoice
+from .forms import GlossCreateForm
 
 
 def keyword_value_list(request, prefix=None):
@@ -30,7 +25,7 @@ def try_code(request):
 
     choicedict = {}
 
-    for key, choices in choicedict.items():
+    for key, choices in list(choicedict.items()):
 
         for machine_value, english_name in choices:
             FieldChoice(
@@ -45,91 +40,3 @@ def add_new_sign(request):
     form = GlossCreateForm()
     form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
     return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': form})
-
-
-@permission_required('dictionary.add_gloss')
-def import_csv(request):
-    if not request.user.is_staff and len(request.user.groups.filter(name="Publisher")) == 0:
-        # Translators: import_csv: not allowed to see requested page (Might not be useful to translate)
-        return HttpResponse(_('You are not allowed to see this page.'))
-
-    uploadform = forms.CSVUploadForm
-    changes = []
-
-    # Propose changes
-    if len(request.FILES) > 0:
-
-        changes = []
-        csv_lines = request.FILES['file'].read().split('\n')
-
-        for nl, line in enumerate(csv_lines):
-
-            # The first line contains the keys
-            if nl == 0:
-                keys = line.strip().split(',')
-                continue
-            elif len(line) == 0:
-                continue
-
-            values = csv.reader([line]).next()
-            value_dict = {}
-
-            for nv, value in enumerate(values):
-
-                try:
-                    value_dict[keys[nv]] = value
-                except IndexError:
-                    pass
-
-            try:
-                pk = int(value_dict['Signbank ID'])
-            except ValueError:
-                continue
-
-            gloss = Gloss.objects.get(pk=pk)
-
-            changes += compare_valuedict_to_gloss(value_dict, gloss)
-
-        stage = 1
-
-    # Do changes
-    elif len(request.POST) > 0:
-
-        for key, new_value in request.POST.items():
-
-            try:
-                pk, fieldname = key.split('.')
-
-            # In case there's no dot, this is not a value we set at the
-            # previous page
-            except ValueError:
-                continue
-
-            gloss = Gloss.objects.get(pk=pk)
-
-            # Updating the keywords is a special procedure, because it has
-            # relations to other parts of the database
-            if fieldname == 'Keywords':
-                update_keywords(gloss, None, new_value)
-                gloss.save()
-                continue
-
-            # Replace the value for bools
-            if isinstance(gloss._meta.get_field(fieldname), NullBooleanField):
-
-                if new_value in ['true', 'True']:
-                    new_value = True
-                else:
-                    new_value = False
-
-            # The normal change and save procedure
-            setattr(gloss, fieldname, new_value)
-            gloss.save()
-
-        stage = 2
-
-    # Show uploadform
-    else:
-
-        stage = 0
-    return render(request, 'dictionary/import_csv.html', {'form': uploadform, 'stage': stage, 'changes': changes})

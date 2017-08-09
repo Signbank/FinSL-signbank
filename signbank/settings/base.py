@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from signbank.settings.settings_secret import *
 from django.utils.translation import ugettext_lazy as _
 import os

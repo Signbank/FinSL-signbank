@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='glossvideo',
             name='posterfile',
-            field=models.FileField(help_text='Still image representation of the video.', null=True, storage=signbank.video.models.GlossVideoStorage(), upload_to=b'glossvideo/posters', verbose_name='Poster file'),
+            field=models.FileField(help_text='Still image representation of the video.', null=True, storage=signbank.video.models.GlossVideoStorage(), upload_to='glossvideo/posters', verbose_name='Poster file'),
         ),
         migrations.AlterField(
             model_name='glossvideo',
@@ -42,6 +42,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='glossvideo',
             name='videofile',
-            field=models.FileField(help_text='Video file.', storage=signbank.video.models.GlossVideoStorage(), upload_to=b'glossvideo', verbose_name='Video file'),
+            field=models.FileField(help_text='Video file.', storage=signbank.video.models.GlossVideoStorage(), upload_to='glossvideo', verbose_name='Video file'),
         ),
     ]
