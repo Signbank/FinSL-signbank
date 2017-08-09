@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 import django.utils.six as six
-import json, csv
+import json
+import unicodecsv as csv
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q
