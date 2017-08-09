@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='dataset',
             name='translation_languages',
-            field=models.ManyToManyField(help_text=b'These languages are shown as optionsfor translation equivalents.', to='dictionary.Language'),
+            field=models.ManyToManyField(help_text='These languages are shown as optionsfor translation equivalents.', to='dictionary.Language'),
         ),
         migrations.AddField(
             model_name='language',
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='dataset',
             name='is_public',
-            field=models.BooleanField(default=False, help_text=b'Is this dataset is public or private?'),
+            field=models.BooleanField(default=False, help_text='Is this dataset is public or private?'),
         ),
         migrations.AlterField(
             model_name='dialect',

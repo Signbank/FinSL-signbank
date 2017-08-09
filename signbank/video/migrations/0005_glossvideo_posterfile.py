@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='glossvideo',
             name='posterfile',
-            field=models.FileField(storage=signbank.video.models.GlossVideoStorage(), upload_to=b'glossvideo/posters', null=True, verbose_name=b'Poster file'),
+            field=models.FileField(storage=signbank.video.models.GlossVideoStorage(), upload_to='glossvideo/posters', null=True, verbose_name='Poster file'),
         ),
     ]

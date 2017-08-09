@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='GlossVideo',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('videofile', models.FileField(upload_to=b'glossvideo', storage=signbank.video.models.GlossVideoStorage(), verbose_name=b'video file')),
+                ('videofile', models.FileField(upload_to='glossvideo', storage=signbank.video.models.GlossVideoStorage(), verbose_name='video file')),
                 ('version', models.IntegerField(default=0, verbose_name='Version')),
                 ('gloss', models.ForeignKey(to='dictionary.Gloss')),
             ],
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
             name='Video',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('videofile', models.FileField(upload_to=b'upload', verbose_name='Video file in h264 mp4 format')),
+                ('videofile', models.FileField(upload_to='upload', verbose_name='Video file in h264 mp4 format')),
             ],
         ),
     ]
