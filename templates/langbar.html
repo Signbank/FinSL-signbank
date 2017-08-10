@@ -1,4 +1,5 @@
 {% load i18n %}
+<div id="langselect">{% include "setlang.html" %}</div>
 <div id="login">
     {% if user.is_authenticated %}
     {# Translators: User profile menu button #}
@@ -7,23 +8,23 @@
                 aria-expanded="false">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ user }} <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu dropdown-menu-right width-100">
+        <ul class="dropdown-menu dropdown-menu-right">
             {% if request.user.is_staff %}
             <li><a href="/admin/">{% blocktrans %}Django admin{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
             {% endif %}
             <li><a href="/accounts/password/change/">{% blocktrans %}Change password{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% blocktrans %}Sign out{% endblocktrans %}</a></li>
+            <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                {% blocktrans %}Sign out{% endblocktrans %}</a></li>
         </ul>
     </div>
     {% else %}
     {# Translators: Sign in link #}
     <a class="btn btn-default" role="button" href="/accounts/login/">
         {% blocktrans %}Sign in{% endblocktrans %}</a>
-    <a class="btn btn-info register-button" role="button" href="/accounts/register/">
+    <a class="btn btn-info" role="button" href="/accounts/register/">
         {% blocktrans %}Create account{% endblocktrans %}
     </a>
     {% endif %}
 </div>
-<div id="langselect">{% include "setlang.html" %}</div>

@@ -20,15 +20,12 @@
         <div class="container">
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
-            <header id="header" class="container-fluid">
-                <div class="row">
-                    <div id="headertitle" class="col-md-4"><a href="{% url "root_page" %}">{# Translators: Site title #}
-                        <h1>{% blocktrans %}FinSL Signbank{% endblocktrans %}</h1></a></div>
-                    <div id="langbar" class="col-md-8">{% include "langbar.html" %}</div>
-                </div>
+            <header id="header">{# Translators: Site title #}
+                <h1><a href="{% url "root_page" %}">{% blocktrans %}FinSL Signbank{% endblocktrans %}</a></h1>
+                <div id="langbar">{% include "langbar.html" %}</div>
             </header>
-            <div id="menu" class="container-fluid">
-                <div class="row">{% include "menu.html" %}</div>
+            <div id="menu">
+                {% include "menu.html" %}
             </div>
             {% bootstrap_messages %}
             <main role="main">
