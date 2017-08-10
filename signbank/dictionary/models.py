@@ -261,9 +261,9 @@ class Gloss(models.Model):
                                                  help_text=_("""This is the English name for the Gloss"""))
 
     # Translators: Gloss models field: annotation_comments, verbose name
-    annotation_comments = models.CharField(_("Comments"), max_length=200, blank=True)
+    annotation_comments = models.TextField(_("Comments"), blank=True)
 
-    # Translators: Gloss models field: url
+    # Translators: Gloss models field: url. TODO: Remove?
     url_field = models.URLField(_("URL"), max_length=200, blank=True, unique=False)
 
     ########
