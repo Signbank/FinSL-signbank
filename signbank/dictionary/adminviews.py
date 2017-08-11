@@ -48,6 +48,20 @@ class GlossListView(ListView):
             context['order'] = 'idgloss'
         else:
             context['order'] = self.request.GET.get('order')
+
+        # Putting character ranges in the context for pagination.
+        paginate_char_ranges = list()
+        for i in context['page_obj'].paginator.page_range:
+            page = context['page_obj'].paginator.page(i)
+            if not page.start_index() <= 0 or not page.end_index() <= 0:
+                start_chars = context['page_obj'].paginator.object_list[page.start_index()-1].idgloss[:2].upper()
+                end_chars = context['page_obj'].paginator.object_list[page.end_index()-1].idgloss[:2].upper()
+                paginate_char_ranges.append(start_chars+"-"+end_chars)
+        # Zip the range() of page_range and a list of character ranges.
+        context['paginate_ranges'] = list(zip(context['page_obj'].paginator.page_range, paginate_char_ranges))
+        if not len(paginate_char_ranges) <= 0:
+            context['paginate_last_range'] = paginate_char_ranges[len(paginate_char_ranges)-1].upper()
+
         return context
 
     def get_paginate_by(self, queryset):
@@ -57,6 +71,7 @@ class GlossListView(ListView):
         return self.request.GET.get('paginate_by', self.paginate_by)
 
     def render_to_response(self, context):
+
         # Look for a 'format=json' GET argument
         if self.request.GET.get('format') == 'CSV':
             return self.render_to_csv_response(context)

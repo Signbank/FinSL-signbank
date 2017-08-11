@@ -91,7 +91,6 @@ function clearForm(myFormElement) {
    </script>
 {% endblock %}
 
-
 {% block content %}
 
 {# Translators: admin_gloss_list header #}
@@ -185,8 +184,6 @@ function clearForm(myFormElement) {
                 <option{% if paginator.per_page == 10 %} selected{% endif %}>10</option>
             </select>
         </div>
-
-
     </form>
 </div>
 
@@ -194,37 +191,9 @@ function clearForm(myFormElement) {
 <p>{% blocktrans %}Number of matches:{% endblocktrans %} {{ page_obj.paginator.count }} {% blocktrans %}out of{% endblocktrans %} {{glosscount}}.</p>
 
 {% if object_list %}
-<div class="pagination">
-    <span class="step-links">
-    <ul class='pagination pagination-sm'>
-        {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&laquo;</a></li>
-        {% endif %}
-        {% if  page_obj.number > 10 %}
-        <li><a>...</a></li>
-        {% endif %}
-
-        {% for p in page_obj.paginator.page_range %}
-            {% if p < page_obj.number|add:"10" and  p > page_obj.number|add:"-10" %}
-            <li {% if p == page_obj.number %}class='active'{% endif %}>
-            <a href="?page={{ p }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% if p == 0 %}Start{% else %}{{p}}{% endif %}</a>
-            </li>
-            {% endif %}
-        {% endfor %}
-
-        {% if page_obj.paginator.num_pages > page_obj.number|add:"10" %}
-        <li><a>...</a></li>
-        <li>
-            <a href="?page={{ page_obj.paginator.num_pages }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{page_obj.paginator.num_pages}}</a>
-        </li>
-        {% endif %}
-
-        {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
-        {% endif %}
-    </ul>
-    </span>
-</div>
+<nav aria-label="{% blocktrans %}Page navigation top{% endblocktrans %}">
+    {% include "dictionary/paginate_char_ranges.html" %}
+</nav>
 <table class='table table-condensed'>
     <thead>
         <tr>
@@ -264,39 +233,9 @@ function clearForm(myFormElement) {
     {% endfor %}
   </tbody>
 </table>
-
-<div class="pagination">
-    <span class="step-links">
-    <ul class='pagination pagination-sm'>
-        {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&laquo;</a></li>
-        {% endif %}
-        {% if  page_obj.number > 10 %}
-        <li><a>...</a></li>
-        {% endif %}
-
-        {% for p in page_obj.paginator.page_range %}
-            {% if p < page_obj.number|add:"10" and  p > page_obj.number|add:"-10" %}
-            <li {% if p == page_obj.number %}class='active'{% endif %}>
-            <a href="?page={{ p }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% if p == 0 %}Start{% else %}{{p}}{% endif %}</a>
-            </li>
-            {% endif %}
-        {% endfor %}
-
-        {% if page_obj.paginator.num_pages > page_obj.number|add:"10" %}
-        <li><a>...</a></li>
-        <li>
-            <a href="?page={{ page_obj.paginator.num_pages }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{page_obj.paginator.num_pages}}</a>
-        </li>
-        {% endif %}
-      
-        {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
-        {% endif %}
-    </ul>
-    </span>
-</div>
-
+<nav aria-label="{% blocktrans %}Page navigation bottom{% endblocktrans %}">
+    {% include "dictionary/paginate_char_ranges.html" %}
+</nav>
 {% endif %}
 
 {% endblock content %}
