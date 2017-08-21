@@ -49,19 +49,6 @@ class GlossListView(ListView):
         else:
             context['order'] = self.request.GET.get('order')
 
-        # Putting character ranges in the context for pagination.
-        paginate_char_ranges = list()
-        for i in context['page_obj'].paginator.page_range:
-            page = context['page_obj'].paginator.page(i)
-            if not page.start_index() <= 0 or not page.end_index() <= 0:
-                start_chars = context['page_obj'].paginator.object_list[page.start_index()-1].idgloss[:2].upper()
-                end_chars = context['page_obj'].paginator.object_list[page.end_index()-1].idgloss[:2].upper()
-                paginate_char_ranges.append(start_chars+"-"+end_chars)
-        # Zip the range() of page_range and a list of character ranges.
-        context['paginate_ranges'] = list(zip(context['page_obj'].paginator.page_range, paginate_char_ranges))
-        if not len(paginate_char_ranges) <= 0:
-            context['paginate_last_range'] = paginate_char_ranges[len(paginate_char_ranges)-1].upper()
-
         return context
 
     def get_paginate_by(self, queryset):
@@ -69,6 +56,23 @@ class GlossListView(ListView):
         Paginate by specified value in querystring, or use default class property value.
         """
         return self.request.GET.get('paginate_by', self.paginate_by)
+
+    def get_paginator(self, queryset, per_page, orphans=0, allow_empty_first_page=True, **kwargs):
+        pag = self.paginator_class(queryset, per_page, orphans=orphans, allow_empty_first_page=allow_empty_first_page,
+                                   **kwargs)
+        # Putting character ranges in paginator
+        paginate_char_ranges = list()
+        for i in pag.page_range:
+            page = pag.page(i)
+            if not page.start_index() <= 0 or not page.end_index() <= 0:
+                start_chars = pag.object_list[page.start_index() - 1].idgloss[:2].upper()
+                end_chars = pag.object_list[page.end_index() - 1].idgloss[:2].upper()
+                paginate_char_ranges.append(start_chars + "-" + end_chars)
+        # Zip the range() of page_range and a list of character ranges.
+        pag.paginate_ranges = list(zip(pag.page_range, paginate_char_ranges))
+        if not len(paginate_char_ranges) <= 0:
+            pag.paginate_last_range = paginate_char_ranges[len(paginate_char_ranges) - 1].upper()
+        return pag
 
     def render_to_response(self, context):
 
