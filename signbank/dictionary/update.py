@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import re, csv
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
@@ -16,6 +16,7 @@ from guardian.shortcuts import get_perms, get_objects_for_user
 from signbank.dictionary.models import *
 from signbank.dictionary.forms import *
 from signbank.video.views import addvideo
+from ..video.models import GlossVideo
 
 
 @permission_required('dictionary.add_gloss')
