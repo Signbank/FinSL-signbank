@@ -43,7 +43,6 @@ class GlossListView(ListView):
         # Filter the forms dataset field for the datasets user has permission to.
         context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
 
-        context['glosscount'] = Gloss.objects.all().count()
         if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
         else:
@@ -74,7 +73,7 @@ class GlossListView(ListView):
             pag.paginate_last_range = paginate_char_ranges[len(paginate_char_ranges) - 1].upper()
         return pag
 
-    def render_to_response(self, context):
+    def render_to_response(self, context, **kwargs):
 
         # Look for a 'format=json' GET argument
         if self.request.GET.get('format') == 'CSV':
@@ -415,7 +414,7 @@ class GlossListView(ListView):
         if hasattr(qs.query.where, 'children') and len(qs.query.where.children) > 0:
             items = []
             for item in qs:
-                items.append(dict(id = item.id, gloss = item.idgloss))
+                items.append(dict(id= item.id, gloss=item.idgloss))
 
             self.request.session['search_results'] = items
 

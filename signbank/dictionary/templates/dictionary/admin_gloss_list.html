@@ -188,7 +188,7 @@ function clearForm(myFormElement) {
 </div>
 
 {# Translators: How many matches out of possible  #}
-<p>{% blocktrans %}Number of matches:{% endblocktrans %} {{ page_obj.paginator.count }} {% blocktrans %}out of{% endblocktrans %} {{glosscount}}.</p>
+<p>{% blocktrans %}Number of matches:{% endblocktrans %} {{ page_obj.paginator.count }}.</p>
 
 {% if object_list %}
 <nav aria-label="{% blocktrans %}Page navigation top{% endblocktrans %}">
