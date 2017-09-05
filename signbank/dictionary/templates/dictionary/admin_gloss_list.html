@@ -192,7 +192,7 @@ function clearForm(myFormElement) {
 
 {% if object_list %}
 <nav aria-label="{% blocktrans %}Page navigation top{% endblocktrans %}">
-    {% include "dictionary/paginate_char_ranges.html" %}
+    {% include "dictionary/paginate.html" %}
 </nav>
 <table class='table table-condensed'>
     <thead>
@@ -234,7 +234,7 @@ function clearForm(myFormElement) {
   </tbody>
 </table>
 <nav aria-label="{% blocktrans %}Page navigation bottom{% endblocktrans %}">
-    {% include "dictionary/paginate_char_ranges.html" %}
+    {% include "dictionary/paginate.html" %}
 </nav>
 {% endif %}
 
