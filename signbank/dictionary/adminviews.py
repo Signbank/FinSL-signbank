@@ -43,6 +43,8 @@ class GlossListView(ListView):
         # Filter the forms dataset field for the datasets user has permission to.
         context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
 
+        populate_tags_for_object_list(context['object_list'], model=self.object_list.model)
+
         if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
         else:
@@ -138,7 +140,6 @@ class GlossListView(ListView):
         return response
 
     def get_queryset(self):
-
         # get query terms from self.request
         qs = Gloss.objects.all()
 
@@ -389,28 +390,43 @@ class GlossListView(ListView):
         else:
             qs = qs.order_by('idgloss')
 
-        # Saving querysets results to sessions, these results can then be used elsewhere (like in gloss_detail)
-        # Flush the previous queryset (just in case)
-        self.request.session['search_results'] = None
-        # Make sure that the QuerySet has filters applied (user is searching for something instead of showing all results [objects.all()])
-        # TODO: Future me or future other developer, it could be useful to find a better way to do this, if one exists
-        if hasattr(qs.query.where, 'children') and len(qs.query.where.children) > 0:
-            items = []
-            for item in qs:
-                items.append(dict(id= item.id, gloss=item.idgloss))
-
-            self.request.session['search_results'] = items
-
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('translation_set', queryset=Translation.objects.filter(
             language__language_code_2char__iexact=get_language()).select_related('keyword')),
                                  Prefetch('dataset'),
                                  # Ordering by version to get the first versions posterfile.
                                  Prefetch('glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')))
-        # Add tags for each Gloss in the queryset.
-        populate_tags_for_queryset(qs)
+
+        # Saving querysets results to sessions, these results can then be used elsewhere (like in gloss_detail)
+        # Flush the previous queryset (just in case)
+        self.request.session['search_results'] = None
+
+        # Check if QuerySet has filters applied (user is searching for something)
+        # TODO: Future me or future other developer, it could be useful to find a better way to do this, if one exists
+        if hasattr(qs.query.where, 'children') and len(qs.query.where.children) > 1:
+            # This comparison has been changed from >0 to >1 due to checking for WHERE dataset.id IN.
+            items = []
+            for item in qs:
+                items.append(dict(id=item.id, gloss=item.idgloss))
+
+            self.request.session['search_results'] = items
 
         return qs
+
+
+def populate_tags_for_object_list(object_list, model):
+    """Inserts tags for each item in a list of objects."""
+    # Get the ContentType for the model.
+    content_type = ContentType.objects.get_for_model(model)
+    # Get TaggedItems of selected ContentType for all the list items that have TaggedItems.
+    tagged_items = TaggedItem.objects.filter(content_type=content_type,
+                                             object_id__in=[obj.pk for obj in object_list])
+    tagged_items = tagged_items.select_related('tag')
+    tags_map = defaultdict(list)
+    for tagged_item in tagged_items:
+        tags_map[tagged_item.object_id].append(tagged_item.tag)
+        for obj in object_list:
+            obj.cached_tags = tags_map[obj.pk]
 
 
 def populate_tags_for_queryset(queryset):
