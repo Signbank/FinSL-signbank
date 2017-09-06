@@ -45,6 +45,10 @@ class GlossListView(ListView):
 
         populate_tags_for_object_list(context['object_list'], model=self.object_list.model)
 
+        # Pagination pages with first two chars of the first object on each page
+        pagerator = [(i, g.idgloss[:2]) for i, g in enumerate(self.object_list[0::context['paginator'].per_page], 1)]
+        context['pagerator'] = pagerator
+
         if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
         else:

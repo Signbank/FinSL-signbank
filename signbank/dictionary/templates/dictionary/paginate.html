@@ -6,10 +6,10 @@
     <li><a>...</a></li>
     {% endif %}
 
-    {% for p in page_obj.paginator.page_range %}
+    {% for p, chars in pagerator %}
         {% if p < page_obj.number|add:"10" and  p > page_obj.number|add:"-10" %}
         <li {% if p == page_obj.number %}class='active'{% endif %}>
-        <a href="?page={{ p }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% if p == 0 %}Start{% else %}{{p}}{% endif %}</a>
+        <a href="?page={{ p }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% if p == 0 %}Start{% else %}{{chars}}-{% endif %}</a>
         </li>
         {% endif %}
     {% endfor %}
@@ -17,7 +17,7 @@
     {% if page_obj.paginator.num_pages > page_obj.number|add:"10" %}
     <li><a>...</a></li>
     <li>
-        <a href="?page={{ page_obj.paginator.num_pages }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{page_obj.paginator.num_pages}}</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% with pagerator|last as last %}{{ last.1 }}-{% endwith %}</a>
     </li>
     {% endif %}
 
