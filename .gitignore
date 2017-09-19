@@ -11,3 +11,7 @@ static/css/.DS_Store
 signbank/settings/secret_settings.py
 
 debug.log
+/venv/
+/htmlcov/
+/*.cnf
+/signbank.db
