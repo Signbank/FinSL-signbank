@@ -5,6 +5,9 @@ from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
 from django.contrib.auth.models import User, Permission
+
+from guardian.shortcuts import assign_perm
+
 from signbank.dictionary.models import SignLanguage, Dataset, Gloss
 
 
@@ -52,6 +55,11 @@ class UpdateGlossTestCase(TestCase):
         response = self.client.post(reverse('dictionary:update_gloss', args=[self.gloss_locked.pk]), {'id': 'idgloss', 'value': 'TEST_'})
         self.assertEqual(response.status_code, 403)
 
+    def test_no_dataset_permission(self):
+        """Test that the user can't update glosses if he doesn't have permissions to view the dataset of the gloss."""
+        response = self.client.post(reverse('dictionary:update_gloss', args=[self.testgloss.pk]))
+        self.assertEqual(response.status_code, 403)
+
     def test_delete_gloss_no_permission(self):
         """Test deleting a gloss with no permission, should not be possible."""
         response = self.client.post(reverse('dictionary:update_gloss', args=[self.testgloss.pk]),
@@ -63,8 +71,11 @@ class UpdateGlossTestCase(TestCase):
         """Test deleting a gloss with permission dictionary.delete_gloss."""
         # Add permission to delete gloss.
         permission_del = Permission.objects.get(codename='delete_gloss')
-        self.user.user_permissions.add(permission_del)
+        permission_change = Permission.objects.get(codename='change_gloss')
+        self.user.user_permissions.add(permission_del, permission_change)
         self.user.save()
+        # Give the user permission to view objects of the glosses dataset.
+        assign_perm('view_dataset', self.user, self.testgloss.dataset)
         response = self.client.post(reverse('dictionary:update_gloss', args=[self.testgloss.pk]),
                                     {'id': 'deletegloss', 'value': 'confirmed'})
         # HttpResponseRedirect = 302 Found

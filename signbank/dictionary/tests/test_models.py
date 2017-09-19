@@ -119,11 +119,13 @@ class GlossTestCase(TestCase):
         translation2 = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=keyword2, index=3)
         self.dataset.translation_languages = (self.language,)
         self.dataset.save()
-        unzip = zip(*Gloss.get_translations_for_translation_languages(self.gloss))
-        languages, translations = unzip[0], unzip[1]
+        unzipped = zip(*Gloss.get_translations_for_translation_languages(self.gloss))
+        languages, translations = next(unzipped), next(unzipped)
 
         self.assertIn(self.language, languages)
-        #self.assertTrue(all(x in (translation, translation2) for x in list(*translations)))
+        keywords = [str(translation.keyword), str(translation2.keyword)]
+        # Check that all the keywords are in the 'translations' string.
+        self.assertTrue(all(x in str(*translations) for x in keywords))
 
     def test_field_labels(self):
         """Test that function returns proper field labels."""
