@@ -1,7 +1,8 @@
 {% load i18n %}
+{% load bootstrap3 %}
     <div id='tags' class="uploadvid">
       <fieldset>
-      <legend>Tags</legend>
+      <legend>{% blocktrans %}Tags{% endblocktrans %}</legend>
       {% load tagging_tags %}
       {% tags_for_object gloss as tag_list %}
       {% if tag_list %}
@@ -27,13 +28,12 @@
       <div id="tagcontainer"></div>
       <div class='editform' style="display:none;">
           <form id='tagaddform' 
-                action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}" 
+                action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}"
                 method="post" enctype="multipart/form-data">
-           {% csrf_token %}
-
-           {# Translators: Submit button #}
-           {{tagform.tag}}<input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tag{% endblocktrans %}' style='margin-top:5px'>
-
+          {% csrf_token %}
+          {# Translators: Submit button #}
+          {% bootstrap_field tagsaddform.tags show_label=False %}
+          <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tags{% endblocktrans %}'>
           </form>
       </div>
       {% endif %}

@@ -78,6 +78,11 @@ class TagUpdateForm(forms.Form):
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
 
+class TagsAddForm(forms.Form):
+    """Form to add a new tags to a gloss"""
+    tags = forms.ModelMultipleChoiceField(label=_('Tags'), queryset=Tag.objects.all(), to_field_name='name')
+
+
 NULLBOOLEANCHOICES = [
     (0, '---------'),
     # Translators: YESNOCHOICES

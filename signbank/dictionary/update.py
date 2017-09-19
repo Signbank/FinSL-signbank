@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import re, csv
+import re
+import csv
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest, Http404
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import permission_required, login_required
@@ -11,11 +12,15 @@ from django.db.models.fields import NullBooleanField
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
-from tagging.models import TaggedItem
+from tagging.models import TaggedItem, Tag
 from guardian.shortcuts import get_perms, get_objects_for_user
-from signbank.dictionary.models import *
-from signbank.dictionary.forms import *
-from signbank.video.views import addvideo
+
+from .models import Gloss, Dataset, Translation, Keyword, Language, Dialect, GlossURL, \
+    GlossRelation, GlossTranslations, FieldChoice, MorphologyDefinition, RelationToForeignSign, Definition, Relation
+from .models import build_choice_list
+from .forms import TagsAddForm, TagUpdateForm, GlossCreateForm, GlossRelationForm, RelationForm, \
+    RelationToForeignSignForm, DefinitionForm, MorphologyForm, CSVUploadForm
+from ..video.views import addvideo
 from ..video.models import GlossVideo
 
 
@@ -97,7 +102,7 @@ def update_gloss(request, glossid):
                 # delete the gloss and redirect back to gloss list
                 glosses_videos = GlossVideo.objects.filter(gloss=gloss)
                 # Delete all the objects of GlossVideo that match the Gloss we try to delete.
-                for video in glosses_videos: # TODO: Move this into video app
+                for video in glosses_videos:  # TODO: Move this into video app
                     # When deleting the object, a signal is sent and catched at video.GlossVideo
                     # The signal handling will delete the videofile
                     video.delete()
@@ -139,7 +144,6 @@ def update_gloss(request, glossid):
             except:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest("%s %s" % _("Unknown Dialect"), values, content_type='text/plain')
-
 
         elif field == 'in_web_dictionary':
             # only modify if we have publish permission
@@ -308,13 +312,13 @@ def update_relation(gloss, field, value):
         rel.delete()
         return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
     elif what == 'relationrole':
-        #rel.role = value
+        # rel.role = value
         try:
             rel.role = FieldChoice.objects.get(machine_value=value)
         except FieldChoice.DoesNotExist:
             rel.role = value
         rel.save()
-        #newvalue = rel.get_role_display()
+        # newvalue = rel.get_role_display()
         newvalue = rel.role
     elif what == 'relationtarget':
 
@@ -640,8 +644,8 @@ def add_tag(request, glossid):
     response = HttpResponse('invalid', content_type='text/plain')
 
     if request.method == "POST":
-        thisgloss = get_object_or_404(Gloss, id=glossid)
-        if 'view_dataset' not in get_perms(request.user, thisgloss.dataset):
+        gloss = get_object_or_404(Gloss, id=glossid)
+        if 'view_dataset' not in get_perms(request.user, gloss.dataset):
             # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
             msg = _("You do not have permissions to add tags to glosses of this lexicon.")
             messages.error(request, msg)
@@ -649,26 +653,31 @@ def add_tag(request, glossid):
 
         form = TagUpdateForm(request.POST)
         if form.is_valid():
-
             tag = form.cleaned_data['tag']
 
             if form.cleaned_data['delete']:
                 # get the relevant TaggedItem
                 ti = get_object_or_404(
-                    TaggedItem, object_id=thisgloss.id, tag__name=tag)
+                    TaggedItem, object_id=gloss.id, tag__name=tag)
                 ti.delete()
                 response = HttpResponse(
                     'deleted', content_type='text/plain')
             else:
                 # we need to wrap the tag name in quotes since it might contain
                 # spaces
-                Tag.objects.add_tag(thisgloss, '"%s"' % tag)
+                Tag.objects.add_tag(gloss, '"%s"' % tag)
                 # response is new HTML for the tag list and form
                 response = render(request, 'dictionary/glosstags.html',
-                                  {'gloss': thisgloss, 'tagform': TagUpdateForm()})
+                                  {'gloss': gloss, 'tagsaddform': TagsAddForm()})
         else:
-            print ("invalid form")
-            print((form.as_table()))
+            # If we are adding (multiple) tags, this form should validate.
+            form = TagsAddForm(request.POST)
+            if form.is_valid():
+                tags = form.cleaned_data['tags']
+                [Tag.objects.add_tag(gloss, str(x)) for x in tags]
+                response = render(request, 'dictionary/glosstags.html',
+                                  {'gloss': gloss, 'tagsaddform': TagsAddForm()})
+
     return response
 
 

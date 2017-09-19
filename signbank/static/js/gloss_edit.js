@@ -379,6 +379,7 @@ function ajaxifyTagForm() {
                        // response is a new tag list
                        $('#tags').replaceWith(data);
                        ajaxifyTagForm();
+                       $('.editform').show();
                    });
         } else {
             alert("Please select a tag value.");

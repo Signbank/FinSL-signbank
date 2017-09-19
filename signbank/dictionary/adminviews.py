@@ -20,7 +20,7 @@ from django.contrib import messages
 from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user
 
-from .forms import GlossSearchForm, TagUpdateForm, GlossRelationForm, RelationForm, MorphologyForm, DefinitionForm
+from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, DefinitionForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
     Relation, MorphologyDefinition, Definition
 from ..video.forms import VideoUploadForGlossForm
@@ -461,7 +461,7 @@ class GlossDetailView(DetailView):
         # Call the base implementation first to get a context
         context = super(GlossDetailView, self).get_context_data(**kwargs)
         context['dataset'] = self.get_object().dataset
-        context['tagform'] = TagUpdateForm()
+        context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['videoform'] = VideoUploadForGlossForm()
         context['definitionform'] = DefinitionForm()
