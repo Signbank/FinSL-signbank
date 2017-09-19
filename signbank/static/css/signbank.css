@@ -221,7 +221,7 @@ td .tag {
     margin-bottom: 1px;
     padding: 0px 10px 0px 8px;
 }
-#id_tags, select[multiple] {
+.tagsaddgloss select[multiple]#id_tags {
     width:auto;
     height:15em;
 }

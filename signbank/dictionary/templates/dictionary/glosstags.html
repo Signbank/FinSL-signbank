@@ -32,7 +32,7 @@
                 method="post" enctype="multipart/form-data">
           {% csrf_token %}
           {# Translators: Submit button #}
-          {% bootstrap_field tagsaddform.tags show_label=False %}
+          {% bootstrap_field tagsaddform.tags show_label=False field_class='tagsaddgloss' %}
           <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tags{% endblocktrans %}'>
           </form>
       </div>
