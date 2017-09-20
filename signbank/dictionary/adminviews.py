@@ -184,9 +184,9 @@ class GlossListView(ListView):
             qs = qs.filter(in_web_dictionary__exact=val)
             # print "B :", len(qs)
 
-        if 'islocked' in get and get['islocked'] != '':
-            val = get['islocked'] == 'on'
-            qs = qs.filter(locked=val)
+        if 'published' in get and get['published'] != '':
+            val = get['published'] == 'on'
+            qs = qs.filter(published=val)
 
         # If get has both keys hasvideo and hasnovideo, don't use them to query.
         if not ('hasvideo' in get and 'hasnovideo' in get):

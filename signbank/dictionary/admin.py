@@ -64,22 +64,22 @@ class GlossURLInline(admin.TabularInline):
     extra = 1
 
 
-def lock(modeladmin, request, queryset):
-    queryset.update(locked=True)
-lock.short_description = _("Lock selected glosses")
+def publish(modeladmin, request, queryset):
+    queryset.update(published=True)
+publish.short_description = _("Publish selected glosses")
 
 
-def unlock(modeladmin, request, queryset):
-    queryset.update(locked=False)
-unlock.short_description = _("Unlock selected glosses")
+def unpublish(modeladmin, request, queryset):
+    queryset.update(published=False)
+unpublish.short_description = _("Unpublish selected glosses")
 
 
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
-    actions = [lock, unlock]
+    actions = [publish, unpublish]
 
-    fieldsets = ((None, {'fields': ('dataset', 'locked', 'idgloss', 'idgloss_en', 'notes',)},),
+    fieldsets = ((None, {'fields': ('dataset', 'published', 'idgloss', 'idgloss_en', 'notes',)},),
                  (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
                  (_('Publication Status'), {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
@@ -97,23 +97,23 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'dataset', 'locked', 'idgloss_en']
+    list_display = ['idgloss', 'dataset', 'published', 'idgloss_en']
     search_fields = ['^idgloss']
-    list_filter = ('dataset', 'locked',)
+    list_filter = ('dataset', 'published',)
     inlines = [GlossVideoInline, GlossURLInline, TranslationInline, RelationInline, RelationToForeignSignInline,
                DefinitionInline, ]
 
     def get_readonly_fields(self, request, obj=None):
-        """Adds 'locked' to 'readonly_fields' if user does not have permission to edit it
-        This is done to be able to set an object locked in django admin (so that a regular user can't edit it)
+        """
+        Adds 'published' to 'readonly_fields' if user does not have permission to publish glosses.
         """
         # If obj is not None (and exists), return only the variable 'readonly_fields'
         if obj is None:
             return self.readonly_fields
 
         # If user doesn't have permission 'dictionary.lock_gloss' add it to readonly_fields
-        if not request.user.has_perm('dictionary.lock_gloss'):
-            self.readonly_fields += ('locked',)
+        if not request.user.has_perm('dictionary.publish_gloss'):
+            self.readonly_fields += ('publish',)
         return self.readonly_fields
 
     def save_model(self, request, obj, form, change):

@@ -144,7 +144,7 @@ class GlossSearchForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), required=False)
     nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
 
-    islocked = forms.BooleanField(label=_('Gloss is locked'), required=False)
+    published = forms.BooleanField(label=_('Gloss is published'), required=False)
 
     # Translators: GlossSearchForm label
     hasvideo = forms.BooleanField(label=_('Gloss has a video'), required=False)

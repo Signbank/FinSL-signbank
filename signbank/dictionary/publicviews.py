@@ -28,8 +28,8 @@ class GlossListPublicView(ListView):
 
         # Exclude datasets that are not public.
         qs = qs.exclude(dataset__is_public=False)
-        # Exclude glosses that are not 'locked'.
-        qs = qs.exclude(locked=False)
+        # Exclude glosses that are not 'published'.
+        qs = qs.exclude(published=False)
 
         # Search for multiple datasets (if provided)
         vals = get.getlist('dataset', [])

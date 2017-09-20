@@ -142,7 +142,7 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-6 col-sm-12 searchinput searchcolor">
                         <ul class="list-group list-inline">
-                          <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.islocked show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.published show_label=False bound_css_class="not-bound" %}</li>
                           <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.hasvideo show_label=False bound_css_class="not-bound" %}</li>
                           <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.hasnovideo show_label=False bound_css_class="not-bound" %}</li>
                         </ul>
@@ -210,7 +210,7 @@ function clearForm(myFormElement) {
     <tbody>
     {% for gloss in object_list %}
         {# Here we decide/change the row background colors #}
-        <tr {% if gloss.locked %}class="success"{% elif gloss.glossvideo_set.exists %}class="warning"{% else %}class="danger"{% endif %}>
+        <tr {% if gloss.published %}class="success"{% elif gloss.glossvideo_set.exists %}class="warning"{% else %}class="danger"{% endif %}>
             <td><span class="dataset-{{gloss.dataset.id}}-color label label-default">{{ gloss.dataset }}</span></td>
             {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
             <td><a href="/dictionary/gloss/{{gloss.pk}}/"

@@ -72,10 +72,6 @@ def update_gloss(request, glossid):
     if 'view_dataset' not in get_perms(request.user, gloss.dataset):
         return HttpResponseForbidden(_("You do not have permissions to edit Glosses of this dataset/lexicon."))
 
-    # If the Gloss object is locked, don't allow editing it.
-    if gloss.locked:
-        return HttpResponseForbidden(_("Gloss Update Not Allowed: Gloss is locked from editing"))
-
     if request.method == "POST":
         # Update the user on Gloss.updated_by from request.user
         gloss.updated_by = request.user

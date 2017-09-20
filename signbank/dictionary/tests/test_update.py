@@ -36,7 +36,6 @@ class UpdateGlossTestCase(TestCase):
         self.signlanguage = SignLanguage.objects.create(pk=2, name="testsignlanguage", language_code_3char="tst")
         self.dataset = Dataset.objects.create(name="testdataset", signlanguage=self.signlanguage)
         self.testgloss = Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
-        self.gloss_locked = Gloss.objects.create(idgloss="glosslocked", dataset=self.dataset, created_by=self.user, updated_by=self.user, locked=True)
 
     def test_post_with_no_permission(self):
         """Test that you get 302 Found or 403 Forbidden if you try without permission."""
@@ -49,11 +48,6 @@ class UpdateGlossTestCase(TestCase):
         response = self.client_nologin.post(reverse('dictionary:update_gloss', args=[self.testgloss.pk]), {'id': 'idgloss', 'value': 'TEST_'})
         # Should return 302 Found, or 403 Forbidden
         self.assertTrue(response.status_code == 302 or 403)
-
-    def test_gloss_locked(self):
-        """Test that you can't update a Gloss that is locked."""
-        response = self.client.post(reverse('dictionary:update_gloss', args=[self.gloss_locked.pk]), {'id': 'idgloss', 'value': 'TEST_'})
-        self.assertEqual(response.status_code, 403)
 
     def test_no_dataset_permission(self):
         """Test that the user can't update glosses if he doesn't have permissions to view the dataset of the gloss."""

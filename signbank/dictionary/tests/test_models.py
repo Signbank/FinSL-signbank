@@ -24,16 +24,16 @@ class GlossTestCase(TestCase):
     def test_str(self):
         self.assertEqual(str(self.gloss), self.gloss.idgloss)
 
-    def test_locked(self):
-        """Test that locking Gloss works."""
+    def test_publish(self):
+        """Test that publishing Gloss works."""
         gloss = Gloss.objects.get(idgloss="testgloss")
-        # Should be locked when first created
-        self.assertFalse(gloss.locked)
+        # Should be not be published when first created
+        self.assertFalse(gloss.published)
 
         # Set locked True, and check that the Gloss is locked.
-        gloss.locked = True
+        gloss.published = True
         gloss.save()
-        self.assertTrue(gloss.locked)
+        self.assertTrue(gloss.published)
 
     def test_unique_together(self):
         """Make sure that there can't be two of the same gloss+dataset combinations"""

@@ -223,11 +223,11 @@ class Gloss(models.Model):
             # Translators: Gloss permissions
             ('view_advanced_properties', _('Include all properties in sign detail view')),
             # Translators: Gloss permissions
-            ('lock_gloss', _('Can lock and unlock Gloss from editing')),
+            ('publish_gloss', _('Can publish and unpublish Glosses')),
         )
     # *** Fields begin ***
 
-    locked = models.BooleanField(_("Locked"), default=False)
+    published = models.BooleanField(_("Published"), default=False)
 
     dataset = models.ForeignKey("Dataset", verbose_name=_("Glosses dataset"),
                                 help_text=_("Dataset a gloss is part of"))

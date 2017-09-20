@@ -13,7 +13,7 @@
 <script type="text/javascript" src="{% static "js/typeahead.bundle.min.js" %}"></script>
 <script src="{% static "js/RecordRTC.min.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
-    {% if not gloss.locked %}
+    {% if not gloss.published %}{# Don't allow recording of webcam videos to published Glosses. #}
 {% include "dictionary/record_video.html" %}
     {% endif %}
 {% endif %}
@@ -130,13 +130,12 @@ $(document).ready(function () {
         <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
     </div>
     {% if perms.dictionary.change_gloss %}
-        {% if not gloss.locked %}
+        {% if not gloss.published %}{# Don't allow recording webcam videos for published Glosses. #}
         <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
                 data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
             {% blocktrans %}Record a video{% endblocktrans %}</button>
         {% endif %}
     <div class='pull-right'>
-        {% if not gloss.locked %}
         {# Translators: Text that appears when editing is on #}
         <span id='edit_message'
               style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
@@ -177,7 +176,6 @@ $(document).ready(function () {
                 </div>
             </div>
         </div>
-        {% endif %}
     </div>
     {% endif %}
 </div>
@@ -304,7 +302,7 @@ $(document).ready(function () {
         <div class='panel-group col-lg-7 col-md-6 col-sm-12 col-xs-12' id='definition'>
             <table class='table table-condensed'>
                 {# Translators: Information about a Gloss #}
-                <tr {% if gloss.locked %}class="success"{% endif %}>
+                <tr {% if gloss.published %}class="success"{% endif %}>
                     <th>{% blocktrans %}Gloss:{% endblocktrans %}</th>
                     <td class='edit edit_text' id='idgloss'>{% value gloss.idgloss %}</td>
                 </tr>
