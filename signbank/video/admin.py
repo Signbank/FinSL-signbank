@@ -85,4 +85,10 @@ class GlossVideoAdmin(admin.ModelAdmin):
         qs = super(GlossVideoAdmin, self).get_queryset(request)
         return qs.select_related("gloss", "dataset")
 
+
+class GlossVideoInline(admin.TabularInline):
+    model = GlossVideo
+    extra = 1
+
+
 admin.site.register(GlossVideo, GlossVideoAdmin)

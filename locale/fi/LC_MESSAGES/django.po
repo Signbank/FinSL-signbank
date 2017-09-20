@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 11:36+0300\n"
+"POT-Creation-Date: 2017-09-20 12:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,17 +32,42 @@ msgstr ""
 "Et voi muokata tämän kommentin tagia, koska et ole kommentin kirjoittaja."
 
 #. Translators: verbose_name_plural
-#: signbank/dictionary/admin.py:53
+#: signbank/dictionary/admin.py:58
 msgid "Relations to other Glosses"
 msgstr "Suhde toisiin Glosseihin"
 
-#: signbank/dictionary/admin.py:59
+#: signbank/dictionary/admin.py:69
 msgid "Lock selected glosses"
 msgstr "Lukitse valitut glossit"
 
-#: signbank/dictionary/admin.py:64
+#: signbank/dictionary/admin.py:74
 msgid "Unlock selected glosses"
 msgstr "Poista lukitus valituilta glosseilta"
+
+#: signbank/dictionary/admin.py:83
+msgid "Created/Updated"
+msgstr "Luotu/Päivitetty"
+
+#: signbank/dictionary/admin.py:84
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:348
+msgid "Publication Status"
+msgstr "Julkaisun tilanne"
+
+#. Translators: DEFN_ROLE_CHOICES
+#: signbank/dictionary/admin.py:86 signbank/dictionary/choicelists.py:532
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
+msgid "Phonology"
+msgstr "Fonologia"
+
+#: signbank/dictionary/admin.py:94
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:128
+msgid "Semantics"
+msgstr "Semantiikka"
+
+#: signbank/dictionary/admin.py:96
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:327
+msgid "Frequency"
+msgstr "Frekvenssi"
 
 #: signbank/dictionary/adminviews.py:73
 msgid "You do not have permissions to export to CSV."
@@ -61,12 +86,6 @@ msgstr "Merkintä"
 #: signbank/dictionary/choicelists.py:530
 msgid "Private Note"
 msgstr "Yksityinen merkintä"
-
-#. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/choicelists.py:532
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
-msgid "Phonology"
-msgstr "Fonologia"
 
 #. Translators: DEFN_ROLE_CHOICES
 #: signbank/dictionary/choicelists.py:534
@@ -783,10 +802,6 @@ msgstr "Haluatko varmasti poistaa tämän? Toimintoa ei voi peruuttaa."
 msgid "Add Morphology Definition"
 msgstr "Lisää morfologia"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:128
-msgid "Semantics"
-msgstr "Semantiikka"
-
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:149
 msgid "Relations to Other Signs"
 msgstr "Suhteet viittomiin"
@@ -831,14 +846,6 @@ msgstr "Lainattu kieli"
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:313
 msgid "Add Relation to Foreign Sign"
 msgstr "Lisää suhde vieraskieliseen viittomaan"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:327
-msgid "Frequency"
-msgstr "Frekvenssi"
-
-#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:348
-msgid "Publication Status"
-msgstr "Julkaisun tilanne"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:358
 msgid "In Web Dictionary"

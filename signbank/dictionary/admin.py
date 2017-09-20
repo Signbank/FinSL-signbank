@@ -3,11 +3,14 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from reversion.admin import VersionAdmin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
 from guardian.admin import GuardedModelAdmin
 
-from signbank.dictionary.models import *
+from .models import Dataset, Gloss, Translation, Keyword, Relation, RelationToForeignSign, Definition, GlossURL, \
+    Language, SignLanguage, Dialect, FieldChoice, GlossRelation, MorphologyDefinition
+
+from ..video.admin import GlossVideoInline
 
 
 class DatasetAdmin(GuardedModelAdmin):
@@ -38,11 +41,13 @@ class RelationToOtherSignInline(admin.TabularInline):
 class RelationToForeignSignInline(admin.TabularInline):
     model = RelationToForeignSign
     extra = 1
+    classes = ('collapse',)
 
 
 class DefinitionInline(admin.TabularInline):
     model = Definition
     extra = 1
+    classes = ('collapse',)
 
 
 class RelationInline(admin.TabularInline):
@@ -51,6 +56,11 @@ class RelationInline(admin.TabularInline):
     raw_id_fields = ['source', 'target']
     # Translators: verbose_name_plural
     verbose_name_plural = _("Relations to other Glosses")
+    extra = 1
+
+
+class GlossURLInline(admin.TabularInline):
+    model = GlossURL
     extra = 1
 
 
@@ -69,31 +79,29 @@ class GlossAdmin(VersionAdmin):
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
     actions = [lock, unlock]
 
-    fieldsets = ((None, {'fields': (
-        'dataset', 'locked', 'idgloss', 'idgloss_en', 'notes', 'dialect', 'url_field')},),
-                 ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
+    fieldsets = ((None, {'fields': ('dataset', 'locked', 'idgloss', 'idgloss_en', 'notes',)},),
+                 (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
+                 (_('Publication Status'), {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
-                 ('Created/Updated', {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
-                 ('Phonology', {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
-                                           'relation_between_articulators', 'absolute_orientation_palm',
-                                           'absolute_orientation_fingers', 'relative_orientation_movement',
-                                           'relative_orientation_location', 'orientation_change',
-                                           'handshape_change', 'repeated_movement', 'alternating_movement',
-                                           'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
-                                           'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
-                                'classes': ('collapse',)},),
-                 (
-                     'Semantics',
-                     {'fields': ('iconic_image', 'named_entity', 'semantic_field'), 'classes': ('collapse',)}),
-                 ('Frequency', {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
+                 (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
+                                              'relation_between_articulators', 'absolute_orientation_palm',
+                                              'absolute_orientation_fingers', 'relative_orientation_movement',
+                                              'relative_orientation_location', 'orientation_change',
+                                              'handshape_change', 'repeated_movement', 'alternating_movement',
+                                              'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
+                                              'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
+                                   'classes': ('collapse',)},),
+                 (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
+                                'classes': ('collapse',)}),
+                 (_('Frequency'), {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True
     save_as = True
     list_display = ['idgloss', 'dataset', 'locked', 'idgloss_en']
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'locked',)
-    inlines = [RelationInline, RelationToForeignSignInline,
-               DefinitionInline, TranslationInline,]
+    inlines = [GlossVideoInline, GlossURLInline, TranslationInline, RelationInline, RelationToForeignSignInline,
+               DefinitionInline, ]
 
     def get_readonly_fields(self, request, obj=None):
         """Adds 'locked' to 'readonly_fields' if user does not have permission to edit it
