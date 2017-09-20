@@ -70,7 +70,7 @@ class GlossAdmin(VersionAdmin):
     actions = [lock, unlock]
 
     fieldsets = ((None, {'fields': (
-        'dataset', 'locked', 'idgloss', 'idgloss_en', 'annotation_comments', 'dialect', 'url_field')},),
+        'dataset', 'locked', 'idgloss', 'idgloss_en', 'notes', 'dialect', 'url_field')},),
                  ('Publication Status', {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
                                          'classes': ('collapse',)},),
                  ('Created/Updated', {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),

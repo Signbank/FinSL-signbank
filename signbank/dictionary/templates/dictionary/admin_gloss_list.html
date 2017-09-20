@@ -129,8 +129,8 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-6 col-sm-12 searchinput">
                    <div class='input-group'>
-                        <label class='input-group-addon' for='id_annotation_comments'>{{searchform.annotation_comments.label}}</label>
-                        <input id="id_annotation_comments" name='annotation_comments' class='form-control' {% if searchform.annotation_comments.value %}value='{{searchform.annotation_comments.value}}' {% endif %}>
+                        <label class='input-group-addon' for='id_notes'>{{searchform.notes.label}}</label>
+                        <input id="id_notes" name='notes' class='form-control' {% if searchform.notes.value %}value='{{searchform.notes.value}}' {% endif %}>
                    </div>
                 </div>
                  <div class="col-md-4 col-sm-6 searchinput">
@@ -203,7 +203,7 @@ function clearForm(myFormElement) {
             <th>{% blocktrans %}Gloss in English{% endblocktrans %} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'idgloss_en' or request.GET.order == 'idgloss_en' %}&order=-idgloss_en{% else %}&order=idgloss_en{% endif %}">
                 <span class="{% if request.GET.order|slice:":1" == "-" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
             <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
-            <th>{% blocktrans %}Comments{% endblocktrans %}</th>
+            <th>{% blocktrans %}Notes{% endblocktrans %}</th>
             <th>{% blocktrans %}Tags{% endblocktrans %}</th>
         </tr>
     </thead>
@@ -227,7 +227,7 @@ function clearForm(myFormElement) {
                     {% else %}{{ translation.keyword }},{% endif %}
                 {% endfor %}
             </td>
-            <td>{{ gloss.annotation_comments }}</td>
+            <td>{{ gloss.notes }}</td>
             <td>{% for tag in gloss.cached_tags %}<span class='tag'>{{ tag }}</span>{% endfor %}</td>
         </tr>
     {% endfor %}

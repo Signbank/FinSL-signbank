@@ -165,7 +165,7 @@ function configure_edit() {
          rows      : 3,
          onblur    : 'ignore',
      });
-     $('.edit_area_comments').editable(edit_post_url, {
+     $('.edit_area_notes').editable(edit_post_url, {
          type      : 'textarea',
          width     : 400,
          rows      : 3,

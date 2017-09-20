@@ -80,7 +80,7 @@ class GlossListView(ListView):
             'Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
 
         # We want to manually set which fields to export here
-        fieldnames = ['idgloss', 'idgloss_en', 'annotation_comments', ]
+        fieldnames = ['idgloss', 'idgloss_en', 'notes', ]
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         writer = csv.writer(response)
@@ -157,7 +157,7 @@ class GlossListView(ListView):
         if 'search' in get and get['search'] != '':
             val = get['search']
             # Searches for multiple fields at the same time. Looking if any of the fields match.
-            query = (Q(idgloss__icontains=val) | Q(idgloss_en__icontains=val) | Q(annotation_comments__icontains=val) |
+            query = (Q(idgloss__icontains=val) | Q(idgloss_en__icontains=val) | Q(notes__icontains=val) |
                      Q(translation__keyword__text__icontains=val))
             qs = qs.filter(query)
 
@@ -213,7 +213,7 @@ class GlossListView(ListView):
                       'is_proposed_new_sign',]
 
         """These were removed from fieldnames because they are not needed there:
-        'idgloss', 'idgloss_en', 'annotation_comments', 'in_web_dictionary',
+        'idgloss', 'idgloss_en', 'notes', 'in_web_dictionary',
         """
 
 
@@ -232,8 +232,8 @@ class GlossListView(ListView):
             # Get sign languages from dataset
             qs = qs.filter(dataset__signlanguage__in=vals)
 
-        if 'annotation_comments' in get and get['annotation_comments'] != '':
-            qs = qs.filter(annotation_comments__icontains=get['annotation_comments'])
+        if 'notes' in get and get['notes'] != '':
+            qs = qs.filter(notes__icontains=get['notes'])
 
         # phonology and semantics field filters
         for fieldname in fieldnames:
