@@ -2,16 +2,19 @@
 """Models for the Signbank dictionary/corpus."""
 from __future__ import unicode_literals
 
-from django.utils.encoding import python_2_unicode_compatible
 import json
+import reversion
+import tagging
+from tagging.registry import register
+
 from collections import OrderedDict
 
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 from django.db import models, OperationalError
 from django.urls import reverse
-from tagging.registry import register
-import tagging
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+
 from .choicelists import DEFN_ROLE_CHOICES, RELATION_ROLE_CHOICES
 from .choicelists import handshape_choices, location_choices, palm_orientation_choices, relative_orientation_choices, \
     BSLsecondLocationChoices
@@ -67,10 +70,11 @@ class Translation(models.Model):
         search_fields = ['gloss__idgloss']
 
     def __str__(self):
-        return self.gloss.idgloss + '-' + self.keyword.text
+        return self.keyword.text
 
 
 @python_2_unicode_compatible
+@reversion.register()
 class Keyword(models.Model):
     """A keyword that stores the text for translation(s)"""
     text = models.CharField(max_length=100, unique=True)

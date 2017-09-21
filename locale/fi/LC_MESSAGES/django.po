@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 13:39+0300\n"
+"POT-Creation-Date: 2017-09-21 14:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,48 +32,48 @@ msgstr ""
 "Et voi muokata tämän kommentin tagia, koska et ole kommentin kirjoittaja."
 
 #. Translators: verbose_name_plural
-#: signbank/dictionary/admin.py:58
+#: signbank/dictionary/admin.py:55
 msgid "Relations to other Glosses"
 msgstr "Suhde toisiin Glosseihin"
 
-#: signbank/dictionary/admin.py:69
+#: signbank/dictionary/admin.py:66
 msgid "Publish selected glosses"
 msgstr "Julkaise valitut glossit"
 
-#: signbank/dictionary/admin.py:74
+#: signbank/dictionary/admin.py:71
 msgid "Unpublish selected glosses"
 msgstr "Aseta valitut glossit ei-julkaistuiksi"
 
-#: signbank/dictionary/admin.py:83
+#: signbank/dictionary/admin.py:80
 msgid "Created/Updated"
 msgstr "Luotu/Päivitetty"
 
-#: signbank/dictionary/admin.py:84
+#: signbank/dictionary/admin.py:81
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:348
 msgid "Publication Status"
 msgstr "Julkaisun tilanne"
 
 #. Translators: DEFN_ROLE_CHOICES
-#: signbank/dictionary/admin.py:86 signbank/dictionary/choicelists.py:532
+#: signbank/dictionary/admin.py:83 signbank/dictionary/choicelists.py:532
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
 msgid "Phonology"
 msgstr "Fonologia"
 
-#: signbank/dictionary/admin.py:94
+#: signbank/dictionary/admin.py:91
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:128
 msgid "Semantics"
 msgstr "Semantiikka"
 
-#: signbank/dictionary/admin.py:96
+#: signbank/dictionary/admin.py:93
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:327
 msgid "Frequency"
 msgstr "Frekvenssi"
 
-#: signbank/dictionary/adminviews.py:73
+#: signbank/dictionary/adminviews.py:74
 msgid "You do not have permissions to export to CSV."
 msgstr "Sinulla ei ole käyttöoikeuksia tuoda CSV:nä."
 
-#: signbank/dictionary/adminviews.py:455
+#: signbank/dictionary/adminviews.py:456
 msgid "You do not have permissions to view glosses of this dataset."
 msgstr "Sinulla ei ole oikeuksia nähdä tämän leksikon glosseja."
 
@@ -144,7 +144,7 @@ msgstr "Aineisto"
 #. Translators: GlossSearchForm label
 #. Translators: Gloss field: idgloss, verbose name
 #: signbank/dictionary/forms.py:22 signbank/dictionary/forms.py:133
-#: signbank/dictionary/forms.py:233 signbank/dictionary/models.py:238
+#: signbank/dictionary/forms.py:233 signbank/dictionary/models.py:242
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:201
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
 #: signbank/video/models.py:61
@@ -156,7 +156,7 @@ msgstr "Glossi"
 #. Translators: Gloss field: idgloss_en (english), verbose name
 #. Translators: Gloss in English - add gloss form title
 #: signbank/dictionary/forms.py:23 signbank/dictionary/forms.py:135
-#: signbank/dictionary/models.py:244
+#: signbank/dictionary/models.py:248
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:203
 msgid "Gloss in English"
@@ -272,7 +272,7 @@ msgstr "Tyyppi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:270 signbank/dictionary/models.py:162
+#: signbank/dictionary/forms.py:270 signbank/dictionary/models.py:166
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:241
 msgid "Related Language"
 msgstr "Lainattu kieli"
@@ -307,245 +307,245 @@ msgstr "Leksikko"
 msgid "You can limit the search to these lexicons."
 msgstr "Voit rajata hakua näihin leksikoihin."
 
-#: signbank/dictionary/models.py:33
+#: signbank/dictionary/models.py:36
 msgid "View dataset"
 msgstr "Käyttöoikeus leksikkoon"
 
-#: signbank/dictionary/models.py:115
+#: signbank/dictionary/models.py:119
 msgid "ISO 639-1 language code (2 characters long) of a written language."
 msgstr ""
 "ISO 639-1 kielikoodi (2 merkkiä pitkä) puhutusta/kirjoitetusta kielestä."
 
-#: signbank/dictionary/models.py:117
+#: signbank/dictionary/models.py:121
 msgid "ISO 639-3 language code (3 characters long) of a written language."
 msgstr ""
 "ISO 639-3 kielikoodi (3 merkkiä pitkä) puhutusta/kirjoitetusta kielestä."
 
-#: signbank/dictionary/models.py:132
+#: signbank/dictionary/models.py:136
 msgid "ISO 639-3 language code (3 characters long) of a sign language."
 msgstr "ISO 639-3 kielikoodi (3 merkkiä pitkä) viittomakielestä."
 
 #. Translators: RelationToForeignSign field verbose name
-#: signbank/dictionary/models.py:160
+#: signbank/dictionary/models.py:164
 msgid "Loan Sign"
 msgstr "Lainaviittoma"
 
 #. Translators: Equivalent Gloss in related language
-#: signbank/dictionary/models.py:165
+#: signbank/dictionary/models.py:169
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:243
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:309
 msgid "Gloss in related language"
 msgstr "Glossi liittyvässä kielessä"
 
 #. Translators: This is verbose_name_plural, so it has to be plural here
-#: signbank/dictionary/models.py:212
+#: signbank/dictionary/models.py:216
 msgid "Glosses"
 msgstr "Glossit"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:216
+#: signbank/dictionary/models.py:220
 msgid "Can Update Video"
 msgstr "Voi päivittää videon"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:218
+#: signbank/dictionary/models.py:222
 msgid "Can Search/View Full Gloss Details"
 msgstr "Voi etsiä/nähdä Glossin täydet tiedot"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:220
+#: signbank/dictionary/models.py:224
 msgid "Can export sign details as CSV"
 msgstr "Voi viedä viittomien tiedot CSV muodossa"
 
-#: signbank/dictionary/models.py:221
+#: signbank/dictionary/models.py:225
 msgid "Can import glosses from a CSV file"
 msgstr "Voi tuoda glosseja CSV-tiedostosta"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:223
+#: signbank/dictionary/models.py:227
 msgid "Can publish signs and definitions"
 msgstr "Voi julkaista viittomia ja määritelmiä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:225
+#: signbank/dictionary/models.py:229
 msgid "Include all properties in sign detail view"
 msgstr "Sisällytä kaikki ominaisuudet viittoman tarkassa näkymässä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:227
+#: signbank/dictionary/models.py:231
 msgid "Can publish and unpublish Glosses"
 msgstr "Voi asettaa glossin julkaistuksi"
 
 #. Translators:
-#: signbank/dictionary/models.py:231
+#: signbank/dictionary/models.py:235
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:391
 msgid "Published"
 msgstr "Julkaistu"
 
-#: signbank/dictionary/models.py:233
+#: signbank/dictionary/models.py:237
 msgid "Glosses dataset"
 msgstr "Glossin aineisto"
 
-#: signbank/dictionary/models.py:234
+#: signbank/dictionary/models.py:238
 msgid "Dataset a gloss is part of"
 msgstr "Aineisto jonka osa glossi on"
 
 #. Translators: Help text for Gloss field: idgloss
-#: signbank/dictionary/models.py:240
+#: signbank/dictionary/models.py:244
 msgid "This is the unique identifying name of a Gloss."
 msgstr "Glossin uniikki nimi."
 
 #. Translators: Help text for Gloss field: idgloss_en (english)
-#: signbank/dictionary/models.py:246
+#: signbank/dictionary/models.py:250
 msgid "This is the English name for the Gloss"
 msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
-#: signbank/dictionary/models.py:249
+#: signbank/dictionary/models.py:253
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 msgid "Notes"
 msgstr "Lisätiedot"
 
 #. Translators: Gloss models field: url. TODO: Remove? First make sure that the values are moved to the URL class.
-#: signbank/dictionary/models.py:252
+#: signbank/dictionary/models.py:256
 msgid "URL"
 msgstr "Internetosoite"
 
 #. Translators: Gloss models field: handedness, verbose name
-#: signbank/dictionary/models.py:267
+#: signbank/dictionary/models.py:271
 msgid "Handedness"
 msgstr "Kätisyys"
 
 #. Translators: Gloss models field: strong_handshape, verbose name
-#: signbank/dictionary/models.py:271
+#: signbank/dictionary/models.py:275
 msgid "Strong Hand"
 msgstr "Dominoiva käsi"
 
 #. Translators: Gloss models field: weak_handshape, verbose name
-#: signbank/dictionary/models.py:276
+#: signbank/dictionary/models.py:280
 msgid "Weak Hand"
 msgstr "Ei-dominoiva käsi"
 
 #. Translators: Gloss models field: location, verbose name
-#: signbank/dictionary/models.py:281
+#: signbank/dictionary/models.py:285
 msgid "Location"
 msgstr "Paikka"
 
 #. Translators: Gloss models field: relation_between_articulators, verbose name
-#: signbank/dictionary/models.py:286
+#: signbank/dictionary/models.py:290
 msgid "Relation Between Articulators"
 msgstr "Artikulaattorien välinen suhde"
 
 #. Translators: Gloss models field: absolute_orientation_palm, verbose name
-#: signbank/dictionary/models.py:294
+#: signbank/dictionary/models.py:298
 msgid "Absolute Orientation: Palm"
 msgstr "Absoluuttinen orientaatio: kämmen"
 
 #. Translators: Gloss models field: absolute_orientation_fingers, verbose name
-#: signbank/dictionary/models.py:299
+#: signbank/dictionary/models.py:303
 msgid "Absolute Orientation: Fingers"
 msgstr "Absoluuttinen orientaatio: sormet"
 
 #. Translators: Gloss models field: relative_orientation_movement, verbose name
-#: signbank/dictionary/models.py:305
+#: signbank/dictionary/models.py:309
 msgid "Relative Orientation: Movement"
 msgstr "Absoluuttinen orientaatio: liike"
 
 #. Translators: Gloss models field: relative_orientation_location, verbose name
-#: signbank/dictionary/models.py:312
+#: signbank/dictionary/models.py:316
 msgid "Relative Orientation: Location"
 msgstr "Absoluuttinen orientaatio: paikka"
 
 #. Translators: Gloss models field: orientation_change, verbose name
-#: signbank/dictionary/models.py:319
+#: signbank/dictionary/models.py:323
 msgid "Orientation Change"
 msgstr "Orientaation muutos"
 
 #. Translators: Gloss models field: handshape_change, verbose name
-#: signbank/dictionary/models.py:325
+#: signbank/dictionary/models.py:329
 msgid "Handshape Change"
 msgstr "Käsimuodon muutos"
 
 #. Translators: Gloss models field: repeated_movement, verbose name
-#: signbank/dictionary/models.py:330
+#: signbank/dictionary/models.py:334
 msgid "Repeated Movement"
 msgstr "Toistollinen liike"
 
 #. Translators: Gloss models field: alternating_movement, verbose name
-#: signbank/dictionary/models.py:332
+#: signbank/dictionary/models.py:336
 msgid "Alternating Movement"
 msgstr "Vaihteleva liike"
 
 #. Translators: Gloss models field: movement_shape, verbose name
-#: signbank/dictionary/models.py:335
+#: signbank/dictionary/models.py:339
 msgid "Movement Shape"
 msgstr "Liikkeen muoto"
 
 #. Translators: Gloss models field: movement_direction, verbose name
-#: signbank/dictionary/models.py:339
+#: signbank/dictionary/models.py:343
 msgid "Movement Direction"
 msgstr "Liikkeen suunta"
 
 #. Translators: Gloss models field: movement_manner, verbose name
-#: signbank/dictionary/models.py:344
+#: signbank/dictionary/models.py:348
 msgid "Movement Manner"
 msgstr "Liikkeen tapa"
 
 #. Translators: Gloss models field: contact_type, verbose name
-#: signbank/dictionary/models.py:348
+#: signbank/dictionary/models.py:352
 msgid "Contact Type"
 msgstr "Kontaktityyppi"
 
 #. Translators: Gloss models field: phonology_other verbose name
-#: signbank/dictionary/models.py:353
+#: signbank/dictionary/models.py:357
 msgid "Phonology Other"
 msgstr "Fonologia muu"
 
 #. Translators: Gloss models field: mouth_gesture, verbose name
-#: signbank/dictionary/models.py:356
+#: signbank/dictionary/models.py:360
 msgid "Mouth Gesture"
 msgstr "Huulio"
 
 #. Translators: Gloss models field: mouthing, verbose name
-#: signbank/dictionary/models.py:358
+#: signbank/dictionary/models.py:362
 msgid "Mouthing"
 msgstr "Huulio sanahahmo"
 
 #. Translators: Gloss models field: phonetic_variation, verbose name
-#: signbank/dictionary/models.py:360
+#: signbank/dictionary/models.py:364
 msgid "Phonetic Variation"
 msgstr "Foneettinen variaatio"
 
 #. Translators: Gloss models field: iconic_image, verbose name
-#: signbank/dictionary/models.py:364
+#: signbank/dictionary/models.py:368
 msgid "Iconic Image"
 msgstr ""
 
 #. Translators: Gloss models field: named_entity, verbose name
-#: signbank/dictionary/models.py:366
+#: signbank/dictionary/models.py:370
 msgid "Named Entity"
 msgstr "Nimetty kohde"
 
 #. Translators: Gloss models field: semantic_field, verbose name
-#: signbank/dictionary/models.py:370
+#: signbank/dictionary/models.py:374
 msgid "Semantic Field"
 msgstr "Semanttinen kenttä"
 
-#: signbank/dictionary/models.py:377
+#: signbank/dictionary/models.py:381
 msgid "Number of Occurrences"
 msgstr "Esiintymien määrä"
 
 #. Translators: Help text for Gloss models field: number_of_occurences
-#: signbank/dictionary/models.py:379
+#: signbank/dictionary/models.py:383
 msgid "Number of occurences in annotation materials"
 msgstr "Havaintojen määrä annotaatiomateriaaleissa"
 
 #. Translators: Gloss models field: in_web_dictionary, verbose name
-#: signbank/dictionary/models.py:383
+#: signbank/dictionary/models.py:387
 msgid "In the Web dictionary"
 msgstr "Verkkosanakirjassa"
 
-#: signbank/dictionary/models.py:386
+#: signbank/dictionary/models.py:390
 msgid "Is this a proposed new sign?"
 msgstr "Onko tämä ehdotettu uusi viittoma?"
 
@@ -782,6 +782,40 @@ msgstr "Luotu:"
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:365
 msgid "Updated:"
 msgstr "Päivitetty:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:372
+msgid "Show complete history"
+msgstr "Näytä koko historia"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:381
+msgid "Change history for"
+msgstr "Muutoshistoria glossille"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:385
+msgid ""
+"This is a list of some historical changes made to this Gloss.\n"
+"                                    By clicking the link, you will be taken "
+"to the admin site and shown the state of\n"
+"                                    this gloss at the chosen time."
+msgstr ""
+"Tämä on lista glossin historiallisista muutoksista. Linkkiä klikkaamalla "
+"pääset ylläpitosivulle, jossa näkyy glossin tila valittuna hetkenä."
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:388
+msgid ""
+"Do not save the changes,\n"
+"                                    unless you want to restore the older "
+"version of this Gloss!"
+msgstr ""
+"Älä tallenna muutoksia, ellet halua palauttaa tämän Glossin vanhaa versiota!"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:401
+msgid "Gloss fields:"
+msgstr "Glossin kentät:"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:403
+msgid "Translations:"
+msgstr "Käännösvastineet:"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:14
 msgid "Morphology"

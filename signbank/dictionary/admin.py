@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
 from guardian.admin import GuardedModelAdmin
 
-from .models import Dataset, Gloss, Translation, Keyword, Relation, RelationToForeignSign, Definition, GlossURL, \
+from .models import Dataset, Gloss, Translation, Relation, RelationToForeignSign, Definition, GlossURL, \
     Language, SignLanguage, Dialect, FieldChoice, GlossRelation, MorphologyDefinition
 
 from ..video.admin import GlossVideoInline
@@ -18,13 +18,10 @@ class DatasetAdmin(GuardedModelAdmin):
     list_display = ('name', 'is_public', 'signlanguage',)
 
 
-class KeywordAdmin(VersionAdmin):
-    search_fields = ['^text']
-
-
-class TranslationAdmin(VersionAdmin):
+class TranslationAdmin(admin.ModelAdmin):
     search_fields = ['^keyword__text', '^gloss__idgloss']
     list_filter = ('gloss__dataset',)
+    list_display = ('gloss', 'keyword')
 
 
 class TranslationInline(admin.TabularInline):
@@ -138,10 +135,6 @@ class DialectInline(admin.TabularInline):
     model = Dialect
 
 
-class DialectAdmin(VersionAdmin):
-    model = Dialect
-
-
 class LanguageAdmin(VersionAdmin, ModelTranslationAdmin):
     model = Language
 
@@ -153,27 +146,22 @@ class SignLanguageAdmin(VersionAdmin):
 
 class FieldChoiceAdmin(admin.ModelAdmin):
     model = FieldChoice
-    list_display = ('field', 'english_name', 'machine_value')
+    list_display = ('field', 'english_name', 'machine_value',)
 
 
 class GlossRelationAdmin(VersionAdmin):
-    raw_id_fields = ('source', 'target')
+    raw_id_fields = ('source', 'target',)
     model = GlossRelation
+    list_display = ('source', 'target',)
+    list_filter = ('source__dataset',)
+    search_fields = ('source',)
 
 
-class GlossURLAdmin(VersionAdmin):
-    raw_id_fields = ['gloss']
-    model = GlossURL
-
-
-admin.site.register(Dialect, DialectAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
-admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Translation, TranslationAdmin)
 admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
-admin.site.register(GlossURL, GlossURLAdmin)

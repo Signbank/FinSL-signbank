@@ -19,6 +19,7 @@ from collections import defaultdict
 from django.contrib import messages
 from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user
+from reversion.models import Version
 
 from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, DefinitionForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
@@ -473,7 +474,26 @@ class GlossDetailView(DetailView):
         # GlossRelations for this gloss
         context['glossrelations'] = GlossRelation.objects.filter(source=context['gloss'])
         context['glossurls'] = GlossURL.objects.filter(gloss=context['gloss'])
-        context['translation_languages_and_translations'] = context['gloss'].get_translations_for_translation_languages()
+        context['translation_languages_and_translations'] = \
+            context['gloss'].get_translations_for_translation_languages()
+
+        if self.request.user.is_staff:
+            # Get some version history data
+            version_history = Version.objects.get_for_object(context['gloss']).select_related('revision', 'content_type').\
+                prefetch_related('revision__user')
+            translation_ct = ContentType.objects.get_for_model(Translation)
+            for i, version in enumerate(version_history):
+                if not i+1 >= len(version_history):
+                    ver1 = version.field_dict
+                    ver2 = version_history[i+1].field_dict
+                    t1 = [x.object_repr for x in version.revision.version_set.filter(content_type=translation_ct)]
+                    t2 = [x.object_repr for x in version_history[i+1].revision.version_set.filter(content_type=translation_ct)]
+                    version.translations_added = ", ".join(["+"+x for x in t1 if x not in set(t2)])
+                    version.translations_removed = ", ".join(["-"+x for x in t2 if x not in set(t1)])
+                    version.diff = dict([(key, value) for key, value in ver1.items() if value != ver2[key] and
+                                         key != 'updated_at' and key != 'updated_by_id'])
+
+            context['revisions'] = version_history
 
         # Pass info about which fields we want to see
         gl = context['gloss']
