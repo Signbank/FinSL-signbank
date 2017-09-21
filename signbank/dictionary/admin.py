@@ -30,30 +30,21 @@ class TranslationInline(admin.TabularInline):
     raw_id_fields = ['keyword']
 
 
-class RelationToOtherSignInline(admin.TabularInline):
-    model = Relation
-    extra = 1
+class GlossRelationAdmin(VersionAdmin):
+    raw_id_fields = ('source', 'target',)
+    model = GlossRelation
+    list_display = ('source', 'target',)
+    list_filter = ('source__dataset',)
+    search_fields = ('source',)
 
 
-class RelationToForeignSignInline(admin.TabularInline):
-    model = RelationToForeignSign
-    extra = 1
-    classes = ('collapse',)
-
-
-class DefinitionInline(admin.TabularInline):
-    model = Definition
-    extra = 1
-    classes = ('collapse',)
-
-
-class RelationInline(admin.TabularInline):
-    model = Relation
-    fk_name = 'source'
+class GlossRelationInline(admin.TabularInline):
+    model = GlossRelation
     raw_id_fields = ['source', 'target']
-    # Translators: verbose_name_plural
-    verbose_name_plural = _("Relations to other Glosses")
     extra = 1
+    fk_name = 'source'
+    verbose_name = _("Gloss relation")
+    verbose_name_plural = _("Gloss relations")
 
 
 class GlossURLInline(admin.TabularInline):
@@ -97,8 +88,7 @@ class GlossAdmin(VersionAdmin):
     list_display = ['idgloss', 'dataset', 'published', 'idgloss_en']
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'published',)
-    inlines = [GlossVideoInline, GlossURLInline, TranslationInline, RelationInline, RelationToForeignSignInline,
-               DefinitionInline, ]
+    inlines = [GlossVideoInline, TranslationInline, GlossRelationInline, GlossURLInline, ]
 
     def get_readonly_fields(self, request, obj=None):
         """
@@ -147,14 +137,6 @@ class SignLanguageAdmin(VersionAdmin):
 class FieldChoiceAdmin(admin.ModelAdmin):
     model = FieldChoice
     list_display = ('field', 'english_name', 'machine_value',)
-
-
-class GlossRelationAdmin(VersionAdmin):
-    raw_id_fields = ('source', 'target',)
-    model = GlossRelation
-    list_display = ('source', 'target',)
-    list_filter = ('source__dataset',)
-    search_fields = ('source',)
 
 
 admin.site.register(Language, LanguageAdmin)
