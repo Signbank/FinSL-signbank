@@ -490,8 +490,10 @@ class GlossDetailView(DetailView):
                     t2 = [x.object_repr for x in version_history[i+1].revision.version_set.filter(content_type=translation_ct)]
                     version.translations_added = ", ".join(["+"+x for x in t1 if x not in set(t2)])
                     version.translations_removed = ", ".join(["-"+x for x in t2 if x not in set(t1)])
-                    version.diff = dict([(key, value) for key, value in ver1.items() if value != ver2[key] and
-                                         key != 'updated_at' and key != 'updated_by_id'])
+                    version.data_removed = dict([(key, value) for key, value in ver1.items() if value != ver2[key] and
+                                               key != 'updated_at' and key != 'updated_by_id'])
+                    version.data_added = dict([(key, value) for key, value in ver2.items() if value != ver1[key] and
+                                                 key != 'updated_at' and key != 'updated_by_id'])
 
             context['revisions'] = version_history
 

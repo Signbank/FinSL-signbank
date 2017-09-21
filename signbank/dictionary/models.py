@@ -54,6 +54,7 @@ class GlossTranslations(models.Model):
 
 
 @python_2_unicode_compatible
+@reversion.register()
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
     gloss = models.ForeignKey("Gloss")
