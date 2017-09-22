@@ -2,14 +2,21 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from reversion.admin import VersionAdmin
 from django.utils.translation import ugettext as _
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.admin import GenericTabularInline
+from django.forms import ModelForm
+from django.core.exceptions import ObjectDoesNotExist
+
+
+from reversion.admin import VersionAdmin
 from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
 from guardian.admin import GuardedModelAdmin
 
-from .models import Dataset, Gloss, Translation, Relation, RelationToForeignSign, Definition, GlossURL, \
-    Language, SignLanguage, Dialect, FieldChoice, GlossRelation, MorphologyDefinition
+from tagging.models import TaggedItem, Tag
 
+from .models import Dataset, Gloss, Translation, GlossURL, Language, SignLanguage, Dialect, FieldChoice, GlossRelation,\
+    MorphologyDefinition, AllowedTags
 from ..video.admin import GlossVideoInline
 
 
@@ -30,12 +37,41 @@ class TranslationInline(admin.TabularInline):
     raw_id_fields = ['keyword']
 
 
+class AllowedTagsAdmin(VersionAdmin):
+    model = AllowedTags
+    list_display = ('content_type',)
+
+
+class TagAdminInline(GenericTabularInline):
+    model = TaggedItem
+    extra = 0
+
+
+class GlossRelationTagAdminInlineForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(GlossRelationTagAdminInlineForm, self).__init__(*args, **kwargs)
+        ct = ContentType.objects.get_for_model(GlossRelation)
+        try:
+            # Limit choices, try to get allowed tags based on ContentType from AllowedTags.
+            self.fields['tag'].queryset = AllowedTags.objects.get(content_type=ct).allowed_tags.all()
+        except (AttributeError, ObjectDoesNotExist):
+            # Get all tags.
+            self.fields['tag'].queryset = Tag.objects.all()
+
+
+class GlossRelationTagAdminInline(TagAdminInline):
+    verbose_name = _('Relation type')
+    verbose_name_plural = _('Relation types')
+    form = GlossRelationTagAdminInlineForm
+
+
 class GlossRelationAdmin(VersionAdmin):
     raw_id_fields = ('source', 'target',)
     model = GlossRelation
-    list_display = ('source', 'target',)
+    list_display = ('source', 'tag', 'target',)
     list_filter = ('source__dataset',)
     search_fields = ('source',)
+    inlines = [GlossRelationTagAdminInline, ]
 
 
 class GlossRelationInline(admin.TabularInline):
@@ -147,3 +183,4 @@ admin.site.register(FieldChoice, FieldChoiceAdmin)
 admin.site.register(MorphologyDefinition)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
+admin.site.register(AllowedTags, AllowedTagsAdmin)

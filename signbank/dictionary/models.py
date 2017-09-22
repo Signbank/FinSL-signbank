@@ -4,9 +4,6 @@ from __future__ import unicode_literals
 
 import json
 import reversion
-import tagging
-from tagging.registry import register
-
 from collections import OrderedDict
 
 from django.utils.encoding import python_2_unicode_compatible
@@ -14,6 +11,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models, OperationalError
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+
+from tagging.registry import register as tagging_register
+from tagging.registry import AlreadyRegistered
+from tagging.models import Tag
 
 from .choicelists import DEFN_ROLE_CHOICES, RELATION_ROLE_CHOICES
 from .choicelists import handshape_choices, location_choices, palm_orientation_choices, relative_orientation_choices, \
@@ -524,13 +526,6 @@ class Gloss(models.Model):
         return json.dumps(choice_lists)
 
 
-# Register Gloss for tags
-try:
-    register(Gloss)
-except tagging.registry.AlreadyRegistered:
-    pass
-
-
 @python_2_unicode_compatible
 class GlossURL(models.Model):
     """URL's for gloss"""
@@ -542,14 +537,24 @@ class GlossURL(models.Model):
 
 
 @python_2_unicode_compatible
+class AllowedTags(models.Model):
+    """Tags a model is allowed to use."""
+    allowed_tags = models.ManyToManyField(Tag)
+    content_type = models.OneToOneField(ContentType)
+
+    def __str__(self):
+        return self.content_type
+
+
+@python_2_unicode_compatible
 class GlossRelation(models.Model):
     """Relation between two glosses"""
     source = models.ForeignKey(Gloss, related_name="glossrelation_source")
     target = models.ForeignKey(Gloss, related_name="glossrelation_target")
 
-    class Admin:
-        list_display = ['source', 'role', 'target']
-        search_fields = ['source__idgloss', 'target__idgloss']
+    def tag(self):
+        return list(Tag.objects.get_for_object(self))
+    tag.short_description = 'Relation type'
 
     class Meta:
         ordering = ['source']
@@ -591,3 +596,12 @@ class MorphologyDefinition(models.Model):
 
     def __str__(self):
         return str(self.morpheme.idgloss) + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss)
+
+
+# Register Models for django-tagging to add wrappers around django-tagging API.
+models_to_register_for_tagging = (Gloss, GlossRelation,)
+for model in models_to_register_for_tagging:
+    try:
+        tagging_register(model)
+    except AlreadyRegistered:
+        pass
