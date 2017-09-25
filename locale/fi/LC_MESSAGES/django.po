@@ -232,7 +232,7 @@ msgstr ""
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:143 signbank/dictionary/models.py:150
 msgid "Sign language"
-msgstr "Viittomakieli:"
+msgstr "Viittomakieli"
 
 #. Translators: admin_gloss_list header
 #: signbank/dictionary/forms.py:146 signbank/dictionary/forms.py:327

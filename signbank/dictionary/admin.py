@@ -16,7 +16,7 @@ from guardian.admin import GuardedModelAdmin
 from tagging.models import TaggedItem, Tag
 
 from .models import Dataset, Gloss, Translation, GlossURL, Language, SignLanguage, Dialect, FieldChoice, GlossRelation,\
-    MorphologyDefinition, AllowedTags
+    AllowedTags, GlossTranslations
 from ..video.admin import GlossVideoInline
 
 
@@ -113,8 +113,23 @@ class GlossTagInlineForm(ModelForm):
             # Get all tags.
             self.fields['tag'].queryset = Tag.objects.all()
 
+
 class GlossTagInline(TagAdminInline):
     form = GlossTagInlineForm
+
+
+class GlossTranslationsInline(admin.TabularInline):
+    model = GlossTranslations
+    fields = ('language', 'translations', )
+    readonly_fields = ('language', 'translations', )
+    extra = 0
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 def publish(modeladmin, request, queryset):
     queryset.update(published=True)
@@ -152,7 +167,7 @@ class GlossAdmin(VersionAdmin):
     list_display = ['idgloss', 'dataset', 'published', 'idgloss_en']
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'published', TagListFilter, )
-    inlines = [GlossVideoInline, TranslationInline, GlossRelationInline, GlossURLInline, GlossTagInline, ]
+    inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline, GlossRelationInline, GlossURLInline, GlossTagInline, ]
 
     def get_readonly_fields(self, request, obj=None):
         """
