@@ -543,7 +543,7 @@ class AllowedTags(models.Model):
     content_type = models.OneToOneField(ContentType)
 
     def __str__(self):
-        return self.content_type
+        return str(self.content_type)
 
 
 @python_2_unicode_compatible

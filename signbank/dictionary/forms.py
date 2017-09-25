@@ -2,11 +2,15 @@
 from __future__ import unicode_literals
 
 from django import forms
-from signbank.dictionary.models import Gloss, Definition, Relation, RelationToForeignSign, \
-    MorphologyDefinition, DEFN_ROLE_CHOICES, build_choice_list, FieldChoice, GlossURL
-from tagging.models import Tag
 from django.utils.translation import ugettext_lazy as _
-from .models import Dataset, Language, SignLanguage
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
+
+from tagging.models import Tag
+
+from .models import DEFN_ROLE_CHOICES, build_choice_list
+from .models import Dataset, Language, SignLanguage, AllowedTags, GlossRelation, Gloss, Definition, Relation, \
+    RelationToForeignSign, MorphologyDefinition,  FieldChoice, GlossURL
 
 
 class GlossCreateForm(forms.ModelForm):
@@ -25,7 +29,11 @@ class GlossCreateForm(forms.ModelForm):
     videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
     video_title = forms.CharField(label=_('Glossvideo title'), required=False)
 
-    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
+    tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
@@ -72,15 +80,22 @@ class GlossCreateForm(forms.ModelForm):
 
 class TagUpdateForm(forms.Form):
     """Form to add a new tag to a gloss"""
-    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None, to_field_name='name',
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
+    tag = forms.ModelChoiceField(queryset=qs, empty_label=None, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
-    # tag = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=[(t, t) for t in Tag.objects.all()])
     delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
 
 class TagsAddForm(forms.Form):
     """Form to add a new tags to a gloss"""
-    tags = forms.ModelMultipleChoiceField(label=_('Tags'), queryset=Tag.objects.all(), to_field_name='name')
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
+    tags = forms.ModelMultipleChoiceField(label=_('Tags'), queryset=qs, to_field_name='name')
 
 
 NULLBOOLEANCHOICES = [
@@ -138,11 +153,12 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     trans_lang = forms.ModelChoiceField(required=False, empty_label=_('Choose language'), queryset=Language.objects.all())
 
-    # tags = forms.MultipleChoiceField(choices=Tag.objects.all())
-    #    choices=[(t, t) for t in settings.ALLOWED_TAGS])
-    # nottags = forms.MultipleChoiceField(choices=Tag.objects.all())
-    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), required=False)
-    nottags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
+    tags = forms.ModelMultipleChoiceField(queryset=qs, required=False)
+    nottags = forms.ModelMultipleChoiceField(queryset=qs)
 
     published = forms.BooleanField(label=_('Gloss is published'), required=False)
 
@@ -231,8 +247,12 @@ class DefinitionForm(forms.ModelForm):
 class GlossRelationForm(forms.Form):
     source = forms.CharField(widget=forms.HiddenInput())
     target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(attrs={'class': 'glossrelation-autocomplete'}))
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(GlossRelation)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
     tag = forms.ModelChoiceField(label=_("Relation type:"),
-                                 queryset=Tag.objects.all(),
+                                 queryset=qs,
                                  required=True, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
     delete = forms.IntegerField(required=False, widget=forms.HiddenInput())

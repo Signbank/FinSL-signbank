@@ -11,6 +11,8 @@ from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as _lazy
 from django.contrib.sites.shortcuts import get_current_site
 from django.dispatch import receiver
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
 
 from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_objects_for_user
@@ -19,10 +21,16 @@ from django_comments.signals import comment_was_posted
 from django_comments.forms import CommentForm
 from django_comments import get_model as django_comments_get_model
 
+from .dictionary.models import AllowedTags
+
 
 class CommentTagForm(forms.Form):
     """Form for tags, meant to be used when adding tags to Comments."""
-    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Comment)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
+    tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}), label=_lazy('Tag'))
 
 
@@ -59,7 +67,11 @@ def bind_comment(request, comment):
 
 
 class EditCommentForm(ModelForm):
-    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, empty_label="---", to_field_name='name',
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Comment)).allowed_tags.all()
+    except ObjectDoesNotExist:
+        qs = Tag.objects.all()
+    tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}), label=_lazy('Tag'))
 
     class Meta:

@@ -479,8 +479,7 @@ class GlossDetailView(DetailView):
 
         if self.request.user.is_staff:
             # Get some version history data
-            version_history = Version.objects.get_for_object(context['gloss']).select_related('revision', 'content_type').\
-                prefetch_related('revision__user')
+            version_history = Version.objects.get_for_object(context['gloss']).prefetch_related('revision__user')
             translation_ct = ContentType.objects.get_for_model(Translation)
             for i, version in enumerate(version_history):
                 if not i+1 >= len(version_history):
