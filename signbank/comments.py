@@ -20,8 +20,10 @@ from django_comments.models import Comment
 from django_comments.signals import comment_was_posted
 from django_comments.forms import CommentForm
 from django_comments import get_model as django_comments_get_model
+from django_comments.admin import CommentsAdmin
 
 from .dictionary.models import AllowedTags
+from .dictionary.admin import TagAdminInline, TagListFilter
 
 
 class CommentTagForm(forms.Form):
@@ -169,3 +171,24 @@ def add_tags_to_comments(sender, request, comment, **kwargs):
         if form.is_valid():
             if form.cleaned_data["tag"]:
                 Tag.objects.add_tag(comment, form.cleaned_data["tag"].name)
+
+
+class CommentTagInlineForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CommentTagInlineForm, self).__init__(*args, **kwargs)
+        ct = ContentType.objects.get_for_model(Comment)
+        try:
+            # Limit choices, try to get allowed tags based on ContentType from AllowedTags.
+            self.fields['tag'].queryset = AllowedTags.objects.get(content_type=ct).allowed_tags.all()
+        except (AttributeError, ObjectDoesNotExist):
+            # Get all tags.
+            self.fields['tag'].queryset = Tag.objects.all()
+
+
+class CommentTagInline(TagAdminInline):
+    form = CommentTagInlineForm
+
+
+# Adding Tags as inline to CommentsAdmin
+CommentsAdmin.inlines = [CommentTagInline, ]
+CommentsAdmin.list_filter += (TagListFilter, )

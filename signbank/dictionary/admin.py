@@ -20,6 +20,20 @@ from .models import Dataset, Gloss, Translation, GlossURL, Language, SignLanguag
 from ..video.admin import GlossVideoInline
 
 
+class TagListFilter(admin.SimpleListFilter):
+    title = _('Tag')
+    parameter_name = 'tag'
+
+    def lookups(self, request, model_admin):
+        tags = Tag.objects.usage_for_model(model_admin.model)
+        return [(tag.name, _(tag.name)) for tag in tags]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            ct = ContentType.objects.get_for_model(queryset.model)
+            return queryset.filter(id__in=[x.object_id for x in TaggedItem.objects.filter(tag__name=self.value(),
+                                                                                          content_type=ct)])
+
 class DatasetAdmin(GuardedModelAdmin):
     model = Dataset
     list_display = ('name', 'is_public', 'signlanguage',)
@@ -69,7 +83,7 @@ class GlossRelationAdmin(VersionAdmin):
     raw_id_fields = ('source', 'target',)
     model = GlossRelation
     list_display = ('source', 'tag', 'target',)
-    list_filter = ('source__dataset',)
+    list_filter = ('source__dataset', TagListFilter)
     search_fields = ('source',)
     inlines = [GlossRelationTagAdminInline, ]
 
@@ -87,6 +101,20 @@ class GlossURLInline(admin.TabularInline):
     model = GlossURL
     extra = 1
 
+
+class GlossTagInlineForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(GlossTagInlineForm, self).__init__(*args, **kwargs)
+        ct = ContentType.objects.get_for_model(Gloss)
+        try:
+            # Limit choices, try to get allowed tags based on ContentType from AllowedTags.
+            self.fields['tag'].queryset = AllowedTags.objects.get(content_type=ct).allowed_tags.all()
+        except (AttributeError, ObjectDoesNotExist):
+            # Get all tags.
+            self.fields['tag'].queryset = Tag.objects.all()
+
+class GlossTagInline(TagAdminInline):
+    form = GlossTagInlineForm
 
 def publish(modeladmin, request, queryset):
     queryset.update(published=True)
@@ -123,8 +151,8 @@ class GlossAdmin(VersionAdmin):
     save_as = True
     list_display = ['idgloss', 'dataset', 'published', 'idgloss_en']
     search_fields = ['^idgloss']
-    list_filter = ('dataset', 'published',)
-    inlines = [GlossVideoInline, TranslationInline, GlossRelationInline, GlossURLInline, ]
+    list_filter = ('dataset', 'published', TagListFilter, )
+    inlines = [GlossVideoInline, TranslationInline, GlossRelationInline, GlossURLInline, GlossTagInline, ]
 
     def get_readonly_fields(self, request, obj=None):
         """
@@ -179,8 +207,10 @@ admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
 admin.site.register(Translation, TranslationAdmin)
-admin.site.register(FieldChoice, FieldChoiceAdmin)
-admin.site.register(MorphologyDefinition)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
 admin.site.register(AllowedTags, AllowedTagsAdmin)
+
+# The following models have been removed from the admin because they are not used at the moment.
+# admin.site.register(FieldChoice, FieldChoiceAdmin)
+# admin.site.register(MorphologyDefinition)
