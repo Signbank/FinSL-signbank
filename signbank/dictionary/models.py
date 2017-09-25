@@ -36,6 +36,8 @@ class Dataset(models.Model):
         permissions = (
             ('view_dataset', _('View dataset')),
         )
+        verbose_name = _('Lexicon')
+        verbose_name_plural = _('Lexicons')
 
     def __str__(self):
         return self.name
@@ -50,6 +52,8 @@ class GlossTranslations(models.Model):
 
     class Meta:
         unique_together = (("gloss", "language"),)
+        verbose_name = _('Gloss translation field')
+        verbose_name_plural = _('Gloss translation fields')
 
     def __str__(self):
         return self.translations
@@ -67,10 +71,8 @@ class Translation(models.Model):
     class Meta:
         unique_together = (("gloss", "language", "keyword"),)
         ordering = ['gloss', 'index']
-
-    class Admin:
-        list_display = ['gloss', 'keyword']
-        search_fields = ['gloss__idgloss']
+        verbose_name = _('Translation equivalent')
+        verbose_name_plural = _('Translation equivalents')
 
     def __str__(self):
         return self.keyword.text
@@ -84,6 +86,8 @@ class Keyword(models.Model):
 
     class Meta:
         ordering = ['text']
+        verbose_name = _('Keyword')
+        verbose_name_plural = _('Keywords')
 
     class Admin:
         search_fields = ['text']
@@ -103,6 +107,8 @@ class Definition(models.Model):  # TODO: Remove
 
     class Meta:
         ordering = ['gloss', 'role', 'count']
+        verbose_name = _('Definition')
+        verbose_name_plural = _('Definitions')
 
     class Admin:
         list_display = ['gloss', 'role', 'count', 'text']
@@ -125,6 +131,8 @@ class Language(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = _('Written language')
+        verbose_name_plural = _('Written languages')
 
     def __str__(self):
         return self.name
@@ -139,6 +147,8 @@ class SignLanguage(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = _('Sign language')
+        verbose_name_plural = _('Sign languages')
 
     def __str__(self):
         return self.name
@@ -153,6 +163,8 @@ class Dialect(models.Model):
 
     class Meta:
         ordering = ['language', 'name']
+        verbose_name = _('Dialect')
+        verbose_name_plural = _('Dialects')
 
     def __str__(self):
         return str(self.language.name) + "/" + str(self.name)
@@ -172,6 +184,8 @@ class RelationToForeignSign(models.Model):
 
     class Meta:
         ordering = ['gloss', 'loan', 'other_lang', 'other_lang_gloss']
+        verbose_name = _('Relation to Foreign Sign')
+        verbose_name_plural = _('Relations to Foreign Signs')
 
     class Admin:
         list_display = ['gloss', 'loan', 'other_lang', 'other_lang_gloss']
@@ -194,6 +208,8 @@ class FieldChoice(models.Model):
 
     class Meta:
         ordering = ['field', 'machine_value']
+        verbose_name = _('Field choice')
+        verbose_name_plural = _('Field choices')
 
 
 def build_choice_list(field):
@@ -214,8 +230,8 @@ def build_choice_list(field):
 class Gloss(models.Model):
     class Meta:
         unique_together = (("idgloss", "dataset"),)
-        # Translators: This is verbose_name_plural, so it has to be plural here
-        verbose_name_plural = _("Glosses")
+        verbose_name = _('Gloss')
+        verbose_name_plural = _('Glosses')
         ordering = ['idgloss']
         permissions = (
             # Translators: Gloss permissions
@@ -532,6 +548,10 @@ class GlossURL(models.Model):
     gloss = models.ForeignKey('Gloss')
     url = models.URLField(max_length=200)
 
+    class Meta:
+        verbose_name = _('Gloss URL')
+        verbose_name_plural = _('Gloss URLs')
+
     def __str__(self):
         return self.gloss.idgloss + " - " + self.url
 
@@ -541,6 +561,10 @@ class AllowedTags(models.Model):
     """Tags a model is allowed to use."""
     allowed_tags = models.ManyToManyField(Tag)
     content_type = models.OneToOneField(ContentType)
+
+    class Meta:
+        verbose_name = _('Allowed tags')
+        verbose_name_plural = _('Allowed tags')
 
     def __str__(self):
         return str(self.content_type)
@@ -558,6 +582,8 @@ class GlossRelation(models.Model):
 
     class Meta:
         ordering = ['source']
+        verbose_name = _('Gloss relation')
+        verbose_name_plural = _('Gloss relations')
 
     def __str__(self):
         return str(self.target)
@@ -580,6 +606,8 @@ class Relation(models.Model):  # TODO: Remove
 
     class Meta:
         ordering = ['source']
+        verbose_name = _('Relation')
+        verbose_name_plural = _('Relations')
 
     def __str__(self):
         return str(self.source)+' -> ' + str(self.target)
@@ -593,6 +621,10 @@ class MorphologyDefinition(models.Model):
     role = models.ForeignKey('FieldChoice', to_field='machine_value', db_column='MorphologyType',
                              limit_choices_to={'field': 'MorphologyType'}, blank=True)
     morpheme = models.ForeignKey(Gloss, related_name="morphemes")
+
+    class Meta:
+        verbose_name = _('Morphology definition')
+        verbose_name_plural = _('Morphology definitions')
 
     def __str__(self):
         return str(self.morpheme.idgloss) + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss)

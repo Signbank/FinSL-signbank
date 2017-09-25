@@ -14,11 +14,14 @@ from django.core.files.storage import FileSystemStorage
 @python_2_unicode_compatible
 class Video(models.Model):
     """A video file stored on the site"""
-
     # video file name relative to MEDIA_ROOT
     videofile = models.FileField(
         # Translators: Video: videofile
         _("Video file in h264 mp4 format"), upload_to=settings.VIDEO_UPLOAD_LOCATION)
+
+    class Meta:
+        verbose_name = _('Video')
+        verbose_name_plural = _('Videos')
 
     def __str__(self):
         return self.videofile.name
@@ -70,6 +73,8 @@ class GlossVideo(models.Model):
 
     class Meta:
         ordering = ['version']
+        verbose_name = _('Gloss video')
+        verbose_name_plural = _('Gloss videos')
 
     def save(self, *args, **kwargs):
         # Save object so that we can access the saved fields.
