@@ -48,6 +48,7 @@
     });
 
     ajaxifyTagForm();
+    delete_glossurl();
      
  });
 
@@ -75,6 +76,7 @@ function disable_edit() {
     $('.update_glossrelation').hide();
     $('.remove_comment_tag').hide();
     $('.glossurlform').hide();
+    $('.glossurl-delete').hide();
 };
 
 function enable_edit() {
@@ -101,6 +103,7 @@ function enable_edit() {
     $('.update_glossrelation').show();
     $('.remove_comment_tag').show();
     $('.glossurlform').show();
+    $('.glossurl-delete').show();
 };
 
 function toggle_edit() {
@@ -389,9 +392,23 @@ function ajaxifyTagForm() {
     });
 }
     
-    
-     
+function delete_glossurl() {
+    $('.glossurl-delete').click(function() {
+        var action = $(this).attr('href');
+        var glossurl_id = $(this).attr('data-glossurl-id');
+        var element = $(this).parent();
 
+        // This determines the post action: jQuery.post( url [, data ] [, success ] [, dataType ] )
+        $.post(action,
+              {'glossurl': glossurl_id})
+              .success(function () {
+                element.remove();
+              });
+
+        return false;
+    });
+
+}
 
       
       

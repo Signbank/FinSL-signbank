@@ -345,7 +345,12 @@ $(document).ready(function () {
                     <th>{% blocktrans %}URL:{% endblocktrans %}</th>
                     <td id='url_field'>
                         {% for url in glossurls %}
-                        <p><a href="{{url.url}}" id="glossurl-{{url.id}}" class="edit edit_url" target="_blank">{{url.url}}</a></p>
+                        <p><a href="{{url.url}}" id="glossurl-{{url.id}}" class="edit edit_url" target="_blank"
+                        data-glossurl-id="{{url.id}}">{{url.url}}</a>
+                            <a href="{% url 'dictionary:delete_glossurl' glossurl=url.id %}"
+                            class="glossurl-delete" style="display:none;">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a></p>
                         {% endfor %}
                         <form method="POST" action="{% url 'dictionary:update_gloss' glossid=gloss.id %}" class="glossurlform" style="display:none;">{% csrf_token %}
                             <input type="hidden" name="id" value="glossurl-create">

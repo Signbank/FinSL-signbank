@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import permission_required
 from . import adminviews
 from . import publicviews
 from . import update
+from . import delete
 from . import views
 from . import tagviews
 
@@ -32,6 +33,9 @@ urlpatterns = [
         update.add_gloss, name='add_gloss'),
     url(r'^update/glossrelation/',
         update.gloss_relation, name='add_glossrelation'),
+
+    url(r'^delete/glossurl/(?P<glossurl>\d+)$',
+        delete.glossurl, name='delete_glossurl'),
 
     # CSV import urls
     url(r'^import/csv/$',
