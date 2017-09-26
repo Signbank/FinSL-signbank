@@ -270,9 +270,6 @@ class Gloss(models.Model):
     # Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
     notes = models.TextField(_("Notes"), blank=True)
 
-    # Translators: Gloss models field: url. TODO: Remove? First make sure that the values are moved to the URL class.
-    url_field = models.URLField(_("URL"), max_length=200, blank=True, unique=False)
-
     ########
 
     # One or more regional dialects that this gloss is used in
