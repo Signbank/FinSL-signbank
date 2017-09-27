@@ -8,8 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from tagging.models import Tag
 
-from .models import DEFN_ROLE_CHOICES, build_choice_list
-from .models import Dataset, Language, SignLanguage, AllowedTags, GlossRelation, Gloss, Definition, Relation, \
+from .models import build_choice_list
+from .models import Dataset, Language, SignLanguage, AllowedTags, GlossRelation, Gloss, Relation, \
     RelationToForeignSign, MorphologyDefinition,  FieldChoice, GlossURL
 
 
@@ -126,10 +126,6 @@ RELATION_ROLE_CHOICES = (('', '---------'),
                          ('seealso', _('See Also')),
                          )
 
-# Translators: This is a choice option that probably represents nothing, don't translate if not needed to.
-DEFN_ROLE_CHOICES = (('', _('---------')),
-                     # Translators: DEFN_ROLE_CHOICES
-                     ('all', _('All'))) + DEFN_ROLE_CHOICES
 MORPHEME_ROLE_CHOICES = [
                             # Translators: This is a choice option that probably represents nothing, don't translate if not needed to.
                             ('', _('---------'))] + build_choice_list('MorphologyType')
@@ -170,12 +166,6 @@ class GlossSearchForm(forms.ModelForm):
     # TODO: To enable these, uncomment them.
     """
     # Translators: GlossSearchForm label
-    defspublished = forms.ChoiceField(label=_("All Definitions Published"), choices=YESNOCHOICES)
-    # Translators: GlossSearchForm label
-    defsearch = forms.CharField(label=_('Search Definition/Notes'))
-    # defrole = forms.ChoiceField(label='Search Definition/Note Type', choices=ROLE_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
-
-    # Translators: GlossSearchForm label
     relation = forms.CharField(
         label=_('Search for gloss of related signs'), widget=forms.TextInput(attrs=ATTRS_FOR_FORMS))
     # Translators: GlossSearchForm label
@@ -206,42 +196,19 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     alternating_movement = forms.ChoiceField(
         label=_('Alternating Movement'), choices=NULLBOOLEANCHOICES)
-
-    # Translators: GlossSearchForm label
-    is_proposed_new_sign = forms.ChoiceField(
-        label=_('Is a proposed new sign'), choices=NULLBOOLEANCHOICES, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
-    # Translators: GlossSearchForm label
-    in_web_dictionary = forms.ChoiceField(
-        label=_('Is in Web dictionary'), choices=NULLBOOLEANCHOICES, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
-    # Translators: GlossSearchForm label
-    definitionRole = forms.ChoiceField(
-        label=_('Note type'), choices=DEFN_ROLE_CHOICES, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
-    # Translators: GlossSearchForm label
-    definitionContains = forms.CharField(
-        label=_('Note contains'), widget=forms.TextInput(attrs=ATTRS_FOR_FORMS))
     """
 
     class Meta:
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'idgloss_en', 'dialect', 'in_web_dictionary',
-                  'is_proposed_new_sign', 'strong_handshape', 'weak_handshape', 'location',
+        fields = ('idgloss', 'idgloss_en', 'dialect', 'strong_handshape', 'weak_handshape', 'location',
                   'handedness', 'notes', 'relation_between_articulators', 'absolute_orientation_palm',
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',
                   'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',
                   'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'mouth_gesture',
                   'mouthing', 'phonetic_variation', 'iconic_image', 'named_entity', 'semantic_field',
                   'number_of_occurences',)
-
-
-class DefinitionForm(forms.ModelForm):
-    class Meta:
-        model = Definition
-        fields = ('published', 'count', 'role', 'text')
-        widgets = {
-            'role': forms.Select(attrs={'class': 'form-control'}),
-        }
 
 
 class GlossRelationForm(forms.Form):

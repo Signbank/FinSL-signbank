@@ -21,9 +21,9 @@ from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user
 from reversion.models import Version
 
-from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, DefinitionForm
+from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
-    Relation, MorphologyDefinition, Definition
+    Relation, MorphologyDefinition
 from ..video.forms import VideoUploadForGlossForm
 from ..video.models import GlossVideo
 from ..comments import CommentTagForm
@@ -180,11 +180,6 @@ class GlossListView(ListView):
                 lang = get['trans_lang']
                 qs = qs.filter(translation__keyword__text__icontains=val, translation__language__in=lang)
 
-        if 'in_web_dictionary' in get and get['in_web_dictionary'] != 'unspecified':
-            val = get['in_web_dictionary'] == 'yes'
-            qs = qs.filter(in_web_dictionary__exact=val)
-            # print "B :", len(qs)
-
         if 'published' in get and get['published'] != '':
             val = get['published'] == 'on'
             qs = qs.filter(published=val)
@@ -199,22 +194,16 @@ class GlossListView(ListView):
                 val = get['hasnovideo'] == 'on'
                 qs = qs.filter(glossvideo__isnull=val)
 
-        if 'defspublished' in get and get['defspublished'] != 'unspecified':
-            val = get['defspublished'] == 'yes'
-
-            qs = qs.filter(definition__published=val)
-
         # A list of phonology fieldnames
         fieldnames = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
                       'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
-                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences',
-                      'is_proposed_new_sign',]
+                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', ]
 
         """These were removed from fieldnames because they are not needed there:
-        'idgloss', 'idgloss_en', 'notes', 'in_web_dictionary',
+        'idgloss', 'idgloss_en', 'notes',
         """
 
 
@@ -249,21 +238,6 @@ class GlossListView(ListView):
                 if val != '':
                     kwargs = {key: val}
                     qs = qs.filter(**kwargs)
-
-        if 'defsearch' in get and get['defsearch'] != '':
-
-            val = get['defsearch']
-
-            if 'defrole' in get:
-                role = get['defrole']
-            else:
-                role = 'all'
-
-            if role == 'all':
-                qs = qs.filter(definition__text__icontains=val)
-            else:
-                qs = qs.filter(
-                    definition__text__icontains=val, definition__role__exact=role)
 
         if 'tags' in get and get['tags'] != '':
             vals = get.getlist('tags')
@@ -358,33 +332,6 @@ class GlossListView(ListView):
             qs = qs.filter(
                 pk__in=pks_for_glosses_with_morphdefs_with_correct_role)
 
-        if 'definitionRole' in get and get['definitionRole'] != '':
-
-            # Find all definitions with this role
-            if get['definitionRole'] == 'all':
-                definitions_with_this_role = Definition.objects.all()
-            else:
-                definitions_with_this_role = Definition.objects.filter(
-                    role__exact=get['definitionRole'])
-
-            # Remember the pk of all glosses that are referenced in the
-            # collection definitions
-            pks_for_glosses_with_these_definitions = [
-                definition.gloss.pk for definition in definitions_with_this_role]
-            qs = qs.filter(pk__in=pks_for_glosses_with_these_definitions)
-
-        if 'definitionContains' in get and get['definitionContains'] != '':
-            definitions_with_this_text = Definition.objects.filter(
-                text__icontains=get['definitionContains'])
-
-            # Remember the pk of all glosses that are referenced in the
-            # collection definitions
-            pks_for_glosses_with_these_definitions = [
-                definition.gloss.pk for definition in definitions_with_this_text]
-            qs = qs.filter(pk__in=pks_for_glosses_with_these_definitions)
-
-            # print "Final :", len(qs)
-
         # Set order according to GET field 'order'
         if 'order' in get:
             qs = qs.order_by(get['order'])
@@ -465,7 +412,6 @@ class GlossDetailView(DetailView):
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['videoform'] = VideoUploadForGlossForm()
-        context['definitionform'] = DefinitionForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
         context['glossrelationform'] = GlossRelationForm(initial={'source': context['gloss'].id,})

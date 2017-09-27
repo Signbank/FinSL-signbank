@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError, DataError
 from django.db import transaction
 
-from signbank.dictionary.models import (Gloss, Dataset, SignLanguage, Language, Keyword, Translation, Definition,
+from signbank.dictionary.models import (Gloss, Dataset, SignLanguage, Language, Keyword, Translation,
                                         Dialect, RelationToForeignSign, FieldChoice, MorphologyDefinition)
 from signbank.dictionary.models import build_choice_list
 
@@ -171,7 +171,7 @@ class TranslationTestCase(TestCase):
 
     def test_str(self):
         """Test unicode string representation."""
-        self.assertEqual(str(self.translation), self.gloss.idgloss + '-' + self.keyword.text)
+        self.assertEqual(str(self.translation), self.keyword.text)
 
 
 class KeywordTestCase(TestCase):
@@ -180,19 +180,6 @@ class KeywordTestCase(TestCase):
 
     def test_str(self):
         self.assertEqual(str(self.keyword), self.keyword.text)
-
-
-class DefinitionTestCase(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username="testdef", email=None, password=None)
-        self.signlanguage = SignLanguage.objects.create(pk=4, name="signl", language_code_3char="sla")
-        self.dataset = Dataset.objects.create(name="dataset2", signlanguage=self.signlanguage)
-        self.gloss = Gloss.objects.create(idgloss="defgloss", dataset=self.dataset, created_by=self.user,
-                                          updated_by=self.user)
-        self.definition = Definition.objects.create(gloss=self.gloss, text="test text tööt", role="note", count=10)
-
-    def test_str(self):
-        self.assertEqual(str(self.definition), self.gloss.idgloss + "/" + self.definition.role)
 
 
 class LanguageTestCase(TestCase):

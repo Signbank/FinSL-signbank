@@ -21,8 +21,6 @@ urlpatterns = [
         update.update_gloss, name='update_gloss'),
     url(r'^update/tag/(?P<glossid>\d+)$',
         update.add_tag, name='add_tag'),
-    url(r'^update/definition/(?P<glossid>\d+)$',
-        update.add_definition, name='add_definition'),
     url(r'^update/relation/$',
         update.add_relation, name='add_relation'),
     url(r'^update/relationtoforeignsign/$',

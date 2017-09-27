@@ -86,9 +86,7 @@ $(document).ready(function () {
 
 {% if perms.dictionary.change_gloss %}
     <script type='text/javascript'>
-
          var edit_post_url = '{% url 'dictionary:update_gloss' gloss.id %}';
-         var definition_role_choices = {{gloss.definition_role_choices_json|safe}};
          var handshape_choices = {{gloss.handshape_choices_json|safe}};
          var location_choices = {{gloss.location_choices_json|safe}};
          var palm_orientation_choices = {{gloss.palm_orientation_choices_json|safe}};

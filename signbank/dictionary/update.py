@@ -16,10 +16,10 @@ from tagging.models import TaggedItem, Tag
 from guardian.shortcuts import get_perms, get_objects_for_user
 
 from .models import Gloss, Dataset, Translation, Keyword, Language, Dialect, GlossURL, \
-    GlossRelation, GlossTranslations, FieldChoice, MorphologyDefinition, RelationToForeignSign, Definition, Relation
+    GlossRelation, GlossTranslations, FieldChoice, MorphologyDefinition, RelationToForeignSign, Relation
 from .models import build_choice_list
 from .forms import TagsAddForm, TagUpdateForm, GlossCreateForm, GlossRelationForm, RelationForm, \
-    RelationToForeignSignForm, DefinitionForm, MorphologyForm, CSVUploadForm
+    RelationToForeignSignForm, MorphologyForm, CSVUploadForm
 from ..video.views import addvideo
 from ..video.models import GlossVideo
 
@@ -105,10 +105,6 @@ def update_gloss(request, glossid):
                 gloss.delete()
                 return HttpResponseRedirect(reverse('admin_gloss_list'))
 
-        if field.startswith('definition'):
-
-            return update_definition(request, gloss, field, value)
-
         elif field.startswith('keywords_'):
 
             language_code_2char = field.split('_')[1]
@@ -141,17 +137,6 @@ def update_gloss(request, glossid):
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest("%s %s" % _("Unknown Dialect"), values, content_type='text/plain')
 
-        elif field == 'in_web_dictionary':
-            # only modify if we have publish permission
-            if request.user.has_perm('dictionary.can_publish'):
-                gloss.in_web_dictionary = (value == 'Yes')
-                gloss.save()
-
-            if gloss.in_web_dictionary:
-                newvalue = 'Yes'
-            else:
-                newvalue = 'No'
-
         elif field.startswith('video_title'):
             # If editing video title, update the GlossVideo's title
             if request.user.has_perm('video.change_glossvideo'):
@@ -182,7 +167,7 @@ def update_gloss(request, glossid):
 
         else:
             # Find if field is not in Gloss classes fields.
-            if not field in [f.name for f in Gloss._meta.get_fields()]:
+            if field not in [f.name for f in Gloss._meta.get_fields()]:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest(_("Unknown field"), content_type='text/plain')
 
@@ -424,51 +409,6 @@ def gloss_from_identifier(value):
         return None
 
 
-def update_definition(request, gloss, field, value):
-    """Update one of the definition fields"""
-
-    (what, defid) = field.split('_')
-    try:
-        defn = Definition.objects.get(id=defid)
-    except Definition.DoesNotExist:
-        # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest("%s '%s'" % _("Bad Definition ID"), defid, content_type='text/plain')
-
-    if not defn.gloss == gloss:
-        # Translators: HttpResponseBadRequest
-        return HttpResponseBadRequest(_("Definition doesn't match gloss"), content_type='text/plain')
-
-    if what == 'definitiondelete':
-        defn.delete()
-        return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}) + '?editdef')
-
-    if what == 'definition':
-        # update the definition
-        defn.text = value
-        defn.save()
-        newvalue = defn.text
-    elif what == 'definitioncount':
-        defn.count = int(value)
-        defn.save()
-        newvalue = defn.count
-    elif what == 'definitionpub':
-
-        if request.user.has_perm('dictionary.can_publish'):
-            defn.published = value == 'Yes'
-            defn.save()
-
-        if defn.published:
-            newvalue = 'Yes'
-        else:
-            newvalue = 'No'
-    elif what == 'definitionrole':
-        defn.role = value
-        defn.save()
-        newvalue = defn.get_role_display()
-
-    return HttpResponse(newvalue, content_type='text/plain')
-
-
 def add_relation(request):
     """Add a new relation instance"""
 
@@ -540,28 +480,6 @@ def add_relationtoforeignsign(request):
 
     # fallback to redirecting to the requesting page
     return HttpResponseRedirect('/')
-
-
-def add_definition(request, glossid):
-    """Add a new definition for this gloss"""
-
-    thisgloss = get_object_or_404(Gloss, id=glossid)
-
-    if request.method == "POST":
-        form = DefinitionForm(request.POST)
-
-        if form.is_valid():
-            published = form.cleaned_data['published']
-            count = form.cleaned_data['count']
-            role = form.cleaned_data['role']
-            text = form.cleaned_data['text']
-
-            # create definition, default to not published
-            defn = Definition(
-                gloss=thisgloss, count=count, role=role, text=text, published=published)
-            defn.save()
-
-    return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': thisgloss.id}) + '?editdef')
 
 
 def add_morphology_definition(request):

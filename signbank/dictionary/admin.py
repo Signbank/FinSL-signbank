@@ -148,8 +148,6 @@ class GlossAdmin(VersionAdmin):
 
     fieldsets = ((None, {'fields': ('dataset', 'published', 'idgloss', 'idgloss_en', 'notes',)},),
                  (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
-                 (_('Publication Status'), {'fields': ('in_web_dictionary', 'is_proposed_new_sign',),
-                                         'classes': ('collapse',)},),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
                                               'absolute_orientation_fingers', 'relative_orientation_movement',

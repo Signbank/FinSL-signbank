@@ -17,7 +17,7 @@ from tagging.registry import register as tagging_register
 from tagging.registry import AlreadyRegistered
 from tagging.models import Tag
 
-from .choicelists import DEFN_ROLE_CHOICES, RELATION_ROLE_CHOICES
+from .choicelists import RELATION_ROLE_CHOICES
 from .choicelists import handshape_choices, location_choices, palm_orientation_choices, relative_orientation_choices, \
     BSLsecondLocationChoices
 
@@ -94,29 +94,6 @@ class Keyword(models.Model):
 
     def __str__(self):
         return self.text
-
-
-@python_2_unicode_compatible
-class Definition(models.Model):  # TODO: Remove
-    """An English text associated with a gloss. It's called a note in the web interface"""
-    gloss = models.ForeignKey("Gloss")
-    text = models.TextField()
-    role = models.CharField("Type", max_length=20, choices=DEFN_ROLE_CHOICES)
-    count = models.IntegerField()
-    published = models.BooleanField(default=True)
-
-    class Meta:
-        ordering = ['gloss', 'role', 'count']
-        verbose_name = _('Definition')
-        verbose_name_plural = _('Definitions')
-
-    class Admin:
-        list_display = ['gloss', 'role', 'count', 'text']
-        list_filter = ['role']
-        search_fields = ['gloss__idgloss']
-
-    def __str__(self):
-        return str(self.gloss) + "/" + str(self.role)
 
 
 @python_2_unicode_compatible
@@ -241,8 +218,6 @@ class Gloss(models.Model):
             # Translators: Gloss permissions
             ('export_csv', _('Can export sign details as CSV')),
             ('import_csv', _('Can import glosses from a CSV file')),
-            # Translators: Gloss permissions
-            ('can_publish', _('Can publish signs and definitions')),
             # Translators: Gloss permissions
             ('view_advanced_properties', _('Include all properties in sign detail view')),
             # Translators: Gloss permissions
@@ -397,13 +372,6 @@ class Gloss(models.Model):
         # Translators: Help text for Gloss models field: number_of_occurences
         help_text=_("Number of occurences in annotation materials"))
 
-    # ### Publication status
-    # Translators: Gloss models field: in_web_dictionary, verbose name
-    in_web_dictionary = models.NullBooleanField(_("In the Web dictionary"), default=False)
-    # Translators: Gloss models field: is_proposed_new_sign, verbose name
-    is_proposed_new_sign = models.NullBooleanField(
-        _("Is this a proposed new sign?"), null=True, default=False)
-
     def __str__(self):
         return self.idgloss
 
@@ -482,10 +450,6 @@ class Gloss(models.Model):
     def secondary_location_choices_json(self):  # TODO: remove from gloss_detail, gloss_edit.js
         """Return JSON for the secondary location (BSL) choice list"""
         return self.options_to_json(BSLsecondLocationChoices)
-
-    def definition_role_choices_json(self): # TODO: remove from gloss_detail, gloss_edit.js
-        """Return JSON for the definition role choice list"""
-        return self.options_to_json(DEFN_ROLE_CHOICES)
 
     def relation_role_choices_json(self): # TODO: remove from gloss_detail, gloss_edit.js
         """Return JSON for the relation role choice list"""

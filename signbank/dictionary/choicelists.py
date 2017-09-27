@@ -7,6 +7,7 @@ __author__ = 'heilniem'
 
 # These static choice lists were moved here from dictionary/models
 # In the current implementation these are not used, but I decided to keep them for reference.
+# 2017-09-27, Removed DEFN_ROLE_CHOICES
 # 2017-09, Added DEFN_ROLE_CHOICES and RELATION_ROLE_CHOICES here
 
 handedness_choices = (('0', 'No Value Set'),
@@ -520,20 +521,6 @@ named_entity_choices = (
     ("18", 'Team'),
     ("19", 'Drink'),
     ("20", 'Magazine'),
-)
-
-# Gloss definition choices
-DEFN_ROLE_CHOICES = (
-    # Translators: DEFN_ROLE_CHOICES
-    ('note', _('Note')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('privatenote', _('Private Note')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('phon', _('Phonology')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('todo', _('To Do')),
-    # Translators: DEFN_ROLE_CHOICES
-    ('sugg', _('Suggestion for other gloss')),
 )
 
 # Gloss relation choices

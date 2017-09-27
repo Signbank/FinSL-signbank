@@ -16,11 +16,6 @@
          else if (window.location.search.match('editrel')) {
              $('#relations').addClass('in');
          }
-
-         if (window.location.search.match('editdef')) {
-             $('#definitions').addClass('in');
-         }      
-
          if (window.location.search.match('editmorphdef')) {
              $('#morphology').addClass('in');
          }      
@@ -61,11 +56,9 @@ function disable_edit() {
     $('.editform').hide();
     $('#delete_gloss_btn').hide();
     $('#enable_edit').addClass('btn-primary').removeClass('btn-danger');
-    $('#add_definition').hide();
     $('#add_relation_form').hide();
     $('#add_relationtoforeignsign_form').hide();
     $('#add_morphologydefinition_form').hide();
-    $('.definition_delete').hide();
     $('.relation_delete').hide();
     $('.relationtoforeignsign_delete').hide();
     $('.morphology-definition-delete').hide();
@@ -88,11 +81,9 @@ function enable_edit() {
     $('.editform').show();
     $('#delete_gloss_btn').show().addClass('btn-danger');
     $('#enable_edit').removeClass('btn-primary').addClass('btn-danger');
-    $('#add_definition').show();
     $('#add_relation_form').show();
     $('#add_relationtoforeignsign_form').show();
     $('#add_morphologydefinition_form').show();
-    $('.definition_delete').show();
     $('.relation_delete').show();
     $('.relationtoforeignsign_delete').show();
     $('.morphology-definition-delete').show();
@@ -176,10 +167,6 @@ function configure_edit() {
      });
      $('.edit_url').editable(edit_post_url, {
          type      : 'text',
-     });
-     $('.edit_role').editable(edit_post_url, {
-         type      : 'select',
-         data      : definition_role_choices
      });
      $('.edit_language').editable(edit_post_url, {
          type      : 'multiselect',
