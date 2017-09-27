@@ -6,7 +6,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{LANGUAGE_CODE|default:"fi"}}">
   <head>
-    <title>{% block bootstrap3_title %}FinSL Signbank{% endblock %}</title>
+    <title>FinSL Signbank{% block bootstrap3_title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" media="screen" href="{% static "bootstrap/css/bootstrap.min.css" %}">
