@@ -13,6 +13,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.dispatch import receiver
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.utils import OperationalError
 
 from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_objects_for_user
@@ -30,7 +31,7 @@ class CommentTagForm(forms.Form):
     """Form for tags, meant to be used when adding tags to Comments."""
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Comment)).allowed_tags.all()
-    except ObjectDoesNotExist:
+    except (ObjectDoesNotExist, OperationalError):
         qs = Tag.objects.all()
     tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}), label=_lazy('Tag'))
@@ -71,7 +72,7 @@ def bind_comment(request, comment):
 class EditCommentForm(ModelForm):
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Comment)).allowed_tags.all()
-    except ObjectDoesNotExist:
+    except (ObjectDoesNotExist, OperationalError):
         qs = Tag.objects.all()
     tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}), label=_lazy('Tag'))
