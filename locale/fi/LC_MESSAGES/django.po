@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 16:33+0300\n"
+"POT-Creation-Date: 2017-10-13 17:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -758,7 +758,7 @@ msgstr "Hyväksy poistaminen"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:200
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:43
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:54
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:55
 #: signbank/video/templates/uploaded_glossvideos.html:54
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
@@ -1115,31 +1115,25 @@ msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:41
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:42
 msgctxt "videocount"
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:42
-msgid "video."
-msgid_plural "videos."
-msgstr[0] "video."
-msgstr[1] "videota."
-
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:57
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:58
 msgid "No video."
 msgstr "Ei videota."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:61
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:62
 msgctxt "publicglosslist"
 msgid "Translations"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:71
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:72
 msgid "No translations in"
 msgstr "Ei käännösvastineita kielellä"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:82
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:83
 msgid "No results."
 msgstr "Ei hakutuloksia."
 
@@ -1967,6 +1961,11 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "video."
+#~ msgid_plural "videos."
+#~ msgstr[0] "video."
+#~ msgstr[1] "videota."
 
 #~ msgid "In the Web dictionary"
 #~ msgstr "Verkkosanakirjassa"
