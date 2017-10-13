@@ -3,6 +3,7 @@
 {% load comments %}
 {% load tagging_tags %}
 {% block content %}
+<div class="container">
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="col-md-12">
@@ -10,7 +11,7 @@
             <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{gloss.dataset}}</span>
             {% if gloss.idgloss_en %}/ {{gloss.idgloss_en}}{% endif %}</h2>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}</h4>
             {% for translation_language, translations in translation_languages_and_translations %}
                 <p><strong>{{ translation_language.name }}:</strong></p>
@@ -18,12 +19,17 @@
                     {{ translations|default:_("<em>No translations.</em>") }}</p>
             {% endfor %}
         </div>
+        <div class="col-md-6">
+            <h4>{% blocktrans %}Notes{% endblocktrans %}</h4>
+            <p>{% if gloss.notes %}{{gloss.notes}}
+                {% else %}<em>{% blocktrans %}No notes.{% endblocktrans %}</em>{% endif %}</p>
+        </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12">
         {% for glossvideo in gloss.glossvideo_set.all %}
-        <div class="col-md-12">
+        <div class="{% if gloss.glossvideo_set.all.count > 1 %}col-md-6{% else %}col-md-12{% endif %}">
             <hr>
             <h3>{{glossvideo.title}}</h3>
             <div class="embed-responsive embed-responsive-16by9">
@@ -44,32 +50,36 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
     <hr style="border-color:black;">
-{% get_comment_count for gloss as comment_count %}
-<div id="gloss-comments">
-    <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
-    <div class="well well-md">
-    {% get_comment_list for gloss as comment_list %}
-    {% for comment in comment_list %}
-        {% tags_for_object comment as tag_list %}
-        <article class="comment">
-            <header id="c{{ comment.id }}">
-                <strong>{{ comment.submit_date }} -
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.name }}</strong>
-            {% for tag in tag_list %}
-                <div class="comment-tags" style="display:inline;">
-                    <span class="label label-info">{{tag}}</span>
-                </div>
-            {% endfor %}
-            </header>
-            <p>{{ comment.comment }}</p>
-        </article>
-    {% empty %}
-        <p><em>{% blocktrans %}No comments.{% endblocktrans %}</em></p>
-    {% endfor %}
+    {% get_comment_count for gloss as comment_count %}
+    <div id="gloss-comments">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-comments"
+                aria-expanded="false" aria-controls="collapse-comments">
+            <h4>{% blocktrans %}Show comments{% endblocktrans %} ({{comment_count}})</h4>
+        </button>
+        <div class="collapse" id="collapse-comments">
+        <div class="well well-md">
+        {% get_comment_list for gloss as comment_list %}
+        {% for comment in comment_list %}
+            {% tags_for_object comment as tag_list %}
+            <article class="comment">
+                <header id="c{{ comment.id }}">
+                    <strong>{{ comment.submit_date }} -
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.name }}</strong>
+                {% for tag in tag_list %}
+                    <div class="comment-tags" style="display:inline;">
+                        <span class="label label-info">{{tag}}</span>
+                    </div>
+                {% endfor %}
+                </header>
+                <p>{{ comment.comment }}</p>
+            </article>
+        {% empty %}
+            <p><em>{% blocktrans %}No comments.{% endblocktrans %}</em></p>
+        {% endfor %}
+        </div>
+        </div>
+    </div>
     </div>
 </div>
-    </div>
 </div>
-
-
 {% endblock %}
