@@ -5,6 +5,6 @@ django-bootstrap3==9.0.0
 django-summernote==0.8.8.2
 unicodecsv==0.14.1
 django-modeltranslation==0.12.1
-django-registration==2.3
+django-registration==2.2
 django-contrib-comments==1.8.0
 django-guardian==1.4.9
