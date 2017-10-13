@@ -280,11 +280,3 @@ td .tag {
 .tt-suggestion p {
     margin: 0;
 }*/
-.list-group-item-relation {
-    color: #31708f;
-    background-color: #FFFFFF;
-}
-.list-group-item-relation-reverse {
-    color: #31708f;
-    background-color: #d5e3e5;
-}
