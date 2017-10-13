@@ -287,3 +287,6 @@ td .tag {
     padding-left: 3px;
     padding-right: 3px;
 }
+.video-public:hover {
+    cursor:pointer;
+}

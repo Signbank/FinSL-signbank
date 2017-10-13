@@ -45,8 +45,9 @@
             </div>
             <div class="panel-body embed-responsive embed-responsive-16by9">
             {% if obj.glossvideo_set.all.0 %}
-                <video id="glossvideo-{{obj.glossvideo_set.all.0.pk}}" preload="metadata" controls muted
-{% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url|urlencode}}"{% endif %}>
+                <video id="glossvideo-{{obj.glossvideo_set.all.0.pk}}" class="video-public" preload="metadata" muted
+{% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url|urlencode}}"{% endif %}
+                onclick="this.paused?this.play():this.pause();">
                 {% if obj.glossvideo_set.all.0.get_extension == '.mp4' %}
                     <source src="{{obj.glossvideo_set.all.0.videofile.url|urlencode}}" type="video/mp4">
                 {% elif obj.glossvideo_set.all.0.get_extension == '.webm' %}
