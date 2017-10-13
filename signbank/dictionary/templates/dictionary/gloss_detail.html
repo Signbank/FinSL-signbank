@@ -402,7 +402,8 @@ $(document).ready(function () {
                                         {% if version.data_removed %}<span style="color:red;">-{{version.data_removed}}</span>{% endif %}
                                         {% if version.translations_added or version.translations_removed %}{% blocktrans %}Translations:{% endblocktrans %}{% endif %}
                                         {% if version.translations_added %}<span style="color:green;">{{version.translations_added}}</span>{% endif %}
-                                        {% if version.translations_removed %}<span style="color:red;">{{version.translations_removed}}</span></a></li>{% endif %}
+                                        {% if version.translations_removed %}<span style="color:red;">{{version.translations_removed}}</span>{% endif %}
+                                    </a></li>
                                     {% endfor %}
                                 </ul>
                               </div>

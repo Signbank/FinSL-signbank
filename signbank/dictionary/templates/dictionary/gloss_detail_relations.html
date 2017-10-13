@@ -5,11 +5,13 @@
 <h4>{% blocktrans %}Gloss relations{% endblocktrans %}</h4>
 <div id="gloss-relations" class="panel panel-default">
     <div class="panel-body">
+        <h4>{% blocktrans %}Relations{% endblocktrans %}</h4>
         <ul style="padding-left:0px;">
             {% for gr in glossrelations %}
             {% tags_for_object gr as tag_list %}
-            <li class="list-group-item">
-                <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">{{gr}}</a>
+            <li class="list-group-item list-group-item-relation">
+                <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
                 {% for tag in tag_list %}
                 <span class="badge" style="float:inherit;">{{tag}}</span>
                 {% endfor %}
@@ -31,5 +33,20 @@
                 <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Relation{% endblocktrans %}</button>
             </form>
         </div>
+        <h4>{% blocktrans %}Reverse relations{% endblocktrans %}</h4>
+        <ul style="padding-left:0px;">
+            {% for gr in glossrelations_reverse %}
+            {% tags_for_object gr as tag_list %}
+            <li class="list-group-item list-group-item-relation-reverse">
+                <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr}}</a>
+                {% for tag in tag_list %}
+                <span class="badge" style="float:inherit;">{{tag}}</span>
+                {% endfor %}
+            </li>
+            {% empty %}
+            {% blocktrans %}No reverse relations.{% endblocktrans %}
+            {% endfor %}
+        </ul>
     </div>
 </div>
