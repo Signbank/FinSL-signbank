@@ -57,8 +57,8 @@
                 <p><em>{% blocktrans %}No video.{% endblocktrans %}</em></p>
             {% endif %}
             </div>
-            <div class="panel-footer">
-            <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %}:</h4>
+            <div class="panel-footer">{% get_language_info for LANGUAGE_CODE as lang %}
+            <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %} ({{ lang.name_local }}):</h4>
             {% if obj.glosstranslations_set.exists %}
                 {{ obj.glosstranslations_set.all.0 }}
             {% else %}
@@ -68,7 +68,7 @@
                 {{ trans.keyword }}
                 {% endif %}
             {% empty %}
-                <em>{% blocktrans %}No translations.{% endblocktrans %}</em>
+                <em>{% blocktrans %}No translations in{% endblocktrans %} {{ lang.name_local }}.</em>
             {% endfor %}
             {% endif %}
             </div>

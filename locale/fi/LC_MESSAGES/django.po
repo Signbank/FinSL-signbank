@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 15:32+0300\n"
+"POT-Creation-Date: 2017-10-13 16:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,7 +323,7 @@ msgstr "Käännösvastine"
 
 #: signbank/dictionary/models.py:75
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:14
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:15
 #: templates/infopage.html:49 templates/infopage.html:117
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
@@ -457,6 +457,7 @@ msgstr "Glossin nimi englanniksi"
 #. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
 #: signbank/dictionary/models.py:246
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:23
 msgid "Notes"
 msgstr "Lisätiedot"
 
@@ -756,7 +757,7 @@ msgid "Confirm Delete"
 msgstr "Hyväksy poistaminen"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:200
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:37
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:43
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:54
 #: signbank/video/templates/uploaded_glossvideos.html:54
 msgid "Your browser does not support the video tag."
@@ -942,7 +943,6 @@ msgid "Add Relation to Foreign Sign"
 msgstr "Lisää suhde vieraskieliseen viittomaan"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:6
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:49
 msgid "Comments"
 msgstr "Kommentit"
 
@@ -1089,11 +1089,19 @@ msgstr "Hyväksy"
 msgid "The following glosses were added to"
 msgstr "Seuraavat glossit lisättiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:18
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:19
 msgid "<em>No translations.</em>"
 msgstr "<em>Ei käännösvastineita.</em>"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:67
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:25
+msgid "No notes."
+msgstr "Ei lisätietoja."
+
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:57
+msgid "Show comments"
+msgstr "Näytä kommentit"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:77
 #: templates/comments/list.html:47
 msgid "No comments."
 msgstr "Ei kommentteja."
@@ -1128,8 +1136,8 @@ msgid "Translations"
 msgstr "Käännösvastineet"
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:71
-msgid "No translations."
-msgstr "Ei käännösvastineita."
+msgid "No translations in"
+msgstr "Ei käännösvastineita kielellä"
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:82
 msgid "No results."
