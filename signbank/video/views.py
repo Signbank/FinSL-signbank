@@ -276,7 +276,7 @@ def update_glossvideo(request):
     """Here we process the post request for updating a glossvideo."""
     if request.is_ajax():
         # If request is AJAX, follow this procedure.
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode('utf-8'))
         if request.method == 'POST':
             if "ajax" in data and data["ajax"] == "true":
                 # If the param 'ajax' is included, we received what we were supposed to, continue.
