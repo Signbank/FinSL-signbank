@@ -283,3 +283,7 @@ td .tag {
 #gloss-comments {
     padding-bottom: 20px;
 }
+.col-public-list {
+    padding-left: 3px;
+    padding-right: 3px;
+}

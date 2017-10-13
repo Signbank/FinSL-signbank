@@ -30,9 +30,10 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
 <div class="row">
     {% for obj in object_list %}
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-md-3 col-sm-6 col-xs-12 col-public-list">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><a href="{{obj.get_public_absolute_url}}">{{obj}}</a>
@@ -114,5 +115,5 @@
     </ul>
     </span>
 </div>
-
+</div>
 {% endblock %}
