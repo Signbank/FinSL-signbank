@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 14:20+0300\n"
+"POT-Creation-Date: 2017-10-13 15:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -602,12 +602,11 @@ msgid "Allowed tags"
 msgstr "Sallitut tagit"
 
 #: signbank/dictionary/models.py:570
-#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:32
 msgid "Relation"
 msgstr "Relaatio"
 
 #: signbank/dictionary/models.py:571
-#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:8
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
 msgid "Relations"
 msgstr "Relaatiot"
 
@@ -960,11 +959,15 @@ msgstr "Lisää kommentti"
 msgid "No relations."
 msgstr "Ei relaatioita."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:35
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:32
+msgid "Add relation"
+msgstr "Lisää relaatio"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:37
 msgid "Reverse relations"
 msgstr "Käänteiset relaatiot"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:46
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:49
 msgid "No reverse relations."
 msgstr "Ei käänteisiä relaatioita."
 
@@ -2060,11 +2063,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "You are not allowed to see this page."
 #~ msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua."
-
-#, fuzzy
-#~| msgid "Add Relation"
-#~ msgid "Add relation"
-#~ msgstr "Lisää suhde"
 
 #~ msgid "Video:"
 #~ msgstr "Video:"

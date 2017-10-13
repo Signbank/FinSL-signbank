@@ -4,49 +4,49 @@
 {% load tagging_tags %}
 <h4>{% blocktrans %}Gloss relations{% endblocktrans %}</h4>
 <div id="gloss-relations" class="panel panel-default">
-    <div class="panel-body">
-        <h4>{% blocktrans %}Relations{% endblocktrans %}</h4>
-        <ul style="padding-left:0px;">
-            {% for gr in glossrelations %}
-            {% tags_for_object gr as tag_list %}
-            <li class="list-group-item list-group-item-relation">
-                <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">
-                    <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
-                {% for tag in tag_list %}
-                <span class="badge" style="float:inherit;">{{tag}}</span>
-                {% endfor %}
-                <form class="update_glossrelation" method="POST" action="{% url 'dictionary:add_glossrelation' %}" style="display:none;float:right;" >{% csrf_token %}
-                    <input type="hidden" name="delete" value="{{gr.id}}">
-                    <button type="submit" class="btn btn-link" >
-                        <span class="glyphicon glyphicon-trash" style="color:red;"></span></button>
-                </form>
-            </li>
-            {% empty %}
-            {% blocktrans %}No relations.{% endblocktrans %}
+    <div class="panel-heading">{% blocktrans %}Relations{% endblocktrans %}</div>
+    <ul class="list-group">
+        {% for gr in glossrelations %}
+        {% tags_for_object gr as tag_list %}
+        <li class="list-group-item list-group-item-relation">
+            <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
+            {% for tag in tag_list %}
+            <span class="badge" style="float:inherit;">{{tag}}</span>
             {% endfor %}
-        </ul>
-        <div class="update_glossrelation" style="display: none;">
-            <form class="form-inline" method="POST" action="{% url 'dictionary:add_glossrelation' %}">{% csrf_token %}
-                <input type="hidden" name="source" value="{{gloss.id}}">
-                {% bootstrap_field glossrelationform.target show_label=False %}
-                {% bootstrap_field glossrelationform.tag %}
-                <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Relation{% endblocktrans %}</button>
+            <form class="update_glossrelation" method="POST" action="{% url 'dictionary:add_glossrelation' %}" style="display:none;float:right;" >{% csrf_token %}
+                <input type="hidden" name="delete" value="{{gr.id}}">
+                <button type="submit" class="btn btn-link" >
+                    <span class="glyphicon glyphicon-trash" style="color:red;"></span></button>
             </form>
-        </div>
-        <h4>{% blocktrans %}Reverse relations{% endblocktrans %}</h4>
-        <ul style="padding-left:0px;">
-            {% for gr in glossrelations_reverse %}
-            {% tags_for_object gr as tag_list %}
-            <li class="list-group-item list-group-item-relation-reverse">
-                <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">
-                    <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr}}</a>
-                {% for tag in tag_list %}
-                <span class="badge" style="float:inherit;">{{tag}}</span>
-                {% endfor %}
-            </li>
-            {% empty %}
-            {% blocktrans %}No reverse relations.{% endblocktrans %}
-            {% endfor %}
-        </ul>
+        </li>
+        {% empty %}
+        <div class="panel-body">{% blocktrans %}No relations.{% endblocktrans %}</div>
+        {% endfor %}
+    </ul>
+    <div class="update_glossrelation" style="display: none;">
+        <form class="form-inline" method="POST" action="{% url 'dictionary:add_glossrelation' %}">{% csrf_token %}
+            <input type="hidden" name="source" value="{{gloss.id}}">
+            {% bootstrap_field glossrelationform.target show_label=False %}
+            {% bootstrap_field glossrelationform.tag %}
+            <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Add relation{% endblocktrans %}</button>
+        </form>
     </div>
+</div>
+<div id="gloss-relations-reverse" class="panel panel-default">
+    <div class="panel-heading">{% blocktrans %}Reverse relations{% endblocktrans %}</div>
+    <ul class="list-group">
+        {% for gr in glossrelations_reverse %}
+        {% tags_for_object gr as tag_list %}
+        <li class="list-group-item">
+            <a href="{% url 'dictionary:admin_gloss_view' gr.source.id %}">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
+            {% for tag in tag_list %}
+            <span class="badge" style="float:inherit;">{{tag}}</span>
+            {% endfor %}
+        </li>
+        {% empty %}
+        <div class="panel-body">{% blocktrans %}No reverse relations.{% endblocktrans %}</div>
+        {% endfor %}
+    </ul>
 </div>
