@@ -37,12 +37,16 @@
     <div class="col-md-3 col-sm-6 col-xs-12 col-public-list">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><a href="{{obj.get_public_absolute_url}}">{{obj}}</a>
-                    <span class="dataset-{{obj.dataset.id}}-color label label-default" style="margin-left:10px;">{{obj.dataset}}</span>
-                    <span class="glyphicon glyphicon-film" aria-hidden="true"
-                          title="{% blocktrans context "videocount" %}Videos{% endblocktrans %}" style="margin-left:10px;"></span>
-                    {{obj.glossvideo_set.count}}</h3>
-
+                <div class="row">
+                    <div class="col-md-12">
+                    <a class="btn-block" href="{{obj.get_public_absolute_url}}"><h3 class="panel-title" style="text-align:center;">{{obj}}</h3>
+                        <span style="color:black;"><span class="glyphicon glyphicon-film" aria-hidden="true"
+                              title="{% blocktrans context "videocount" %}Videos{% endblocktrans %}"></span>
+                        {{obj.glossvideo_set.count}}</span>
+                        <span class="dataset-{{obj.dataset.id}}-color label label-default" style="float:right;margin-top:2px;">{{obj.dataset}}</span>
+                    </a>
+                    </div>
+                </div>
             </div>
             <div class="panel-body embed-responsive embed-responsive-16by9">
             {% if obj.glossvideo_set.all.0 %}

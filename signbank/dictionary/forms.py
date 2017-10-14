@@ -290,10 +290,16 @@ class CSVUploadForm(forms.Form):
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all(), empty_label=None)
 
 
+class DatasetMultipleChoiceField(forms.ModelMultipleChoiceField):
+    """Override the field used for the label."""
+    def label_from_instance(self, obj):
+        return obj.description
+
+
 class GlossPublicSearchForm(forms.Form):
     """Public search form."""
     search = forms.CharField(label=_("Search"), required=False,
                              widget=forms.TextInput(attrs={'placeholder': _('Search signs')}))
-    dataset = forms.ModelMultipleChoiceField(queryset=Dataset.objects.filter(is_public=True), required=False,
+    dataset = DatasetMultipleChoiceField(queryset=Dataset.objects.filter(is_public=True), required=False,
                                              label=_("Lexicon"), widget=forms.CheckboxSelectMultiple(),
                                              help_text=_("You can limit the search to these lexicons."))
