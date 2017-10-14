@@ -48,7 +48,8 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-body embed-responsive embed-responsive-16by9">
+            <div class="panel-body embed-responsive embed-responsive-16by9"
+                 {% if obj.glossvideo_set.all.count > 0 %}style="background-color:rgb(33,33,33);"{% endif %}>
             {% if obj.glossvideo_set.all.0 %}
                 <video id="glossvideo-{{obj.glossvideo_set.all.0.pk}}" class="video-public" preload="metadata" muted
 {% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url|urlencode}}"{% endif %}
