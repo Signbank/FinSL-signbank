@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load bootstrap3 %}
 {% block content %}
+{% get_language_info for LANGUAGE_CODE as lang %}
 <div class="row">
     <div class="col-md-12">
         <div class="well well-sm">
@@ -59,7 +60,7 @@
                 <p><em>{% blocktrans %}No video.{% endblocktrans %}</em></p>
             {% endif %}
             </div>
-            <div class="panel-footer">{% get_language_info for LANGUAGE_CODE as lang %}
+            <div class="panel-footer">
             <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %} ({{ lang.name_local }}):</h4>
             {% if obj.glosstranslations_set.exists %}
                 {{ obj.glosstranslations_set.all.0 }}
