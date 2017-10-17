@@ -48,14 +48,61 @@
     </div>
 </div>
 <div class="row">
+<div class="col-md-10 col-md-offset-1">
+    <hr>
+    <div class="col-md-12">
+        <h4>{% blocktrans %}Relations to glosses{% endblocktrans %}</h4>
+    </div>
+    <div class="col-md-6">
+        <div id="gloss-relations" class="panel panel-default">
+            <div class="panel-heading">{% blocktrans %}Relations from this gloss{% endblocktrans %}</div>
+            <ul class="list-group">
+                {% for gr in glossrelations %}
+                {% tags_for_object gr as tag_list %}
+                <li class="list-group-item list-group-item-relation">
+                    <a href="{% url 'dictionary:public_gloss_view' gr.target.id %}">
+                        <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
+                    {% for tag in tag_list %}
+                    <span class="badge" style="float:inherit;">{{tag}}</span>
+                    {% endfor %}
+                </li>
+                {% empty %}
+                <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="gloss-relations-reverse" class="panel panel-default">
+            <div class="panel-heading">
+                {% blocktrans %}Relations to this gloss{% endblocktrans %}</div>
+            <ul class="list-group">
+                {% for gr in glossrelations_reverse %}
+                {% tags_for_object gr as tag_list %}
+                <li class="list-group-item">
+                    <a href="{% url 'dictionary:public_gloss_view' gr.source.id %}">
+                        <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
+                    {% for tag in tag_list %}
+                    <span class="badge" style="float:inherit;">{{tag}}</span>
+                    {% endfor %}
+                </li>
+                {% empty %}
+                <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
     <div class="col-md-10 col-md-offset-1">
     <hr style="border-color:black;">
     {% get_comment_count for gloss as comment_count %}
     <div id="gloss-comments">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-comments"
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse-comments"
                 aria-expanded="false" aria-controls="collapse-comments">
             <h4>{% blocktrans %}Show comments{% endblocktrans %} ({{comment_count}})</h4>
-        </button>
+        </a>
         <div class="collapse" id="collapse-comments">
         <div class="well well-md">
         {% get_comment_list for gloss as comment_list %}

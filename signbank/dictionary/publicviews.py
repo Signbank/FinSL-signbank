@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.db.models import Q, Prefetch
 from django.utils.translation import get_language
 
-from .models import Gloss, Translation, GlossTranslations, SignLanguage, Dataset
+from .models import Gloss, Translation, GlossTranslations, SignLanguage, Dataset, GlossRelation
 from ..video.models import GlossVideo
 from .forms import GlossPublicSearchForm
 
@@ -79,4 +79,7 @@ class GlossDetailPublicView(DetailView):
         # Call the base implementation first to get a context
         context = super(GlossDetailPublicView, self).get_context_data(**kwargs)
         context['translation_languages_and_translations'] = context['gloss'].get_translations_for_translation_languages()
+        # GlossRelations for this gloss
+        context['glossrelations'] = GlossRelation.objects.filter(source=context['gloss'])
+        context['glossrelations_reverse'] = GlossRelation.objects.filter(target=context['gloss'])
         return context

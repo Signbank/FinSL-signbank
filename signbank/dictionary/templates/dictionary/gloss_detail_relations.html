@@ -21,7 +21,7 @@
             </form>
         </li>
         {% empty %}
-        <div class="panel-body">{% blocktrans %}No relations.{% endblocktrans %}</div>
+        <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
         {% endfor %}
     </ul>
     <div class="update_glossrelation" style="display: none;">
@@ -46,7 +46,7 @@
             {% endfor %}
         </li>
         {% empty %}
-        <div class="panel-body">{% blocktrans %}No reverse relations.{% endblocktrans %}</div>
+        <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
         {% endfor %}
     </ul>
 </div>

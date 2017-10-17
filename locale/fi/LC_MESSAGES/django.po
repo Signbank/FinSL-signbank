@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-17 14:09+0300\n"
+"POT-Creation-Date: 2017-10-17 14:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -962,6 +962,7 @@ msgid "Add comment"
 msgstr "Lisää kommentti"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:24
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:70
 msgid "No relations."
 msgstr "Ei relaatioita."
 
@@ -974,6 +975,7 @@ msgid "Reverse relations"
 msgstr "Käänteiset relaatiot"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:49
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:90
 msgid "No reverse relations."
 msgstr "Ei käänteisiä relaatioita."
 
@@ -1103,11 +1105,23 @@ msgstr "<em>Ei käännösvastineita.</em>"
 msgid "No notes."
 msgstr "Ei lisätietoja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:57
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:54
+msgid "Relations to glosses"
+msgstr "Suhteet muihin glosseihin"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:58
+msgid "Relations from this gloss"
+msgstr "Suhteet tästä glossista"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:78
+msgid "Relations to this gloss"
+msgstr "Suhteet tähän glossiin"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:104
 msgid "Show comments"
 msgstr "Näytä kommentit"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:77
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:124
 #: templates/comments/list.html:47
 msgid "No comments."
 msgstr "Ei kommentteja."
@@ -1151,11 +1165,11 @@ msgid ""
 "    information page by clicking on the sign title.\n"
 "    "
 msgstr ""
-"Videon voit käynnistää painamalla "
-"videon (kuvan) päältä, videon voi keskeyttää painamalla sen päältä uudelleen."
-"Nähdäksesi yksityiskohtaisempaa tietoa viittomasta (glossista), paina "
-"tekstiä joka on videolaatikon yläosassa. Joillakin viittomilla on "
-"useampi video, ylimääräiset videot voi nähdä viittoman sivulta."
+"Videon voit käynnistää painamalla videon (kuvan) päältä, videon voi "
+"keskeyttää painamalla sen päältä uudelleen.Nähdäksesi yksityiskohtaisempaa "
+"tietoa viittomasta (glossista), paina tekstiä joka on videolaatikon "
+"yläosassa. Joillakin viittomilla on useampi video, ylimääräiset videot voi "
+"nähdä viittoman sivulta."
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:59
 msgctxt "public_search"
@@ -2086,9 +2100,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Signbank: Search Comments"
 #~ msgstr "Signbank: Etsi kommentteja"
-
-#~ msgid "Relations to other Glosses"
-#~ msgstr "Suhde toisiin Glosseihin"
 
 #~ msgid "Lock selected glosses"
 #~ msgstr "Lukitse valitut glossit"
