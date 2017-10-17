@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-17 13:56+0300\n"
+"POT-Creation-Date: 2017-10-17 14:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,7 +294,7 @@ msgid "Search signs"
 msgstr "Hae viittomia"
 
 #: signbank/dictionary/forms.py:310
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:28
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:35
 msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
@@ -764,7 +764,7 @@ msgstr "Hyväksy poistaminen"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:200
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:43
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:87
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:94
 #: signbank/video/templates/uploaded_glossvideos.html:54
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
@@ -1136,34 +1136,51 @@ msgstr ""
 "käännöksillä tai viittoman tunnistenimillä \"glosseilla\". Tarjolla olevat "
 "viittomakielet löytyvät hakulaatikon yläpuolelta, valitsemalla "
 "viittomakielen voi rajata hakutuloksia haluttuun viittomakieleen. "
-"Hakutuloksia voi rajata myös leksikoiden perusteella valitsemalla "
-"halutut leksikot hakulaatikon alapuolelta. Leksikot ovat tietyn "
-"organisaation hallinnoimia viittomalistoja."
+"Hakutuloksia voi rajata myös leksikoiden perusteella valitsemalla halutut "
+"leksikot hakulaatikon alapuolelta. Leksikot ovat tietyn organisaation "
+"hallinnoimia viittomalistoja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:52
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:24
+msgid ""
+"To play a video, click on top of the video (image), and pause the video by "
+"clicking on it again.\n"
+"    To see more detailed information about a sign (gloss), click on the text "
+"on top of a video box in the\n"
+"    search results. Some signs have more than one video, the additional "
+"videos can be viewed from the detail\n"
+"    information page by clicking on the sign title.\n"
+"    "
+msgstr ""
+"Videon voit käynnistää painamalla "
+"videon (kuvan) päältä, videon voi keskeyttää painamalla sen päältä uudelleen."
+"Nähdäksesi yksityiskohtaisempaa tietoa viittomasta (glossista), paina "
+"tekstiä joka on videolaatikon yläosassa. Joillakin viittomilla on "
+"useampi video, ylimääräiset videot voi nähdä viittoman sivulta."
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:59
 msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:69
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:76
 msgctxt "videocount"
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:90
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:97
 msgid "No video."
 msgstr "Ei videota."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:94
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:101
 msgctxt "publicglosslist"
 msgid "Translations"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:104
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:111
 msgid "No translations in"
 msgstr "Ei käännösvastineita kielellä"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:115
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:122
 msgid "No results."
 msgstr "Ei hakutuloksia."
 
