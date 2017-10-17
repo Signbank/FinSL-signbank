@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 17:04+0300\n"
+"POT-Creation-Date: 2017-10-17 11:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,7 +212,7 @@ msgid "Sign language"
 msgstr "Viittomakieli"
 
 #. Translators: admin_gloss_list header
-#: signbank/dictionary/forms.py:143 signbank/dictionary/forms.py:295
+#: signbank/dictionary/forms.py:143 signbank/dictionary/forms.py:301
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:97
 #: templates/comments/search_comments.html:13
 msgid "Search"
@@ -287,17 +287,17 @@ msgstr "Emoglossi"
 msgid "Morpheme"
 msgstr "Morfeemi"
 
-#: signbank/dictionary/forms.py:296
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:8
+#: signbank/dictionary/forms.py:302
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:9
 msgid "Search signs"
 msgstr "Hae viittomia"
 
-#: signbank/dictionary/forms.py:298 signbank/dictionary/models.py:39
+#: signbank/dictionary/forms.py:308 signbank/dictionary/models.py:39
 #: templates/infopage.html:87
 msgid "Lexicon"
 msgstr "Leksikko"
 
-#: signbank/dictionary/forms.py:299
+#: signbank/dictionary/forms.py:309
 msgid "You can limit the search to these lexicons."
 msgstr "Voit rajata hakua näihin leksikoihin."
 
@@ -758,7 +758,7 @@ msgstr "Hyväksy poistaminen"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:200
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:43
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:55
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:76
 #: signbank/video/templates/uploaded_glossvideos.html:54
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
@@ -1106,34 +1106,38 @@ msgstr "Näytä kommentit"
 msgid "No comments."
 msgstr "Ei kommentteja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:9
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:10
 msgid "By gloss or translation equivalent"
 msgstr "Glossilla tai käännösvastineella"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:26
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:15
+msgid "All sign languages"
+msgstr "Kaikki viittomakielet"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:39
 msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:42
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:58
 msgctxt "videocount"
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:58
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:79
 msgid "No video."
 msgstr "Ei videota."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:62
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:83
 msgctxt "publicglosslist"
 msgid "Translations"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:72
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:93
 msgid "No translations in"
 msgstr "Ei käännösvastineita kielellä"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:83
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:104
 msgid "No results."
 msgstr "Ei hakutuloksia."
 

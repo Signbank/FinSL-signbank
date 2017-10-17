@@ -5,29 +5,38 @@
 {% get_language_info for LANGUAGE_CODE as lang %}
 <div class="row">
     <div class="col-md-12">
-        <div class="well well-sm">
         <h2>{% blocktrans %}Search signs{% endblocktrans %}
             <small>{% blocktrans %}By gloss or translation equivalent{% endblocktrans %}</small></h2>
+        <ul class="nav nav-pills">
+            <li role="presentation" {% if 'lang' not in request.GET or request.GET.lang == '' %}class="active"{% endif %}>
+            <a href="?lang=&search={{request.GET.search}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
+            {% for signlang in signlanguages %}
+            <li role="presentation" {% if request.GET.lang == signlang.language_code_3char %}class="active"{% endif %}>
+                <a href="?lang={{signlang.language_code_3char}}&search={{request.GET.search}}">{{ signlang.name }}</a></li>
+            {% endfor %}
+        </ul>
         {# Search form #}
-        <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
-            {% bootstrap_field searchform.search bound_css_class="not-bound" %}
-            <div class="form-group">
-                {% bootstrap_label searchform.dataset.label label_for="id_dataset" label_class="control-label" %}
-                <div id="id_dataset">
-                {% for checkbox in searchform.dataset %}{# Doing this manually so that we can add 'span label'. #}
-                <div class="checkbox" style="display: inline-block;margin-top:0px;"><label for="{{checkbox.id_for_label}}">
-                    {{ checkbox.tag }} <span class="dataset-{{checkbox.data.value}}-color label label-default">{{ checkbox.choice_label }}</span></label>
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
+                <input type="hidden" name="lang" value="{{request.GET.lang}}">
+                {% bootstrap_field searchform.search bound_css_class="not-bound" %}
+                <div class="form-group">
+                    {% bootstrap_label searchform.dataset.label label_for="id_dataset" label_class="control-label" %}
+                    <div id="id_dataset">
+                    {% for checkbox in searchform.dataset %}{# Doing this manually so that we can add 'span label'. #}
+                    <div class="checkbox" style="display: inline-block;margin-top:0px;"><label for="{{checkbox.id_for_label}}">
+                        {{ checkbox.tag }} <span class="dataset-{{checkbox.data.value}}-color label label-default">{{ checkbox.choice_label }}</span></label>
+                    </div>
+                    {% endfor %}
+                        <div class="help-block hidden-xs" style="display:inline-block;">{{searchform.dataset.help_text}}</div>
+                    </div>
                 </div>
-                {% endfor %}
-                    <div class="help-block" style="display:inline-block;">{{searchform.dataset.help_text}}</div>
-                </div>
+                    <button type="submit" class="btn btn-primary">
+                        {% blocktrans context "public_search" %}Search{% endblocktrans %}
+                    </button>
+            </form>
             </div>
-            {% buttons %}
-                <button type="submit" class="btn btn-primary">
-                    {% blocktrans context "public_search" %}Search{% endblocktrans %}
-                </button>
-            {% endbuttons %}
-        </form>
         </div>
     </div>
 </div>

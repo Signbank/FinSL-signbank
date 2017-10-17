@@ -4,9 +4,10 @@ from __future__ import unicode_literals
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Prefetch
-from .models import Gloss, Translation, GlossTranslations
-from ..video.models import GlossVideo
 from django.utils.translation import get_language
+
+from .models import Gloss, Translation, GlossTranslations, SignLanguage, Dataset
+from ..video.models import GlossVideo
 from .forms import GlossPublicSearchForm
 
 
@@ -19,6 +20,11 @@ class GlossListPublicView(ListView):
         # Call the base implementation first to get a context
         context = super(GlossListPublicView, self).get_context_data(**kwargs)
         context["searchform"] = GlossPublicSearchForm(self.request.GET)
+        context["signlanguages"] = SignLanguage.objects.filter(id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)])
+        context["lang"] = self.request.GET.get("lang")
+        daa = context["lang"]
+        if context["lang"]:
+            context["searchform"].fields["dataset"].queryset = context["searchform"].fields["dataset"].queryset.filter(signlanguage__language_code_3char=context["lang"])
         return context
 
     def get_queryset(self):
@@ -30,6 +36,10 @@ class GlossListPublicView(ListView):
         qs = qs.exclude(dataset__is_public=False)
         # Exclude glosses that are not 'published'.
         qs = qs.exclude(published=False)
+
+        if 'lang' in get and get['lang'] != '' and get['lang'] != 'all':
+            signlang = get.get('lang')
+            qs = qs.filter(dataset__signlanguage__language_code_3char=signlang)
 
         # Search for multiple datasets (if provided)
         vals = get.getlist('dataset', [])
