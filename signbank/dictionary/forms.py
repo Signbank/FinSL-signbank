@@ -300,9 +300,13 @@ class GlossPublicSearchForm(forms.Form):
     """Public search form."""
     search = forms.CharField(label=_("Search"), required=False,
                              widget=forms.TextInput(attrs={'placeholder': _('Search signs')}))
+    try:
+        signlang_qs = SignLanguage.objects.filter(
+                id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)])
+    except:
+        signlang_qs = SignLanguage.objects.none()
     lang = forms.ModelChoiceField(
-        queryset=SignLanguage.objects.filter(
-            id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)]),
+        queryset=signlang_qs,
         to_field_name="language_code_3char", empty_label=_("All sign languages"), required=False,
         label=_("Sign language"))
     dataset = DatasetMultipleChoiceField(queryset=Dataset.objects.filter(is_public=True), required=False,

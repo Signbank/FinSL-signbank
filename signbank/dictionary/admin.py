@@ -200,13 +200,14 @@ class GlossAdmin(VersionAdmin):
 
 class DialectInline(admin.TabularInline):
     model = Dialect
+    extra = 0
 
 
 class LanguageAdmin(VersionAdmin, ModelTranslationAdmin):
     model = Language
 
 
-class SignLanguageAdmin(VersionAdmin):
+class SignLanguageAdmin(VersionAdmin, ModelTranslationAdmin):
     model = SignLanguage
     inlines = [DialectInline]
 
