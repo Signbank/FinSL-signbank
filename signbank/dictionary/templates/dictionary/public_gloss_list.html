@@ -6,8 +6,24 @@
 <div class="row">
     <div class="col-md-12">
         <h2>{% blocktrans %}Search signs{% endblocktrans %}
-            <small>{% blocktrans %}By gloss or translation equivalent{% endblocktrans %}</small></h2>
-        <ul class="nav nav-pills">
+            <small>{% blocktrans %}By gloss or translation equivalents{% endblocktrans %}
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseHelp" aria-expanded="false" aria-controls="collapseHelp">
+          {% blocktrans %}Help{% endblocktrans %} <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        </button></small></h2>
+
+        <div class="collapse" id="collapseHelp">
+          <div class="well">
+<p>
+{% blocktrans %}This Signbank holds sign language signs in multiple different sign languages.
+    Search the signs by translations of the signs (or by an identifying name "gloss").
+    Find the available sign languages on top of the search box, select one to narrow down your search results.
+    Filter the results even further by selecting one or multiple lexicons under the search box, which represent a set
+    of signs maintained by a given organisation.{% endblocktrans %}
+</p>
+          </div>
+        </div>
+        <hr style="margin-top:0px;margin-bottom:8px;">
+        <ul class="nav nav-pills" style="background-color:#fcfdff;">
             <li role="presentation" {% if 'lang' not in request.GET or request.GET.lang == '' %}class="active"{% endif %}>
             <a href="?lang=&search={{request.GET.search}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
             {% for signlang in signlanguages %}
