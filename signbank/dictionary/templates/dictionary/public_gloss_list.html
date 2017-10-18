@@ -1,6 +1,37 @@
 {% extends "baselayout.html" %}
 {% load i18n %}
 {% load bootstrap3 %}
+{% load staticfiles %}
+{% block extrajs %}
+<script src="{% static "js/markjs/mark.min.js" %}"></script>
+<script>
+/* Use mark.js to mark the keywords user searched for.
+This is not a bullet proof solution, especially when it comes to word boundaries;
+Javascript does not generally support UTF-8 word boundaries.
+*/
+$( document ).ready(function() {
+    var kwdToMark = "{{request.GET.search}}";
+    if (kwdToMark.length > 1) {
+        var markGloss = new Mark(document.querySelectorAll("h3.gloss-idgloss"));
+        var markKeywords = new Mark(document.querySelectorAll("span.gloss-keywords"));
+        var markKeywordsOptions = {"exclude": ["em", ".ignore"],};
+        var glossRE = new RegExp("^" + kwdToMark, "gmi");
+        var keywordRE = new RegExp("(\\s" + kwdToMark + ")", "gmi");
+
+        markGloss.unmark({
+            done: function(){
+                markGloss.markRegExp(glossRE);
+            },
+        });
+        markKeywords.unmark({
+            done: function(){
+                markKeywords.markRegExp(keywordRE, markKeywordsOptions);
+            },
+        });
+    }
+});
+</script>
+{% endblock %}
 {% block content %}
 {% get_language_info for LANGUAGE_CODE as lang %}
 <div class="row">
@@ -82,7 +113,7 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-12">
-                    <a class="btn-block" href="{{obj.get_public_absolute_url}}"><h3 class="panel-title" style="text-align:center;">{{obj}}</h3>
+                    <a class="btn-block" href="{{obj.get_public_absolute_url}}"><h3 class="panel-title gloss-idgloss" style="text-align:center;">{{obj}}</h3>
                         <span style="color:black;"><span class="glyphicon glyphicon-film" aria-hidden="true"
                               title="{% blocktrans context "videocount" %}Videos{% endblocktrans %}"></span>
                         {{obj.glossvideo_set.count}}</span>
@@ -110,6 +141,7 @@
             </div>
             <div class="panel-footer">
             <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %} ({{ lang.name_local }}):</h4>
+            <span class="gloss-keywords">
             {% if obj.glosstranslations_set.exists %}
                 {{ obj.glosstranslations_set.all.0 }}
             {% else %}
@@ -122,6 +154,7 @@
                 <em>{% blocktrans %}No translations in{% endblocktrans %} {{ lang.name_local }}.</em>
             {% endfor %}
             {% endif %}
+            </span>
             </div>
         </div>
     </div>
