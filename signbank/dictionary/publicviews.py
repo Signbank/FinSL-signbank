@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Prefetch
 from django.utils.translation import get_language
+from django.db.models.functions import Substr, Upper
 
 from .models import Gloss, Translation, GlossTranslations, SignLanguage, Dataset, GlossRelation
 from ..video.models import GlossVideo
@@ -22,9 +23,11 @@ class GlossListPublicView(ListView):
         context["searchform"] = GlossPublicSearchForm(self.request.GET)
         context["signlanguages"] = SignLanguage.objects.filter(id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)])
         context["lang"] = self.request.GET.get("lang")
-        daa = context["lang"]
         if context["lang"]:
             context["searchform"].fields["dataset"].queryset = context["searchform"].fields["dataset"].queryset.filter(signlanguage__language_code_3char=context["lang"])
+        context["first_letters"] = Gloss.objects.filter(dataset__is_public=True, published=True)\
+            .annotate(first_letters=Substr(Upper('idgloss'), 1, 1)).order_by('first_letters')\
+            .distinct('first_letters').values_list('first_letters')
         return context
 
     def get_queryset(self):
@@ -49,8 +52,10 @@ class GlossListPublicView(ListView):
         if 'search' in get and get['search'] != '':
             val = get['search']
             # Filters
-            qs = qs.filter(Q(idgloss__icontains=val) | Q(idgloss_en__icontains=val) |
-                           Q(translation__keyword__text__icontains=val))
+            qs = qs.filter(Q(idgloss__istartswith=val) | Q(translation__keyword__text__istartswith=val)
+                           # | Q(idgloss_en__icontains=val) # idgloss_en not shown in results, therefore removed.
+                           )
+
         qs = qs.distinct()
 
         # Set order according to GET field 'order'

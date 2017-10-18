@@ -29,20 +29,29 @@
 </p>
           </div>
         </div>
+        <strong>{% blocktrans %}Browse:{% endblocktrans %}</strong>
+        <div class="btn-group" role="group" aria-label="Browse">
+        {% for letter in first_letters %}
+            <a role="button" class="btn btn-default" href="?lang={{request.GET.lang|urlencode}}&search={{letter.0|urlencode}}
+               {% if request.GET.dataset %}&dataset={{request.GET.dataset|urlencode}}{% endif %}">{{letter.0}}</a>
+        {% empty %}
+            {# Put nothing here if results set is empty #}
+        {% endfor %}
+        </div>
         <hr style="margin-top:0px;margin-bottom:8px;">
         <ul class="nav nav-pills" style="background-color:#fcfdff;">
             <li role="presentation" {% if 'lang' not in request.GET or request.GET.lang == '' %}class="active"{% endif %}>
-            <a href="?lang=&search={{request.GET.search}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
+            <a href="?lang=&search={{request.GET.search|urlencode}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
             {% for signlang in signlanguages %}
             <li role="presentation" {% if request.GET.lang == signlang.language_code_3char %}class="active"{% endif %}>
-                <a href="?lang={{signlang.language_code_3char}}&search={{request.GET.search}}">{{ signlang.name }}</a></li>
+                <a href="?lang={{signlang.language_code_3char|urlencode}}&search={{request.GET.search|urlencode}}">{{ signlang.name }}</a></li>
             {% endfor %}
         </ul>
         {# Search form #}
         <div class="panel panel-default">
             <div class="panel-body">
             <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
-                <input type="hidden" name="lang" value="{{request.GET.lang}}">
+                <input type="hidden" name="lang" value="{{request.GET.lang|urlencode}}">
                 {% bootstrap_field searchform.search bound_css_class="not-bound" %}
                 <div class="form-group">
                     {% bootstrap_label searchform.dataset.label label_for="id_dataset" label_class="control-label" %}
