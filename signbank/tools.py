@@ -107,7 +107,7 @@ def infopage(request):
             context["psql_db_size"] = psql_db_size
             context["psql_db_size_pretty"] = psql_db_size_pretty
             # Make db usage a string, so django localization doesn't change dot delimiter to comma in different languages.
-            context["psql_db_usage"] = str(round(psql_db_size / PSQL_DB_QUOTA, 2))
+            context["psql_db_usage"] = str(round((psql_db_size / PSQL_DB_QUOTA)*100, 2))
 
     return render(request, "../templates/infopage.html",
                   {'context': context,
