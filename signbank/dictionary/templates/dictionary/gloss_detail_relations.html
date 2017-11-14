@@ -5,7 +5,7 @@
 <h4>{% blocktrans %}Gloss relations{% endblocktrans %}</h4>
 <div id="gloss-relations" class="panel panel-default">
     <div class="panel-heading">{% blocktrans %}Relations{% endblocktrans %}</div>
-    <ul class="list-group">
+    <ul class="list-group gloss-relations">
         {% for gr in glossrelations %}
         {% tags_for_object gr as tag_list %}
         <li class="list-group-item list-group-item-relation">
@@ -32,10 +32,7 @@
             <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Add relation{% endblocktrans %}</button>
         </form>
     </div>
-</div>
-<div id="gloss-relations-reverse" class="panel panel-default">
-    <div class="panel-heading">{% blocktrans %}Reverse relations{% endblocktrans %}</div>
-    <ul class="list-group">
+    <ul class="list-group gloss-relations-reverse">
         {% for gr in glossrelations_reverse %}
         {% tags_for_object gr as tag_list %}
         <li class="list-group-item">
