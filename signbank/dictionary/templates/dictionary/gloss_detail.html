@@ -131,6 +131,7 @@ $(document).ready(function () {
         {% if not gloss.published %}{# Don't allow recording webcam videos for published Glosses. #}
         <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
                 data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
+            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style="color:black;"></span>
             {% blocktrans %}Record a video{% endblocktrans %}</button>
         {% endif %}
     <div class='pull-right'>
@@ -138,42 +139,7 @@ $(document).ready(function () {
         <span id='edit_message'
               style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
         {# Translators: Button #}
-        <button id='delete_gloss_btn' class='btn btn-default navbar-btn btn-xs' data-toggle='modal'
-                data-target='#delete_gloss_modal' style="display:none;">{% blocktrans %}Delete Sign{% endblocktrans %}
-        </button>
-        {# Translators: Button #}
         <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
-
-        <div class="modal fade" id="delete_gloss_modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
-             aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class='modal-header'>
-                        {# Translators: Header2 #}
-                        <h2 id='modalTitle'>{% blocktrans %}Delete This Sign{% endblocktrans %}</h2>
-                    </div>
-                    <div class='modal-body'>
-                        {# Translators: Text in Gloss #}
-                        <p>{% blocktrans trimmed %}This action will delete this sign and all
-                            associated records. It cannot be undone.{% endblocktrans %}</p>
-                    </div>
-                    <form action='{% url 'dictionary:update_gloss' gloss.id %}' method='post'>
-                        {% csrf_token %}
-                        <input type='hidden' name='id' value='deletegloss'>
-                        <input type='hidden' name='value' value='confirmed'>
-
-                        <div class="modal-footer">
-                            {# Translators: Button #}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{% blocktrans %}Cancel{% endblocktrans %}
-                            </button>
-                            {# Translators: Confirmation button #}
-                            <input type="submit" class="btn btn-primary"
-                                   value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     {% endif %}
 </div>

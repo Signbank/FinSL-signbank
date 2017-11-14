@@ -89,23 +89,7 @@ def update_gloss(request, glossid):
         # in case we need multiple values
         values = request.POST.getlist('value[]')
 
-        # If field is 'deletegloss', delete the gloss and things related to it
-        if field == 'deletegloss':
-            if not request.user.has_perm('dictionary.delete_gloss'):
-                # Translators: HttpResponseForbidden for deleting gloss without permission.
-                return HttpResponseForbidden(_("You don't have permission to delete glosses."))
-            if value == 'confirmed':
-                # delete the gloss and redirect back to gloss list
-                glosses_videos = GlossVideo.objects.filter(gloss=gloss)
-                # Delete all the objects of GlossVideo that match the Gloss we try to delete.
-                for video in glosses_videos:  # TODO: Move this into video app
-                    # When deleting the object, a signal is sent and catched at video.GlossVideo
-                    # The signal handling will delete the videofile
-                    video.delete()
-                gloss.delete()
-                return HttpResponseRedirect(reverse('admin_gloss_list'))
-
-        elif field.startswith('keywords_'):
+        if field.startswith('keywords_'):
 
             language_code_2char = field.split('_')[1]
             return update_keywords(gloss, field, value, language_code_2char=language_code_2char)
