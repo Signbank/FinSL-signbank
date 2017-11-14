@@ -6,11 +6,6 @@
     {{ flatpage.content }}
     </div>
     <div class="col-md-4" id="front-right">
-        {% if not perms.dictionary.search_gloss %}
-        <a class="twitter-timeline" data-height="1000" href="https://twitter.com/VKK_JY">
-            {% blocktrans %}Tweets by VKK_JY{% endblocktrans %}</a>
-        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
