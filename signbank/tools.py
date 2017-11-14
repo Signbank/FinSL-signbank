@@ -6,10 +6,15 @@ from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 from django.db.models import Prefetch, Q
+from django.db import connection
 from django.urls import reverse
 from django.http import HttpResponse
 
 from .settings.production import WSGI_FILE
+try:
+    from .settings.settings_secret import PSQL_DB_NAME, PSQL_DB_QUOTA, DB_IS_PSQL
+except ImportError:
+    pass
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
@@ -80,8 +85,9 @@ def infopage(request):
             dset["translations"].append([language, language.translation_set.count()])
         datasets_context.append(dset)
 
-    # Find missing files for users that are 'staff'.
+    # For users that are 'staff'.
     if request.user.is_staff:
+        # Find missing files
         problems = list()
         for vid in GlossVideo.objects.all():
             if vid.videofile and not os.path.isfile(vid.videofile.path):
@@ -89,6 +95,19 @@ def infopage(request):
             if vid.posterfile and not os.path.isfile(vid.posterfile.path):
                 problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
         context["problems"] = problems
+
+        # Only do this if the database is postgresql.
+        if DB_IS_PSQL:
+            # Get postgresql database size and calculate usage percentage.
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT pg_database_size(%s)", [PSQL_DB_NAME])
+                psql_db_size = cursor.fetchone()[0]
+                cursor.execute("SELECT pg_size_pretty(pg_database_size(%s))", [PSQL_DB_NAME])
+                psql_db_size_pretty = cursor.fetchone()[0]
+            context["psql_db_size"] = psql_db_size
+            context["psql_db_size_pretty"] = psql_db_size_pretty
+            # Make db usage a string, so django localization doesn't change dot delimiter to comma in different languages.
+            context["psql_db_usage"] = str(round(psql_db_size / PSQL_DB_QUOTA, 2))
 
     return render(request, "../templates/infopage.html",
                   {'context': context,

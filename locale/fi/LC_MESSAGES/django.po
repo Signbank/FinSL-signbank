@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-14 13:12+0200\n"
+"POT-Creation-Date: 2017-11-14 14:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,7 +299,7 @@ msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
 #: signbank/dictionary/forms.py:313 signbank/dictionary/models.py:39
-#: templates/infopage.html:87
+#: templates/infopage.html:110
 msgid "Lexicon"
 msgstr "Leksikko"
 
@@ -330,7 +330,7 @@ msgstr "Käännösvastine"
 #: signbank/dictionary/models.py:75
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:15
-#: templates/infopage.html:49 templates/infopage.html:117
+#: templates/infopage.html:49 templates/infopage.html:140
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
@@ -639,7 +639,7 @@ msgstr "Lisää uusi Glossi"
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
 #: signbank/dictionary/templates/dictionary/add_gloss.html:29
 #: signbank/dictionary/templates/dictionary/import_gloss_csv.html:34
-#: templates/infopage.html:145
+#: templates/infopage.html:157
 msgid "You do not have sufficient user rights to view this page."
 msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
@@ -1694,27 +1694,27 @@ msgstr ""
 msgid "All lexicons"
 msgstr "Kaikki leksikot"
 
-#: templates/infopage.html:25 templates/infopage.html:93
+#: templates/infopage.html:25 templates/infopage.html:116
 msgid "Gloss count"
 msgstr "Glosseja"
 
-#: templates/infopage.html:29 templates/infopage.html:97
+#: templates/infopage.html:29 templates/infopage.html:120
 msgid "Glosses with video"
 msgstr "Glosseja, joilla on video"
 
-#: templates/infopage.html:33 templates/infopage.html:101
+#: templates/infopage.html:33 templates/infopage.html:124
 msgid "Video count"
 msgstr "Videoita"
 
-#: templates/infopage.html:37 templates/infopage.html:105
+#: templates/infopage.html:37 templates/infopage.html:128
 msgid "Videos not connected to a Gloss"
 msgstr "Videoita, joilla ei ole Glossia"
 
-#: templates/infopage.html:41 templates/infopage.html:109
+#: templates/infopage.html:41 templates/infopage.html:132
 msgid "Videos with poster image"
 msgstr "Videoita joilla on aloituskuva"
 
-#: templates/infopage.html:45 templates/infopage.html:113
+#: templates/infopage.html:45 templates/infopage.html:136
 msgid "Videos without poster image"
 msgstr "Videoita joilla ei ole aloituskuvaa"
 
@@ -1730,11 +1730,19 @@ msgstr "Signbankin wiki"
 msgid "Help and tutorials"
 msgstr "Apua ja ohjeita"
 
-#: templates/infopage.html:132
+#: templates/infopage.html:84
+msgid "Database storage space usage"
+msgstr "Tietokannan tallennustilan käyttöaste"
+
+#: templates/infopage.html:90
+msgid "Space used"
+msgstr "Tallennustilaa käytetty"
+
+#: templates/infopage.html:95
 msgid "Files that do not exist"
 msgstr "Tiedostot joita ei ole olemassa"
 
-#: templates/infopage.html:133
+#: templates/infopage.html:96
 msgid "not in the set location"
 msgstr "niille määritellyssä hakemistossa"
 
