@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-14 14:16+0200\n"
+"POT-Creation-Date: 2017-11-14 15:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1352,6 +1352,15 @@ msgstr "Suomi"
 #: signbank/settings/base.py:40
 msgid "English"
 msgstr "Englanti"
+
+#: signbank/tools.py:118
+msgid ""
+"Database storage space usage is high, be prepared increase database quota. "
+"If the database gets over the quota maximum, data will be lost!"
+msgstr ""
+"Tietokannan jäljellä oleva tallennustila on loppumassa, valmistaudu "
+"kasvattamaan tallennustilaa. Jos tietokanta ylittää maksimirajan, sen "
+"jälkeen tallennetut tiedot häviävät!"
 
 #: signbank/video/admin.py:12
 msgid "Has gloss"

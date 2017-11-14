@@ -4,11 +4,14 @@ from __future__ import unicode_literals
 import os
 from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth.decorators import permission_required
+from django.contrib import messages
 from django.shortcuts import render
 from django.db.models import Prefetch, Q
 from django.db import connection
 from django.urls import reverse
 from django.http import HttpResponse
+from django.core.mail import mail_admins
+from django.utils.translation import ugettext as _
 
 from .settings.production import WSGI_FILE
 try:
@@ -106,8 +109,19 @@ def infopage(request):
                 psql_db_size_pretty = cursor.fetchone()[0]
             context["psql_db_size"] = psql_db_size
             context["psql_db_size_pretty"] = psql_db_size_pretty
-            # Make db usage a string, so django localization doesn't change dot delimiter to comma in different languages.
-            context["psql_db_usage"] = str(round((psql_db_size / PSQL_DB_QUOTA)*100, 2))
+            # Calculate the usage percentage.
+            usage_percentage = round((psql_db_size / PSQL_DB_QUOTA)*100, 2)
+            # Convert to str, so django localization doesn't change dot delimiter to comma in different languages.
+            context["psql_db_usage"] = str(usage_percentage)
+            if usage_percentage >= 80.0:
+                messages.error(request, _("Database storage space usage is high, be prepared increase database quota. "
+                                          "If the database gets over the quota maximum, data will be lost!"))
+            if usage_percentage >= 95.0:
+                mail_admins(subject="Database is reaching maximum quota!",
+                            message="Dear admin, you are receiving this message because the database "
+                                    "is reaching its maximum quota. "
+                                    "Current size of the database is %s and the usage percentage is %s%%." %
+                                    (str(psql_db_size_pretty), str(usage_percentage)))
 
     return render(request, "../templates/infopage.html",
                   {'context': context,
