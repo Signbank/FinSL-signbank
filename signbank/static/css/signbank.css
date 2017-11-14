@@ -283,6 +283,9 @@ td .tag {
 #gloss-comments {
     padding-bottom: 20px;
 }
+.comment-header {
+    margin-bottom: 2px;
+}
 .col-public-list {
     padding-left: 3px;
     padding-right: 3px;
