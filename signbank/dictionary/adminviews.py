@@ -164,16 +164,13 @@ class GlossListView(ListView):
 
         if 'gloss' in get and get['gloss'] != '':
             val = get['gloss']
-
-            # Add fields you want to search logically with GET.search using | (OR) and & (AND)
-            # Search for glosses containing a string, casesensitive with icontains
-            query = Q(idgloss__icontains=val)
-
+            # Search for glosses starting with a string, case sensitive
+            query = Q(idgloss__istartswith=val)
             qs = qs.filter(query)
 
         if 'idgloss_en' in get and get['idgloss_en'] != '':
             val = get['idgloss_en']
-            qs = qs.filter(idgloss_en__icontains=val)
+            qs = qs.filter(idgloss_en__istartswith=val)
         if 'keyword' in get and get['keyword'] != '':
             if 'trans_lang' in get and get['trans_lang'] != '':
                 val = get['keyword']

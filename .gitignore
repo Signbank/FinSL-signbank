@@ -16,3 +16,5 @@ debug.log
 /*.cnf
 /signbank.db
 /codecov.sh
+/signbank/settings/development.py
+/signbank/settings/settings_secret.py

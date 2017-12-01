@@ -112,32 +112,42 @@ function clearForm(myFormElement) {
                 <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_search'>{{searchform.search.label}}</label>
-                        <input id="id_search" name='search' class='form-control' {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}>
+                        <input id="id_search" name='search' class='form-control'
+                               {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}
+                               placeholder='{% blocktrans %}Gloss, Notes, Translation containing word{% endblocktrans %}'>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss'>{{searchform.gloss.label}}</label>
-                        <input id="id_idgloss" name='gloss' class='form-control' {% if searchform.gloss.value %}value='{{searchform.gloss.value}}' {% endif %}>
+                        <input id="id_idgloss" name='gloss' class='form-control'
+                               {% if searchform.gloss.value %}value='{{searchform.gloss.value}}' {% endif %}
+                               placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss_en'>{{searchform.idgloss_en.label}}</label>
-                        <input id="id_idgloss_en" name='idgloss_en' class='form-control' {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}>
+                        <input id="id_idgloss_en" name='idgloss_en' class='form-control'
+                               {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}
+                               placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 searchinput">
                    <div class='input-group'>
                         <label class='input-group-addon' for='id_notes'>{{searchform.notes.label}}</label>
-                        <input id="id_notes" name='notes' class='form-control' {% if searchform.notes.value %}value='{{searchform.notes.value}}' {% endif %}>
+                        <input id="id_notes" name='notes' class='form-control'
+                               {% if searchform.notes.value %}value='{{searchform.notes.value}}' {% endif %}
+                               placeholder='{% blocktrans %}Contains word{% endblocktrans %}'>
                    </div>
                 </div>
                  <div class="col-md-4 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
                         {% bootstrap_field searchform.trans_lang show_label=False bound_css_class="not-bound" %}
-                        <input id="id_keyword" name='keyword' class='form-control' {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}>
+                        <input id="id_keyword" name='keyword' class='form-control'
+                               {% if searchform.keyword.value %}value='{{searchform.keyword.value}}' {% endif %}
+                               placeholder='{% blocktrans %}Contains word{% endblocktrans %}'>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 searchinput searchcolor">
