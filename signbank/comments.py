@@ -133,7 +133,7 @@ class CommentListView(ListView):
         allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
         qs = qs.filter(id__in=[x.id for x in qs if hasattr(x.content_object, 'dataset') and x.content_object.dataset in allowed_datasets])
 
-        return qs
+        return qs.order_by('-submit_date')
 
 
 class CommentSearchForm(forms.Form):
