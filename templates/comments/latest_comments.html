@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="latest_comments">
-    <h2><a href="{% url 'latest_comments_page' count='20' %}">{% blocktrans %}Latest comments{% endblocktrans %}</a></h2>
+    <h2><a href="{% url 'search_comments' %}">{% blocktrans %}Latest comments{% endblocktrans %}</a></h2>
 {% for comment in comments %}
     {% load tagging_tags %}
     {% tags_for_object comment as tag_list %}
