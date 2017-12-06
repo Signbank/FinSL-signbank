@@ -4,15 +4,15 @@
 {% load i18n %}
 {% load staticfiles %}
 {% get_current_language as LANGUAGE_CODE %}
-<html lang="{{LANGUAGE_CODE|default:"fi"}}">
+<html lang="{{LANGUAGE_CODE|default:'en'}}">
   <head>
     <title>FinSL Signbank{% block bootstrap3_title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" media="screen" href="{% static "bootstrap/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/signbank.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/dataset.css" %}">
+    <link rel="stylesheet" media="screen" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signbank.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dataset.css' %}">
     {% block extrahead %}{% endblock %}
   </head>
   <body>
@@ -21,7 +21,7 @@
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
             <header id="header">{# Translators: Site title #}
-                <h1><a href="{% url "root_page" %}">{% blocktrans %}FinSL Signbank{% endblocktrans %}</a></h1>
+                <h1><a href="{% url 'root_page' %}">{% blocktrans %}FinSL Signbank{% endblocktrans %}</a></h1>
                 <div id="langbar">{% include "langbar.html" %}</div>
             </header>
             <div id="menu">
@@ -35,19 +35,34 @@
     </div>
     <footer id="footer">
        <div id="footercontainer" class="container">
-           <div class="row footerbg">
-               <div id="logoholder" class="col-md-4">
-                        <img id="logojy" src="{% static "css/images/jy_text_50-min.png" %}" class="img-responsive logo" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
-                        <img id="logokl" src="{% static "css/images/kl-logo-fi-50-min.png" %}" class="img-responsive logo" alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
-               </div>
-                <div id="license" class="col-md-8">
+            <div class="footerbg">
+                <div class="logoholder">
+                   <a href="https://www.jyu.fi" rel="external">
+                     <img id="logojy" src="{% static 'img/jyu-logo_100-compressor.png' %}" class="logofooter" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
+                   </a>
+                   <a href="http://www.kuurojenliitto.fi/" rel="external">
+                     <img id="logokl"
+                       {% if LANGUAGE_CODE == 'fi' %}src="{% static 'img/kl-logo_fin_100-compressor.png' %}"
+                       {% elif LANGUAGE_CODE == 'se' %}src="{% static 'img/kl-logo_sve_100-compressor.png' %}"
+                       {% else %}src="{% static 'img/kl-logo_eng_100-compressor.png' %}"
+                       {% endif %}
+                       class="logofooter" alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
+                   </a>
+                   <a href="https://www.kielipankki.fi/" rel="external">
+                     <img id="logokielipankki" src="{% static 'img/kielipankki_logo_cropped-compressor.png' %}" class="logofooter" alt="{% blocktrans %}The Language Bank of Finland{% endblocktrans %}">
+                   </a>
+                   <a href="https://www.csc.fi" rel="external">
+                     <img id="logocsc" src="{% static 'img/csc_2012_logo-compressor.png' %}" class="logofooter" alt="{% blocktrans %}CSC - IT center for science{% endblocktrans %}">
+                   </a>
+                </div>
+                <div id="license">
 
                 </div>
             </div>
         </div>
     </footer>
-    <script src="{% static "js/jquery-2.2.4.min.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     {% block extrajs %}{% endblock %}
   </body>
 </html>

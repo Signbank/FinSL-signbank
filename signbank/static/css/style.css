@@ -94,26 +94,31 @@ header#header h1 {
     margin-left: 0px;
     margin-right: 0px;
 }
-#logoholder {
-    float: left;
-    position: relative;
+.logoholder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-right: 0px;
+}
+.logofooter {
+    margin-right: 1vw;
 }
 #logojy {
-    max-width: 140px;
     max-height: 70px;
-    float: left;
-    margin-right: 20px;
 }
 #logokl {
-    padding-top: 25px;
-    padding-bottom: 9px;
-    max-width: 187px;
+    max-height: 45px;
+}
+#logokielipankki {
     max-height: 70px;
-    float: left;
+}
+#logocsc {
+    max-height: 55px;
 }
 #license {
-    padding-top: 15px;
+
 }
