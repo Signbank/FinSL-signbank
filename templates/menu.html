@@ -19,10 +19,12 @@
             <li><a href="{{ page.url }}">{{ page.title }}</a></li>
         {% endfor %}
             <li><a href="{% url "dictionary:public_gloss_list" %}">{% blocktrans %}Signs{% endblocktrans %}</a></li>
-        {% if perms.dictionary.search_gloss %}
+
             <li><a href="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">
                 {% blocktrans %}Wiki{% endblocktrans %}</a></li>
+        {% if perms.dictionary.search_gloss %}
             <li><a href="{% url "admin_gloss_list" %}">{% blocktrans context "menu-link" %}Advanced search{% endblocktrans %}</a></li>
+            <li><a href="{% url 'dictionary:search_glossrelation' %}">{% blocktrans %}Search relations{% endblocktrans %}</a></li>
         {% endif %}
         {% if perms.dictionary.add_gloss and perms.dictionary.change_gloss %}
             <li class="dropdown">

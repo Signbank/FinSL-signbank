@@ -21,7 +21,8 @@ from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user
 from reversion.models import Version
 
-from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm
+from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, \
+    GlossRelationSearchForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
     Relation, MorphologyDefinition
 from ..video.forms import VideoUploadForGlossForm
@@ -536,3 +537,75 @@ def serialize_glosses(dataset, queryset):
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 
+
+class GlossRelationListView(ListView):
+    model = GlossRelation
+    template_name = 'dictionary/admin_glossrelation_list.html'
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(GlossRelationListView, self).get_context_data(**kwargs)
+        context['searchform'] = GlossRelationSearchForm(self.request.GET)
+        # Get allowed datasets for user (django-guardian)
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        # Filter the forms dataset field for the datasets user has permission to.
+        context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+
+        populate_tags_for_object_list(context['object_list'], model=self.object_list.model)
+
+        if 'order' not in self.request.GET:
+            context['order'] = 'source'
+        else:
+            context['order'] = self.request.GET.get('order')
+
+        return context
+
+    def get_paginate_by(self, queryset):
+        """
+        Paginate by specified value in querystring, or use default class property value.
+        """
+        return self.request.GET.get('paginate_by', self.paginate_by)
+
+    def get_queryset(self):
+        # get query terms from self.request
+        qs = GlossRelation.objects.all()
+
+        # Filter in only objects in the datasets the user has permissions to.
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        qs = qs.filter(source__dataset__in=allowed_datasets).filter(target__dataset__in=allowed_datasets)
+
+        get = self.request.GET
+
+        # Search for multiple datasets (if provided)
+        vals = get.getlist('dataset', [])
+        if vals != []:
+            qs = qs.filter(source__dataset__in=vals).filter(target__dataset__in=vals)
+
+        if 'search' in get and get['search'] != '':
+            val = get['search']
+            # Searches for multiple fields at the same time. Looking if any of the fields match.
+            query = (Q(source__idgloss__icontains=val) | Q(target__idgloss__icontains=val))
+            qs = qs.filter(query)
+
+        if 'source' in get and get['source'] != '':
+            val = get['source']
+            # Search for sources glosses starting with a string, case sensitive
+            query = Q(source__idgloss__istartswith=val)
+            qs = qs.filter(query)
+
+        if 'target' in get and get['target'] != '':
+            val = get['target']
+            # Search for sources glosses starting with a string, case sensitive
+            query = Q(target__idgloss__istartswith=val)
+            qs = qs.filter(query)
+
+        # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
+        qs = qs.prefetch_related(Prefetch('source__dataset'), Prefetch('target__dataset'))
+
+        # Set order according to GET field 'order'
+        if 'order' in get:
+            qs = qs.order_by(get['order'])
+        else:
+            qs = qs.order_by('source')
+        return qs

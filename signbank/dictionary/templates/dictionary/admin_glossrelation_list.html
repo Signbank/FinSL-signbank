@@ -1,0 +1,152 @@
+{% extends "baselayout.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+{% load staticfiles %}
+{# Translators: Title for GlossRelation search page #}
+{% block bootstrap3_title %}: {% blocktrans %}Search Relations of Glosses{% endblocktrans %}{% endblock %}
+{% block extrajs %}
+<script>
+// http://www.javascript-coder.com/javascript-form/javascript-reset-form.phtml
+function clearForm(myFormElement) {
+
+  var elements = myFormElement.elements;
+
+  myFormElement.reset();
+
+  for(i=0; i<elements.length; i++) {
+
+      field_type = elements[i].type.toLowerCase();
+
+      switch(field_type) {
+
+        case "text":
+        case "password":
+        case "textarea":
+        case "hidden":
+
+          elements[i].value = "";
+          break;
+
+        case "radio":
+        case "checkbox":
+            if (elements[i].checked) {
+              elements[i].checked = false;
+          }
+          break;
+
+        case "select-one":
+        case "select-multiple":
+                    elements[i].selectedIndex = -1;
+          break;
+
+        default:
+          break;
+      }
+    }
+    return(false);
+}
+</script>
+{% endblock %}
+{% block content %}
+
+{# Translators: admin_gloss_list header #}
+<h2>{% blocktrans %}Search Relations of Glosses{% endblocktrans %}</h2>
+<div id='searchformwell' class='well well-sm'>
+    <form name='adminsearch' id='adminsearch'>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-2 col-sm-6 searchinput">
+                    {% bootstrap_label searchform.dataset.label %}
+                    {% bootstrap_field searchform.dataset show_label=False bound_css_class="not-bound" %}
+                </div>
+                <div class="col-md-5 col-sm-6 searchinput">
+                    <div class="col-md-12 searchinput">
+                        <div class='input-group'>
+                            <label class='input-group-addon' for='id_search'>{{searchform.search.label}}</label>
+                            <input id="id_search" name='search' class='form-control'
+                                   {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}
+                                   placeholder='{% blocktrans %}Source or target gloss containing{% endblocktrans %}'>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 searchinput">
+                        <div class='input-group'>
+                            <label class='input-group-addon' for='id_glossrelation_source'>{{searchform.source.label}}</label>
+                            <input id="id_glossrelation_source" name='source' class='form-control'
+                                   {% if searchform.source.value %}value='{{searchform.source.value}}' {% endif %}
+                                   placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
+                        </div>
+                    </div>
+                    <div class="col-md-12 searchinput">
+                        <div class='input-group'>
+                            <label class='input-group-addon' for='id_glossrelation_target'>{{searchform.target.label}}</label>
+                            <input id="id_glossrelation_target" name='target' class='form-control'
+                                   {% if searchform.target.value %}value='{{searchform.target.value}}' {% endif %}
+                                   placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 searchinput">
+                    <div class="col-md-12 searchinput">
+                       <div class="input-group">
+                           <label class="input-group-addon" for="id_tags">{{searchform.tags.label}}</label>
+                           {% bootstrap_field searchform.tags show_label=False bound_css_class="not-bound" %}
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="searchform-separator">
+        <div class='btn-group'>
+            <input class='btn btn-primary' type='submit' name='submit' value='{% blocktrans context "search-button" %}Search{% endblocktrans %}'>
+            <input class='btn btn-default' type='submit' onclick="clearForm(document.adminsearch);" value='{% blocktrans %}Reset{% endblocktrans %}'>
+        </div>
+
+        <div class='form-group' id='paginate_by'>
+            {# Translators: How many results to fit per page  #}
+            <label for='paginate_by'>{% blocktrans %}Results per page{% endblocktrans %}</label>
+            <select class='form-control' name="paginate_by">
+                <option{% if paginator.per_page == 1000 %} selected{% endif %}>1000</option>
+                <option{% if paginator.per_page == 500 %} selected{% endif %}>500</option>
+                <option{% if paginator.per_page == 100 %} selected{% endif %}>100</option>
+                <option{% if paginator.per_page == 50 %} selected{% endif %}>50</option>
+                <option{% if paginator.per_page == 25 %} selected{% endif %}>25</option>
+                <option{% if paginator.per_page == 10 %} selected{% endif %}>10</option>
+            </select>
+        </div>
+    </form>
+</div>
+{% if object_list %}
+<nav aria-label="{% blocktrans %}Page navigation top{% endblocktrans %}">
+    {% include "dictionary/paginate.html" %}
+</nav>
+<table class='table table-condensed'>
+    <thead>
+        <tr>
+            <th>{% blocktrans %}Source Gloss{% endblocktrans %} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'source' or request.GET.order == 'source' %}&order=-source{% else %}&order=source{% endif %}">
+                <span class="{% if request.GET.order == "-source" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
+            <th>{% blocktrans %}Target Gloss{% endblocktrans %} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'target' or request.GET.order == 'target' %}&order=-target{% else %}&order=target{% endif %}">
+                <span class="{% if request.GET.order == "-target" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
+            <th>{% blocktrans %}Relation type{% endblocktrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for glossrelation in object_list %}
+        {# Here we decide/change the row background colors #}
+        <tr>
+
+            <td><span class="dataset-{{glossrelation.source.dataset.id}}-color label label-default">{{ glossrelation.source.dataset }}</span>
+                <a href="/dictionary/gloss/{{glossrelation.source.pk}}/">{{glossrelation.source}}</a></td>
+            <td><span class="dataset-{{glossrelation.target.dataset.id}}-color label label-default">{{ glossrelation.target.dataset }}</span>
+                <a href="/dictionary/gloss/{{glossrelation.target.pk}}/">{{glossrelation.target}}</a></td>
+            <td>{% for tag in glossrelation.cached_tags %}<span class='tag'>{{ tag }}</span>{% endfor %}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<nav aria-label="{% blocktrans %}Page navigation bottom{% endblocktrans %}">
+    {% include "dictionary/paginate.html" %}
+</nav>
+{% endif %}
+{% endblock %}

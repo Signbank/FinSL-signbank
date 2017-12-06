@@ -133,6 +133,10 @@ section p {
 #adminsearch #searchpanels select {
     width: 100%;
 }
+.searchform-separator {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
 .pagination {
    margin: 0 0 5px 0;
 }

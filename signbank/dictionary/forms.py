@@ -157,11 +157,11 @@ class GlossSearchForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=qs, required=False)
     nottags = forms.ModelMultipleChoiceField(queryset=qs)
 
-    published = forms.BooleanField(label=_('Gloss is published'), required=False)
+    published = forms.BooleanField(label=_('Is published'), required=False)
 
     # Translators: GlossSearchForm label
-    hasvideo = forms.BooleanField(label=_('Gloss has a video'), required=False)
-    hasnovideo = forms.BooleanField(label=_('Gloss does not have a video'), required=False)
+    hasvideo = forms.BooleanField(label=_('Has videos'), required=False)
+    hasnovideo = forms.BooleanField(label=_('Has no videos'), required=False)
 
     # These have been disabled until they are later needed
     # TODO: To enable these, uncomment them.
@@ -210,6 +210,29 @@ class GlossSearchForm(forms.ModelForm):
                   'movement_shape', 'movement_direction', 'movement_manner', 'contact_type', 'mouth_gesture',
                   'mouthing', 'phonetic_variation', 'iconic_image', 'named_entity', 'semantic_field',
                   'number_of_occurences',)
+
+
+class GlossRelationSearchForm(forms.ModelForm):
+    # Translators: GlossSearchForm label
+    dataset = forms.ModelMultipleChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), required=False)
+    search = forms.CharField(label=_("Search"))
+    # Translators: GlossSearchForm label
+    source = forms.CharField(label=_("Source Gloss"))
+    # Translators: GlossSearchForm label
+    target = forms.CharField(label=_("Target Gloss"))
+
+    try:
+        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(GlossRelation)).allowed_tags.all()
+    except (ObjectDoesNotExist, OperationalError):
+        qs = Tag.objects.all()
+    tags = forms.ModelMultipleChoiceField(queryset=qs, required=False, label=_("Relation type"))
+    nottags = forms.ModelMultipleChoiceField(queryset=qs)
+
+    class Meta:
+        ATTRS_FOR_FORMS = {'class': 'form-control'}
+
+        model = GlossRelation
+        exclude = ()
 
 
 class GlossRelationForm(forms.Form):

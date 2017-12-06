@@ -16,6 +16,10 @@ urlpatterns = [
     url(r'^search/$', permission_required('dictionary.search_gloss')
     (adminviews.GlossListView.as_view()), name='menusearch'),
 
+    # GlossRelation search page
+    url(r'^search/glossrelation/$', permission_required('dictionary.search_gloss')
+    (adminviews.GlossRelationListView.as_view()), name='search_glossrelation'),
+
     # Urls used to update data
     url(r'^update/gloss/(?P<glossid>\d+)$',
         update.update_gloss, name='update_gloss'),

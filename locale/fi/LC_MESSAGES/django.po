@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-06 16:05+0200\n"
+"POT-Creation-Date: 2017-12-06 18:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,9 +35,10 @@ msgstr ""
 msgid "Tag"
 msgstr "Tagi"
 
-#: signbank/dictionary/admin.py:77
+#: signbank/dictionary/admin.py:77 signbank/dictionary/forms.py:228
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:93
 msgid "Relation type"
-msgstr "Suhde:"
+msgstr "Suhde"
 
 #: signbank/dictionary/admin.py:78
 msgid "Relation types"
@@ -79,11 +80,11 @@ msgstr "Semantiikka"
 msgid "Frequency"
 msgstr "Frekvenssi"
 
-#: signbank/dictionary/adminviews.py:74
+#: signbank/dictionary/adminviews.py:75
 msgid "You do not have permissions to export to CSV."
 msgstr "Sinulla ei ole käyttöoikeuksia tuoda CSV:nä."
 
-#: signbank/dictionary/adminviews.py:400
+#: signbank/dictionary/adminviews.py:401
 msgid "You do not have permissions to view glosses of this dataset."
 msgstr "Sinulla ei ole oikeuksia nähdä tämän leksikon glosseja."
 
@@ -128,7 +129,8 @@ msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:25 signbank/dictionary/forms.py:138
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:210
+#: signbank/dictionary/forms.py:217
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:204
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:128
 #: signbank/video/templates/addvideos.html:31
 #: signbank/video/templates/uploaded_glossvideos.html:15
@@ -138,9 +140,9 @@ msgstr "Leksikko"
 #. Translators: GlossSearchForm label
 #. Translators: Gloss field: idgloss, verbose name
 #: signbank/dictionary/forms.py:27 signbank/dictionary/forms.py:145
-#: signbank/dictionary/forms.py:217 signbank/dictionary/models.py:210
+#: signbank/dictionary/forms.py:240 signbank/dictionary/models.py:210
 #: signbank/dictionary/models.py:235
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:211
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
 #: signbank/video/models.py:64
 #: signbank/video/templates/uploaded_glossvideos.html:59
@@ -153,7 +155,7 @@ msgstr "Glossi"
 #: signbank/dictionary/forms.py:28 signbank/dictionary/forms.py:147
 #: signbank/dictionary/models.py:241
 #: signbank/dictionary/templates/dictionary/add_gloss_form.html:23
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:213
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:207
 msgid "Gloss in English"
 msgstr "Glossi englanniksi"
 
@@ -176,7 +178,7 @@ msgstr ""
 "Glossille toinen nimi."
 
 #: signbank/dictionary/forms.py:99
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:217
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:211
 #: signbank/dictionary/templates/dictionary/glosstags.html:5
 msgid "Tags"
 msgstr "Tagit"
@@ -207,15 +209,13 @@ msgid "---------"
 msgstr ""
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:140 signbank/dictionary/forms.py:311
+#: signbank/dictionary/forms.py:140 signbank/dictionary/forms.py:334
 #: signbank/dictionary/models.py:127
 msgid "Sign language"
 msgstr "Viittomakieli"
 
-#. Translators: admin_gloss_list header
-#: signbank/dictionary/forms.py:143 signbank/dictionary/forms.py:301
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:97
-#: templates/comments/search_comments.html:13
+#: signbank/dictionary/forms.py:143 signbank/dictionary/forms.py:218
+#: signbank/dictionary/forms.py:324 templates/comments/search_comments.html:13
 msgid "Search"
 msgstr "Haku"
 
@@ -230,35 +230,40 @@ msgid "Choose language"
 msgstr "Valitse kieli"
 
 #: signbank/dictionary/forms.py:160
-msgid "Gloss is published"
-msgstr "Glossi on julkaistu"
+msgid "Is published"
+msgstr "On julkaistu"
 
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:163
-msgid "Gloss has a video"
-msgstr "Glossilla on video"
+msgid "Has videos"
+msgstr "On videoita"
 
 #: signbank/dictionary/forms.py:164
-msgid "Gloss does not have a video"
-msgstr "Glossilla ei ole videota"
+msgid "Has no videos"
+msgstr "Ei videoita"
 
-#: signbank/dictionary/forms.py:222
-msgid "Relation type:"
-msgstr "Suhde:"
-
+#. Translators: GlossSearchForm label
 #. Translators: RelationForm label
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:237 signbank/dictionary/forms.py:255
+#: signbank/dictionary/forms.py:220 signbank/dictionary/forms.py:260
+#: signbank/dictionary/forms.py:278
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:89
 msgid "Source Gloss"
 msgstr "Lähdeglossi"
 
+#. Translators: GlossSearchForm label
 #. Translators: RelationForm label
-#: signbank/dictionary/forms.py:239
+#: signbank/dictionary/forms.py:222 signbank/dictionary/forms.py:262
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:91
 msgid "Target Gloss"
 msgstr "Kohdeglossi"
 
+#: signbank/dictionary/forms.py:245
+msgid "Relation type:"
+msgstr "Suhde:"
+
 #. Translators:
-#: signbank/dictionary/forms.py:241 signbank/dictionary/forms.py:275
+#: signbank/dictionary/forms.py:264 signbank/dictionary/forms.py:298
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:22
 msgid "Type"
 msgstr "Tyyppi"
@@ -266,44 +271,44 @@ msgstr "Tyyppi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:258 signbank/dictionary/models.py:157
+#: signbank/dictionary/forms.py:281 signbank/dictionary/models.py:157
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:241
 msgid "Related Language"
 msgstr "Lainattu kieli"
 
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:260
+#: signbank/dictionary/forms.py:283
 msgid "Gloss in Related Language"
 msgstr "Glossi lainatussa kielessä"
 
 #. Translators: MorphologyForm label
-#: signbank/dictionary/forms.py:270
+#: signbank/dictionary/forms.py:293
 msgid "Parent Gloss"
 msgstr "Emoglossi"
 
 #. Translators: MorphologyForm label
 #. Translators:
-#: signbank/dictionary/forms.py:281
+#: signbank/dictionary/forms.py:304
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:24
 msgid "Morpheme"
 msgstr "Morfeemi"
 
-#: signbank/dictionary/forms.py:302
+#: signbank/dictionary/forms.py:325
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:39
 msgid "Search signs"
 msgstr "Hae viittomia"
 
-#: signbank/dictionary/forms.py:310
+#: signbank/dictionary/forms.py:333
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:77
 msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
-#: signbank/dictionary/forms.py:313 signbank/dictionary/models.py:39
+#: signbank/dictionary/forms.py:336 signbank/dictionary/models.py:39
 #: templates/infopage.html:110
 msgid "Lexicon"
 msgstr "Leksikko"
 
-#: signbank/dictionary/forms.py:314
+#: signbank/dictionary/forms.py:337
 msgid "You can limit the search to these lexicons."
 msgstr "Voit rajata hakua näihin leksikoihin."
 
@@ -328,7 +333,7 @@ msgid "Translation equivalent"
 msgstr "Käännösvastine"
 
 #: signbank/dictionary/models.py:75
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:215
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:209
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:15
 #: templates/infopage.html:49 templates/infopage.html:140
 msgid "Translation equivalents"
@@ -462,7 +467,7 @@ msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
 #: signbank/dictionary/models.py:246
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:216
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:210
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:23
 msgid "Notes"
 msgstr "Lisätiedot"
@@ -653,62 +658,86 @@ msgstr "Glossi"
 msgid "Search Signs"
 msgstr "Etsi viittomia"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:117
+#. Translators: admin_gloss_list header
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:97
+msgid "Search Glosses"
+msgstr "Etsi glosseja"
+
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:111
 msgid "Gloss, Notes, Translation containing word"
 msgstr "Glossi, lisätieto, käännös sisältäen sanan"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:125
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:133
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:119
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:127
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:35
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:43
 msgid "Begins with word"
 msgstr "Alkaa sanalla"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:141
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:150
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:135
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:144
 msgid "Contains word"
 msgstr "Sisältää sanan"
 
 #. Translators: Submit button (press to search)
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:176
-#: templates/menu.html:58
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:170
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:59
+#: templates/menu.html:60
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:178
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:172
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:61
 msgid "CSV"
 msgstr "CSV"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:180
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:174
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:63
 msgid "Reset"
 msgstr "Tyhjennä"
 
 #. Translators: How many results to fit per page
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:185
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:179
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:68
 msgid "Results per page"
 msgstr "Tuloksia per sivu"
 
 #. Translators: How many matches out of possible
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:201
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:195
 msgid "Number of matches:"
 msgstr "Hakutuloksia:"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:204
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:198
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:83
 msgid "Page navigation top"
 msgstr "Sivun yläosan navigointi"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:231
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:225
 #: signbank/video/models.py:24
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:232
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:226
 msgctxt "sr-videos"
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:246
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:240
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:110
 msgid "Page navigation bottom"
 msgstr "Sivun alaosan navitointi"
+
+#. Translators: Title for GlossRelation search page
+#. Translators: admin_gloss_list header
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:6
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:10
+msgid "Search Relations of Glosses"
+msgstr "Etsi glossien relaatioita"
+
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:26
+msgid "Source or target gloss containing"
+msgstr "Lähde- tai kohdeglossi sisältää"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:34
@@ -1489,7 +1518,7 @@ msgstr "Tiedosto:"
 msgid "Error:"
 msgstr "Virhe:"
 
-#: signbank/video/templates/addvideos.html:26 templates/menu.html:34
+#: signbank/video/templates/addvideos.html:26 templates/menu.html:36
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
@@ -1666,7 +1695,7 @@ msgstr "Kielipankki"
 msgid "CSC - IT center for science"
 msgstr "CSC - Tieteen tietotekniikan keskus"
 
-#: templates/comments/latest_comments.html:3 templates/menu.html:42
+#: templates/comments/latest_comments.html:3 templates/menu.html:44
 msgid "Latest comments"
 msgstr "Uusimmat kommentit"
 
@@ -1691,7 +1720,7 @@ msgstr "Muokkaa kommenttia"
 msgid "Search Comments"
 msgstr "Etsi kommentteja"
 
-#: templates/comments/search_comments.html:9 templates/menu.html:43
+#: templates/comments/search_comments.html:9 templates/menu.html:45
 msgid "Search comments"
 msgstr "Etsi kommentteja"
 
@@ -1705,7 +1734,7 @@ msgstr "kommenttia"
 msgid "Edit Page"
 msgstr "Muokkaa sivua"
 
-#: templates/infopage.html:11 templates/menu.html:40
+#: templates/infopage.html:11 templates/menu.html:42
 msgid "Links and statistics"
 msgstr "Linkkejä ja tilastoja"
 
@@ -1860,29 +1889,33 @@ msgstr "Viittomat"
 msgid "Wiki"
 msgstr "Wiki"
 
-#: templates/menu.html:25
+#: templates/menu.html:26
 msgctxt "menu-link"
 msgid "Advanced search"
 msgstr "Kehittynyt haku"
 
-#: templates/menu.html:30
+#: templates/menu.html:27
+msgid "Search relations"
+msgstr "Relaatiohaku"
+
+#: templates/menu.html:32
 msgid "Manage"
 msgstr "Hallinta"
 
-#: templates/menu.html:32
+#: templates/menu.html:34
 msgid "Create gloss"
 msgstr "Luo glossi"
 
-#: templates/menu.html:35
+#: templates/menu.html:37
 msgid "Manage uploaded videos"
 msgstr "Lähetettyjen videoiden hallinta"
 
-#: templates/menu.html:38
+#: templates/menu.html:40
 msgid "CSV import"
 msgstr "Tuo CSV"
 
 #. Translators: Placeholder text in a search textfield
-#: templates/menu.html:53
+#: templates/menu.html:55
 msgid "Search sign"
 msgstr "Hae viittomaa"
 
@@ -2035,6 +2068,15 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Gloss is published"
+#~ msgstr "Glossi on julkaistu"
+
+#~ msgid "Gloss has a video"
+#~ msgstr "Glossilla on video"
+
+#~ msgid "Gloss does not have a video"
+#~ msgstr "Glossilla ei ole videota"
 
 #~ msgid "Note contains"
 #~ msgstr "Lisätieto sisältää sanan"
@@ -2521,12 +2563,6 @@ msgstr "Kielen valinta"
 #~ msgctxt "menu-link"
 #~ msgid "Search"
 #~ msgstr "Haku"
-
-#~ msgid "Search gloss"
-#~ msgstr "Etsi glossia"
-
-#~ msgid "Search translation"
-#~ msgstr "Etsi käännösvastinetta"
 
 #~ msgid "Dataset for a glossvideo"
 #~ msgstr "Glossivideon aineisto"

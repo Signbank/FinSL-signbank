@@ -94,22 +94,16 @@ function clearForm(myFormElement) {
 {% block content %}
 
 {# Translators: admin_gloss_list header #}
-<h2>{% blocktrans %}Search{% endblocktrans %}</h2>
+<h2>{% blocktrans %}Search Glosses{% endblocktrans %}</h2>
 <div id='searchformwell' class='well well-sm'>
     <form name='adminsearch' id='adminsearch'>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 col-sm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            {% bootstrap_label searchform.dataset.label %}
-                        </div>
-                        <div class="panel-body">
-                            {% bootstrap_field searchform.dataset show_label=False bound_css_class="not-bound" %}
-                        </div>
-                    </div>
+                <div class="col-md-2 col-sm-6 searchinput">
+                    {% bootstrap_label searchform.dataset.label %}
+                    {% bootstrap_field searchform.dataset show_label=False bound_css_class="not-bound" %}
                 </div>
-                <div class="col-md-4 col-sm-6 searchinput">
+                <div class="col-md-5 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_search'>{{searchform.search.label}}</label>
                         <input id="id_search" name='search' class='form-control'
@@ -117,7 +111,7 @@ function clearForm(myFormElement) {
                                placeholder='{% blocktrans %}Gloss, Notes, Translation containing word{% endblocktrans %}'>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 searchinput">
+                <div class="col-md-5 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss'>{{searchform.gloss.label}}</label>
                         <input id="id_idgloss" name='gloss' class='form-control'
@@ -125,7 +119,7 @@ function clearForm(myFormElement) {
                                placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 searchinput">
+                <div class="col-md-5 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_idgloss_en'>{{searchform.idgloss_en.label}}</label>
                         <input id="id_idgloss_en" name='idgloss_en' class='form-control'
@@ -133,7 +127,7 @@ function clearForm(myFormElement) {
                                placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 searchinput">
+                <div class="col-md-5 col-sm-6 searchinput">
                    <div class='input-group'>
                         <label class='input-group-addon' for='id_notes'>{{searchform.notes.label}}</label>
                         <input id="id_notes" name='notes' class='form-control'
@@ -141,7 +135,7 @@ function clearForm(myFormElement) {
                                placeholder='{% blocktrans %}Contains word{% endblocktrans %}'>
                    </div>
                 </div>
-                 <div class="col-md-4 col-sm-6 searchinput">
+                 <div class="col-md-5 col-sm-6 searchinput">
                     <div class='input-group'>
                         <label class='input-group-addon' for='id_keyword'>{{searchform.keyword.label}}</label>
                         {% bootstrap_field searchform.trans_lang show_label=False bound_css_class="not-bound" %}
@@ -150,20 +144,20 @@ function clearForm(myFormElement) {
                                placeholder='{% blocktrans %}Contains word{% endblocktrans %}'>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 searchinput searchcolor">
+                <div class="col-md-5 col-sm-12 searchinput searchcolor">
                         <ul class="list-group list-inline">
                           <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.published show_label=False bound_css_class="not-bound" %}</li>
                           <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.hasvideo show_label=False bound_css_class="not-bound" %}</li>
                           <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.hasnovideo show_label=False bound_css_class="not-bound" %}</li>
                         </ul>
                 </div>
-                <div class="col-md-4 col-sm-6 searchinput">
+                <div class="col-md-6 col-sm-6 searchinput">
                    <div class="input-group">
                        <label class="input-group-addon" for="id_tags">{{searchform.tags.label}}</label>
                        {% bootstrap_field searchform.tags show_label=False bound_css_class="not-bound" %}
                    </div>
                 </div>
-                <div class="col-md-4 col-sm-6 searchinput">
+                <div class="col-md-6 col-sm-6 searchinput">
                     <div class="input-group">
                         <label class="input-group-addon" for="id_signlanguage">{{searchform.signlanguage.label}}</label>
                         {% bootstrap_field searchform.signlanguage show_label=False bound_css_class="not-bound" %}
@@ -171,7 +165,7 @@ function clearForm(myFormElement) {
                 </div>
             </div>
         </div>
-        <hr>
+        <hr class="searchform-separator">
         <div class='btn-group'>
             <input class='btn btn-primary' type='submit' name='submit' value='{% blocktrans context "search-button" %}Search{% endblocktrans %}'>
             {% if perms.dictionary.export_csv %}
