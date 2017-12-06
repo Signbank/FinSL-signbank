@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-01 14:09+0200\n"
+"POT-Creation-Date: 2017-12-06 16:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr "Frekvenssi"
 msgid "You do not have permissions to export to CSV."
 msgstr "Sinulla ei ole käyttöoikeuksia tuoda CSV:nä."
 
-#: signbank/dictionary/adminviews.py:403
+#: signbank/dictionary/adminviews.py:400
 msgid "You do not have permissions to view glosses of this dataset."
 msgstr "Sinulla ei ole oikeuksia nähdä tämän leksikon glosseja."
 
@@ -1650,13 +1650,21 @@ msgstr "FinSL Signbank"
 msgid "(No content)"
 msgstr "(Ei sisältöä)"
 
-#: templates/baselayout.html:40
+#: templates/baselayout.html:41
 msgid "University of Jyväskylä"
 msgstr "Jyväskylän yliopisto"
 
-#: templates/baselayout.html:41
+#: templates/baselayout.html:49
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
+
+#: templates/baselayout.html:52
+msgid "The Language Bank of Finland"
+msgstr "Kielipankki"
+
+#: templates/baselayout.html:55
+msgid "CSC - IT center for science"
+msgstr "CSC - Tieteen tietotekniikan keskus"
 
 #: templates/comments/latest_comments.html:3 templates/menu.html:42
 msgid "Latest comments"
