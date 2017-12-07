@@ -212,7 +212,7 @@ class GlossSearchForm(forms.ModelForm):
                   'number_of_occurences',)
 
 
-class GlossRelationSearchForm(forms.ModelForm):
+class GlossRelationSearchForm(forms.Form):
     # Translators: GlossSearchForm label
     dataset = forms.ModelMultipleChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), required=False)
     search = forms.CharField(label=_("Search"))
@@ -226,13 +226,9 @@ class GlossRelationSearchForm(forms.ModelForm):
     except (ObjectDoesNotExist, OperationalError):
         qs = Tag.objects.all()
     tags = forms.ModelMultipleChoiceField(queryset=qs, required=False, label=_("Relation type"))
-    nottags = forms.ModelMultipleChoiceField(queryset=qs)
 
     class Meta:
         ATTRS_FOR_FORMS = {'class': 'form-control'}
-
-        model = GlossRelation
-        exclude = ()
 
 
 class GlossRelationForm(forms.Form):
