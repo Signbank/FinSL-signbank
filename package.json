@@ -1,0 +1,34 @@
+{
+  "name": "finsl-signbank",
+  "version": "1.0.0",
+  "description": "signlanguage corpus/dictionary",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Signbank/FinSL-signbank.git"
+  },
+  "keywords": [
+    "signlanguage"
+  ],
+  "author": "Henri Nieminen",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Signbank/FinSL-signbank/issues"
+  },
+  "homepage": "https://github.com/Signbank/FinSL-signbank#readme",
+  "dependencies": {
+    "dev": "^0.1.3"
+  },
+  "devDependencies": {
+    "TagManager": "git+https://github.com/max-favilli/tagmanager.git",
+    "bootstrap": "^3.3.7",
+    "jquery": "^2.2.4",
+    "mark.js": "^8.11.0",
+    "recordrtc": "^5.4.5",
+    "typeahead.js": "^0.11.1"
+  }
+}
