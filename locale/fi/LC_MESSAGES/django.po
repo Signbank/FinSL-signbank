@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-06 18:24+0200\n"
+"POT-Creation-Date: 2017-12-08 10:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgid "Tag"
 msgstr "Tagi"
 
 #: signbank/dictionary/admin.py:77 signbank/dictionary/forms.py:228
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:93
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:131
 msgid "Relation type"
 msgstr "Suhde"
 
@@ -140,7 +140,7 @@ msgstr "Leksikko"
 #. Translators: GlossSearchForm label
 #. Translators: Gloss field: idgloss, verbose name
 #: signbank/dictionary/forms.py:27 signbank/dictionary/forms.py:145
-#: signbank/dictionary/forms.py:240 signbank/dictionary/models.py:210
+#: signbank/dictionary/forms.py:236 signbank/dictionary/models.py:210
 #: signbank/dictionary/models.py:235
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
@@ -209,13 +209,13 @@ msgid "---------"
 msgstr ""
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:140 signbank/dictionary/forms.py:334
+#: signbank/dictionary/forms.py:140 signbank/dictionary/forms.py:330
 #: signbank/dictionary/models.py:127
 msgid "Sign language"
 msgstr "Viittomakieli"
 
 #: signbank/dictionary/forms.py:143 signbank/dictionary/forms.py:218
-#: signbank/dictionary/forms.py:324 templates/comments/search_comments.html:13
+#: signbank/dictionary/forms.py:320 templates/comments/search_comments.html:13
 msgid "Search"
 msgstr "Haku"
 
@@ -245,25 +245,25 @@ msgstr "Ei videoita"
 #. Translators: GlossSearchForm label
 #. Translators: RelationForm label
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:220 signbank/dictionary/forms.py:260
-#: signbank/dictionary/forms.py:278
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:89
+#: signbank/dictionary/forms.py:220 signbank/dictionary/forms.py:256
+#: signbank/dictionary/forms.py:274
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:127
 msgid "Source Gloss"
 msgstr "Lähdeglossi"
 
 #. Translators: GlossSearchForm label
 #. Translators: RelationForm label
-#: signbank/dictionary/forms.py:222 signbank/dictionary/forms.py:262
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:91
+#: signbank/dictionary/forms.py:222 signbank/dictionary/forms.py:258
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:129
 msgid "Target Gloss"
 msgstr "Kohdeglossi"
 
-#: signbank/dictionary/forms.py:245
+#: signbank/dictionary/forms.py:241
 msgid "Relation type:"
 msgstr "Suhde:"
 
 #. Translators:
-#: signbank/dictionary/forms.py:264 signbank/dictionary/forms.py:298
+#: signbank/dictionary/forms.py:260 signbank/dictionary/forms.py:294
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:22
 msgid "Type"
 msgstr "Tyyppi"
@@ -271,44 +271,44 @@ msgstr "Tyyppi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:281 signbank/dictionary/models.py:157
+#: signbank/dictionary/forms.py:277 signbank/dictionary/models.py:157
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:241
 msgid "Related Language"
 msgstr "Lainattu kieli"
 
 #. Translators: RelationToForeignSignForm label
-#: signbank/dictionary/forms.py:283
+#: signbank/dictionary/forms.py:279
 msgid "Gloss in Related Language"
 msgstr "Glossi lainatussa kielessä"
 
 #. Translators: MorphologyForm label
-#: signbank/dictionary/forms.py:293
+#: signbank/dictionary/forms.py:289
 msgid "Parent Gloss"
 msgstr "Emoglossi"
 
 #. Translators: MorphologyForm label
 #. Translators:
-#: signbank/dictionary/forms.py:304
+#: signbank/dictionary/forms.py:300
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:24
 msgid "Morpheme"
 msgstr "Morfeemi"
 
-#: signbank/dictionary/forms.py:325
+#: signbank/dictionary/forms.py:321
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:39
 msgid "Search signs"
 msgstr "Hae viittomia"
 
-#: signbank/dictionary/forms.py:333
+#: signbank/dictionary/forms.py:329
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:77
 msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
-#: signbank/dictionary/forms.py:336 signbank/dictionary/models.py:39
+#: signbank/dictionary/forms.py:332 signbank/dictionary/models.py:39
 #: templates/infopage.html:110
 msgid "Lexicon"
 msgstr "Leksikko"
 
-#: signbank/dictionary/forms.py:337
+#: signbank/dictionary/forms.py:333
 msgid "You can limit the search to these lexicons."
 msgstr "Voit rajata hakua näihin leksikoihin."
 
@@ -664,42 +664,41 @@ msgid "Search Glosses"
 msgstr "Etsi glosseja"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:111
-msgid "Gloss, Notes, Translation containing word"
-msgstr "Glossi, lisätieto, käännös sisältäen sanan"
+msgid "Gloss, Note, Translation, contains string"
+msgstr "Glossi, lisätieto, käännös, sisältäen merkkijonon"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:119
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:127
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:35
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:43
-msgid "Begins with word"
-msgstr "Alkaa sanalla"
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:78
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:86
+msgid "Begins with string"
+msgstr "Alkaa merkkijonolla"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:135
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:144
-msgid "Contains word"
-msgstr "Sisältää sanan"
+msgid "Contains string"
+msgstr "Sisältää merkkijonon"
 
 #. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:170
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:59
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:102
 #: templates/menu.html:60
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:172
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:61
 msgid "CSV"
 msgstr "CSV"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:174
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:63
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:103
 msgid "Reset"
 msgstr "Tyhjennä"
 
 #. Translators: How many results to fit per page
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:179
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:68
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:108
 msgid "Results per page"
 msgstr "Tuloksia per sivu"
 
@@ -709,7 +708,7 @@ msgid "Number of matches:"
 msgstr "Hakutuloksia:"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:198
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:83
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:121
 msgid "Page navigation top"
 msgstr "Sivun yläosan navigointi"
 
@@ -724,20 +723,20 @@ msgid "Videos"
 msgstr "Videoita"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:240
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:110
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:148
 msgid "Page navigation bottom"
 msgstr "Sivun alaosan navitointi"
 
 #. Translators: Title for GlossRelation search page
 #. Translators: admin_gloss_list header
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:6
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:10
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:53
 msgid "Search Relations of Glosses"
 msgstr "Etsi glossien relaatioita"
 
-#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:26
-msgid "Source or target gloss containing"
-msgstr "Lähde- tai kohdeglossi sisältää"
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:69
+msgid "Source or target gloss contains string"
+msgstr "Lähde- tai kohdeglossi sisältää merkkijonon"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:34

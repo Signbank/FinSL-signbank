@@ -66,7 +66,7 @@ function clearForm(myFormElement) {
                             <label class='input-group-addon' for='id_search'>{{searchform.search.label}}</label>
                             <input id="id_search" name='search' class='form-control'
                                    {% if searchform.search.value %}value='{{searchform.search.value}}' {% endif %}
-                                   placeholder='{% blocktrans %}Source or target gloss containing{% endblocktrans %}'>
+                                   placeholder='{% blocktrans %}Source or target gloss contains string{% endblocktrans %}'>
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@ function clearForm(myFormElement) {
                             <label class='input-group-addon' for='id_glossrelation_source'>{{searchform.source.label}}</label>
                             <input id="id_glossrelation_source" name='source' class='form-control'
                                    {% if searchform.source.value %}value='{{searchform.source.value}}' {% endif %}
-                                   placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
+                                   placeholder='{% blocktrans %}Begins with string{% endblocktrans %}'>
                         </div>
                     </div>
                     <div class="col-md-12 searchinput">
@@ -83,7 +83,7 @@ function clearForm(myFormElement) {
                             <label class='input-group-addon' for='id_glossrelation_target'>{{searchform.target.label}}</label>
                             <input id="id_glossrelation_target" name='target' class='form-control'
                                    {% if searchform.target.value %}value='{{searchform.target.value}}' {% endif %}
-                                   placeholder='{% blocktrans %}Begins with word{% endblocktrans %}'>
+                                   placeholder='{% blocktrans %}Begins with string{% endblocktrans %}'>
                         </div>
                     </div>
                 </div>
