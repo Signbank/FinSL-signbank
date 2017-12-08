@@ -149,11 +149,3 @@ class GlossVideo(models.Model):
     def __str__(self):
         return self.videofile.name
 
-
-@receiver(models.signals.pre_delete, sender=GlossVideo)
-def delete_on_delete(sender, instance, **kwargs):
-    """On signal delete, use pre_delete to delete the videofile. This will happen when a GlossVideo object is deleted"""
-    if isinstance(instance, GlossVideo) and instance.videofile:
-        if os.path.isfile(instance.videofile.path):
-            os.remove(instance.videofile.path)
-
