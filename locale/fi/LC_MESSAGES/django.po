@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 10:02+0200\n"
+"POT-Creation-Date: 2017-12-09 10:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1814,8 +1814,8 @@ msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
 #. Translators: Sign in button in login form
-#: templates/langbar.html:25 templates/loginform.html:34
-#: templates/registration/login.html:5 templates/registration/login.html:16
+#: templates/langbar.html:25 templates/registration/login.html:5
+#: templates/registration/login.html:16
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
@@ -1825,55 +1825,6 @@ msgstr "Kirjaudu sisään"
 #: templates/registration/registration_form.html:15
 msgid "Create account"
 msgstr "Luo tunnus"
-
-#. Translators: Text sign in - login form
-#. Translators: Text sign in - Log in form
-#: templates/loginform.html:8 templates/registration/login.html:9
-msgid "Sign In"
-msgstr "Kirjaudu sisään"
-
-#. Translators: Email - in login form
-#: templates/loginform.html:14
-msgid "Email/Username"
-msgstr "Email/Käyttäjätunnus"
-
-#. Translators: Password text - in login form
-#: templates/loginform.html:24
-msgid "Password"
-msgstr "Salasana"
-
-#. Translators: Text register - in login form
-#. Translators: Register link
-#: templates/loginform.html:42 templates/loginform.html:47
-msgid "Register"
-msgstr "Rekisteröidy"
-
-#. Translators: Text in login form
-#: templates/loginform.html:45
-msgid "To register for an account, press the button below."
-msgstr "Rekisteröidy painamalla alla olevaa nappia."
-
-#. Translators: Title lost password - in login form
-#: templates/loginform.html:52
-msgid "Lost Password?"
-msgstr "Unohtunut salasana?"
-
-#: templates/loginform.html:55
-msgid ""
-"If you've lost or forgotten your password, enter your email address here and "
-"we'll reset it and send you a reminder."
-msgstr ""
-"Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
-"tähän, niin lähetämme sinulle uuden salasanan."
-
-#: templates/loginform.html:60
-msgid "Email"
-msgstr "Sähköposti"
-
-#. Translators: Request password button
-#: templates/loginform.html:65
-msgid "Request Password"
-msgstr "Palauta salasana"
 
 #. Translators: Button to toggle navigation
 #: templates/menu.html:9
@@ -1974,6 +1925,11 @@ msgstr ""
 msgid "Account activation on"
 msgstr "Tunnuksen aktivointi"
 
+#. Translators: Text sign in - Log in form
+#: templates/registration/login.html:9
+msgid "Sign In"
+msgstr "Kirjaudu sisään"
+
 #: templates/registration/login.html:21
 msgid "Forgot your password?"
 msgstr "Unohditko salasanan?"
@@ -2067,6 +2023,34 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Email/Username"
+#~ msgstr "Email/Käyttäjätunnus"
+
+#~ msgid "Password"
+#~ msgstr "Salasana"
+
+#~ msgid "Register"
+#~ msgstr "Rekisteröidy"
+
+#~ msgid "To register for an account, press the button below."
+#~ msgstr "Rekisteröidy painamalla alla olevaa nappia."
+
+#~ msgid "Lost Password?"
+#~ msgstr "Unohtunut salasana?"
+
+#~ msgid ""
+#~ "If you've lost or forgotten your password, enter your email address here "
+#~ "and we'll reset it and send you a reminder."
+#~ msgstr ""
+#~ "Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
+#~ "tähän, niin lähetämme sinulle uuden salasanan."
+
+#~ msgid "Email"
+#~ msgstr "Sähköposti"
+
+#~ msgid "Request Password"
+#~ msgstr "Palauta salasana"
 
 #~ msgid "Gloss is published"
 #~ msgstr "Glossi on julkaistu"
