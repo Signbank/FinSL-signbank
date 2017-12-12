@@ -4,9 +4,12 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block extrahead %}
-<link rel="stylesheet" type="text/css" href="{% static "css/tagmanager.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/tagmanager.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.atwho.min.css' %}">
 {% endblock %}
 {% block extrajs %}
+<script src="{% static 'js/jquery.caret.min.js' %}"></script>
+<script src="{% static 'js/jquery.atwho.min.js' %}"></script>
 {% if perms.dictionary.change_gloss %}
 <script type="text/javascript" src="{% static "js/jquery.jeditable.mini.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.jeditable.checkbox.js" %}"></script>
@@ -110,7 +113,14 @@ $(document).ready(function () {
         $( ".glossrelation-autocomplete" ).autocomplete({
           source: availableTags
         });
-      } );
+      });
+    </script>
+    <script>
+    // Returns a list to be used for mentions
+$('#id_comment').atwho({
+    at: '@',
+    data: {{dataset_users|safe}},
+});
     </script>
 {% endblock %}
 

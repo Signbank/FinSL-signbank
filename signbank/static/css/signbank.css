@@ -297,3 +297,47 @@ td .tag {
 .video-public:hover {
     cursor:pointer;
 }
+.notifications-menu {
+    padding-left: 8px;
+    padding-top: 3px;
+}
+.notifications-ulist {
+    padding: 5px 5px 0 5px;
+    list-style-type: none;
+}
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+}
+.notifications-title {
+    margin-left: 10px;
+    maring-right: 5px;
+}
+.notifications-mark-all-read {
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.notifications-hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+@media (min-width: 320px) {
+    .notifications-ulist {
+        width: 130px;
+    }
+}
+@media (min-width: 480px) {
+    .notifications-ulist {
+        width: 300px;
+    }
+}
+@media (min-width: 768px) {
+    .notifications-ulist {
+        width: 400px;
+    }
+}
+@media (min-width: 992px) {
+    .notifications-ulist {
+        width: 600px;
+    }
+}

@@ -18,7 +18,7 @@ from django.utils.translation import ugettext as _
 from collections import defaultdict
 from django.contrib import messages
 from tagging.models import Tag, TaggedItem
-from guardian.shortcuts import get_perms, get_objects_for_user
+from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
 from reversion.models import Version
 
 from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, \
@@ -407,6 +407,7 @@ class GlossDetailView(DetailView):
         # Call the base implementation first to get a context
         context = super(GlossDetailView, self).get_context_data(**kwargs)
         context['dataset'] = self.get_object().dataset
+        context['dataset_users'] = [x.username for x in get_users_with_perms(context['dataset'])]
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['videoform'] = VideoUploadForGlossForm()

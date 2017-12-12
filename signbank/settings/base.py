@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'tagging',
     'django_comments',
     'guardian',
+    'notifications',
 )
 
 # Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main

@@ -1,0 +1,21 @@
+{% load i18n %}
+<div class="alert alert-{{ notice.level }} notification" role="alert">
+  <a class="close" aria-label="Close"
+          href="{% url 'notifications:mark_as_read' notice.slug %}"><span aria-hidden="true">&times;</span>
+  </a>
+
+  <h4><a href="{{notice.action_object.get_absolute_url}}">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    {{ notice.actor }}
+    {{ notice.verb }}
+  </a></h4>
+
+  <p><em>{{ notice.timesince }} {% blocktrans %}ago{% endblocktrans %}</em></p>
+  <p>{{ notice.description|linebreaksbr }}</p>
+
+  <div class="notice-actions">
+    {% for action in notice.data.actions %}
+      <a class="btn" href="{{ action.href }}">{{ action.title }}</a>
+    {% endfor %}
+  </div>
+</div>

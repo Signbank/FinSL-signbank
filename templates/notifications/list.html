@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+<div class="btn-group notifications-menu">
+<div class="dropdown">
+    <button id="notifications-list" type="button" class="btn btn-default {% if unread_count %} btn-danger{% endif %}"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> {% live_notify_badge classes="badge" %}
+    </button>
+    <div class="dropdown-menu notifications pull-right" aria-labelledby="notifications-list">
+        <div class="notifications-header">
+            <h4 class="notifications-title">{% blocktrans %}Notifications{% endblocktrans %}</h4>
+            <p class="notifications-mark-all-read"><a id="notifications_mark_all_read" href="{% url 'notifications:mark_all_as_read' %}">{% blocktrans %}Mark all as read{% endblocktrans %}</a></p>
+        </div>
+        <hr class="notifications-hr">
+    <ul class="notifications-ulist">
+    <li>{% for notice in user.notifications.unread %}
+    {% include 'notifications/notice.html' with notice=notice %}
+    {% endfor %}</li>
+    </ul>
+</div></div></div>

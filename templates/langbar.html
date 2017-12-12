@@ -1,5 +1,6 @@
 {% load i18n %}
 <div id="langselect">{% include "setlang.html" %}</div>
+{% if user.is_authenticated %}{% include 'notifications/list.html' %}{% endif %}
 <div id="login">
     {% if user.is_authenticated %}
     {# Translators: User profile menu button #}

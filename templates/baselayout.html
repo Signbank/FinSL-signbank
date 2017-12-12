@@ -63,6 +63,33 @@
     </footer>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script>
+$('a.close').click(function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var parent = $(this).parent();
+    $.get(event.currentTarget.href).done(function () {
+        parent.remove();
+        var badge = $('#live_notify_badge');
+        var val = parseInt(badge.text())
+        badge.text(val - 1);
+        if (val - 1 <= 0) {
+            $('button#notifications-list').removeClass('btn-danger');
+        }
+    });
+});
+$('a#notifications_mark_all_read').click(function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    $.get(event.currentTarget.href).done(function () {
+        $('div.notification').remove();
+        var badge = $('#live_notify_badge');
+        badge.text("0");
+        $('button#notifications-list').removeClass('btn-danger');
+    });
+});
+</script>
     {% block extrajs %}{% endblock %}
   </body>
 </html>

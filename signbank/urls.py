@@ -13,6 +13,7 @@ from .dictionary.adminviews import GlossListView
 from .tools import reload_signbank, infopage, refresh_videofilenames
 from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment, latest_comments, latest_comments_page, CommentListView, remove_tag
+import notifications.urls
 # Forms
 from .customregistration.forms import CustomUserForm
 admin.autodiscover()
@@ -57,6 +58,9 @@ urlpatterns = [
         name='search_comments'),
     url(r'^comments/removetag/$', permission_required('dictionary.search_gloss')(remove_tag),
         name='remove-comment-tag'),
+
+    # Notifications urls
+    url('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
     # Admin urls
     url(r'^admin/doc/',

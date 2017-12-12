@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js"
+    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js && cp -f ./node_modules/at.js/dist/js/jquery.atwho.min.js ./signbank/static/js",
+    "collectcss": "cp -f ./node_modules/at.js/dist/css/jquery.atwho.min.css ./signbank/static/css"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,8 @@
     "jquery": "^2.2.4",
     "mark.js": "^8.11.0",
     "recordrtc": "^5.4.5",
-    "typeahead.js": "^0.11.1"
+    "typeahead.js": "^0.11.1",
+    "at.js": "^1.5.3",
+    "jquery.caret": "^0.3.1"
   }
 }

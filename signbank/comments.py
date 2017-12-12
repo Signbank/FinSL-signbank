@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import re
 
 from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
@@ -14,6 +15,7 @@ from django.dispatch import receiver
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import OperationalError
+from django.contrib.auth.models import User
 
 from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_objects_for_user
@@ -22,6 +24,7 @@ from django_comments.signals import comment_was_posted
 from django_comments.forms import CommentForm
 from django_comments import get_model as django_comments_get_model
 from django_comments.admin import CommentsAdmin
+from notifications.signals import notify
 
 from .dictionary.models import AllowedTags
 from .dictionary.admin import TagAdminInline, TagListFilter
@@ -193,3 +196,23 @@ class CommentTagInline(TagAdminInline):
 # Adding Tags as inline to CommentsAdmin
 CommentsAdmin.inlines = [CommentTagInline, ]
 CommentsAdmin.list_filter += (TagListFilter, )
+
+
+def get_users_from_comment(comment):
+    """Returns a QuerySet of Users mentioned in a comment with '@username'"""
+    matched_usernames = re.findall(r"@\w+", comment)
+    usernames_no_duplicates = set(matched_usernames)
+    return User.objects.filter(username__in=[x[1:] for x in usernames_no_duplicates])
+
+
+def shorten_comment(comment):
+    if len(comment) > 199:
+        return comment[:200]+" ..."
+    return comment
+
+@receiver(comment_was_posted, sender=Comment)
+def notify_on_mention(sender, comment, request, **kwargs):
+    """Add a Notification for users mentioned in a comment."""
+    for user in get_users_from_comment(comment.comment):
+        notify.send(sender=request.user, recipient=user, verb=_("mentioned you in a comment"), action_object=comment,
+                    description=shorten_comment(comment.comment), target=comment, public=True)
