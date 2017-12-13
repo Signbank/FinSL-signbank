@@ -307,6 +307,7 @@ td .tag {
 }
 .notifications-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .notifications-title {
@@ -322,22 +323,25 @@ td .tag {
     margin-bottom: 5px;
 }
 @media (min-width: 320px) {
-    .notifications-ulist {
+    .notifications {
         width: 130px;
     }
 }
 @media (min-width: 480px) {
-    .notifications-ulist {
+    .notifications {
         width: 300px;
     }
 }
 @media (min-width: 768px) {
-    .notifications-ulist {
+    .notifications {
         width: 400px;
     }
 }
 @media (min-width: 992px) {
-    .notifications-ulist {
+    .notifications {
         width: 600px;
     }
+}
+.notifications-menu-close {
+    margin-right: 10px;
 }

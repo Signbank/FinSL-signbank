@@ -11,7 +11,8 @@
     <div class="dropdown-menu notifications pull-right" aria-labelledby="notifications-list">
         <div class="notifications-header">
             <h4 class="notifications-title">{% blocktrans %}Notifications{% endblocktrans %}</h4>
-            <p class="notifications-mark-all-read"><a id="notifications_mark_all_read" href="{% url 'notifications:mark_all_as_read' %}">{% blocktrans %}Mark all as read{% endblocktrans %}</a></p>
+            <a id="notifications_mark_all_read" class="btn btn-default btn-sm" href="{% url 'notifications:mark_all_as_read' %}">{% blocktrans %}Mark all as read{% endblocktrans %}</a>
+            <button type="button" class="close notifications-menu-close" data-toggle="dropdown" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <hr class="notifications-hr">
     <ul class="notifications-ulist">

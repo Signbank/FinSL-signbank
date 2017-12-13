@@ -8,7 +8,8 @@
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
     {{ notice.actor }}
     {{ notice.verb }}
-  </a></h4>
+  </a><span class="dataset-{{notice.action_object.content_object.dataset.id}}-color label label-default"
+  style="font-size:0.6em;">{{notice.action_object.content_object.dataset}}</span></h4>
 
   <p><em>{{ notice.timesince }} {% blocktrans %}ago{% endblocktrans %}</em></p>
   <p>{{ notice.description|linebreaksbr }}</p>

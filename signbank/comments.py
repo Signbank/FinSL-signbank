@@ -210,6 +210,7 @@ def shorten_comment(comment):
         return comment[:200]+" ..."
     return comment
 
+
 @receiver(comment_was_posted, sender=Comment)
 def notify_on_mention(sender, comment, request, **kwargs):
     """Add a Notification for users mentioned in a comment."""
