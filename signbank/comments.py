@@ -159,7 +159,8 @@ def remove_tag(request):
                 return HttpResponseForbidden(_("You are not allowed to edit tags of this comment, "
                                                "because you are not the author of the comment."))
             if form.cleaned_data["remove_tag_id"]:
-                tagged = get_object_or_404(TaggedItem, tag__id=form.cleaned_data["remove_tag_id"], object_id=comment.id)
+                tagged = get_object_or_404(TaggedItem, tag__id=form.cleaned_data["remove_tag_id"], object_id=comment.id,
+                                           content_type=ContentType.objects.get_for_model(Comment))
                 tagged.delete()
     if 'HTTP_REFERER' in request.META:
         return redirect(request.META['HTTP_REFERER'])
