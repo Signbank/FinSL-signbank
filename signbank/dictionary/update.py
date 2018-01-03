@@ -556,7 +556,8 @@ def add_tag(request, glossid):
             if form.cleaned_data['delete']:
                 # get the relevant TaggedItem
                 ti = get_object_or_404(
-                    TaggedItem, object_id=gloss.id, tag__name=tag)
+                    TaggedItem, object_id=gloss.id, tag__name=tag,
+                    content_type=ContentType.objects.get_for_model(Gloss))
                 ti.delete()
                 response = HttpResponse(
                     'deleted', content_type='text/plain')
