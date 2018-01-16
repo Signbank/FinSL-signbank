@@ -27,7 +27,7 @@ class GlossListPublicView(ListView):
             context["searchform"].fields["dataset"].queryset = context["searchform"].fields["dataset"].queryset.filter(signlanguage__language_code_3char=context["lang"])
         context["first_letters"] = Gloss.objects.filter(dataset__is_public=True, published=True)\
             .annotate(first_letters=Substr(Upper('idgloss'), 1, 1)).order_by('first_letters')\
-            .distinct('first_letters').values_list('first_letters')
+            .values_list('first_letters').distinct()
         return context
 
     def get_queryset(self):
