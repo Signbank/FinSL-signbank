@@ -77,15 +77,20 @@ class GlossVideo(models.Model):
         verbose_name_plural = _('Gloss videos')
 
     def save(self, *args, **kwargs):
-        # Save object so that we can access the saved fields.
-        super(GlossVideo, self).save(*args, **kwargs)
-        # If the GlossVideo object has a Gloss set, rename that glosses videos (that aren't correctly named).
         if self.videofile and hasattr(self, 'gloss') and self.gloss is not None:
+            if not self.pk:
+                # When the object is new (no id yet), set version to be one higher than the highest of glosses videos.
+                self.version = self.gloss.glossvideo_set.all().order_by('version').last().version + 1
+                # Save object so that we can access the saved fields.
+                super(GlossVideo, self).save(*args, **kwargs)
+            # If the GlossVideo object has a Gloss set, rename videofile if needed.
             self.rename_video()
         try:
+            # Try to set gloss dataset to be glossvideo.dataset
             self.dataset = self.gloss.dataset
         except AttributeError:
             pass
+        super(GlossVideo, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return self.videofile.url
@@ -116,7 +121,6 @@ class GlossVideo(models.Model):
 
                 # Change the self.videofile to the new path
                 self.videofile = new_path
-                self.save()
 
     @staticmethod
     def create_filename(idgloss, glosspk, videopk, ext):
