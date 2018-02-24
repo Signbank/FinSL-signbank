@@ -138,7 +138,7 @@ class GlossVideo(models.Model):
         """Renames the filenames of selected Glosses videos to match the Gloss name"""
         glossvideos = GlossVideo.objects.filter(gloss=gloss)
         for glossvideo in glossvideos:
-            glossvideo.rename_video()
+            glossvideo.save()
 
     def get_extension(self):
         """Returns videofiles extension."""
