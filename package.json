@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js && cp -f ./node_modules/at.js/dist/js/jquery.atwho.min.js ./signbank/static/js",
-    "collectcss": "cp -f ./node_modules/at.js/dist/css/jquery.atwho.min.css ./signbank/static/css"
+    "collectcss": "cp -f ./node_modules/at.js/dist/css/jquery.atwho.min.css ./signbank/static/css && cp -rf ./node_modules/bootstrap/dist/* ./signbank/static/bootstrap/"
   },
   "repository": {
     "type": "git",
