@@ -92,6 +92,8 @@ def addvideo_gloss(request):
                 else:  # Otherwise use the videos filename as the title.
                     video.title = vfile.name
 
+            # Save to get a pk.
+            video.save()
             # Construct a filename for the video, because it doesn't have a path yet.
             vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk, splitext(vfile.name)[1])
             video.videofile = vfile
@@ -134,6 +136,10 @@ def add_recorded_video_view(request):
             vidfile = form.cleaned_data['videofile']
             if vidfile:
                 glossvid = GlossVideo.objects.create(gloss=gloss, videofile=vidfile, dataset=gloss.dataset)
+                # Construct a filename for the video, because it doesn't have a path yet.
+                vidfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, glossvid.pk, splitext(vidfile.name)[1])
+                glossvid.videofile = vidfile
+                glossvid.save()
                 # Return the created GlossVideos id/pk, so that it can be used to link to the uploaded video.
                 return HttpResponse(json.dumps({'videoid': glossvid.pk}), content_type='application/json')
 
