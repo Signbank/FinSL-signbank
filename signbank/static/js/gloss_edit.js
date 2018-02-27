@@ -22,7 +22,7 @@
          
      }  
           
-     $('#enable_edit').click(toggle_edit);
+     $('#enable_edit').on('click', toggle_edit);
      
      glosstypeahead($('.glosstypeahead'));
 
@@ -214,7 +214,7 @@ function configure_edit() {
          type      : 'select',
          data      : choice_lists['morphology_role']
      });
-     $('.edit_list').click(function() 
+     $('.edit_list').on('click', function()
 	 {
 		 $(this).editable(edit_post_url, {
 		     type      : 'select',
@@ -341,7 +341,7 @@ function getCookie(name) {
     
 function ajaxifyTagForm() {
     // ajax form submission for tag addition and deletion
-    $('.tagdelete').click(function() {
+    $('.tagdelete').on('click', function() {
         var action = $(this).attr('href');
         var tagid = $(this).attr('id');
         var tagelement = $(this).parents('.tagli');
@@ -359,7 +359,7 @@ function ajaxifyTagForm() {
         return false;
     });
     
-    $('#tagaddform').submit(function(){
+    $('#tagaddform').on('submit', function(){
         
         var newtag = $('#tagaddform select').val();
         
@@ -380,7 +380,7 @@ function ajaxifyTagForm() {
 }
     
 function delete_glossurl() {
-    $('.glossurl-delete').click(function() {
+    $('.glossurl-delete').on('click', function() {
         var action = $(this).attr('href');
         var glossurl_id = $(this).attr('data-glossurl-id');
         var element = $(this).parent();

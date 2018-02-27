@@ -65,7 +65,7 @@
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
 <script>
-$('a.close').click(function(event){
+$('a.close').on('click', function(event){
     event.preventDefault();
     event.stopPropagation();
     var parent = $(this).parent();
@@ -79,7 +79,7 @@ $('a.close').click(function(event){
         }
     });
 });
-$('a#notifications_mark_all_read').click(function(event){
+$('a#notifications_mark_all_read').on('click', function(event){
     event.preventDefault();
     event.stopPropagation();
     $.get(event.currentTarget.href).done(function () {

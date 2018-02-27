@@ -36,7 +36,7 @@
     $(document).ready(function(){
         
         
-        $('.collapsetoggle').click(function() {
+        $('.collapsetoggle').on('click', function() {
             if ($(this).text() == 'Show') {
                 $(this).text('Hide');
             } else {
