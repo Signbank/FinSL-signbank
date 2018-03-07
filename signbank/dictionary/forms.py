@@ -161,7 +161,8 @@ class GlossSearchForm(forms.ModelForm):
 
     # Translators: GlossSearchForm label
     hasvideo = forms.BooleanField(label=_('Has videos'), required=False)
-    hasnovideo = forms.BooleanField(label=_('Has no videos'), required=False)
+    hasnovideo = forms.BooleanField(label=_('No videos'), required=False)
+    multiplevideos = forms.BooleanField(label=_('Multiple videos'), required=False)
 
     # These have been disabled until they are later needed
     # TODO: To enable these, uncomment them.

@@ -6,7 +6,7 @@ import json
 import unicodecsv as csv
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.db.models.fields import NullBooleanField
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import PermissionDenied
@@ -15,6 +15,7 @@ from django.utils.translation import get_language
 from django.db.models import Prefetch
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
+
 from collections import defaultdict
 from django.contrib import messages
 from tagging.models import Tag, TaggedItem
@@ -191,6 +192,12 @@ class GlossListView(ListView):
             if 'hasnovideo' in get and get['hasnovideo'] != '':
                 val = get['hasnovideo'] == 'on'
                 qs = qs.filter(glossvideo__isnull=val)
+
+        # If gloss has multiple GlossVideos
+        if 'multiplevideos' in get and get['multiplevideos'] != '' and get['multiplevideos'] == 'on':
+            # Include glosses that have more than one GlossVideo
+            qs = qs.annotate(videocount=Count('glossvideo')).filter(videocount__gt=1)
+
 
         # A list of phonology fieldnames
         fieldnames = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
