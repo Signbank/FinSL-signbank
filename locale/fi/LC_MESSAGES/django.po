@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 19:32+0200\n"
+"POT-Creation-Date: 2018-03-15 16:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,11 +84,11 @@ msgstr "Semantiikka"
 msgid "Frequency"
 msgstr "Frekvenssi"
 
-#: signbank/dictionary/adminviews.py:76
+#: signbank/dictionary/adminviews.py:75
 msgid "You do not have permissions to export to CSV."
 msgstr "Sinulla ei ole käyttöoikeuksia tuoda CSV:nä."
 
-#: signbank/dictionary/adminviews.py:407
+#: signbank/dictionary/adminviews.py:403
 msgid "You do not have permissions to view glosses of this dataset."
 msgstr "Sinulla ei ole oikeuksia nähdä tämän leksikon glosseja."
 
@@ -127,7 +127,7 @@ msgstr "Hypernyymi"
 msgid "See Also"
 msgstr "Katso myös"
 
-#: signbank/dictionary/delete.py:19 signbank/dictionary/update.py:548
+#: signbank/dictionary/delete.py:19 signbank/dictionary/update.py:550
 msgid "You do not have permissions to add tags to glosses of this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 
@@ -213,13 +213,13 @@ msgid "---------"
 msgstr ""
 
 #. Translators: GlossSearchForm label
-#: signbank/dictionary/forms.py:140 signbank/dictionary/forms.py:331
+#: signbank/dictionary/forms.py:140 signbank/dictionary/forms.py:337
 #: signbank/dictionary/models.py:127
 msgid "Sign language"
 msgstr "Viittomakieli"
 
 #: signbank/dictionary/forms.py:143 signbank/dictionary/forms.py:219
-#: signbank/dictionary/forms.py:321 templates/comments/search_comments.html:13
+#: signbank/dictionary/forms.py:327 templates/comments/search_comments.html:13
 msgid "Search"
 msgstr "Haku"
 
@@ -301,22 +301,26 @@ msgstr "Emoglossi"
 msgid "Morpheme"
 msgstr "Morfeemi"
 
-#: signbank/dictionary/forms.py:322
+#: signbank/dictionary/forms.py:315
+msgid "Must be a CSV file with .csv extension."
+msgstr "Täytyy olla CSV-tiedosto .csv päätteellä."
+
+#: signbank/dictionary/forms.py:328
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:39
 msgid "Search signs"
 msgstr "Hae viittomia"
 
-#: signbank/dictionary/forms.py:330
+#: signbank/dictionary/forms.py:336
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:77
 msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
-#: signbank/dictionary/forms.py:333 signbank/dictionary/models.py:39
+#: signbank/dictionary/forms.py:339 signbank/dictionary/models.py:39
 #: templates/infopage.html:110
 msgid "Lexicon"
 msgstr "Leksikko"
 
-#: signbank/dictionary/forms.py:334
+#: signbank/dictionary/forms.py:340
 msgid "You can limit the search to these lexicons."
 msgstr "Voit rajata hakua näihin leksikoihin."
 
@@ -1268,34 +1272,34 @@ msgstr "Lataa video palvelimelta"
 msgid "Upload completed."
 msgstr "Video lähetetty."
 
-#: signbank/dictionary/update.py:35
+#: signbank/dictionary/update.py:37
 msgid "You do not have permissions to create glosses for this lexicon."
 msgstr "Sinulla ei ole oikeuksia luoda glosseja valittuun leksikkoon."
 
 #. Translators: HttpResponseForbidden for update_gloss
-#: signbank/dictionary/update.py:66
+#: signbank/dictionary/update.py:68
 msgid "Gloss Update Not Allowed"
 msgstr "Glossin päivittäminen ei ole sallittua"
 
-#: signbank/dictionary/update.py:73
+#: signbank/dictionary/update.py:75
 msgid "You do not have permissions to edit Glosses of this dataset/lexicon."
 msgstr "Sinulla ei ole oikeuksia muokata valitun leksikon glosseja."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:122
+#: signbank/dictionary/update.py:124
 msgid "Unknown Dialect"
 msgstr "Tuntematon alue"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:156
+#: signbank/dictionary/update.py:158
 msgid "Unknown field"
 msgstr "Tuntematon kenttä"
 
-#: signbank/dictionary/update.py:225
+#: signbank/dictionary/update.py:227
 msgid "A Language does not exist with language_code: "
 msgstr "Kieltä (Language) ei löydy seuraavalla kielikoodilla: "
 
-#: signbank/dictionary/update.py:229
+#: signbank/dictionary/update.py:231
 msgid ""
 "Multiple Languages with the same language_code exist, cannot edit because it "
 "is unclear which languages translations to edit."
@@ -1304,70 +1308,74 @@ msgstr ""
 "koska ei ole selvää että minkä kielen käännöksiä tulisi muokata."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:269
+#: signbank/dictionary/update.py:271
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:273 signbank/dictionary/update.py:321
+#: signbank/dictionary/update.py:275 signbank/dictionary/update.py:323
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:297 signbank/dictionary/update.py:528
+#: signbank/dictionary/update.py:299 signbank/dictionary/update.py:530
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:301 signbank/dictionary/update.py:341
-#: signbank/dictionary/update.py:532
+#: signbank/dictionary/update.py:303 signbank/dictionary/update.py:343
+#: signbank/dictionary/update.py:534
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:316
+#: signbank/dictionary/update.py:318
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:413 signbank/dictionary/update.py:451
+#: signbank/dictionary/update.py:415 signbank/dictionary/update.py:453
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:425
+#: signbank/dictionary/update.py:427
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:463
+#: signbank/dictionary/update.py:465
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
-#: signbank/dictionary/update.py:489
+#: signbank/dictionary/update.py:491
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:502
+#: signbank/dictionary/update.py:504
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:507
+#: signbank/dictionary/update.py:509
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
-#: signbank/dictionary/update.py:603
+#: signbank/dictionary/update.py:605
 msgid "You do not have permissions to import glosses to this lexicon."
 msgstr "Sinulla ei ole oikeuksia tuoda glosseja valittuun leksikkoon."
 
-#: signbank/dictionary/update.py:614
+#: signbank/dictionary/update.py:616
 msgid "Cannot open the file:"
 msgstr "Ei voida avata tiedostoa:"
 
-#: signbank/dictionary/update.py:643
+#: signbank/dictionary/update.py:639
+msgid "File must be UTF-8 encoded!"
+msgstr "Tiedoston pitää olla koodattu UTF-8 merkistöllä!"
+
+#: signbank/dictionary/update.py:653
 msgid ""
 "The provided CSV-file does not meet the requirements or there is some other "
 "problem."
@@ -1375,21 +1383,21 @@ msgstr ""
 "Annettu CSV-tiedosto ei ole vaatimusten mukainen tai havaittiin joku muu "
 "ongelma."
 
-#: signbank/dictionary/update.py:667
+#: signbank/dictionary/update.py:677
 msgid "Cancelled adding CSV data."
 msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
 
-#: signbank/dictionary/update.py:694
+#: signbank/dictionary/update.py:704
 msgid "Glosses were added succesfully."
 msgstr "Glossit lisättiin onnistuneesti."
 
-#: signbank/dictionary/update.py:712
+#: signbank/dictionary/update.py:722
 msgid ""
 "You do not have permissions to delete relations from glosses of this lexicon."
 msgstr ""
 "Sinulla ei ole oikeuksia poistaa valitun leksikon glossien relaatioita."
 
-#: signbank/dictionary/update.py:728
+#: signbank/dictionary/update.py:738
 msgid ""
 "You do not have permissions to add relations to glosses of this lexicon."
 msgstr ""

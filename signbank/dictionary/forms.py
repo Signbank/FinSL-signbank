@@ -309,6 +309,12 @@ class CSVUploadForm(forms.Form):
     file = forms.FileField()
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all(), empty_label=None)
 
+    def clean_file(self):
+        file = self.cleaned_data['file']
+        if not file.name.endswith('.csv'):
+            raise forms.ValidationError(_('Must be a CSV file with .csv extension.'))
+        return file
+
 
 class DatasetMultipleChoiceField(forms.ModelMultipleChoiceField):
     """Override the field used for the label."""
