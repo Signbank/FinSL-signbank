@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import django.utils.six as six
 import json
-import unicodecsv as csv
+import csv
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Count
@@ -78,58 +77,54 @@ class GlossListView(ListView):
             raise PermissionDenied(msg)
 
         # Create the HttpResponse object with the appropriate CSV header.
-        response = HttpResponse(content_type='text/csv')
-        response[
-            'Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
+        response = HttpResponse(content_type='text/csv; charset=utf-8')
+        response['Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
+
+        writer = csv.writer(response)
+
+        csv_queryset = self.get_queryset()\
+            .select_related('created_by', 'updated_by')\
+            .prefetch_related('translation_set', 'glosstranslations_set')
 
         # We want to manually set which fields to export here
         fieldnames = ['idgloss', 'idgloss_en', 'notes', ]
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
-        writer = csv.writer(response)
-
         # Defines the headings for the file. Signbank ID and Dataset are set first.
         header = ['Signbank ID'] + ['Dataset'] + [f.verbose_name for f in fields]
 
-        for extra_column in ['SignLanguage', 'Dialects', 'Keywords', 'Created', 'Updated']:
+        for extra_column in ['SignLanguage', 'Keywords', 'Created', 'Updated']:
             header.append(extra_column)
 
         writer.writerow(header)
 
-        for gloss in self.get_queryset():
-            row = [str(gloss.pk)]
+        for gloss in csv_queryset:
+            row = list()
+            row.append(str(gloss.pk))
             # Adding Dataset information for the gloss
             row.append(str(gloss.dataset))
+            # Add data from each field.
             for f in fields:
-
-                # Try the value of the choicelist
-                try:
-                    row.append(getattr(gloss, 'get_' + f.name + '_display')())
-
-                # If it's not there, try the raw value
-                except AttributeError:
-                    value = getattr(gloss, f.name)
-
-                    if isinstance(value, six.text_type):
-                        value = str(value)
-                    elif not isinstance(value, bytes):
-                        value = str(value)
-
+                value = getattr(gloss, f.name)
+                # If the value contains ';', put it in quotes.
+                if ";" in value:
+                    row.append('"{}"'.format(value))
+                else:
                     row.append(value)
 
             # Get SignLanguage of Gloss
             signlanguage = gloss.dataset.signlanguage
-            row.append(str(signlanguage))
+            row.append(signlanguage)
 
-            # get dialects
-            dialects = [dialect.name for dialect in gloss.dialect.all()]
-            row.append(", ".join(dialects))
-
-            # get translations
-            #trans = [t.keyword.text for t in gloss.translation_set.all()]
-            # The search page lists only English translations, therefore we have to query for all of them.
-            trans = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
-            row.append(", ".join(trans))
+            # Get Translation equivalents. If GlossTranslations don't exist, get Translations.
+            if gloss.glosstranslations_set.all():
+                trans = [t.translations for t in gloss.glosstranslations_set.all()]
+            else:
+                # Translations are shown per user selected interface language, related objects don't work in this case.
+                trans = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
+            translations = ", ".join(trans)
+            # Put translations inside quotes, because GlossTranslations might have ';'.
+            row.append('"{}"'.format(translations))
 
             # Created at and by
             created = str(gloss.created_at)+' by: '+str(gloss.created_by)
