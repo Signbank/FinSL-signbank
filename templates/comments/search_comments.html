@@ -46,13 +46,13 @@
     <span class="step-links">
         <ul class="pagination pagination-sm">
         {% if page_obj.has_previous %}{# Insert dataset from request #}
-            <li><a href="?page={{ page_obj.previous_page_number }}&dataset={{request.GET.dataset}}">&laquo; {% blocktrans %}previous{% endblocktrans %}</a>
+            <li><a href="?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo; {% blocktrans %}previous{% endblocktrans %}</a>
         {% endif %}
         {% for curpage in page_obj.paginator.page_range %}
-            <li{% if curpage == page_obj.number %} class="active"{% endif %}><a href="?page={{ curpage }}&dataset={{request.GET.dataset}}">{{ curpage }}</a>
+            <li{% if curpage == page_obj.number %} class="active"{% endif %}><a href="?page={{ curpage }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ curpage }}</a>
         {% endfor %}
         {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}&dataset={{request.GET.dataset}}">{% blocktrans %}next{% endblocktrans %} &raquo;</a>
+            <li><a href="?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if not key == 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{% blocktrans %}next{% endblocktrans %} &raquo;</a>
         {% endif %}
         </ul>
         <p>{% blocktrans %}Total of{% endblocktrans %} {{ page_obj.paginator.count }} {% blocktrans context 'count' %}comments{% endblocktrans %}.</p>
