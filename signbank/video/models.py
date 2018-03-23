@@ -3,12 +3,11 @@
 from __future__ import unicode_literals
 
 import os
+
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.conf import settings
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.core.files.storage import FileSystemStorage
 
 
@@ -77,6 +76,30 @@ class GlossVideo(models.Model):
         verbose_name = _('Gloss video')
         verbose_name_plural = _('Gloss videos')
 
+    def save(self, *args, **kwargs):
+        creating = self._state.adding
+        if creating:
+            try:
+                # Set gloss dataset to be glossvideo.dataset
+                self.dataset = self.gloss.dataset
+            except AttributeError:
+                pass
+            # If no title is specifically set, use the filename of the file uploaded.
+            if not self.title:
+                self.title = self.videofile.name
+            try:
+                # Set the version of the GlossVideo to be one higher than any of Glosses GlossVideos has.
+                self.version = self.gloss.glossvideo_set.order_by('version').last().version + 1
+            except AttributeError:
+                self.version = 0
+            # Save to get a PK for renaming a video.
+            super(GlossVideo, self).save(*args, **kwargs)
+
+        # Rename the videofile if gloss is set.
+        if self.gloss:
+            self.rename_video()
+            super(GlossVideo, self).save()
+
     def get_absolute_url(self):
         return self.videofile.url
 
@@ -106,7 +129,6 @@ class GlossVideo(models.Model):
 
                 # Change the self.videofile to the new path
                 self.videofile = new_path
-                self.save()
 
     @staticmethod
     def create_filename(idgloss, glosspk, videopk, ext):
@@ -124,7 +146,7 @@ class GlossVideo(models.Model):
         """Renames the filenames of selected Glosses videos to match the Gloss name"""
         glossvideos = GlossVideo.objects.filter(gloss=gloss)
         for glossvideo in glossvideos:
-            glossvideo.rename_video()
+            glossvideo.save()
 
     def get_extension(self):
         """Returns videofiles extension."""
@@ -138,20 +160,3 @@ class GlossVideo(models.Model):
 
     def __str__(self):
         return self.videofile.name
-
-
-@receiver(post_save, sender=GlossVideo)
-def post_save_glossvideo(sender, instance, created, **kwargs):
-    # If the object was created (rather than updated).
-    if created:
-        try:
-            # Set gloss dataset to be glossvideo.dataset
-            instance.dataset = instance.gloss.dataset
-        except AttributeError:
-            pass
-        try:
-            # Set the version of the GlossVideo to be one higher than any of Glosses GlossVideos has.
-            instance.version = instance.gloss.glossvideo_set.order_by('version').last().version + 1
-        except AttributeError:
-            instance.version = 0
-        instance.save()

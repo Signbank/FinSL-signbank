@@ -35,22 +35,12 @@ def addvideo(request, gloss_id, redirect_url):
                 raise PermissionDenied(msg)
 
             vfile = form.cleaned_data['videofile']
-            video = GlossVideo(gloss=gloss)
+            video = GlossVideo(gloss=gloss, videofile=vfile)
             video_title = form.cleaned_data['video_title']
-            if vfile: # If there is no video file, we don't want to create a glossvideo.
-                if video_title: # if video_title was provided in the form, use it
-                    video.title = form.cleaned_data['video_title']
-                else: # Otherwise use the videos filename as the title.
-                    video.title = vfile.name
-            # Save the GlossVideo to get a primary key
-            video.save()
+            if video_title: # if video_title was provided in the form, use it
+                video.title = form.cleaned_data['video_title']
 
-            # Construct a filename for the video, because it doesn't have a path yet.
-            vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk, splitext(vfile.name)[1])
-            video.videofile = vfile
             video.save()
-
-            # TODO: provide some feedback that it worked (if immediate display of video isn't working)
 
             return redirect(redirect_url)
 
@@ -83,23 +73,14 @@ def addvideo_gloss(request):
                 raise PermissionDenied(msg)
 
             vfile = form.cleaned_data['videofile']
-            video = GlossVideo(gloss=gloss)
+            video = GlossVideo(gloss=gloss, videofile=vfile)
 
             video_title = form.cleaned_data['video_title']
-            if vfile:  # If there is no video file, we don't want to create a glossvideo.
-                if video_title:  # if video_title was provided in the form, use it
-                    video.title = form.cleaned_data['video_title']
-                else:  # Otherwise use the videos filename as the title.
-                    video.title = vfile.name
-
-            # Save to get a pk.
+            if video_title:  # if video_title was provided in the form, use it
+                video.title = video_title
+            else:  # Otherwise use the videos filename as the title.
+                video.title = vfile.name
             video.save()
-            # Construct a filename for the video, because it doesn't have a path yet.
-            vfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, video.pk, splitext(vfile.name)[1])
-            video.videofile = vfile
-            video.save()
-
-            # TODO: provide some feedback that it worked (if immediate display of video isn't working)
 
             redirect_url = form.cleaned_data['redirect']
 
@@ -135,10 +116,7 @@ def add_recorded_video_view(request):
 
             vidfile = form.cleaned_data['videofile']
             if vidfile:
-                glossvid = GlossVideo.objects.create(gloss=gloss, videofile=vidfile, dataset=gloss.dataset)
-                # Construct a filename for the video, because it doesn't have a path yet.
-                vidfile.name = GlossVideo.create_filename(gloss.idgloss, gloss.pk, glossvid.pk, splitext(vidfile.name)[1])
-                glossvid.videofile = vidfile
+                glossvid = GlossVideo(gloss=gloss, videofile=vidfile, dataset=gloss.dataset)
                 glossvid.save()
                 # Return the created GlossVideos id/pk, so that it can be used to link to the uploaded video.
                 return HttpResponse(json.dumps({'videoid': glossvid.pk}), content_type='application/json')
