@@ -79,26 +79,29 @@ class GlossVideo(models.Model):
     def save(self, *args, **kwargs):
         creating = self._state.adding
         if creating:
-            try:
-                # Set gloss dataset to be glossvideo.dataset
-                self.dataset = self.gloss.dataset
-            except AttributeError:
-                pass
-            # If no title is specifically set, use the filename of the file uploaded.
+            # If no title is set, use the filename of the uploaded file.
             if not self.title:
                 self.title = self.videofile.name
-            try:
-                # Set the version of the GlossVideo to be one higher than any of Glosses GlossVideos has.
-                self.version = self.gloss.glossvideo_set.order_by('version').last().version + 1
-            except AttributeError:
-                self.version = 0
-            # Save to get a PK for renaming a video.
-            super(GlossVideo, self).save(*args, **kwargs)
+            # Set version, one higher than highest version.
+            self.version = self.next_version()
 
-        # Rename the videofile if gloss is set.
+        super(GlossVideo, self).save(*args, **kwargs)
+        # Rename the videofile if object has gloss set, now that the object has a pk.
         if self.gloss:
+            # Make sure glossvideo has the same dataset as gloss.
+            self.dataset = self.gloss.dataset
+            # Rename videofile.
             self.rename_video()
+            # Save without args and kwargs.
             super(GlossVideo, self).save()
+
+    def next_version(self):
+        """Return a next suitable version number."""
+        try:
+            return self.gloss.glossvideo_set.order_by('version').last().version + 1
+        except AttributeError:
+            # If no GlossVideo.gloss, we can set version to 0.
+            return 0
 
     def get_absolute_url(self):
         return self.videofile.url
@@ -107,10 +110,8 @@ class GlossVideo(models.Model):
         """Rename the video and move the video to correct path if the glossvideo object has a foreignkey to a gloss."""
         # Do not rename the file if glossvideo doesn't have a gloss.
         if self.videofile and hasattr(self, 'gloss') and self.gloss is not None:
-            # Get file extensions
-            ext = os.path.splitext(self.videofile.path)[1]
-            # Create the base filename for the video based on the new self.gloss.idgloss
-            new_filename = GlossVideo.create_filename(self.gloss.idgloss, self.gloss.pk, self.pk, ext)
+            # Create the base filename.
+            new_filename = self.create_filename()
             # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
             new_path = os.path.join('glossvideo', str(self.gloss.idgloss[:2]).upper(), new_filename)
             full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
@@ -130,16 +131,19 @@ class GlossVideo(models.Model):
                 # Change the self.videofile to the new path
                 self.videofile = new_path
 
-    @staticmethod
-    def create_filename(idgloss, glosspk, videopk, ext):
+    def create_filename(self):
         """Returns a correctly named filename"""
-        return str(idgloss) + "-" + str(glosspk) + "_vid" + str(videopk) + ext
+        return "{idgloss}-{glosspk}_vid{videopk}{ext}".format(
+            idgloss=self.gloss.idgloss, glosspk=self.gloss.pk, videopk=self.pk, ext=self.get_extension()
+        )
 
     def create_poster_filename(self, ext):
         """Returns a preferred filename of posterfile. Ext is the file extension without the dot."""
         if self.gloss:
-            return str(self.gloss.idgloss) + "-" + str(self.gloss.pk) + "_vid" + str(self.pk) + "_poster." + ext
-        return self.videofile.name + "." + ext
+            return "{idgloss}-{glosspk}_vid{videopk}_poster.{ext}".format(
+                idgloss=self.gloss.idgloss, glosspk=self.gloss.pk, videopk=self.pk, ext=ext
+            )
+        return "{videofilename}.{ext}".format(videofilename=self.videofile.name, ext=ext)
 
     @staticmethod
     def rename_glosses_videos(gloss):

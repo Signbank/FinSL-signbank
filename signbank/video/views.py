@@ -270,6 +270,8 @@ def update_glossvideo(request):
                         glossvideo = GlossVideo.objects.get(pk=item['glossvideo'])
                         glossvideo.gloss = Gloss.objects.get(pk=item['gloss'])
                         if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
+                            # Set version number.
+                            glossvideo.version = glossvideo.next_version()
                             # Save if user has permission to add videos to the selected dataset.
                             glossvideo.save()
                         else:
@@ -297,6 +299,8 @@ def update_glossvideo(request):
                     glossvideo.gloss = Gloss.objects.get(pk=gloss_id)
                     # Make sure that the user has rights to edit this datasets glosses.
                     if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
+                        # Set version number.
+                        glossvideo.version = glossvideo.next_version()
                         # Save if user has permission to add videos to the selected dataset.
                         glossvideo.save()
                     else:
