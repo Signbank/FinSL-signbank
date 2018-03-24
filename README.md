@@ -30,7 +30,7 @@ Main features:
 
 # Requirements
 
-* Python 3 (3.4 recommended) or Python 2 (2.7)
+* Python 3 (3.4 recommended)
 * Django (1.11)
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
