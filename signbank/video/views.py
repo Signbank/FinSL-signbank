@@ -193,6 +193,8 @@ class AddVideosView(FormView):
 
             for f in files:
                 GlossVideo.objects.create(videofile=f, dataset=dataset, title=f.name)
+            msg = str(len(files)) + " " + _("videos were successfully uploaded.".format(count=len(files)))
+            messages.success(request, msg)
             return self.form_valid(form)
         else:
             return self.form_invalid(form)

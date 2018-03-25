@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-15 16:57+0200\n"
+"POT-Creation-Date: 2018-03-25 16:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,7 +148,7 @@ msgstr "Leksikko"
 #: signbank/dictionary/models.py:235
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
-#: signbank/video/models.py:65
+#: signbank/video/models.py:43
 #: signbank/video/templates/uploaded_glossvideos.html:59
 msgid "Gloss"
 msgstr "Glossi"
@@ -163,7 +163,7 @@ msgstr "Glossi"
 msgid "Gloss in English"
 msgstr "Glossi englanniksi"
 
-#: signbank/dictionary/forms.py:30 signbank/video/models.py:77
+#: signbank/dictionary/forms.py:30 signbank/video/models.py:55
 msgid "Gloss video"
 msgstr "Glossin video"
 
@@ -725,7 +725,6 @@ msgid "Page navigation top"
 msgstr "Sivun yläosan navigointi"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:226
-#: signbank/video/models.py:25
 msgid "Videos"
 msgstr "Videoita"
 
@@ -1452,48 +1451,39 @@ msgstr "Enemmän kuin 2"
 msgid "Less than 2"
 msgstr "Vähemmän kuin 2"
 
-#. Translators: Video: videofile
-#: signbank/video/models.py:21
-msgid "Video file in h264 mp4 format"
-msgstr "Videotiedosto h264 mp4 muodossa"
-
-#: signbank/video/models.py:24
-msgid "Video"
-msgstr "Videot"
-
-#: signbank/video/models.py:58
+#: signbank/video/models.py:36
 msgid "Title"
 msgstr "Nimike"
 
-#: signbank/video/models.py:59
+#: signbank/video/models.py:37
 msgid "Descriptive name of the video."
 msgstr "Videon sisältöä kuvaava nimike."
 
-#: signbank/video/models.py:60
+#: signbank/video/models.py:38
 msgid "Video file"
 msgstr "Videotiedosto"
 
-#: signbank/video/models.py:61
+#: signbank/video/models.py:39
 msgid "Video file."
 msgstr "Videotiedosto."
 
-#: signbank/video/models.py:62
+#: signbank/video/models.py:40
 msgid "Poster file"
 msgstr "Kuvatiedosto"
 
-#: signbank/video/models.py:63
+#: signbank/video/models.py:41
 msgid "Still image representation of the video."
 msgstr "Kuva videosta."
 
-#: signbank/video/models.py:66
+#: signbank/video/models.py:44
 msgid "The gloss this GlossVideo is related to."
 msgstr "Glossi johon tämä Glossivideo on liitetty."
 
-#: signbank/video/models.py:67
+#: signbank/video/models.py:45
 msgid "Glossvideo dataset"
 msgstr "Glossivideon aineisto"
 
-#: signbank/video/models.py:68
+#: signbank/video/models.py:46
 msgid ""
 "Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
 "was uploaded."
@@ -1502,11 +1492,11 @@ msgstr ""
 "valittu videoa lähetettäessä."
 
 #. Translators: GlossVideo: version
-#: signbank/video/models.py:71
+#: signbank/video/models.py:49
 msgid "Version"
 msgstr "Versio"
 
-#: signbank/video/models.py:72
+#: signbank/video/models.py:50
 msgid ""
 "A number that represents the order of the Glossvideo's in a gloss page. "
 "Smaller number means higher priority."
@@ -1514,7 +1504,7 @@ msgstr ""
 "Glossivideon järjestysnumero, jonka perusteella videot järjestetään "
 "glossisivulla. Pienempi numero tarkoittaa korkeampaa prioriteettia."
 
-#: signbank/video/models.py:78
+#: signbank/video/models.py:56
 msgid "Gloss videos"
 msgstr "Glossien videot"
 
@@ -1604,16 +1594,16 @@ msgstr "Syötitkö arvot id-numeroina?"
 msgid "GlossVideo successfully updated!"
 msgstr "Videon tiedot päivitetty!"
 
-#: signbank/video/views.py:33 signbank/video/views.py:81
-#: signbank/video/views.py:212
+#: signbank/video/views.py:33 signbank/video/views.py:71
+#: signbank/video/views.py:190
 msgid "You do not have permissions to upload videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lähettää videoita valittuun leksikkoon."
 
-#: signbank/video/views.py:132
+#: signbank/video/views.py:113
 msgid "You do not have permissions to change order for videos of this lexicon."
 msgstr "Sinulla ei ole oikeuksia muuttaa tämän leksikon videoiden järjestystä."
 
-#: signbank/video/views.py:170
+#: signbank/video/views.py:148
 msgid ""
 "You do not have permissions to add/change poster images for glosses videos "
 "of this lexicon."
@@ -1621,27 +1611,31 @@ msgstr ""
 "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tämän leksikon glossin "
 "videoille."
 
-#: signbank/video/views.py:272
+#: signbank/video/views.py:196
+msgid "videos were successfully uploaded."
+msgstr "videota lisättiin onnistuneesti."
+
+#: signbank/video/views.py:252
 msgid "You do not have permissions to view the selected lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä valittua leksikkoa."
 
-#: signbank/video/views.py:315
+#: signbank/video/views.py:297
 #, python-format
 msgid "You did not provide the value as a number for: %s "
 msgstr "Et syöttänyt arvoa numerona: %s"
 
-#: signbank/video/views.py:326
+#: signbank/video/views.py:310
 msgid ""
 "You do not have permissions to add videos to the lexicon of selected gloss."
 msgstr ""
 "Sinulla ei ole oikeuksia lisätä videoita valittujen glossien leksikoihin."
 
-#: signbank/video/views.py:345
+#: signbank/video/views.py:329
 msgid ""
 "You do not have permissions to add/change poster images for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tälle leksikolle."
 
-#: signbank/video/views.py:372
+#: signbank/video/views.py:357
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
 
@@ -2051,6 +2045,12 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Video file in h264 mp4 format"
+#~ msgstr "Videotiedosto h264 mp4 muodossa"
+
+#~ msgid "Video"
+#~ msgstr "Videot"
 
 #~ msgid "Has no videos"
 #~ msgstr "Ei videoita"
