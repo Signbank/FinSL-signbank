@@ -33,12 +33,9 @@ urlpatterns = [
         include('signbank.dictionary.urls', namespace='dictionary')),
     url(r'^video/', include('signbank.video.urls', namespace='video')),
 
-    # Hardcoding a number of special urls:
+    # We used to have this url, keeping it in order to support old urls.
     url(r'^signs/search/$', permission_required('dictionary.search_gloss')(GlossListView.as_view()),
-        name='admin_gloss_list'),
-    url(r'^signs/add/$', dictionary_views.add_new_sign, name='create_gloss'),
-    # TODO: Remove this in the future
-    # url(r'^signs/import_csv/$', dictionary_views.import_csv, name='old_import_csv'),
+        name='sign_search'),
 
     # Registration urls for login, logout, registration, activation etc.
     url(r'^accounts/register/$', RegistrationView.as_view(form_class=CustomUserForm), name='registration_register',),

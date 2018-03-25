@@ -334,7 +334,7 @@ $('#record-video-Modal').on('hidden.bs.modal', function (e) {
         //formData.append('video-filename', fileName);
         //formData.append('video-blob', blob);
         formData.append('videofile', blob);
-        formData.append('gloss_id', {{gloss.pk}});
+        formData.append('gloss', {{gloss.pk}});
         formData.append('csrfmiddlewaretoken', "{{csrf_token}}");
 
         callback('Uploading recorded-file to server.');

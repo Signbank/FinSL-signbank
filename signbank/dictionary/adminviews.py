@@ -25,7 +25,7 @@ from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm
     GlossRelationSearchForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
     Relation, MorphologyDefinition
-from ..video.forms import VideoUploadForGlossForm
+from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
 from ..comments import CommentTagForm
 
@@ -412,7 +412,7 @@ class GlossDetailView(DetailView):
         context['dataset_users'] = [x.username for x in get_users_with_perms(context['dataset'])]
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
-        context['videoform'] = VideoUploadForGlossForm()
+        context['glossvideoform'] = GlossVideoForGlossForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
         context['glossrelationform'] = GlossRelationForm(initial={'source': context['gloss'].id,})

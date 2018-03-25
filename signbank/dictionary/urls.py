@@ -12,13 +12,20 @@ from . import views
 from . import tagviews
 
 urlpatterns = [
-    # Gloss search url for the menu search field(s)
-    url(r'^search/$', permission_required('dictionary.search_gloss')
-    (adminviews.GlossListView.as_view()), name='menusearch'),
+    # Public views for dictionary
+    url(r'^public/gloss/$', publicviews.GlossListPublicView.as_view(), name='public_gloss_list'),
+    url(r'^public/gloss/(?P<pk>\d+)', publicviews.GlossDetailPublicView.as_view(), name='public_gloss_view'),
+
+    # Advanced search page
+    url(r'^advanced/$', permission_required('dictionary.search_gloss')
+        (adminviews.GlossListView.as_view()), name='admin_gloss_list'),
 
     # GlossRelation search page
     url(r'^search/glossrelation/$', permission_required('dictionary.search_gloss')
     (adminviews.GlossRelationListView.as_view()), name='search_glossrelation'),
+
+    # Create
+    url(r'^gloss/create/$', views.create_gloss, name='create_gloss'),
 
     # Urls used to update data
     url(r'^update/gloss/(?P<glossid>\d+)$',
@@ -31,8 +38,6 @@ urlpatterns = [
         update.add_relationtoforeignsign, name='add_relationtoforeignsign'),
     url(r'^update/morphologydefinition/$',
         update.add_morphology_definition, name='add_morphologydefinition'),
-    url(r'^update/gloss/',
-        update.add_gloss, name='add_gloss'),
     url(r'^update/glossrelation/',
         update.gloss_relation, name='add_glossrelation'),
 
@@ -67,10 +72,6 @@ urlpatterns = [
     url(r'^list/$', permission_required('dictionary.search_gloss')(adminviews.GlossListView.as_view())),
     url(r'^gloss/(?P<pk>\d+)', permission_required('dictionary.search_gloss')
     (adminviews.GlossDetailView.as_view()), name='admin_gloss_view'),
-
-    # Public views for dictionary
-    url(r'^public/gloss/$', publicviews.GlossListPublicView.as_view(), name='public_gloss_list'),
-    url(r'^public/gloss/(?P<pk>\d+)', publicviews.GlossDetailPublicView.as_view(), name='public_gloss_view'),
 
     # A view for the developer to try out some things
     # url(r'^try/$', views.try_code),

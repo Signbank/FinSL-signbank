@@ -20,41 +20,9 @@ from guardian.shortcuts import get_perms, get_objects_for_user
 from .models import Gloss, Dataset, Translation, Keyword, Language, Dialect, GlossURL, \
     GlossRelation, GlossTranslations, FieldChoice, MorphologyDefinition, RelationToForeignSign, Relation
 from .models import build_choice_list
-from .forms import TagsAddForm, TagUpdateForm, GlossCreateForm, GlossRelationForm, RelationForm, \
+from .forms import TagsAddForm, TagUpdateForm, GlossRelationForm, RelationForm, \
     RelationToForeignSignForm, MorphologyForm, CSVUploadForm
-from ..video.views import addvideo
 from ..video.models import GlossVideo
-
-
-@permission_required('dictionary.add_gloss')
-def add_gloss(request):
-    # TODO: Is this view used anywhere?
-    if request.method == 'POST':
-        form = GlossCreateForm(request.POST, request.FILES)
-        if form.is_valid():
-            if 'view_dataset' not in get_perms(request.user, form.cleaned_data["dataset"]):
-                # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
-                msg = _("You do not have permissions to create glosses for this lexicon.")
-                messages.error(request, msg)
-                raise PermissionDenied(msg)
-
-            new_gloss = form.save(commit=False)
-            new_gloss.created_by = request.user
-            new_gloss.updated_by = request.user
-            new_gloss.save()
-            if form.cleaned_data["tag"]:
-                Tag.objects.add_tag(new_gloss, form.cleaned_data["tag"].name)
-
-            redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/?edit'
-            addvideo(request, new_gloss.pk, redirecturl)
-            #return HttpResponseRedirect(reverse('dictionary:admin_gloss_list'))
-            return HttpResponseRedirect(redirecturl)
-    else:
-        form = GlossCreateForm()
-        # Make sure that we will show the user only datasets the user is allowed access to.
-        allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
-        form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
-    return render(request, 'dictionary/add_gloss.html', {'add_gloss_form': form})
 
 
 @permission_required('dictionary.change_gloss')

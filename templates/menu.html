@@ -23,7 +23,7 @@
             <li><a href="https://github.com/Signbank/FinSL-signbank/wiki" target="_blank">
                 {% blocktrans %}Wiki{% endblocktrans %}</a></li>
         {% if perms.dictionary.search_gloss %}
-            <li><a href="{% url "admin_gloss_list" %}">{% blocktrans context "menu-link" %}Advanced search{% endblocktrans %}</a></li>
+            <li><a href="{% url "dictionary:admin_gloss_list" %}">{% blocktrans context "menu-link" %}Advanced search{% endblocktrans %}</a></li>
             <li><a href="{% url 'dictionary:search_glossrelation' %}">{% blocktrans %}Search relations{% endblocktrans %}</a></li>
         {% endif %}
         {% if perms.dictionary.add_gloss and perms.dictionary.change_gloss %}
@@ -31,7 +31,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     {% blocktrans %}Manage{% endblocktrans %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url "create_gloss" %}">{% blocktrans %}Create gloss{% endblocktrans %}</a></li>
+                    <li><a href="{% url "dictionary:create_gloss" %}">{% blocktrans %}Create gloss{% endblocktrans %}</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="{% url "video:upload_videos" %}">{% blocktrans %}Upload videos{% endblocktrans %}</a></li>
                     <li><a href="{% url "video:manage_videos" %}">{% blocktrans %}Manage uploaded videos{% endblocktrans %}</a></li>
