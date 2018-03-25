@@ -152,7 +152,7 @@ class GlossVideo(models.Model):
     @staticmethod
     def rename_glosses_videos(gloss):
         """Renames the filenames of selected Glosses videos to match the Gloss name"""
-        glossvideos = GlossVideo.objects.filter(gloss=gloss)
+        glossvideos = GlossVideo.objects.filter(gloss=gloss).order_by('version')
         for glossvideo in glossvideos:
             glossvideo.save()
 
