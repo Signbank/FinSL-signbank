@@ -12,26 +12,21 @@ from django.core.files.storage import FileSystemStorage
 
 
 class GlossVideoStorage(FileSystemStorage):
-    """Implement our shadowing video storage system"""
+    """Video storage, handles saving to directories based on filenames first two characters."""
 
     def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
         super(GlossVideoStorage, self).__init__(location, base_url)
 
     def get_valid_name(self, name):
-        """Generate a valid name, we use directories named for the
-        first two digits in the filename to partition the videos"""
-
-        (targetdir, basename) = os.path.split(name)
-        path = os.path.join(str(basename)[:2].upper(), str(basename))
-        result = os.path.join(targetdir, path)
-
+        """Generate a valid name, save videos to a 'base_directory', and under it use directories
+        named for the first two characters in the filename to partition the videos"""
+        base_directory = "glossvideo"
+        file_path = os.path.join(name[:2].upper(), name)
+        result = os.path.join(base_directory, file_path)
         return result
 
     def url(self, name):
-        return settings.MEDIA_URL + name
-
-
-storage = GlossVideoStorage()
+        return os.path.join(self.base_url, name)
 
 
 @python_2_unicode_compatible
@@ -40,10 +35,10 @@ class GlossVideo(models.Model):
 
     title = models.CharField(_("Title"), blank=True, unique=False, max_length=100,
                              help_text=_("Descriptive name of the video."))
-    videofile = models.FileField(_("Video file"), upload_to=settings.GLOSS_VIDEO_DIRECTORY, storage=storage,
+    videofile = models.FileField(_("Video file"), storage=GlossVideoStorage(),
                                  help_text=_("Video file."))
-    posterfile = models.FileField(_("Poster file"), upload_to=os.path.join(settings.GLOSS_VIDEO_DIRECTORY, "posters"),
-                                  storage=storage, blank=True, help_text=_("Still image representation of the video."),
+    posterfile = models.FileField(_("Poster file"), upload_to=os.path.join("posters"),
+                                  storage=GlossVideoStorage(), blank=True, help_text=_("Still image representation of the video."),
                                   default="")
     gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
                               help_text=_("The gloss this GlossVideo is related to."))
@@ -131,28 +126,14 @@ class GlossVideo(models.Model):
 
     def rename_video(self):
         """Rename the video and move the video to correct path if the glossvideo object has a foreignkey to a gloss."""
+        storage = self.videofile.storage
         # Do not rename the file if glossvideo doesn't have a gloss.
-        if self.videofile and hasattr(self, 'gloss') and self.gloss is not None:
+        if hasattr(self, 'gloss') and self.gloss is not None:
             # Create the base filename.
             new_filename = self.create_filename()
-            # Create new_path by joining 'glossvideo' and the two first letters from gloss.idgloss
-            new_path = os.path.join('glossvideo', str(self.gloss.idgloss[:2]).upper(), new_filename)
-            full_new_path = os.path.join(settings.MEDIA_ROOT, new_path)
-
-            # Check if a file already exists in the path we try to save to or if this file already is in that path.
-            if not (os.path.isfile(full_new_path) or self.videofile == new_path):
-                try:
-                    # Rename the file in the system, get old_path from self.videofile.path.
-                    os.renames(self.videofile.path, full_new_path)
-                except IOError:
-                    # If there is a problem moving the file, don't change self.videofile, it would not match
-                    return
-                except OSError:
-                    # If the sourcefile does not exist, raise OSError
-                    raise OSError(str(self.pk) + ' ' + str(self.videofile))
-
-                # Change the self.videofile to the new path
-                self.videofile = new_path
+            full_new_path = storage.get_valid_name(new_filename)
+            saved_file_path = storage.save(full_new_path, self.videofile)
+            self.videofile = saved_file_path
 
     def create_filename(self):
         """Returns a correctly named filename"""
