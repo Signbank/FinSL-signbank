@@ -103,6 +103,45 @@ class GlossVideo(models.Model):
             # If no GlossVideo.gloss, we can set version to 0.
             return 0
 
+    def get_glosses_videos(self):
+        """Returns queryset of glosses GlossVideos."""
+        try:
+            return self.gloss.glossvideo_set.order_by('version')
+        except AttributeError:
+            return GlossVideo.objects.none()
+
+    def correct_duplicate_versions(self):
+        """If glosses glossvideos have duplicate version numbers, reset version numbers."""
+        qs = self.get_glosses_videos()
+        version_list = qs.order_by('version').values_list('version', flat=True)
+        # Check if version_list has duplicates.
+        has_duplicates = len(version_list) != len(set(version_list))
+        if has_duplicates:
+            # If duplicates, set new version numbers.
+            for i, vid in enumerate(qs):
+                vid.version = i
+                vid.save()
+        return
+
+    def move_video_version(self, direction):
+        """Move video back or forth in glosses videos."""
+        qs = self.get_glosses_videos()
+        # First correct possible duplicate version numbers.
+        self.correct_duplicate_versions()
+        # Exclude self from the queryset.
+        glosses_videos = qs.exclude(pk=self.pk)
+        if direction == "up" and self.version > 0:
+            # Move video "up", make its version lower by swapping with video before it.
+            swap_video = glosses_videos.filter(version__lte=self.version).last()
+            self.version, swap_video.version = swap_video.version, self.version
+            self.save(), swap_video.save()
+        if direction == "down" and self.version < glosses_videos.last().version:
+            # Move video "down", make its version higher by swapping with video after it.
+            swap_video = glosses_videos.filter(version__gte=self.version).first()
+            self.version, swap_video.version = swap_video.version, self.version
+            self.save(), swap_video.save()
+        return
+
     def get_absolute_url(self):
         return self.videofile.url
 

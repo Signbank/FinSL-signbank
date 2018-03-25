@@ -257,7 +257,7 @@ uploaded_glossvideos_listview = permission_required('video.change_glossvideo')(U
 
 
 def update_glossvideo(request):
-    """Here we process the post request for updating a glossvideo."""
+    """Process the post request for updating a glossvideo."""
     if request.is_ajax():
         # If request is AJAX, follow this procedure.
         data = json.loads(request.body.decode('utf-8'))
@@ -341,6 +341,7 @@ def video(request, videoid):
 
     return redirect(video)
 
+
 video_view = video
 
 
@@ -355,27 +356,9 @@ def change_glossvideo_order(request):
         messages.error(request, msg)
         raise PermissionDenied(msg)
 
-    glosses_videos = video.gloss.glossvideo_set.order_by('version')
-    version_list = glosses_videos.values_list('version', flat=True)
-    # Check if version_list has duplicates.
-    out_of_order = len(version_list) != len(set(version_list))
-    if out_of_order:
-        # If duplicates, reorder versions so that we no longer have duplicates.
-        for i, vid in enumerate(glosses_videos):
-            vid.version = i
-            vid.save()
-
-    glosses_videos = glosses_videos.exclude(pk=video.pk)
-    if direction == "up" and video.version > 0:
-        # Move video "up", make its version lower by swapping with video before it.
-        swap_video = glosses_videos.filter(version__lte=video.version).last()
-        video.version, swap_video.version = swap_video.version, video.version
-        video.save(), swap_video.save()
-    if direction == "down" and video.version < glosses_videos.last().version:
-        # Move video "down", make its version higher by swapping with video after it.
-        swap_video = glosses_videos.filter(version__gte=video.version).first()
-        video.version, swap_video.version = swap_video.version, video.version
-        video.save(), swap_video.save()
+    if direction == "up" or "down":
+        # Move video within glosses glossvideos.
+        video.move_video_version(direction)
 
     referer = request.META.get("HTTP_REFERER")
     if "?edit" in referer:
