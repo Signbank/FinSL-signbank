@@ -32,9 +32,6 @@ MEDIA_ROOT = '/var/www/signbank/media/'
 # It must end in a slash if set to a non-empty value.
 MEDIA_URL = '/media/'
 
-# Within MEDIA_ROOT we store newly uploaded gloss videos in this directory
-GLOSS_VIDEO_DIRECTORY = 'glossvideo'
-
 # Location and URL for uploaded files.
 UPLOAD_ROOT = MEDIA_ROOT + "upload/"
 UPLOAD_URL = MEDIA_URL + "upload/"
