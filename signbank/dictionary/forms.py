@@ -268,6 +268,6 @@ class GlossPublicSearchForm(forms.Form):
         to_field_name="language_code_3char", empty_label=_("All sign languages"), required=False,
         label=_("Sign language"))
     dataset = DatasetMultipleChoiceField(queryset=Dataset.objects.filter(is_public=True), required=False,
-                                             label=_("Lexicon"), widget=forms.CheckboxSelectMultiple(),
-                                             help_text=_("You can limit the search to these lexicons."))
+                                         label=_("You can limit the search to these lexicons"),
+                                         widget=forms.CheckboxSelectMultiple())
 

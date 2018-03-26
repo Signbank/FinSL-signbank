@@ -36,11 +36,10 @@ $( document ).ready(function() {
 {% get_language_info for LANGUAGE_CODE as lang %}
 <div class="row">
     <div class="col-md-12">
-        <h2>{% blocktrans %}Search signs{% endblocktrans %}
-            <small>{% blocktrans %}By gloss or translation equivalents{% endblocktrans %}
-                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseHelp" aria-expanded="false" aria-controls="collapseHelp">
-          {% blocktrans %}Help{% endblocktrans %} <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-        </button></small></h2>
+        <h3>{% blocktrans %}Search signs{% endblocktrans %}
+            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseHelp" aria-expanded="false" aria-controls="collapseHelp">
+            {% blocktrans %}Help{% endblocktrans %} <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        </button></h3>
 
         <div class="collapse" id="collapseHelp">
           <div class="well">
@@ -62,7 +61,7 @@ $( document ).ready(function() {
 </p>
           </div>
         </div>
-        <strong>{% blocktrans %}Browse:{% endblocktrans %}</strong>
+        <strong>{% blocktrans %}Browse Glosses:{% endblocktrans %}</strong>
         <div class="btn-group" role="group" aria-label="Browse">
         {% for letter in first_letters %}
             <a role="button" class="btn btn-default" href="?lang={{request.GET.lang|urlencode}}&search={{letter.0|urlencode}}
@@ -117,7 +116,7 @@ $( document ).ready(function() {
                         <span style="color:black;"><span class="glyphicon glyphicon-film" aria-hidden="true"
                               title="{% blocktrans context "videocount" %}Videos{% endblocktrans %}"></span>
                         {{obj.glossvideo_set.count}}</span>
-                        <span class="dataset-{{obj.dataset.id}}-color label label-default" style="float:right;margin-top:2px;">{{obj.dataset}}</span>
+                        <span class="dataset-{{obj.dataset.id}}-color label label-default" style="float:right;margin-top:2px;">{{obj.dataset.description}}</span>
                     </a>
                     </div>
                 </div>
