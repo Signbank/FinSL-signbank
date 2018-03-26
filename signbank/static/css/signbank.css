@@ -348,3 +348,10 @@ td .tag {
 .notifications-menu-close {
     margin-right: 10px;
 }
+/* Public search mark.js */
+h3.gloss-idgloss mark {
+    background-color: #eae2ba;
+}
+span.gloss-keywords mark {
+    background-color: #efcccc;
+}
