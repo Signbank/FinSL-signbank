@@ -12,6 +12,7 @@ from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.http import HttpResponse
+from django.urls import reverse
 from django.utils.translation import ugettext as _
 
 from guardian.shortcuts import get_objects_for_user, get_perms
@@ -21,28 +22,20 @@ from ..dictionary.models import Gloss, Dataset
 from .forms import GlossVideoUpdateForm, GlossVideoPosterForm
 
 
-def upload_glossvideo(request, gloss_id, redirect_url):
+def upload_glossvideo(request):
     """Add a video from form and process the upload"""
     if request.method == 'POST':
         form = GlossVideoForm(request.POST, request.FILES)
         if form.is_valid():
-            gloss = get_object_or_404(Gloss, pk=gloss_id)
-
-            if 'view_dataset' not in get_perms(request.user, gloss.dataset):
-                # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
-                msg = _("You do not have permissions to upload videos for this lexicon.")
-                messages.error(request, msg)
-                raise PermissionDenied(msg)
 
             videofile = form.cleaned_data['videofile']
-            glossvideo = GlossVideo(gloss=gloss, videofile=videofile)
+            glossvideo = GlossVideo(videofile=videofile)
             title = form.cleaned_data['title']
-            if title: # if video_title was provided in the form, use it
-                video.title = form.cleaned_data['title']
-
+            if title:  # if video_title was provided in the form, use it
+                glossvideo.title = form.cleaned_data['title']
             glossvideo.save()
 
-            return redirect(redirect_url)
+            return redirect(reverse('video:upload_glossvideo'))
 
     # if we can't process the form, just redirect back to the
     # referring page, should just be the case of hitting

@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     url(r'^(?P<videoid>\d+)/$', views.video_view),
     url(r'^poster/(?P<videoid>\d+)$', views.poster_view),
-    url(r'^upload/$', views.upload_glossvideo_view),
+    url(r'^upload/$', views.upload_glossvideo_view, name='upload_glossvideo'),
     url(r'^upload/gloss/$', views.upload_glossvideo_gloss_view, name='upload_glossvideo_gloss'),
     url(r'^upload/recorded/$', views.add_recorded_video_view, name='add_recorded_video'),
     # View to upload multiple videos with no foreign key to gloss.

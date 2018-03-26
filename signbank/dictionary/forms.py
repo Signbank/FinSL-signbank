@@ -18,17 +18,7 @@ class GlossCreateForm(forms.ModelForm):
     Form for creating a new gloss.
     This form also overrides the ModelForm validations.
     """
-    attrs_reqd_focus = {'class': 'form-control', 'autofocus': '', 'required': ''}
-    attrs_default = {'class': 'form-control'}
-    # TODO: Check dataset permissions
     dataset = forms.ModelChoiceField(label=_('Dataset'), required=True, queryset=Dataset.objects.all(), empty_label=None)
-
-    idgloss = forms.CharField(label=_('Gloss'), required=True, widget=forms.TextInput(attrs=attrs_reqd_focus))
-    idgloss_en = forms.CharField(label=_('Gloss in English'), required=False,
-                                 widget=forms.TextInput(attrs=attrs_default))
-    videofile = forms.FileField(label=_('Gloss video'), allow_empty_file=True, required=False)
-    video_title = forms.CharField(label=_('Glossvideo title'), required=False)
-
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
     except (ObjectDoesNotExist, OperationalError):
@@ -36,21 +26,8 @@ class GlossCreateForm(forms.ModelForm):
     tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
 
-    class Meta:
-        model = Gloss
-        fields = ['dataset', 'idgloss', 'idgloss_en', 'videofile']
-
-    def clean(self):
-        """
-        Validate the form data.
-        """
-        pass # Nothing here at the moment.
-
     def clean_idgloss(self):
-        """
-        Validates that the idgloss value in the chosen Dataset has not been taken yet.
-
-        """
+        """Validates that idgloss is unique in Dataset."""
         try:
             gloss = Gloss.objects.get(idgloss__exact=self.cleaned_data['idgloss'], dataset=self.cleaned_data['dataset'])
         except Gloss.DoesNotExist:
@@ -60,22 +37,9 @@ class GlossCreateForm(forms.ModelForm):
             _('This Gloss value already exists in the chosen Dataset. Please choose another value for Gloss.'),
             code='not_unique')
 
-    def clean_idgloss_en(self):
-        """
-        Overrides the default validations for idgloss_en.
-        Currently we don't want to validate this field.
-
-        """
-        return self.cleaned_data['idgloss_en']
-
-    def clean_videofile(self):
-        # Checking here that the file ends with .mp4 TODO: See if more checks are needed, like filetype, codec
-        if self.cleaned_data['videofile'] and not self.cleaned_data['videofile'].name.endswith('.mp4'):
-            raise forms.ValidationError('File is not a mp4. Please upload only mp4 files')
-        return self.cleaned_data['videofile']
-
-    def clean_video_title(self):
-        return self.cleaned_data['video_title']
+    class Meta:
+        model = Gloss
+        fields = ['dataset', 'idgloss', 'idgloss_en', ]
 
 
 class TagUpdateForm(forms.Form):

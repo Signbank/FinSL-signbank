@@ -7,21 +7,24 @@ from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 from django.contrib.admin.views.decorators import user_passes_test
 from django.core.exceptions import PermissionDenied
+from django.urls import reverse
 from django.utils.translation import ugettext as _
 
 from tagging.models import Tag
 from guardian.shortcuts import get_perms, get_objects_for_user
 from .models import Dataset, Keyword, FieldChoice
 from .forms import GlossCreateForm
-from ..video.views import upload_glossvideo
+from ..video.forms import GlossVideoForm
 
 
 @permission_required('dictionary.add_gloss')
 def create_gloss(request):
     """Handle Gloss creation."""
     if request.method == 'POST':
-        form = GlossCreateForm(request.POST, request.FILES)
-        if form.is_valid():
+        form = GlossCreateForm(request.POST)
+        glossvideoform = GlossVideoForm(request.POST, request.FILES)
+        glossvideoform.fields['videofile'].required=False
+        if form.is_valid() and glossvideoform.is_valid():
             if 'view_dataset' not in get_perms(request.user, form.cleaned_data["dataset"]):
                 # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
                 msg = _("You do not have permissions to create glosses for this lexicon.")
@@ -34,15 +37,23 @@ def create_gloss(request):
             new_gloss.save()
             if form.cleaned_data["tag"]:
                 Tag.objects.add_tag(new_gloss, form.cleaned_data["tag"].name)
-            redirecturl = '/dictionary/gloss/' + str(new_gloss.pk) + '/?edit'
-            upload_glossvideo(request, new_gloss.pk, redirecturl)
+            if glossvideoform.cleaned_data['videofile']:
+                glossvideo = glossvideoform.save(commit=False)
+                glossvideo.gloss = new_gloss
+                glossvideo.save()
+            return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': new_gloss.pk}))
 
-            return HttpResponseRedirect(redirecturl)
+        else:
+            # Return bound fields with errors if the form is not valid.
+            allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
+            form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+            return render(request, 'dictionary/create_gloss.html', {'form': form, 'glossvideoform': glossvideoform})
     else:
         allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
         form = GlossCreateForm()
+        glossvideoform = GlossVideoForm()
         form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
-        return render(request, 'dictionary/create_gloss.html', {'form': form})
+        return render(request, 'dictionary/create_gloss.html', {'form': form, 'glossvideoform': glossvideoform})
 
 
 def keyword_value_list(request, prefix=None):
