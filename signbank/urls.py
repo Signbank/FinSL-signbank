@@ -44,7 +44,7 @@ urlpatterns = [
     # Django-contrib-comments urls
     url(r'^comments/', include('django_comments.urls')),
     # Custom functionality added to comments app. Comment editing.
-    url (r'^comments/update/(?P<id>\d+)/$', login_required(edit_comment, login_url='/accounts/login/')),
+    url(r'^comments/update/(?P<id>\d+)/$', login_required(edit_comment, login_url='/accounts/login/')),
     # Feed for latest comments.
     url(r'^comments/latest/$', permission_required('dictionary.search_gloss')(latest_comments),
         name='latest_comments'),

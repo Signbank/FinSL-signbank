@@ -713,5 +713,7 @@ def gloss_relation(request):
             if "HTTP_REFERER" in request.META:
                 return redirect(request.META["HTTP_REFERER"])
             return redirect("/")
-        from django.http import HttpResponseBadRequest
+
         return HttpResponseBadRequest("Bad request.")
+
+    return HttpResponseForbidden()

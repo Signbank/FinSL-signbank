@@ -71,6 +71,6 @@ def try_code(request):
         for machine_value, english_name in choices:
             FieldChoice(
                 english_name=english_name, field=key, machine_value=machine_value).save()
-    return HttpResponse('OK')
+    return HttpResponse('OK', status=200)
 
 

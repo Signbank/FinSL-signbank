@@ -6,8 +6,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<videoid>\d+)/$', views.video_view),
-    url(r'^poster/(?P<videoid>\d+)$', views.poster_view),
+    url(r'^(?P<videoid>\d+)/$', views.video_view, name='glossvideo'),
+    url(r'^poster/(?P<videoid>\d+)$', views.poster_view, name='glossvideo_poster'),
     url(r'^upload/$', views.upload_glossvideo_view, name='upload_glossvideo'),
     url(r'^upload/gloss/$', views.upload_glossvideo_gloss_view, name='upload_glossvideo_gloss'),
     url(r'^upload/recorded/$', views.add_recorded_video_view, name='add_recorded_video'),

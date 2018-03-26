@@ -491,7 +491,7 @@ def gloss_ajax_search_results(request):
     if 'search_results' in request.session and request.session['search_results'] != '':
         return JsonResponse(request.session['search_results'], safe=False)
     else:
-        return HttpResponse("OK")
+        return HttpResponse("OK", status=200)
 
 
 def gloss_ajax_complete(request, prefix):
@@ -526,7 +526,7 @@ def serialize_glosses(dataset, queryset):
         # Get Finnish translation equivalents from glosstranslations or from translation_set
         if gloss.glosstranslations_set.exists() and "fin" in [x.language.language_code_3char for x in
                                                               gloss.glosstranslations_set.all()]:
-            gloss.trans_fin = [x for x in gloss.glosstranslations_set.all() if x.language.language_code_3char=="fin"]
+            gloss.trans_fin = [x for x in gloss.glosstranslations_set.all() if x.language.language_code_3char == "fin"]
         else:
             gloss.trans_fin = [x.keyword.text for x in gloss.translation_set.all() if
                                x.language.language_code_3char == "fin"]
@@ -534,7 +534,7 @@ def serialize_glosses(dataset, queryset):
         if gloss.glosstranslations_set.exists() and "eng" in [x.language.language_code_3char for x in
                                                               gloss.glosstranslations_set.all()]:
             gloss.trans_eng = [x for x in gloss.glosstranslations_set.all() if
-                               x.language.language_code_3char=="eng"]
+                               x.language.language_code_3char == "eng"]
         else:
             gloss.trans_eng = [x.keyword.text for x in gloss.translation_set.all() if
                                x.language.language_code_3char == "eng"]

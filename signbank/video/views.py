@@ -12,7 +12,7 @@ from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.http import HttpResponse
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 
 from guardian.shortcuts import get_objects_for_user, get_perms
@@ -155,7 +155,7 @@ class AddVideosView(FormView):
     """View for multiple video file upload. These videos will have no connection to glosses."""
     form_class = MultipleVideoUploadForm
     template_name = 'addvideos.html'
-    success_url = '/video/add/'
+    success_url = reverse_lazy('video:upload_videos')
 
     def get_form(self, formclass=None):
         form = super(AddVideosView, self).get_form()
@@ -299,7 +299,7 @@ def update_glossvideo(request):
 
     if "HTTP_REFERER" in request.META:
         return redirect(request.META["HTTP_REFERER"])
-    return redirect("/")
+    return redirect(reverse('video:manage_videos'))
 
 
 update_glossvideo_view = permission_required('video.change_glossvideo')(update_glossvideo)
@@ -352,7 +352,7 @@ def change_glossvideo_order(request):
     if "?edit" in referer:
         return redirect(referer)
     else:
-        return redirect(request.META.get("HTTP_REFERER") + "?edit")
+        return redirect(referer + "?edit")
 
 
 change_glossvideo_order_view = permission_required('video.change_glossvideo')(change_glossvideo_order)
