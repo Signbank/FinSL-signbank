@@ -49,12 +49,16 @@ class GlossListPublicView(ListView):
         if vals != []:
             qs = qs.filter(dataset__in=vals)
 
-        if 'search' in get and get['search'] != '':
-            val = get['search']
+        if 'gloss' in get and get['gloss'] != '':
+            val = get['gloss']
             # Filters
-            qs = qs.filter(Q(idgloss__istartswith=val) | Q(translation__keyword__text__istartswith=val)
+            qs = qs.filter(Q(idgloss__istartswith=val),
                            # | Q(idgloss_en__icontains=val) # idgloss_en not shown in results, therefore removed.
                            )
+        if 'keyword' in get and get['keyword'] != '':
+            val = get['keyword']
+            # Filters
+            qs = qs.filter(translation__keyword__text__istartswith=val)
 
         qs = qs.distinct()
 

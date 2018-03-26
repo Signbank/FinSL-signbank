@@ -10,19 +10,24 @@ This is not a bullet proof solution, especially when it comes to word boundaries
 Javascript does not generally support UTF-8 word boundaries.
 */
 $( document ).ready(function() {
-    var kwdToMark = "{{request.GET.search}}";
-    if (kwdToMark.length > 1) {
+    var glossToMark = "{{request.GET.gloss}}";
+    var keywordToMark = "{{request.GET.keyword}}"
+    if (glossToMark.length > 1) {
         var markGloss = new Mark(document.querySelectorAll("h3.gloss-idgloss"));
-        var markKeywords = new Mark(document.querySelectorAll("span.gloss-keywords"));
-        var markKeywordsOptions = {"exclude": ["em", ".ignore"],};
-        var glossRE = new RegExp("^" + kwdToMark, "gmi");
-        var keywordRE = new RegExp("(\\s" + kwdToMark + ")", "gmi");
+        var glossRE = new RegExp("^" + glossToMark, "gmi");
 
         markGloss.unmark({
             done: function(){
                 markGloss.markRegExp(glossRE);
             },
         });
+
+    }
+    if (keywordToMark.length > 1) {
+        var markKeywords = new Mark(document.querySelectorAll("span.gloss-keywords"));
+        var markKeywordsOptions = {"exclude": ["em", ".ignore"],};
+        var keywordRE = new RegExp("(\\s" + keywordToMark + ")", "gmi");
+
         markKeywords.unmark({
             done: function(){
                 markKeywords.markRegExp(keywordRE, markKeywordsOptions);
@@ -64,7 +69,7 @@ $( document ).ready(function() {
         <strong>{% blocktrans %}Browse Glosses:{% endblocktrans %}</strong>
         <div class="btn-group" role="group" aria-label="Browse">
         {% for letter in first_letters %}
-            <a role="button" class="btn btn-default" href="?lang={{request.GET.lang|urlencode}}&search={{letter.0|urlencode}}
+            <a role="button" class="btn btn-default" href="?lang={{request.GET.lang|urlencode}}&gloss={{letter.0|urlencode}}
                {% if request.GET.dataset %}&dataset={{request.GET.dataset|urlencode}}{% endif %}">{{letter.0}}</a>
         {% empty %}
             {# Put nothing here if results set is empty #}
@@ -84,7 +89,8 @@ $( document ).ready(function() {
             <div class="panel-body">
             <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
                 <input type="hidden" name="lang" value="{{request.GET.lang|urlencode}}">
-                {% bootstrap_field searchform.search bound_css_class="not-bound" %}
+                {% bootstrap_field searchform.gloss bound_css_class="not-bound" %}
+                {% bootstrap_field searchform.keyword bound_css_class="not-bound" %}
                 <div class="form-group">
                     {% bootstrap_label searchform.dataset.label label_for="id_dataset" label_class="control-label" %}
                     <div id="id_dataset">
@@ -145,7 +151,7 @@ $( document ).ready(function() {
             {% endif %}
             </div>
             <div class="panel-footer">
-            <h4>{% blocktrans context "publicglosslist" %}Translations{% endblocktrans %} ({{ lang.name_local }}):</h4>
+                <h5><strong>{% blocktrans context "publicglosslist" %}Translation equivalents{% endblocktrans %} ({{ lang.name_local }}):</strong></h5>
             <span class="gloss-keywords">
             {% if obj.glosstranslations_set.exists %}
                 {{ obj.glosstranslations_set.all.0 }}
@@ -156,7 +162,7 @@ $( document ).ready(function() {
                 {{ trans.keyword }}
                 {% endif %}
             {% empty %}
-                <em>{% blocktrans %}No translations in{% endblocktrans %} {{ lang.name_local }}.</em>
+                <em>{% blocktrans %}No translation equivalents in{% endblocktrans %} {{ lang.name_local }}.</em>
             {% endfor %}
             {% endif %}
             </span>

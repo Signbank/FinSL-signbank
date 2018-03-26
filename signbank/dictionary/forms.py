@@ -256,8 +256,10 @@ class DatasetMultipleChoiceField(forms.ModelMultipleChoiceField):
 
 class GlossPublicSearchForm(forms.Form):
     """Public search form."""
-    search = forms.CharField(label=_("Search"), required=False,
-                             widget=forms.TextInput(attrs={'placeholder': _('Search signs')}))
+    gloss = forms.CharField(label=_("Search gloss"), required=False,
+                             widget=forms.TextInput(attrs={'placeholder': _('Search gloss')}))
+    keyword = forms.CharField(label=_("Search translation equivalent"), required=False,
+                             widget=forms.TextInput(attrs={'placeholder': _('Search translation equivalent')}))
     try:
         signlang_qs = SignLanguage.objects.filter(
                 id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)])
