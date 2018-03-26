@@ -210,8 +210,8 @@ def update_keywords(gloss, field, value, language_code_2char):
     # Create new Translations, use existing Keywords if present or create new ones.
     for i in range(len(kwds)):
         (kobj, created) = Keyword.objects.get_or_create(text=kwds[i])
-        # Create a new Translation, save the index to represent the order of Translations for this Gloss.
-        trans = Translation(gloss=gloss, keyword=kobj, index=i, language=language)
+        # Create a new Translation, save the 'order' to represent the order of Translations for this Gloss.
+        trans = Translation(gloss=gloss, keyword=kobj, order=i, language=language)
         trans.save()
 
     try:
