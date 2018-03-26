@@ -9,7 +9,6 @@ from django.db.utils import OperationalError
 
 from tagging.models import Tag
 
-from .models import build_choice_list
 from .models import Dataset, Language, SignLanguage, AllowedTags, GlossRelation, Gloss, Relation, \
     RelationToForeignSign, MorphologyDefinition,  FieldChoice, GlossURL
 
@@ -99,37 +98,6 @@ class TagsAddForm(forms.Form):
     tags = forms.ModelMultipleChoiceField(label=_('Tags'), queryset=qs, to_field_name='name')
 
 
-NULLBOOLEANCHOICES = [
-    (0, '---------'),
-    # Translators: YESNOCHOICES
-    (1, _('Unknown')),
-    # Translators: YESNOCHOICES
-    (2, _('True')),
-    # Translators: YESNOCHOICES
-    (3, _('False'))]
-
-RELATION_ROLE_CHOICES = (('', '---------'),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('all', _('All')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('homonym', _('Homonym')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('synonym', _('Synonym')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('variant', _('Variant')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('antonym', _('Antonym')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('hyponym', _('Hyponym')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('hypernym', _('Hypernym')),
-                         # Translators: RELATION_ROLE_CHOICES
-                         ('seealso', _('See Also')),
-                         )
-
-MORPHEME_ROLE_CHOICES = [
-                            # Translators: This is a choice option that probably represents nothing, don't translate if not needed to.
-                            ('', _('---------'))] + build_choice_list('MorphologyType')
 ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 

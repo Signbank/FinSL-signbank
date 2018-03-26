@@ -408,22 +408,24 @@ class GlossDetailView(DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(GlossDetailView, self).get_context_data(**kwargs)
-        context['dataset'] = self.get_object().dataset
-        context['dataset_users'] = [x.username for x in get_users_with_perms(context['dataset'])]
+        gloss = context['gloss']
+        dataset = gloss.dataset
+        context['dataset'] = dataset
+        context['dataset_users'] = [x.username for x in get_users_with_perms(dataset)]
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['glossvideoform'] = GlossVideoForGlossForm()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
-        context['glossrelationform'] = GlossRelationForm(initial={'source': context['gloss'].id,})
+        context['glossrelationform'] = GlossRelationForm(initial={'source': gloss.id, })
         # Choices for GlossRelationForm
-        context['glossrelation_choices'] = Gloss.objects.filter(dataset=self.get_object().dataset)
+        context['dataset_glosses'] = json.dumps([{'label': g.idgloss, 'value': g.id} for g in
+                                                Gloss.objects.filter(dataset=dataset)])
         # GlossRelations for this gloss
-        context['glossrelations'] = GlossRelation.objects.filter(source=context['gloss'])
-        context['glossrelations_reverse'] = GlossRelation.objects.filter(target=context['gloss'])
-        context['glossurls'] = GlossURL.objects.filter(gloss=context['gloss'])
-        context['translation_languages_and_translations'] = \
-            context['gloss'].get_translations_for_translation_languages()
+        context['glossrelations'] = GlossRelation.objects.filter(source=gloss)
+        context['glossrelations_reverse'] = GlossRelation.objects.filter(target=gloss)
+        context['glossurls'] = GlossURL.objects.filter(gloss=gloss)
+        context['translation_languages_and_translations'] = gloss.get_translations_for_translation_languages()
 
         if self.request.user.is_staff:
             # Get some version history data

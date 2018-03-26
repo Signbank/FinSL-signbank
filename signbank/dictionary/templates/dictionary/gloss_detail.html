@@ -82,25 +82,13 @@ $(document).ready(function () {
                 // Scrolling to the active button
                 $('#searchresults').scrollLeft(leftOffset);
             }
-
         }
     });
 </script>
-
 {% if perms.dictionary.change_gloss %}
     <script type='text/javascript'>
          var edit_post_url = '{% url 'dictionary:update_gloss' gloss.id %}';
-         var handshape_choices = {{gloss.handshape_choices_json|safe}};
-         var location_choices = {{gloss.location_choices_json|safe}};
-         var palm_orientation_choices = {{gloss.palm_orientation_choices_json|safe}};
-         var relative_orientation_choices = {{gloss.relative_orientation_choices_json|safe}};
-         var secondary_location_choices = {{gloss.secondary_location_choices_json|safe}};
-         var relation_role_choices = {{gloss.relation_role_choices_json|safe}};
-         var languages = {{gloss.language_choices|safe}};
-         var dialects = {{gloss.dialect_choices|safe}};
-
          var choice_lists = {{gloss.get_choice_lists|safe}};
-
          var csrf_token = '{{csrf_token}}';
     </script>
     <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
@@ -109,7 +97,7 @@ $(document).ready(function () {
     <script src="{% static "js/jquery-ui.min.js" %}"></script>
     <script>
       $( function() {
-        var availableTags = [{% for g in glossrelation_choices %}{label:"{{g.idgloss}}", value:"{{g.id}}"},{% endfor %}];
+        var availableTags = {{dataset_glosses|safe}};
         $( ".glossrelation-autocomplete" ).autocomplete({
           source: availableTags
         });

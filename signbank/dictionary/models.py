@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 import json
 import reversion
-from collections import OrderedDict
+from itertools import groupby
 
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -16,10 +16,6 @@ from django.contrib.contenttypes.models import ContentType
 from tagging.registry import register as tagging_register
 from tagging.registry import AlreadyRegistered
 from tagging.models import Tag
-
-from .choicelists import RELATION_ROLE_CHOICES
-from .choicelists import handshape_choices, location_choices, palm_orientation_choices, relative_orientation_choices, \
-    BSLsecondLocationChoices
 
 
 @python_2_unicode_compatible
@@ -191,6 +187,7 @@ class FieldChoice(models.Model):
 
 def build_choice_list(field):
     """This function builds a list of choices from FieldChoice."""
+    # TODO: This is probably no longer needed, remove its usage if possible.
     choice_list = []
     # Get choices for a certain field in FieldChoices, append machine_value and english_name
     try:
@@ -423,84 +420,25 @@ class Gloss(models.Model):
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Gloss._meta.fields]
 
-    def options_to_json(self, options):
-        """Convert an options list to a json dict"""
-
-        result = []
-        for k, v in options:
-            result.append('"%s":"%s"' % (k, v))
-        return "{" + ",".join(result) + "}"
-
-    def handshape_choices_json(self):
-        """Return JSON for the handshape choice list"""
-        return self.options_to_json(handshape_choices)
-
-    def location_choices_json(self):
-        """Return JSON for the location choice list"""
-        return self.options_to_json(location_choices)
-
-    def palm_orientation_choices_json(self):
-        """Return JSON for the palm orientation choice list"""
-        return self.options_to_json(palm_orientation_choices)
-
-    def relative_orientation_choices_json(self):
-        """Return JSON for the relative orientation choice list"""
-        return self.options_to_json(relative_orientation_choices)
-
-    def secondary_location_choices_json(self):  # TODO: remove from gloss_detail, gloss_edit.js
-        """Return JSON for the secondary location (BSL) choice list"""
-        return self.options_to_json(BSLsecondLocationChoices)
-
-    def relation_role_choices_json(self): # TODO: remove from gloss_detail, gloss_edit.js
-        """Return JSON for the relation role choice list"""
-        return self.options_to_json(RELATION_ROLE_CHOICES)
-
-    def language_choices(self):
-        """Return JSON for language choices"""
-        d = dict()
-        for l in Language.objects.all():
-            d[l.name] = l.name
-
-        return json.dumps(d)
-
-    @staticmethod
-    def dialect_choices():
-        """Return JSON for dialect choices"""
-        d = dict()
-        for l in Dialect.objects.all():
-            d[l.name] = l.name
-
-        return json.dumps(d)
-
     @staticmethod
     def get_choice_lists():
-        """Return JSON for the location choice list"""
-        choice_lists = {}
+        """Return FieldChoices for selected fields in JSON, grouped by field, key=machine_value, value=english_name"""
+        # The fields we want to generate choice lists for
+        fields = ['handedness', 'location', 'strong_handshape', 'weak_handshape',
+                  'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
+                  'relative_orientation_movement', 'relative_orientation_location', 'handshape_change',
+                  'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
+                  'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']
 
-        # Start with your own choice lists
-        for fieldname in ['handedness', 'location', 'strong_handshape', 'weak_handshape',
-                          'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
-                          'relative_orientation_movement', 'relative_orientation_location', 'handshape_change',
-                          'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
-                          'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']:
-            # Get the list of choices for this field
-            # li = self._meta.get_field(fieldname).choices
-            li = build_choice_list(fieldname)
-
-            # Sort the list
-            sorted_li = sorted(li, key=lambda x: x[1])
-
-            # Put it in another format
-            reformatted_li = [('_' + str(value), text)
-                              for value, text in sorted_li]
-            choice_lists[fieldname] = OrderedDict(reformatted_li)
-
-        # Choice lists for other models
-        choice_lists['morphology_role'] = build_choice_list('MorphologyType')
-        reformatted_morph_role = [('_' + str(value), text)
-                                  for value, text in choice_lists['morphology_role']]
-        choice_lists['morphology_role'] = OrderedDict(reformatted_morph_role)
-        return json.dumps(choice_lists)
+        qs = FieldChoice.objects.filter(field__in=fields).values('field', 'machine_value', 'english_name')
+        # Group the values by 'field'
+        fields_grouped = {k: list(v) for k, v in groupby(qs, key=lambda x: x["field"])}
+        field_choices = dict()
+        # Construct a dict that has 'machine_value' as key and 'english_name' as value.
+        for k, v in fields_grouped.items():
+            field_choices[k] = {"_"+str(x['machine_value']): str(x['english_name']) for x in v}
+        # Return results in JSON
+        return json.dumps(field_choices)
 
 
 @python_2_unicode_compatible

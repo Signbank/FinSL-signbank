@@ -168,51 +168,9 @@ function configure_edit() {
      $('.edit_url').editable(edit_post_url, {
          type      : 'text',
      });
-     $('.edit_language').editable(edit_post_url, {
-         type      : 'multiselect',
-         data      : languages
-     });
-     $('.edit_dialect').editable(edit_post_url, {
-         type      : 'multiselect',
-         data      : dialects
-     });     
      $('.edit_check').editable(edit_post_url, {
          type      : 'checkbox',
          checkbox: { trueValue: 'Yes', falseValue: 'No' }
-     });
-     $('.edit_handshape').editable(edit_post_url, {
-         type      : 'select',
-         data      : handshape_choices
-     });
-     $('.edit_location').editable(edit_post_url, {
-         type      : 'select',
-         data      : location_choices
-     });
-     $('.edit_palm').editable(edit_post_url, {
-         type      : 'select',
-         data      : palm_orientation_choices
-     });
-     $('.edit_relori').editable(edit_post_url, {
-         type      : 'select',
-         data      : relative_orientation_choices
-     }); 
-     $('.edit_sec_location').editable(edit_post_url, {
-         type      : 'select',
-         data      : secondary_location_choices
-     });                  
-     $('.edit_relation_role').editable(edit_post_url, {
-         type      : 'select',
-         data      : choice_lists['morphology_role']
-     }); 
-     $('.edit_relation_target').editable(edit_post_url, {
-         type      : 'glosstypeahead'
-     });
-     $('.edit_morpheme').editable(edit_post_url, {
-         type      : 'glosstypeahead'
-     });
-     $('.edit_morphology_role').editable(edit_post_url, {
-         type      : 'select',
-         data      : choice_lists['morphology_role']
      });
      $('.edit_list').on('click', function()
 	 {
