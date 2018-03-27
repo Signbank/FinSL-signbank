@@ -40,7 +40,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">{{video.videofile}}</div>
             <div class="panel-body">
-            <form id="glossvideo{{video.pk}}" class="video-form" method="POST" action="/video/update/">
+            <form id="glossvideo{{video.pk}}" class="video-form" method="POST" action="{% url 'video:glossvideo_update' %}">
                 {% csrf_token %}
                 <input type="hidden" name="glossvideo" class="glossvideo-pk" value="{{video.pk}}">
                 <div id="videocontainer">

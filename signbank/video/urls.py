@@ -16,7 +16,7 @@ urlpatterns = [
     # View that shows a list of glossvideos with no foreign key to gloss, user can add fk to gloss for glossvideos.
     url(r'^uploaded/$', views.uploaded_glossvideos_listview, name='manage_videos'),
     # View that updates a glossvideo
-    url(r'^update/$', views.update_glossvideo_view),
+    url(r'^update/$', views.update_glossvideo_view, name='glossvideo_update'),
     # View that handles the upload of poster file
     url(r'^add/poster$', views.add_poster_view, name='add_poster'),
     # Change priority of video
