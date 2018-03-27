@@ -14,6 +14,7 @@ from django.views.generic.list import ListView
 from django.http import HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
+from django.core.exceptions import ValidationError
 
 from guardian.shortcuts import get_objects_for_user, get_perms
 from .models import GlossVideo
@@ -177,11 +178,26 @@ class AddVideosView(FormView):
                 messages.error(request, msg)
                 raise PermissionDenied(msg)
 
+            upload_errors = list()
             for f in files:
-                GlossVideo.objects.create(videofile=f, dataset=dataset, title=f.name)
-            msg = str(len(files)) + " " + _("videos were successfully uploaded.".format(count=len(files)))
-            messages.success(request, msg)
+                try:
+                    GlossVideo.objects.create(videofile=f, dataset=dataset, title=f.name)
+                except ValidationError:
+                    upload_errors.append(f.name)
+                except PermissionDenied:
+                    msg = _("You don't have permissions to upload videos.")
+                    messages.error(request, msg)
+
+            if len(upload_errors) < len(files):
+                # If there are less errors than files, print the count of successful uploads.
+                msg = str(len(files) - len(upload_errors)) + " " + _("videos were successfully uploaded.")
+                messages.success(request, msg)
+            if len(upload_errors) > 0:
+                msg = _("Could not upload {count} file(s): {files}".format(count=len(upload_errors),
+                                                                           files=upload_errors))
+                messages.error(request, msg)
             return self.form_valid(form)
+
         else:
             return self.form_invalid(form)
 
