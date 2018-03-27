@@ -48,12 +48,12 @@
         {% endif %}
         </ul>
         <form class="navbar-form navbar-right" role="search" id="menusearch" name="menusearch" method="get"
-              action="/dictionary/public/gloss/">
+              action="{% url 'dictionary:public_gloss_list' %}">
             <div class="form-group">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 {# Translators: Placeholder text in a search textfield #}
-                <input class="form-control" placeholder="{% blocktrans %}Search sign{% endblocktrans %}" type="text"
-                       name="search" value="{% if searchform.search.value %}{{ searchform.search.value }}{% endif %}"
+                <input class="form-control" placeholder="{% blocktrans %}Search gloss{% endblocktrans %}" type="text"
+                       name="gloss" value="{% if searchform.gloss.value %}{{ searchform.gloss.value }}{% endif %}"
                        maxlength="50">
             </div>
             {# Translators: Submit button (press to search) #}
