@@ -27,4 +27,4 @@ def glossurl(request, glossurl):
                                          content_type='text/plain')
         return HttpResponse('Deleted GlossURL(id): ' + str(glossurl_id), content_type='text/plain')
     else:
-        return HttpResponseNotAllowed(permitted_methods=['POST'])
+        return HttpResponseForbidden('Must be POST.')
