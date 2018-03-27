@@ -78,10 +78,10 @@ $( document ).ready(function() {
         <hr style="margin-top:0px;margin-bottom:8px;">
         <ul class="nav nav-pills" style="background-color:#fcfdff;">
             <li role="presentation" {% if 'lang' not in request.GET or request.GET.lang == '' %}class="active"{% endif %}>
-            <a href="?lang=&search={{request.GET.search|urlencode}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
+            <a href="?lang=&gloss={{request.GET.gloss|urlencode}}&keyword={{request.GET.keyword|urlencode}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
             {% for signlang in signlanguages %}
             <li role="presentation" {% if request.GET.lang == signlang.language_code_3char %}class="active"{% endif %}>
-                <a href="?lang={{signlang.language_code_3char|urlencode}}&search={{request.GET.search|urlencode}}">{{ signlang.name }}</a></li>
+                <a href="?lang={{signlang.language_code_3char|urlencode}}&gloss={{request.GET.gloss|urlencode}}&keyword={{request.GET.keyword|urlencode}}">{{ signlang.name }}</a></li>
             {% endfor %}
         </ul>
         {# Search form #}
