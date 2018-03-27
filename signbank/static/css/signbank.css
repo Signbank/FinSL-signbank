@@ -351,6 +351,7 @@ td .tag {
 /* Public search mark.js */
 h3.gloss-idgloss mark {
     background-color: #eae2ba;
+    padding-bottom: 0em;
 }
 span.gloss-keywords mark {
     background-color: #efcccc;
