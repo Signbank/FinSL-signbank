@@ -193,8 +193,8 @@ class AddVideosView(FormView):
                 msg = str(len(files) - len(upload_errors)) + " " + _("videos were successfully uploaded.")
                 messages.success(request, msg)
             if len(upload_errors) > 0:
-                msg = _("Could not upload {count} file(s): {files}".format(count=len(upload_errors),
-                                                                           files=upload_errors))
+                msg = _("Could not upload the following file(s)") + " ( " + str(len(upload_errors)) + " ): " \
+                      + str(upload_errors)
                 messages.error(request, msg)
             return self.form_valid(form)
 

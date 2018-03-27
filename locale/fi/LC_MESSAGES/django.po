@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-27 18:07+0300\n"
+"POT-Creation-Date: 2018-03-27 19:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1466,21 +1466,6 @@ msgstr "Glossin video"
 msgid "Gloss videos"
 msgstr "Glossien videot"
 
-#. Translators: Submit button
-#: signbank/video/templates/addvideo.html:15
-msgid "submit"
-msgstr "lähetä"
-
-#. Translators: Text preceding file url
-#: signbank/video/templates/addvideo.html:21
-msgid "File:"
-msgstr "Tiedosto:"
-
-#. Translators: Text preceding error message
-#: signbank/video/templates/addvideo.html:31
-msgid "Error:"
-msgstr "Virhe:"
-
 #: signbank/video/templates/addvideos.html:26 templates/menu.html:36
 msgid "Upload videos"
 msgstr "Lähetä videoita"
@@ -1552,15 +1537,15 @@ msgstr "Syötitkö arvot id-numeroina?"
 msgid "GlossVideo successfully updated!"
 msgstr "Videon tiedot päivitetty!"
 
-#: signbank/video/views.py:63 signbank/video/views.py:176
+#: signbank/video/views.py:64 signbank/video/views.py:177
 msgid "You do not have permissions to upload videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lähettää videoita valittuun leksikkoon."
 
-#: signbank/video/views.py:99
+#: signbank/video/views.py:100
 msgid "You do not have permissions to change order for videos of this lexicon."
 msgstr "Sinulla ei ole oikeuksia muuttaa tämän leksikon videoiden järjestystä."
 
-#: signbank/video/views.py:134
+#: signbank/video/views.py:135
 msgid ""
 "You do not have permissions to add/change poster images for glosses videos "
 "of this lexicon."
@@ -1568,31 +1553,39 @@ msgstr ""
 "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tämän leksikon glossin "
 "videoille."
 
-#: signbank/video/views.py:182
+#: signbank/video/views.py:189
+msgid "You don't have permissions to upload videos."
+msgstr "Sinulla ei ole oikeuksia lähettää videoita."
+
+#: signbank/video/views.py:194
 msgid "videos were successfully uploaded."
 msgstr "videota lisättiin onnistuneesti."
 
-#: signbank/video/views.py:238
+#: signbank/video/views.py:197
+msgid "Could not upload the following file(s)"
+msgstr "Seuraavien tiedostojen lähettäminen epäonnistui"
+
+#: signbank/video/views.py:255
 msgid "You do not have permissions to view the selected lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä valittua leksikkoa."
 
-#: signbank/video/views.py:283
+#: signbank/video/views.py:300
 #, python-format
 msgid "You did not provide the value as a number for: %s "
 msgstr "Et syöttänyt arvoa numerona: %s"
 
-#: signbank/video/views.py:296
+#: signbank/video/views.py:313
 msgid ""
 "You do not have permissions to add videos to the lexicon of selected gloss."
 msgstr ""
 "Sinulla ei ole oikeuksia lisätä videoita valittujen glossien leksikoihin."
 
-#: signbank/video/views.py:315
+#: signbank/video/views.py:332
 msgid ""
 "You do not have permissions to add/change poster images for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tälle leksikolle."
 
-#: signbank/video/views.py:343
+#: signbank/video/views.py:360
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
 
@@ -1997,6 +1990,15 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "submit"
+#~ msgstr "lähetä"
+
+#~ msgid "File:"
+#~ msgstr "Tiedosto:"
+
+#~ msgid "Error:"
+#~ msgstr "Virhe:"
 
 #, fuzzy
 #~| msgid "FinSL Signbank"
