@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-26 17:11+0300\n"
+"POT-Creation-Date: 2018-03-27 18:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,11 +48,11 @@ msgstr "Suhde"
 msgid "Relation types"
 msgstr "Suhteet:"
 
-#: signbank/dictionary/admin.py:96 signbank/dictionary/models.py:484
+#: signbank/dictionary/admin.py:96 signbank/dictionary/models.py:485
 msgid "Gloss relation"
 msgstr "Glossin relaatiot"
 
-#: signbank/dictionary/admin.py:97 signbank/dictionary/models.py:485
+#: signbank/dictionary/admin.py:97 signbank/dictionary/models.py:486
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
 msgid "Gloss relations"
 msgstr "Glossin relaatiot"
@@ -267,7 +267,9 @@ msgstr "Morfeemi"
 msgid "Must be a CSV file with .csv extension."
 msgstr "Täytyy olla CSV-tiedosto .csv päätteellä."
 
+#. Translators: Placeholder text in a search textfield
 #: signbank/dictionary/forms.py:259 signbank/dictionary/forms.py:260
+#: templates/menu.html:55
 msgid "Search gloss"
 msgstr "Hae glossia"
 
@@ -577,32 +579,32 @@ msgstr "Esiintymien määrä"
 msgid "Number of occurences in annotation materials"
 msgstr "Havaintojen määrä annotaatiomateriaaleissa"
 
-#: signbank/dictionary/models.py:451
+#: signbank/dictionary/models.py:452
 msgid "Gloss URL"
 msgstr "Glossin URL"
 
-#: signbank/dictionary/models.py:452
+#: signbank/dictionary/models.py:453
 msgid "Gloss URLs"
 msgstr "Glossien URL:t"
 
-#: signbank/dictionary/models.py:465 signbank/dictionary/models.py:466
+#: signbank/dictionary/models.py:466 signbank/dictionary/models.py:467
 msgid "Allowed tags"
 msgstr "Sallitut tagit"
 
-#: signbank/dictionary/models.py:508
+#: signbank/dictionary/models.py:509
 msgid "Relation"
 msgstr "Relaatio"
 
-#: signbank/dictionary/models.py:509
+#: signbank/dictionary/models.py:510
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
 msgid "Relations"
 msgstr "Relaatiot"
 
-#: signbank/dictionary/models.py:525
+#: signbank/dictionary/models.py:526
 msgid "Morphology definition"
 msgstr "Morfologinen määritelmä"
 
-#: signbank/dictionary/models.py:526
+#: signbank/dictionary/models.py:527
 msgid "Morphology definitions"
 msgstr "Morfologiset määritelmät"
 
@@ -1635,9 +1637,9 @@ msgstr ""
 "pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
 
 #. Translators: Site title
-#: templates/baselayout.html:24
-msgid "FinSL Signbank"
-msgstr "FinSL Signbank"
+#: templates/baselayout.html:9 templates/baselayout.html:24
+msgid "Finnish Signbank"
+msgstr "Suomen Signbank"
 
 #: templates/baselayout.html:32
 msgid "(No content)"
@@ -1829,11 +1831,6 @@ msgstr "Lähetettyjen videoiden hallinta"
 msgid "CSV import"
 msgstr "Tuo CSV"
 
-#. Translators: Placeholder text in a search textfield
-#: templates/menu.html:55
-msgid "Search sign"
-msgstr "Hae viittomaa"
-
 #: templates/notifications/list.html:13
 msgid "Notifications"
 msgstr "Ilmoitukset"
@@ -2000,6 +1997,14 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#, fuzzy
+#~| msgid "FinSL Signbank"
+#~ msgid "Finish Signbank"
+#~ msgstr "FinSL Signbank"
+
+#~ msgid "Search sign"
+#~ msgstr "Hae viittomaa"
 
 #~ msgid "No translations in"
 #~ msgstr "Ei käännösvastineita kielellä"
