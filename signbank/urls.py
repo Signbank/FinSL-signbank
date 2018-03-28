@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from .adminsite import publisher_admin
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib import admin
@@ -8,16 +9,15 @@ from django.conf import settings
 
 # Views
 from registration.backends.hmac.views import RegistrationView
-from .dictionary import views as dictionary_views
 from .dictionary.adminviews import GlossListView
-from .tools import reload_signbank, infopage, refresh_videofilenames
+from .tools import infopage
 from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment, latest_comments, latest_comments_page, CommentListView, remove_tag
 import notifications.urls
 # Forms
 from .customregistration.forms import CustomUserForm
 admin.autodiscover()
-from .adminsite import publisher_admin
+
 
 app_name = 'signbank'
 urlpatterns = [
@@ -72,14 +72,6 @@ urlpatterns = [
 
     # Infopage, where we store some links and statistics
     url(r'info/', infopage, name='infopage'),
-
-    # This URL runs a script on tools.py that reloads signbank app via 'touch signbank/wsgi.py'
-    #url(r'reload_signbank/$',
-    #    reload_signbank),
-
-    # Incase you need to run this command from web (if for example only webserver has user rights to the folder)
-    # uncomment the following line. It updates videofilenames to match the current filenaming policy.
-    # url(r'refresh_videofilenames/$', refresh_videofilenames),
 ]
 if settings.DEBUG:
     import debug_toolbar

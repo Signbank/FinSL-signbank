@@ -2,52 +2,15 @@
 from __future__ import unicode_literals
 
 import os
-from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.shortcuts import render
 from django.db.models import Prefetch, Q
 from django.db import connection
 from django.urls import reverse
-from django.http import HttpResponse
 from django.core.mail import mail_admins
 from django.utils.translation import ugettext as _
-
-from .settings.production import WSGI_FILE
-try:
-    from .settings.settings_secret import PSQL_DB_NAME, PSQL_DB_QUOTA, DB_IS_PSQL
-except ImportError:
-    pass
-
-
-@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
-def reload_signbank(request=None):
-    """Functions to clear the cache of Apache, also works as view"""
-
-    # Refresh the wsgi script
-    os.utime(WSGI_FILE, None)
-
-    # If this is an HTTP request, give an HTTP response
-    if request is not None:
-        # Javascript to reload the page three times
-        js = """<script>
-        xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", 'https://signbank.csc.fi', false );
-        xmlHttp.send( null );
-        xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", 'https://signbank.csc.fi', false );
-        xmlHttp.send( null );
-        </script>OK"""
-        return HttpResponse(js)
-
-
-@user_passes_test(lambda u: u.is_staff, login_url='/accounts/login/')
-def refresh_videofilenames(request=None):
-    from django.core.management import call_command
-    call_command('refresh_videofilenames', verbosity=3, interactive=False)
-    from django.http import HttpResponse
-
-    return HttpResponse("Done refreshing video filenames.")
+from django.conf import settings
 
 
 @permission_required("dictionary.search_gloss")
@@ -61,7 +24,8 @@ def infopage(request):
     context["glosses_with_video"] = GlossVideo.objects.filter(gloss__isnull=False).order_by("gloss_id")\
         .distinct("gloss_id").count()
     context["glossless_video_count"] = GlossVideo.objects.filter(gloss__isnull=True).count()
-    context["glossvideo_poster_count"] = GlossVideo.objects.exclude(Q(posterfile="") | Q(posterfile__isnull=True)).count()
+    context["glossvideo_poster_count"] = GlossVideo.objects.exclude(Q(posterfile="") | Q(posterfile__isnull=True))\
+        .count()
     context["glossvideo_noposter_count"] = context["glossvideo_count"] - context["glossvideo_poster_count"]
 
     context["languages"] = Language.objects.all().prefetch_related("translation_set")
@@ -75,8 +39,8 @@ def infopage(request):
         dset["gloss_count"] = Gloss.objects.filter(dataset=d).count()
 
         dset["glossvideo_count"] = GlossVideo.objects.filter(gloss__dataset=d).count()
-        dset["glosses_with_video"] = GlossVideo.objects.filter(gloss__isnull=False, gloss__dataset=d).order_by("gloss_id")\
-            .distinct("gloss_id").count()
+        dset["glosses_with_video"] = GlossVideo.objects.filter(gloss__isnull=False, gloss__dataset=d)\
+            .order_by("gloss_id").distinct("gloss_id").count()
         dset["glossless_video_count"] = GlossVideo.objects.filter(gloss__isnull=True, dataset=d).count()
         dset["glossvideo_poster_count"] = GlossVideo.objects.filter(dataset=d).exclude(
             Q(posterfile="") | Q(posterfile__isnull=True)).count()
@@ -96,21 +60,22 @@ def infopage(request):
             if vid.videofile and not os.path.isfile(vid.videofile.path):
                 problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
             if vid.posterfile and not os.path.isfile(vid.posterfile.path):
-                problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster", "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
+                problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster",
+                                 "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
         context["problems"] = problems
 
         # Only do this if the database is postgresql.
-        if DB_IS_PSQL:
+        if settings.DB_IS_PSQL:
             # Get postgresql database size and calculate usage percentage.
             with connection.cursor() as cursor:
-                cursor.execute("SELECT pg_database_size(%s)", [PSQL_DB_NAME])
+                cursor.execute("SELECT pg_database_size(%s)", [settings.PSQL_DB_NAME])
                 psql_db_size = cursor.fetchone()[0]
-                cursor.execute("SELECT pg_size_pretty(pg_database_size(%s))", [PSQL_DB_NAME])
+                cursor.execute("SELECT pg_size_pretty(pg_database_size(%s))", [settings.PSQL_DB_NAME])
                 psql_db_size_pretty = cursor.fetchone()[0]
             context["psql_db_size"] = psql_db_size
             context["psql_db_size_pretty"] = psql_db_size_pretty
             # Calculate the usage percentage.
-            usage_percentage = round((psql_db_size / PSQL_DB_QUOTA)*100, 2)
+            usage_percentage = round((psql_db_size / settings.PSQL_DB_QUOTA)*100, 2)
             # Convert to str, so django localization doesn't change dot delimiter to comma in different languages.
             context["psql_db_usage"] = str(usage_percentage)
             if usage_percentage >= 80.0:
