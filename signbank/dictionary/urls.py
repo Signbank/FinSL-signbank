@@ -9,7 +9,6 @@ from . import publicviews
 from . import update
 from . import delete
 from . import views
-from . import tagviews
 
 urlpatterns = [
     # Public views for dictionary
@@ -53,16 +52,10 @@ urlpatterns = [
     # AJAX urls
     url(r'^ajax/keyword/(?P<prefix>.*)$',
         views.keyword_value_list),
-    url(r'^ajax/tags/$',
-        tagviews.taglist_json),
     url(r'^ajax/gloss/(?P<prefix>.*)$',
         adminviews.gloss_ajax_complete, name='gloss_complete'),
     url(r'^ajax/searchresults/$',
         adminviews.gloss_ajax_search_results, name='ajax_search_results'),
-
-    # Url to get list of glosses with selected tags
-    url(r'^tag/(?P<tag>[^/]*)/?$',
-        tagviews.taglist),
 
     # XML ecv (externally controlled vocabulary) export for ELAN
     url(r'^ecv/(?P<dataset>\d+)$',
