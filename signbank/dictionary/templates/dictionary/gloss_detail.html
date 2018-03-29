@@ -355,7 +355,7 @@ $('#id_comment').atwho({
                                 </p>
                                 <ul class="">
                                 {% for version in revisions %}
-                                    <li><a href="/admin/dictionary/gloss/{{gloss.id}}/history/{{version.id}}/">
+                                    <li><a href="{% url 'admin:dictionary_gloss_revision' gloss.pk version.pk %}">
                                         <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                                         {{version.revision.date_created|date:'Y-m-d H:i'}}
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>

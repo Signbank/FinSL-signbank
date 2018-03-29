@@ -137,9 +137,9 @@ function clearForm(myFormElement) {
         <tr>
 
             <td><span class="dataset-{{glossrelation.source.dataset.id}}-color label label-default">{{ glossrelation.source.dataset }}</span>
-                <a href="/dictionary/gloss/{{glossrelation.source.pk}}/">{{glossrelation.source}}</a></td>
+                <a href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.source.pk %}">{{glossrelation.source}}</a></td>
             <td><span class="dataset-{{glossrelation.target.dataset.id}}-color label label-default">{{ glossrelation.target.dataset }}</span>
-                <a href="/dictionary/gloss/{{glossrelation.target.pk}}/">{{glossrelation.target}}</a></td>
+                <a href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.target.pk %}">{{glossrelation.target}}</a></td>
             <td>{% for tag in glossrelation.cached_tags %}<span class='tag'>{{ tag }}</span>{% endfor %}</td>
         </tr>
     {% endfor %}

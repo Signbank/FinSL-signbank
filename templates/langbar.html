@@ -11,20 +11,20 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
             {% if request.user.is_staff %}
-            <li><a href="/admin/">{% blocktrans %}Django admin{% endblocktrans %}</a></li>
+            <li><a href="{% url 'admin:index' %}">{% blocktrans %}Django admin{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
             {% endif %}
-            <li><a href="/accounts/password/change/">{% blocktrans %}Change password{% endblocktrans %}</a></li>
+            <li><a href="{% url 'auth_password_change' %}">{% blocktrans %}Change password{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            <li><a href="{% url 'auth_logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                 {% blocktrans %}Sign out{% endblocktrans %}</a></li>
         </ul>
     </div>
     {% else %}
     {# Translators: Sign in link #}
-    <a class="btn btn-default" role="button" href="/accounts/login/">
+    <a class="btn btn-default" role="button" href="{% url 'auth_login' %}">
         {% blocktrans %}Sign in{% endblocktrans %}</a>
-    <a class="btn btn-info" role="button" href="/accounts/register/">
+    <a class="btn btn-info" role="button" href="{% url 'registration_register' %}">
         {% blocktrans %}Create account{% endblocktrans %}
     </a>
     {% endif %}
