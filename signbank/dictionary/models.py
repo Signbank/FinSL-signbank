@@ -2,9 +2,11 @@
 """Models for the Signbank dictionary/corpus."""
 from __future__ import unicode_literals
 
+import re
 import json
 import reversion
 from itertools import groupby
+from collections import OrderedDict
 
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -51,6 +53,40 @@ class GlossTranslations(models.Model):
         verbose_name = _('Gloss translation field')
         verbose_name_plural = _('Gloss translation fields')
 
+    def save(self, *args, **kwargs):
+        keywords = self.get_keywords()
+        # Remove duplicates and keep the order.
+        keywords = list(OrderedDict.fromkeys(keywords))
+
+        # Get Translation objects for GlossTranslation.gloss, filter according to GlossTranslation.language
+        translations = self.gloss.translation_set.filter(language=self.language)
+        # Keep the translation objects that have the Keywords that remain.
+        translations_to_keep = translations.filter(keyword__text__in=keywords, language=self.language)
+        # Delete translations that no longer exist in field GlossTranslations.translations.
+        translations.exclude(pk__in=translations_to_keep).delete()
+        existing_keywords = Keyword.objects.filter(text__in=keywords)
+        for i, keyword_text in enumerate(keywords):
+            (keyword, created) = existing_keywords.get_or_create(text=keyword_text)
+            try:
+                translation = translations_to_keep.get(gloss=self.gloss, language=self.language, keyword=keyword)
+            except Translation.DoesNotExist:
+                translation = Translation(gloss=self.gloss, language=self.language, keyword=keyword)
+            translation.order = i
+            translation.save()
+
+        super(GlossTranslations, self).save(*args, **kwargs)
+
+    def get_keywords(self):
+        # Remove number(s) that end with a dot (e.g. '1.') from the 'value'.
+        translations_cleaned = re.sub('\d\.', '', str(self.translations))
+        # Splitting the remaining string on comma, dot or semicolon. Then strip spaces around the keyword(s).
+        keywords = [k.strip() for k in re.split('[,.;]', translations_cleaned)]
+        return keywords
+
+    def has_duplicates(self):
+        keywords_str = self.get_keywords()
+        return len(keywords_str) != (len(set(keywords_str)))
+
     def __str__(self):
         return self.translations
 
@@ -66,7 +102,7 @@ class Translation(models.Model):
 
     class Meta:
         unique_together = (("gloss", "language", "keyword"),)
-        ordering = ['gloss', 'order']
+        ordering = ['gloss', 'language', 'order']
         verbose_name = _('Translation equivalent')
         verbose_name_plural = _('Translation equivalents')
 
@@ -391,8 +427,7 @@ class Gloss(models.Model):
 
     def get_translation_languages(self):
         """Returns translation languages that are set for the Dataset of the Gloss."""
-        # Dataset is available to Language due to m2m field on Dataset for Language.
-        return Language.objects.filter(dataset=self.dataset)
+        return self.dataset.translation_languages.all()
 
     def get_translations_for_translation_languages(self):
         """Returns a zipped list of translation languages and translations."""
@@ -431,6 +466,7 @@ class Gloss(models.Model):
                   'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field']
 
         qs = FieldChoice.objects.filter(field__in=fields).values('field', 'machine_value', 'english_name')
+        # TODO: How about other fields like Morphology? Should we just get all the fields?
         # Group the values by 'field'
         fields_grouped = {k: list(v) for k, v in groupby(qs, key=lambda x: x["field"])}
         field_choices = dict()

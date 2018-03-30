@@ -34,6 +34,7 @@ class TagListFilter(admin.SimpleListFilter):
             return queryset.filter(id__in=[x.object_id for x in TaggedItem.objects.filter(tag__name=self.value(),
                                                                                           content_type=ct)])
 
+
 class DatasetAdmin(GuardedModelAdmin):
     model = Dataset
     list_display = ('name', 'is_public', 'signlanguage',)
@@ -47,8 +48,20 @@ class TranslationAdmin(admin.ModelAdmin):
 
 class TranslationInline(admin.TabularInline):
     model = Translation
-    extra = 1
-    raw_id_fields = ['keyword']
+    extra = 0
+
+    def get_readonly_fields(self, request, obj=None):
+        # Set all fields to be read only.
+        return list(set(
+            [field.name for field in self.opts.local_fields] +
+            [field.name for field in self.opts.local_many_to_many]
+        ))
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class AllowedTagsAdmin(VersionAdmin):
@@ -121,11 +134,11 @@ class GlossTagInline(TagAdminInline):
 class GlossTranslationsInline(admin.TabularInline):
     model = GlossTranslations
     fields = ('language', 'translations', )
-    readonly_fields = ('language', 'translations', )
     extra = 0
 
     def has_add_permission(self, request):
-        return False
+        #return False
+        return True
 
     def has_delete_permission(self, request, obj=None):
         return False
@@ -133,11 +146,13 @@ class GlossTranslationsInline(admin.TabularInline):
 
 def publish(modeladmin, request, queryset):
     queryset.update(published=True)
-publish.short_description = _("Publish selected glosses")
 
 
 def unpublish(modeladmin, request, queryset):
     queryset.update(published=False)
+
+
+publish.short_description = _("Publish selected glosses")
 unpublish.short_description = _("Unpublish selected glosses")
 
 
