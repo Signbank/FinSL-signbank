@@ -28,36 +28,36 @@ class GlossListViewTestCase(TestCase):
     def test_get_user_not_authenticated(self):
         """Test that non-authenticated user can't access the search page via GET."""
         self.client.logout()
-        response = self.client.get(reverse('admin_gloss_list'))
+        response = self.client.get(reverse('dictionary:admin_gloss_list'))
         self.assertFalse(response.status_code == 200)
 
     def test_get_user_authenticated_has_permission(self):
         """Tests that an authenticated user with proper permissions can access search page via GET."""
-        response = self.client.get(reverse('admin_gloss_list'))
+        response = self.client.get(reverse('dictionary:admin_gloss_list'))
         self.assertTrue(response.status_code == 200)
 
     def test_get_user_authenticated_no_permission(self):
         """Tests that authenticated user without proper permission can't access search page via GET."""
         # Using client_noperm
-        response = self.client_noperm.get(reverse('admin_gloss_list'))
+        response = self.client_noperm.get(reverse('dictionary:admin_gloss_list'))
         self.assertFalse(response.status_code == 200)
         # 302 Found
         self.assertTrue(response.status_code == 302)
 
     def test_post(self):
         """Testing that the search page can't be accessed with POST."""
-        response = self.client.post(reverse('admin_gloss_list'))
+        response = self.client.post(reverse('dictionary:admin_gloss_list'))
         # 405 Method Not Allowed
         self.assertTrue(response.status_code == 405)
 
     def test_put(self):
         """Tests that PUT doesn't work on search page."""
-        response = self.client.put(reverse('admin_gloss_list'))
+        response = self.client.put(reverse('dictionary:admin_gloss_list'))
         # 405 Method Not Allowed
         self.assertTrue(response.status_code == 405)
 
     def test_delete(self):
         """Tests that DELETE doesn't work on search page."""
-        response = self.client.delete(reverse('admin_gloss_list'))
+        response = self.client.delete(reverse('dictionary:admin_gloss_list'))
         # 405 Method Not Allowed
         self.assertTrue(response.status_code == 405)

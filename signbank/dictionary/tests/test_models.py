@@ -115,8 +115,8 @@ class GlossTestCase(TestCase):
         keyword = Keyword.objects.create(text="akeyword")
         keyword2 = Keyword.objects.create(text="another")
         translation = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=keyword,
-                                                      index=2)
-        translation2 = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=keyword2, index=3)
+                                                      order=2)
+        translation2 = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=keyword2, order=3)
         self.dataset.translation_languages = (self.language,)
         self.dataset.save()
         unzipped = zip(*Gloss.get_translations_for_translation_languages(self.gloss))
@@ -167,7 +167,7 @@ class TranslationTestCase(TestCase):
         self.keyword = Keyword.objects.create(text="myword")
         # Create a Translation
         self.translation = Translation.objects.create(gloss=self.gloss, language=self.language, keyword=self.keyword,
-                                                      index=1)
+                                                      order=1)
 
     def test_str(self):
         """Test unicode string representation."""
