@@ -54,9 +54,8 @@ class GlossTranslations(models.Model):
         verbose_name_plural = _('Gloss translation fields')
 
     def save(self, *args, **kwargs):
-        keywords = self.get_keywords()
         # Remove duplicates and keep the order.
-        keywords = list(OrderedDict.fromkeys(keywords))
+        keywords = self.get_keywords_unique()
 
         # Get Translation objects for GlossTranslation.gloss, filter according to GlossTranslation.language
         translations = self.gloss.translation_set.filter(language=self.language)
@@ -77,11 +76,16 @@ class GlossTranslations(models.Model):
         super(GlossTranslations, self).save(*args, **kwargs)
 
     def get_keywords(self):
+        """Returns keywords parsed from self.translations."""
         # Remove number(s) that end with a dot (e.g. '1.') from the 'value'.
         translations_cleaned = re.sub('\d\.', '', str(self.translations))
         # Splitting the remaining string on comma, dot or semicolon. Then strip spaces around the keyword(s).
         keywords = [k.strip() for k in re.split('[,.;]', translations_cleaned)]
         return keywords
+
+    def get_keywords_unique(self):
+        """Returns only unique keywords from get_keywords()"""
+        return list(OrderedDict.fromkeys(self.get_keywords()))
 
     def has_duplicates(self):
         keywords_str = self.get_keywords()
