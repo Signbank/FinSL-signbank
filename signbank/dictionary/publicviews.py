@@ -22,9 +22,11 @@ class GlossListPublicView(ListView):
         context = super(GlossListPublicView, self).get_context_data(**kwargs)
         context["searchform"] = GlossPublicSearchForm(self.request.GET)
         context["signlanguages"] = SignLanguage.objects.filter(id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)])
+        context["signlanguage_count"] = context["signlanguages"].count()
         context["lang"] = self.request.GET.get("lang")
         if context["lang"]:
             context["searchform"].fields["dataset"].queryset = context["searchform"].fields["dataset"].queryset.filter(signlanguage__language_code_3char=context["lang"])
+        context["datasets"] = self.request.GET.getlist("dataset")
         context["first_letters"] = Gloss.objects.filter(dataset__is_public=True, published=True)\
             .annotate(first_letters=Substr(Upper('idgloss'), 1, 1)).order_by('first_letters')\
             .values_list('first_letters').distinct()

@@ -69,13 +69,14 @@ $( document ).ready(function() {
         <strong>{% blocktrans %}Browse Glosses:{% endblocktrans %}</strong>
         <div class="btn-group" role="group" aria-label="Browse">
         {% for letter in first_letters %}
-            <a role="button" class="btn btn-default" href="?lang={{request.GET.lang|urlencode}}&gloss={{letter.0|urlencode}}
-               {% if request.GET.dataset %}&dataset={{request.GET.dataset|urlencode}}{% endif %}">{{letter.0}}</a>
+            <a role="button" class="btn btn-default" href="?gloss={{letter.0|urlencode}}{% if request.GET.lang %}&lang={{request.GET.lang|urlencode}}{% endif %}{% if request.GET.dataset %}{% for ds in datasets %}&dataset={{ds|urlencode}}{% endfor %}{% endif %}">{{letter.0}}</a>
         {% empty %}
             {# Put nothing here if results set is empty #}
         {% endfor %}
         </div>
         <hr style="margin-top:0px;margin-bottom:8px;">
+
+        {% if signlanguage_count and signlanguage_count > 1 %}
         <ul class="nav nav-pills" style="background-color:#fcfdff;">
             <li role="presentation" {% if 'lang' not in request.GET or request.GET.lang == '' %}class="active"{% endif %}>
             <a href="?lang=&gloss={{request.GET.gloss|urlencode}}&keyword={{request.GET.keyword|urlencode}}">{% blocktrans %}All sign languages{% endblocktrans %}</a></li>
@@ -84,11 +85,15 @@ $( document ).ready(function() {
                 <a href="?lang={{signlang.language_code_3char|urlencode}}&gloss={{request.GET.gloss|urlencode}}&keyword={{request.GET.keyword|urlencode}}">{{ signlang.name }}</a></li>
             {% endfor %}
         </ul>
+        {% endif %}
+
         {# Search form #}
         <div class="panel panel-default">
             <div class="panel-body">
             <form action="{% url 'dictionary:public_gloss_list' %}" method="get" class="form">
+                {% if request.GET.lang and signlanguage_count > 1 %}
                 <input type="hidden" name="lang" value="{{request.GET.lang|urlencode}}">
+                {% endif %}
                 {% bootstrap_field searchform.gloss bound_css_class="not-bound" %}
                 {% bootstrap_field searchform.keyword bound_css_class="not-bound" %}
                 <div class="form-group">
