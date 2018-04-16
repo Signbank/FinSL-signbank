@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 {% load i18n %}
 
-{% block title %}{% trans "Create an account" %}{% endblock %}
+{% block bootstrap3_title %}{% blocktrans %}Create an Account{% endblocktrans %} | {% endblock %}
 
 {% block content %}
 {% if not user.is_authenticated %}

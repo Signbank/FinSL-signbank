@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-27 19:26+0300\n"
+"POT-Creation-Date: 2018-04-16 21:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,47 +39,47 @@ msgstr "mainitsi sinut kommentissa"
 msgid "Tag"
 msgstr "Tagi"
 
-#: signbank/dictionary/admin.py:77 signbank/dictionary/forms.py:161
+#: signbank/dictionary/admin.py:90 signbank/dictionary/forms.py:161
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:131
 msgid "Relation type"
 msgstr "Suhde"
 
-#: signbank/dictionary/admin.py:78
+#: signbank/dictionary/admin.py:91
 msgid "Relation types"
 msgstr "Suhteet:"
 
-#: signbank/dictionary/admin.py:96 signbank/dictionary/models.py:485
+#: signbank/dictionary/admin.py:109 signbank/dictionary/models.py:524
 msgid "Gloss relation"
 msgstr "Glossin relaatiot"
 
-#: signbank/dictionary/admin.py:97 signbank/dictionary/models.py:486
+#: signbank/dictionary/admin.py:110 signbank/dictionary/models.py:525
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
 msgid "Gloss relations"
 msgstr "Glossin relaatiot"
 
-#: signbank/dictionary/admin.py:136
+#: signbank/dictionary/admin.py:155
 msgid "Publish selected glosses"
 msgstr "Julkaise valitut glossit"
 
-#: signbank/dictionary/admin.py:141
+#: signbank/dictionary/admin.py:156
 msgid "Unpublish selected glosses"
 msgstr "Aseta valitut glossit ei-julkaistuiksi"
 
-#: signbank/dictionary/admin.py:150
+#: signbank/dictionary/admin.py:165
 msgid "Created/Updated"
 msgstr "Luotu/Päivitetty"
 
-#: signbank/dictionary/admin.py:151
+#: signbank/dictionary/admin.py:166
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
 msgid "Phonology"
 msgstr "Fonologia"
 
-#: signbank/dictionary/admin.py:159
+#: signbank/dictionary/admin.py:174
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:125
 msgid "Semantics"
 msgstr "Semantiikka"
 
-#: signbank/dictionary/admin.py:161
+#: signbank/dictionary/admin.py:176
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:324
 msgid "Frequency"
 msgstr "Frekvenssi"
@@ -127,7 +127,7 @@ msgstr "Hypernyymi"
 msgid "See Also"
 msgstr "Katso myös"
 
-#: signbank/dictionary/delete.py:19 signbank/dictionary/update.py:518
+#: signbank/dictionary/delete.py:19 signbank/dictionary/update.py:501
 msgid "You do not have permissions to add tags to glosses of this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 
@@ -135,9 +135,9 @@ msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 #: signbank/dictionary/forms.py:21 signbank/dictionary/forms.py:70
 #: signbank/dictionary/forms.py:150
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:126
-#: signbank/video/templates/addvideos.html:31
-#: signbank/video/templates/uploaded_glossvideos.html:15
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:127
+#: signbank/video/templates/addvideos.html:32
+#: signbank/video/templates/uploaded_glossvideos.html:16
 msgid "Dataset"
 msgstr "Leksikko"
 
@@ -158,7 +158,7 @@ msgstr "Tagit"
 
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:72 signbank/dictionary/forms.py:271
-#: signbank/dictionary/models.py:123
+#: signbank/dictionary/models.py:163
 msgid "Sign language"
 msgstr "Viittomakieli"
 
@@ -170,17 +170,17 @@ msgstr "Haku"
 #. Translators: GlossSearchForm label
 #. Translators: Gloss field: idgloss, verbose name
 #: signbank/dictionary/forms.py:77 signbank/dictionary/forms.py:169
-#: signbank/dictionary/models.py:207 signbank/dictionary/models.py:232
+#: signbank/dictionary/models.py:247 signbank/dictionary/models.py:272
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
 #: signbank/video/models.py:43
-#: signbank/video/templates/uploaded_glossvideos.html:59
+#: signbank/video/templates/uploaded_glossvideos.html:60
 msgid "Gloss"
 msgstr "Glossi"
 
 #. Translators: GlossSearchForm label
 #. Translators: Gloss field: idgloss_en (english), verbose name
-#: signbank/dictionary/forms.py:79 signbank/dictionary/models.py:238
+#: signbank/dictionary/forms.py:79 signbank/dictionary/models.py:278
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:208
 msgid "Gloss in English"
 msgstr "Glossi englanniksi"
@@ -241,7 +241,7 @@ msgstr "Tyyppi"
 #. Translators: RelationToForeignSignForm label
 #. Translators: RelationToForeignSign field verbose name
 #. Translators:
-#: signbank/dictionary/forms.py:210 signbank/dictionary/models.py:153
+#: signbank/dictionary/forms.py:210 signbank/dictionary/models.py:193
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:238
 msgid "Related Language"
 msgstr "Lainattu kieli"
@@ -269,7 +269,7 @@ msgstr "Täytyy olla CSV-tiedosto .csv päätteellä."
 
 #. Translators: Placeholder text in a search textfield
 #: signbank/dictionary/forms.py:259 signbank/dictionary/forms.py:260
-#: templates/menu.html:55
+#: templates/menu.html:54
 msgid "Search gloss"
 msgstr "Hae glossia"
 
@@ -278,7 +278,7 @@ msgid "Search translation equivalent"
 msgstr "Hae käännösvastinetta"
 
 #: signbank/dictionary/forms.py:270
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:81
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:83
 msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
@@ -286,332 +286,332 @@ msgstr "Kaikki viittomakielet"
 msgid "You can limit the search to these lexicons"
 msgstr "Voit rajata hakua tiettyihin leksikoihin"
 
-#: signbank/dictionary/models.py:33
+#: signbank/dictionary/models.py:35
 msgid "View dataset"
 msgstr "Käyttöoikeus leksikkoon"
 
-#: signbank/dictionary/models.py:35 templates/infopage.html:110
+#: signbank/dictionary/models.py:37 templates/infopage.html:110
 msgid "Lexicon"
 msgstr "Leksikko"
 
-#: signbank/dictionary/models.py:36
+#: signbank/dictionary/models.py:38
 msgid "Lexicons"
 msgstr "Leksikot"
 
-#: signbank/dictionary/models.py:51
+#: signbank/dictionary/models.py:53
 msgid "Gloss translation field"
 msgstr "Glossin käännösvastinekenttä"
 
-#: signbank/dictionary/models.py:52
+#: signbank/dictionary/models.py:54
 msgid "Gloss translation fields"
 msgstr "Glossin käännösvastinekentät"
 
-#: signbank/dictionary/models.py:70
+#: signbank/dictionary/models.py:110
 msgid "Translation equivalent"
 msgstr "Käännösvastine"
 
-#: signbank/dictionary/models.py:71
+#: signbank/dictionary/models.py:111
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:210
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:15
-#: templates/infopage.html:49 templates/infopage.html:140
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:16
+#: templates/infopage.html:50 templates/infopage.html:140
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/models.py:85
+#: signbank/dictionary/models.py:125
 msgid "Keyword"
 msgstr "Avainsana"
 
-#: signbank/dictionary/models.py:86
+#: signbank/dictionary/models.py:126
 msgid "Keywords"
 msgstr "Avainsanat"
 
-#: signbank/dictionary/models.py:100
+#: signbank/dictionary/models.py:140
 msgid "ISO 639-1 language code (2 characters long) of a written language."
 msgstr ""
 "ISO 639-1 kielikoodi (2 merkkiä pitkä) puhutusta/kirjoitetusta kielestä."
 
-#: signbank/dictionary/models.py:102
+#: signbank/dictionary/models.py:142
 msgid "ISO 639-3 language code (3 characters long) of a written language."
 msgstr ""
 "ISO 639-3 kielikoodi (3 merkkiä pitkä) puhutusta/kirjoitetusta kielestä."
 
-#: signbank/dictionary/models.py:107
+#: signbank/dictionary/models.py:147
 msgid "Written language"
 msgstr "Kirjoitettu kieli"
 
-#: signbank/dictionary/models.py:108
+#: signbank/dictionary/models.py:148
 msgid "Written languages"
 msgstr "Kirjoitetut kielet"
 
-#: signbank/dictionary/models.py:119
+#: signbank/dictionary/models.py:159
 msgid "ISO 639-3 language code (3 characters long) of a sign language."
 msgstr "ISO 639-3 kielikoodi (3 merkkiä pitkä) viittomakielestä."
 
-#: signbank/dictionary/models.py:124
+#: signbank/dictionary/models.py:164
 msgid "Sign languages"
 msgstr "Viittomakielet"
 
-#: signbank/dictionary/models.py:139
+#: signbank/dictionary/models.py:179
 msgid "Dialect"
 msgstr "Murre"
 
-#: signbank/dictionary/models.py:140
+#: signbank/dictionary/models.py:180
 msgid "Dialects"
 msgstr "Murteet"
 
 #. Translators: RelationToForeignSign field verbose name
-#: signbank/dictionary/models.py:151
+#: signbank/dictionary/models.py:191
 msgid "Loan Sign"
 msgstr "Lainaviittoma"
 
 #. Translators: Equivalent Gloss in related language
-#: signbank/dictionary/models.py:156
+#: signbank/dictionary/models.py:196
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:240
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:306
 msgid "Gloss in related language"
 msgstr "Glossi liittyvässä kielessä"
 
-#: signbank/dictionary/models.py:160
+#: signbank/dictionary/models.py:200
 msgid "Relation to Foreign Sign"
 msgstr "Suhde vieraskieliseen viittomaan"
 
-#: signbank/dictionary/models.py:161
+#: signbank/dictionary/models.py:201
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:228
 msgid "Relations to Foreign Signs"
 msgstr "Suhteet vieraskielisiin viittomiin"
 
-#: signbank/dictionary/models.py:184
+#: signbank/dictionary/models.py:224
 msgid "Field choice"
 msgstr "Valintavaihtoehto"
 
-#: signbank/dictionary/models.py:185
+#: signbank/dictionary/models.py:225
 msgid "Field choices"
 msgstr "Valintavaihtoehdot"
 
-#: signbank/dictionary/models.py:208
+#: signbank/dictionary/models.py:248
 msgid "Glosses"
 msgstr "Glossit"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:212
+#: signbank/dictionary/models.py:252
 msgid "Can Update Video"
 msgstr "Voi päivittää videon"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:214
+#: signbank/dictionary/models.py:254
 msgid "Can Search/View Full Gloss Details"
 msgstr "Voi etsiä/nähdä Glossin täydet tiedot"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:216
+#: signbank/dictionary/models.py:256
 msgid "Can export sign details as CSV"
 msgstr "Voi viedä viittomien tiedot CSV muodossa"
 
-#: signbank/dictionary/models.py:217
+#: signbank/dictionary/models.py:257
 msgid "Can import glosses from a CSV file"
 msgstr "Voi tuoda glosseja CSV-tiedostosta"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:219
+#: signbank/dictionary/models.py:259
 msgid "Include all properties in sign detail view"
 msgstr "Sisällytä kaikki ominaisuudet viittoman tarkassa näkymässä"
 
 #. Translators: Gloss permissions
-#: signbank/dictionary/models.py:221
+#: signbank/dictionary/models.py:261
 msgid "Can publish and unpublish Glosses"
 msgstr "Voi asettaa glossin julkaistuksi"
 
-#: signbank/dictionary/models.py:225
+#: signbank/dictionary/models.py:265
 msgid "Published"
 msgstr "Julkaistu"
 
-#: signbank/dictionary/models.py:227
+#: signbank/dictionary/models.py:267
 msgid "Glosses dataset"
 msgstr "Glossin aineisto"
 
-#: signbank/dictionary/models.py:228
+#: signbank/dictionary/models.py:268
 msgid "Dataset a gloss is part of"
 msgstr "Aineisto jonka osa glossi on"
 
 #. Translators: Help text for Gloss field: idgloss
-#: signbank/dictionary/models.py:234
+#: signbank/dictionary/models.py:274
 msgid "This is the unique identifying name of a Gloss."
 msgstr "Glossin uniikki nimi."
 
 #. Translators: Help text for Gloss field: idgloss_en (english)
-#: signbank/dictionary/models.py:240
+#: signbank/dictionary/models.py:280
 msgid "This is the English name for the Gloss"
 msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
-#: signbank/dictionary/models.py:243
+#: signbank/dictionary/models.py:283
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:211
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:23
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:24
 msgid "Notes"
 msgstr "Lisätiedot"
 
 #. Translators: Gloss models field: handedness, verbose name
-#: signbank/dictionary/models.py:258
+#: signbank/dictionary/models.py:298
 msgid "Handedness"
 msgstr "Kätisyys"
 
 #. Translators: Gloss models field: strong_handshape, verbose name
-#: signbank/dictionary/models.py:262
+#: signbank/dictionary/models.py:302
 msgid "Strong Hand"
 msgstr "Dominoiva käsi"
 
 #. Translators: Gloss models field: weak_handshape, verbose name
-#: signbank/dictionary/models.py:267
+#: signbank/dictionary/models.py:307
 msgid "Weak Hand"
 msgstr "Ei-dominoiva käsi"
 
 #. Translators: Gloss models field: location, verbose name
-#: signbank/dictionary/models.py:272
+#: signbank/dictionary/models.py:312
 msgid "Location"
 msgstr "Paikka"
 
 #. Translators: Gloss models field: relation_between_articulators, verbose name
-#: signbank/dictionary/models.py:277
+#: signbank/dictionary/models.py:317
 msgid "Relation Between Articulators"
 msgstr "Artikulaattorien välinen suhde"
 
 #. Translators: Gloss models field: absolute_orientation_palm, verbose name
-#: signbank/dictionary/models.py:285
+#: signbank/dictionary/models.py:325
 msgid "Absolute Orientation: Palm"
 msgstr "Absoluuttinen orientaatio: kämmen"
 
 #. Translators: Gloss models field: absolute_orientation_fingers, verbose name
-#: signbank/dictionary/models.py:290
+#: signbank/dictionary/models.py:330
 msgid "Absolute Orientation: Fingers"
 msgstr "Absoluuttinen orientaatio: sormet"
 
 #. Translators: Gloss models field: relative_orientation_movement, verbose name
-#: signbank/dictionary/models.py:296
+#: signbank/dictionary/models.py:336
 msgid "Relative Orientation: Movement"
 msgstr "Absoluuttinen orientaatio: liike"
 
 #. Translators: Gloss models field: relative_orientation_location, verbose name
-#: signbank/dictionary/models.py:303
+#: signbank/dictionary/models.py:343
 msgid "Relative Orientation: Location"
 msgstr "Absoluuttinen orientaatio: paikka"
 
 #. Translators: Gloss models field: orientation_change, verbose name
-#: signbank/dictionary/models.py:310
+#: signbank/dictionary/models.py:350
 msgid "Orientation Change"
 msgstr "Orientaation muutos"
 
 #. Translators: Gloss models field: handshape_change, verbose name
-#: signbank/dictionary/models.py:316
+#: signbank/dictionary/models.py:356
 msgid "Handshape Change"
 msgstr "Käsimuodon muutos"
 
 #. Translators: Gloss models field: repeated_movement, verbose name
-#: signbank/dictionary/models.py:321
+#: signbank/dictionary/models.py:361
 msgid "Repeated Movement"
 msgstr "Toistollinen liike"
 
 #. Translators: Gloss models field: alternating_movement, verbose name
-#: signbank/dictionary/models.py:323
+#: signbank/dictionary/models.py:363
 msgid "Alternating Movement"
 msgstr "Vaihteleva liike"
 
 #. Translators: Gloss models field: movement_shape, verbose name
-#: signbank/dictionary/models.py:326
+#: signbank/dictionary/models.py:366
 msgid "Movement Shape"
 msgstr "Liikkeen muoto"
 
 #. Translators: Gloss models field: movement_direction, verbose name
-#: signbank/dictionary/models.py:330
+#: signbank/dictionary/models.py:370
 msgid "Movement Direction"
 msgstr "Liikkeen suunta"
 
 #. Translators: Gloss models field: movement_manner, verbose name
-#: signbank/dictionary/models.py:335
+#: signbank/dictionary/models.py:375
 msgid "Movement Manner"
 msgstr "Liikkeen tapa"
 
 #. Translators: Gloss models field: contact_type, verbose name
-#: signbank/dictionary/models.py:339
+#: signbank/dictionary/models.py:379
 msgid "Contact Type"
 msgstr "Kontaktityyppi"
 
 #. Translators: Gloss models field: phonology_other verbose name
-#: signbank/dictionary/models.py:344
+#: signbank/dictionary/models.py:384
 msgid "Phonology Other"
 msgstr "Fonologia muu"
 
 #. Translators: Gloss models field: mouth_gesture, verbose name
-#: signbank/dictionary/models.py:347
+#: signbank/dictionary/models.py:387
 msgid "Mouth Gesture"
 msgstr "Huulio"
 
 #. Translators: Gloss models field: mouthing, verbose name
-#: signbank/dictionary/models.py:349
+#: signbank/dictionary/models.py:389
 msgid "Mouthing"
 msgstr "Huulio sanahahmo"
 
 #. Translators: Gloss models field: phonetic_variation, verbose name
-#: signbank/dictionary/models.py:351
+#: signbank/dictionary/models.py:391
 msgid "Phonetic Variation"
 msgstr "Foneettinen variaatio"
 
 #. Translators: Gloss models field: iconic_image, verbose name
-#: signbank/dictionary/models.py:355
+#: signbank/dictionary/models.py:395
 msgid "Iconic Image"
 msgstr ""
 
 #. Translators: Gloss models field: named_entity, verbose name
-#: signbank/dictionary/models.py:357
+#: signbank/dictionary/models.py:397
 msgid "Named Entity"
 msgstr "Nimetty kohde"
 
 #. Translators: Gloss models field: semantic_field, verbose name
-#: signbank/dictionary/models.py:361
+#: signbank/dictionary/models.py:401
 msgid "Semantic Field"
 msgstr "Semanttinen kenttä"
 
-#: signbank/dictionary/models.py:368
+#: signbank/dictionary/models.py:408
 msgid "Number of Occurrences"
 msgstr "Esiintymien määrä"
 
 #. Translators: Help text for Gloss models field: number_of_occurences
-#: signbank/dictionary/models.py:370
+#: signbank/dictionary/models.py:410
 msgid "Number of occurences in annotation materials"
 msgstr "Havaintojen määrä annotaatiomateriaaleissa"
 
-#: signbank/dictionary/models.py:452
+#: signbank/dictionary/models.py:491
 msgid "Gloss URL"
 msgstr "Glossin URL"
 
-#: signbank/dictionary/models.py:453
+#: signbank/dictionary/models.py:492
 msgid "Gloss URLs"
 msgstr "Glossien URL:t"
 
-#: signbank/dictionary/models.py:466 signbank/dictionary/models.py:467
+#: signbank/dictionary/models.py:505 signbank/dictionary/models.py:506
 msgid "Allowed tags"
 msgstr "Sallitut tagit"
 
-#: signbank/dictionary/models.py:509
+#: signbank/dictionary/models.py:548
 msgid "Relation"
 msgstr "Relaatio"
 
-#: signbank/dictionary/models.py:510
+#: signbank/dictionary/models.py:549
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
 msgid "Relations"
 msgstr "Relaatiot"
 
-#: signbank/dictionary/models.py:526
+#: signbank/dictionary/models.py:565
 msgid "Morphology definition"
 msgstr "Morfologinen määritelmä"
 
-#: signbank/dictionary/models.py:527
+#: signbank/dictionary/models.py:566
 msgid "Morphology definitions"
 msgstr "Morfologiset määritelmät"
 
 #. Translators: Title for sign search page
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:6
-msgid "Search Signs"
-msgstr "Etsi viittomia"
+msgid "Advanced Search"
+msgstr "Kehittynyt haku"
 
 #. Translators: admin_gloss_list header
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:97
@@ -634,10 +634,9 @@ msgstr "Alkaa merkkijonolla"
 msgid "Contains string"
 msgstr "Sisältää merkkijonon"
 
-#. Translators: Submit button (press to search)
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:171
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:102
-#: templates/menu.html:60
+#: templates/menu.html:58
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -682,8 +681,11 @@ msgid "Page navigation bottom"
 msgstr "Sivun alaosan navitointi"
 
 #. Translators: Title for GlossRelation search page
-#. Translators: admin_gloss_list header
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:6
+msgid "Search Gloss Relations"
+msgstr "Relaatiohaku"
+
+#. Translators: admin_gloss_list header
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:53
 msgid "Search Relations of Glosses"
 msgstr "Etsi glossien relaatioita"
@@ -692,106 +694,107 @@ msgstr "Etsi glossien relaatioita"
 msgid "Source or target gloss contains string"
 msgstr "Lähde- tai kohdeglossi sisältää merkkijonon"
 
-#. Translators:
-#: signbank/dictionary/templates/dictionary/create_gloss.html:10
-msgid "Add a Gloss"
-msgstr "Lisää Glossi"
-
-#: signbank/dictionary/templates/dictionary/create_gloss.html:24
+#: signbank/dictionary/templates/dictionary/create_gloss.html:5
+#: signbank/dictionary/templates/dictionary/create_gloss.html:25
 msgid "Create Gloss"
 msgstr "Luo glossi"
 
+#. Translators:
+#: signbank/dictionary/templates/dictionary/create_gloss.html:11
+msgid "Add a Gloss"
+msgstr "Lisää Glossi"
+
 #. Translators: Message that appears if user doesn't have proper user rights to view this page.
-#: signbank/dictionary/templates/dictionary/create_gloss.html:29
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:34
+#: signbank/dictionary/templates/dictionary/create_gloss.html:30
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:35
 #: templates/infopage.html:157
 msgid "You do not have sufficient user rights to view this page."
 msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
 #. Translators: Button
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:37
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:140
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:38
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:141
 msgid "Enable Edit"
 msgstr "Muokkaus päälle"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:38
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:39
 msgid "Disable Edit"
 msgstr "Muokkaus pois"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:39
-#: signbank/video/templates/uploaded_glossvideos.html:62
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:40
+#: signbank/video/templates/uploaded_glossvideos.html:63
 #: templates/comments/edit_comment.html:10
 msgid "Save"
 msgstr "Tallenna"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:40
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:41
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:54
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:180
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:271
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:41
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:42
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:118
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:119
 msgid "Search results:"
 msgstr "Hakutulokset:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:133
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:134
 #: signbank/dictionary/templates/dictionary/record_video.html:5
 msgid "Record a video"
 msgstr "Kuvaa video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:138
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:139
 msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:164
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:43
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:147
-#: signbank/video/templates/uploaded_glossvideos.html:54
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:165
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:44
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:153
+#: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:179
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:180
 msgid "Capture new poster image"
 msgstr "Aseta aloituskuva"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:189
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:190
 msgid "Update poster image for video"
 msgstr "Päivitä aloituskuva videolle"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:200
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:201
 #: signbank/dictionary/templates/dictionary/record_video.html:34
 msgid "Close"
 msgstr "Sulje"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:201
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:202
 msgid "Save changes"
 msgstr "Tallenna muutokset"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:229
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:230
 msgid "No videos available for this gloss."
 msgstr "Tälle glossille ei ole videoita."
 
 #. Translators: Upload/Add new video to Signbank
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:242
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:253
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:243
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:254
 msgid "Upload Video"
 msgstr "Lähetä video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:268
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:269
 msgid "Gloss:"
 msgstr "Glossi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:273
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:274
 msgid "Gloss in English:"
 msgstr "Glossi englanniksi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:279
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:280
 msgid "Translations in "
 msgstr "Käännökset "
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:282
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:283
 msgid ""
 "After each translation enter a comma (,) or a semicolon (;).\n"
 "                               Usage of numbers that end with a dot (.) is "
@@ -802,43 +805,43 @@ msgstr ""
 "Numero(ide)n ja pisteen (.) yhdistelmää voidaan käyttää (esim. 11.),\n"
 "sillä niitä ei tallenneta käännöksinä."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:291
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:292
 msgid "Notes:"
 msgstr "Lisätiedot:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:296
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:297
 msgid "Sign language:"
 msgstr "Viittomakieli:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:302
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:303
 msgid "Dialect:"
 msgstr "Alue:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:307
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:308
 msgid "URL:"
 msgstr "URL:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:320
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:321
 msgid "Add new URL"
 msgstr "Lisää URL"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:325
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:326
 msgid "Created:"
 msgstr "Luotu:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:329
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:330
 msgid "Updated:"
 msgstr "Päivitetty:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:336
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:337
 msgid "Show complete history"
 msgstr "Näytä koko historia"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:345
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:346
 msgid "Change history for"
 msgstr "Muutoshistoria glossille"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:349
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:350
 msgid ""
 "This is a list of some historical changes made to this Gloss.\n"
 "                                    By clicking the link, you will be taken "
@@ -848,7 +851,7 @@ msgstr ""
 "Tämä on lista glossin historiallisista muutoksista. Linkkiä klikkaamalla "
 "pääset ylläpitosivulle, jossa näkyy glossin tila valittuna hetkenä."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:352
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:353
 msgid ""
 "Do not save the changes,\n"
 "                                    unless you want to restore the older "
@@ -856,11 +859,11 @@ msgid ""
 msgstr ""
 "Älä tallenna muutoksia, ellet halua palauttaa tämän Glossin vanhaa versiota!"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:364
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:365
 msgid "Gloss fields:"
 msgstr "Glossin kentät:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:367
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:368
 msgid "Translations:"
 msgstr "Käännösvastineet:"
 
@@ -948,7 +951,7 @@ msgid "Add comment"
 msgstr "Lisää kommentti"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:24
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:70
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:71
 msgid "No relations."
 msgstr "Ei relaatioita."
 
@@ -957,40 +960,36 @@ msgid "Add relation"
 msgstr "Lisää relaatio"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:46
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:90
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:91
 msgid "No reverse relations."
 msgstr "Ei käänteisiä relaatioita."
-
-#. Translators:
-#: signbank/dictionary/templates/dictionary/gloss_list.html:18
-msgid ""
-"Items marked * below are not in the web version of the dictionary and would "
-"not appear in a regular (non staff) search."
-msgstr ""
-"Tähdellä (*) merkityt kohdat alapuolella eivät ole sanakirjan julkisessa "
-"versiossa eivätkä ne näy julkisessa haussa."
 
 #: signbank/dictionary/templates/dictionary/glosstags.html:36
 msgid "Add Tags"
 msgstr "Lisää tagit"
 
+#: signbank/dictionary/templates/dictionary/import_csv.html:5
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:5
+msgid "Import CSV"
+msgstr "Tuo glosseja CSV-tiedostosta"
+
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/import_csv.html:10
+#: signbank/dictionary/templates/dictionary/import_csv.html:11
 msgid "Upload your changed CSV here:"
 msgstr "Lähetä muutettu CSV tähän:"
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/import_csv.html:16
+#: signbank/dictionary/templates/dictionary/import_csv.html:17
 msgid "Submit"
 msgstr "Lähetä"
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/import_csv.html:24
+#: signbank/dictionary/templates/dictionary/import_csv.html:25
 msgid "The following changes were detected:"
 msgstr "Seuraavat muutokset havaittiin:"
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/import_csv.html:29
+#: signbank/dictionary/templates/dictionary/import_csv.html:30
 #, python-format
 msgid ""
 "For %(change.idgloss)s, <em>%(change.human_key)s</em> changes from "
@@ -999,21 +998,21 @@ msgid ""
 msgstr ""
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/import_csv.html:35
+#: signbank/dictionary/templates/dictionary/import_csv.html:36
 msgid "Make changes"
 msgstr "Tee muutoksia"
 
 #. Translators: Submit button
-#: signbank/dictionary/templates/dictionary/import_csv.html:41
+#: signbank/dictionary/templates/dictionary/import_csv.html:42
 msgid "Changes are live."
 msgstr "Muutokset ovat voimassa."
 
 #. Translators:
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:10
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:11
 msgid "Import Glosses from a CSV file"
 msgstr "Tuo Glosseja CSV-tiedostosta"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:13
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:14
 msgid ""
 "CSV-file should be constructed so that the first column is gloss and\n"
 "                optionally the second column is gloss in english"
@@ -1021,7 +1020,7 @@ msgstr ""
 "CSV-tiedosto tulee muodostaa siten, että ensimmäinen sarake on gloss ja "
 "valinnaisesti toinen sarake on gloss_en (glossi englanniksi)."
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:15
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:16
 msgid ""
 "The first row of the file will not be added because it is expected to be the "
 "column\n"
@@ -1030,7 +1029,7 @@ msgstr ""
 "CSV-tiedoston ensimmäistä riviä ei lisätä glossina, koska sen oletetaan "
 "sisältävän sarakkeiden otsikot."
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:17
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:18
 msgid ""
 "The CSV-file's character set needs to be UTF-8. When exporting the CSV-"
 "file,\n"
@@ -1039,84 +1038,92 @@ msgstr ""
 "CSV-tiedoston merkistön tulee olla UTF-8. Kun tuot/exporttaat CSV-tiedostoa, "
 "varmista että merkistö on UTF-8."
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:26
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:27
 msgid ""
 "Make sure that you selected the correct\n"
 "                Dataset before submitting!"
 msgstr ""
 "Varmista että olet valinnut oikean Aineiston ennen lomakkeen lähettämistä!"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:29
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:30
 msgid "Import glosses from CSV"
 msgstr "Tuo glosseja CSV-tiedostosta"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:9
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:5
+msgid "Confirm Import CSV"
+msgstr "Vahvista CSV-tiedostosta tuonti"
+
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:10
 msgid "Glosses to be added to"
 msgstr "Seuraavat glossit lisätään"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:10
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:11
 msgid "Total number of glosses to be added:"
 msgstr "Lisättävien glossien määrä:"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:24
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:25
 msgid "Glosses that will not be added because they already exist in"
 msgstr "Näitä glosseja ei lisätä, koska ne löytyvät jo tietokannasta"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:31
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:32
 msgid "No glosses can be added!"
 msgstr "Yhtään glossia ei voida lisätä!"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:32
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:57
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:33
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:58
 msgid "Return to the form"
 msgstr "Palaa CSV-lomakkeeseen"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:40
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:41
 msgid "Confirm"
 msgstr "Hyväksy"
 
-#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:46
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:47
 msgid "The following glosses were added to"
 msgstr "Seuraavat glossit lisättiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:19
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:20
 msgid "<em>No translations.</em>"
 msgstr "<em>Ei käännösvastineita.</em>"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:25
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:26
 msgid "No notes."
 msgstr "Ei lisätietoja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:54
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:55
 msgid "Relations to glosses"
 msgstr "Suhteet muihin glosseihin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:58
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:59
 msgid "Relations from this gloss"
 msgstr "Suhteet tästä glossista"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:78
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:79
 msgid "Relations to this gloss"
 msgstr "Suhteet tähän glossiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:104
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:105
 msgid "Show comments"
 msgstr "Näytä kommentit"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:124
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:125
 #: templates/comments/list.html:47
 msgid "No comments."
 msgstr "Ei kommentteja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:44
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:5
+msgid "Search Signs"
+msgstr "Hae viittomaa"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:45
 msgid "Search signs"
 msgstr "Hae viittomaa"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:46
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:47
 msgid "Help"
 msgstr "Apua"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:52
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:53
 msgid ""
 "This Signbank holds sign language signs in multiple different sign "
 "languages.\n"
@@ -1140,7 +1147,7 @@ msgstr ""
 "leksikoiden perusteella valitsemalla halutut leksikot hakulaatikon "
 "alapuolelta. Leksikot ovat tietyn organisaation hallinnoimia viittomalistoja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:61
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:62
 msgid ""
 "To play a video, click on top of the video (image), and pause the video by "
 "clicking on it again.\n"
@@ -1157,34 +1164,34 @@ msgstr ""
 "yläosassa. Joillakin viittomilla on useampi video, ylimääräiset videot voi "
 "nähdä viittoman sivulta."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:69
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:70
 msgid "Browse Glosses:"
 msgstr "Selaa glosseja:"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:106
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:112
 msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:129
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:135
 msgctxt "videocount"
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:150
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:156
 msgid "No video."
 msgstr "Ei videota."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:154
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:160
 msgctxt "publicglosslist"
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:165
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:171
 msgid "No translation equivalents in"
 msgstr "Ei käännösvastineita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:177
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:183
 msgid "No results."
 msgstr "Ei hakutuloksia."
 
@@ -1257,74 +1264,74 @@ msgstr ""
 "koska ei ole selvää että minkä kielen käännöksiä tulisi muokata."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:239
+#: signbank/dictionary/update.py:222
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:243 signbank/dictionary/update.py:291
+#: signbank/dictionary/update.py:226 signbank/dictionary/update.py:274
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:267 signbank/dictionary/update.py:498
+#: signbank/dictionary/update.py:250 signbank/dictionary/update.py:481
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:271 signbank/dictionary/update.py:311
-#: signbank/dictionary/update.py:502
+#: signbank/dictionary/update.py:254 signbank/dictionary/update.py:294
+#: signbank/dictionary/update.py:485
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:286
+#: signbank/dictionary/update.py:269
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:383 signbank/dictionary/update.py:421
+#: signbank/dictionary/update.py:366 signbank/dictionary/update.py:404
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:395
+#: signbank/dictionary/update.py:378
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:433
+#: signbank/dictionary/update.py:416
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
-#: signbank/dictionary/update.py:459
+#: signbank/dictionary/update.py:442
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:472
+#: signbank/dictionary/update.py:455
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
-#: signbank/dictionary/update.py:477
+#: signbank/dictionary/update.py:460
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
-#: signbank/dictionary/update.py:573
+#: signbank/dictionary/update.py:556
 msgid "You do not have permissions to import glosses to this lexicon."
 msgstr "Sinulla ei ole oikeuksia tuoda glosseja valittuun leksikkoon."
 
-#: signbank/dictionary/update.py:584
+#: signbank/dictionary/update.py:567
 msgid "Cannot open the file:"
 msgstr "Ei voida avata tiedostoa:"
 
-#: signbank/dictionary/update.py:607
+#: signbank/dictionary/update.py:590
 msgid "File must be UTF-8 encoded!"
 msgstr "Tiedoston pitää olla koodattu UTF-8 merkistöllä!"
 
-#: signbank/dictionary/update.py:621
+#: signbank/dictionary/update.py:604
 msgid ""
 "The provided CSV-file does not meet the requirements or there is some other "
 "problem."
@@ -1332,21 +1339,21 @@ msgstr ""
 "Annettu CSV-tiedosto ei ole vaatimusten mukainen tai havaittiin joku muu "
 "ongelma."
 
-#: signbank/dictionary/update.py:645
+#: signbank/dictionary/update.py:628
 msgid "Cancelled adding CSV data."
 msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
 
-#: signbank/dictionary/update.py:672
+#: signbank/dictionary/update.py:655
 msgid "Glosses were added succesfully."
 msgstr "Glossit lisättiin onnistuneesti."
 
-#: signbank/dictionary/update.py:690
+#: signbank/dictionary/update.py:673
 msgid ""
 "You do not have permissions to delete relations from glosses of this lexicon."
 msgstr ""
 "Sinulla ei ole oikeuksia poistaa valitun leksikon glossien relaatioita."
 
-#: signbank/dictionary/update.py:706
+#: signbank/dictionary/update.py:689
 msgid ""
 "You do not have permissions to add relations to glosses of this lexicon."
 msgstr ""
@@ -1364,7 +1371,7 @@ msgstr "Suomi"
 msgid "English"
 msgstr "Englanti"
 
-#: signbank/tools.py:117
+#: signbank/tools.py:82
 msgid ""
 "Database storage space usage is high, be prepared increase database quota. "
 "If the database gets over the quota maximum, data will be lost!"
@@ -1466,74 +1473,79 @@ msgstr "Glossin video"
 msgid "Gloss videos"
 msgstr "Glossien videot"
 
-#: signbank/video/templates/addvideos.html:26 templates/menu.html:36
+#: signbank/video/templates/addvideos.html:3
+msgid "Upload Videos"
+msgstr "Lähetä videoita"
+
+#: signbank/video/templates/addvideos.html:27 templates/menu.html:36
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
-#: signbank/video/templates/addvideos.html:26
+#: signbank/video/templates/addvideos.html:27
 msgid "You can select multiple videos to be uploaded at once"
 msgstr "Voit valita useita videoita lähetettäväksi samalla kertaa"
 
-#: signbank/video/templates/addvideos.html:33
+#: signbank/video/templates/addvideos.html:34
 msgid "File"
 msgstr "Tiedosto"
 
-#: signbank/video/templates/addvideos.html:34
+#: signbank/video/templates/addvideos.html:35
 msgid "selected files"
 msgstr "valitut tiedostot"
 
-#: signbank/video/templates/addvideos.html:34
+#: signbank/video/templates/addvideos.html:35
 msgid "total size"
 msgstr "koko yhteensä"
 
-#: signbank/video/templates/addvideos.html:35
+#: signbank/video/templates/addvideos.html:36
 msgid "Send file(s)"
 msgstr "Lähetä tiedostot"
 
-#: signbank/video/templates/uploaded_glossvideos.html:9
-msgid "Uploaded Glossvideos"
-msgstr "Lähetetyt Glossivideot"
+#: signbank/video/templates/uploaded_glossvideos.html:4
+#: signbank/video/templates/uploaded_glossvideos.html:10
+msgid "Manage Uploaded Videos"
+msgstr "Lähetettyjen videoiden hallinta"
 
-#: signbank/video/templates/uploaded_glossvideos.html:9
+#: signbank/video/templates/uploaded_glossvideos.html:10
 msgid "Connect Glossvideos to Glosses"
 msgstr "Yhdistä Glossivideot Glosseihin"
 
-#: signbank/video/templates/uploaded_glossvideos.html:14
+#: signbank/video/templates/uploaded_glossvideos.html:15
 msgid "Select the dataset you want to work with!"
 msgstr "Valitse aineisto jonka parissa haluat työskennellä!"
 
-#: signbank/video/templates/uploaded_glossvideos.html:17
+#: signbank/video/templates/uploaded_glossvideos.html:18
 msgid "Ok"
 msgstr "Ok"
 
-#: signbank/video/templates/uploaded_glossvideos.html:25
+#: signbank/video/templates/uploaded_glossvideos.html:26
 #: templates/comments/search_comments.html:49
 msgid "previous"
 msgstr "edellinen"
 
-#: signbank/video/templates/uploaded_glossvideos.html:31
+#: signbank/video/templates/uploaded_glossvideos.html:32
 #: templates/comments/search_comments.html:55
 msgid "next"
 msgstr "seuraava"
 
-#: signbank/video/templates/uploaded_glossvideos.html:34
+#: signbank/video/templates/uploaded_glossvideos.html:35
 #: templates/comments/search_comments.html:58
 msgid "Total of"
 msgstr "Yhteensä"
 
-#: signbank/video/templates/uploaded_glossvideos.html:34
+#: signbank/video/templates/uploaded_glossvideos.html:35
 msgid "videos"
 msgstr "videoa"
 
-#: signbank/video/templates/uploaded_glossvideos.html:72
+#: signbank/video/templates/uploaded_glossvideos.html:73
 msgid "Save all"
 msgstr "Tallenna kaikki"
 
-#: signbank/video/templates/uploaded_glossvideos.html:137
+#: signbank/video/templates/uploaded_glossvideos.html:138
 msgid "Did you provide all values as id numbers?"
 msgstr "Syötitkö arvot id-numeroina?"
 
-#: signbank/video/templates/uploaded_glossvideos.html:148
+#: signbank/video/templates/uploaded_glossvideos.html:149
 msgid "GlossVideo successfully updated!"
 msgstr "Videon tiedot päivitetty!"
 
@@ -1553,39 +1565,39 @@ msgstr ""
 "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tämän leksikon glossin "
 "videoille."
 
-#: signbank/video/views.py:189
+#: signbank/video/views.py:188
 msgid "You don't have permissions to upload videos."
 msgstr "Sinulla ei ole oikeuksia lähettää videoita."
 
-#: signbank/video/views.py:194
+#: signbank/video/views.py:193
 msgid "videos were successfully uploaded."
 msgstr "videota lisättiin onnistuneesti."
 
-#: signbank/video/views.py:197
+#: signbank/video/views.py:196
 msgid "Could not upload the following file(s)"
 msgstr "Seuraavien tiedostojen lähettäminen epäonnistui"
 
-#: signbank/video/views.py:255
+#: signbank/video/views.py:254
 msgid "You do not have permissions to view the selected lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä valittua leksikkoa."
 
-#: signbank/video/views.py:300
+#: signbank/video/views.py:299
 #, python-format
 msgid "You did not provide the value as a number for: %s "
 msgstr "Et syöttänyt arvoa numerona: %s"
 
-#: signbank/video/views.py:313
+#: signbank/video/views.py:312
 msgid ""
 "You do not have permissions to add videos to the lexicon of selected gloss."
 msgstr ""
 "Sinulla ei ole oikeuksia lisätä videoita valittujen glossien leksikoihin."
 
-#: signbank/video/views.py:332
+#: signbank/video/views.py:331
 msgid ""
 "You do not have permissions to add/change poster images for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tälle leksikolle."
 
-#: signbank/video/views.py:360
+#: signbank/video/views.py:359
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
 
@@ -1629,33 +1641,37 @@ msgstr ""
 "Tapahtui virhe. Virheestä on tiedotettu ylläpidolle, ja se\n"
 "pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
 
-#. Translators: Site title
-#: templates/baselayout.html:9 templates/baselayout.html:24
+#: templates/baselayout.html:9 templates/baselayout.html:44
+#: templates/baselayout.html:47
 msgid "Finnish Signbank"
 msgstr "Suomen Signbank"
 
-#: templates/baselayout.html:32
+#: templates/baselayout.html:58
 msgid "(No content)"
 msgstr "(Ei sisältöä)"
 
-#: templates/baselayout.html:41
+#: templates/baselayout.html:67
 msgid "University of Jyväskylä"
 msgstr "Jyväskylän yliopisto"
 
-#: templates/baselayout.html:49
+#: templates/baselayout.html:75
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
-#: templates/baselayout.html:52
+#: templates/baselayout.html:78
 msgid "The Language Bank of Finland"
 msgstr "Kielipankki"
 
-#: templates/baselayout.html:55
+#: templates/baselayout.html:81
 msgid "CSC - IT center for science"
 msgstr "CSC - Tieteen tietotekniikan keskus"
 
 #: templates/comments/latest_comments.html:3 templates/menu.html:44
 msgid "Latest comments"
+msgstr "Uusimmat kommentit"
+
+#: templates/comments/latest_comments_page.html:3
+msgid "Latest Comments"
 msgstr "Uusimmat kommentit"
 
 #: templates/comments/list.html:21
@@ -1689,15 +1705,19 @@ msgid "comments"
 msgstr "kommenttia"
 
 #. Translators: Edit page button in baselayout
-#: templates/flatpages/default.html:19
+#: templates/flatpages/default.html:20
 msgid "Edit Page"
 msgstr "Muokkaa sivua"
 
-#: templates/infopage.html:11 templates/menu.html:42
+#: templates/infopage.html:5
+msgid "Links and Statistics"
+msgstr "Linkkejä ja tilastoja"
+
+#: templates/infopage.html:12 templates/menu.html:42
 msgid "Links and statistics"
 msgstr "Linkkejä ja tilastoja"
 
-#: templates/infopage.html:12
+#: templates/infopage.html:13
 msgid ""
 "On this page you can find numerical data about the database, and links to "
 "externally controlled vocabularies to be used in ELAN."
@@ -1705,61 +1725,57 @@ msgstr ""
 "Tällä sivulta löytyy numeerista tietoa tietokannasta, sekä linkit externally "
 "controlled vocabularyihin käytettäväksi ELANissa."
 
-#: templates/infopage.html:20
+#: templates/infopage.html:21
 msgid "All lexicons"
 msgstr "Kaikki leksikot"
 
-#: templates/infopage.html:25 templates/infopage.html:116
+#: templates/infopage.html:26 templates/infopage.html:116
 msgid "Gloss count"
 msgstr "Glosseja"
 
-#: templates/infopage.html:29 templates/infopage.html:120
+#: templates/infopage.html:30 templates/infopage.html:120
 msgid "Glosses with video"
 msgstr "Glosseja, joilla on video"
 
-#: templates/infopage.html:33 templates/infopage.html:124
+#: templates/infopage.html:34 templates/infopage.html:124
 msgid "Video count"
 msgstr "Videoita"
 
-#: templates/infopage.html:37 templates/infopage.html:128
+#: templates/infopage.html:38 templates/infopage.html:128
 msgid "Videos not connected to a Gloss"
 msgstr "Videoita, joilla ei ole Glossia"
 
-#: templates/infopage.html:41 templates/infopage.html:132
+#: templates/infopage.html:42 templates/infopage.html:132
 msgid "Videos with poster image"
 msgstr "Videoita joilla on aloituskuva"
 
-#: templates/infopage.html:45 templates/infopage.html:136
+#: templates/infopage.html:46 templates/infopage.html:136
 msgid "Videos without poster image"
 msgstr "Videoita joilla ei ole aloituskuvaa"
 
-#: templates/infopage.html:63
+#: templates/infopage.html:64
 msgid "ELAN externally controlled vocabulary links"
 msgstr "ELAN externally controlled vocabulary linkit"
 
-#: templates/infopage.html:75
+#: templates/infopage.html:76
 msgid "Signbank Wiki"
 msgstr "Signbankin wiki"
 
-#: templates/infopage.html:76
+#: templates/infopage.html:77
 msgid "Help and tutorials"
 msgstr "Apua ja ohjeita"
 
-#: templates/infopage.html:84
+#: templates/infopage.html:85
 msgid "Database storage space usage"
 msgstr "Tietokannan tallennustilan käyttöaste"
 
-#: templates/infopage.html:90
+#: templates/infopage.html:91
 msgid "Space used"
 msgstr "Tallennustilaa käytetty"
 
-#: templates/infopage.html:95
+#: templates/infopage.html:96
 msgid "Files that do not exist"
 msgstr "Tiedostot joita ei ole olemassa"
-
-#: templates/infopage.html:96
-msgid "not in the set location"
-msgstr "niille määritellyssä hakemistossa"
 
 #: templates/langbar.html:14
 msgid "Django admin"
@@ -1774,8 +1790,7 @@ msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
 #. Translators: Sign in button in login form
-#: templates/langbar.html:26 templates/registration/login.html:5
-#: templates/registration/login.html:16
+#: templates/langbar.html:26 templates/registration/login.html:16
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
@@ -1893,7 +1908,7 @@ msgid "Account activation on"
 msgstr "Tunnuksen aktivointi"
 
 #. Translators: Text sign in - Log in form
-#: templates/registration/login.html:9
+#: templates/registration/login.html:5 templates/registration/login.html:9
 msgid "Sign In"
 msgstr "Kirjaudu sisään"
 
@@ -1910,7 +1925,7 @@ msgid "Not a member?"
 msgstr "Vailla käyttäjätunnusta?"
 
 #: templates/registration/logout.html:4
-msgid "Logged out"
+msgid "Logged Out"
 msgstr "Kirjauduttu ulos"
 
 #: templates/registration/logout.html:8
@@ -1974,7 +1989,7 @@ msgstr ""
 "loppuun saattamiseen."
 
 #: templates/registration/registration_form.html:5
-msgid "Create an account"
+msgid "Create an Account"
 msgstr "Luo tunnus"
 
 #: templates/registration/registration_form.html:19
@@ -1990,6 +2005,171 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#, fuzzy
+#~| msgid "pages"
+#~ msgid "Messages"
+#~ msgstr "sivut"
+
+#, fuzzy
+#~| msgid "Semantic Field"
+#~ msgid "Static Files"
+#~ msgstr "Semanttinen kenttä"
+
+#, fuzzy
+#~| msgid "Location"
+#~ msgid "Syndication"
+#~ msgstr "Paikka"
+
+#, fuzzy
+#~| msgid ""
+#~| "This value must contain only letters, numbers, underscores, dashes or "
+#~| "slashes."
+#~ msgid ""
+#~ "Enter a valid 'slug' consisting of letters, numbers, underscores or "
+#~ "hyphens."
+#~ msgstr ""
+#~ "Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, "
+#~ "viivoja tai kauttaviivoja."
+
+#, fuzzy
+#~| msgid ""
+#~| "This value must contain only letters, numbers, underscores, dashes or "
+#~| "slashes."
+#~ msgid ""
+#~ "Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, "
+#~ "or hyphens."
+#~ msgstr ""
+#~ "Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, "
+#~ "viivoja tai kauttaviivoja."
+
+#, fuzzy
+#~| msgid "Videos without poster image"
+#~ msgid "Date (without time)"
+#~ msgstr "Videoita joilla ei ole aloituskuvaa"
+
+#, fuzzy
+#~| msgid "number"
+#~ msgid "Decimal number"
+#~ msgstr "numero"
+
+#, fuzzy
+#~| msgid "Direction"
+#~ msgid "Duration"
+#~ msgstr "Suunta"
+
+#, fuzzy
+#~| msgid "File"
+#~ msgid "File path"
+#~ msgstr "Tiedosto"
+
+#~ msgid "Text"
+#~ msgstr "Teksti"
+
+#~ msgid "URL"
+#~ msgstr "Internetosoite"
+
+#, fuzzy
+#~| msgid "No relations."
+#~ msgid "One-to-one relationship"
+#~ msgstr "Ei relaatioita."
+
+#, fuzzy
+#~| msgid "Gloss relations"
+#~ msgid "%(from)s-%(to)s relationship"
+#~ msgstr "Glossin relaatiot"
+
+#, fuzzy
+#~| msgid "Enter new note"
+#~ msgid "Enter a number."
+#~ msgstr "Kirjoita muistiinpano"
+
+#, fuzzy
+#~| msgid "Please provide the list of keywords below"
+#~ msgid "Please correct the duplicate values below."
+#~ msgstr "Listaa avainsanat alapuolelle"
+
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#, fuzzy
+#~| msgid "True"
+#~ msgid "Tue"
+#~ msgstr "Tosi"
+
+#, fuzzy
+#~| msgid "Sum"
+#~ msgid "Sun"
+#~ msgstr "Summa"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "March"
+#~ msgstr "Haku"
+
+#, fuzzy
+#~| msgid "Not a member?"
+#~ msgid "November"
+#~ msgstr "Vailla käyttäjätunnusta?"
+
+#, fuzzy
+#~| msgid "Tag"
+#~ msgid "aug"
+#~ msgstr "Tagi"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "abbrev. month"
+#~ msgid "March"
+#~ msgstr "Haku"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "alt. month"
+#~ msgid "March"
+#~ msgstr "Haku"
+
+#, fuzzy
+#~| msgid "Not a member?"
+#~ msgctxt "alt. month"
+#~ msgid "November"
+#~ msgstr "Vailla käyttäjätunnusta?"
+
+#, fuzzy
+#~| msgid "Files that do not exist"
+#~ msgid "\"%(path)s\" does not exist"
+#~ msgstr "Tiedostot joita ei ole olemassa"
+
+#~ msgid "None"
+#~ msgstr "Ei yhtään"
+
+#, fuzzy
+#~| msgid "Username"
+#~ msgid "name"
+#~ msgstr "Käyttäjän nimi"
+
+#, fuzzy
+#~| msgid "Tag"
+#~ msgid "tag"
+#~ msgstr "Tagi"
+
+#, fuzzy
+#~| msgid "Movement Type"
+#~ msgid "content type"
+#~ msgstr "Liikkeen tyyppi"
+
+#~ msgid ""
+#~ "Items marked * below are not in the web version of the dictionary and "
+#~ "would not appear in a regular (non staff) search."
+#~ msgstr ""
+#~ "Tähdellä (*) merkityt kohdat alapuolella eivät ole sanakirjan julkisessa "
+#~ "versiossa eivätkä ne näy julkisessa haussa."
+
+#~ msgid "Uploaded Glossvideos"
+#~ msgstr "Lähetetyt Glossivideot"
+
+#~ msgid "not in the set location"
+#~ msgstr "niille määritellyssä hakemistossa"
 
 #~ msgid "submit"
 #~ msgstr "lähetä"
@@ -2031,12 +2211,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Glossvideo title"
 #~ msgstr "Glossivideon nimi"
-
-#~ msgid "Unknown"
-#~ msgstr "Tuntematon"
-
-#~ msgid "True"
-#~ msgstr "Tosi"
 
 #~ msgid "False"
 #~ msgstr "Epätosi"
@@ -2178,17 +2352,11 @@ msgstr "Kielen valinta"
 #~ msgid "Index"
 #~ msgstr "Indeksi"
 
-#~ msgid "Text"
-#~ msgstr "Teksti"
-
 #~ msgid "Delete This Note"
 #~ msgstr "Poista muistiinpano"
 
 #~ msgid "This action will delete this note. It cannot be undone."
 #~ msgstr "Tämä poistaa muistiinpanon, eikä sitä voida peruuttaa."
-
-#~ msgid "Enter new note"
-#~ msgstr "Kirjoita muistiinpano"
 
 #~ msgid "Save New"
 #~ msgstr "Lisää"
@@ -2198,9 +2366,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Definition doesn't match gloss"
 #~ msgstr "Määritelmä ei vastaa glossia"
-
-#~ msgid "URL"
-#~ msgstr "Internetosoite"
 
 #~ msgid "Signbank: Search Signs"
 #~ msgstr "Signbank: Etsi viittomia"
@@ -2226,9 +2391,6 @@ msgstr "Kielen valinta"
 #~ msgctxt "Gloss field name for Notes"
 #~ msgid "Notes"
 #~ msgstr "Muistiinpanot"
-
-#~ msgid "Username"
-#~ msgstr "Käyttäjän nimi"
 
 #~ msgid "out of"
 #~ msgstr "/"
@@ -2349,12 +2511,6 @@ msgstr "Kielen valinta"
 #~ msgid "Handshape"
 #~ msgstr "Käden muoto"
 
-#~ msgid "Direction"
-#~ msgstr "Suunta"
-
-#~ msgid "Movement Type"
-#~ msgstr "Liikkeen tyyppi"
-
 #~ msgid "Small Movement"
 #~ msgstr "Pieni liike"
 
@@ -2444,9 +2600,6 @@ msgstr "Kielen valinta"
 #~ msgid "Is there a keyword or keyword/s that DO NOT belong with this sign?"
 #~ msgstr "Onko viittomaan kuulumattomia avainsanoja?"
 
-#~ msgid "Please provide the list of keywords below"
-#~ msgstr "Listaa avainsanat alapuolelle"
-
 #~ msgid "Optional Questions"
 #~ msgstr "Valinnaiset kysymykset"
 
@@ -2528,9 +2681,6 @@ msgstr "Kielen valinta"
 #~ msgid "Two handed (diffent shapes for each hand)"
 #~ msgstr "Kaksikätinen (eri käsimuodoilla)"
 
-#~ msgid "None"
-#~ msgstr "Ei yhtään"
-
 #~ msgid "Animal"
 #~ msgstr "Eläin"
 
@@ -2565,9 +2715,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "Language"
 #~ msgstr "Kieli"
-
-#~ msgid "Sum"
-#~ msgstr "Summa"
 
 #~ msgid "Total number of videos (one gloss can have many)"
 #~ msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
@@ -2612,13 +2759,6 @@ msgstr "Kielen valinta"
 #~ "Esimerkiksi: '/about/contact/'. Varmista että kauttaviivat löytyvät "
 #~ "alusta ja lopusta."
 
-#~ msgid ""
-#~ "This value must contain only letters, numbers, underscores, dashes or "
-#~ "slashes."
-#~ msgstr ""
-#~ "Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, "
-#~ "viivoja tai kauttaviivoja."
-
 #~ msgid "Advanced options"
 #~ msgstr "Lisävaihtoehdot"
 
@@ -2657,12 +2797,6 @@ msgstr "Kielen valinta"
 
 #~ msgid "page"
 #~ msgstr "sivu"
-
-#~ msgid "pages"
-#~ msgstr "sivut"
-
-#~ msgid "number"
-#~ msgstr "numero"
 
 #~ msgid "Page Video"
 #~ msgstr "Sivun video"
