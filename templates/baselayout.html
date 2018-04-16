@@ -21,7 +21,15 @@
             <div id="leftcontentborder"></div>
             <div id="rightcontentborder"></div>
             <header id="header">{# Translators: Site title #}
-                <h1><a href="{% url 'root_page' %}">{% blocktrans %}Finnish Signbank{% endblocktrans %}</a></h1>
+                <div class="headerlogo">
+                    <h1>
+                        <a href="{% url 'root_page' %}" title="{% blocktrans %}Finnish Signbank{% endblocktrans %}">
+                            <img id="logoheadersignbank"
+                                 src="{% static 'img/signbank_logo_laatikko_valkoinen_crop-compressor.png' %}"
+                                 alt="{% blocktrans %}Finnish Signbank{% endblocktrans %}">
+                        </a>
+                    </h1>
+                </div>
                 <div id="langbar">{% include "langbar.html" %}</div>
             </header>
             <div id="menu">
