@@ -32,7 +32,7 @@
 <div class="row">
     <div class="col-md-12">
         {% for glossvideo in gloss.glossvideo_set.all %}
-        <div class="{% if gloss.glossvideo_set.all.count > 1 %}col-md-6{% else %}col-md-12{% endif %}">
+        <div class="col-md-6">
             <hr>
             <h4>{{glossvideo.title}}</h4>
             <div class="embed-responsive embed-responsive-16by9">
@@ -47,12 +47,14 @@
                 </video>
             </div>
         </div>
+        {# Fix horizontal alignment for grid. We have max 2 items per row. #}
+        {% if forloop.counter|divisibleby:"2" %}<div class="clearfix"></div>{% endif %}
         {% endfor %}
     </div>
 </div>
 <div class="row">
+<hr>
 <div class="col-md-10 col-md-offset-1">
-    <hr>
     <div class="col-md-12">
         <h4>{% blocktrans %}Relations to glosses{% endblocktrans %}</h4>
     </div>
