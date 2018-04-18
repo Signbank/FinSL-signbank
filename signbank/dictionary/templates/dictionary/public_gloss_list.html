@@ -39,7 +39,6 @@ $( document ).ready(function() {
 </script>
 {% endblock %}
 {% block content %}
-{% get_language_info for LANGUAGE_CODE as lang %}
 <div class="row">
     <div class="col-md-12">
         <h3>{% blocktrans %}Search signs{% endblocktrans %}
@@ -157,21 +156,14 @@ $( document ).ready(function() {
             {% endif %}
             </div>
             <div class="panel-footer">
-                <h5><strong>{% blocktrans context "publicglosslist" %}Translation equivalents{% endblocktrans %} ({{ lang.name_local }}):</strong></h5>
-            <span class="gloss-keywords">
-            {% if obj.glosstranslations_set.exists %}
-                {{ obj.glosstranslations_set.all.0 }}
-            {% else %}
-            {% for trans in obj.translation_set.all %}
-                {{ trans.keyword }},
-                {% if forloop.last %}
-                {{ trans.keyword }}
-                {% endif %}
+            {% for glosstranslations in obj.glosstranslations_set.all %}
+                <h5><strong>{% blocktrans context "publicglosslist" %}Translation equivalents{% endblocktrans %} ({{ glosstranslations.language }}):</strong></h5>
+                <span class="gloss-keywords">
+                    {{glosstranslations}}
+                </span>
             {% empty %}
-                <em>{% blocktrans %}No translation equivalents in{% endblocktrans %} {{ lang.name_local }}.</em>
+                <em>{% blocktrans %}No translation equivalents yet{% endblocktrans %}.</em>
             {% endfor %}
-            {% endif %}
-            </span>
             </div>
         </div>
     </div>

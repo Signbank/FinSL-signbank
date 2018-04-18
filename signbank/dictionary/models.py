@@ -52,6 +52,7 @@ class GlossTranslations(models.Model):
         unique_together = (("gloss", "language"),)
         verbose_name = _('Gloss translation field')
         verbose_name_plural = _('Gloss translation fields')
+        ordering = ['language']
 
     def save(self, *args, **kwargs):
         # Remove duplicates and keep the order.
@@ -143,7 +144,7 @@ class Language(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ['name']
+        ordering = ['-name']
         verbose_name = _('Written language')
         verbose_name_plural = _('Written languages')
 
