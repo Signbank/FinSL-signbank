@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-16 21:56+0300\n"
+"POT-Creation-Date: 2018-04-17 14:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,7 +283,7 @@ msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
 #: signbank/dictionary/forms.py:273
-msgid "You can limit the search to these lexicons"
+msgid "You can restrict your search to these lexicons"
 msgstr "Voit rajata hakua tiettyihin leksikoihin"
 
 #: signbank/dictionary/models.py:35
@@ -312,7 +312,7 @@ msgstr "Käännösvastine"
 
 #: signbank/dictionary/models.py:111
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:210
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:16
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:18
 #: templates/infopage.html:50 templates/infopage.html:140
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
@@ -446,7 +446,7 @@ msgstr "Glossin nimi englanniksi"
 #. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
 #: signbank/dictionary/models.py:283
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:211
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:24
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:26
 msgid "Notes"
 msgstr "Lisätiedot"
 
@@ -749,7 +749,7 @@ msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:165
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:44
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:46
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:153
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
@@ -951,7 +951,7 @@ msgid "Add comment"
 msgstr "Lisää kommentti"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:24
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:71
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:73
 msgid "No relations."
 msgstr "Ei relaatioita."
 
@@ -960,7 +960,7 @@ msgid "Add relation"
 msgstr "Lisää relaatio"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:46
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:91
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:93
 msgid "No reverse relations."
 msgstr "Ei käänteisiä relaatioita."
 
@@ -1082,31 +1082,31 @@ msgstr "Hyväksy"
 msgid "The following glosses were added to"
 msgstr "Seuraavat glossit lisättiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:20
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:22
 msgid "<em>No translations.</em>"
 msgstr "<em>Ei käännösvastineita.</em>"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:26
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:28
 msgid "No notes."
 msgstr "Ei lisätietoja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:55
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:57
 msgid "Relations to glosses"
 msgstr "Suhteet muihin glosseihin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:59
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:61
 msgid "Relations from this gloss"
 msgstr "Suhteet tästä glossista"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:79
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:81
 msgid "Relations to this gloss"
 msgstr "Suhteet tähän glossiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:105
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:107
 msgid "Show comments"
 msgstr "Näytä kommentit"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:125
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:127
 #: templates/comments/list.html:47
 msgid "No comments."
 msgstr "Ei kommentteja."
@@ -1165,7 +1165,7 @@ msgstr ""
 "nähdä viittoman sivulta."
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:70
-msgid "Browse Glosses:"
+msgid "Browse glosses:"
 msgstr "Selaa glosseja:"
 
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:112
@@ -1789,8 +1789,10 @@ msgstr "Muuta salasana"
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
+#. Translators: Text sign in - Log in form
 #. Translators: Sign in button in login form
-#: templates/langbar.html:26 templates/registration/login.html:16
+#: templates/langbar.html:26 templates/registration/login.html:9
+#: templates/registration/login.html:16
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
@@ -1907,8 +1909,7 @@ msgstr ""
 msgid "Account activation on"
 msgstr "Tunnuksen aktivointi"
 
-#. Translators: Text sign in - Log in form
-#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:5
 msgid "Sign In"
 msgstr "Kirjaudu sisään"
 
@@ -2006,805 +2007,3 @@ msgstr ""
 msgid "Language selection"
 msgstr "Kielen valinta"
 
-#, fuzzy
-#~| msgid "pages"
-#~ msgid "Messages"
-#~ msgstr "sivut"
-
-#, fuzzy
-#~| msgid "Semantic Field"
-#~ msgid "Static Files"
-#~ msgstr "Semanttinen kenttä"
-
-#, fuzzy
-#~| msgid "Location"
-#~ msgid "Syndication"
-#~ msgstr "Paikka"
-
-#, fuzzy
-#~| msgid ""
-#~| "This value must contain only letters, numbers, underscores, dashes or "
-#~| "slashes."
-#~ msgid ""
-#~ "Enter a valid 'slug' consisting of letters, numbers, underscores or "
-#~ "hyphens."
-#~ msgstr ""
-#~ "Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, "
-#~ "viivoja tai kauttaviivoja."
-
-#, fuzzy
-#~| msgid ""
-#~| "This value must contain only letters, numbers, underscores, dashes or "
-#~| "slashes."
-#~ msgid ""
-#~ "Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, "
-#~ "or hyphens."
-#~ msgstr ""
-#~ "Tämä arvo voi sisältää ainoastaan kirjaimia, numeroita, alaviivoja, "
-#~ "viivoja tai kauttaviivoja."
-
-#, fuzzy
-#~| msgid "Videos without poster image"
-#~ msgid "Date (without time)"
-#~ msgstr "Videoita joilla ei ole aloituskuvaa"
-
-#, fuzzy
-#~| msgid "number"
-#~ msgid "Decimal number"
-#~ msgstr "numero"
-
-#, fuzzy
-#~| msgid "Direction"
-#~ msgid "Duration"
-#~ msgstr "Suunta"
-
-#, fuzzy
-#~| msgid "File"
-#~ msgid "File path"
-#~ msgstr "Tiedosto"
-
-#~ msgid "Text"
-#~ msgstr "Teksti"
-
-#~ msgid "URL"
-#~ msgstr "Internetosoite"
-
-#, fuzzy
-#~| msgid "No relations."
-#~ msgid "One-to-one relationship"
-#~ msgstr "Ei relaatioita."
-
-#, fuzzy
-#~| msgid "Gloss relations"
-#~ msgid "%(from)s-%(to)s relationship"
-#~ msgstr "Glossin relaatiot"
-
-#, fuzzy
-#~| msgid "Enter new note"
-#~ msgid "Enter a number."
-#~ msgstr "Kirjoita muistiinpano"
-
-#, fuzzy
-#~| msgid "Please provide the list of keywords below"
-#~ msgid "Please correct the duplicate values below."
-#~ msgstr "Listaa avainsanat alapuolelle"
-
-#~ msgid "Unknown"
-#~ msgstr "Tuntematon"
-
-#, fuzzy
-#~| msgid "True"
-#~ msgid "Tue"
-#~ msgstr "Tosi"
-
-#, fuzzy
-#~| msgid "Sum"
-#~ msgid "Sun"
-#~ msgstr "Summa"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgid "March"
-#~ msgstr "Haku"
-
-#, fuzzy
-#~| msgid "Not a member?"
-#~ msgid "November"
-#~ msgstr "Vailla käyttäjätunnusta?"
-
-#, fuzzy
-#~| msgid "Tag"
-#~ msgid "aug"
-#~ msgstr "Tagi"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgctxt "abbrev. month"
-#~ msgid "March"
-#~ msgstr "Haku"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgctxt "alt. month"
-#~ msgid "March"
-#~ msgstr "Haku"
-
-#, fuzzy
-#~| msgid "Not a member?"
-#~ msgctxt "alt. month"
-#~ msgid "November"
-#~ msgstr "Vailla käyttäjätunnusta?"
-
-#, fuzzy
-#~| msgid "Files that do not exist"
-#~ msgid "\"%(path)s\" does not exist"
-#~ msgstr "Tiedostot joita ei ole olemassa"
-
-#~ msgid "None"
-#~ msgstr "Ei yhtään"
-
-#, fuzzy
-#~| msgid "Username"
-#~ msgid "name"
-#~ msgstr "Käyttäjän nimi"
-
-#, fuzzy
-#~| msgid "Tag"
-#~ msgid "tag"
-#~ msgstr "Tagi"
-
-#, fuzzy
-#~| msgid "Movement Type"
-#~ msgid "content type"
-#~ msgstr "Liikkeen tyyppi"
-
-#~ msgid ""
-#~ "Items marked * below are not in the web version of the dictionary and "
-#~ "would not appear in a regular (non staff) search."
-#~ msgstr ""
-#~ "Tähdellä (*) merkityt kohdat alapuolella eivät ole sanakirjan julkisessa "
-#~ "versiossa eivätkä ne näy julkisessa haussa."
-
-#~ msgid "Uploaded Glossvideos"
-#~ msgstr "Lähetetyt Glossivideot"
-
-#~ msgid "not in the set location"
-#~ msgstr "niille määritellyssä hakemistossa"
-
-#~ msgid "submit"
-#~ msgstr "lähetä"
-
-#~ msgid "File:"
-#~ msgstr "Tiedosto:"
-
-#~ msgid "Error:"
-#~ msgstr "Virhe:"
-
-#, fuzzy
-#~| msgid "FinSL Signbank"
-#~ msgid "Finish Signbank"
-#~ msgstr "FinSL Signbank"
-
-#~ msgid "Search sign"
-#~ msgstr "Hae viittomaa"
-
-#~ msgid "No translations in"
-#~ msgstr "Ei käännösvastineita kielellä"
-
-#~ msgctxt "publicglosslist"
-#~ msgid "Translations"
-#~ msgstr "Käännösvastineet"
-
-#~ msgid "Search translation"
-#~ msgstr "Hae käännösvastineita"
-
-#~ msgid "Browse:"
-#~ msgstr "Selaa:"
-
-#~ msgid "By gloss or translation equivalents"
-#~ msgstr "Glossilla tai käännösvastineella"
-
-#, fuzzy
-#~| msgid "Create gloss"
-#~ msgid "Create New Gloss"
-#~ msgstr "Luo glossi"
-
-#~ msgid "Glossvideo title"
-#~ msgstr "Glossivideon nimi"
-
-#~ msgid "False"
-#~ msgstr "Epätosi"
-
-#~ msgid "All"
-#~ msgstr "Kaikki"
-
-#~ msgid "Add New Sign"
-#~ msgstr "Lisää uusi Glossi"
-
-#~ msgid "ID Gloss"
-#~ msgstr "Glossi"
-
-#~ msgid "Upload New Video"
-#~ msgstr "Lähetä uusi video"
-
-#~ msgid "Video file in h264 mp4 format"
-#~ msgstr "Videotiedosto h264 mp4 muodossa"
-
-#~ msgid "Video"
-#~ msgstr "Videot"
-
-#~ msgid "Has no videos"
-#~ msgstr "Ei videoita"
-
-#~ msgid "Email/Username"
-#~ msgstr "Email/Käyttäjätunnus"
-
-#~ msgid "Password"
-#~ msgstr "Salasana"
-
-#~ msgid "Register"
-#~ msgstr "Rekisteröidy"
-
-#~ msgid "To register for an account, press the button below."
-#~ msgstr "Rekisteröidy painamalla alla olevaa nappia."
-
-#~ msgid "Lost Password?"
-#~ msgstr "Unohtunut salasana?"
-
-#~ msgid ""
-#~ "If you've lost or forgotten your password, enter your email address here "
-#~ "and we'll reset it and send you a reminder."
-#~ msgstr ""
-#~ "Jos olet hukannut tai unohtanut salasanasi, kirjoita sähköpostiosoitteesi "
-#~ "tähän, niin lähetämme sinulle uuden salasanan."
-
-#~ msgid "Email"
-#~ msgstr "Sähköposti"
-
-#~ msgid "Request Password"
-#~ msgstr "Palauta salasana"
-
-#~ msgid "Gloss is published"
-#~ msgstr "Glossi on julkaistu"
-
-#~ msgid "Gloss has a video"
-#~ msgstr "Glossilla on video"
-
-#~ msgid "Gloss does not have a video"
-#~ msgstr "Glossilla ei ole videota"
-
-#~ msgid "Note contains"
-#~ msgstr "Lisätieto sisältää sanan"
-
-#~ msgid "Translation contains"
-#~ msgstr "Käännösvastine sisältää sanan"
-
-#~ msgid "English gloss begins with"
-#~ msgstr "Glossi englanniksi alkaa sanalla"
-
-#~ msgid "Tweets by VKK_JY"
-#~ msgstr "Twiittejä @VKK_JY"
-
-#~ msgid "Delete Sign"
-#~ msgstr "Poista Glossi"
-
-#~ msgid "Delete This Sign"
-#~ msgstr "Poista tämä Glossi"
-
-#~ msgid ""
-#~ "This action will delete this sign and all associated records. It cannot "
-#~ "be undone."
-#~ msgstr ""
-#~ "Tämä toiminto poistaa Glossin ja kaikki siihen liittyvät tiedot. "
-#~ "Toimintoa ei voi peruuttaa."
-
-#~ msgid "Reverse relations"
-#~ msgstr "Käänteiset relaatiot"
-
-#~ msgid "You don't have permission to delete glosses."
-#~ msgstr "Sinulla ei ole käyttöoikeuksia glossien poistamiseksi."
-
-#~ msgid "video."
-#~ msgid_plural "videos."
-#~ msgstr[0] "video."
-#~ msgstr[1] "videota."
-
-#~ msgid "In the Web dictionary"
-#~ msgstr "Verkkosanakirjassa"
-
-#~ msgid "Publication Status"
-#~ msgstr "Julkaisun tilanne"
-
-#~ msgid "Note"
-#~ msgstr "Merkintä"
-
-#~ msgid "Private Note"
-#~ msgstr "Yksityinen merkintä"
-
-#~ msgid "To Do"
-#~ msgstr "Tehtävää"
-
-#~ msgid "Suggestion for other gloss"
-#~ msgstr "Ehdotus toiselle glossille"
-
-#~ msgid "Definition"
-#~ msgstr "Määritelmä"
-
-#~ msgid "Definitions"
-#~ msgstr "Määritelmät"
-
-#~ msgid "Can publish signs and definitions"
-#~ msgstr "Voi julkaista viittomia ja määritelmiä"
-
-#~ msgid "Is this a proposed new sign?"
-#~ msgstr "Onko tämä ehdotettu uusi viittoma?"
-
-#~ msgid "In Web Dictionary"
-#~ msgstr "Verkkosanakirjassa"
-
-#~ msgid "Proposed New Sign"
-#~ msgstr "Ehdotettu uusi viittoma"
-
-#~ msgctxt "Name for model Definition"
-#~ msgid "Notes"
-#~ msgstr "Muistiinpanot"
-
-#~ msgid "Index"
-#~ msgstr "Indeksi"
-
-#~ msgid "Delete This Note"
-#~ msgstr "Poista muistiinpano"
-
-#~ msgid "This action will delete this note. It cannot be undone."
-#~ msgstr "Tämä poistaa muistiinpanon, eikä sitä voida peruuttaa."
-
-#~ msgid "Save New"
-#~ msgstr "Lisää"
-
-#~ msgid "Bad Definition ID"
-#~ msgstr "Epäkelpo määritelmän ID"
-
-#~ msgid "Definition doesn't match gloss"
-#~ msgstr "Määritelmä ei vastaa glossia"
-
-#~ msgid "Signbank: Search Signs"
-#~ msgstr "Signbank: Etsi viittomia"
-
-#~ msgid "Signbank: Search Comments"
-#~ msgstr "Signbank: Etsi kommentteja"
-
-#~ msgid "Lock selected glosses"
-#~ msgstr "Lukitse valitut glossit"
-
-#~ msgid "Can lock and unlock Gloss from editing"
-#~ msgstr "Voi lukita ja avata Glossin muokkauksen"
-
-#~ msgid "Locked"
-#~ msgstr "Lukittu"
-
-#~ msgid "Gloss Update Not Allowed: Gloss is locked from editing"
-#~ msgstr "Glossin päivittäminen ei ole sallittua: Glossi on lukittu"
-
-#~ msgid "Comments:"
-#~ msgstr "Kommentit"
-
-#~ msgctxt "Gloss field name for Notes"
-#~ msgid "Notes"
-#~ msgstr "Muistiinpanot"
-
-#~ msgid "out of"
-#~ msgstr "/"
-
-#~ msgid "You are not allowed to see this page."
-#~ msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua."
-
-#~ msgid "Video:"
-#~ msgstr "Video:"
-
-#~ msgid " Gloss"
-#~ msgstr "Glossi"
-
-#~ msgid "Item:"
-#~ msgstr "Item:"
-
-#~ msgid ""
-#~ "You do not have permissions to add videos to the lexicon of these glosses:"
-#~ msgstr "Sinulla ei ole oikeuksia lisätä videoita tämän leksikon glosseille:"
-
-#~ msgid "Thanks for your comment. We value your contribution."
-#~ msgstr "Kiitos kommentistasi, arvostamme osallistumistanne."
-
-#~ msgid "General Feedback"
-#~ msgstr "Yleinen palaute"
-
-#~ msgid ""
-#~ "Please enter any comments you may have about this site and click \"submit"
-#~ "\" to send your feedback to us. We value your contributions and comments."
-#~ msgstr ""
-#~ "Kirjoita kommenttisi sivustosta ja paina lähetä. Arvostamme "
-#~ "osallistumistanne ja kommenttejanne."
-
-#~ msgid "General comments, suggestions, or anything you feel like telling us."
-#~ msgstr "Yleiset kommentit ja ehdotukset."
-
-#~ msgid "Upload your feedback as a video."
-#~ msgstr "Lähetä palautteesi videona."
-
-#~ msgid ""
-#~ "NOTE: Video files can be quite large, and may take a long time to send. "
-#~ "Please be patient when submitting this feedback."
-#~ msgstr ""
-#~ "HUOM: Videotiedostot voivat olla suuria ja niiden lähettämisessä saattaa "
-#~ "kestää tovi. Kärsivällisyyttä."
-
-#~ msgid "General feedback summary"
-#~ msgstr "Yleisen palautteen yhteenveto"
-
-#~ msgid "Date"
-#~ msgstr "Päivämäärä"
-
-#~ msgid "User"
-#~ msgstr "Käyttäjä"
-
-#~ msgid "We thank you in advance for your contribution and cooperation."
-#~ msgstr "Haluamme kiittää teitä osallistumesta ja yhteistyöstä."
-
-#~ msgid ""
-#~ "Want to tell us what you think of the %(language)s Signbank website or "
-#~ "any other signed language related issues? The <a href=\"generalfeedback."
-#~ "html\">General Feedback</a> form is just the place to do it."
-#~ msgstr ""
-#~ "Haluatko kertoa mielipiteesi %(language)s Signbankista tai jostain muusta "
-#~ "viittomakielisestä ongelmasta? <a href=\"generalfeedback.html\">Yleisen "
-#~ "palautteen lomakkeella</a> voit antaa tästä palautetta."
-
-#~ msgid "Report a Missing Sign"
-#~ msgstr "Ilmoita puuttuva viittoma"
-
-#~ msgid ""
-#~ "If you know of a sign that isn't in Signbank, you can use the <a href="
-#~ "\"missingsign.html\">Report a Missing Sign</a> form to describe it to us. "
-#~ "We will attempt to add as many of your new or missing signs as possible "
-#~ "to Signbank. If an addition you suggest is accepted, other visitors to "
-#~ "Signbank will then also be able to provide feedback on your sign."
-#~ msgstr ""
-#~ "Jos tiedät viittoman joka ei ole Signbankissa, käytä <a href="
-#~ "\"missingsign.html\">Ilmoita puuttuva viittoma</a> lomaketta. Pyrimme "
-#~ "lisäämään viittomia palautteen perusteella."
-
-#~ msgid "Interpreter Feedback Summary"
-#~ msgstr "Tulkkipalautteen yhteenveto"
-
-#~ msgid "A list of signs that have at least one Interpreter Note"
-#~ msgstr "Lista viittomista joilla on vähintään yksi tulkkipalaute"
-
-#~ msgid "View"
-#~ msgstr "Näytä"
-
-#~ msgid "Delete Comment"
-#~ msgstr "Poista kommentti"
-
-#~ msgid "Sign Feedback"
-#~ msgstr "Palautetta glosseista"
-
-#~ msgid "Sign:"
-#~ msgstr "Kirjaudu:"
-
-#~ msgid "Comment:"
-#~ msgstr "Kommentti:"
-
-#~ msgid "Don't Belong:"
-#~ msgstr "Ei kuulu:"
-
-#~ msgid "No feedback posted"
-#~ msgstr "Ei palautteita"
-
-#~ msgid "Missing Sign Feedback"
-#~ msgstr "Palaute puuttuvista viittomista"
-
-#~ msgid "Email:"
-#~ msgstr "Sähköposti:"
-
-#~ msgid "Handform"
-#~ msgstr "Käsimuoto"
-
-#~ msgid "Handshape"
-#~ msgstr "Käden muoto"
-
-#~ msgid "Small Movement"
-#~ msgstr "Pieni liike"
-
-#~ msgid "Meaning"
-#~ msgstr "Merkitys"
-
-#~ msgid "Thank you for your feedback."
-#~ msgstr "Kiitos palautteestasi."
-
-#~ msgid ""
-#~ "Please fill out the required questions opposite and then click 'Submit' "
-#~ "to report a missing sign to the %(language)s signbank."
-#~ msgstr ""
-#~ "Ilmoittaaksesi puuttuvan viittoman %(language)s signbankiin, täytä "
-#~ "vastapäiset kysymykset ja paina 'Lähetä'."
-
-#~ msgid ""
-#~ "If verified, the site will be updated to include the new sign.  Note that "
-#~ "this may take some time depending on the level of requests."
-#~ msgstr ""
-#~ "Jos viittoma hyväksytään, lisätään se tietokantaan. Tämä saattaa kestää "
-#~ "jonkin aikaa riippuen pyynnön luonteesta."
-
-#~ msgid ""
-#~ "You may either upload a video that shows the missing sign or fill in "
-#~ "details in a form.  In either case, you should enter a meaning and any "
-#~ "comments you might have in the text boxes at the bottom of the form."
-#~ msgstr "Lähetä video puuttuvasta viittomasta tai täytä tiedot lomakkeeseen."
-
-#~ msgid "Video Comment"
-#~ msgstr "Videokommentti"
-
-#~ msgid "Video Upload"
-#~ msgstr "Lähetä video"
-
-#~ msgid "Upload a video of the sign."
-#~ msgstr "Lähetä video viittomasta."
-
-#~ msgid "Sign Description"
-#~ msgstr "Glossin kuvaus"
-
-#~ msgid "Show Guide"
-#~ msgstr "Näytä ohje"
-
-#~ msgid ""
-#~ "Using the guide, select the movement symbol/word that best describes this "
-#~ "sign. Please choose either: one only (chosen from any category), or a "
-#~ "choice from every category."
-#~ msgstr ""
-#~ "Käyttäen ohjetta, valitse symboli/sana joka parhaiten kuvailee tätä "
-#~ "viittomaa. Valitse jompi kumpi: ainoastaan yksi mistä tahansa "
-#~ "kategoriasta, tai vaihtoehto jokaisesta kategoriasta."
-
-#~ msgid ""
-#~ "Please explain the meaning of the new or missing sign, or enter "
-#~ "individual English words that have the same meaning as this sign (i.e. "
-#~ "keywords)."
-#~ msgstr ""
-#~ "Selitä viittoman merkitys tai kirjoita englanninkielisiä avainsanoja "
-#~ "joilla on sama merkitys kuin tällä viittomalla."
-
-#~ msgid ""
-#~ "Are there any other comments you would like to give about this sign? For "
-#~ "example, do you think there are other or extra keyword/s that belong with "
-#~ "this sign? If so, please include your comments below."
-#~ msgstr ""
-#~ "Onko lisättävää? Liittyykö viittomaan muita avainsanoja? Liitä ne "
-#~ "kommentteihisi."
-
-#~ msgid "Submit Feedback"
-#~ msgstr "Lähetä palaute"
-
-#~ msgid "Download video"
-#~ msgstr "Lataa video"
-
-#~ msgid "(if video does not play here you may be able to play by downloading)"
-#~ msgstr "(jos video ei pyöri, voit yrittää katsoa sen lataamalla)"
-
-#~ msgid ""
-#~ "Please give us your comments about this sign. For example: do you think "
-#~ "there are other keywords that belong with this sign? Please write your "
-#~ "comments or new keyword/s below."
-#~ msgstr ""
-#~ "Anna palautetta viittomasta. Onko muita avainsanoja jotka kuuluvat tähän "
-#~ "viittomaan? Kirjoita kommenttisi ja avainsanat alapuolelle."
-
-#~ msgid "Is there a keyword or keyword/s that DO NOT belong with this sign?"
-#~ msgstr "Onko viittomaan kuulumattomia avainsanoja?"
-
-#~ msgid "Optional Questions"
-#~ msgstr "Valinnaiset kysymykset"
-
-#~ msgid "Is this sign an %(language)s Sign?"
-#~ msgstr "Onko tämä %(language)s:n viittoma?"
-
-#~ msgid "Where is this sign used?"
-#~ msgstr "Missä viittomaa käytetään?"
-
-#~ msgid "Do you like this sign?"
-#~ msgstr "Pidätkö tästä viittomasta?"
-
-#~ msgid "Do you use this sign?"
-#~ msgstr "Käytätkö tätä viittomaa?"
-
-#~ msgid "If this sign is a suggested new sign, would you use it?"
-#~ msgstr "Käyttäisitkö tätä uutena viittomana?"
-
-#~ msgid "Is the information about the sign correct?"
-#~ msgstr "Onko viittoman tiedot oikein?"
-
-#~ msgid ""
-#~ "There is currently insufficient feedback stored for this sign to generate "
-#~ "a\n"
-#~ " summary according to user groups. Unless a certain number of responses "
-#~ "have\n"
-#~ " been received about any particular sign, percentage displays would be\n"
-#~ " misleading."
-#~ msgstr ""
-#~ "Yhteenvetoa varten viittomasta ei ole tarpeeksi palautetta "
-#~ "käyttäjäryhmien perusteella. Jos vastauksia ei ole tarpeeksi, prosentit "
-#~ "saattaisivat olla harhaanjohtavia."
-
-#~ msgid "How many hands are used to make this sign?"
-#~ msgstr "Montaako kättä viittomassa käytetään?"
-
-#~ msgid "What is the handshape?"
-#~ msgstr "Mikä on käsimuoto?"
-
-#~ msgid "What is the handshape of the left hand?"
-#~ msgstr "Mikä on vasemman käden käsimuoto?"
-
-#~ msgid "Choose the location of the sign on, or near the body"
-#~ msgstr "Onko viittoma lähellä vai kaukana kehosta"
-
-#~ msgid "Choose the location of the right hand on, or near the left hand"
-#~ msgstr "Onko oikea käsi vasemman päällä vai lähellä vasenta kättä"
-
-#~ msgid "Contact between hands and body"
-#~ msgstr "Käsien ja kehon välinen kontakti"
-
-#~ msgid "Interaction between hands"
-#~ msgstr "Käsien interaktio"
-
-#~ msgid "Movement direction of the hand(s)"
-#~ msgstr "Käsien liikkeen suunta"
-
-#~ msgid "Type of movement"
-#~ msgstr "Liikkeen tyyppi"
-
-#~ msgid "Small movements of the hand(s) and fingers"
-#~ msgstr "Pienet käden ja sormien liikkeet"
-
-#~ msgid "Number of movements"
-#~ msgstr "Liikkeiden määrä"
-
-#~ msgid "Sign Meaning"
-#~ msgstr "Viittoman merkitys"
-
-#~ msgid "Further Details"
-#~ msgstr "Lisätietoa"
-
-#~ msgid "One handed"
-#~ msgstr "Yksikätinen"
-
-#~ msgid "Two handed (same shape for each hand)"
-#~ msgstr "Kaksikätinen (samalla käsimuodolla)"
-
-#~ msgid "Two handed (diffent shapes for each hand)"
-#~ msgstr "Kaksikätinen (eri käsimuodoilla)"
-
-#~ msgid "Animal"
-#~ msgstr "Eläin"
-
-#~ msgid ""
-#~ "Is there a keyword or keyword/s that DO NOT belong with this sign? Please "
-#~ "provide the list of keywords below"
-#~ msgstr ""
-#~ "Eikö joku avainsana kuulu tähän viittomaan? Listaa avainsanat alapuolelle"
-
-#~ msgid "Leave Feedback"
-#~ msgstr "Anna palautetta"
-
-#~ msgid "Thank you. Your feedback has been saved."
-#~ msgstr "Kiitos palautteestasi."
-
-#~ msgid "Poster images"
-#~ msgstr "Aloituskuvia"
-
-#~ msgid "Info"
-#~ msgstr "Info"
-
-#~ msgid "Information page"
-#~ msgstr "Infosivu"
-
-#~ msgid ""
-#~ "On this page you can find all kinds of useful information. We have "
-#~ "collected some numerical information about our database and some useful "
-#~ "links aswell."
-#~ msgstr ""
-#~ "Keräämme tälle sivulle numeerista tietoa Signbankista ja listaamme "
-#~ "tärkeitä linkkejä."
-
-#~ msgid "Language"
-#~ msgstr "Kieli"
-
-#~ msgid "Total number of videos (one gloss can have many)"
-#~ msgstr "Videoita yhteensä (yhdellä glossilla voilla useita)"
-
-#~ msgid "Finnish translation equivalents"
-#~ msgstr "Käännövastineita suomeksi"
-
-#~ msgid "English translations equivalents"
-#~ msgstr "Käännösvastineita englanniksi"
-
-#~ msgid "Total amount of keywords"
-#~ msgstr "Käännössanojen lukumäärä"
-
-#~ msgctxt "menu-link"
-#~ msgid "Search"
-#~ msgstr "Haku"
-
-#~ msgid "Dataset for a glossvideo"
-#~ msgstr "Glossivideon aineisto"
-
-#~ msgctxt "do-search"
-#~ msgid "Search"
-#~ msgstr "Hae"
-
-#~ msgctxt "menu"
-#~ msgid "Search"
-#~ msgstr "Hae"
-
-#~ msgid "Search by Language and Basic Properties"
-#~ msgstr "Etsi kielellä ja perusominaisuuksilla"
-
-#~ msgid "Total of %(page_obj.paginator.count)s Glossvideos uploaded"
-#~ msgstr "Yhteensä %(page_obj.paginator.count)s Glossivideota"
-
-#~ msgid "You can add a gloss for each video"
-#~ msgstr "Voit lisätä jokaiselle videolle glossin"
-
-#~ msgid ""
-#~ "Example: '/about/contact/'. Make sure to have leading and trailing "
-#~ "slashes."
-#~ msgstr ""
-#~ "Esimerkiksi: '/about/contact/'. Varmista että kauttaviivat löytyvät "
-#~ "alusta ja lopusta."
-
-#~ msgid "Advanced options"
-#~ msgstr "Lisävaihtoehdot"
-
-#~ msgid "template name"
-#~ msgstr "pohjan nimi"
-
-#~ msgid ""
-#~ "Example: 'pages/contact_page.html'. If this isn't provided, the system "
-#~ "will use 'pages/default.html'."
-#~ msgstr ""
-#~ "Esimerkiksi: 'pages/contact_page.html'. Jos tätä ei anneta, käytetään "
-#~ "'pages/default.html'."
-
-#~ msgid "publish"
-#~ msgstr "julkaise"
-
-#~ msgid "If this is checked, the page will be included in the site menus."
-#~ msgstr "Jos tämä on valittuna, näytetään sivu sivuston valikossa."
-
-#~ msgid ""
-#~ "Leave blank for a top level menu entry.  Top level entries that have sub-"
-#~ "pages should be empty as they will not be linked in the menu."
-#~ msgstr ""
-#~ "Jätä ylätason valikko kohta tyhjäksi. Ylätason merkintöjen joilla on "
-#~ "alasivuja, tulisi olla tyhjiä tai niitä ei linkitetä valikkoon."
-
-#~ msgid "Used to order pages in the menu"
-#~ msgstr "Käytetään sivujen järjestyksen määrittämiseen valikossa"
-
-#~ msgid ""
-#~ "This page will only be visible to members of these groups, leave blank to "
-#~ "allow anyone to access."
-#~ msgstr ""
-#~ "Tämä sivu näkyy vain näiden ryhmien jäsenille, jos haluat antaa kaikille "
-#~ "oikeudet, jätä tämä kohta tyhjäksi."
-
-#~ msgid "page"
-#~ msgstr "sivu"
-
-#~ msgid "Page Video"
-#~ msgstr "Sivun video"
-
-#~ msgid "No Pages"
-#~ msgstr "Ei sivuja"
-
-#~ msgid "No pages defined. Login to <a href=\"/admin\"> to create some."
-#~ msgstr ""
-#~ "Sivuja ei ole määritelty. Kirjaudu admin-sivulle <a href=\"/admin\"> "
-#~ "lisätäksesi määrityksiä."

@@ -67,7 +67,7 @@ $( document ).ready(function() {
 </p>
           </div>
         </div>
-        <strong>{% blocktrans %}Browse Glosses:{% endblocktrans %}</strong>
+        <strong>{% blocktrans %}Browse glosses:{% endblocktrans %}</strong>
         <div class="btn-group" role="group" aria-label="Browse">
         {% for letter in first_letters %}
             <a role="button" class="btn btn-default" href="?gloss={{letter.0|urlencode}}{% if request.GET.lang %}&lang={{request.GET.lang|urlencode}}{% endif %}{% if request.GET.dataset %}{% for ds in datasets %}&dataset={{ds|urlencode}}{% endfor %}{% endif %}">{{letter.0}}</a>
