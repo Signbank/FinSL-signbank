@@ -2,6 +2,7 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% block bootstrap3_title %}{% blocktrans %}Links and Statistics{% endblocktrans %} | {% endblock %}
 {% block content %}
     {% if perms.dictionary.search_gloss %}
     <div id="infopage" class="container-fluid">

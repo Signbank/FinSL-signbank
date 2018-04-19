@@ -1,5 +1,6 @@
 {% extends "baselayout.html" %}
 {% load i18n %}
+{% block bootstrap3_title %}{% blocktrans %}Latest Comments{% endblocktrans %} | {% endblock %}
 {% block content %}
 {% include "comments/latest_comments.html" %}
 {% endblock %}

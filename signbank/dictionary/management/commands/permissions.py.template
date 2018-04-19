@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Set up default groups and permissions"""
+# Saving this for reference, publisher admin has been removed.
+# We might want to use this approach for setting up permissions later on.
 from __future__ import unicode_literals
 
 from django.core.management.base import BaseCommand

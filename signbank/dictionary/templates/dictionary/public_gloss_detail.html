@@ -2,14 +2,17 @@
 {% load i18n %}
 {% load comments %}
 {% load tagging_tags %}
+{% block bootstrap3_title %}{{gloss}} [{{gloss.dataset.description}}] | {% endblock %}
 {% block content %}
 <div class="container">
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="col-md-12">
-            <h2><a href="{{gloss.get_public_absolute_url}}">{{gloss}}</a>
-            <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{gloss.dataset.description}}</span>
-            {% if gloss.idgloss_en %}/ {{gloss.idgloss_en}}{% endif %}</h2>
+            <h2>
+                <a href="{{gloss.get_public_absolute_url}}">{{gloss}}</a>
+                <span class="dataset-{{gloss.dataset.id}}-color label label-default"
+                style="float:right;">{{gloss.dataset.description}}</span>
+            </h2>
         </div>
         <div class="col-md-6">
             <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}</h4>
@@ -29,9 +32,9 @@
 <div class="row">
     <div class="col-md-12">
         {% for glossvideo in gloss.glossvideo_set.all %}
-        <div class="{% if gloss.glossvideo_set.all.count > 1 %}col-md-6{% else %}col-md-12{% endif %}">
+        <div class="col-md-6">
             <hr>
-            <h3>{{glossvideo.title}}</h3>
+            <h4>{{glossvideo.title}}</h4>
             <div class="embed-responsive embed-responsive-16by9">
                 <video id="glossvideo-{{glossvideo.pk}}" preload="metadata" controls muted
                 {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
@@ -44,12 +47,14 @@
                 </video>
             </div>
         </div>
+        {# Fix horizontal alignment for grid. We have max 2 items per row. #}
+        {% if forloop.counter|divisibleby:"2" %}<div class="clearfix"></div>{% endif %}
         {% endfor %}
     </div>
 </div>
 <div class="row">
+<hr>
 <div class="col-md-10 col-md-offset-1">
-    <hr>
     <div class="col-md-12">
         <h4>{% blocktrans %}Relations to glosses{% endblocktrans %}</h4>
     </div>

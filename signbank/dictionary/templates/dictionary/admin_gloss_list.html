@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {# Translators: Title for sign search page #}
-{% block bootstrap3_title %}: {% blocktrans %}Search Signs{% endblocktrans %}{% endblock %}
+{% block bootstrap3_title %}{% blocktrans %}Advanced Search{% endblocktrans %} | {% endblock %}
 {% block extrahead %}
 <link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
 {% endblock %}
@@ -218,7 +218,7 @@ function clearForm(myFormElement) {
         <tr {% if gloss.published %}class="success"{% elif gloss.glossvideo_set.exists %}class="warning"{% else %}class="danger"{% endif %}>
             <td><span class="dataset-{{gloss.dataset.id}}-color label label-default">{{ gloss.dataset }}</span></td>
             {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
-            <td><a href="/dictionary/gloss/{{gloss.pk}}/"
+            <td><a href="{% url 'dictionary:admin_gloss_view' pk=gloss.pk %}"
                    data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}"
                    data-video-src="{% if gloss.glossvideo_set.all.0.videofile %}{{ gloss.glossvideo_set.all.0.videofile.url }}"
                    data-video-ext="{{ gloss.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{ gloss.idgloss }}</a>

@@ -2,6 +2,7 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% block bootstrap3_title %}{% blocktrans %}Confirm Import CSV{% endblocktrans %} | {% endblock %}
 
 {% block content %}
 {% if perms.dictionary.import_csv %}

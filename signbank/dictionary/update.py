@@ -200,29 +200,12 @@ def update_keywords(gloss, field, value, language_code_2char):
                                         'is unclear which languages translations to edit.'),
                                       content_type='text/plain')
 
-    # Removing instances of number(s) that end with a dot from the delivered 'value'.
-    cleaned_value = re.sub('\d\.', '', value)
-    # Splitting the remaining string on comma, dot or semicolon. Then strip spaces around the keyword(s).
-    kwds = [k.strip() for k in re.split('[,.;]', cleaned_value)]
-    # Remove current Translations
-    current_trans = gloss.translation_set.filter(language=language)
-    current_trans.delete()
-    # Create new Translations, use existing Keywords if present or create new ones.
-    for i in range(len(kwds)):
-        (kobj, created) = Keyword.objects.get_or_create(text=kwds[i])
-        # Create a new Translation, save the 'order' to represent the order of Translations for this Gloss.
-        trans = Translation(gloss=gloss, keyword=kobj, order=i, language=language)
-        trans.save()
-
-    try:
-        glosstranslations = GlossTranslations.objects.get(gloss=gloss, language=language)
-    except GlossTranslations.DoesNotExist:
-        glosstranslations = GlossTranslations.objects.create(gloss=gloss, language=language)
-
+    (glosstranslations, created) = GlossTranslations.objects.get_or_create(gloss=gloss, language=language)
     glosstranslations.translations = value
     glosstranslations.save()
-    # Save updated_by field for Gloss
+    # Save updated_by and updated_at field for Gloss
     gloss.save()
+
     return HttpResponse(value, content_type='text/plain')
 
 

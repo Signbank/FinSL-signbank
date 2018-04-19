@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from .adminsite import publisher_admin
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib import admin
@@ -16,10 +15,10 @@ from .comments import edit_comment, latest_comments, latest_comments_page, Comme
 import notifications.urls
 # Forms
 from .customregistration.forms import CustomUserForm
-admin.autodiscover()
 
-
+# Application namespace
 app_name = 'signbank'
+
 urlpatterns = [
     # Root page
     url(r'^$', flatpages_views.flatpage, {'url': '/'},
@@ -63,9 +62,6 @@ urlpatterns = [
     url(r'^admin/doc/',
         include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-
-    # Speciall admin sub site for Publisher role
-    url(r'^publisher/', include(publisher_admin.urls)),
 
     # Summernote urls, Summernote is the WYSIWYG editor currently used in Signbank
     url(r'^summernote/', include('django_summernote.urls')),

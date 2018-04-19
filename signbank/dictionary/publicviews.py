@@ -4,11 +4,9 @@ from __future__ import unicode_literals
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Prefetch
-from django.utils.translation import get_language
 from django.db.models.functions import Substr, Upper
 
-from .models import Gloss, Translation, GlossTranslations, SignLanguage, Dataset, GlossRelation
-from ..video.models import GlossVideo
+from .models import Gloss, SignLanguage, GlossRelation
 from .forms import GlossPublicSearchForm
 
 
@@ -21,10 +19,12 @@ class GlossListPublicView(ListView):
         # Call the base implementation first to get a context
         context = super(GlossListPublicView, self).get_context_data(**kwargs)
         context["searchform"] = GlossPublicSearchForm(self.request.GET)
-        context["signlanguages"] = SignLanguage.objects.filter(id__in=[x.signlanguage.id for x in Dataset.objects.filter(is_public=True)])
+        context["signlanguages"] = SignLanguage.objects.filter(dataset__is_public=True).distinct()
+        context["signlanguage_count"] = context["signlanguages"].count()
         context["lang"] = self.request.GET.get("lang")
         if context["lang"]:
             context["searchform"].fields["dataset"].queryset = context["searchform"].fields["dataset"].queryset.filter(signlanguage__language_code_3char=context["lang"])
+        context["datasets"] = self.request.GET.getlist("dataset")
         context["first_letters"] = Gloss.objects.filter(dataset__is_public=True, published=True)\
             .annotate(first_letters=Substr(Upper('idgloss'), 1, 1)).order_by('first_letters')\
             .values_list('first_letters').distinct()
@@ -68,14 +68,11 @@ class GlossListPublicView(ListView):
         else:
             qs = qs.order_by('idgloss')
 
+        qs = qs.select_related('dataset')
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
-        qs = qs.prefetch_related(Prefetch('translation_set', queryset=Translation.objects.filter(
-            language__language_code_2char__iexact=get_language()).select_related('keyword')),
-                                 Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.filter(
-                                     language__language_code_2char__iexact=get_language())),
-                                 Prefetch('dataset'),
-                                 # Ordering by version to get the first versions posterfile.
-                                 Prefetch('glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')))
+        qs = qs.prefetch_related(Prefetch('glosstranslations_set'),
+                                 Prefetch('glosstranslations_set__language'),
+                                 Prefetch('glossvideo_set'))
         return qs
 
 

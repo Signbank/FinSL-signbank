@@ -3,6 +3,7 @@
 {% load bootstrap3 %}
 {% load i18n %}
 {% load staticfiles %}
+{% block bootstrap3_title %}{{gloss}} [{{gloss.dataset}}] | {% endblock %}
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/tagmanager.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.atwho.min.css' %}">
@@ -57,7 +58,7 @@ $(document).ready(function () {
                 var a = document.createElement("a");
                 a.setAttribute("class", "btn btn-default");
                 a.style["float"] = "none";
-                a.href = "/dictionary/gloss/" + json_data[key].id + "/";
+                a.href = "/dictionary/advanced/gloss/" + json_data[key].id + "/";
                 a.id = json_data[key].id;
                 var linktext = document.createTextNode(json_data[key].gloss);
                 a.appendChild(linktext);
@@ -355,7 +356,7 @@ $('#id_comment').atwho({
                                 </p>
                                 <ul class="">
                                 {% for version in revisions %}
-                                    <li><a href="/admin/dictionary/gloss/{{gloss.id}}/history/{{version.id}}/">
+                                    <li><a href="{% url 'admin:dictionary_gloss_revision' gloss.pk version.pk %}">
                                         <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                                         {{version.revision.date_created|date:'Y-m-d H:i'}}
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>

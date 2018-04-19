@@ -27,15 +27,17 @@ header#header {
     align-items: center;
     padding-left: 1em;
     padding-right: 1em;
-    background: #2980b9;
+    background: #325AB4;
     min-height: 60px;
 }
-header#header a {
-    text-decoration: none;
-    color: #133a53;
+header .headerlogo {
+    margin: 3px;
 }
 header#header h1 {
     margin: 0;
+}
+header img#logoheadersignbank {
+    max-height:70px;
 }
 @media (max-width: 767px) {
     header h1{font-size: 20px;}

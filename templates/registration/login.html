@@ -2,11 +2,11 @@
 {% load bootstrap3 %}
 {% load i18n %}
 
-{% block title %}{% trans "Sign in" %}{% endblock %}
+{% block bootstrap3_title %}{% blocktrans %}Sign In{% endblocktrans %} | {% endblock %}
 
 {% block content %}
 {# Translators: Text sign in - Log in form #}
-<h3>{% blocktrans %}Sign In{% endblocktrans %}</h3>
+<h3>{% blocktrans %}Sign in{% endblocktrans %}</h3>
 <div class="well well-lg">
     <form id="loginform" name="login" method="post" action="">
         {% csrf_token %}
