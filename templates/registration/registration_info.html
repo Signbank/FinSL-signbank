@@ -1,0 +1,52 @@
+{% load i18n %}
+<h4>{% blocktrans %}Frequently asked questions about account creation{% endblocktrans %}</h4>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              {% blocktrans %}Who can create an account?{% endblocktrans %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+              <p class="bg-danger">{% blocktrans %}Only create an account if you have been in contact with the staff beforehand.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Even though anyone can create an account, one needs to get additional user permissions to be able to do anything.
+                  These permissions can only be set by the staff, and therefore you should contact the staff before creating an account.{% endblocktrans %}</p>
+          </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              {% blocktrans %}What can you do with an account?{% endblocktrans %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <p>{% blocktrans %}Depending on the level of user permissions, you can see more detailed data about glosses, add data, and edit data.{% endblocktrans %}</p>
+          </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              {% blocktrans %}How to gain user permissions?{% endblocktrans %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            <ul>
+                <li>{% blocktrans %}Contact the site maintainer or the site staff.{% endblocktrans %}</li>
+                <li>{% blocktrans %}Check the About page for contact information:{% endblocktrans %}
+                    <a href="/about/">{{request.scheme}}://{{request.get_host}}/about/</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+</div>
