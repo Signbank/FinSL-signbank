@@ -8,13 +8,10 @@
 {% if not user.is_authenticated %}
     {# Translators: Title for create account#}
     <h3>{% blocktrans %}Create account{% endblocktrans%}</h3>
-    {% include 'registration/registration_info.html' %}
     <div class="well well-lg">
         <form method="post" action="">
             {% csrf_token %}
-            {% bootstrap_form form exclude='tos' %}
-            {% include 'registration/terms_of_service.html' %}
-            {% bootstrap_field form.tos %}
+            {% bootstrap_form form %}
             <button type="submit" class="btn btn-info">{% blocktrans %}Create account{% endblocktrans %}</button>
         </form>
     </div>
