@@ -55,6 +55,8 @@ class GlossTranslations(models.Model):
         ordering = ['language']
 
     def save(self, *args, **kwargs):
+        # Is the object being created
+        creating = self._state.adding
         # Remove duplicates and keep the order.
         keywords = self.get_keywords_unique()
 
@@ -64,6 +66,15 @@ class GlossTranslations(models.Model):
         translations_to_keep = translations.filter(keyword__text__in=keywords, language=self.language)
         # Delete translations that no longer exist in field GlossTranslations.translations.
         translations.exclude(pk__in=translations_to_keep).delete()
+
+        if len(keywords) < 2 and keywords[0].strip() == "":
+            # If the to be saved object has no 'translations'
+            if not creating:
+                # If the object is being updated
+                self.delete()
+            # If object is being created with empty 'translations', don't save.
+            return
+
         existing_keywords = Keyword.objects.filter(text__in=keywords)
         for i, keyword_text in enumerate(keywords):
             (keyword, created) = existing_keywords.get_or_create(text=keyword_text)
