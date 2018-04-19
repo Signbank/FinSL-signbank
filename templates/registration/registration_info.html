@@ -1,0 +1,58 @@
+{% load i18n %}
+<h4>{% blocktrans %}Frequently asked questions{% endblocktrans %}</h4>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {% blocktrans %}Who should create an account?{% endblocktrans %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+              <p class="bg-info">{% blocktrans %}Only create an account if you have been in contact with the staff.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Even though anyone can create an account, one needs to get additional user permissions to be able to do anything.
+                  These permissions can be set by the staff, and you should contact them before creating an account.{% endblocktrans %}</p>
+          </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              {% blocktrans %}Who needs an account?{% endblocktrans %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <p>{% blocktrans %}If you are interested in the material within the site. If you want to get an in depth view
+                of the data in Signbank, you most likely would benefit from having an account.{% endblocktrans %}</p>
+          </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              {% blocktrans %}How to get help?{% endblocktrans %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            <ul>
+                <li>{% blocktrans %}Try to contact the site maintainer or the site staff.{% endblocktrans %}</li>
+                <li>{% blocktrans %}First of all you should check the About page for contact information:{% endblocktrans %}
+                    <a href="/about/">{{request.scheme}}://{{request.get_host}}/about/</a></li>
+                <li>{% blocktrans %}Check out the wiki at{% endblocktrans %}
+                    <a href="https://github.com/Signbank/FinSL-signbank/wiki">https://github.com/Signbank/FinSL-signbank/wiki</a></li>
+                <li>{% blocktrans %}You can also seek help from our developers on GitHub:{% endblocktrans %}
+                    <a href="https://github.com/Signbank/FinSL-signbank/issues" target="_blank">https://github.com/Signbank/FinSL-signbank</a></li>
+            </ul>
+            </p>
+          </div>
+        </div>
+    </div>
+</div>
