@@ -42,28 +42,39 @@ $( document ).ready(function() {
 <div class="row">
     <div class="col-md-12">
         <h3>{% blocktrans %}Search signs{% endblocktrans %}
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseHelp" aria-expanded="false" aria-controls="collapseHelp">
-            {% blocktrans %}Help{% endblocktrans %} <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseHelp" aria-expanded="false" aria-controls="collapseHelp">
+          {% blocktrans %}Help{% endblocktrans %} <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
         </button></h3>
 
         <div class="collapse" id="collapseHelp">
           <div class="well">
-<p>
-{% blocktrans %}This Signbank holds sign language signs in multiple different sign languages.
-    Search the signs by translations of the signs (or by an identifying name "gloss"), the results are matched from the
-    beginning of a word.
-    For quick browsing of signs a list of starting letters is provided in the top of the page.
-    Find the available sign languages on top of the search box, select one to narrow down your search results.
-    Filter the results even further by selecting one or multiple lexicons under the search box, which represent a set
-    of signs maintained by a given organisation.{% endblocktrans %}
-</p>
-<p>
-{% blocktrans %}To play a video, click on top of the video (image), and pause the video by clicking on it again.
-    To see more detailed information about a sign (gloss), click on the text on top of a video box in the
-    search results. Some signs have more than one video, the additional videos can be viewed from the detail
-    information page by clicking on the sign title.
-    {% endblocktrans %}
-</p>
+          <section>
+            <header>
+              <h4>{% blocktrans %}How to use the search page?{% endblocktrans %}</h4>
+            </header>
+            <p>
+              <a href="{% static 'img/instructions/searchpage_instructions_fi-compressor.png' %}" target="_blank">
+              <img src="{% static 'img/instructions/searchpage_instructions_fi_1140px-compressor.png' %}"
+                   alt="{% blocktrans %}Instructions for how to use the search page.{% endblocktrans %}"
+                   class="img-responsive img-thumbnail">
+              </a>
+            </p>
+          </section>
+          <section>
+            <header>
+              <h4>{% blocktrans %}Description of the lexicons{% endblocktrans %}</h4>
+            </header>
+            <article>
+                <h5><strong>{% blocktrans %}Kipo-corpus{% endblocktrans %}</strong></h5>
+              <p>
+{% blocktrans %}The Kipo-corpus' lexicon includes the id-glosses that have been used in the annotation of the 2016 released Kipo-corpus (version 2).{% endblocktrans %}
+{% blocktrans %}You can browse the Kipo-corpus in the Language Banks LAT-service at{% endblocktrans %}
+    <a href="http://hdl.handle.net/11113/00-0000-0000-0000-340D-2@view">http://hdl.handle.net/11113/00-0000-0000-0000-340D-2@view</a>.
+{% blocktrans %}Referring to the Kipo-corpus in Finnish Signbank can be done in the following way:{% endblocktrans %}
+{% blocktrans %}Association of the Deaf ry (2017). Kipo-corpus lexicon [online-database]. The Language Bank. Available at https://signbank.csc.fi. Constantly updated publication, [referred at dd.mm.yyyy].{% endblocktrans %}
+              </p>
+            </article>
+          </section>
           </div>
         </div>
         <strong>{% blocktrans %}Browse glosses:{% endblocktrans %}</strong>

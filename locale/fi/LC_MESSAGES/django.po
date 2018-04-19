@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-18 12:19+0300\n"
+"POT-Creation-Date: 2018-04-19 13:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -278,7 +278,7 @@ msgid "Search translation equivalent"
 msgstr "Hae käännösvastinetta"
 
 #: signbank/dictionary/forms.py:270
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:82
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:93
 msgid "All sign languages"
 msgstr "Kaikki viittomakielet"
 
@@ -750,7 +750,7 @@ msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:165
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:46
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:152
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:163
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
@@ -1123,75 +1123,79 @@ msgstr "Hae viittomaa"
 msgid "Help"
 msgstr "Apua"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:52
-msgid ""
-"This Signbank holds sign language signs in multiple different sign "
-"languages.\n"
-"    Search the signs by translations of the signs (or by an identifying name "
-"\"gloss\"), the results are matched from the\n"
-"    beginning of a word.\n"
-"    For quick browsing of signs a list of starting letters is provided in "
-"the top of the page.\n"
-"    Find the available sign languages on top of the search box, select one "
-"to narrow down your search results.\n"
-"    Filter the results even further by selecting one or multiple lexicons "
-"under the search box, which represent a set\n"
-"    of signs maintained by a given organisation."
-msgstr ""
-"Tämä Signbank sisältää usean eri viittomakielen viittomia. Etsi viittomia "
-"käännöksillä tai viittoman tunnistenimillä \"glosseilla\", haku tehdään  "
-"sanojen alusta. Sivun yläosassa olevan alkukirjainlistan avulla on "
-"mahdollista selata viittomia. Tarjolla olevat viittomakielet löytyvät "
-"hakulaatikon yläpuolelta, valitsemalla viittomakielen voi rajata "
-"hakutuloksia haluttuun viittomakieleen. Hakutuloksia voi rajata myös "
-"leksikoiden perusteella valitsemalla halutut leksikot hakulaatikon "
-"alapuolelta. Leksikot ovat tietyn organisaation hallinnoimia viittomalistoja."
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:53
+msgid "How to use the search page?"
+msgstr "Miten hakusivua käytetään?"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:61
-msgid ""
-"To play a video, click on top of the video (image), and pause the video by "
-"clicking on it again.\n"
-"    To see more detailed information about a sign (gloss), click on the text "
-"on top of a video box in the\n"
-"    search results. Some signs have more than one video, the additional "
-"videos can be viewed from the detail\n"
-"    information page by clicking on the sign title.\n"
-"    "
-msgstr ""
-"Videon voit käynnistää painamalla videon (kuvan) päältä, videon voi "
-"keskeyttää painamalla sen päältä uudelleen.Nähdäksesi yksityiskohtaisempaa "
-"tietoa viittomasta (glossista), paina tekstiä joka on videolaatikon "
-"yläosassa. Joillakin viittomilla on useampi video, ylimääräiset videot voi "
-"nähdä viittoman sivulta."
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:58
+msgid "Instructions for how to use the search page."
+msgstr "Hakusivun käyttöohjeet."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:69
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:65
+msgid "Description of the lexicons"
+msgstr "Leksikoiden kuvaukset"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:68
+msgid "Kipo-corpus"
+msgstr "Kipo-korpus"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:70
+msgid ""
+"The Kipo-corpus' lexicon includes the id-glosses that have been used in the "
+"annotation of the 2016 released Kipo-corpus (version 2)."
+msgstr ""
+"Kipo-korpuksen leksikko sisältää id-glossit, joita on käytetty vuonna 2016 "
+"julkaistun Kipo-korpuksen (versio 2) annotoinnissa."
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:71
+msgid "You can browse the Kipo-corpus in the Language Banks LAT-service at"
+msgstr "Itse Kipo-korpusta voit selata Kielipankin LAT-palvelussa"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:73
+msgid ""
+"Referring to the Kipo-corpus in Finnish Signbank can be done in the "
+"following way:"
+msgstr ""
+"Kipo-korpuksen leksikkoon Suomen Signbankissä voit viitata näin:"
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:74
+msgid ""
+"Association of the Deaf ry (2017). Kipo-corpus lexicon [online-database]. "
+"The Language Bank. Available at https://signbank.csc.fi. Constantly updated "
+"publication, [referred at dd.mm.yyyy]."
+msgstr ""
+"Kuurojen Liitto ry (2017). Kipo-korpuksen leksikko [online-tietokanta]. "
+"Kielipankki. Saatavilla https://signbank.csc.fi. Päivitettävä julkaisu,"
+" [viitattu xx.xx.xxxx]."
+
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:80
 msgid "Browse glosses:"
 msgstr "Selaa glosseja:"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:111
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:122
 msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:134
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:145
 msgctxt "videocount"
 msgid "Videos"
 msgstr "Videoita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:155
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:166
 msgid "No video."
 msgstr "Ei videota."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:160
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:171
 msgctxt "publicglosslist"
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:165
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:176
 msgid "No translation equivalents yet"
 msgstr "Ei vielä käännösvastineita"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:177
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:186
 msgid "No results."
 msgstr "Ei hakutuloksia."
 
@@ -2006,3 +2010,43 @@ msgstr ""
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid ""
+#~ "This Signbank holds sign language signs in multiple different sign "
+#~ "languages.\n"
+#~ "    Search the signs by translations of the signs (or by an identifying "
+#~ "name \"gloss\"), the results are matched from the\n"
+#~ "    beginning of a word.\n"
+#~ "    For quick browsing of signs a list of starting letters is provided in "
+#~ "the top of the page.\n"
+#~ "    Find the available sign languages on top of the search box, select "
+#~ "one to narrow down your search results.\n"
+#~ "    Filter the results even further by selecting one or multiple lexicons "
+#~ "under the search box, which represent a set\n"
+#~ "    of signs maintained by a given organisation."
+#~ msgstr ""
+#~ "Tämä Signbank sisältää usean eri viittomakielen viittomia. Etsi viittomia "
+#~ "käännöksillä tai viittoman tunnistenimillä \"glosseilla\", haku tehdään  "
+#~ "sanojen alusta. Sivun yläosassa olevan alkukirjainlistan avulla on "
+#~ "mahdollista selata viittomia. Tarjolla olevat viittomakielet löytyvät "
+#~ "hakulaatikon yläpuolelta, valitsemalla viittomakielen voi rajata "
+#~ "hakutuloksia haluttuun viittomakieleen. Hakutuloksia voi rajata myös "
+#~ "leksikoiden perusteella valitsemalla halutut leksikot hakulaatikon "
+#~ "alapuolelta. Leksikot ovat tietyn organisaation hallinnoimia "
+#~ "viittomalistoja."
+
+#~ msgid ""
+#~ "To play a video, click on top of the video (image), and pause the video "
+#~ "by clicking on it again.\n"
+#~ "    To see more detailed information about a sign (gloss), click on the "
+#~ "text on top of a video box in the\n"
+#~ "    search results. Some signs have more than one video, the additional "
+#~ "videos can be viewed from the detail\n"
+#~ "    information page by clicking on the sign title.\n"
+#~ "    "
+#~ msgstr ""
+#~ "Videon voit käynnistää painamalla videon (kuvan) päältä, videon voi "
+#~ "keskeyttää painamalla sen päältä uudelleen.Nähdäksesi "
+#~ "yksityiskohtaisempaa tietoa viittomasta (glossista), paina tekstiä joka "
+#~ "on videolaatikon yläosassa. Joillakin viittomilla on useampi video, "
+#~ "ylimääräiset videot voi nähdä viittoman sivulta."
