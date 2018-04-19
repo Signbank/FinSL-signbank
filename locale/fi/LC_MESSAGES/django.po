@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 18:03+0300\n"
+"POT-Creation-Date: 2018-04-19 19:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,10 @@ msgstr ""
 #: signbank/comments.py:219
 msgid "mentioned you in a comment"
 msgstr "mainitsi sinut kommentissa"
+
+#: signbank/customregistration/forms.py:18
+msgid "I have read and agree to the Terms of Service"
+msgstr "Olen lukenut ja hyväksyn käyttöehdot"
 
 #: signbank/dictionary/admin.py:24
 msgid "Tag"
@@ -1802,7 +1806,7 @@ msgstr "Kirjaudu sisään"
 #. Translators: Title for create account
 #: templates/langbar.html:28 templates/registration/login.html:24
 #: templates/registration/registration_form.html:10
-#: templates/registration/registration_form.html:32
+#: templates/registration/registration_form.html:26
 msgid "Create account"
 msgstr "Luo tunnus"
 
@@ -2000,15 +2004,11 @@ msgstr "Luo tunnus"
 msgid "Create an account by filling in the information"
 msgstr "Luo tunnus täyttämällä seuraavat tiedot"
 
-#: templates/registration/registration_form.html:28
-msgid "I have read and agree to the Terms of Service"
-msgstr "Olet lukenut ja hyväksyn käyttöehdot"
-
-#: templates/registration/registration_form.html:37
+#: templates/registration/registration_form.html:31
 msgid "Error"
 msgstr "Virhe"
 
-#: templates/registration/registration_form.html:39
+#: templates/registration/registration_form.html:33
 msgid "Creating new accounts not permitted for users that are Signed in!"
 msgstr ""
 "Uusien tunnuksien luominen ei ole sallittua kirjautuneena oleville "
