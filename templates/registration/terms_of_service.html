@@ -1,15 +1,20 @@
 {% load i18n %}
-<div class="panel panel-warning">
+{% load staticfiles %}
+<div class="panel panel-primary">
     <div class="panel-heading">
       <h4 class="panel-title">{% blocktrans %}Terms of service{% endblocktrans %}</h4>
     </div>
     <div class="panel-body">
-        <h4>{% blocktrans %}By creating an account on this site you (later "user") agree to the following conditions:{% endblocktrans %}</h4>
-        <p>{% blocktrans %}The user will not abuse the service, any malicious activity is strictly prohibited.
-            Any data on the site is confidential unless stated otherwise, and should be handled as such.
-            The user agrees to not copy or spread the data or the information found on the site, unless given permission.
-            The user should only add in data or information user has been approved to add. Any copyrighted material added without the permission of the copyright holders is strictly prohibited.
-            The user is responsible for making sure that laws or copyrights are followed when submitting data or information.
-            The users account can be terminated or access limited without a notice if the user fails to comply with the rules.{% endblocktrans %}</p>
+        <h4>{% blocktrans %}By creating an account on this site you (the "user") agree to the following conditions:{% endblocktrans %}</h4>
+        <p>{% blocktrans %}Last updated:{% endblocktrans %} 19.04.2018 (dd.mm.yyyy)</p>
+        <ul>
+            <li>{% blocktrans %}You have read and agree to the{% endblocktrans %} <a href="/static/files/rekisteriseloste_signbank_2018-04-11.pdf">{% blocktrans %}privacy policy{% endblocktrans %}</a>.</li>
+            <li>{% blocktrans %}The user will not abuse the service, any malicious activity is strictly prohibited.{% endblocktrans %}</li>
+            <li>{% blocktrans %}Any data on the site is confidential unless stated otherwise, and should be handled as such.{% endblocktrans %}</li>
+            <li>{% blocktrans %}The user agrees to not copy or spread the data, or the information found on the site, unless given permission or if the license allows it.{% endblocktrans %}</li>
+            <li>{% blocktrans %}The user is responsible for making sure that laws and copyrights are followed when submitting data.{% endblocktrans %}</li>
+            <li>{% blocktrans %}The users account can be terminated, or access limited, without a notice if the user fails to comply with the rules.{% endblocktrans %}</li>
+            <li>{% blocktrans %}When requestion account termination, the user name will not be deleted, but other personal information attached to the account will be removed. If the user wishes to have anonymity, a pseudonym should be used for the user name.{% endblocktrans %}</li>
+        </ul>
     </div>
 </div>
