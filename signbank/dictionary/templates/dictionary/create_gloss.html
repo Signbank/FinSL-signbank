@@ -8,7 +8,7 @@
     {% if perms.dictionary.add_gloss %}
     <div id="addgloss">
         {# Translators: #}
-        <h3>{% blocktrans %}Add a Gloss{% endblocktrans %}:</h3>
+        <h3>{% blocktrans %}Create a Gloss{% endblocktrans %}</h3>
         <form enctype="multipart/form-data" action='{% url "dictionary:create_gloss" %}' method='post'>
             {% csrf_token %}
 
