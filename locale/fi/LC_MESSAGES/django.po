@@ -2025,7 +2025,7 @@ msgstr "Kuka voi luoda tunnuksen?"
 #: templates/registration/registration_info.html:14
 msgid ""
 "Only create an account if you have been in contact with the staff beforehand."
-msgstr "Luo tunnus ainoastaan jos olet sopinut siitä sivun ylläpidon kanssa."
+msgstr "Luo tunnus ainoastaan, jos olet sopinut siitä sivun ylläpidon kanssa."
 
 #: templates/registration/registration_info.html:15
 msgid ""
@@ -2092,7 +2092,7 @@ msgid ""
 "The user will not abuse the service, any malicious activity is strictly "
 "prohibited."
 msgstr ""
-"Käyttäjä lupaa olla väärinkäyttäjättä sivustoa, kaikki tahallinen ja "
+"Käyttäjä lupaa olla väärinkäyttämättä sivustoa, kaikki tahallinen ja "
 "haitallinen toiminta on ehdottomasti kielletty."
 
 #: templates/registration/terms_of_service.html:13
@@ -2116,7 +2116,7 @@ msgid ""
 "The user is responsible for making sure that laws and copyrights are "
 "followed when submitting data."
 msgstr ""
-"Käyttäjä on velvoitettu varmistamaan että lakeja ja tekijänoikeuksia "
+"Käyttäjä on velvoitettu varmistamaan, että lakeja ja tekijänoikeuksia "
 "kunnioitetaan, kun sivustolle lisätään dataa."
 
 #: templates/registration/terms_of_service.html:16
