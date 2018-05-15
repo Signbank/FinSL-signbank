@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-04 13:59+0300\n"
+"POT-Creation-Date: 2018-05-15 15:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,7 +273,7 @@ msgstr "Täytyy olla CSV-tiedosto .csv päätteellä."
 
 #. Translators: Placeholder text in a search textfield
 #: signbank/dictionary/forms.py:259 signbank/dictionary/forms.py:260
-#: templates/menu.html:54
+#: templates/menu.html:68
 msgid "Search gloss"
 msgstr "Hae glossia"
 
@@ -640,7 +640,7 @@ msgstr "Sisältää merkkijonon"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:171
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:102
-#: templates/menu.html:58
+#: templates/menu.html:72
 msgctxt "search-button"
 msgid "Search"
 msgstr "Hae"
@@ -1484,7 +1484,7 @@ msgstr "Glossien videot"
 msgid "Upload Videos"
 msgstr "Lähetä videoita"
 
-#: signbank/video/templates/addvideos.html:27 templates/menu.html:36
+#: signbank/video/templates/addvideos.html:27 templates/menu.html:50
 msgid "Upload videos"
 msgstr "Lähetä videoita"
 
@@ -1648,32 +1648,32 @@ msgstr ""
 "Tapahtui virhe. Virheestä on tiedotettu ylläpidolle, ja se\n"
 "pyritään korjaamaan mahdollisimman pian. Pahoittelemme tapahtunutta."
 
-#: templates/baselayout.html:9 templates/baselayout.html:44
-#: templates/baselayout.html:47
+#: templates/baselayout.html:9 templates/baselayout.html:47
+#: templates/baselayout.html:50
 msgid "Finnish Signbank"
 msgstr "Suomen Signbank"
 
-#: templates/baselayout.html:58
+#: templates/baselayout.html:61
 msgid "(No content)"
 msgstr "(Ei sisältöä)"
 
-#: templates/baselayout.html:67
+#: templates/baselayout.html:70
 msgid "University of Jyväskylä"
 msgstr "Jyväskylän yliopisto"
 
-#: templates/baselayout.html:75
+#: templates/baselayout.html:78
 msgid "Finnish Association of the Deaf"
 msgstr "Kuurojen liitto"
 
-#: templates/baselayout.html:78
+#: templates/baselayout.html:81
 msgid "The Language Bank of Finland"
 msgstr "Kielipankki"
 
-#: templates/baselayout.html:81
+#: templates/baselayout.html:84
 msgid "CSC - IT center for science"
 msgstr "CSC - Tieteen tietotekniikan keskus"
 
-#: templates/comments/latest_comments.html:3 templates/menu.html:44
+#: templates/comments/latest_comments.html:3 templates/menu.html:58
 msgid "Latest comments"
 msgstr "Uusimmat kommentit"
 
@@ -1702,7 +1702,7 @@ msgstr "Muokkaa kommenttia"
 msgid "Search Comments"
 msgstr "Etsi kommentteja"
 
-#: templates/comments/search_comments.html:9 templates/menu.html:45
+#: templates/comments/search_comments.html:9 templates/menu.html:59
 msgid "Search comments"
 msgstr "Etsi kommentteja"
 
@@ -1720,7 +1720,7 @@ msgstr "Muokkaa sivua"
 msgid "Links and Statistics"
 msgstr "Linkkejä ja tilastoja"
 
-#: templates/infopage.html:12 templates/menu.html:42
+#: templates/infopage.html:12 templates/menu.html:56
 msgid "Links and statistics"
 msgstr "Linkkejä ja tilastoja"
 
@@ -1811,40 +1811,48 @@ msgid "Create account"
 msgstr "Luo tunnus"
 
 #. Translators: Button to toggle navigation
-#: templates/menu.html:9
+#: templates/menu.html:8
 msgid "Toggle navigation"
 msgstr "Navigointi"
 
-#: templates/menu.html:21
+#: templates/menu.html:17
+msgid "Home"
+msgstr "Etusivu"
+
+#: templates/menu.html:22 templates/menu.html:32
+msgid "About"
+msgstr "Tietoa"
+
+#: templates/menu.html:35
 msgid "Signs"
 msgstr "Viittomat"
 
-#: templates/menu.html:24
+#: templates/menu.html:38
 msgid "Wiki"
 msgstr "Wiki"
 
-#: templates/menu.html:26
+#: templates/menu.html:40
 msgctxt "menu-link"
 msgid "Advanced search"
 msgstr "Kehittynyt haku"
 
-#: templates/menu.html:27
+#: templates/menu.html:41
 msgid "Search relations"
 msgstr "Relaatiohaku"
 
-#: templates/menu.html:32
+#: templates/menu.html:46
 msgid "Manage"
 msgstr "Hallinta"
 
-#: templates/menu.html:34
+#: templates/menu.html:48
 msgid "Create gloss"
 msgstr "Luo glossi"
 
-#: templates/menu.html:37
+#: templates/menu.html:51
 msgid "Manage uploaded videos"
 msgstr "Lähetettyjen videoiden hallinta"
 
-#: templates/menu.html:40
+#: templates/menu.html:54
 msgid "CSV import"
 msgstr "Tuo CSV"
 
@@ -1859,6 +1867,28 @@ msgstr "Merkitse kaikki luetuiksi"
 #: templates/notifications/notice.html:14
 msgid "ago"
 msgstr "sitten"
+
+#. Translators: Privacy policy consent text.
+#: templates/policyconsent.html:19
+msgctxt "consent"
+msgid ""
+"This website tracks your usage of the site, and uses cookies to ensure you "
+"get the best experience on our website."
+msgstr ""
+"Tämä verkkosivu seuraa käyttöäsi, sekä käyttää evästeitä parhaan "
+"käyttökokemuksen takaamiseksi."
+
+#. Translators: Privacy policy consent: I understand button.
+#: templates/policyconsent.html:21
+msgctxt "consent"
+msgid "Got it!"
+msgstr "Asia selvä!"
+
+#. Translators: Privacy policy consent: Privacy policy link name.
+#: templates/policyconsent.html:23
+msgctxt "consent"
+msgid "Privacy policy"
+msgstr "Rekisteriseloste"
 
 #: templates/registration/activate.html:4
 msgid "Activation Failure"

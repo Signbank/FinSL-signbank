@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/cookieconsent.min.css' %}" />
+<script src="{% static 'js/cookieconsent.min.js' %}"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#383b75"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "theme": "classic",
+  "content": {
+    {% comment %}Translators: Privacy policy consent text.{% endcomment %}
+    "message": "{% blocktrans context 'consent' %}This website tracks your usage of the site, and uses cookies to ensure you get the best experience on our website.{% endblocktrans %}",
+    {% comment %}Translators: Privacy policy consent: I understand button.{% endcomment %}
+    "dismiss": "{% blocktrans context 'consent' %}Got it!{% endblocktrans %}",
+    {% comment %}Translators: Privacy policy consent: Privacy policy link name.{% endcomment %}
+    "link": "{% blocktrans context 'consent' %}Privacy policy{% endblocktrans %}",
+    "href": "/about/privacy-policy/"
+  }
+})});
+</script>

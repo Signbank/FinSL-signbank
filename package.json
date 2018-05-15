@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js && cp -f ./node_modules/at.js/dist/js/jquery.atwho.min.js ./signbank/static/js",
-    "collectcss": "cp -f ./node_modules/at.js/dist/css/jquery.atwho.min.css ./signbank/static/css && cp -rf ./node_modules/bootstrap/dist/* ./signbank/static/bootstrap/"
+    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js && cp -f ./node_modules/at.js/dist/js/jquery.atwho.min.js ./signbank/static/js && cp -f ./node_modules/cookieconsent/build/cookieconsent.min.js ./signbank/static/js",
+    "collectcss": "cp -f ./node_modules/at.js/dist/css/jquery.atwho.min.css ./signbank/static/css && cp -rf ./node_modules/bootstrap/dist/* ./signbank/static/bootstrap/ && cp -f ./node_modules/cookieconsent/build/cookieconsent.min.css ./signbank/static/css"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Signbank/FinSL-signbank#readme",
   "dependencies": {
+    "cookieconsent": "^3.0.6",
     "dev": "^0.1.3"
   },
   "devDependencies": {
