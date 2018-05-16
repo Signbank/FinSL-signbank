@@ -50,7 +50,12 @@ class TagUpdateForm(forms.Form):
         qs = Tag.objects.all()
     tag = forms.ModelChoiceField(queryset=qs, empty_label=None, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
-    delete = forms.BooleanField(required=False, widget=forms.HiddenInput)
+
+
+class TagDeleteForm(forms.Form):
+    """Form to delete a tag from a gloss"""
+    tag = forms.ModelChoiceField(queryset=Tag.objects.all(), empty_label=None, to_field_name='name')
+    delete = forms.BooleanField(required=True, widget=forms.HiddenInput)
 
 
 class TagsAddForm(forms.Form):

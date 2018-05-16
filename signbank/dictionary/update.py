@@ -20,7 +20,7 @@ from guardian.shortcuts import get_perms, get_objects_for_user
 from .models import Gloss, Dataset, Translation, Keyword, Language, Dialect, GlossURL, \
     GlossRelation, GlossTranslations, FieldChoice, MorphologyDefinition, RelationToForeignSign, Relation
 from .models import build_choice_list
-from .forms import TagsAddForm, TagUpdateForm, GlossRelationForm, RelationForm, \
+from .forms import TagsAddForm, TagUpdateForm, TagDeleteForm, GlossRelationForm, RelationForm, \
     RelationToForeignSignForm, MorphologyForm, CSVUploadForm
 from ..video.models import GlossVideo
 
@@ -502,11 +502,10 @@ def add_tag(request, glossid):
             messages.error(request, msg)
             raise PermissionDenied(msg)
 
-        form = TagUpdateForm(request.POST)
+        form = TagDeleteForm(request.POST)
         if form.is_valid():
-            tag = form.cleaned_data['tag']
-
             if form.cleaned_data['delete']:
+                tag = form.cleaned_data['tag']
                 # get the relevant TaggedItem
                 ti = get_object_or_404(
                     TaggedItem, object_id=gloss.id, tag__name=tag,
@@ -514,13 +513,18 @@ def add_tag(request, glossid):
                 ti.delete()
                 response = HttpResponse(
                     'deleted', content_type='text/plain')
-            else:
-                # we need to wrap the tag name in quotes since it might contain
-                # spaces
-                Tag.objects.add_tag(gloss, '"%s"' % tag)
-                # response is new HTML for the tag list and form
-                response = render(request, 'dictionary/glosstags.html',
-                                  {'gloss': gloss, 'tagsaddform': TagsAddForm()})
+                return response
+
+        form = TagUpdateForm(request.POST)
+        if form.is_valid():
+            tag = form.cleaned_data['tag']
+
+            # we need to wrap the tag name in quotes since it might contain spaces
+            Tag.objects.add_tag(gloss, '"%s"' % tag)
+            # response is new HTML for the tag list and form
+            response = render(request, 'dictionary/glosstags.html',
+                              {'gloss': gloss, 'tagsaddform': TagsAddForm()})
+
         else:
             # If we are adding (multiple) tags, this form should validate.
             form = TagsAddForm(request.POST)
