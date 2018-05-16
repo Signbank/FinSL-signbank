@@ -27,9 +27,9 @@
   },
   "devDependencies": {
     "TagManager": "git+https://github.com/max-favilli/tagmanager.git",
-    "at.js": "^1.5.3",
+    "at.js": "^1.5.4",
     "bootstrap": "^3.3.7",
-    "jquery": "^2.2.4",
+    "jquery": "^3.3.1",
     "jquery.caret": "^0.3.1",
     "mark.js": "^8.11.1",
     "recordrtc": "^5.4.6",
