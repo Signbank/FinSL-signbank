@@ -8,7 +8,16 @@
   <head>
     <title>{% block bootstrap3_title %}{% endblock %}{% blocktrans %}Finnish Signbank{% endblocktrans %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+
+    <meta name="description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">
+
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}">
+    <meta property="og:description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">
+    <meta property="og:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+
+    <meta name="twitter:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+
     <link rel="stylesheet" media="screen" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/signbank.css' %}">
@@ -27,6 +36,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{% static 'favicon/ms-icon-144x144.png' %}">
