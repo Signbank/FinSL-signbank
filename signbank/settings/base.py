@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'django_comments',
     'guardian',
     'notifications',
+    'django.contrib.sitemaps',
 )
 
 # Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main

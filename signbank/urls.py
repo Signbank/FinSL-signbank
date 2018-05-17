@@ -5,6 +5,7 @@ from django.conf.urls import url, include
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib import admin
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
 
 # Views
 from registration.backends.hmac.views import RegistrationView
@@ -13,6 +14,7 @@ from .tools import infopage
 from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment, latest_comments, latest_comments_page, CommentListView, remove_tag
 import notifications.urls
+from .sitemaps import GlossSitemap, SignbankFlatPageSiteMap, StaticViewSitemap
 # Forms
 from .customregistration.forms import CustomUserForm
 
@@ -23,6 +25,11 @@ urlpatterns = [
     # Root page
     url(r'^$', flatpages_views.flatpage, {'url': '/'},
         name='root_page'),
+
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'flatpages': SignbankFlatPageSiteMap,
+                                                  'static': StaticViewSitemap,
+                                                  'gloss': GlossSitemap, }},
+        name='django.contrib.sitemaps.views.sitemap'),
 
     # This allows to change the translations site language
     url(r'^i18n/', include('django.conf.urls.i18n')),
