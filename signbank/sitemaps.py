@@ -20,7 +20,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
 
 class GlossSitemap(sitemaps.Sitemap):
     changefreq = 'weekly'
-    priority = 0.6
+    priority = 0.5
     protocol = 'https'
 
     def items(self):
