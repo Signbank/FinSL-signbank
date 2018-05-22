@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ValidationError
@@ -393,10 +393,13 @@ def change_glossvideo_publicity(request):
             return HttpResponse(status=200)
 
     referer = request.META.get("HTTP_REFERER")
-    if "?edit" in referer:
-        return redirect(referer)
+    if referer:
+        if "?edit" in referer:
+            return redirect(referer)
+        else:
+            return redirect(referer + "?edit")
     else:
-        return redirect(referer + "?edit")
+        return HttpResponseNotAllowed(['POST'])
 
 
 change_glossvideo_publicity_view = permission_required('video.change_glossvideo')(change_glossvideo_publicity)
