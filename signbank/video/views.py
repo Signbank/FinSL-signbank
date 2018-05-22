@@ -372,3 +372,31 @@ def change_glossvideo_order(request):
 
 
 change_glossvideo_order_view = permission_required('video.change_glossvideo')(change_glossvideo_order)
+
+
+def change_glossvideo_publicity(request):
+    """Moves selected glossvideos position within glosses glossvideos."""
+    if request.method == 'POST':
+        videoid = request.POST["videoid"]
+        is_public = request.POST["is_public"]
+        video = GlossVideo.objects.get(pk=videoid)
+        if 'view_dataset' not in get_perms(request.user, video.gloss.dataset):
+            # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
+            msg = _("You do not have permissions to change order of videos for this lexicon.")
+            messages.error(request, msg)
+            raise PermissionDenied(msg)
+
+        video.is_public = is_public
+        video.save()
+
+        if request.is_ajax():
+            return HttpResponse(status=200)
+
+    referer = request.META.get("HTTP_REFERER")
+    if "?edit" in referer:
+        return redirect(referer)
+    else:
+        return redirect(referer + "?edit")
+
+
+change_glossvideo_publicity_view = permission_required('video.change_glossvideo')(change_glossvideo_publicity)

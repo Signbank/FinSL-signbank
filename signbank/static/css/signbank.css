@@ -25,11 +25,17 @@ section p {
     background-color: #ecf0f1;
     border-radius: 4px;
 }
+.video_edit {
+    margin-top: 5px;
+}
 .video-ordering {
    display: inline-block;
 }
 .poster-edit {
    display: inline-block;
+}
+.change-video-publicity {
+    display: inline-block;
 }
 .color-flatblue {
    color: #3498DB;
@@ -38,7 +44,6 @@ section p {
 .tooltip-thumbnail {
     max-width: 280px;
 }
-
 #signinfo {
     background-color: #ffffff;
     margin-bottom: 0px;
@@ -66,10 +71,15 @@ section p {
     margin: auto;
 }
 #videocontainer .player {
-    margin: auto;
-    background-color: white;
     margin-bottom: 5px;
+    padding: 5px;
 }
+#videocontainer .video-is-public {
+}
+#videocontainer .video-not-public {
+    background-color: #f2dede;
+}
+
 .player video {
     border-style: solid;
     border-color: #F0F0F0;

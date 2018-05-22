@@ -76,7 +76,7 @@ class GlossesVideoCountFilter(admin.SimpleListFilter):
 
 class GlossVideoAdmin(admin.ModelAdmin):
     raw_id_fields = ('gloss',)
-    fields = ('title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
+    fields = ('is_public', 'title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss', 'videofile', 'title')
     list_display = ('gloss', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
     list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
@@ -88,7 +88,7 @@ class GlossVideoAdmin(admin.ModelAdmin):
 
 class GlossVideoInline(admin.TabularInline):
     model = GlossVideo
-    extra = 1
+    extra = 0
 
 
 admin.site.register(GlossVideo, GlossVideoAdmin)

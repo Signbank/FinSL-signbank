@@ -7,6 +7,7 @@ from django.db.models import Q, Prefetch
 from django.db.models.functions import Substr, Upper
 
 from .models import Gloss, SignLanguage, GlossRelation
+from ..video.models import GlossVideo
 from .forms import GlossPublicSearchForm
 
 
@@ -52,9 +53,7 @@ class GlossListPublicView(ListView):
         if 'gloss' in get and get['gloss'] != '':
             val = get['gloss']
             # Filters
-            qs = qs.filter(Q(idgloss__istartswith=val),
-                           # | Q(idgloss_en__icontains=val) # idgloss_en not shown in results, therefore removed.
-                           )
+            qs = qs.filter(Q(idgloss__istartswith=val))
         if 'keyword' in get and get['keyword'] != '':
             val = get['keyword']
             # Filters
@@ -72,7 +71,8 @@ class GlossListPublicView(ListView):
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('glosstranslations_set'),
                                  Prefetch('glosstranslations_set__language'),
-                                 Prefetch('glossvideo_set'))
+                                 # Make sure we only show GlossVideos that have 'is_public=True'
+                                 Prefetch('glossvideo_set', queryset=GlossVideo.objects.filter(is_public=True)))
         return qs
 
 
@@ -89,3 +89,8 @@ class GlossDetailPublicView(DetailView):
         context['glossrelations'] = GlossRelation.objects.filter(source=context['gloss'])
         context['glossrelations_reverse'] = GlossRelation.objects.filter(target=context['gloss'])
         return context
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        # Make sure we only show GlossVideos that have 'is_public=True'
+        return qs.prefetch_related(Prefetch('glossvideo_set', queryset=GlossVideo.objects.filter(is_public=True)))

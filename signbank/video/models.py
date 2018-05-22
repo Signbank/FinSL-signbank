@@ -38,8 +38,9 @@ class GlossVideo(models.Model):
     videofile = models.FileField(_("Video file"), storage=GlossVideoStorage(),
                                  help_text=_("Video file."))
     posterfile = models.FileField(_("Poster file"), upload_to=os.path.join("posters"),
-                                  storage=GlossVideoStorage(), blank=True, help_text=_("Still image representation of the video."),
-                                  default="")
+                                  storage=GlossVideoStorage(), blank=True,
+                                  help_text=_("Still image representation of the video."), default="")
+    is_public = models.BooleanField(_("Public"), default=True, help_text="Is this video is public or private?")
     gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
                               help_text=_("The gloss this GlossVideo is related to."))
     dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"), null=True,

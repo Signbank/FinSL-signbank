@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^add/poster$', views.add_poster_view, name='add_poster'),
     # Change priority of video
     url(r'^order/$', views.change_glossvideo_order, name='change_glossvideo_order'),
+    # Change publicity of video
+    url(r'^publicity/$', views.change_glossvideo_publicity, name='change_glossvideo_publicity'),
 ]

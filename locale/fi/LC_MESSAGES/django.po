@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-22 12:26+0300\n"
+"POT-Creation-Date: 2018-05-22 17:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,7 +139,7 @@ msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 #: signbank/dictionary/forms.py:21 signbank/dictionary/forms.py:75
 #: signbank/dictionary/forms.py:155
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:127
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:152
 #: signbank/video/templates/addvideos.html:32
 #: signbank/video/templates/uploaded_glossvideos.html:16
 msgid "Dataset"
@@ -177,7 +177,7 @@ msgstr "Haku"
 #: signbank/dictionary/models.py:259 signbank/dictionary/models.py:284
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
-#: signbank/video/models.py:43
+#: signbank/video/models.py:44
 #: signbank/video/templates/uploaded_glossvideos.html:60
 msgid "Gloss"
 msgstr "Glossi"
@@ -717,7 +717,7 @@ msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:38
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:141
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:166
 msgid "Enable Edit"
 msgstr "Muokkaus päälle"
 
@@ -739,66 +739,76 @@ msgstr "Tallenna"
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:119
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:102
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:220
+msgid "Set private"
+msgstr "Aseta yksityiseksi"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:103
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:215
+msgid "Set public"
+msgstr "Aseta julkiseksi"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:144
 msgid "Search results:"
 msgstr "Hakutulokset:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:134
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:159
 #: signbank/dictionary/templates/dictionary/record_video.html:6
 msgid "Record a video"
 msgstr "Kuvaa video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:139
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:164
 msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:165
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:191
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:46
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:163
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:180
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:207
 msgid "Capture new poster image"
 msgstr "Aseta aloituskuva"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:190
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:235
 msgid "Update poster image for video"
 msgstr "Päivitä aloituskuva videolle"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:201
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:246
 #: signbank/dictionary/templates/dictionary/record_video.html:35
 msgid "Close"
 msgstr "Sulje"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:202
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:247
 msgid "Save changes"
 msgstr "Tallenna muutokset"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:230
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:275
 msgid "No videos available for this gloss."
 msgstr "Tälle glossille ei ole videoita."
 
 #. Translators: Upload/Add new video to Signbank
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:243
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:254
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:288
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:299
 msgid "Upload Video"
 msgstr "Lähetä video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:269
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:314
 msgid "Gloss:"
 msgstr "Glossi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:274
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:319
 msgid "Gloss in English:"
 msgstr "Glossi englanniksi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:280
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:325
 msgid "Translations in "
 msgstr "Käännökset "
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:283
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:328
 msgid ""
 "After each translation enter a comma (,) or a semicolon (;).\n"
 "                               Usage of numbers that end with a dot (.) is "
@@ -809,43 +819,43 @@ msgstr ""
 "Numero(ide)n ja pisteen (.) yhdistelmää voidaan käyttää (esim. 11.),\n"
 "sillä niitä ei tallenneta käännöksinä."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:292
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:337
 msgid "Notes:"
 msgstr "Lisätiedot:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:297
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:342
 msgid "Sign language:"
 msgstr "Viittomakieli:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:303
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:348
 msgid "Dialect:"
 msgstr "Alue:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:308
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:353
 msgid "URL:"
 msgstr "URL:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:321
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:366
 msgid "Add new URL"
 msgstr "Lisää URL"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:326
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:371
 msgid "Created:"
 msgstr "Luotu:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:330
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:375
 msgid "Updated:"
 msgstr "Päivitetty:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:337
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:382
 msgid "Show complete history"
 msgstr "Näytä koko historia"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:346
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:391
 msgid "Change history for"
 msgstr "Muutoshistoria glossille"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:350
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:395
 msgid ""
 "This is a list of some historical changes made to this Gloss.\n"
 "                                    By clicking the link, you will be taken "
@@ -855,7 +865,7 @@ msgstr ""
 "Tämä on lista glossin historiallisista muutoksista. Linkkiä klikkaamalla "
 "pääset ylläpitosivulle, jossa näkyy glossin tila valittuna hetkenä."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:353
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:398
 msgid ""
 "Do not save the changes,\n"
 "                                    unless you want to restore the older "
@@ -863,11 +873,11 @@ msgid ""
 msgstr ""
 "Älä tallenna muutoksia, ellet halua palauttaa tämän Glossin vanhaa versiota!"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:365
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:410
 msgid "Gloss fields:"
 msgstr "Glossin kentät:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:368
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:413
 msgid "Translations:"
 msgstr "Käännösvastineet:"
 
@@ -1438,19 +1448,23 @@ msgstr "Videotiedosto."
 msgid "Poster file"
 msgstr "Kuvatiedosto"
 
-#: signbank/video/models.py:41
+#: signbank/video/models.py:42
 msgid "Still image representation of the video."
 msgstr "Kuva videosta."
 
-#: signbank/video/models.py:44
+#: signbank/video/models.py:43
+msgid "Public"
+msgstr "Julkinen"
+
+#: signbank/video/models.py:45
 msgid "The gloss this GlossVideo is related to."
 msgstr "Glossi johon tämä Glossivideo on liitetty."
 
-#: signbank/video/models.py:45
+#: signbank/video/models.py:46
 msgid "Glossvideo dataset"
 msgstr "Glossivideon aineisto"
 
-#: signbank/video/models.py:46
+#: signbank/video/models.py:47
 msgid ""
 "Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
 "was uploaded."
@@ -1459,11 +1473,11 @@ msgstr ""
 "valittu videoa lähetettäessä."
 
 #. Translators: GlossVideo: version
-#: signbank/video/models.py:49
+#: signbank/video/models.py:50
 msgid "Version"
 msgstr "Versio"
 
-#: signbank/video/models.py:50
+#: signbank/video/models.py:51
 msgid ""
 "A number that represents the order of the Glossvideo's in a gloss page. "
 "Smaller number means higher priority."
@@ -1471,11 +1485,11 @@ msgstr ""
 "Glossivideon järjestysnumero, jonka perusteella videot järjestetään "
 "glossisivulla. Pienempi numero tarkoittaa korkeampaa prioriteettia."
 
-#: signbank/video/models.py:55
+#: signbank/video/models.py:56
 msgid "Gloss video"
 msgstr "Glossin video"
 
-#: signbank/video/models.py:56
+#: signbank/video/models.py:57
 msgid "Gloss videos"
 msgstr "Glossien videot"
 
@@ -1603,7 +1617,7 @@ msgid ""
 "You do not have permissions to add/change poster images for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tälle leksikolle."
 
-#: signbank/video/views.py:359
+#: signbank/video/views.py:359 signbank/video/views.py:384
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
 

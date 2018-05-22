@@ -93,6 +93,34 @@ $(document).ready(function () {
          var csrf_token = '{{csrf_token}}';
     </script>
     <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
+    <script>
+        // Make setting videos publicity form ajax.
+        $( ".change-video-publicity-form" ).submit(function( event ) {
+          event.preventDefault();
+          var formurl = $( this ).attr('action');
+          var formdata = $( this ).serialize();
+          var elem = $(this);
+          var set_private_text = '{% blocktrans %}Set private{% endblocktrans %}';
+          var set_public_text = '{% blocktrans %}Set public{% endblocktrans %}';
+          var formbutton_text = elem.children('button').text();
+          var input_value = elem.children('input[name="is_public"]').val();
+          $.ajax({
+          type: "POST",
+            url: formurl,
+            data: formdata,
+          })
+          .done( function() {
+            elem.closest('div.player').toggleClass('video-not-public');
+            // Toggle buttons text between private_text and public_text
+            elem.children('button').text(formbutton_text == set_public_text ? set_private_text : set_public_text);
+            // Toggle hidden inputs value between True and False
+            elem.children('input[name="is_public"]').val(input_value == 'True' ? 'False' : 'True');
+          })
+          .fail( function () {
+            console.log('Could not change publicity.');
+          });
+        });
+    </script>
 {% endif %}
     {# This is for GlossRelation form #}
     <script src="{% static "js/jquery-ui.min.js" %}"></script>
@@ -151,19 +179,21 @@ $('#id_comment').atwho({
 
                 {% if gloss.glossvideo_set.exists %}
                     {% for glossvideo in gloss.glossvideo_set.all %}
-                        <div class="player">
+                        <div class="player well well-sm{% if glossvideo.is_public %} video-is-public{% else %} video-not-public{% endif %}">
                             <div class="video-title">
                                 <h4 class="edit edit_text" id="video_title{{glossvideo.pk}}">{{glossvideo.title}}</h4>
                             </div>
-                            <video id="glossvideo-{{glossvideo.pk}}" width="450" preload="metadata" controls muted
-                                   {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
-                                {% if glossvideo.get_extension == '.mp4' %}
-                                <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
-                                {% elif glossvideo.get_extension == '.webm' %}
-                                <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">
-                                {% endif %}
-                                {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                            </video>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" controls muted
+                                       {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
+                                    {% if glossvideo.get_extension == '.mp4' %}
+                                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
+                                    {% elif glossvideo.get_extension == '.webm' %}
+                                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">
+                                    {% endif %}
+                                    {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                                </video>
+                            </div>
                             <div class="video_edit" style="display:none;">
                                 <div class="video-ordering">
                                     <form action="{% url 'video:change_glossvideo_order' %}" method="post">{% csrf_token %}
@@ -179,8 +209,20 @@ $('#id_comment').atwho({
                                 <div class="poster-edit">
                                     <button type="button" class="btn btn-success" id="vidbtn-{{glossvideo.pk}}" onclick="grabScreenshot({{glossvideo.pk}})" data-toggle="modal" data-target="#glossvideo{{glossvideo.pk}}-Modal">{% blocktrans %}Capture new poster image{% endblocktrans %}</button>
                                 </div>
+                                <div class="change-video-publicity">
+                                    <form class="change-video-publicity-form" action="{% url 'video:change_glossvideo_publicity' %}" method="post">{% csrf_token %}
+                                        <input type="hidden" name="videoid" value="{{glossvideo.pk}}">
+                                        {% if glossvideo.is_public %}
+                                            <input type="hidden" name="is_public" value="False">
+                                            <button type="submit" class="btn btn-default">{% blocktrans %}Set public{% endblocktrans %}</button>
+                                        {% else %}
+                                            <input type="hidden" name="is_public" value="True">
+                                            <button type="submit" class="btn btn-default">{% blocktrans %}Set private{% endblocktrans %}</button>
+                                        {% endif %}
+                                    </form>
+                                </div>
                             </div>
-                            <hr>
+
                             <!-- Modal -->
                             <div class="modal fade" id="glossvideo{{glossvideo.pk}}-Modal" tabindex="-1" role="dialog" aria-labelledby="glossvideo{{glossvideo.pk}}-ModalLabel">
                                 <div class="modal-dialog modal-lg" role="document">
