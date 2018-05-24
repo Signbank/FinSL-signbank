@@ -1909,7 +1909,7 @@ msgid ""
 msgstr ""
 "Tämä sivusto seuraa käyttöäsi analytiikkaa varten, sekä käyttää evästeitä "
 "parhaan käyttökokemuksen takaamiseksi. Käyttämällä tätä sivustoa hyväksyt tämän, "
-"Tietosuojaselosteemme, ja palvelun Käyttöehdot."
+"Tietosuojailmoituksemme, ja palvelun Käyttöehdot."
 
 #. Translators: Privacy policy consent: I understand button.
 #: templates/policyconsent.html:21
@@ -2148,7 +2148,7 @@ msgstr "Olet lukenut ja hyväksyt"
 
 #: templates/registration/terms_of_service.html:5
 msgid "privacy policy"
-msgstr "tietosuojaselosteen"
+msgstr "tietosuojailmoituksen"
 
 #: templates/registration/terms_of_service.html:7
 msgid "You are over 16 years old."
