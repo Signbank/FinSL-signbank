@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-22 17:05+0300\n"
+"POT-Creation-Date: 2018-05-24 13:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,7 +139,7 @@ msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 #: signbank/dictionary/forms.py:21 signbank/dictionary/forms.py:75
 #: signbank/dictionary/forms.py:155
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:205
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:152
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:155
 #: signbank/video/templates/addvideos.html:32
 #: signbank/video/templates/uploaded_glossvideos.html:16
 msgid "Dataset"
@@ -717,7 +717,7 @@ msgstr "Sinulla ei ole oikeuksia nähdä sivua"
 
 #. Translators: Button
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:38
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:166
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:169
 msgid "Enable Edit"
 msgstr "Muokkaus päälle"
 
@@ -739,76 +739,76 @@ msgstr "Tallenna"
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:102
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:220
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:103
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:217
 msgid "Set private"
 msgstr "Aseta yksityiseksi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:103
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:215
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:104
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:220
 msgid "Set public"
 msgstr "Aseta julkiseksi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:144
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:147
 msgid "Search results:"
 msgstr "Hakutulokset:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:159
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:162
 #: signbank/dictionary/templates/dictionary/record_video.html:6
 msgid "Record a video"
 msgstr "Kuvaa video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:164
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:167
 msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:191
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:194
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:46
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:163
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:207
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:210
 msgid "Capture new poster image"
 msgstr "Aseta aloituskuva"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:235
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:232
 msgid "Update poster image for video"
 msgstr "Päivitä aloituskuva videolle"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:246
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:243
 #: signbank/dictionary/templates/dictionary/record_video.html:35
 msgid "Close"
 msgstr "Sulje"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:247
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:244
 msgid "Save changes"
 msgstr "Tallenna muutokset"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:275
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:272
 msgid "No videos available for this gloss."
 msgstr "Tälle glossille ei ole videoita."
 
 #. Translators: Upload/Add new video to Signbank
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:288
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:299
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:285
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:296
 msgid "Upload Video"
 msgstr "Lähetä video"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:314
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:311
 msgid "Gloss:"
 msgstr "Glossi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:319
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:316
 msgid "Gloss in English:"
 msgstr "Glossi englanniksi:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:325
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:322
 msgid "Translations in "
 msgstr "Käännökset "
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:328
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:325
 msgid ""
 "After each translation enter a comma (,) or a semicolon (;).\n"
 "                               Usage of numbers that end with a dot (.) is "
@@ -819,43 +819,43 @@ msgstr ""
 "Numero(ide)n ja pisteen (.) yhdistelmää voidaan käyttää (esim. 11.),\n"
 "sillä niitä ei tallenneta käännöksinä."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:337
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:334
 msgid "Notes:"
 msgstr "Lisätiedot:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:342
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:339
 msgid "Sign language:"
 msgstr "Viittomakieli:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:348
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:345
 msgid "Dialect:"
 msgstr "Alue:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:353
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:350
 msgid "URL:"
 msgstr "URL:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:366
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:363
 msgid "Add new URL"
 msgstr "Lisää URL"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:371
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:368
 msgid "Created:"
 msgstr "Luotu:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:375
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:372
 msgid "Updated:"
 msgstr "Päivitetty:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:382
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:379
 msgid "Show complete history"
 msgstr "Näytä koko historia"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:391
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:388
 msgid "Change history for"
 msgstr "Muutoshistoria glossille"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:395
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:392
 msgid ""
 "This is a list of some historical changes made to this Gloss.\n"
 "                                    By clicking the link, you will be taken "
@@ -865,7 +865,7 @@ msgstr ""
 "Tämä on lista glossin historiallisista muutoksista. Linkkiä klikkaamalla "
 "pääset ylläpitosivulle, jossa näkyy glossin tila valittuna hetkenä."
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:398
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:395
 msgid ""
 "Do not save the changes,\n"
 "                                    unless you want to restore the older "
@@ -873,11 +873,11 @@ msgid ""
 msgstr ""
 "Älä tallenna muutoksia, ellet halua palauttaa tämän Glossin vanhaa versiota!"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:410
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:407
 msgid "Gloss fields:"
 msgstr "Glossin kentät:"
 
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:413
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:410
 msgid "Translations:"
 msgstr "Käännösvastineet:"
 
@@ -1617,7 +1617,7 @@ msgid ""
 "You do not have permissions to add/change poster images for this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tälle leksikolle."
 
-#: signbank/video/views.py:359 signbank/video/views.py:384
+#: signbank/video/views.py:359 signbank/video/views.py:385
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
 
@@ -1743,6 +1743,10 @@ msgstr "kommenttia"
 msgid "Edit Page"
 msgstr "Muokkaa sivua"
 
+#: templates/flatpages/tos.html:9
+msgid "Terms of Service"
+msgstr "Käyttöehdot"
+
 #: templates/infopage.html:5
 msgid "Links and Statistics"
 msgstr "Linkkejä ja tilastoja"
@@ -1833,7 +1837,7 @@ msgstr "Kirjaudu sisään"
 #. Translators: Title for create account
 #: templates/langbar.html:28 templates/registration/login.html:24
 #: templates/registration/registration_form.html:10
-#: templates/registration/registration_form.html:26
+#: templates/registration/registration_form.html:35
 msgid "Create account"
 msgstr "Luo tunnus"
 
@@ -1900,11 +1904,12 @@ msgstr "sitten"
 msgctxt "consent"
 msgid ""
 "This site tracks you for analytics purposes, and uses cookies to ensure you "
-"get the best experience on our website. By continuing using the site, you "
-"agree to this."
+"get the best experience on our website. By using the site you agree to this, "
+"to our Privacy Policy, and to our Terms of Service."
 msgstr ""
 "Tämä sivusto seuraa käyttöäsi analytiikkaa varten, sekä käyttää evästeitä "
-"parhaan käyttökokemuksen takaamiseksi."
+"parhaan käyttökokemuksen takaamiseksi. Käyttämällä tätä sivustoa hyväksyt tämän, "
+"Tietosuojaselosteemme, ja palvelun Käyttöehdot."
 
 #. Translators: Privacy policy consent: I understand button.
 #: templates/policyconsent.html:21
@@ -2062,11 +2067,23 @@ msgstr "Luo tunnus"
 msgid "Create an account by filling in the information"
 msgstr "Luo tunnus täyttämällä seuraavat tiedot"
 
-#: templates/registration/registration_form.html:31
+#: templates/registration/registration_form.html:26
+msgid "Terms of service"
+msgstr "Käyttöehdot"
+
+#: templates/registration/registration_form.html:29
+msgid ""
+"By creating an account on this site you (the \"user\") agree to the "
+"following conditions:"
+msgstr ""
+"Luomalla tunnuksen tälle sivustolle, sinä (\"käyttäjä\") lupaat noudattaa "
+"seuraavia ehtoja:"
+
+#: templates/registration/registration_form.html:40
 msgid "Error"
 msgstr "Virhe"
 
-#: templates/registration/registration_form.html:33
+#: templates/registration/registration_form.html:42
 msgid "Creating new accounts not permitted for users that are Signed in!"
 msgstr ""
 "Uusien tunnuksien luominen ei ole sallittua kirjautuneena oleville "
@@ -2121,35 +2138,23 @@ msgstr "Ole yhteydessä sivuston ylläpitoon."
 msgid "Check the About page for contact information:"
 msgstr "Etsi yhteystietoja Tietoa-sivulta."
 
-#: templates/registration/terms_of_service.html:5
-msgid "Terms of service"
-msgstr "Käyttöehdot"
-
-#: templates/registration/terms_of_service.html:8
-msgid ""
-"By creating an account on this site you (the \"user\") agree to the "
-"following conditions:"
-msgstr ""
-"Luomalla tunnuksen tälle sivustolle, sinä (\"käyttäjä\") lupaat noudattaa "
-"seuraavia ehtoja:"
-
-#: templates/registration/terms_of_service.html:9
+#: templates/registration/terms_of_service.html:3
 msgid "Last updated:"
 msgstr "Viimeksi päivitetty:"
 
-#: templates/registration/terms_of_service.html:11
+#: templates/registration/terms_of_service.html:5
 msgid "You have read and agree to the"
 msgstr "Olet lukenut ja hyväksyt"
 
-#: templates/registration/terms_of_service.html:11
+#: templates/registration/terms_of_service.html:5
 msgid "privacy policy"
-msgstr "rekisteriselosteen"
+msgstr "tietosuojaselosteen"
 
-#: templates/registration/terms_of_service.html:12
+#: templates/registration/terms_of_service.html:7
 msgid "You are over 16 years old."
 msgstr "Olet yli 16 vuotias."
 
-#: templates/registration/terms_of_service.html:12
+#: templates/registration/terms_of_service.html:7
 msgid ""
 "In case you are under 16 years old, you must hand us an approval from your "
 "parents."
@@ -2157,7 +2162,7 @@ msgstr ""
 "Alle 16 vuotiaan tulee toimittaa meille vanhempien suostumus ennen tunnuksen "
 "luomista."
 
-#: templates/registration/terms_of_service.html:13
+#: templates/registration/terms_of_service.html:8
 msgid ""
 "The user will not abuse the service, any malicious activity is strictly "
 "prohibited."
@@ -2165,7 +2170,7 @@ msgstr ""
 "Käyttäjä lupaa olla väärinkäyttämättä sivustoa, kaikki tahallinen ja "
 "haitallinen toiminta on ehdottomasti kielletty."
 
-#: templates/registration/terms_of_service.html:14
+#: templates/registration/terms_of_service.html:9
 msgid ""
 "Any data on the site is confidential unless stated otherwise, and should be "
 "handled as such."
@@ -2173,15 +2178,15 @@ msgstr ""
 "Kaikki tieto sivustolla on luottamuksellista, ellei toisin ole mainittu, ja "
 "tätä tietoa tulee käsitellä luottamuksellisesti."
 
-#: templates/registration/terms_of_service.html:15
+#: templates/registration/terms_of_service.html:10
 msgid ""
-"The user agrees to not copy or spread the data, or the information found on "
-"the site, unless given permission or if the license allows it."
+"The user agrees to not copy or spread any data or information found on the "
+"site, unless given permission or if the license allows it."
 msgstr ""
 "Käyttäjä lupaa olla kopioimatta ja levittämättä sivustolla olevaa tietoa, "
 "ellei hän ole saanut siihen lupaa, tai ellei lisenssi mahdollista sitä."
 
-#: templates/registration/terms_of_service.html:16
+#: templates/registration/terms_of_service.html:11
 msgid ""
 "The user is responsible for making sure that laws and copyrights are "
 "followed when submitting data."
@@ -2189,24 +2194,48 @@ msgstr ""
 "Käyttäjä on velvoitettu varmistamaan, että lakeja ja tekijänoikeuksia "
 "kunnioitetaan, kun sivustolle lisätään dataa."
 
-#: templates/registration/terms_of_service.html:17
+#: templates/registration/terms_of_service.html:12
 msgid ""
-"The users account can be terminated, or access limited, without a notice if "
+"The users account can be terminated or access limited without a notice, if "
 "the user fails to comply with the rules."
 msgstr ""
 "Käyttäjän tunnus voidaan mitätöidä sekä käyttöä voidaan rajoittaa ilman "
 "ilmoitusta, jos käyttäjä ei noudata sääntöjä."
 
-#: templates/registration/terms_of_service.html:18
+#: templates/registration/terms_of_service.html:13
 msgid ""
 "When requestion account termination, the user name will not be deleted, but "
 "other personal information attached to the account will be removed. If the "
-"user wishes to have anonymity, a pseudonym should be used for the user name."
+"user wishes to have anonymity, a pseudonym should be used as the user name."
 msgstr ""
 "Tunnuksen poistamista pyydettäessä käyttäjätunnusta ei tuhota, mutta muut "
 "tunnukseen liittyvät henkilötiedot poistetaan. Jos käyttäjä haluaa varmistaa "
 "anonymiteetin tunnuksen tietojen pyyhkimisen jälkeen, käyttäjän tulee "
 "käyttää pseudonyymiä käyttäjätunnuksenaan."
+
+#: templates/registration/terms_of_service.html:14
+msgid ""
+"When submitting data to a lexicon, it will be licensed according to the "
+"license used by the lexicon, and the user agrees to hand over any remaining "
+"copyrights to the maintainer of the lexicon."
+msgstr ""
+"Leksikkoon lisätty data lisensoidaan kunkin leksikon lisenssin mukaisesti. "
+"Datan lisäämisen yhteydessä käyttäjä luovuttaa jäljellä olevat "
+"tekijänoikeudet leksikon ylläpitäjälle."
+
+#: templates/registration/terms_of_service.html:15
+msgid ""
+"Removal of data (videos, pictures, text) is only possible if the maintainer "
+"of the lexicon agrees to it. The user should keep this in mind before "
+"submitting any data."
+msgstr ""
+"Datan (videot, kuvat, teksti) poistaminen on mahdollista vain, jos leksikon "
+"ylläpitäjä näkee sen mahdollisesti ja suostuu siihen. Käyttäjän tulee pitää "
+"tämä mielessä lisätessään dataa järjestelmään."
+
+#: templates/registration/terms_of_service.html:16
+msgid "Any data submitted by the user can be made publicly available."
+msgstr "Käyttäjän lisäämä data voidaan saattaa julkisesti saataville."
 
 #: templates/setlang.html:9
 msgid "Language selection"

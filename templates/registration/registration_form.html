@@ -21,7 +21,15 @@
         <form method="post" action="">
             {% csrf_token %}
             {% bootstrap_form form exclude='tos' %}
-            {% include 'registration/terms_of_service.html' %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h4 class="panel-title">{% blocktrans %}Terms of service{% endblocktrans %}</h4>
+                </div>
+                <div class="panel-body">
+                    <h4>{% blocktrans %}By creating an account on this site you (the "user") agree to the following conditions:{% endblocktrans %}</h4>
+                        {% include 'registration/terms_of_service.html' %}
+                </div>
+            </div>
             {% bootstrap_field form.tos %}
             <button type="submit" class="btn btn-primary">{% blocktrans %}Create account{% endblocktrans %}</button>
         </form>

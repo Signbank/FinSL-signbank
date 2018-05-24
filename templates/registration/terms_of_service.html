@@ -1,21 +1,17 @@
 {% load i18n %}
 {% load staticfiles %}
-<div class="panel panel-primary">
-    <div class="panel-heading">
-      <h4 class="panel-title">{% blocktrans %}Terms of service{% endblocktrans %}</h4>
-    </div>
-    <div class="panel-body">
-        <h4>{% blocktrans %}By creating an account on this site you (the "user") agree to the following conditions:{% endblocktrans %}</h4>
-        <p>{% blocktrans %}Last updated:{% endblocktrans %} 19.04.2018 (dd.mm.yyyy)</p>
-        <ul>
-            <li>{% blocktrans %}You have read and agree to the{% endblocktrans %} <a href="/static/files/rekisteriseloste_signbank_2018-04-11.pdf" target="_blank">{% blocktrans %}privacy policy{% endblocktrans %}</a>.</li>
-            <li>{% blocktrans %}You are over 16 years old.{% endblocktrans %} {% blocktrans %}In case you are under 16 years old, you must hand us an approval from your parents.{% endblocktrans %}</li>
-            <li>{% blocktrans %}The user will not abuse the service, any malicious activity is strictly prohibited.{% endblocktrans %}</li>
-            <li>{% blocktrans %}Any data on the site is confidential unless stated otherwise, and should be handled as such.{% endblocktrans %}</li>
-            <li>{% blocktrans %}The user agrees to not copy or spread the data, or the information found on the site, unless given permission or if the license allows it.{% endblocktrans %}</li>
-            <li>{% blocktrans %}The user is responsible for making sure that laws and copyrights are followed when submitting data.{% endblocktrans %}</li>
-            <li>{% blocktrans %}The users account can be terminated, or access limited, without a notice if the user fails to comply with the rules.{% endblocktrans %}</li>
-            <li>{% blocktrans %}When requestion account termination, the user name will not be deleted, but other personal information attached to the account will be removed. If the user wishes to have anonymity, a pseudonym should be used for the user name.{% endblocktrans %}</li>
-        </ul>
-    </div>
-</div>
+<p>{% blocktrans %}Last updated:{% endblocktrans %} 25.05.2018 (dd.mm.yyyy)</p>
+<ul>
+    <li>{% blocktrans %}You have read and agree to the{% endblocktrans %} <a href="/static/files/tietosuojaseloste_suomen-signbank.pdf" target="_blank">{% blocktrans %}privacy policy{% endblocktrans %}</a>
+        (<a href="/static/files/privacy-policy_finnish-signbank.pdf" target="_blank">in English</a>).</li>
+    <li>{% blocktrans %}You are over 16 years old.{% endblocktrans %} {% blocktrans %}In case you are under 16 years old, you must hand us an approval from your parents.{% endblocktrans %}</li>
+    <li>{% blocktrans %}The user will not abuse the service, any malicious activity is strictly prohibited.{% endblocktrans %}</li>
+    <li>{% blocktrans %}Any data on the site is confidential unless stated otherwise, and should be handled as such.{% endblocktrans %}</li>
+    <li>{% blocktrans %}The user agrees to not copy or spread any data or information found on the site, unless given permission or if the license allows it.{% endblocktrans %}</li>
+    <li>{% blocktrans %}The user is responsible for making sure that laws and copyrights are followed when submitting data.{% endblocktrans %}</li>
+    <li>{% blocktrans %}The users account can be terminated or access limited without a notice, if the user fails to comply with the rules.{% endblocktrans %}</li>
+    <li>{% blocktrans %}When requestion account termination, the user name will not be deleted, but other personal information attached to the account will be removed. If the user wishes to have anonymity, a pseudonym should be used as the user name.{% endblocktrans %}</li>
+    <li>{% blocktrans %}When submitting data to a lexicon, it will be licensed according to the license used by the lexicon, and the user agrees to hand over any remaining copyrights to the maintainer of the lexicon.{% endblocktrans %}</li>
+    <li>{% blocktrans %}Removal of data (videos, pictures, text) is only possible if the maintainer of the lexicon agrees to it. The user should keep this in mind before submitting any data.{% endblocktrans %}</li>
+    <li>{% blocktrans %}Any data submitted by the user can be made publicly available.{% endblocktrans %}</li>
+</ul>

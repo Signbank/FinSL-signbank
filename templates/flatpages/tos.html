@@ -1,0 +1,14 @@
+{% extends "flatpages/default.html" %}
+{% load i18n %}
+{% block pagecontent %}
+<div class='row'>
+    <div class="col-md-10 col-md-offset-1">
+    {{ flatpage.content }}
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+        <h3>{% blocktrans %}Terms of Service{% endblocktrans %}</h3>
+    {% include "registration/terms_of_service.html" %}
+    </div>
+</div>
+{% endblock %}
+
