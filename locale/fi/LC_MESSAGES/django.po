@@ -2152,14 +2152,14 @@ msgstr "tietosuojailmoituksen"
 
 #: templates/registration/terms_of_service.html:7
 msgid "You are over 16 years old."
-msgstr "Olet yli 16 vuotias."
+msgstr "Olet yli-16 vuotias."
 
 #: templates/registration/terms_of_service.html:7
 msgid ""
 "In case you are under 16 years old, you must hand us an approval from your "
 "parents."
 msgstr ""
-"Alle 16 vuotiaan tulee toimittaa meille vanhempien suostumus ennen tunnuksen "
+"Alle 16-vuotiaan tulee toimittaa meille vanhempien suostumus ennen tunnuksen "
 "luomista."
 
 #: templates/registration/terms_of_service.html:8
@@ -2167,7 +2167,7 @@ msgid ""
 "The user will not abuse the service, any malicious activity is strictly "
 "prohibited."
 msgstr ""
-"Käyttäjä lupaa olla väärinkäyttämättä sivustoa, kaikki tahallinen ja "
+"Käyttäjä lupaa olla väärinkäyttämättä sivustoa. Kaikki tahallinen ja "
 "haitallinen toiminta on ehdottomasti kielletty."
 
 #: templates/registration/terms_of_service.html:9
@@ -2192,7 +2192,7 @@ msgid ""
 "followed when submitting data."
 msgstr ""
 "Käyttäjä on velvoitettu varmistamaan, että lakeja ja tekijänoikeuksia "
-"kunnioitetaan, kun sivustolle lisätään dataa."
+"kunnioitetaan, kun hän lisää sivustolle dataa."
 
 #: templates/registration/terms_of_service.html:12
 msgid ""
