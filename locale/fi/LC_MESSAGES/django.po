@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-24 13:07+0300\n"
+"POT-Creation-Date: 2018-05-25 13:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1837,7 +1837,7 @@ msgstr "Kirjaudu sisään"
 #. Translators: Title for create account
 #: templates/langbar.html:28 templates/registration/login.html:24
 #: templates/registration/registration_form.html:10
-#: templates/registration/registration_form.html:35
+#: templates/registration/registration_form.html:34
 msgid "Create account"
 msgstr "Luo tunnus"
 
@@ -1908,8 +1908,8 @@ msgid ""
 "to our Privacy Policy, and to our Terms of Service."
 msgstr ""
 "Tämä sivusto seuraa käyttöäsi analytiikkaa varten, sekä käyttää evästeitä "
-"parhaan käyttökokemuksen takaamiseksi. Käyttämällä tätä sivustoa hyväksyt tämän, "
-"Tietosuojailmoituksemme, ja palvelun Käyttöehdot."
+"parhaan käyttökokemuksen takaamiseksi. Käyttämällä tätä sivustoa hyväksyt "
+"tämän, Tietosuojailmoituksemme, ja palvelun Käyttöehdot."
 
 #. Translators: Privacy policy consent: I understand button.
 #: templates/policyconsent.html:21
@@ -2079,11 +2079,11 @@ msgstr ""
 "Luomalla tunnuksen tälle sivustolle, sinä (\"käyttäjä\") lupaat noudattaa "
 "seuraavia ehtoja:"
 
-#: templates/registration/registration_form.html:40
+#: templates/registration/registration_form.html:39
 msgid "Error"
 msgstr "Virhe"
 
-#: templates/registration/registration_form.html:42
+#: templates/registration/registration_form.html:41
 msgid "Creating new accounts not permitted for users that are Signed in!"
 msgstr ""
 "Uusien tunnuksien luominen ei ole sallittua kirjautuneena oleville "
