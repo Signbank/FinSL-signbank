@@ -10,13 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
-    <meta name="description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">
+    {% block metadesc %}<meta name="description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">{% endblock %}
 
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}">
-    <meta property="og:description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">
+    {% block ogimage %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}">{% endblock %}
+    {% block ogdesc %}<meta property="og:description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">{% endblock %}
+    {% block metatitles %}
     <meta property="og:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
-
     <meta name="twitter:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+    {% endblock %}
 
     <link rel="stylesheet" media="screen" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">

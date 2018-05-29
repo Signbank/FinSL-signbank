@@ -5,6 +5,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Prefetch
 from django.db.models.functions import Substr, Upper
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.utils.translation import ugettext as _
 
 from .models import Gloss, SignLanguage, GlossRelation
 from ..video.models import GlossVideo
@@ -84,10 +86,27 @@ class GlossDetailPublicView(DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(GlossDetailPublicView, self).get_context_data(**kwargs)
-        context['translation_languages_and_translations'] = context['gloss'].get_translations_for_translation_languages()
+        gloss = context["gloss"]
+        context['translation_languages_and_translations'] = gloss.get_translations_for_translation_languages()
         # GlossRelations for this gloss
-        context['glossrelations'] = GlossRelation.objects.filter(source=context['gloss'])
-        context['glossrelations_reverse'] = GlossRelation.objects.filter(target=context['gloss'])
+        context['glossrelations'] = GlossRelation.objects.filter(source=gloss)
+        context['glossrelations_reverse'] = GlossRelation.objects.filter(target=gloss)
+
+        # Create a meta description for the gloss.
+        context["metadesc"] = "{glosstxt}: {idgloss} [{lexicon}] / ".format(
+            glosstxt=_("Gloss"), idgloss=gloss, lexicon=gloss.dataset.description)
+        for x in context['translation_languages_and_translations']:
+            if x[1]:  # Show language name only if it has translations.
+                context["metadesc"] += "{lang}: {trans} / ".format(lang=str(x[0]), trans=str(x[1]))
+        context["metadesc"] += "{langtxt}: {lang} / {videotxt}: {videocount} / {notestxt}: {notes}".format(
+            langtxt=_("Sign language"), lang=gloss.dataset.signlanguage, videotxt=_("Videos"),
+            videocount=gloss.glossvideo_set.all().count(), notestxt=_("Notes"), notes=gloss.notes)
+        # Create og:image url for the gloss if the first glossvideo has a posterfile.
+        try:
+            context["ogimage"] = gloss.glossvideo_set.first().posterfile.url
+        except ValueError:
+            context["ogimage"] = static('img/signbank_logo_ympyra1_sininen-compressor.png')
+
         return context
 
     def get_queryset(self):

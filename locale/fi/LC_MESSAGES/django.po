@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-25 13:30+0300\n"
+"POT-Creation-Date: 2018-05-29 09:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,7 +162,7 @@ msgstr "Tagit"
 
 #. Translators: GlossSearchForm label
 #: signbank/dictionary/forms.py:77 signbank/dictionary/forms.py:276
-#: signbank/dictionary/models.py:175
+#: signbank/dictionary/models.py:175 signbank/dictionary/publicviews.py:100
 msgid "Sign language"
 msgstr "Viittomakieli"
 
@@ -175,6 +175,7 @@ msgstr "Haku"
 #. Translators: Gloss field: idgloss, verbose name
 #: signbank/dictionary/forms.py:82 signbank/dictionary/forms.py:174
 #: signbank/dictionary/models.py:259 signbank/dictionary/models.py:284
+#: signbank/dictionary/publicviews.py:95
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:206
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
 #: signbank/video/models.py:44
@@ -316,7 +317,7 @@ msgstr "Käännösvastine"
 
 #: signbank/dictionary/models.py:123
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:210
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:18
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:24
 #: templates/infopage.html:50 templates/infopage.html:140
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
@@ -448,9 +449,9 @@ msgid "This is the English name for the Gloss"
 msgstr "Glossin nimi englanniksi"
 
 #. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
-#: signbank/dictionary/models.py:295
+#: signbank/dictionary/models.py:295 signbank/dictionary/publicviews.py:101
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:211
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:26
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:36
 msgid "Notes"
 msgstr "Lisätiedot"
 
@@ -612,6 +613,11 @@ msgstr "Morfologinen määritelmä"
 msgid "Morphology definitions"
 msgstr "Morfologiset määritelmät"
 
+#: signbank/dictionary/publicviews.py:100
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:226
+msgid "Videos"
+msgstr "Videoita"
+
 #. Translators: Title for sign search page
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:6
 msgid "Advanced Search"
@@ -669,10 +675,6 @@ msgstr "Hakutuloksia:"
 #: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:121
 msgid "Page navigation top"
 msgstr "Sivun yläosan navigointi"
-
-#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:226
-msgid "Videos"
-msgstr "Videoita"
 
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:227
 msgctxt "sr-videos"
@@ -763,7 +765,7 @@ msgid "Click on red text to edit"
 msgstr "Klikkaa punaista tekstiä editoidaksesi"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:194
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:46
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:61
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:163
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
@@ -965,7 +967,7 @@ msgid "Add comment"
 msgstr "Lisää kommentti"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:24
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:75
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:99
 msgid "No relations."
 msgstr "Ei relaatioita."
 
@@ -974,7 +976,7 @@ msgid "Add relation"
 msgstr "Lisää relaatio"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:46
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:95
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:124
 msgid "No reverse relations."
 msgstr "Ei käänteisiä relaatioita."
 
@@ -1096,31 +1098,31 @@ msgstr "Hyväksy"
 msgid "The following glosses were added to"
 msgstr "Seuraavat glossit lisättiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:22
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:29
 msgid "<em>No translations.</em>"
 msgstr "<em>Ei käännösvastineita.</em>"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:28
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:39
 msgid "No notes."
 msgstr "Ei lisätietoja."
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:59
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:77
 msgid "Relations to glosses"
 msgstr "Suhteet muihin glosseihin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:63
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:85
 msgid "Relations from this gloss"
 msgstr "Suhteet tästä glossista"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:83
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:110
 msgid "Relations to this gloss"
 msgstr "Suhteet tähän glossiin"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:109
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:142
 msgid "Show comments"
 msgstr "Näytä kommentit"
 
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:129
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:163
 #: templates/comments/list.html:47
 msgid "No comments."
 msgstr "Ei kommentteja."
@@ -2199,8 +2201,8 @@ msgid ""
 "The users account can be terminated or access limited without a notice, if "
 "the user fails to comply with the rules."
 msgstr ""
-"Käyttäjän tunnus voidaan mitätöidä ja sille annettuja käyttöoikeuksia voidaan "
-"rajoittaa ilman ilmoitusta, jos käyttäjä ei noudata sääntöjä."
+"Käyttäjän tunnus voidaan mitätöidä ja sille annettuja käyttöoikeuksia "
+"voidaan rajoittaa ilman ilmoitusta, jos käyttäjä ei noudata sääntöjä."
 
 #: templates/registration/terms_of_service.html:13
 msgid ""
@@ -2209,9 +2211,10 @@ msgid ""
 "user wishes to have anonymity, a pseudonym should be used as the user name."
 msgstr ""
 "Tunnuksen poistamista pyydettäessä käyttäjätunnusta ei tuhota, mutta muut "
-"tunnukseen liittyvät henkilötiedot poistetaan. Jos käyttäjä haluaa varmistaa, "
-"että hän voi pysyä anonyyminä sen jälkeen, kun tunnukseen liitetyt henkilötiedot "
-"on poistettu, hänen tulee käyttää käyttäjätunnuksenaan nimimerkkiä." 
+"tunnukseen liittyvät henkilötiedot poistetaan. Jos käyttäjä haluaa "
+"varmistaa, että hän voi pysyä anonyyminä sen jälkeen, kun tunnukseen "
+"liitetyt henkilötiedot on poistettu, hänen tulee käyttää "
+"käyttäjätunnuksenaan nimimerkkiä."
 
 #: templates/registration/terms_of_service.html:14
 msgid ""
@@ -2240,6 +2243,10 @@ msgstr "Käyttäjän lisäämä data voidaan saattaa julkisesti saataville."
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgctxt "meta"
+#~ msgid "Gloss: %(gloss)s, "
+#~ msgstr "Glossi: %(gloss)s, "
 
 #~ msgctxt "consent"
 #~ msgid "Privacy policy"

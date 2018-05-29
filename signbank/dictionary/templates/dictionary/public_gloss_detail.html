@@ -3,29 +3,47 @@
 {% load comments %}
 {% load tagging_tags %}
 {% block bootstrap3_title %}{{gloss}} [{{gloss.dataset.description}}] | {% endblock %}
+{% block metadesc %}<meta name="description" content="{{metadesc}}">{% endblock %}
+{% block ogimage %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ogimage}}">{% endblock %}
+{% block ogdesc %}<meta property="og:description" content="{{metadesc}}">{% endblock %}
+{% block metatitles %}
+    <meta property="og:title" content="{{gloss}} [{{gloss.dataset.description}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+    <meta name="twitter:title" content="{{gloss}} [{{gloss.dataset.description}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+{% endblock %}
 {% block content %}
 <div class="container">
+<article>
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="col-md-12">
-            <h2>
-                <a href="{{gloss.get_public_absolute_url}}">{{gloss}}</a>
-                <span class="dataset-{{gloss.dataset.id}}-color label label-default"
-                style="float:right;">{{gloss.dataset.description}}</span>
-            </h2>
+            <header>
+                <h2>
+                    <a href="{{gloss.get_public_absolute_url}}">{{gloss}}</a>
+                    <span class="dataset-{{gloss.dataset.id}}-color label label-default"
+                    style="float:right;">{{gloss.dataset.description}}</span>
+                </h2>
+            </header>
         </div>
         <div class="col-md-6">
-            <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}</h4>
-            {% for translation_language, translations in translation_languages_and_translations %}
-                <p><strong>{{ translation_language.name }}:</strong></p>
-                <p id='keywords_{{ translation_language.language_code_2char }}'>
-                    {{ translations|default:_("<em>No translations.</em>") }}</p>
-            {% endfor %}
+            <section>
+                <header>
+                    <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}</h4>
+                </header>
+                {% for translation_language, translations in translation_languages_and_translations %}
+                    <p><strong>{{ translation_language.name }}:</strong></p>
+                    <p id='keywords_{{ translation_language.language_code_2char }}'>
+                        {{ translations|default:_("<em>No translations.</em>") }}</p>
+                {% endfor %}
+            </section>
         </div>
         <div class="col-md-6">
-            <h4>{% blocktrans %}Notes{% endblocktrans %}</h4>
+            <section>
+            <header>
+                <h4>{% blocktrans %}Notes{% endblocktrans %}</h4>
+            </header>
             <p>{% if gloss.notes %}{{gloss.notes}}
                 {% else %}<em>{% blocktrans %}No notes.{% endblocktrans %}</em>{% endif %}</p>
+            </section>
         </div>
     </div>
 </div>
@@ -34,18 +52,22 @@
         {% for glossvideo in gloss.glossvideo_set.all %}
         <div class="col-md-6">
             <hr>
-            <h4>{{glossvideo.title}}</h4>
-            <div class="embed-responsive embed-responsive-16by9">
-                <video id="glossvideo-{{glossvideo.pk}}" preload="metadata" controls muted
-                {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
-                {% if glossvideo.get_extension == '.mp4' %}
-                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
-                {% elif glossvideo.get_extension == '.webm' %}
-                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">
-                {% endif %}
-                    {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                </video>
-            </div>
+            <section>
+                <header>
+                    <h4>{{glossvideo.title}}</h4>
+                </header>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video id="glossvideo-{{glossvideo.pk}}" preload="metadata" controls muted
+                    {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
+                    {% if glossvideo.get_extension == '.mp4' %}
+                        <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
+                    {% elif glossvideo.get_extension == '.webm' %}
+                        <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">
+                    {% endif %}
+                        {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                    </video>
+                </div>
+            </section>
         </div>
         {# Fix horizontal alignment for grid. We have max 2 items per row. #}
         {% if forloop.counter|divisibleby:"2" %}<div class="clearfix"></div>{% endif %}
@@ -53,85 +75,105 @@
     </div>
 </div>
 <div class="row">
-<hr>
-<div class="col-md-10 col-md-offset-1">
-    <div class="col-md-12">
-        <h4>{% blocktrans %}Relations to glosses{% endblocktrans %}</h4>
+    <hr>
+    <div class="col-md-10 col-md-offset-1">
+        <section>
+            <header>
+                <div class="col-md-12">
+                    <h4>{% blocktrans %}Relations to glosses{% endblocktrans %}</h4>
+                </div>
+            </header>
+            <div class="col-md-6">
+                <section>
+                    <div id="gloss-relations" class="panel panel-default">
+                        <div class="panel-heading">
+                            <header>
+                                <h5 style="margin:0;">{% blocktrans %}Relations from this gloss{% endblocktrans %}</h5>
+                            </header>
+                        </div>
+                        <ul class="list-group">
+                            {% for gr in glossrelations %}
+                            {% tags_for_object gr as tag_list %}
+                            <li class="list-group-item list-group-item-relation">
+                                <a href="{% url 'dictionary:public_gloss_view' gr.target.id %}">
+                                    <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
+                                {% for tag in tag_list %}
+                                <span class="badge" style="float:inherit;">{{tag}}</span>
+                                {% endfor %}
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section>
+                    <div id="gloss-relations-reverse" class="panel panel-default">
+                        <div class="panel-heading">
+                            <header>
+                                <h5 style="margin:0;">{% blocktrans %}Relations to this gloss{% endblocktrans %}</h5>
+                            </header>
+                        </div>
+                        <ul class="list-group">
+                            {% for gr in glossrelations_reverse %}
+                            {% tags_for_object gr as tag_list %}
+                            <li class="list-group-item">
+                                <a href="{% url 'dictionary:public_gloss_view' gr.source.id %}">
+                                    <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
+                                {% for tag in tag_list %}
+                                <span class="badge" style="float:inherit;">{{tag}}</span>
+                                {% endfor %}
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
     </div>
-    <div class="col-md-6">
-        <div id="gloss-relations" class="panel panel-default">
-            <div class="panel-heading">{% blocktrans %}Relations from this gloss{% endblocktrans %}</div>
-            <ul class="list-group">
-                {% for gr in glossrelations %}
-                {% tags_for_object gr as tag_list %}
-                <li class="list-group-item list-group-item-relation">
-                    <a href="{% url 'dictionary:public_gloss_view' gr.target.id %}">
-                        <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
-                    {% for tag in tag_list %}
-                    <span class="badge" style="float:inherit;">{{tag}}</span>
-                    {% endfor %}
-                </li>
-                {% empty %}
-                <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div id="gloss-relations-reverse" class="panel panel-default">
-            <div class="panel-heading">
-                {% blocktrans %}Relations to this gloss{% endblocktrans %}</div>
-            <ul class="list-group">
-                {% for gr in glossrelations_reverse %}
-                {% tags_for_object gr as tag_list %}
-                <li class="list-group-item">
-                    <a href="{% url 'dictionary:public_gloss_view' gr.source.id %}">
-                        <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
-                    {% for tag in tag_list %}
-                    <span class="badge" style="float:inherit;">{{tag}}</span>
-                    {% endfor %}
-                </li>
-                {% empty %}
-                <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</div>
 </div>
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-    <hr style="border-color:black;">
-    {% get_comment_count for gloss as comment_count %}
-    <div id="gloss-comments">
-        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse-comments"
-                aria-expanded="false" aria-controls="collapse-comments">
-            <h4>{% blocktrans %}Show comments{% endblocktrans %} ({{comment_count}})</h4>
-        </a>
-        <div class="collapse" id="collapse-comments">
-        <div class="well well-md">
-        {% get_comment_list for gloss as comment_list %}
-        {% for comment in comment_list %}
-            {% tags_for_object comment as tag_list %}
-            <article class="comment">
-                <header id="c{{ comment.id }}">
-                    <strong>{{ comment.submit_date }} -
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.name }}</strong>
-                {% for tag in tag_list %}
-                    <div class="comment-tags" style="display:inline;">
-                        <span class="label label-info">{{tag}}</span>
-                    </div>
-                {% endfor %}
+        <hr style="border-color:black;">
+        {% get_comment_count for gloss as comment_count %}
+        <div id="gloss-comments">
+            <aside>
+                <header>
+                    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse-comments"
+                    aria-expanded="false" aria-controls="collapse-comments">
+                        <h4>{% blocktrans %}Show comments{% endblocktrans %} ({{comment_count}})</h4>
+                    </a>
                 </header>
-                <p>{{ comment.comment }}</p>
-            </article>
-        {% empty %}
-            <p><em>{% blocktrans %}No comments.{% endblocktrans %}</em></p>
-        {% endfor %}
+                <div class="collapse" id="collapse-comments">
+                    <div class="well well-md">
+                    {% get_comment_list for gloss as comment_list %}
+                    {% for comment in comment_list %}
+                        {% tags_for_object comment as tag_list %}
+                        <article class="comment">
+                            <header id="c{{ comment.id }}">
+                                <strong>{{ comment.submit_date }} -
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.name }}</strong>
+                            {% for tag in tag_list %}
+                                <div class="comment-tags" style="display:inline;">
+                                    <span class="label label-info">{{tag}}</span>
+                                </div>
+                            {% endfor %}
+                            </header>
+                            <p>{{ comment.comment }}</p>
+                        </article>
+                    {% empty %}
+                        <p><em>{% blocktrans %}No comments.{% endblocktrans %}</em></p>
+                    {% endfor %}
+                    </div>
+                </div>
+            </aside>
         </div>
-        </div>
-    </div>
     </div>
 </div>
+</article>
 </div>
 {% endblock %}
