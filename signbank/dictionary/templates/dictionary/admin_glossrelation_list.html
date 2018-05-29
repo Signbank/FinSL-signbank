@@ -4,6 +4,9 @@
 {% load staticfiles %}
 {# Translators: Title for GlossRelation search page #}
 {% block bootstrap3_title %}{% blocktrans %}Search Gloss Relations{% endblocktrans %} | {% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/jquery-ui/jquery-ui.min.css" %}">
+{% endblock %}
 {% block extrajs %}
 <script>
 // http://www.javascript-coder.com/javascript-form/javascript-reset-form.phtml
@@ -46,6 +49,27 @@ function clearForm(myFormElement) {
     return(false);
 }
 </script>
+
+<script src="{% static "js/jquery-ui.min.js" %}"></script>
+<script>
+$( function() {
+$( document ).tooltip({
+  items: "[data-video-src]",
+  content: function() {
+    var element = $( this );
+    if ( element.is( "[data-video-src]" ) ) {
+      var src_video = element.attr("data-video-src");
+      var src_poster = element.attr("data-thumbnail-src");
+      var video_ext = element.attr("data-video-ext");
+      if ( src_video != "") {
+        return "<video preload='none' autoplay muted poster='"+src_poster+"' width='250'><source src='"+src_video+"' type='video/"+video_ext+"'>Your browser does not support the video tag.</video>";
+      }
+    }
+  }
+});
+} );
+</script>
+
 {% endblock %}
 {% block content %}
 
@@ -137,9 +161,15 @@ function clearForm(myFormElement) {
         <tr>
 
             <td><span class="dataset-{{glossrelation.source.dataset.id}}-color label label-default">{{ glossrelation.source.dataset }}</span>
-                <a href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.source.pk %}">{{glossrelation.source}}</a></td>
+                <a href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.source.pk %}"
+                   data-thumbnail-src="{% if glossrelation.source.glossvideo_set.all.0.posterfile %}{{glossrelation.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                   data-video-src="{% if glossrelation.source.glossvideo_set.all.0.videofile %}{{ glossrelation.source.glossvideo_set.all.0.videofile.url }}"
+                   data-video-ext="{{ glossrelation.source.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{glossrelation.source}}</a></td>
             <td><span class="dataset-{{glossrelation.target.dataset.id}}-color label label-default">{{ glossrelation.target.dataset }}</span>
-                <a href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.target.pk %}">{{glossrelation.target}}</a></td>
+                <a href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.target.pk %}"
+                   data-thumbnail-src="{% if glossrelation.target.glossvideo_set.all.0.posterfile %}{{glossrelation.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                   data-video-src="{% if glossrelation.target.glossvideo_set.all.0.videofile %}{{ glossrelation.target.glossvideo_set.all.0.videofile.url }}"
+                   data-video-ext="{{ glossrelation.target.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{glossrelation.target}}</a></td>
             <td>{% for tag in glossrelation.cached_tags %}<span class='tag'>{{ tag }}</span>{% endfor %}</td>
         </tr>
     {% endfor %}

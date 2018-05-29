@@ -606,7 +606,10 @@ class GlossRelationListView(ListView):
             qs = qs.filter(query)
 
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
-        qs = qs.prefetch_related(Prefetch('source__dataset'), Prefetch('target__dataset'))
+        qs = qs.prefetch_related(Prefetch('source__dataset'), Prefetch('target__dataset'),
+                                 Prefetch('source__glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')),
+                                 Prefetch('target__glossvideo_set', queryset=GlossVideo.objects.all().order_by('version'))
+                                 )
 
         # Set order according to GET field 'order'
         if 'order' in get:
