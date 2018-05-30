@@ -9,7 +9,10 @@
         {% for gr in glossrelations %}
         {% tags_for_object gr as tag_list %}
         <li class="list-group-item list-group-item-relation">
-            <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}">
+            <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}"
+               data-thumbnail-src="{% if gr.target.glossvideo_set.all.0.posterfile %}{{gr.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+               data-video-src="{% if gr.target.glossvideo_set.all.0.videofile %}{{ gr.target.glossvideo_set.all.0.videofile.url }}"
+               data-video-ext="{{ gr.target.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
                 <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
             {% for tag in tag_list %}
             <span class="badge" style="float:inherit;">{{tag}}</span>
@@ -36,7 +39,10 @@
         {% for gr in glossrelations_reverse %}
         {% tags_for_object gr as tag_list %}
         <li class="list-group-item">
-            <a href="{% url 'dictionary:admin_gloss_view' gr.source.id %}">
+            <a href="{% url 'dictionary:admin_gloss_view' gr.source.id %}"
+               data-thumbnail-src="{% if gr.source.glossvideo_set.all.0.posterfile %}{{gr.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+               data-video-src="{% if gr.source.glossvideo_set.all.0.videofile %}{{ gr.source.glossvideo_set.all.0.videofile.url }}"
+               data-video-ext="{{ gr.source.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
                 <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
             {% for tag in tag_list %}
             <span class="badge" style="float:inherit;">{{tag}}</span>

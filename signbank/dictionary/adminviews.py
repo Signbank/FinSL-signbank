@@ -12,6 +12,7 @@ from django.core.exceptions import PermissionDenied
 from django.template.loader import render_to_string
 from django.utils.translation import get_language
 from django.db.models import Prefetch
+from django.db.models import F
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
 
@@ -411,7 +412,7 @@ class GlossDetailView(DetailView):
         gloss = context['gloss']
         dataset = gloss.dataset
         context['dataset'] = dataset
-        context['dataset_users'] = [x.username for x in get_users_with_perms(dataset)]
+        context['dataset_users'] = list(get_users_with_perms(dataset).values_list('username', flat=True))
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['glossvideoform'] = GlossVideoForGlossForm()
@@ -419,8 +420,7 @@ class GlossDetailView(DetailView):
         context['morphologyform'] = MorphologyForm()
         context['glossrelationform'] = GlossRelationForm(initial={'source': gloss.id, })
         # Choices for GlossRelationForm
-        context['dataset_glosses'] = json.dumps([{'label': g.idgloss, 'value': g.id} for g in
-                                                Gloss.objects.filter(dataset=dataset)])
+        context['dataset_glosses'] = json.dumps(list(Gloss.objects.filter(dataset=dataset).values(label=F('idgloss'), value=F('id'))))
         # GlossRelations for this gloss
         context['glossrelations'] = GlossRelation.objects.filter(source=gloss)
         context['glossrelations_reverse'] = GlossRelation.objects.filter(target=gloss)
@@ -429,20 +429,20 @@ class GlossDetailView(DetailView):
 
         if self.request.user.is_staff:
             # Get some version history data
-            version_history = Version.objects.get_for_object(context['gloss']).prefetch_related('revision__user')
+            version_history = Version.objects.get_for_object(context['gloss']).prefetch_related('revision__user')[:20]
             translation_ct = ContentType.objects.get_for_model(Translation)
             for i, version in enumerate(version_history):
                 if not i+1 >= len(version_history):
                     ver1 = version.field_dict
                     ver2 = version_history[i+1].field_dict
-                    t1 = [x.object_repr for x in version.revision.version_set.filter(content_type=translation_ct)]
-                    t2 = [x.object_repr for x in version_history[i+1].revision.version_set.filter(content_type=translation_ct)]
+                    t1 = list(version_history[i].revision.version_set.filter(content_type=translation_ct).values_list('object_repr', flat=True))
+                    t2 = list(version_history[i+1].revision.version_set.filter(content_type=translation_ct).values_list('object_repr', flat=True))
                     version.translations_added = ", ".join(["+"+x for x in t1 if x not in set(t2)])
                     version.translations_removed = ", ".join(["-"+x for x in t2 if x not in set(t1)])
                     version.data_removed = dict([(key, value) for key, value in ver1.items() if value != ver2[key] and
-                                               key != 'updated_at' and key != 'updated_by_id'])
-                    version.data_added = dict([(key, value) for key, value in ver2.items() if value != ver1[key] and
                                                  key != 'updated_at' and key != 'updated_by_id'])
+                    version.data_added = dict([(key, value) for key, value in ver2.items() if value != ver1[key] and
+                                              key != 'updated_at' and key != 'updated_by_id'])
 
             context['revisions'] = version_history
 
