@@ -2,7 +2,7 @@
 var recordingDIV = document.querySelector('.recordrtc');
 var recordingMedia = 'record-video';
 var recordingPlayer = recordingDIV.querySelector('video.rtcvideo');
-var mimeType = 'video/webm';
+var mimeType = 'video/webm\;codecs=vp8';
 var fileExtension = 'webm';
 var type = 'video';
 var defaultWidth;
@@ -33,7 +33,7 @@ btnStartRecording.onclick = function(event) {
 
         function stopStream() {
             if(button.stream && button.stream.stop) {
-                let tracks = button.stream.getTracks();
+                var tracks = button.stream.getTracks();
                 // Stop each track instead of stopping the whole stream.
                 tracks.forEach(function(track) {
                     track.stop();
@@ -164,7 +164,14 @@ btnStartRecording.onclick = function(event) {
 };
 
 function captureVideo(config) {
-    captureUserMedia({video: true, audio: false}, function(videoStream) {
+    var constraints = {
+        audio: false,
+        video: {
+            width: { ideal: 1280, max: 1920 },
+            height: { ideal: 720, max: 1080 }
+        }
+    }
+    captureUserMedia(constraints, function(videoStream) {
         config.onMediaCaptured(videoStream);
 
         addStreamStopListener(videoStream, function() {
