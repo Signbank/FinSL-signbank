@@ -1,6 +1,5 @@
 /* Adapted from https://github.com/muaz-khan/RecordRTC/blob/master/index.html */
 var recordingDIV = document.querySelector('.recordrtc');
-var recordingMedia = 'record-video';
 var recordingPlayer = recordingDIV.querySelector('video.rtcvideo');
 var mimeType = 'video/webm\;codecs=vp8';
 var fileExtension = 'webm';
@@ -11,11 +10,10 @@ var timeSlice = false;
 
 var btnStartRecording = document.querySelector('#btn-start-recording');
 
-//recordingPlayer.style.display = 'none';
+recordingPlayer.style.display = 'none';
 
 window.onbeforeunload = function() {
     btnStartRecording.disabled = false;
-    recordingMedia.disabled = false;
 };
 
 btnStartRecording.onclick = function(event) {
@@ -40,34 +38,27 @@ btnStartRecording.onclick = function(event) {
                 });
                 button.stream = null;
             }
-
             videoBitsPerSecond = null;
         }
 
         if(button.recordRTC) {
-            if(button.recordRTC.length) {
-                button.recordRTC[0].stopRecording(function(url) {
-                });
-            }
-            else {
-                button.recordRTC.stopRecording(function(url) {
-                    if(button.blobs && button.blobs.length) {
-                        var blob = new File(button.blobs, getFileName(fileExtension), {
-                            type: mimeType
-                        });
+            button.recordRTC.stopRecording(function(url) {
+                if(button.blobs && button.blobs.length) {
+                    var blob = new File(button.blobs, getFileName(fileExtension), {
+                        type: mimeType
+                    });
 
-                        button.recordRTC.getBlob = function() {
-                            return blob;
-                        };
+                    button.recordRTC.getBlob = function() {
+                        return blob;
+                    };
 
-                        url = URL.createObjectURL(blob);
-                    }
+                    url = URL.createObjectURL(blob);
+                }
 
-                    button.recordingEndedCallback(url);
-                    saveToDiskOrOpenNewTab(button.recordRTC);
-                    stopStream();
-                });
-            }
+                button.recordingEndedCallback(url);
+                saveToDiskOrOpenNewTab(button.recordRTC);
+                stopStream();
+            });
         }
 
         return;
@@ -100,67 +91,30 @@ btnStartRecording.onclick = function(event) {
         }
     };
 
-    // Record only camera, no audio
-    if(recordingMedia === 'record-video') {
-        captureVideo(commonConfig);
+    // Record camera
+    captureVideo(commonConfig);
 
-        var options = {
-            type: type,
-            mimeType: mimeType,
-            disableLogs: params.disableLogs || false,
-            //getNativeBlob: false, // enable it for longer recordings
-            video: recordingPlayer
+    var options = {
+        type: type,
+        mimeType: mimeType,
+        disableLogs: params.disableLogs || false,
+        //getNativeBlob: false, // enable it for longer recordings
+        video: recordingPlayer
+    };
+
+    button.mediaCapturedCallback = function() {
+        if(videoBitsPerSecond) {
+            options.videoBitsPerSecond = videoBitsPerSecond;
+        }
+
+        button.recordRTC = RecordRTC(button.stream, options);
+
+        button.recordingEndedCallback = function(url) {
+            setVideoURL(url);
         };
 
-        button.mediaCapturedCallback = function() {
-            if(typeof MediaRecorder === 'undefined') { // opera or chrome etc.
-                button.recordRTC = [];
-
-                if(!params.bufferSize) {
-                    // it fixes audio issues whilst recording 720p
-                    params.bufferSize = 16384;
-                }
-
-                if(params.bufferSize) {
-                    options.bufferSize = parseInt(params.bufferSize);
-                }
-
-                if(params.frameInterval) {
-                    options.frameInterval = parseInt(params.frameInterval);
-                }
-
-                if(videoBitsPerSecond) {
-                    options.videoBitsPerSecond = videoBitsPerSecond;
-                }
-
-                var videoRecorder = RecordRTC(button.stream, options);
-
-                // Start recording
-                videoRecorder.initRecorder(function() {
-                    videoRecorder.startRecording();
-                });
-
-                button.recordRTC.push(videoRecorder);
-
-                button.recordingEndedCallback = function() {
-                    recordingPlayer.parentNode.appendChild(document.createElement('hr'));
-                };
-                return;
-            }
-
-            if(videoBitsPerSecond) {
-                options.videoBitsPerSecond = videoBitsPerSecond;
-            }
-
-            button.recordRTC = RecordRTC(button.stream, options);
-
-            button.recordingEndedCallback = function(url) {
-                setVideoURL(url);
-            };
-
-            button.recordRTC.startRecording();
-        };
-    }
+        button.recordRTC.startRecording();
+    };
 };
 
 function captureVideo(config) {
@@ -189,7 +143,7 @@ function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
         mediaConstraints.video = {};
     }
     videoBitsPerSecond = null;
-
+    // getUserMedia
     navigator.mediaDevices.getUserMedia(mediaConstraints).then(function(stream) {
         successCallback(stream);
 
@@ -351,12 +305,6 @@ function getURL(arg) {
 
     if(arg instanceof RecordRTC || arg.getBlob) {
         url = URL.createObjectURL(arg.getBlob());
-    }
-
-    if(arg instanceof MediaStream || arg.getTracks || arg.getVideoTracks) {
-        // Using MediaStream with URL.createObjectURL is deprecated,
-        // use MediaSource instead.
-        // url = URL.createObjectURL(arg);
     }
 
     return url;
