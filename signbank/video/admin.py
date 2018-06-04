@@ -74,12 +74,25 @@ class GlossesVideoCountFilter(admin.SimpleListFilter):
             return queryset
 
 
+def set_public(modeladmin, request, queryset):
+    queryset.update(is_public=True)
+
+
+def set_hidden(modeladmin, request, queryset):
+    queryset.update(is_public=False)
+
+
+set_public.short_description = _("Set selected videos public")
+set_hidden.short_description = _("Set selected videos hidden")
+
+
 class GlossVideoAdmin(admin.ModelAdmin):
     raw_id_fields = ('gloss',)
     fields = ('is_public', 'title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
     search_fields = ('^gloss__idgloss', 'videofile', 'title')
-    list_display = ('gloss', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
-    list_filter = ('gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
+    list_display = ('gloss', 'is_public', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
+    list_filter = ('is_public', 'gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
+    actions = [set_public, set_hidden]
 
     def get_queryset(self, request):
         qs = super(GlossVideoAdmin, self).get_queryset(request)
