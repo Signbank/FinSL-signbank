@@ -14,7 +14,7 @@
 {% endblock %}
 {% block bottomcontent %}
 {# show the edit button if the user has permission to change pages #}
-{% if perms.flatpages.change_page %}
+{% if perms.flatpages.change_flatpage %}
 <div id="editbutton">
     {# Translators: Edit page button in baselayout #}
     <a class='btn btn-default btn-lg' href="{% url 'admin:flatpages_flatpage_change' flatpage.pk %}" style="width:100%;">{% blocktrans %}Edit Page{% endblocktrans %}</a>
