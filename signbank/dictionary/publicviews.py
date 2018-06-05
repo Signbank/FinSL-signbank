@@ -104,7 +104,7 @@ class GlossDetailPublicView(DetailView):
         # Create og:image url for the gloss if the first glossvideo has a posterfile.
         try:
             context["ogimage"] = gloss.glossvideo_set.first().posterfile.url
-        except ValueError:
+        except (AttributeError, ValueError):
             context["ogimage"] = static('img/signbank_logo_ympyra1_sininen-compressor.png')
 
         return context
