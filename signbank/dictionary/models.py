@@ -23,12 +23,14 @@ from tagging.models import Tag
 @python_2_unicode_compatible
 class Dataset(models.Model):
     """A dataset, can be public/private and can be of only one SignLanguage"""
-    name = models.CharField(unique=True, blank=False, null=False, max_length=60)
-    is_public = models.BooleanField(default=False, help_text="Is this dataset is public or private?")
+    name = models.CharField(_("Name"), unique=True, blank=False, null=False, max_length=60)
+    public_name = models.CharField(_("Public name"), max_length=60)
+    is_public = models.BooleanField(_("Is public"), default=False, help_text="Is this dataset is public or private?")
     signlanguage = models.ForeignKey("SignLanguage")
     translation_languages = models.ManyToManyField("Language", help_text="These languages are shown as options"
                                                                          "for translation equivalents.")
-    description = models.TextField()
+    description = models.TextField(_("Description"))
+    copyright = models.TextField(_("Copyright"))
 
     class Meta:
         permissions = (

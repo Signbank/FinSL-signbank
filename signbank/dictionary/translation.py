@@ -3,7 +3,11 @@
 from __future__ import unicode_literals
 
 from modeltranslation.translator import translator, TranslationOptions
-from .models import Language, SignLanguage
+from .models import Dataset, Language, SignLanguage
+
+
+class DatasetTranslationOptions(TranslationOptions):
+    fields = ('public_name', 'description', 'copyright',)
 
 
 class LanguageTranslationOptions(TranslationOptions):
@@ -16,5 +20,6 @@ class SignLanguageTranslationOptions(TranslationOptions):
     required_languages = ('en',)
 
 
+translator.register(Dataset, DatasetTranslationOptions)
 translator.register(Language, LanguageTranslationOptions)
 translator.register(SignLanguage, SignLanguageTranslationOptions)
