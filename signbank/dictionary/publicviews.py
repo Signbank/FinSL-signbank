@@ -111,5 +111,6 @@ class GlossDetailPublicView(DetailView):
 
     def get_queryset(self):
         qs = super().get_queryset()
+        qs = qs.filter(published=True)
         # Make sure we only show GlossVideos that have 'is_public=True'
         return qs.prefetch_related(Prefetch('glossvideo_set', queryset=GlossVideo.objects.filter(is_public=True)))
