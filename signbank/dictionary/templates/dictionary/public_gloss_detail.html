@@ -2,13 +2,13 @@
 {% load i18n %}
 {% load comments %}
 {% load tagging_tags %}
-{% block bootstrap3_title %}{{gloss}} [{{gloss.dataset.description}}] | {% endblock %}
+{% block bootstrap3_title %}{{gloss}} [{{gloss.dataset.public_name}}] | {% endblock %}
 {% block metadesc %}<meta name="description" content="{{metadesc}}">{% endblock %}
 {% block ogimage %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ogimage}}">{% endblock %}
 {% block ogdesc %}<meta property="og:description" content="{{metadesc}}">{% endblock %}
 {% block metatitles %}
-    <meta property="og:title" content="{{gloss}} [{{gloss.dataset.description}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
-    <meta name="twitter:title" content="{{gloss}} [{{gloss.dataset.description}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+    <meta property="og:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+    <meta name="twitter:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -20,7 +20,7 @@
                 <h2>
                     <a href="{{gloss.get_public_absolute_url}}">{{gloss}}</a>
                     <span class="dataset-{{gloss.dataset.id}}-color label label-default"
-                    style="float:right;">{{gloss.dataset.description}}</span>
+                    style="float:right;">{{gloss.dataset.public_name}}</span>
                 </h2>
             </header>
         </div>

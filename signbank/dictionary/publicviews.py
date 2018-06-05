@@ -94,7 +94,7 @@ class GlossDetailPublicView(DetailView):
 
         # Create a meta description for the gloss.
         context["metadesc"] = "{glosstxt}: {idgloss} [{lexicon}] / ".format(
-            glosstxt=_("Gloss"), idgloss=gloss, lexicon=gloss.dataset.description)
+            glosstxt=_("Gloss"), idgloss=gloss, lexicon=gloss.dataset.public_name)
         for x in context['translation_languages_and_translations']:
             if x[1]:  # Show language name only if it has translations.
                 context["metadesc"] += "{lang}: {trans} / ".format(lang=str(x[0]), trans=str(x[1]))

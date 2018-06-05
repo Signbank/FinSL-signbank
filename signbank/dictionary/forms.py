@@ -256,7 +256,7 @@ class CSVUploadForm(forms.Form):
 class DatasetMultipleChoiceField(forms.ModelMultipleChoiceField):
     """Override the field used for the label."""
     def label_from_instance(self, obj):
-        return obj.description
+        return obj.public_name
 
 
 class GlossPublicSearchForm(forms.Form):
