@@ -309,7 +309,7 @@ msgstr "Nimi"
 
 #: signbank/dictionary/models.py:27
 msgid "Public name"
-msgstr "Julkinen"
+msgstr "Julkinen nimi"
 
 #: signbank/dictionary/models.py:28
 msgid "Is public"
