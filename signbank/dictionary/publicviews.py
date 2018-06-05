@@ -8,7 +8,7 @@ from django.db.models.functions import Substr, Upper
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.translation import ugettext as _
 
-from .models import Gloss, SignLanguage, GlossRelation
+from .models import Gloss, Dataset, SignLanguage, GlossRelation
 from ..video.models import GlossVideo
 from .forms import GlossPublicSearchForm
 
@@ -31,6 +31,7 @@ class GlossListPublicView(ListView):
         context["first_letters"] = Gloss.objects.filter(dataset__is_public=True, published=True)\
             .annotate(first_letters=Substr(Upper('idgloss'), 1, 1)).order_by('first_letters')\
             .values_list('first_letters').distinct()
+        context['lexicons'] = Dataset.objects.filter(is_public=True)
         return context
 
     def get_queryset(self):
