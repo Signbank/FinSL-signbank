@@ -104,6 +104,8 @@ def add_recorded_video_view(request):
             videofile = form.cleaned_data['videofile']
             if videofile:
                 glossvid = GlossVideo(gloss=gloss, videofile=videofile, dataset=gloss.dataset)
+                if form.cleaned_data['webcam'] and form.cleaned_data['webcam'] is True:
+                    glossvid.is_public = False
                 glossvid.save()
                 # Return the created GlossVideos id/pk, so that it can be used to link to the uploaded video.
                 return HttpResponse(json.dumps({'videoid': glossvid.pk}), content_type='application/json')

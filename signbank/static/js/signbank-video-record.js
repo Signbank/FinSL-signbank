@@ -199,6 +199,8 @@ function uploadToServer(fileName, recordRTC, callback) {
     var formData = new FormData();
     formData.append('videofile', blob);
     formData.append('gloss', gloss_pk);
+    // Inform that this is a webcam video we are uploading.
+    formData.append('webcam', true);
     formData.append('csrfmiddlewaretoken', csrf_token);
 
     callback('Uploading recorded-file to server.');

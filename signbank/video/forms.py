@@ -28,6 +28,7 @@ class GlossVideoForm(forms.ModelForm):
 class GlossVideoForGlossForm(forms.ModelForm):
     """Form for GlossVideo with Gloss."""
     redirect = forms.CharField(widget=forms.HiddenInput, required=False)
+    webcam = forms.BooleanField(required=False)
 
     class Meta:
         model = GlossVideo
