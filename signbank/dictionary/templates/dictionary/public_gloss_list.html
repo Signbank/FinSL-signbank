@@ -53,8 +53,11 @@ $( document ).ready(function() {
               <h4>{% blocktrans %}How to use the search page?{% endblocktrans %}</h4>
             </header>
             <p>
-              <a href="{% static 'img/instructions/searchpage_instructions_fi-compressor.png' %}" target="_blank">
-              <img src="{% static 'img/instructions/searchpage_instructions_fi_1140px-compressor.png' %}"
+            {% static 'img/instructions/searchpage_instructions_fi-compressor.png' as ins_full_fi %}
+            {% static 'img/instructions/searchpage_instructions_fi_1140px-compressor.png' as ins_small_fi %}
+            {% static 'img/instructions/searchpage_instructions_en-compressor.png' as ins_en %}
+              <a href="{% if LANGUAGE_CODE == 'fi' %}{{ins_full_fi}}{% else %}{{ins_en}}{% endif %}" target="_blank">
+              <img src="{% if LANGUAGE_CODE == 'fi' %}{{ins_small_fi}}{% else %}{{ins_en}}{% endif %}"
                    alt="{% blocktrans %}Instructions for how to use the search page.{% endblocktrans %}"
                    class="img-responsive img-thumbnail">
               </a>
