@@ -117,7 +117,7 @@ $( document ).ready(function() {
                                 </header>
                                 {% for lexicon in lexicons %}
                                 <article>
-                                    <h5><strong><span class="dataset-{{lexicon.id}}-color label label-default">{{lexicon.public_name}}</span></strong></h5>
+                                    <header><h5><strong><span class="dataset-{{lexicon.id}}-color label label-default">{{lexicon.public_name}}</span></strong></h5></header>
                                     <p>{% autoescape off %}{{lexicon.description}}{% endautoescape %}</p>
                                 </article>
                                 {% endfor %}
