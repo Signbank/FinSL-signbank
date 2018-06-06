@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 14:37+0300\n"
+"POT-Creation-Date: 2018-06-06 16:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -316,16 +316,16 @@ msgid "Is public"
 msgstr "On julkaistu"
 
 #: signbank/dictionary/models.py:32
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:20
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:45
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:21
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:57
 msgid "Description"
-msgstr "Selitys"
+msgstr "Kuvaus"
 
 #: signbank/dictionary/models.py:33
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:22
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:47
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:23
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:59
 msgid "Copyright"
-msgstr "Tekijänoikeus"
+msgstr "Tekijänoikeudet"
 
 #: signbank/dictionary/models.py:38
 msgid "View dataset"
@@ -1147,25 +1147,51 @@ msgid ""
 "can view the Lexicons and apply for access to Lexicons."
 msgstr ""
 "Tällä sivulla näet kaikki tässä Signbankissa olevat leksikot.Voit "
-"tarkastella leksikoita ja pyytää käyttöoikeuksia leksikoihin."
+"tarkastella leksikoita ja anoa käyttöoikeuksia leksikoihin."
 
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:11
 msgid "You have access to the following Lexicons"
 msgstr "Sinulla on käyttöoikeudet seuraaviin leksikoihin"
 
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:24
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:19
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:51
+msgid "Permissions?"
+msgstr "Käyttöoikeudet?"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:20
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:52
+msgid "Public?"
+msgstr "Julkinen?"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:25
 msgid "ECV"
 msgstr "ECV"
 
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:30
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:26
+msgid "Public ECV"
+msgstr "Julkinen ECV"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:29
+msgid "Advanced ECV"
+msgstr "Kehittynyt ECV"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:32
+msgid "Users with permissions"
+msgstr "Käyttäjät joilla käyttöoikeudet"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:41
 msgid "You don't seem to have access to any Lexicons."
 msgstr "Sinulla ei näytä olevan käyttöoikeuksia mihinkään leksikkoon."
 
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:32
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:43
 msgid "You do NOT have access to the following Lexicons"
 msgstr "Sinulla EI ole käyttöoikeuksia seuraaviin leksikoihin"
 
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:52
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:55
+msgid "Apply for permissions"
+msgstr "Ano käyttöoikeuksia"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:64
 msgid "You seem to have access to all existing Lexicons."
 msgstr "Sinulla näyttäisi olevan käyttöoikeudet kaikkiin leksikoihin."
 
@@ -1431,15 +1457,15 @@ msgstr ""
 msgid "You do not have permissions to create glosses for this lexicon."
 msgstr "Sinulla ei ole oikeuksia luoda glosseja valittuun leksikkoon."
 
-#: signbank/dictionary/views.py:115
+#: signbank/dictionary/views.py:121
 msgid "applied for permissions to:"
 msgstr "anoi käyttöoikeuksia:"
 
-#: signbank/dictionary/views.py:118
+#: signbank/dictionary/views.py:124
 msgid "applied for permissions to lexicon:"
 msgstr "anoi käyttöoikeuksia leksikkoon:"
 
-#: signbank/dictionary/views.py:122
+#: signbank/dictionary/views.py:128
 msgid "Successfully applied permissions for"
 msgstr "Käyttöoikeuksia anottu onnistuneesti"
 
@@ -2308,6 +2334,12 @@ msgstr "Käyttäjän lisäämä data voidaan saattaa julkisesti saataville."
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#~ msgid "Is public?"
+#~ msgstr "Julkaistu?"
+
+#~ msgid "Permission granted"
+#~ msgstr "Käyttöoikeus myönnetty"
 
 #~ msgid "Kipo-corpus"
 #~ msgstr "Kipo-korpus"

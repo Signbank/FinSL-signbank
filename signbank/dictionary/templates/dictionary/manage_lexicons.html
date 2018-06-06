@@ -14,16 +14,27 @@
             <div class="panel-heading">
                 <h3 class="panel-title" style="display:inline;"><span class="dataset-{{obj.id}}-color label label-default">{{obj.public_name}}</span></h3>
                 {{obj.signlanguage}} ({{obj.signlanguage.language_code_3char}})
-                <span class="label label-success" style="display:inline;">Permission granted</span>
             </div>
             <div class="panel-body">
+                <h4><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> {% blocktrans %}Permissions?{% endblocktrans %}</h4>
+                <h4><span class="glyphicon glyphicon-{% if obj.is_public %}ok text-success{% else %}remove text-danger{% endif %}" aria-hidden="true"></span> {% blocktrans %}Public?{% endblocktrans %}</h4>
                 <h4>{% blocktrans %}Description{% endblocktrans %}:</h4>
                     <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>
                 <h4>{% blocktrans %}Copyright{% endblocktrans %}:</h4>
                     <p>{{obj.copyright}}</p>
                 <h4>{% blocktrans %}ECV{% endblocktrans %}:</h4>
-                <p><a href="{% url 'dictionary:public_gloss_list_xml' obj.id %}">
-            {% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
+                {% if obj.is_public %}<p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="{% url 'dictionary:public_gloss_list_xml' obj.id %}">
+                    {% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
+                {% endif %}
+                    <p>{% blocktrans %}Advanced ECV{% endblocktrans %}: <a href="{% url 'dictionary:gloss_list_xml' obj.id %}">
+                    {% url 'dictionary:gloss_list_xml' obj.id %}</a></p>
+                {% if user.is_superuser %}
+                <h4>{% blocktrans %}Users with permissions{% endblocktrans %}:</h4>
+                <ul>{% for user in obj.users_with_perms.all %}
+                    <li><a href="{{user.get_absolute_url}}">{{user}} ({{user.first_name}} {{user.last_name}})</a></li>
+                     {% endfor %}
+                </ul>
+                {% endif %}
             </div>
         </div>
         {% empty %}
@@ -35,12 +46,13 @@
             <div class="panel-heading">
                 <h3 class="panel-title" style="display:inline;"><span class="dataset-{{obj.id}}-color label label-default">{{obj.public_name}}</span></h3>
                 {{obj.signlanguage}} ({{obj.signlanguage.language_code_3char}})
-                <span class="label label-danger" style="display:inline;">No permission</span>
             </div>
             <div class="panel-body">
+                <h4>{% blocktrans %}Permissions?{% endblocktrans %} <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></h4>
+                <h4>{% blocktrans %}Public?{% endblocktrans %} <span class="glyphicon glyphicon-{% if obj.is_public %}ok text-success{% else %}remove text-danger{% endif %}" aria-hidden="true"></span></h4>
                 <form action="{% url 'dictionary:apply_lexicon_permissions' %}" method="POST" style="display:inline;">{% csrf_token %}
                     <input type="hidden" name="dataset" value="{{obj.id}}">
-                    <button type="submit" class="btn btn-primary btn-sm">Apply for permission</button>
+                    <button type="submit" class="btn btn-primary btn-sm">{% blocktrans %}Apply for permissions{% endblocktrans %}</button>
                 </form>
                 <h4>{% blocktrans %}Description{% endblocktrans %}:</h4>
                     <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>

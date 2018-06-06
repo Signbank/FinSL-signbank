@@ -14,7 +14,7 @@ from django.views.generic import FormView
 from django.db.models import Q, Case, Value, When, BooleanField
 
 from tagging.models import Tag
-from guardian.shortcuts import get_perms, get_objects_for_user
+from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
 from notifications.signals import notify
 
 from .models import Dataset, Keyword, FieldChoice
@@ -82,14 +82,19 @@ def try_code(request):
 class ManageLexiconsListView(ListView):
     model = Dataset
     template_name = 'dictionary/manage_lexicons.html'
-    paginate_by = 20
+    paginate_by = 50
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         qs = self.get_queryset()
         context['has_permissions'] = qs.filter(has_view_perm=True)
         context['no_permissions'] = qs.filter(has_view_perm=None)
+        # Show users with permissions to lexicons to SuperUsers
+        if self.request.user.is_superuser:
+            for lexicon in context['has_permissions']:
+                lexicon.users_with_perms = get_users_with_perms(obj=lexicon, with_superusers=True)
+            for lexicon in context['no_permissions']:
+                lexicon.users_with_perms = get_users_with_perms(obj=lexicon, with_superusers=True)
         return context
 
     def get_queryset(self):
@@ -100,6 +105,7 @@ class ManageLexiconsListView(ListView):
         if allowed_datasets:
             qs = qs.annotate(
                 has_view_perm=Case(When(Q(id__in=allowed_datasets), then=Value(True)), output_field=BooleanField()))
+
         return qs
 
 
