@@ -6,9 +6,9 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <h3>{% blocktrans %}Manage lexicons{% endblocktrans %}</h3>
+        <h2>{% blocktrans %}Manage lexicons{% endblocktrans %}</h2>
         <p>{% blocktrans %}On this page you can see all the lexicons available on this Signbank. You can view the Lexicons and apply for access to Lexicons.{% endblocktrans %}</p>
-        <h4>{% blocktrans %}You have access to the following Lexicons{% endblocktrans %}</h4>
+        <h3>{% blocktrans %}You have access to the following Lexicons{% endblocktrans %}</h3>
         {% for obj in has_permissions %}
         <div class="panel panel-success">
             <div class="panel-heading">
@@ -16,20 +16,22 @@
                 {{obj.signlanguage}} ({{obj.signlanguage.language_code_3char}})
             </div>
             <div class="panel-body">
-                <h4><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> {% blocktrans %}Permissions?{% endblocktrans %}</h4>
-                <h4><span class="glyphicon glyphicon-{% if obj.is_public %}ok text-success{% else %}remove text-danger{% endif %}" aria-hidden="true"></span> {% blocktrans %}Public?{% endblocktrans %}</h4>
-                <h4>{% blocktrans %}Description{% endblocktrans %}:</h4>
+                <div class="well well-sm">
+                    <h4><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> {% blocktrans %}Permissions?{% endblocktrans %}</h4>
+                    <h4><span class="glyphicon glyphicon-{% if obj.is_public %}ok text-success{% else %}remove text-danger{% endif %}" aria-hidden="true"></span> {% blocktrans %}Public?{% endblocktrans %}</h4>
+                </div>
+                <h3>{% blocktrans %}Description{% endblocktrans %}</h3>
                     <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>
-                <h4>{% blocktrans %}Copyright{% endblocktrans %}:</h4>
+                <h3>{% blocktrans %}Copyright{% endblocktrans %}</h3>
                     <p>{{obj.copyright}}</p>
-                <h4>{% blocktrans %}ECV{% endblocktrans %}:</h4>
+                <h3>{% blocktrans %}ECV{% endblocktrans %}</h3>
                 {% if obj.is_public %}<p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="{% url 'dictionary:public_gloss_list_xml' obj.id %}">
                     {% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
                 {% endif %}
                     <p>{% blocktrans %}Advanced ECV{% endblocktrans %}: <a href="{% url 'dictionary:gloss_list_xml' obj.id %}">
                     {% url 'dictionary:gloss_list_xml' obj.id %}</a></p>
                 {% if user.is_superuser %}
-                <h4>{% blocktrans %}Users with permissions{% endblocktrans %}:</h4>
+                <h3>{% blocktrans %}Users with permissions{% endblocktrans %}</h3>
                 <ul>{% for user in obj.users_with_perms.all %}
                     <li><a href="{{user.get_absolute_url}}">{{user}} ({{user.first_name}} {{user.last_name}})</a></li>
                      {% endfor %}
@@ -40,7 +42,7 @@
         {% empty %}
         <p>{% blocktrans %}You don't seem to have access to any Lexicons.{% endblocktrans %}</p>
         {% endfor %}
-                <h4>{% blocktrans %}You do NOT have access to the following Lexicons{% endblocktrans %}</h4>
+        <h3>{% blocktrans %}You do NOT have access to the following Lexicons{% endblocktrans %}</h3>
         {% for obj in no_permissions %}
         <div class="panel panel-danger">
             <div class="panel-heading">
@@ -48,15 +50,17 @@
                 {{obj.signlanguage}} ({{obj.signlanguage.language_code_3char}})
             </div>
             <div class="panel-body">
-                <h4>{% blocktrans %}Permissions?{% endblocktrans %} <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></h4>
-                <h4>{% blocktrans %}Public?{% endblocktrans %} <span class="glyphicon glyphicon-{% if obj.is_public %}ok text-success{% else %}remove text-danger{% endif %}" aria-hidden="true"></span></h4>
-                <form action="{% url 'dictionary:apply_lexicon_permissions' %}" method="POST" style="display:inline;">{% csrf_token %}
-                    <input type="hidden" name="dataset" value="{{obj.id}}">
-                    <button type="submit" class="btn btn-primary btn-sm">{% blocktrans %}Apply for permissions{% endblocktrans %}</button>
-                </form>
-                <h4>{% blocktrans %}Description{% endblocktrans %}:</h4>
+                <div class="well well-sm">
+                    <h4>{% blocktrans %}Permissions?{% endblocktrans %} <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></h4>
+                    <h4>{% blocktrans %}Public?{% endblocktrans %} <span class="glyphicon glyphicon-{% if obj.is_public %}ok text-success{% else %}remove text-danger{% endif %}" aria-hidden="true"></span></h4>
+                    <form action="{% url 'dictionary:apply_lexicon_permissions' %}" method="POST" style="display:inline;">{% csrf_token %}
+                        <input type="hidden" name="dataset" value="{{obj.id}}">
+                        <button type="submit" class="btn btn-primary btn-sm">{% blocktrans %}Apply for permissions{% endblocktrans %}</button>
+                    </form>
+                </div>
+                <h3>{% blocktrans %}Description{% endblocktrans %}</h3>
                     <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>
-                <h4>{% blocktrans %}Copyright{% endblocktrans %}:</h4>
+                <h3>{% blocktrans %}Copyright{% endblocktrans %}</h3>
                     <p>{{obj.copyright}}</p>
             </div>
         </div>
