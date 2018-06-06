@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 14:11+0300\n"
+"POT-Creation-Date: 2018-06-06 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -317,13 +317,13 @@ msgstr "On julkaistu"
 
 #: signbank/dictionary/models.py:32
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:20
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:43
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:45
 msgid "Description"
 msgstr "Selitys"
 
 #: signbank/dictionary/models.py:33
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:22
-#: signbank/dictionary/templates/dictionary/manage_lexicons.html:45
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:47
 msgid "Copyright"
 msgstr "Tekijänoikeus"
 
@@ -1158,8 +1158,16 @@ msgid "ECV"
 msgstr "ECV"
 
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:30
+msgid "You don't seem to have access to any Lexicons."
+msgstr "Sinulla ei näytä olevan käyttöoikeuksia mihinkään leksikkoon."
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:32
 msgid "You do NOT have access to the following Lexicons"
 msgstr "Sinulla EI ole käyttöoikeuksia seuraaviin leksikoihin"
+
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:52
+msgid "You seem to have access to all existing Lexicons."
+msgstr "Sinulla näyttäisi olevan käyttöoikeudet kaikkiin leksikoihin."
 
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:10
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:11

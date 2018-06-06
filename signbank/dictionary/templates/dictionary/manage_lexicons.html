@@ -26,6 +26,8 @@
             {% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
             </div>
         </div>
+        {% empty %}
+        <p>{% blocktrans %}You don't seem to have access to any Lexicons.{% endblocktrans %}</p>
         {% endfor %}
                 <h4>{% blocktrans %}You do NOT have access to the following Lexicons{% endblocktrans %}</h4>
         {% for obj in no_permissions %}
@@ -46,6 +48,8 @@
                     <p>{{obj.copyright}}</p>
             </div>
         </div>
+        {% empty %}
+        <p>{% blocktrans %}You seem to have access to all existing Lexicons.{% endblocktrans %}</p>
         {% endfor %}
     </div>
 </div>
