@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 from django.views.generic.base import RedirectView
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 # Views
 from . import adminviews
 from . import publicviews
@@ -36,6 +36,12 @@ urlpatterns = [
     # Redirect old URL
     url(r'^search/glossrelation/$', permission_required('dictionary.search_gloss')
     (RedirectView.as_view(pattern_name='dictionary:search_glossrelation', permanent=False))),
+
+    # Manage lexicons
+    url(r'^lexicons/$', login_required(views.ManageLexiconsListView.as_view()), name='manage_lexicons'),
+    # Apply for lexicon permissions
+    url(r'^lexicons/apply/$', login_required(views.ApplyLexiconPermissionsFormView.as_view()),
+        name='apply_lexicon_permissions'),
 
     # Create
     url(r'^advanced/gloss/create/$', views.create_gloss, name='create_gloss'),

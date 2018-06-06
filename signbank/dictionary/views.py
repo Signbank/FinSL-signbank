@@ -7,13 +7,18 @@ from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 from django.contrib.admin.views.decorators import user_passes_test
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
+from django.views.generic.list import ListView
+from django.views.generic import FormView
+from django.db.models import Q, Case, Value, When, BooleanField
 
 from tagging.models import Tag
 from guardian.shortcuts import get_perms, get_objects_for_user
+from notifications.signals import notify
+
 from .models import Dataset, Keyword, FieldChoice
-from .forms import GlossCreateForm
+from .forms import GlossCreateForm, LexiconForm
 from ..video.forms import GlossVideoForm
 
 
@@ -74,3 +79,46 @@ def try_code(request):
     return HttpResponse('OK', status=200)
 
 
+class ManageLexiconsListView(ListView):
+    model = Dataset
+    template_name = 'dictionary/manage_lexicons.html'
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        qs = self.get_queryset()
+        context['has_permissions'] = qs.filter(has_view_perm=True)
+        context['no_permissions'] = qs.filter(has_view_perm=None)
+        return context
+
+    def get_queryset(self):
+        # Get allowed datasets for user (django-guardian)
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        # Get queryset
+        qs = super().get_queryset()
+        if allowed_datasets:
+            qs = qs.annotate(
+                has_view_perm=Case(When(Q(id__in=allowed_datasets), then=Value(True)), output_field=BooleanField()))
+        return qs
+
+
+class ApplyLexiconPermissionsFormView(FormView):
+    form_class = LexiconForm
+    template_name = 'dictionary/manage_lexicons.html'
+    success_url = reverse_lazy('dictionary:manage_lexicons')
+
+    def form_valid(self, form):
+        dataset = form.cleaned_data['dataset']
+        admins = dataset.admins.all()
+        notify.send(sender=self.request.user, recipient=admins,
+                    verb="{txt} {dataset}".format(txt=_("applied for permissions to:"), dataset=dataset.public_name),
+                    action_object=self.request.user,
+                    description="{user} ({user.first_name} {user.last_name}) {txt} {dataset}".format(
+                        user=self.request.user, txt=_("applied for permissions to lexicon:"),
+                        dataset=dataset.public_name
+                    ),
+                    target=self.request.user, public=False)
+        msg = "{text} {lexicon_name}".format(text=_("Successfully applied permissions for"), lexicon_name=dataset.public_name)
+        messages.success(self.request, msg)
+        return super().form_valid(form)

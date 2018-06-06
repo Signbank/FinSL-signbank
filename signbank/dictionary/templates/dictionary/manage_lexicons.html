@@ -1,0 +1,52 @@
+{% extends "baselayout.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block bootstrap3_title %}{% blocktrans %}Manage lexicons{% endblocktrans %} | {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h3>{% blocktrans %}Manage lexicons{% endblocktrans %}</h3>
+        <p>{% blocktrans %}On this page you can see all the lexicons available on this Signbank. You can view the Lexicons and apply for access to Lexicons.{% endblocktrans %}</p>
+        <h4>{% blocktrans %}You have access to the following Lexicons{% endblocktrans %}</h4>
+        {% for obj in has_permissions %}
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="display:inline;"><span class="dataset-{{obj.id}}-color label label-default">{{obj.public_name}}</span></h3>
+                {{obj.signlanguage}} ({{obj.signlanguage.language_code_3char}})
+                <span class="label label-success" style="display:inline;">Permission granted</span>
+            </div>
+            <div class="panel-body">
+                <h4>{% blocktrans %}Description{% endblocktrans %}:</h4>
+                    <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>
+                <h4>{% blocktrans %}Copyright{% endblocktrans %}:</h4>
+                    <p>{{obj.copyright}}</p>
+                <h4>{% blocktrans %}ECV{% endblocktrans %}:</h4>
+                <p><a href="{% url 'dictionary:public_gloss_list_xml' obj.id %}">
+            {% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
+            </div>
+        </div>
+        {% endfor %}
+                <h4>{% blocktrans %}You do NOT have access to the following Lexicons{% endblocktrans %}</h4>
+        {% for obj in no_permissions %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="display:inline;"><span class="dataset-{{obj.id}}-color label label-default">{{obj.public_name}}</span></h3>
+                {{obj.signlanguage}} ({{obj.signlanguage.language_code_3char}})
+                <span class="label label-danger" style="display:inline;">No permission</span>
+            </div>
+            <div class="panel-body">
+                <form action="{% url 'dictionary:apply_lexicon_permissions' %}" method="POST" style="display:inline;">{% csrf_token %}
+                    <input type="hidden" name="dataset" value="{{obj.id}}">
+                    <button type="submit" class="btn btn-primary btn-sm">Apply for permission</button>
+                </form>
+                <h4>{% blocktrans %}Description{% endblocktrans %}:</h4>
+                    <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>
+                <h4>{% blocktrans %}Copyright{% endblocktrans %}:</h4>
+                    <p>{{obj.copyright}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

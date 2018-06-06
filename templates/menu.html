@@ -35,23 +35,27 @@
             <li><a href="{% url "dictionary:admin_gloss_list" %}">{% blocktrans context "menu-link" %}Advanced search{% endblocktrans %}</a></li>
             <li><a href="{% url 'dictionary:search_glossrelation' %}">{% blocktrans %}Search relations{% endblocktrans %}</a></li>
         {% endif %}
-        {% if perms.dictionary.add_gloss and perms.dictionary.change_gloss %}
+        {% if user.is_authenticated %}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     {% blocktrans %}Manage{% endblocktrans %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url "dictionary:create_gloss" %}">{% blocktrans %}Create gloss{% endblocktrans %}</a></li>
+                {% if perms.dictionary.add_gloss and perms.dictionary.change_gloss %}
+                    <li><a href="{% url 'dictionary:create_gloss' %}">{% blocktrans %}Create gloss{% endblocktrans %}</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="{% url "video:upload_videos" %}">{% blocktrans %}Upload videos{% endblocktrans %}</a></li>
-                    <li><a href="{% url "video:manage_videos" %}">{% blocktrans %}Manage uploaded videos{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'video:upload_videos' %}">{% blocktrans %}Upload videos{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'video:manage_videos' %}">{% blocktrans %}Manage uploaded videos{% endblocktrans %}</a></li>
                     <li role="separator" class="divider"></li>
                     {% if perms.dictionary.import_csv %}
-                    <li><a href="{% url "dictionary:import_gloss_csv" %}">{% blocktrans %}CSV import{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'dictionary:import_gloss_csv' %}">{% blocktrans %}CSV import{% endblocktrans %}</a></li>
                     {% endif %}
-                    <li><a href="{% url "infopage" %}">{% blocktrans %}Links and statistics{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'infopage' %}">{% blocktrans %}Links and statistics{% endblocktrans %}</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="{% url "latest_comments_page" count="20" %}">{% blocktrans %}Latest comments{% endblocktrans %}</a></li>
-                    <li><a href="{% url "search_comments" %}">{% blocktrans %}Search comments{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'latest_comments_page' count='20' %}">{% blocktrans %}Latest comments{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'search_comments' %}">{% blocktrans %}Search comments{% endblocktrans %}</a></li>
+                    <li role="separator" class="divider"></li>
+                {% endif %}
+                    <li><a href="{% url 'dictionary:manage_lexicons' %}">{% blocktrans %}Lexicons{% endblocktrans %}</a></li>
                 </ul>
             </li>
         {% endif %}

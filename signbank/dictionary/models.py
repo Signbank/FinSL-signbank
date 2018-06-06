@@ -31,6 +31,7 @@ class Dataset(models.Model):
                                                                          "for translation equivalents.")
     description = models.TextField(_("Description"))
     copyright = models.TextField(_("Copyright"))
+    admins = models.ManyToManyField(User)
 
     class Meta:
         permissions = (

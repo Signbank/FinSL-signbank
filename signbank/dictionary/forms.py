@@ -278,3 +278,6 @@ class GlossPublicSearchForm(forms.Form):
                                          label=_("You can restrict your search to these lexicons"),
                                          widget=forms.CheckboxSelectMultiple())
 
+
+class LexiconForm(forms.Form):
+    dataset = forms.ModelChoiceField(queryset=Dataset.objects.all())
