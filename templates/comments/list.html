@@ -12,7 +12,7 @@ function load_comment_edit(commentid) {
         <article class="comment">
             <header id="c{{ comment.id }}">
                 <strong>{{ comment.submit_date }} -
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.name }}</strong>
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.user }}</strong>
             {% if user.is_authenticated %}
                 {% if user == comment.user %}
                 <button id="edit_comment_{{comment.id}}" class="btn-comment-edit btn btn-primary btn-xs
