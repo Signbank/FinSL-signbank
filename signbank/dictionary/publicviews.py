@@ -7,10 +7,13 @@ from django.db.models import Q, Prefetch
 from django.db.models.functions import Substr, Upper
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.translation import ugettext as _
+from django.views.decorators.cache import cache_page
+from django.shortcuts import get_object_or_404
 
-from .models import Gloss, Dataset, SignLanguage, GlossRelation
+from .models import Gloss, Dataset, SignLanguage, GlossRelation, Translation, GlossTranslations
 from ..video.models import GlossVideo
 from .forms import GlossPublicSearchForm
+from .adminviews import serialize_glosses
 
 
 class GlossListPublicView(ListView):
@@ -115,3 +118,15 @@ class GlossDetailPublicView(DetailView):
         qs = qs.filter(published=True)
         # Make sure we only show GlossVideos that have 'is_public=True'
         return qs.prefetch_related(Prefetch('glossvideo_set', queryset=GlossVideo.objects.filter(is_public=True)))
+
+
+@cache_page(60 * 15)
+def public_gloss_list_xml(self, dataset_id):
+    """Return ELAN schema valid XML of public glosses and their translations."""
+    # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
+    dataset = get_object_or_404(Dataset, id=dataset_id, is_public=True)
+    return serialize_glosses(dataset, Gloss.objects.filter(dataset=dataset, published=True).prefetch_related(
+        Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
+                 .select_related('keyword', 'language')),
+        Prefetch('glosstranslations_set', queryset=GlossTranslations.objects
+                 .filter(gloss__dataset=dataset).select_related('language'))))

@@ -72,7 +72,9 @@ urlpatterns = [
         adminviews.gloss_ajax_search_results, name='ajax_search_results'),
 
     # XML ecv (externally controlled vocabulary) export for ELAN
-    url(r'^ecv/(?P<dataset>\d+)$',
+    url(r'^ecv/(?P<dataset_id>\d+)$',
         adminviews.gloss_list_xml, name='gloss_list_xml'),
-
+    # Public ECV's
+    url(r'^elan-ecv/(?P<dataset_id>\d+)$',
+        publicviews.public_gloss_list_xml, name='public_gloss_list_xml'),
 ]

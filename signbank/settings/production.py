@@ -26,6 +26,14 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, "signbank", "static"),
 )
 
+# Use Local-memory caching for specific views (if you have bigger needs, use something else).
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'finsl-signbank-localmemcache',
+    }
+}
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = '/var/www/signbank/media/'
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.

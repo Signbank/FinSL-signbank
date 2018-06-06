@@ -15,6 +15,7 @@ from django.db.models import Prefetch
 from django.db.models import F
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
+from django.shortcuts import get_object_or_404
 
 from collections import defaultdict
 from django.contrib import messages
@@ -508,10 +509,10 @@ def gloss_ajax_complete(request, prefix):
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
 
 
-def gloss_list_xml(self, dataset):
+def gloss_list_xml(self, dataset_id):
     """Returns all entries in dictionarys idgloss fields in XML form that is supported by ELAN"""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
-    dataset = Dataset.objects.get(id=dataset)
+    dataset = get_object_or_404(Dataset, id=dataset_id)
     return serialize_glosses(dataset,
                              Gloss.objects.filter(dataset=dataset)
                              .prefetch_related(

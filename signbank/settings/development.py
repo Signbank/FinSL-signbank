@@ -23,6 +23,13 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'signbank', 'static'),
 )
 
+# Set up a dummy cache for development, it doesn't actually cache anything.
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
