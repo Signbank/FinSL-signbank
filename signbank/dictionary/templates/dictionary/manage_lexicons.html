@@ -24,7 +24,7 @@
                     <p>{% autoescape off %}{{obj.description}}{% endautoescape %}</p>
                 <h3>{% blocktrans %}Copyright{% endblocktrans %}</h3>
                     <p>{{obj.copyright}}</p>
-                <h3>{% blocktrans %}ECV{% endblocktrans %}</h3>
+                <h3>{% blocktrans %}ECV (externally controlled vocabulary){% endblocktrans %} <small>{% blocktrans %}A vocabulary for ELAN{% endblocktrans %}</small></h3>
                 {% if obj.is_public %}<p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="{% url 'dictionary:public_gloss_list_xml' obj.id %}">
                     {% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
                 {% endif %}
