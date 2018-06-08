@@ -5,7 +5,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.utils import OperationalError
+from django.db.utils import OperationalError, ProgrammingError
 
 from tagging.models import Tag
 
@@ -21,7 +21,7 @@ class GlossCreateForm(forms.ModelForm):
     dataset = forms.ModelChoiceField(label=_('Dataset'), required=True, queryset=Dataset.objects.all(), empty_label=None)
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
     tag = forms.ModelChoiceField(queryset=qs, required=False, empty_label="---", to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
@@ -46,7 +46,7 @@ class TagUpdateForm(forms.Form):
     """Form to add a new tag to a gloss"""
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
     tag = forms.ModelChoiceField(queryset=qs, empty_label=None, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
@@ -62,7 +62,7 @@ class TagsAddForm(forms.Form):
     """Form to add a new tags to a gloss"""
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
     tags = forms.ModelMultipleChoiceField(label=_('Tags'), queryset=qs, to_field_name='name')
 
@@ -89,7 +89,7 @@ class GlossSearchForm(forms.ModelForm):
 
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
     tags = forms.ModelMultipleChoiceField(queryset=qs, required=False)
     nottags = forms.ModelMultipleChoiceField(queryset=qs)
@@ -161,7 +161,7 @@ class GlossRelationSearchForm(forms.Form):
 
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(GlossRelation)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
     tags = forms.ModelMultipleChoiceField(queryset=qs, required=False, label=_("Relation type"))
 
@@ -174,7 +174,7 @@ class GlossRelationForm(forms.Form):
     target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(attrs={'class': 'glossrelation-autocomplete'}))
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(GlossRelation)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
     tag = forms.ModelChoiceField(label=_("Relation type:"),
                                  queryset=qs,
