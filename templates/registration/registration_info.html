@@ -42,6 +42,9 @@
         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
           <div class="panel-body">
             <ul>
+                <li>{% blocktrans %}You can apply for permissions to view more detailed information about specific lexicons on{% endblocktrans %}
+                    <a href="{% url 'dictionary:manage_lexicons' %}">{% blocktrans %}the Lexicons page{% endblocktrans %}</a>,
+                    {% blocktrans %}which you can access once you have created an account (from the menu: Manage->Lexicons){% endblocktrans %}.</li>
                 <li>{% blocktrans %}Contact the site maintainer or the site staff.{% endblocktrans %}</li>
                 <li>{% blocktrans %}Check the About page for contact information:{% endblocktrans %}
                     <a href="/about/">{{request.scheme}}://{{request.get_host}}/about/</a></li>

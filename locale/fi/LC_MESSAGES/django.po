@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 16:54+0300\n"
+"POT-Creation-Date: 2018-06-08 12:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2228,10 +2228,27 @@ msgid "How to gain user permissions?"
 msgstr "Miten voi saada käyttöoikeuksia?"
 
 #: templates/registration/registration_info.html:45
+msgid ""
+"You can apply for permissions to view more detailed information about "
+"specific lexicons on"
+msgstr ""
+"Voit anoa käyttöoikeuksia nähdäksesi tarkempaa tietoa tietyistä leksikoista"
+
+#: templates/registration/registration_info.html:46
+msgid "the Lexicons page"
+msgstr "Leksikot -sivulta"
+
+#: templates/registration/registration_info.html:47
+msgid ""
+"which you can access once you have created an account (from the menu: Manage-"
+">Lexicons)"
+msgstr "johon pääset käsiksi sen jälkeen kun olet luonut tunnuksen (valikosta: Hallinta->Leksikot)"
+
+#: templates/registration/registration_info.html:48
 msgid "Contact the site maintainer or the site staff."
 msgstr "Ole yhteydessä sivuston ylläpitoon."
 
-#: templates/registration/registration_info.html:46
+#: templates/registration/registration_info.html:49
 msgid "Check the About page for contact information:"
 msgstr "Etsi yhteystietoja Tietoa-sivulta."
 
