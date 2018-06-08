@@ -39,6 +39,7 @@ class Dataset(models.Model):
         )
         verbose_name = _('Lexicon')
         verbose_name_plural = _('Lexicons')
+        ordering = ['id',]
 
     def __str__(self):
         return self.name
