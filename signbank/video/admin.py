@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from django.db.models import Count
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _lazy
 
 from .models import GlossVideo
 
@@ -82,8 +83,8 @@ def set_hidden(modeladmin, request, queryset):
     queryset.update(is_public=False)
 
 
-set_public.short_description = _("Set selected videos public")
-set_hidden.short_description = _("Set selected videos hidden")
+set_public.short_description = _lazy("Set selected videos public")
+set_hidden.short_description = _lazy("Set selected videos hidden")
 
 
 class GlossVideoAdmin(admin.ModelAdmin):

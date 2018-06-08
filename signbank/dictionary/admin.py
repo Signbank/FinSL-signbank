@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _lazy
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.forms import ModelForm
@@ -152,8 +153,8 @@ def unpublish(modeladmin, request, queryset):
     queryset.update(published=False)
 
 
-publish.short_description = _("Publish selected glosses")
-unpublish.short_description = _("Unpublish selected glosses")
+publish.short_description = _lazy("Publish selected glosses")
+unpublish.short_description = _lazy("Unpublish selected glosses")
 
 
 class GlossAdmin(VersionAdmin):
