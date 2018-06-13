@@ -1,0 +1,99 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="{{LANGUAGE_CODE|default:'en'}}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% blocktrans %}Gloss relations (Network Graph) {% endblocktrans %} | {% blocktrans %}Finnish Signbank{% endblocktrans %}</title>
+    <script src="{% static 'js/sigma.min.js' %}"></script>
+    <script src="{% static 'js/sigma.layout.forceAtlas2.min.js' %}"></script>
+<style>
+#network-graph-container {
+    width:90%;
+    height:90%;
+    position: absolute;
+}
+form {
+    display: inline;
+}
+.render-controls {
+    display: inline;
+    margin-left: 15px;
+}
+</style>
+</head>
+<body>
+<div>
+    <div>
+        <form target="{% url 'dictionary:network_graph' %}" method="GET">
+            {{form.dataset}}
+            <input type="submit" value="{% blocktrans %}Choose{% endblocktrans %}">
+        </form>
+        {% if context.dataset %}
+        <div class="render-controls">
+            <button type="button" onclick="s.startForceAtlas2()">{% blocktrans %}Start rendering{% endblocktrans %}</button>
+            <button type="button" onclick="s.stopForceAtlas2()">{% blocktrans %}Stop rendering{% endblocktrans %}</button>
+            <span>{% blocktrans %}Gloss{% endblocktrans %}:</span> <span id="infobox">-</span>
+        </div>
+        {% endif %}
+        <hr>
+    </div>
+    <div>
+        <div id="network-graph-container">
+        </div>
+    </div>
+</div>
+
+<script>
+var nodes_json = {{context.nodes|safe}};
+var edges_json = {{context.edges|safe}};
+
+var g = { nodes: [], edges: [] };
+for (var i = 0; i < nodes_json.length; i++){
+    g.nodes.push({
+      id: 'n' + nodes_json[i].id,
+      label: nodes_json[i].label,
+      size: nodes_json[i].size,
+      x: 0,
+      y: 0
+    });
+}
+for (var i = 0; i < edges_json.length; i++){
+    g.edges.push({
+      id: 'e' + edges_json[i].id,
+      source: 'n' + edges_json[i].source,
+      target: 'n' + edges_json[i].target,
+    });
+}
+
+s = new sigma({
+  graph: g,
+  container: 'network-graph-container',
+  type: 'canvas',
+  settings: {
+    edgeColor: 'default',
+    defaultNodeColor: '#4bade5',
+    defaultLabelColor: '#525b68',
+    defaultEdgeColor: '#000000',
+    labelThreshold: 1,
+  }
+});
+
+s.graph.nodes().forEach(function(node, i, a) {
+  node.x = Math.cos(Math.PI * 2 * i / a.length);
+  node.y = Math.sin(Math.PI * 2 * i / a.length);
+});
+s.bind("clickNode", function (node) {
+    document.getElementById("infobox").innerText = node.data.node.label;
+});
+
+s.refresh();
+s.startForceAtlas2();
+// Stop rendering after x seconds.
+setTimeout(function(){
+    s.stopForceAtlas2();
+}, 10 * 1000);
+</script>
+</body>
+</html>

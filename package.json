@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js && cp -f ./node_modules/at.js/dist/js/jquery.atwho.min.js ./signbank/static/js && cp -f ./node_modules/cookieconsent/build/cookieconsent.min.js ./signbank/static/js",
+    "collectjs": "cp -f ./node_modules/*/dist/*min.js ./signbank/static/js && cp -f ./node_modules/recordrtc/RecordRTC.min.js ./signbank/static/js && cp -f ./node_modules/at.js/dist/js/jquery.atwho.min.js ./signbank/static/js && cp -f ./node_modules/cookieconsent/build/cookieconsent.min.js ./signbank/static/js && cp -f ./node_modules/sigma/build/sigma.min.js ./signbank/static/js && cp -f ./node_modules/sigma/build/plugins/sigma.layout.forceAtlas2.min.js ./signbank/static/js",
     "collectcss": "cp -f ./node_modules/at.js/dist/css/jquery.atwho.min.css ./signbank/static/css && cp -rf ./node_modules/bootstrap/dist/* ./signbank/static/bootstrap/ && cp -f ./node_modules/cookieconsent/build/cookieconsent.min.css ./signbank/static/css"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "jquery.caret": "^0.3.1",
     "mark.js": "^8.11.1",
     "recordrtc": "^5.4.6",
+    "sigma": "^1.2.1",
     "typeahead.js": "^0.11.1"
   }
 }

@@ -83,4 +83,7 @@ urlpatterns = [
     # Public ECV's
     url(r'^public-ecv/(?P<dataset_id>\d+)$',
         publicviews.public_gloss_list_xml, name='public_gloss_list_xml'),
+
+    # Network Graph of GlossRelations
+    url(r'^network-graph/$',login_required(views.network_graph), name='network_graph'),
 ]

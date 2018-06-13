@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import json
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
@@ -11,13 +13,13 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views.generic.list import ListView
 from django.views.generic import FormView
-from django.db.models import Q, Case, Value, When, BooleanField
+from django.db.models import Q, F, Count, Case, Value, When, BooleanField
 
 from tagging.models import Tag
 from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
 from notifications.signals import notify
 
-from .models import Dataset, Keyword, FieldChoice
+from .models import Dataset, Keyword, FieldChoice, Gloss, GlossRelation
 from .forms import GlossCreateForm, LexiconForm
 from ..video.forms import GlossVideoForm
 
@@ -128,3 +130,30 @@ class ApplyLexiconPermissionsFormView(FormView):
         msg = "{text} {lexicon_name}".format(text=_("Successfully applied permissions for"), lexicon_name=dataset.public_name)
         messages.success(self.request, msg)
         return super().form_valid(form)
+
+
+def network_graph(request):
+    """Network graph of GlossRelations"""
+    context = dict()
+    form = LexiconForm(request.GET, use_required_attribute=False)
+    # Get allowed datasets for user (django-guardian)
+    allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
+    # Filter the forms dataset field for the datasets user has permission to.
+    form.fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+    dataset = None
+    if form.is_valid():
+        form.fields["dataset"].widget.is_required = False
+        dataset = form.cleaned_data["dataset"]
+
+    if dataset:
+        context["dataset"] = dataset
+        nodeqs = Gloss.objects.filter(Q(dataset=dataset),
+                                      Q(glossrelation_target__isnull=False) | Q(glossrelation_source__isnull=False))\
+            .distinct().values("id").annotate(label=F("idgloss"), size=Count("glossrelation_source")+Count("glossrelation_target"))
+        context["nodes"] = json.dumps(list(nodeqs))
+        edgeqs = GlossRelation.objects.filter(Q(source__dataset=dataset) | Q(target__dataset=dataset)).values("id", "source", "target")
+        context["edges"] = json.dumps(list(edgeqs))
+    return render(request, "dictionary/network_graph.html",
+                  {'context': context,
+                   'form': form
+                   })

@@ -12,11 +12,12 @@ from django.core.mail import mail_admins
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
+from signbank.dictionary.models import Gloss, Language, Translation, Keyword, Dataset, GlossRelation
+from signbank.video.models import GlossVideo
+
 
 @permission_required("dictionary.search_gloss")
 def infopage(request):
-    from signbank.dictionary.models import Gloss, Language, Translation, Keyword, Dataset
-    from signbank.video.models import GlossVideo
     context = dict()
     context["gloss_count"] = Gloss.objects.all().count()
 
