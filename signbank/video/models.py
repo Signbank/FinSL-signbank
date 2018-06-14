@@ -32,21 +32,27 @@ class GlossVideoStorage(FileSystemStorage):
 @python_2_unicode_compatible
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
-
+    #: Descriptive title of the GlossVideo.
     title = models.CharField(_("Title"), blank=True, unique=False, max_length=100,
                              help_text=_("Descriptive name of the video."))
+    #: Video file of the GlossVideo.
     videofile = models.FileField(_("Video file"), storage=GlossVideoStorage(),
                                  help_text=_("Video file."))
+    #: Poster image of the GlossVideo.
     posterfile = models.FileField(_("Poster file"), upload_to=os.path.join("posters"),
                                   storage=GlossVideoStorage(), blank=True,
                                   help_text=_("Still image representation of the video."), default="")
+    #: Boolean: Is this GlossVideo public? Do you want to show it in the public interface, for a published Gloss?
     is_public = models.BooleanField(_("Public"), default=True, help_text="Is this video is public or private?")
+    #: The Gloss this GlossVideo belongs to.
     gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
                               help_text=_("The gloss this GlossVideo is related to."))
+    #: The Dataset/Lexicon this GlossVideo is part of.
     dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"), null=True,
                                 help_text=_("Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
                                             "was uploaded."))
     # Translators: GlossVideo: version
+    #: Version number of the GlossVideo within Glosses videos.
     version = models.IntegerField(_("Version"), default=0,
                                   help_text=_("A number that represents the order of the Glossvideo's in "
                                               "a gloss page. Smaller number means higher priority."))

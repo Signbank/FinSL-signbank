@@ -22,15 +22,23 @@ from tagging.models import Tag
 
 @python_2_unicode_compatible
 class Dataset(models.Model):
-    """A dataset, can be public/private and can be of only one SignLanguage"""
+    """Dataset/Lexicon of which Glosses are part of."""
+    #: A private name for the Dataset. Can include abbrevations not recognizable by the general users.
     name = models.CharField(_("Name"), unique=True, blank=False, null=False, max_length=60)
+    #: Public name for the Dataset, intended for users of the public interface.
     public_name = models.CharField(_("Public name"), max_length=60)
+    #: Boolean defining whether to show this Dataset in the public interface.
     is_public = models.BooleanField(_("Is public"), default=False, help_text="Is this dataset is public or private?")
+    #: The Sign Language of the Glosses in this Dataset.
     signlanguage = models.ForeignKey("SignLanguage")
+    #: The translation equivalent languages that should be available to the Glosses of this Dataset.
     translation_languages = models.ManyToManyField("Language", help_text="These languages are shown as options"
                                                                          "for translation equivalents.")
+    #: A description of the Dataset: who maintains it, what is its purpose, etc.
     description = models.TextField(_("Description"))
+    #: The copyright statement for the data in this Dataset, the license used for the videos etc.
     copyright = models.TextField(_("Copyright"))
+    #: The admins of this Dataset. Admins receive notifications when a user applies for permissins for the Dataset.
     admins = models.ManyToManyField(User)
 
     class Meta:
@@ -48,8 +56,11 @@ class Dataset(models.Model):
 @python_2_unicode_compatible
 class GlossTranslations(models.Model):
     """Store a string representation of translation equivalents of certain Language for a Gloss."""
+    #: The Gloss to translate
     gloss = models.ForeignKey("Gloss")
+    #: The written/spoken Language of the translations.
     language = models.ForeignKey("Language")
+    #: The fields that contains the translations, a text field.
     translations = models.TextField(blank=True)
 
     class Meta:
@@ -115,9 +126,13 @@ class GlossTranslations(models.Model):
 @reversion.register()
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
+    #: The Gloss to translate.
     gloss = models.ForeignKey("Gloss")
+    #: The written/spoken Language of the translation.
     language = models.ForeignKey("Language")
+    #: The Keyword of the translation, the textual form.
     keyword = models.ForeignKey("Keyword")
+    #: The order number of the Translation within a Glosses Translations.
     order = models.IntegerField("Order")
 
     class Meta:
@@ -134,6 +149,7 @@ class Translation(models.Model):
 @reversion.register()
 class Keyword(models.Model):
     """A keyword that stores the text for translation(s)"""
+    #: The text of a Keyword.
     text = models.CharField(max_length=100, unique=True)
 
     class Meta:
@@ -151,11 +167,15 @@ class Keyword(models.Model):
 @python_2_unicode_compatible
 class Language(models.Model):
     """A written language, used for translations in written languages."""
+    #: The name of a spoken/written Language.
     name = models.CharField(max_length=50)
+    #: The ISO 639-1 code of the Language (2 characters long).
     language_code_2char = models.CharField(unique=False, blank=False, null=False, max_length=2, help_text=_(
         """ISO 639-1 language code (2 characters long) of a written language."""))
+    #: The ISO 639-3 code of the Language (3 characters long).
     language_code_3char = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
         """ISO 639-3 language code (3 characters long) of a written language."""))
+    #: Description of the Language.
     description = models.TextField()
 
     class Meta:
@@ -170,7 +190,9 @@ class Language(models.Model):
 @python_2_unicode_compatible
 class SignLanguage(models.Model):
     """A sign language."""
+    #: The name of the Sign Language
     name = models.CharField(max_length=50)
+    #: The ISO 639-3 code of the Sign Language (3 characters long).
     language_code_3char = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
         """ISO 639-3 language code (3 characters long) of a sign language."""))
 
@@ -186,8 +208,11 @@ class SignLanguage(models.Model):
 @python_2_unicode_compatible
 class Dialect(models.Model):
     """A dialect name - a regional dialect of a given Language"""
+    #: The Language of the Dialect.
     language = models.ForeignKey("SignLanguage")
+    #: Name of the Dialect.
     name = models.CharField(max_length=50)
+    #: Description of the Dialect.
     description = models.TextField()
 
     class Meta:
@@ -202,12 +227,16 @@ class Dialect(models.Model):
 @python_2_unicode_compatible
 class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
+    #: The source Gloss of the relation.
     gloss = models.ForeignKey("Gloss")
     # Translators: RelationToForeignSign field verbose name
+    #: Boolean: Is this a loan sign?
     loan = models.BooleanField(_("Loan Sign"), default=False)
     # Translators: RelationToForeignSign field verbose name
+    #: The language of the related sign.
     other_lang = models.CharField(_("Related Language"), max_length=20)
     # Translators: RelationToForeignSign field verbose name
+    #: The name of the Gloss in the related language.
     other_lang_gloss = models.CharField(
         _("Gloss in related language"), max_length=50)
 
@@ -227,8 +256,11 @@ class RelationToForeignSign(models.Model):
 
 @python_2_unicode_compatible
 class FieldChoice(models.Model):
+    #: The name of the FieldChoice.
     field = models.CharField(max_length=50)
+    #: English (verbose) name of the FieldChoice.
     english_name = models.CharField(max_length=50)
+    #: Machine value of the FieldChoice, its ID number.
     machine_value = models.IntegerField(unique=True)
 
     def __str__(self):
@@ -276,37 +308,36 @@ class Gloss(models.Model):
             # Translators: Gloss permissions
             ('publish_gloss', _('Can publish and unpublish Glosses')),
         )
-    # *** Fields begin ***
-
+    # ### Fields ###
+    #: Boolean: Is this Gloss published in the public interface?
     published = models.BooleanField(_("Published"), default=False)
-
+    #: The Dataset (Lexicon) this Gloss is part of.
     dataset = models.ForeignKey("Dataset", verbose_name=_("Glosses dataset"),
                                 help_text=_("Dataset a gloss is part of"))
-
-    # Gloss in Finnish. This is the unique identifying name of a Gloss.
     # Translators: Gloss field: idgloss, verbose name
+    #: Gloss in Finnish. This is the unique identifying name of the Gloss.
     idgloss = models.CharField(_("Gloss"), max_length=60,
                                # Translators: Help text for Gloss field: idgloss
                                help_text=_("""This is the unique identifying name of a Gloss."""))
-
-    # Gloss in English. This is the English name of a Gloss.
     # Translators: Gloss field: idgloss_en (english), verbose name
+    #: Gloss in English. This is the English name of the Gloss.
     idgloss_en = models.CharField(_("Gloss in English"), blank=True, max_length=60,
                                   # Translators: Help text for Gloss field: idgloss_en (english)
                                   help_text=_("""This is the English name for the Gloss"""))
-
     # Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
+    #: Notes about the Gloss.
     notes = models.TextField(_("Notes"), blank=True)
 
-    ########
-
-    # One or more regional dialects that this gloss is used in
+    #: One or more regional dialects that this Gloss is used in.
     dialect = models.ManyToManyField(Dialect, blank=True)
 
-    # Fields representing creation time, updated_at time, creator and updater
+    #: The DateTime when the Gloss was created.
     created_at = models.DateTimeField(auto_now_add=True)
+    #: The User who created the Gloss.
     created_by = models.ForeignKey(User, related_name='created_by_user')
+    #: The DateTime when the Glosses information was last updated.
     updated_at = models.DateTimeField(auto_now=True)
+    #: The User who last updated the Glosses information.
     updated_by = models.ForeignKey(User, related_name='updated_by_user')
 
     # ### Phonology fields ###
@@ -500,7 +531,9 @@ class Gloss(models.Model):
 @python_2_unicode_compatible
 class GlossURL(models.Model):
     """URL's for gloss"""
+    #: The Gloss the URL belongs to.
     gloss = models.ForeignKey('Gloss')
+    #: The URL, a websites address.
     url = models.URLField(max_length=200)
 
     class Meta:
@@ -514,7 +547,9 @@ class GlossURL(models.Model):
 @python_2_unicode_compatible
 class AllowedTags(models.Model):
     """Tags a model is allowed to use."""
+    #: The tags that are shown in tag lists.
     allowed_tags = models.ManyToManyField(Tag)
+    #: The ContentType of the object whose AllowedTags we set.
     content_type = models.OneToOneField(ContentType)
 
     class Meta:
@@ -528,10 +563,13 @@ class AllowedTags(models.Model):
 @python_2_unicode_compatible
 class GlossRelation(models.Model):
     """Relation between two glosses"""
+    #: The source Gloss of the Relation.
     source = models.ForeignKey(Gloss, related_name="glossrelation_source")
+    #: The target Gloss of the Relation, the Gloss to which the source Gloss related to.
     target = models.ForeignKey(Gloss, related_name="glossrelation_target")
 
     def tag(self):
+        """The type of the Relation, a Tag."""
         return list(Tag.objects.get_for_object(self))
     tag.short_description = 'Relation type'
 
