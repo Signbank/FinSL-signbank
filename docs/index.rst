@@ -2,23 +2,25 @@
    sphinx-quickstart on Wed Jun 13 16:41:55 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
-.. _index:
 
-FinSL-signbank's documentation
+==============================
+FinSL-signbank documentation
 ==============================
 :Date: |today|
 :Version: |version|
 
-**FinSL-signbank** is a Django web framework based application for managing
-**sign language** lexicons.
+.. rubric:: FinSL-signbank is a Django web framework based application for
+            managing *sign language* lexicons.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    installation
    configuration
    changelog
+   apps/index
+   glossary
 
 Features
 --------
@@ -33,13 +35,13 @@ Features
     - Translation equivalents in any language(s) you want.
     - Relationships between Glosses.
     - Sign language, notes, URLs, comments, etc.
-- Separate views for viewing and editing detailed gloss data, and a non-editable
-  for the public.
+- Separate user interfaces for viewing and editing detailed gloss data, and
+  a non-editable interface for the public.
 - Export you lexicon to be used with annotation of videos with `ELAN`_.
-- The user interface is translated to several languages.
+- The user interface is translated into several languages.
     - You can create translations for any language.
-- View complete version history of Glosses and revert when needed.
-- View a network graph of relationships between glosses per lexicon.
+- View complete version history of Glosses and revert changes when needed.
+- See a network graph of relationships between glosses per lexicon.
 
 .. _ELAN: https://tla.mpi.nl/tools/tla-tools/elan/
 
