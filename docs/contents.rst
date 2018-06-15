@@ -2,8 +2,11 @@
 FinSL-signbank documentation contents
 =====================================
 
+Contents
+========
+
 .. toctree::
-    :hidden:
+    :maxdepth: 1
 
     index
 
@@ -11,14 +14,16 @@ FinSL-signbank documentation contents
     :maxdepth: 3
 
     installation
-    configuration
+    settings
     changelog
     apps/index
     glossary
 
 Indices, glossary and tables
 ============================
-
+
 * :ref:`genindex`
+
 * :ref:`modindex`
+
 * :doc:`glossary`

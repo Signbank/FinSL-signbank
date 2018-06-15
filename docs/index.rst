@@ -17,7 +17,8 @@ FinSL-signbank documentation
    :caption: Contents:
 
    installation
-   configuration
+   settings
+   translation
    changelog
    apps/index
    glossary
@@ -79,5 +80,5 @@ Installation (in short)
 
 .. _settings files: https://github.com/Signbank/FinSL-signbank/tree/master/signbank/settings
 
-.. attention::
-    See :ref:`installation` for more detailed instructions.
+.. note::
+    See :ref:`installation` and :ref:`settings` for more detailed instructions.

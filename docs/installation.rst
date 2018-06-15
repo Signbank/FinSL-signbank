@@ -1,19 +1,25 @@
 .. _installation:
 
+============
 Installation
 ============
 
-*Updated on June 13th 2018 by* `@henrinie`_
+*Updated on June 15th 2018 by* `@henrinie`_
 
 .. _@henrinie: https://github.com/henrinie
 
-These instructions are meant for linux operating systems. For Windows or MacOS
-some parts might be relevant, look up python and `django docs`_ for further instructions for those operating systems.
+These instructions are written for linux operating systems. For Windows or MacOS
+some parts might be relevant, look up `python docs`_ and `django docs`_ for
+further instructions for those operating systems.
 
+.. _python docs: https://docs.python.org/3/index.html
 .. _django docs: https://docs.djangoproject.com/en/stable/
 
 Set up the environment
 -----------------------
+
+Clone the git repository, create a python virtual environment, install
+dependencies with pip, and configure the relevant settings.
 
 Git repository
 ^^^^^^^^^^^^^^
@@ -28,7 +34,8 @@ Clone the repository to your machine from GitHub:
 Python Virtual Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create a `virtual environment in python3 <https://docs.python.org/3/library/venv.html>`_:
+Create a
+`virtual environment in python3 <https://docs.python.org/3/library/venv.html>`_:
 
 .. code-block:: bash
 
@@ -55,7 +62,8 @@ Install required python dependencies:
 Configure settings
 ^^^^^^^^^^^^^^^^^^
 
-Edit settings files in FinSL-signbank/signbank/settings/ and change the paths in:
+Edit settings files in FinSL-signbank/signbank/settings/ and change the paths
+in:
 
 .. code-block:: python
 
@@ -115,18 +123,25 @@ Edit settings/settings_secret.py
     }
 
 .. tip::
-    Generate `a random secret key <http://www.miniwebtool.com/django-secret-key-generator/>`_
+    Generate
+    `a random secret key <http://www.miniwebtool.com/django-secret-key-generator/>`_
 
 
 Databases
 ---------
 
-We kindly recommend using PostgreSQL with FinSL-signbank, because django-framework is optimized to run on PostgreSQL. We have used MySQL in the past, but at least in our case we started to experience some problems with migrations.
+We kindly recommend using PostgreSQL with FinSL-signbank, because
+django-framework is optimized to run on PostgreSQL. We have used MySQL in the
+past, but at least in our case we started to experience some problems with
+migrations.
 
 PostgreSQL
 ^^^^^^^^^^
 
-When you are ready to switch to a database server, PostgreSQL is our recommendation, see django docs for more information about setting django up with PostgreSQL: `<https://docs.djangoproject.com/en/stable/ref/databases/#postgresql-notes>`_.
+When you are ready to switch to a database server, PostgreSQL is our
+recommendation, see django docs for more information about setting django up
+with PostgreSQL:
+`<https://docs.djangoproject.com/en/stable/ref/databases/#postgresql-notes>`_.
 
 In your postgresql.conf make sure you have the following:
 
@@ -175,7 +190,9 @@ Edit the following lines in settings/secret_settings.py:
 MySQL
 ^^^^^
 
-If your database of choice is `MySQL <https://docs.djangoproject.com/en/stable/ref/databases/#mysql-notes>`_, create my.cnf for your MySQL credentials
+If your database of choice is
+`MySQL <https://docs.djangoproject.com/en/stable/ref/databases/#mysql-notes>`_,
+create my.cnf for your MySQL credentials
 
 .. code-block:: bash
 
@@ -187,13 +204,15 @@ If your database of choice is `MySQL <https://docs.djangoproject.com/en/stable/r
     port = 3306 # Or whichever is the correct one for your setting
     default-character-set = utf8 # This is pretty much required with django
 
-After done with my.cnf settings, make sure that the file is not accessible by anyone else than you
+After done with my.cnf settings, make sure that the file is not accessible by
+anyone else than you
 
 .. code-block:: bash
 
     $ chmod 600 my.cnf
 
-If you have problems with access by apache, place your my.cnf in a place where it can be accessed, or play with the user rights in the current location.
+If you have problems with access by apache, place your my.cnf in a place where
+it can be accessed, or play with the user rights in the current location.
 
 Edit settings/secret_settings.py
 
@@ -215,13 +234,16 @@ Then install MySQL-python with pip when your virtual environment is activated.
 
     $ pip install MySQL-python
 
-On RHEL and CentOS you might need additional packages, if the pip installing of MySQL-python is not working, you might try to install mariadb-devel. For debian based distributions the package name might be different.
+On RHEL and CentOS you might need additional packages, if the pip installing
+of MySQL-python is not working, you might try to install mariadb-devel. For
+debian based distributions the package name might be different.
 
 .. code-block:: bash
 
     $ sudo yum install mariadb-devel
 
-It might be required that you install MySQL-python again with pip. Remove it and install it again without using the cache.
+It might be required that you install MySQL-python again with pip. Remove it
+and install it again without using the cache.
 
 .. code-block:: bash
 
@@ -249,7 +271,8 @@ Change these settings in settings/base.py according to your needs
 Django debug toolbar
 ^^^^^^^^^^^^^^^^^^^^
 
-Using django debug toolbar is optional, but recommended as it is very useful for evaluating of the actual SQL queries for example.
+Using django debug toolbar is optional, but recommended as it is very useful
+for evaluating of the actual SQL queries for example.
 
 To install django debug toolbar (while your virtual environment is active):
 
@@ -257,7 +280,8 @@ To install django debug toolbar (while your virtual environment is active):
 
     $ pip install django-debug-toolbar
 
-If you don't want to use django debug toolbar, remove or comment out the following lines in settings/development.py:
+If you don't want to use django debug toolbar, remove or comment out the
+following lines in settings/development.py:
 
 .. code-block:: python
 
@@ -291,7 +315,8 @@ Make sure you are in your environment
 
     $ source /path/to/venv/bin/activate
 
-First create migrations for django flatpages app to add translation fields with django-modeltranslation:
+First create migrations for django flatpages app to add translation fields with
+django-modeltranslation:
 
 .. code-block:: bash
 
@@ -309,8 +334,13 @@ Load fixture for flatpages:
 
     $ python FinSL-signbank/bin/develop.py loaddata flatpages_initial_data
 
-*Note: In MySQL you might need to change the default collation, if the utf8_general_ci doesn't match your languages alphabetical order. You might need to do this to all the tables of the signbank app (not on the ones that begin with django_ or auth_).*
-*Take a look at:* `<http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-sets.html>`_ and `<https://docs.djangoproject.com/en/stable/ref/databases/#collation-settings>`_
+*Note: In MySQL you might need to change the default collation, if the
+utf8_general_ci doesn't match your languages alphabetical order. You might
+need to do this to all the tables of the signbank app (not on the ones that
+begin with django_ or auth_).*
+*Take a look at:*
+`<http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-sets.html>`_ and
+`<https://docs.djangoproject.com/en/stable/ref/databases/#collation-settings>`_
 
 .. _mysql charset:
 .. _django collation:
@@ -334,7 +364,14 @@ Apache + mod_wsgi
 
 This process can differ between linux distributions. Take a look at `django documentation`_.
 
-You can read about the settings in `django documentation`_. These settings work with CentOS7 and apache httpd 2.4. The location of the configurations vary between linux distributions. It is important to note that you should definitely store FinSL-signbank and django files outside of the path your webserver serves to the web (f.ex. /var/www/), I suggest that you store the files inside your /home/ folder. This way you avoid the risk of your settings, code and files being accessible from the web. Your wsgi.py file should be located at FinSL-signbank/signbank/wsgi.py.
+You can read about the settings in `django documentation`_.
+These settings work with CentOS7 and apache httpd 2.4. The location of the
+configurations vary between linux distributions. It is important to note that
+you should definitely store FinSL-signbank and django files outside of the path
+your webserver serves to the web (f.ex. /var/www/), I suggest that you store
+the files inside your /home/ folder. This way you avoid the risk of your
+settings, code and files being accessible from the web. Your wsgi.py file
+should be located at FinSL-signbank/signbank/wsgi.py.
 
 .. _django documentation: https://docs.djangoproject.com/en/stable/howto/deployment/wsgi/
 
@@ -375,9 +412,9 @@ You can read about the settings in `django documentation`_. These settings work 
 Apache envvars
 ^^^^^^^^^^^^^^
 
-If you are running Signbank with apache (or probably any web server), make sure it is running on the right locale.
-For example in CentOS Apache seemed to run on LANG=C by default.
-To avoid problems with non-ascii characters,
+If you are running Signbank with apache (or probably any web server), make sure
+it is running on the right locale. For example in CentOS Apache seemed to run
+on LANG=C by default. To avoid problems with non-ascii characters,
 add these values to your web server evnvvars (in CentOS /etc/sysconfig/httpd):
 
 .. code-block:: bash
@@ -389,5 +426,9 @@ add these values to your web server evnvvars (in CentOS /etc/sysconfig/httpd):
 HTTPS
 ^^^^^
 
-It is strongly recommended that you run your production server with HTTPS. For this take a look at the HTTPS specific settings in the settings files. Have a look at the django docs: `<https://docs.djangoproject.com/en/stable/topics/security/#ssl-https>`_
-And also configure your domain properly for HTTPS. If you need free certificates check out LetsEncrypt at `<https://letsencrypt.org/>`_.
+It is strongly recommended that you run your production server with HTTPS.
+For this take a look at the HTTPS specific settings in the settings files.
+Have a look at the django docs:
+`<https://docs.djangoproject.com/en/stable/topics/security/#ssl-https>`_
+And also configure your domain properly for HTTPS. If you need free
+certificates check out LetsEncrypt at `<https://letsencrypt.org/>`_.
