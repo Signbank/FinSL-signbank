@@ -8,7 +8,7 @@ To build HTML docs:
 
 * In the docs/ directory, run ``make html`` (``make.bat html`` on windows)
 
-This command builds HTML docs to be viewable in build/html/index.html
+This command builds HTML docs to be viewable in _build/html/index.html
 
 [1] http://docutils.sourceforge.net/rst.html
 [2] http://sphinx-doc.org/
