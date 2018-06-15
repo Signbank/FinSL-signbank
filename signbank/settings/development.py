@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Development environment settings for FinSL-signbank."""
 from __future__ import unicode_literals
 
 from signbank.settings.base import *
@@ -6,10 +7,10 @@ from signbank.settings.base import *
 # The following settings are defined in settings_secret:
 # SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
 
-# Debug should be True in development but not in production!
+#: Debug should be True in development but not in production!
 DEBUG = True
 
-# A list of directories where Django looks for translation files.
+#: A list of directories where Django looks for translation files.
 LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, 'locale'),
 )
@@ -40,7 +41,7 @@ MEDIA_URL = '/media/'
 UPLOAD_ROOT = MEDIA_ROOT + 'upload/'
 UPLOAD_URL = MEDIA_URL + 'upload/'
 
-# To test emailing, use this to show emails in the console
+#: To test emailing, use this to show emails in the console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGGING = {

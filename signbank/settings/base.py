@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-,
+"""Django settings for FinSL-signbank, base settings shared by all settings files."""
 from __future__ import unicode_literals
 
-from signbank.settings.settings_secret import *
-from django.utils.translation import ugettext_lazy as _
 import os
-# Django settings for Signbank project.
-# *** In development run bin/development.py to use development settings.
-# *** In production run bin/production.py to use production settings.
+
+from django.utils.translation import ugettext_lazy as _
+
+from signbank.settings.settings_secret import *
 # settings_secret.py is imported in this settings file, you should put the sensitive information in that file.
 
 # Absolute path to the base directory of the application.
@@ -18,23 +18,23 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 # when BrokenLinkEmailsMiddleware is enabled. ADMINS are set in secret_settings.
 MANAGERS = ADMINS
 
-# A string representing the time zone for this installation.
+#: A string representing the time zone for this installation.
 TIME_ZONE = 'Europe/Helsinki'
 
-# A string representing the language code for this installation. This should be in standard language ID format.
-# For example, U.S. English is "en-us".
+#: A string representing the language code for this installation. This should be in standard language ID format.
+#: For example, U.S. English is "en-us".
 LANGUAGE_CODE = 'fi'
 
 # The ID, as an integer, of the current site in the django_site database table.
 SITE_ID = 1
-# A boolean that specifies whether Django's translation system should be enabled.
+#: A boolean that specifies whether Django's translation system should be enabled.
 USE_I18N = True
-# A boolean that specifies if localized formatting of data will be enabled by default or not.
+#: A boolean that specifies if localized formatting of data will be enabled by default or not.
 USE_L10N = True
-# A boolean that specifies if datetimes will be timezone-aware by default or not.
+#: A boolean that specifies if datetimes will be timezone-aware by default or not.
 USE_TZ = True
-# A list of all available languages.
-# The list is a list of two-tuples in the format (language code, language name) - for example, ('ja', 'Japanese').
+#: A list of all available languages.
+#: The list is a list of two-tuples in the format (language code, language name) - for example, ('ja', 'Japanese').
 LANGUAGES = (
     ('fi', _('Finnish')),
     ('en', _('English')),
@@ -43,13 +43,13 @@ LANGUAGES = (
 # URL to use when referring to static files located in STATIC_ROOT.
 # Example: "/static/" or "http://static.example.com/"
 STATIC_URL = '/static/'
-# The list of finder backends that know how to find static files in various locations.
+#: The list of finder backends that know how to find static files in various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-# A list of middleware classes to use. The order of middleware classes is critical!
+#: A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE = [
     # If want to use some of the HTTPS settings in secret_settings, enable SecurityMiddleware
     #'django.middleware.security.SecurityMiddleware',
@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-# A list of authentication backend classes (as strings) to use when attempting to authenticate a user.
+#: A list of authentication backend classes (as strings) to use when attempting to authenticate a user.
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "guardian.backends.ObjectPermissionBackend",
@@ -103,9 +103,9 @@ ROOT_URLCONF = 'signbank.urls'
 # The full Python path of the WSGI application object that Django's built-in servers (e.g. runserver) will use.
 WSGI_APPLICATION = 'signbank.wsgi.application'
 
-# A list of strings designating all applications that are enabled in this Django installation.
-# Dotted Python path to: an application configuration class (preferred), or a package containing an application.
-# The order of the apps matter!
+#: A list of strings designating all applications that are enabled in this Django installation.
+#: Dotted Python path to: an application configuration class (preferred), or a package containing an application.
+#: The order of the apps matter!
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,20 +131,20 @@ INSTALLED_APPS = (
 )
 
 ABSOLUTE_URL_OVERRIDES = {
-    # Allow using admin change url for notifications.
+    #: Allow using admin change url for notifications.
     'auth.user': lambda user: "/admin/auth/user/%s/change/" % user.id,
 }
 
-# Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main
-# storage location
+#: Location for upload of videos relative to MEDIA_ROOT, videos are stored here prior to copying over to the main
+#: storage location
 VIDEO_UPLOAD_LOCATION = "upload"
 
-# How many days a user has until activation time expires. Django-registration related setting.
+#: How many days a user has until activation time expires. Django-registration related setting.
 ACCOUNT_ACTIVATION_DAYS = 7
-# A boolean indicating whether registration of new accounts is currently permitted.
+#: A boolean indicating whether registration of new accounts is currently permitted.
 REGISTRATION_OPEN = True
 
-# The URL where requests are redirected after login when the contrib.auth.login view gets no next parameter.
+#: The URL where requests are redirected after login when the contrib.auth.login view gets no next parameter.
 LOGIN_REDIRECT_URL = '/'
 
 # For django-tagging: force tags to be lowercase.
