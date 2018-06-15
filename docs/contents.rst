@@ -15,6 +15,7 @@ Contents
 
     installation
     settings
+    translation
     changelog
     apps/index
     glossary

@@ -89,8 +89,8 @@ For example the `locale/fi/LC_MESSAGES/django.po
 <https://github.com/Signbank/FinSL-signbank/blob/master/locale/fi/LC_MESSAGES/django.po>`_
 for Finnish translations:
 
-.. include:: ../locale/fi/LC_MESSAGES/django.po
-    :code: python
+.. literalinclude:: ../locale/fi/LC_MESSAGES/django.po
+    :language: python
     :start-after: #:
     :end-before: #:
 
@@ -117,7 +117,7 @@ In production:
 For more information see:
 `<https://docs.djangoproject.com/en/stable/ref/django-admin/#compilemessages>`_
 
-Translate **Flat pages**
+Translate Flat pages
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open the edit page for the Flat page you want to edit. For each Flat page you

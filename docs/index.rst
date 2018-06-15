@@ -53,8 +53,8 @@ Requirements
 
 - Python 3.4
 - Django 1.11
-- PostgreSQL, MySQL, SQLite3
-- Apache+mod_wsgi, nginx
+- PostgreSQL (or MySQL, SQLite3)
+- Apache+mod_wsgi (or nginx)
 
 Python dependencies are listed in `requirements.txt`_:
 
