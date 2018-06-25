@@ -31,11 +31,11 @@
 
             <li><a href="{% url "dictionary:public_gloss_list" %}">{% blocktrans %}Signs{% endblocktrans %}</a></li>
 
-        {% if perms.dictionary.search_gloss %}
+        {% if user.is_authenticated %}
+            {% if perms.dictionary.search_gloss %}
             <li><a href="{% url "dictionary:admin_gloss_list" %}">{% blocktrans context "menu-link" %}Advanced search{% endblocktrans %}</a></li>
             <li><a href="{% url 'dictionary:search_glossrelation' %}">{% blocktrans %}Search relations{% endblocktrans %}</a></li>
-        {% endif %}
-        {% if user.is_authenticated %}
+            {% endif %}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     {% blocktrans %}Manage{% endblocktrans %} <span class="caret"></span></a>

@@ -90,7 +90,7 @@ class ManageLexiconsListView(ListView):
         context = super().get_context_data(**kwargs)
         qs = self.get_queryset()
         context['has_permissions'] = qs.filter(has_view_perm=True)
-        context['no_permissions'] = qs.filter(has_view_perm=None)
+        context['no_permissions'] = qs.filter(has_view_perm=False)
         # Show users with permissions to lexicons to SuperUsers
         if self.request.user.is_superuser:
             for lexicon in context['has_permissions']:
@@ -104,10 +104,11 @@ class ManageLexiconsListView(ListView):
         allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
         # Get queryset
         qs = super().get_queryset()
-        if allowed_datasets:
-            qs = qs.annotate(
-                has_view_perm=Case(When(Q(id__in=allowed_datasets), then=Value(True)), output_field=BooleanField()))
-
+        qs = qs.annotate(
+            has_view_perm=Case(
+                When(Q(id__in=allowed_datasets), then=Value(True)),
+                default=Value(False), output_field=BooleanField()))
+        qs = qs.select_related('signlanguage')
         return qs
 
 
