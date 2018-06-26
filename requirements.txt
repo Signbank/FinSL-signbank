@@ -4,7 +4,7 @@ django-reversion==2.0.13
 django-bootstrap3==10.0.1
 django-summernote==0.8.8.7
 django-modeltranslation==0.12.2
-django-registration==2.2
+django-registration==2.4.1
 django-contrib-comments==1.8.0
 django-guardian==1.4.9
 django-notifications-hq==1.4
