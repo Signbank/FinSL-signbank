@@ -96,33 +96,50 @@ production.py
 
 secret_settings.py
 ^^^^^^^^^^^^^^^^^^
-.. currentmodule:: signbank.settings.settings_secret
 
-.. autodata:: ADMINS
-    :annotation:
-.. autodata:: DATABASES
-    :annotation:
-.. autodata:: DB_IS_PSQL
-    :annotation:
-.. autodata:: PSQL_DB_QUOTA
-    :annotation:
-.. autodata:: PSQL_DB_NAME
-    :annotation:
+signbank.settings.settings_secret.\ **ADMINS**
+""""""""""""""""""""""""""""""""""""""""""""""
+    A list of all the people who get code error notifications. When DEBUG=False and a view raises an exception, Django will email these people with the full exception information.
 
-.. autodata:: DEFAULT_FROM_EMAIL
-    :annotation:
-.. autodata:: EMAIL_HOST
-    :annotation:
-.. autodata:: EMAIL_PORT
-    :annotation:
 
-.. autodata:: SECRET_KEY
-    :annotation:
-.. autodata:: SERVER_EMAIL
-    :annotation:
+signbank.settings.settings_secret.\ **DATABASES**
+"""""""""""""""""""""""""""""""""""""""""""""""""
+    A dictionary containing the settings for all databases to be used with Django.
+
+signbank.settings.settings_secret.\ **DB_IS_PSQL**
+""""""""""""""""""""""""""""""""""""""""""""""""""
+    Is the database engine used is postgresql?
+
+signbank.settings.settings_secret.\ **PSQL_DB_QUOTA**
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+    Maximum size of database in bytes, controlled outside of this application. Fill it in if you have a quota.
+
+signbank.settings.settings_secret.\ **PSQL_DB_NAME**
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+    The name of a database used.
+
+signbank.settings.settings_secret.\ **DEFAULT_FROM_EMAIL**
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    Default email address to use for various automated correspondence from the site manager(s). Note: You can also use the following form ‘Webmaster <webmaster@yourdomain.com>’
+
+signbank.settings.settings_secret.\ **EMAIL_HOST**
+""""""""""""""""""""""""""""""""""""""""""""""""""
+    The host to use for sending email.
+
+signbank.settings.settings_secret.\ **EMAIL_PORT**
+""""""""""""""""""""""""""""""""""""""""""""""""""
+    Port to use for the SMTP server defined in EMAIL_HOST.
+
+signbank.settings.settings_secret.\ **SECRET_KEY**
+""""""""""""""""""""""""""""""""""""""""""""""""""
+    Make this unique, and don’t share it with anybody. This is used to provide cryptographic signing.
+
+signbank.settings.settings_secret.\ **SERVER_EMAIL**
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+    The email address that error messages come from, such as those sent to ADMINS and MANAGERS. Note: You can also use the following form ‘Webmaster <webmaster@yourdomain.com>’
 
 testing.py
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
 
 The **testing.py** settings file currently only imports **development.py**
 settings.
