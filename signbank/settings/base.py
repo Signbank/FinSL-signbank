@@ -13,6 +13,8 @@ try:
     from signbank.settings.settings_secret import *
 except ImportError:
     print('Unable to import settings_secret.py. Create one from settings_secret.py.template.', file=sys.stderr)
+    # Unable to import SECRET_KEY from settings_secret.
+    SECRET_KEY = 'INSERT_$$$$_YOUR_%%%%_SECRET_@@@@_KEY_%%%%%%_HERE'
 
 
 # Absolute path to the base directory of the application.
@@ -26,6 +28,7 @@ try:
     MANAGERS = ADMINS
 except NameError:
     MANAGERS = ()
+
 #: A string representing the time zone for this installation.
 TIME_ZONE = 'Europe/Helsinki'
 
