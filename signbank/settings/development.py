@@ -68,7 +68,11 @@ DO_LOGGING = True
 LOG_FILENAME = 'debug.log'
 
 if DEBUG:
-    # Setting up debug toolbar.
-    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-    INSTALLED_APPS += ('debug_toolbar',)
-    DEBUG_TOOLBAR_CONFIG = {'RESULTS_CACHE_SIZE': 100}
+    try:
+        import debug_toolbar
+        # Setting up debug toolbar.
+        MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+        INSTALLED_APPS += ('debug_toolbar',)
+        DEBUG_TOOLBAR_CONFIG = {'RESULTS_CACHE_SIZE': 100}
+    except ImportError:
+        pass
