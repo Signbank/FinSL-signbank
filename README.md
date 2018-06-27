@@ -7,7 +7,7 @@
 FinSL-signbank is a web based database for **sign language** lexicons and corpuses.
 Sign language annotation will be easier, faster, and more accurate.
 
-**Technical documentation** for developers can be found at [https://finsl-signbank.readthedocs.io/]
+**Technical documentation** for developers can be found at https://finsl-signbank.readthedocs.io/
 
 **User documentation** is available at our [https://github.com/Signbank/FinSL-signbank/wiki][wiki]
 
@@ -40,7 +40,7 @@ Dependencies can be found in [requirements.txt][requirements.txt] and they can b
 
 # Documentation
 
-**Technical documentation** for developers can be found at [https://finsl-signbank.readthedocs.io/]
+**Technical documentation** for developers can be found at https://finsl-signbank.readthedocs.io/
 
 **User documentation** is available at our [https://github.com/Signbank/FinSL-signbank/wiki][wiki]
 
@@ -52,7 +52,7 @@ To install FinSL-signbank on linux with all the dependencies:
 
     $ pip install -r /path/to/finsl-signbank/requirements.txt
 
-For detailed information see [https://finsl-signbank.readthedocs.io/en/latest/installation.html][https://finsl-signbank.readthedocs.io/en/latest/installation.html]
+For detailed information see https://finsl-signbank.readthedocs.io/en/latest/installation.html
 
 # Contribution
 
