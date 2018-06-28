@@ -70,8 +70,8 @@ class GlossVideo(models.Model):
                 self.title = self.videofile.name
             # Set version, one higher than highest version.
             self.version = self.next_version()
+            super(GlossVideo, self).save(*args, **kwargs)
 
-        super(GlossVideo, self).save(*args, **kwargs)
         # Rename the videofile if object has gloss set, now that the object has a pk.
         if self.gloss:
             # Make sure glossvideo has the same dataset as gloss.
@@ -169,7 +169,7 @@ class GlossVideo(models.Model):
     @staticmethod
     def rename_glosses_videos(gloss):
         """Renames the filenames of selected Glosses videos to match the Gloss name"""
-        glossvideos = GlossVideo.objects.filter(gloss=gloss).order_by('version')
+        glossvideos = gloss.glossvideo_set.all().order_by('version')
         for glossvideo in glossvideos:
             glossvideo.save()
 
