@@ -5,7 +5,8 @@ import re
 import csv
 import codecs
 
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest, Http404
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest, Http404, \
+    HttpResponseNotAllowed, HttpResponseServerError
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
@@ -29,11 +30,6 @@ from ..video.models import GlossVideo
 def update_gloss(request, glossid):
     """View to update a gloss model from the jeditable jquery form
     We are sent one field and value at a time, return the new value once we've updated it."""
-
-    # Make sure that the user has the rights to change a gloss
-    if not request.user.has_perm('dictionary.change_gloss'):
-        # Translators: HttpResponseForbidden for update_gloss
-        return HttpResponseForbidden(_("Gloss Update Not Allowed"))
 
     # Get the gloss object or raise a Http404 exception if the object does not exist.
     gloss = get_object_or_404(Gloss, id=glossid)
@@ -60,21 +56,17 @@ def update_gloss(request, glossid):
         values = request.POST.getlist('value[]')
 
         if field.startswith('keywords_'):
-
             language_code_2char = field.split('_')[1]
             return update_keywords(gloss, field, value, language_code_2char=language_code_2char)
 
         elif field.startswith('relationforeign'):
-
             return update_relationtoforeignsign(gloss, field, value)
 
         # Had to add field != 'relation_between_articulators' because I changed its field name, and it conflicted here.
         elif field.startswith('relation') and field != 'relation_between_articulators':
-
             return update_relation(gloss, field, value)
 
         elif field.startswith('morphology-definition'):
-
             return update_morphology_definition(gloss, field, value)
 
         elif field == 'dialect':
@@ -95,14 +87,17 @@ def update_gloss(request, glossid):
             # If editing video title, update the GlossVideo's title
             if request.user.has_perm('video.change_glossvideo'):
                 # Get pk after string "video_title"
-                video_pk = field.split("video_title")[1]
+                video_pk = field.split('video_title')[1]
                 newvalue = value
                 try:
                     video = GlossVideo.objects.get(pk=video_pk)
                     video.title = value
                     video.save()
                 except GlossVideo.DoesNotExist:
-                    pass
+                    return HttpResponseBadRequest('{error} {values}'.format(error=_('GlossVideo does not exist'), values=values),
+                                                  content_type='text/plain')
+            else:
+                return HttpResponseForbidden('Missing permission: video.change_glossvideo')
 
         elif field.startswith('glossurl-'):
             if field == 'glossurl-create':
@@ -125,23 +120,12 @@ def update_gloss(request, glossid):
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest(_("Unknown field"), content_type='text/plain')
 
-            # special cases
-            # - Foreign Key fields (Language, Dialect)
-            # - keywords
-            # - videos
-            # - tags
-
             # Translate the value if a boolean
             if isinstance(Gloss._meta.get_field(field), NullBooleanField):
                 newvalue = value
                 value = (value == 'Yes')
 
-            # special value of 'notset' or -1 means remove the value
-            if value == 'notset' or value == -1 or value == '':
-                gloss.__setattr__(field, None)
-                gloss.save()
-                newvalue = ''
-            else:
+            if value != ' ' or value != '':
                 # See if the field is a ForeignKey
                 if gloss._meta.get_field(field).get_internal_type() == "ForeignKey":
                     gloss.__setattr__(field, FieldChoice.objects.get(machine_value=value))
@@ -151,7 +135,6 @@ def update_gloss(request, glossid):
 
                 # If the value is not a Boolean, return the new value
                 if not isinstance(value, bool):
-
                     f = Gloss._meta.get_field(field)
                     # for choice fields we want to return the 'display' version of the value
                     # Try to use get_choices to get correct choice names for FieldChoices
@@ -179,9 +162,12 @@ def update_gloss(request, glossid):
                     GlossVideo.rename_glosses_videos(gloss)
                 except (OSError, IOError):
                     # Catch error, but don't do anything for now.
-                    pass
+                    return HttpResponseServerError(_("Error: Unable to change videofiles names."))
 
         return HttpResponse(newvalue, content_type='text/plain')
+
+    else:
+        return HttpResponseNotAllowed(['POST'])
 
 
 def update_keywords(gloss, field, value, language_code_2char):
