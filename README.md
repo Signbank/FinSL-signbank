@@ -27,7 +27,7 @@ Main features:
 * Store relationships between glosses, view a network graph of these relationships.
 * Interface easily translatable to multiple languages.
 * Control access to lexicons per user/group.
-* Publish our lexicon and its glosses.
+* Publish lexicons and their glosses.
     * Separate interface for published glosses, detailed interface for researchers/annotators.
 * Add translation equivalents to your glosses in any language.
 
