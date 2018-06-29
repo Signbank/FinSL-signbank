@@ -119,6 +119,8 @@ $( document ).ready(function() {
                                 <article>
                                     <header><h5><strong><span class="dataset-{{lexicon.id}}-color label label-default">{{lexicon.public_name}}</span></strong></h5></header>
                                     <p>{% autoescape off %}{{lexicon.description}}{% endautoescape %}</p>
+                                    <h5><strong>{% blocktrans %}Copyright and license:{% endblocktrans %}</strong></h5>
+                                    <p>{% autoescape off %}{{lexicon.copyright}}{% endautoescape %}</p>
                                     {% if user.is_authenticated %}
                                     <p>{% blocktrans %}ELAN ECV{% endblocktrans %}:
                                         <a href="http://{{ request.get_host }}{% url 'dictionary:public_gloss_list_xml' lexicon.id %}">http://{{ request.get_host }}{% url 'dictionary:public_gloss_list_xml' lexicon.id %}</a></p>

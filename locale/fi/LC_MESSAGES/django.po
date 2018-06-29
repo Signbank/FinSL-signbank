@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-29 14:16+0300\n"
+"POT-Creation-Date: 2018-06-29 15:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1036,7 +1036,7 @@ msgstr "Klikkaa punaista tekstiä editoidaksesi"
 #: build/lib/signbank/video/templates/uploaded_glossvideos.html:55
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:198
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:85
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:175
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:177
 #: signbank/video/templates/uploaded_glossvideos.html:55
 msgid "Your browser does not support the video tag."
 msgstr "Selaimesi ei tue video tagia."
@@ -1637,40 +1637,40 @@ msgid "Description of the lexicons"
 msgstr "Leksikoiden kuvaukset"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:123
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:123
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:125
 msgid "ELAN ECV"
 msgstr "ELAN ECV"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:134
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:134
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:136
 msgctxt "public_search"
 msgid "Search"
 msgstr "Hae"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:157
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:157
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:159
 msgctxt "videocount"
 msgid "Videos"
 msgstr "Videoita"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:178
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:178
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:180
 msgid "No video."
 msgstr "Ei videota."
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:183
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:183
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:185
 msgctxt "publicglosslist"
 msgid "Translation equivalents"
 msgstr "Käännösvastineet"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:188
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:188
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:190
 msgid "No translation equivalents yet"
 msgstr "Ei vielä käännösvastineita"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:198
-#: signbank/dictionary/templates/dictionary/public_gloss_list.html:198
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:200
 msgid "No results."
 msgstr "Ei hakutuloksia."
 
@@ -2204,6 +2204,10 @@ msgstr "Poista ECV:stä"
 msgid "Exclude from ELAN externally controlled vocabularies (ECV)"
 msgstr "Poista ELANin externally controlled vocabularyistä (ECV)"
 
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:122
+msgid "Copyright and license:"
+msgstr "Tekijänoikeudet ja lisenssi:"
+
 #: signbank/dictionary/update.py:97
 msgid "GlossVideo does not exist"
 msgstr "GlossiVideoa ei ole olemassa"
@@ -2318,6 +2322,10 @@ msgstr "Etsi kommentteja"
 msgctxt "count"
 msgid "comments"
 msgstr "kommenttia"
+
+#: templates/flatpages/copyright.html:9
+msgid "Lexicon copyrights and licenses"
+msgstr ""
 
 #. Translators: Edit page button in baselayout
 #: templates/flatpages/default.html:20
