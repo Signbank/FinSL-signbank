@@ -1,7 +1,7 @@
 {
   "name": "finsl-signbank",
   "version": "1.0.0",
-  "description": "signlanguage corpus/dictionary",
+  "description": "sign language lexicon database",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,10 +21,7 @@
     "url": "https://github.com/Signbank/FinSL-signbank/issues"
   },
   "homepage": "https://github.com/Signbank/FinSL-signbank#readme",
-  "dependencies": {
-    "cookieconsent": "^3.0.6",
-    "dev": "^0.1.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "TagManager": "git+https://github.com/max-favilli/tagmanager.git",
     "at.js": "^1.5.4",
@@ -34,6 +31,7 @@
     "mark.js": "^8.11.1",
     "recordrtc": "^5.4.6",
     "sigma": "^1.2.1",
-    "typeahead.js": "^0.11.1"
+    "typeahead.js": "^0.11.1",
+    "cookieconsent": "^3.0.6"
   }
 }
