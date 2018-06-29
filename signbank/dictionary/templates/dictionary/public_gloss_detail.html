@@ -10,6 +10,24 @@
     <meta property="og:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
     <meta name="twitter:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
 {% endblock %}
+{% block structureddata %}
+    {% if first_video %}
+    <script type="application/ld+json">
+    // Video object, Structured data for Google
+    {
+      "@context": "http://schema.org",
+      "@type": "VideoObject",
+      "name": "{{gloss}} [{{gloss.dataset.public_name}}]",
+      "description": "{{metadesc}}",
+      "thumbnailUrl": [
+        "{{ request.scheme }}://{{ request.get_host }}{{ogimage}}"
+       ],
+      "contentUrl": "{{ request.scheme }}://{{ request.get_host }}{{first_video.get_absolute_url}}",
+      "embedUrl": "{{ request.scheme }}://{{ request.get_host }}{{first_video.get_absolute_url}}"
+    }
+    </script>
+    {% endif %}
+{% endblock %}
 {% block content %}
 <div class="container">
 <article>

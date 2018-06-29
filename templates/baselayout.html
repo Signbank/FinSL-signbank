@@ -18,7 +18,28 @@
     <meta property="og:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
     <meta name="twitter:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
     {% endblock %}
-
+<script type="application/ld+json">
+// Structured data for Google
+// Logo
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "{{ request.scheme }}://{{ request.get_host }}",
+  "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}"
+}
+// Sitelinks searchbox
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "{{ request.scheme }}://{{ request.get_host }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'dictionary:public_gloss_list' %}?keyword={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+    {% block structureddata %}{% endblock %}
     <link rel="stylesheet" media="screen" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/signbank.css' %}">

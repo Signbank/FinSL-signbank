@@ -105,9 +105,13 @@ class GlossDetailPublicView(DetailView):
         context["metadesc"] += "{langtxt}: {lang} / {videotxt}: {videocount} / {notestxt}: {notes}".format(
             langtxt=_("Sign language"), lang=gloss.dataset.signlanguage, videotxt=_("Videos"),
             videocount=gloss.glossvideo_set.all().count(), notestxt=_("Notes"), notes=gloss.notes)
+        try:
+            context["first_video"] = gloss.glossvideo_set.first()
+        except (AttributeError, ValueError):
+            context["first_video"] = None
         # Create og:image url for the gloss if the first glossvideo has a posterfile.
         try:
-            context["ogimage"] = gloss.glossvideo_set.first().posterfile.url
+            context["ogimage"] = context["first_video"].posterfile.url
         except (AttributeError, ValueError):
             context["ogimage"] = static('img/signbank_logo_ympyra1_sininen-compressor.png')
 
