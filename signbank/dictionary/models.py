@@ -28,18 +28,18 @@ class Dataset(models.Model):
     #: Public name for the Dataset, intended for users of the public interface.
     public_name = models.CharField(_("Public name"), max_length=60)
     #: Boolean defining whether to show this Dataset in the public interface.
-    is_public = models.BooleanField(_("Is public"), default=False, help_text="Is this dataset is public or private?")
+    is_public = models.BooleanField(_("Is public"), default=False, help_text=_("Is this dataset is public or private?"))
     #: The Sign Language of the Glosses in this Dataset.
-    signlanguage = models.ForeignKey("SignLanguage")
+    signlanguage = models.ForeignKey("SignLanguage", verbose_name=_("Sign language"))
     #: The translation equivalent languages that should be available to the Glosses of this Dataset.
-    translation_languages = models.ManyToManyField("Language", help_text="These languages are shown as options"
-                                                                         "for translation equivalents.")
+    translation_languages = models.ManyToManyField("Language", verbose_name=_("Translation equivalent languages"),
+                                                   help_text=_("These languages are options for translation equivalents."))
     #: A description of the Dataset: who maintains it, what is its purpose, etc.
     description = models.TextField(_("Description"))
     #: The copyright statement for the data in this Dataset, the license used for the videos etc.
     copyright = models.TextField(_("Copyright"))
     #: The admins of this Dataset. Admins receive notifications when a user applies for permissins for the Dataset.
-    admins = models.ManyToManyField(User)
+    admins = models.ManyToManyField(User, verbose_name=_("Admins"))
 
     class Meta:
         permissions = (
@@ -57,9 +57,9 @@ class Dataset(models.Model):
 class GlossTranslations(models.Model):
     """Store a string representation of translation equivalents of certain Language for a Gloss."""
     #: The Gloss to translate
-    gloss = models.ForeignKey("Gloss")
+    gloss = models.ForeignKey("Gloss", verbose_name=_("Gloss"))
     #: The written/spoken Language of the translations.
-    language = models.ForeignKey("Language")
+    language = models.ForeignKey("Language", verbose_name=_("Language"))
     #: The fields that contains the translations, a text field.
     translations = models.TextField(blank=True)
 
@@ -127,11 +127,11 @@ class GlossTranslations(models.Model):
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
     #: The Gloss to translate.
-    gloss = models.ForeignKey("Gloss")
+    gloss = models.ForeignKey("Gloss", verbose_name=_("Gloss"))
     #: The written/spoken Language of the translation.
-    language = models.ForeignKey("Language")
+    language = models.ForeignKey("Language", verbose_name=_("Language"))
     #: The Keyword of the translation, the textual form.
-    keyword = models.ForeignKey("Keyword")
+    keyword = models.ForeignKey("Keyword", verbose_name=_("Keyword"))
     #: The order number of the Translation within a Glosses Translations.
     order = models.IntegerField("Order")
 
@@ -209,7 +209,7 @@ class SignLanguage(models.Model):
 class Dialect(models.Model):
     """A dialect name - a regional dialect of a given Language"""
     #: The Language of the Dialect.
-    language = models.ForeignKey("SignLanguage")
+    language = models.ForeignKey("SignLanguage", verbose_name=_("Sign language"))
     #: Name of the Dialect.
     name = models.CharField(max_length=50)
     #: Description of the Dialect.
@@ -310,7 +310,11 @@ class Gloss(models.Model):
         )
     # ### Fields ###
     #: Boolean: Is this Gloss published in the public interface?
-    published = models.BooleanField(_("Published"), default=False)
+    published = models.BooleanField(_("Published"), default=False,
+                                    help_text=_("Publish this gloss in the public gloss list"))
+    #: Boolean: Exclude this gloss from all ELAN externally controlled vocabularies (ECV)?
+    exclude_from_ecv = models.BooleanField(_("Exclude from ECV"), default=False,
+                                           help_text=_("Exclude from ELAN externally controlled vocabularies (ECV)"))
     #: The Dataset (Lexicon) this Gloss is part of.
     dataset = models.ForeignKey("Dataset", verbose_name=_("Glosses dataset"),
                                 help_text=_("Dataset a gloss is part of"))
@@ -532,7 +536,7 @@ class Gloss(models.Model):
 class GlossURL(models.Model):
     """URL's for gloss"""
     #: The Gloss the URL belongs to.
-    gloss = models.ForeignKey('Gloss')
+    gloss = models.ForeignKey("Gloss", verbose_name=_("Gloss"))
     #: The URL, a websites address.
     url = models.URLField(max_length=200)
 
@@ -548,7 +552,7 @@ class GlossURL(models.Model):
 class AllowedTags(models.Model):
     """Tags a model is allowed to use."""
     #: The tags that are shown in tag lists.
-    allowed_tags = models.ManyToManyField(Tag)
+    allowed_tags = models.ManyToManyField(Tag, verbose_name=_("Allowed tags"))
     #: The ContentType of the object whose AllowedTags we set.
     content_type = models.OneToOneField(ContentType)
 

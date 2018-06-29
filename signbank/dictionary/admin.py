@@ -153,16 +153,28 @@ def unpublish(modeladmin, request, queryset):
     queryset.update(published=False)
 
 
-publish.short_description = _lazy("Publish selected glosses")
-unpublish.short_description = _lazy("Unpublish selected glosses")
+publish.short_description = _("Publish selected glosses")
+unpublish.short_description = _("Unpublish selected glosses")
+
+
+def exclude_from_ecv(modeladmin, request, queryset):
+    queryset.update(exclude_from_ecv=True)
+
+
+def include_in_ecv(modeladmin, request, queryset):
+    queryset.update(exclude_from_ecv=False)
+
+
+exclude_from_ecv.short_description = _("Exclude glosses from ECV")
+include_in_ecv.short_description = _("Include glosses in ECV")
 
 
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
-    actions = [publish, unpublish]
+    actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'published', 'idgloss', 'idgloss_en', 'notes',)},),
+    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'idgloss', 'idgloss_en', 'notes',)},),
                  (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
@@ -173,14 +185,14 @@ class GlossAdmin(VersionAdmin):
                                               'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
                                    'classes': ('collapse',)},),
                  (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
-                                'classes': ('collapse',)}),
+                                   'classes': ('collapse',)}),
                  (_('Frequency'), {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'dataset', 'published', 'idgloss_en']
+    list_display = ['idgloss', 'dataset', 'published', 'exclude_from_ecv', 'idgloss_en']
     search_fields = ['^idgloss']
-    list_filter = ('dataset', 'published', TagListFilter, )
+    list_filter = ('dataset', 'published', 'exclude_from_ecv', TagListFilter, )
     inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline, GlossRelationInline, GlossURLInline, GlossTagInline, ]
 
     def get_readonly_fields(self, request, obj=None):

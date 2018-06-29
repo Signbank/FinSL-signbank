@@ -129,8 +129,11 @@ def public_gloss_list_xml(self, dataset_id):
     """Return ELAN schema valid XML of public glosses and their translations."""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = get_object_or_404(Dataset, id=dataset_id, is_public=True)
-    return serialize_glosses(dataset, Gloss.objects.filter(dataset=dataset, published=True).prefetch_related(
+
+    return serialize_glosses(dataset, Gloss.objects.filter(
+        dataset=dataset, published=True, exclude_from_ecv=False).prefetch_related(
         Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
                  .select_related('keyword', 'language')),
         Prefetch('glosstranslations_set', queryset=GlossTranslations.objects
-                 .filter(gloss__dataset=dataset).select_related('language'))))
+                 .filter(gloss__dataset=dataset).select_related('language')))
+                             )

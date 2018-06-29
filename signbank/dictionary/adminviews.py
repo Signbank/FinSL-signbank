@@ -514,7 +514,7 @@ def gloss_list_xml(self, dataset_id):
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = get_object_or_404(Dataset, id=dataset_id)
     return serialize_glosses(dataset,
-                             Gloss.objects.filter(dataset=dataset)
+                             Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)
                              .prefetch_related(
                                  Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
                                           .select_related('keyword', 'language')),
