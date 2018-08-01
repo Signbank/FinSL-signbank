@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 import os
+import datetime
 
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -182,6 +183,10 @@ class GlossVideo(models.Model):
         if self.posterfile:
             return True
         return False
+
+    def get_videofile_modified_date(self):
+        """Return a Datetime object from filesystems last modified time of path."""
+        return datetime.datetime.fromtimestamp(os.path.getmtime(self.videofile.path))
 
     def __str__(self):
         return self.videofile.name
