@@ -1,4 +1,4 @@
-django==1.11.13
+django==1.11.16
 django-tagging==0.4.6
 django-reversion==2.0.13
 django-bootstrap3==10.0.1
