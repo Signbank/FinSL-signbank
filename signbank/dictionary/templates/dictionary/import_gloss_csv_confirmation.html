@@ -12,10 +12,10 @@
     <table class="table">
         <th>Gloss</th>
         <th>Gloss in English</th>
-    {% for idgloss, idgloss_en in glosses_new %}
+    {% for gloss in glosses_new %}
         <tr>
-            <td>{{idgloss}}</td>
-            <td>{{idgloss_en}}</td>
+            <td>{{gloss.0}}</td>{# gloss.idgloss #}
+            <td>{{gloss.1}}</td>{# gloss.idgloss_en #}
         </tr>
     {% endfor %}
     </table>

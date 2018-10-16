@@ -540,13 +540,11 @@ def import_gloss_csv(request):
         form = CSVUploadForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.cleaned_data['dataset']
-
             if 'view_dataset' not in get_perms(request.user, dataset):
                 # If user has no permissions to dataset, raise PermissionDenied to show 403 template.
                 msg = _("You do not have permissions to import glosses to this lexicon.")
                 messages.error(request, msg)
                 raise PermissionDenied(msg)
-
             try:
                 glossreader = csv.reader(codecs.iterdecode(form.cleaned_data['file'], 'utf-8'), delimiter=',', quotechar='"')
             except csv.Error as e:
@@ -555,45 +553,41 @@ def import_gloss_csv(request):
                 if 'glosses_new' in request.session: del request.session['glosses_new']
                 # Set a message to be shown so that the user knows what is going on.
                 messages.add_message(request, messages.ERROR, _('Cannot open the file:' + str(e)))
-                return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': CSVUploadForm()}, )
+                return render(request, 'dictionary/import_gloss_csv.html', {'import_csv_form': CSVUploadForm()}, )
+            except UnicodeDecodeError as e:
+                # File is not UTF-8 encoded.
+                messages.add_message(request, messages.ERROR, _('File must be UTF-8 encoded!'))
+                return render(request, 'dictionary/import_gloss_csv.html', {'import_csv_form': CSVUploadForm()}, )
 
-            else:
+            for row in glossreader:
+                if glossreader.line_num == 1:
+                    # Skip first line of CSV file.
+                    continue
                 try:
-                    for row in glossreader:
-                        if glossreader.line_num == 1:
-                            # Skip first line of CSV file.
-                            continue
-                        try:
-                            # Find out if the gloss already exists, if it does add to list of glosses not to be added.
-                            gloss = Gloss.objects.get(dataset=dataset, idgloss=row[0])
-                            glosses_exists.append(gloss)
-                        except Gloss.DoesNotExist:
-                            # If gloss is not already in list, add glossdata to list of glosses to be added as a tuple.
-                            if not any(row[0] in s for s in glosses_new):
-                                glosses_new.append(tuple(row))
-                        except IndexError:
-                            # If row[0] does not exist, continue to next iteration of loop.
-                            continue
+                    # Find out if the gloss already exists, if it does add to list of glosses not to be added.
+                    gloss = Gloss.objects.get(dataset=dataset, idgloss=row[0])
+                    glosses_exists.append(gloss)
+                except Gloss.DoesNotExist:
+                    # If gloss is not already in list, add glossdata to list of glosses to be added as a tuple.
+                    if not any(row[0] in s for s in glosses_new):
+                        glosses_new.append(tuple(row))
+                except IndexError:
+                    # If row[0] does not exist, continue to next iteration of loop.
+                    continue
 
-                except UnicodeDecodeError as e:
-                    # File is not UTF-8 encoded.
-                    messages.add_message(request, messages.ERROR, _('File must be UTF-8 encoded!'))
-                    return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': CSVUploadForm()}, )
+            # Store dataset's id and the list of glosses to be added in session.
+            request.session['dataset_id'] = dataset.id
+            request.session['glosses_new'] = glosses_new
 
-                # Store dataset's id and the list of glosses to be added in session.
-                request.session['dataset_id'] = dataset.id
-                request.session['glosses_new'] = glosses_new
-
-            return render(request, "dictionary/import_gloss_csv_confirmation.html",
-                          {#'import_csv_form': CSVUploadForm(),
-                           'glosses_new': glosses_new,
+            return render(request, 'dictionary/import_gloss_csv_confirmation.html',
+                          {'glosses_new': glosses_new,
                            'glosses_exists': glosses_exists,
-                            'dataset': dataset,})
+                           'dataset': dataset, })
         else:
             # If form is not valid, set a error message and return to the original form.
             messages.add_message(request, messages.ERROR, _('The provided CSV-file does not meet the requirements '
                                                             'or there is some other problem.'))
-            return render(request, "dictionary/import_gloss_csv.html", {'import_csv_form': form}, )
+            return render(request, 'dictionary/import_gloss_csv.html', {'import_csv_form': form}, )
     else:
         # If request type is not POST, return to the original form.
         csv_form = CSVUploadForm()
