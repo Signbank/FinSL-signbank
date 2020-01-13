@@ -47,11 +47,11 @@ class GlossVideo(models.Model):
     is_public = models.BooleanField(_("Public"), default=True, help_text="Is this video is public or private?")
     #: The Gloss this GlossVideo belongs to.
     gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
-                              help_text=_("The gloss this GlossVideo is related to."))
+                              help_text=_("The gloss this GlossVideo is related to."), on_delete=models.CASCADE)
     #: The Dataset/Lexicon this GlossVideo is part of.
     dataset = models.ForeignKey('dictionary.Dataset', verbose_name=_("Glossvideo dataset"), null=True,
                                 help_text=_("Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
-                                            "was uploaded."))
+                                            "was uploaded."), on_delete=models.PROTECT)
     # Translators: GlossVideo: version
     #: Version number of the GlossVideo within Glosses videos.
     version = models.IntegerField(_("Version"), default=0,
