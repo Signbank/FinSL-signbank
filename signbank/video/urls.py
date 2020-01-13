@@ -5,6 +5,9 @@ from django.urls import path
 # Views
 from . import views
 
+# Application namespace
+app_name = 'video'
+
 urlpatterns = [
     path('<intvideoid>/', views.video_view, name='glossvideo'),
     path('poster/<int:videoid>', views.poster_view, name='glossvideo_poster'),

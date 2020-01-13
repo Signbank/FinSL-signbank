@@ -67,7 +67,7 @@ urlpatterns = [
     # Admin urls
     path('admin/doc/',
         include('django.contrib.admindocs.urls')),
-    path('admin/', include(admin.site.urls)),
+    path('admin/', admin.site.urls),
 
     # Summernote urls, Summernote is the WYSIWYG editor currently used in Signbank
     path('summernote/', include('django_summernote.urls')),

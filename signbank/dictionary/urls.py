@@ -11,6 +11,9 @@ from . import update
 from . import delete
 from . import views
 
+# Application namespace
+app_name = 'dictionary'
+
 urlpatterns = [
     # Public views for dictionary
     path('', publicviews.GlossListPublicView.as_view(), name='public_gloss_list'),
