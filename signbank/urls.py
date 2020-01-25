@@ -62,7 +62,7 @@ urlpatterns = [
         name='remove-comment-tag'),
 
     # Notifications urls
-    path('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
     # Admin urls
     path('admin/doc/',
