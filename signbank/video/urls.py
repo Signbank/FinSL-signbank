@@ -9,7 +9,7 @@ from . import views
 app_name = 'video'
 
 urlpatterns = [
-    path('<intvideoid>/', views.video_view, name='glossvideo'),
+    path('<int:videoid>/', views.video_view, name='glossvideo'),
     path('poster/<int:videoid>', views.poster_view, name='glossvideo_poster'),
     path('upload/', views.upload_glossvideo_view, name='upload_glossvideo'),
     path('upload/gloss/', views.upload_glossvideo_gloss_view, name='upload_glossvideo_gloss'),
