@@ -1,7 +1,5 @@
 # FinSL-signbank
 
-![coverage](https://rawgit.com/Signbank/FinSL-signbank/master/coverage.svg)
-
 **Manage your sign language lexicons.**
 
 FinSL-signbank is a web based database for **sign language** lexicons and corpuses.
@@ -33,8 +31,8 @@ Main features:
 
 # Requirements
 
-* Python 3 (3.4+ recommended)
-* Django (1.11)
+* Python 3 (3.6+ recommended)
+* Django (2.2)
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
 
@@ -48,9 +46,15 @@ Dependencies can be found in [requirements.txt][requirements.txt] and they can b
 
 To install FinSL-signbank on linux with all the dependencies:
 
-    $ git clone https://github.com/Signbank/FinSL-signbank.git
+    $ git clone https://github.com/Signbank/FinSL-signbank.git  # Clone the repository
 
-    $ pip install -r /path/to/finsl-signbank/requirements.txt
+    $ cd FinSL-signbank
+
+    $ python3 -m venv venv  # Create a virtual environment
+
+    $ source venv/bin/activate  # Activate the virtual environment
+
+    $ pip install -r requirements.txt  # Install dependencies
 
 For detailed information see https://finsl-signbank.readthedocs.io/en/latest/installation.html
 
