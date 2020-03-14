@@ -59,7 +59,7 @@ $(document).ready(function () {
                 var a = document.createElement("a");
                 a.setAttribute("class", "btn btn-default");
                 a.style["float"] = "none";
-                a.href = "/dictionary/advanced/gloss/" + json_data[key].id + "/";
+                a.href = "/dictionary/advanced/gloss/" + json_data[key].id;
                 a.id = json_data[key].id;
                 var linktext = document.createTextNode(json_data[key].gloss);
                 a.appendChild(linktext);
