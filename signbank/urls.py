@@ -8,7 +8,7 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 
 # Views
-from registration.backends.hmac.views import RegistrationView
+from django_registration.backends.activation.views import RegistrationView
 from .dictionary.adminviews import GlossListView
 from .tools import infopage
 from django.contrib.flatpages import views as flatpages_views
@@ -43,8 +43,9 @@ urlpatterns = [
         name='sign_search'),
 
     # Registration urls for login, logout, registration, activation etc.
-    path('accounts/register/', RegistrationView.as_view(form_class=CustomUserForm), name='registration_register',),
-    path('accounts/', include('registration.backends.hmac.urls')),
+    path('accounts/register/', RegistrationView.as_view(form_class=CustomUserForm), name='django_registration_register',),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 
     # Django-contrib-comments urls
     path('comments/', include('django_comments.urls')),

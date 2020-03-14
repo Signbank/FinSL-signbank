@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from registration.forms import RegistrationFormTermsOfService
+from django_registration.forms import RegistrationFormTermsOfService
 
 
 class CustomUserForm(RegistrationFormTermsOfService):

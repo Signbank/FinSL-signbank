@@ -1,4 +1,4 @@
-{% extends "registration/registration_base.html" %}
+{% extends "django_registration/registration_base.html" %}
 {% load bootstrap3 %}
 {% load i18n %}
 
@@ -10,7 +10,7 @@
 <h3>{% blocktrans %}Create account{% endblocktrans%}</h3>
 <div class="panel panel-default">
   <div class="panel-body">
-{% include 'registration/registration_info.html' %}
+{% include 'django_registration/registration_info.html' %}
   </div>
 </div>
 <div class="panel panel-default">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="panel-body">
                     <h4>{% blocktrans %}By creating an account on this site you (the "user") agree to the following conditions:{% endblocktrans %}</h4>
-                        {% include 'registration/terms_of_service.html' %}
+                        {% include 'django_registration/terms_of_service.html' %}
                 </div>
             </div>
             {% bootstrap_field form.tos %}
@@ -45,7 +45,7 @@
 
 
 {% comment %}
-**registration/registration_form.html**
+**django_registration/registration_form.html**
 Used to show the form users will fill out to register. By default, has
 the following context:
 

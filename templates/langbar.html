@@ -14,17 +14,17 @@
             <li><a href="{% url 'admin:index' %}">{% blocktrans %}Django admin{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
             {% endif %}
-            <li><a href="{% url 'auth_password_change' %}">{% blocktrans %}Change password{% endblocktrans %}</a></li>
+            <li><a href="{% url 'password_change' %}">{% blocktrans %}Change password{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{% url 'auth_logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                 {% blocktrans %}Sign out{% endblocktrans %}</a></li>
         </ul>
     </div>
     {% else %}
     {# Translators: Sign in link #}
-    <a class="btn btn-default" role="button" href="{% url 'auth_login' %}">
+    <a class="btn btn-default" role="button" href="{% url 'login' %}">
         {% blocktrans %}Sign in{% endblocktrans %}</a>
-    <a class="btn btn-primary" role="button" href="{% url 'registration_register' %}">
+    <a class="btn btn-primary" role="button" href="{% url 'django_registration_register' %}">
         {% blocktrans %}Create account{% endblocktrans %}
     </a>
     {% endif %}

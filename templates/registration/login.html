@@ -1,4 +1,4 @@
-{% extends "registration/registration_base.html" %}
+{% extends "django_registration/registration_base.html" %}
 {% load bootstrap3 %}
 {% load i18n %}
 
@@ -18,9 +18,9 @@
         <input type="hidden" name="next" value="{{ next }}">
     </form>
     <hr>
-    <p><strong>{% trans "Forgot your password?" %}</strong> <a href="{% url 'auth_password_reset' %}" class="btn btn-warning"
+    <p><strong>{% trans "Forgot your password?" %}</strong> <a href="{% url 'password_reset' %}" class="btn btn-warning"
                                                role="button">{% trans "Reset password" %}</a></p>
-    <p><strong>{% trans "Not a member?" %}</strong> <a href="{% url 'registration_register' %}" class="btn btn-info"
+    <p><strong>{% trans "Not a member?" %}</strong> <a href="{% url 'django_registration_register' %}" class="btn btn-info"
                                        role="button">{% trans "Create account" %}</a></p>
 </div>
 
@@ -31,10 +31,10 @@
 {% endblock %}
 
 {% comment %}
-**registration/login.html**
+**django_registration/login.html**
 
 It's your responsibility to provide the login form in a template called
-registration/login.html by default. This template gets passed four
+django_registration/login.html by default. This template gets passed four
 template context variables:
 
 ``form``
