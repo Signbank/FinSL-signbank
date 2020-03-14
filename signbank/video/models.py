@@ -186,7 +186,10 @@ class GlossVideo(models.Model):
 
     def get_videofile_modified_date(self):
         """Return a Datetime object from filesystems last modified time of path."""
-        return datetime.datetime.fromtimestamp(os.path.getmtime(self.videofile.path))
+        try:
+            return datetime.datetime.fromtimestamp(os.path.getmtime(self.videofile.path))
+        except FileNotFoundError:
+            return None
 
     def __str__(self):
         return self.videofile.name
