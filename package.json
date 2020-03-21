@@ -29,9 +29,9 @@
     "jquery": "^3.4.0",
     "jquery.caret": "^0.3.1",
     "mark.js": "^8.11.1",
-    "recordrtc": "^5.4.6",
+    "recordrtc": "^5.5.9",
     "sigma": "^1.2.1",
     "typeahead.js": "^0.11.1",
-    "cookieconsent": "^3.0.6"
+    "cookieconsent": "^3.1.1"
   }
 }
