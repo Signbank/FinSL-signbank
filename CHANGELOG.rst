@@ -3,6 +3,13 @@
 Changelog
 =========
 
+1.1.2 - 21/03/2020
+------------------
+
+**Add missing video app migrations that were squashed**
+
+Before updating to this version, make sure you have done migrations for 1.0.1
+
 1.1.1 - 21/03/2020
 ------------------
 
