@@ -12,7 +12,7 @@ Sign language annotation will be easier, faster, and more accurate.
 # Overview
 
 FinSL-signbank is being developed based on the needs of Finnish sign language researchers. It can be used for any sign language(s) that share similar requirements.
-Signbank was originally developed by Steve Cassidy [https://github.com/Signbank/Auslan-signbank][auslan-signbank]. FinSL-Signbank is based on NGT Signbank [https://github.com/Signbank/NGT-signbank][ngt-signbank], NGT Signbank is a branch of Auslan Signbank.
+Signbank was originally developed by Steve Cassidy [https://github.com/Signbank/Auslan-signbank][auslan-signbank]. FinSL-Signbank is based on NGT Signbank [https://github.com/Signbank/Global-signbank][ngt-signbank], NGT Signbank is a branch of Auslan Signbank.
 
 Main features:
 * Manage and organize sign language lexicons and corpuses.
@@ -63,11 +63,11 @@ For detailed information see https://finsl-signbank.readthedocs.io/en/latest/ins
 If you want to contribute to the project, contact the repository administrator [@henrinie][admin] or [University of Jyväskylä's Sign language centre][vkk-english].
 
 [requirements.txt]: https://github.com/Signbank/FinSL-signbank/blob/master/requirements.txt
-[vkk-english]: http://viittomakielenkeskus.jyu.fi/inenglish.html
+[vkk-english]: https://www.jyu.fi/hytk/fi/laitokset/kivi/opiskelu/oppiaineet/viittomakieli/in-english
 [wiki]: https://github.com/Signbank/FinSL-signbank/wiki
 [wiki-install]: https://github.com/Signbank/FinSL-signbank/wiki/Install
 [auslan-signbank]: https://github.com/Signbank/Auslan-signbank
-[ngt-signbank]: https://github.com/Signbank/NGT-signbank
-[elan-link]: https://tla.mpi.nl/tools/tla-tools/elan/
+[ngt-signbank]: https://github.com/Signbank/Global-signbank
+[elan-link]: https://archive.mpi.nl/tla/elan/
 [sqlite-link]: https://www.sqlite.org/
 [admin]: https://github.com/henrinie
