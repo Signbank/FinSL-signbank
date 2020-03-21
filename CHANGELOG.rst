@@ -3,6 +3,22 @@
 Changelog
 =========
 
+1.1.1 - 21/03/2020
+------------------
+
+Update python and js dependencies, fix two js issues:
+
+- Remove usage of deprecated error & success cb in $.ajax
+- Return default empty array to js var in django template
+- Update js dependencies: jQuery to 3.4.1 & bootstrap to 3.4.1
+- Update js dependencies: cookieconsent to 3.1.1 & RecordRTC to 5.5.9
+- Update django-bootstrap3 to 12.0.3
+- Update django-contrib-comments to 1.9.2
+- Update django-summernote to 0.8.11.6
+- Update django-tagging to 0.5.0
+- Update django-guardian to 2.2.0
+- Update django-modeltranslation to 0.14.4
+
 1.1.0 - 21/03/2020
 ------------------
 
