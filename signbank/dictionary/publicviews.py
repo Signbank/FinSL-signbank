@@ -5,7 +5,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Prefetch
 from django.db.models.functions import Substr, Upper
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import cache_page
 from django.shortcuts import get_object_or_404

@@ -1,10 +1,10 @@
-django==1.11.18
+django==2.2.11
 django-tagging==0.4.6
 django-reversion==2.0.13
 django-bootstrap3==11.0.0
 django-summernote==0.8.8.8
-django-modeltranslation==0.12.2
-django-registration==2.4.1
+django-modeltranslation==0.14.0
+django-registration==3.1
 django-contrib-comments==1.9.0
 django-guardian==1.4.9
 django-notifications-hq==1.4

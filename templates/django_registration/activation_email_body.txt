@@ -9,7 +9,7 @@ To activate this account, please click the following link within the next
 {{ expiration_days }} days:
 {% endblocktrans %}
 
-http{% if request.is_secure %}s{% endif %}://{{site.domain}}{% url 'registration_activate' activation_key %}
+http{% if request.is_secure %}s{% endif %}://{{site.domain}}{% url 'django_registration_activate' activation_key %}
 
 {% blocktrans with site_name=site.name %}
 Sincerely,
@@ -18,7 +18,7 @@ The {{ site_name }} Team
 
 
 {% comment %}
-**registration/activation_email.txt**
+**django_registration/activation_email.txt**
 
 Used to generate the text body of the activation email. Should display a
 link the user can click to activate the account. This template has the
@@ -48,5 +48,5 @@ following context:
     ``HttpRequest`` instance for better flexibility.
     For example it can be used to compute absolute register URL:
 
-        {{ request.scheme }}://{{ request.get_host }}{% url 'registration_activate' activation_key %}
+        {{ request.scheme }}://{{ request.get_host }}{% url 'django_registration_activate' activation_key %}
 {% endcomment %}
