@@ -46,8 +46,8 @@ form {
 </div>
 
 <script>
-var nodes_json = {{context.nodes|safe}};
-var edges_json = {{context.edges|safe}};
+var nodes_json = {{context.nodes|safe|default:"[]"}};
+var edges_json = {{context.edges|safe|default:"[]"}};
 
 var g = { nodes: [], edges: [] };
 for (var i = 0; i < nodes_json.length; i++){

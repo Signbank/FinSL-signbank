@@ -36,6 +36,10 @@ Main features:
 
 Dependencies can be found in [requirements.txt][requirements.txt] and they can be installed using pip.
 
+# Changelog
+
+See changelog here: [CHANGELOG.rst](CHANGELOG.rst)
+
 # Documentation
 
 **Technical documentation** for developers can be found at https://finsl-signbank.readthedocs.io/

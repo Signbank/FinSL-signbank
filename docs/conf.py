@@ -22,13 +22,13 @@ django.setup()
 # -- Project information -----------------------------------------------------
 
 project = 'FinSL-signbank'
-copyright = '2018, Henri Nieminen'
+copyright = '2020, Henri Nieminen'
 author = 'Henri Nieminen'
 
 # The short X.Y version
-version = '1.1.0'
+version = '1.1.1'
 # The full version, including alpha/beta/rc tags
-release = '1.1.0'
+release = '1.1.1'
 
 
 # -- General configuration ---------------------------------------------------
