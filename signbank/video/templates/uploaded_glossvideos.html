@@ -130,13 +130,10 @@ function updateVideos(){
         }
     }
     // Send ajax post request.
-    $.ajax({url: "/video/update/", type: "post",
-    contentType: "application/json", context:{"forms":formlist},
-    data:JSON.stringify({"updatelist": updatelist,
-    "csrfmiddlewaretoken": csrftoken, "ajax": "true"}),
-     error: function (xhr, ajaxOptions, thrownError) {
-        alert(thrownError+"("+xhr.status+"): {% blocktrans %}Did you provide all values as id numbers?{% endblocktrans %}");
-     }}).success(function() {
+    $.ajax({url: "/video/update/", type: "post", contentType: "application/json", context:{"forms":formlist},
+      data:JSON.stringify({"updatelist": updatelist, "csrfmiddlewaretoken": csrftoken, "ajax": "true"})
+     })
+     .done(function() {
         forms = this.forms;
         for (var i=0; i<forms.length; i++){
             // Set the selected value empty, to make it empty even on soft refresh.
@@ -151,6 +148,9 @@ function updateVideos(){
                 forms[i].parentNode.removeChild(forms[i]);
             }
         }
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown+"("+textStatus+"): {% blocktrans %}Did you provide all values as id numbers?{% endblocktrans %}");
     });
 }
 </script>
