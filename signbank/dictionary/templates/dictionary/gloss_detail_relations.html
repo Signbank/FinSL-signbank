@@ -2,20 +2,29 @@
 {% load bootstrap3 %}
 {% load static %}
 {% load tagging_tags %}
-<h4>{% blocktrans %}Gloss relations{% endblocktrans %}</h4>
-<div id="gloss-relations" class="panel panel-default">
-    <div class="panel-heading">{% blocktrans %}Relations{% endblocktrans %}</div>
-    <ul class="list-group gloss-relations">
-        {% for gr in glossrelations %}
-        {% tags_for_object gr as tag_list %}
-        <li class="list-group-item list-group-item-relation">
-            <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}"
-               data-thumbnail-src="{% if gr.target.glossvideo_set.all.0.posterfile %}{{gr.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
-               data-video-src="{% if gr.target.glossvideo_set.all.0.videofile %}{{ gr.target.glossvideo_set.all.0.videofile.url }}"
-               data-video-ext="{{ gr.target.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
-                <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
-            {% for tag in tag_list %}
-            <span class="badge" style="float:inherit;">{{tag}}</span>
+<div id="gloss-relations" class="panel panel-default" style="margin-bottom: 10px;">
+    <div class="panel-heading"><strong>{% blocktrans %}Relations{% endblocktrans %}</strong></div>
+    <div class="panel-body">
+        <ul class="list-group gloss-relations">
+            {% for gr in glossrelations %}
+            {% tags_for_object gr as tag_list %}
+            <li class="list-group-item list-group-item-relation">
+                <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}"
+                data-thumbnail-src="{% if gr.target.glossvideo_set.all.0.posterfile %}{{gr.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-video-src="{% if gr.target.glossvideo_set.all.0.videofile %}{{ gr.target.glossvideo_set.all.0.videofile.url }}"
+                data-video-ext="{{ gr.target.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
+                {% for tag in tag_list %}
+                <span class="badge" style="float:inherit;">{{tag}}</span>
+                {% endfor %}
+                <form class="update_glossrelation" method="POST" action="{% url 'dictionary:add_glossrelation' %}" style="display:none;float:right;" >{% csrf_token %}
+                    <input type="hidden" name="delete" value="{{gr.id}}">
+                    <button type="submit" class="btn btn-link" >
+                        <span class="glyphicon glyphicon-trash" style="color:red;"></span></button>
+                </form>
+            </li>
+            {% empty %}
+            <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
             {% endfor %}
             <span class="dataset-{{gr.target.dataset.id}}-color label label-default">{{gr.target.dataset}}</span>
             <form class="update_glossrelation" method="POST" action="{% url 'dictionary:add_glossrelation' %}" style="display:none;float:right;" >{% csrf_token %}
@@ -37,22 +46,33 @@
             <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Add relation{% endblocktrans %}</button>
         </form>
     </div>
-    <ul class="list-group gloss-relations-reverse">
-        {% for gr in glossrelations_reverse %}
-        {% tags_for_object gr as tag_list %}
-        <li class="list-group-item">
-            <a href="{% url 'dictionary:admin_gloss_view' gr.source.id %}"
-               data-thumbnail-src="{% if gr.source.glossvideo_set.all.0.posterfile %}{{gr.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
-               data-video-src="{% if gr.source.glossvideo_set.all.0.videofile %}{{ gr.source.glossvideo_set.all.0.videofile.url }}"
-               data-video-ext="{{ gr.source.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
-                <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
-            {% for tag in tag_list %}
-            <span class="badge" style="float:inherit;">{{tag}}</span>
+    <div class="panel-footer">
+        {% blocktrans %}Reverse relations{% endblocktrans %}
+        <ul class="list-group gloss-relations-reverse">
+            {% for gr in glossrelations_reverse %}
+            {% tags_for_object gr as tag_list %}
+            <li class="list-group-item">
+                <a href="{% url 'dictionary:admin_gloss_view' gr.source.id %}"
+                data-thumbnail-src="{% if gr.source.glossvideo_set.all.0.posterfile %}{{gr.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-video-src="{% if gr.source.glossvideo_set.all.0.videofile %}{{ gr.source.glossvideo_set.all.0.videofile.url }}"
+                data-video-ext="{{ gr.source.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
+                {% for tag in tag_list %}
+                <span class="badge" style="float:inherit;">{{tag}}</span>
+                {% endfor %}
+            </li>
+            {% empty %}
+            <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
             {% endfor %}
+<<<<<<< HEAD
             <span class="dataset-{{gr.source.dataset.id}}-color label label-default">{{gr.source.dataset}}</span>
         </li>
         {% empty %}
         <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
         {% endfor %}
     </ul>
+=======
+        </ul>
+    </div>
+>>>>>>> 77e36da (Restyle gloss advanced gloss relations section)
 </div>
