@@ -5,7 +5,7 @@
 <div id="gloss-relations" class="panel panel-default" style="margin-bottom: 10px;">
     <div class="panel-heading"><strong>{% blocktrans %}Relations{% endblocktrans %}</strong></div>
     <div class="panel-body">
-        <ul class="list-group gloss-relations">
+        <ul class="list-group gloss-relations" style="margin-bottom: 0;">
             {% for gr in glossrelations %}
             {% tags_for_object gr as tag_list %}
             <li class="list-group-item list-group-item-relation">
@@ -27,7 +27,7 @@
             <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
             {% endfor %}
         </ul>
-        <div class="update_glossrelation" style="display: none;">
+        <div class="update_glossrelation" style="display: none; margin-top: 10px;">
             <form class="form-inline" method="POST" action="{% url 'dictionary:add_glossrelation' %}">{% csrf_token %}
                 <input type="hidden" name="source" value="{{gloss.id}}">
                 {% bootstrap_field glossrelationform.target show_label=False %}
