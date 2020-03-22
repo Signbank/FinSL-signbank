@@ -55,8 +55,7 @@ section p {
     margin-right: 15px;
 }
 #definitionblock {
-   border-top: 1px solid #000;
-   margin-top: 0px;
+   padding-top: 10px;
    background-color: #FFF;
 }
 @media  (min-width: 992px) {
@@ -295,7 +294,7 @@ td .tag {
     margin: 0;
 }*/
 #gloss-comments {
-    padding-bottom: 20px;
+    margin-bottom: 10px;
 }
 .comment-header {
     margin-bottom: 2px;
