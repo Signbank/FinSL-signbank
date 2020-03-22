@@ -5,7 +5,7 @@
 <div id="gloss-relations" class="panel panel-default" style="margin-bottom: 10px;">
     <div class="panel-heading"><strong>{% blocktrans %}Relations{% endblocktrans %}</strong></div>
     <div class="panel-body">
-        <ul class="list-group gloss-relations">
+        <ul class="list-group gloss-relations" style="margin-bottom: 0;">
             {% for gr in glossrelations %}
             {% tags_for_object gr as tag_list %}
             <li class="list-group-item list-group-item-relation">
@@ -26,11 +26,21 @@
             {% empty %}
             <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
             {% endfor %}
+<<<<<<< HEAD
             <span class="dataset-{{gr.target.dataset.id}}-color label label-default">{{gr.target.dataset}}</span>
             <form class="update_glossrelation" method="POST" action="{% url 'dictionary:add_glossrelation' %}" style="display:none;float:right;" >{% csrf_token %}
                 <input type="hidden" name="delete" value="{{gr.id}}">
                 <button type="submit" class="btn btn-link" >
                     <span class="glyphicon glyphicon-trash" style="color:red;"></span></button>
+=======
+        </ul>
+        <div class="update_glossrelation" style="display: none; margin-top: 10px;">
+            <form class="form-inline" method="POST" action="{% url 'dictionary:add_glossrelation' %}">{% csrf_token %}
+                <input type="hidden" name="source" value="{{gloss.id}}">
+                {% bootstrap_field glossrelationform.target show_label=False %}
+                {% bootstrap_field glossrelationform.tag %}
+                <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Add relation{% endblocktrans %}</button>
+>>>>>>> 7eda1a8 (Remove unnecessary margins from add glossrelation form)
             </form>
         </li>
         {% empty %}
