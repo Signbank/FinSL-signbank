@@ -155,13 +155,13 @@ $('#id_comment').atwho({
 {% block content %}
 <div id="searchresults" style="overflow-y:hidden;">
     {% if request.session.search_results %}{# See if search_results in sessions is empty #}
-    <strong>{% blocktrans %}Search results:{% endblocktrans %}</strong>
-    <div id="results-inline" class="btn-group" role="group" aria-label="search results" style="white-space:nowrap;">
+    <div id="results-inline" class="btn-group" role="group" aria-label="search results" style="white-space:nowrap;  padding-top: 10px;">
     </div>
     {% endif %}
 </div>
 
-<div id="signinfo" class='navbar navbar-default navbar-collapse'>
+<div id="signinfo" class="panel panel-default" style="margin-top: 10px;">
+<div class="panel-body" style="padding-top: 0; padding-bottom: 0;">
     <div id="datasetname" class="pull-left">
         <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
     </div>
@@ -181,8 +181,9 @@ $('#id_comment').atwho({
     </div>
     {% endif %}
 </div>
+</div>
 
-<div class="container-fluid">
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
     <div id="definitionblock" class="row">
         <div id="leftblock" class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 

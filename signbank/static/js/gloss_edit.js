@@ -103,11 +103,15 @@ function toggle_edit() {
         $('#enable_edit').removeClass('edit_enabled');
         // This variable (enable_edit_button_text) should exist in the template
         $('#enable_edit').text(enable_edit_button_text);
+        $('#signinfo').addClass('panel-default').css('background-color', '');
+        $('#signinfo').removeClass('panel-danger');
     } else {
         enable_edit();
         $('#enable_edit').addClass('edit_enabled');
         // This variable (disable_edit_button_text) should exist in the template
         $('#enable_edit').text(disable_edit_button_text);
+        $('#signinfo').removeClass('panel-default');
+        $('#signinfo').addClass('panel-danger').css('background-color', '#f2dede');
     }
 }
 

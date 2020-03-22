@@ -2,12 +2,15 @@
 {% load bootstrap3 %}
 {% load comments %}
 {% get_comment_count for gloss as comment_count %}
-<div id="gloss-comments">
-    <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
-    <div class="well well-md">
+<div id="gloss-comments" class="panel panel-default">
+    <div class="panel-heading">
+        <strong>{% blocktrans %}Comments{% endblocktrans %}</strong> ({{comment_count}})
+    </div>
+    <div class="panel-body">
     {% render_comment_list for gloss %}
-    <hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
+    </div>
     {% if user.is_authenticated %}
+    <div class="panel-footer">
         {% get_comment_form for gloss as formcomment %}
         <form action="{% comment_form_target %}" method="POST">
         {% csrf_token %}
@@ -27,8 +30,8 @@
         <button type="submit" class="btn btn-default" id="id_submit_comm">
             {% blocktrans %}Add comment{% endblocktrans %}</button>
         </form>
+    </div>
     {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
     {% endif %}
-    </div>
 </div>
