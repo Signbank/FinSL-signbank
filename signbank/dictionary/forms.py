@@ -64,8 +64,7 @@ class TagsAddForm(forms.Form):
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
     except (ObjectDoesNotExist, OperationalError, ProgrammingError):
         qs = Tag.objects.all()
-    tags = forms.ModelMultipleChoiceField(label=_('Tags'), queryset=qs, to_field_name='name')
-
+    tags = forms.ModelChoiceField(label=_('Tags'), queryset=qs, to_field_name='name')
 
 ATTRS_FOR_FORMS = {'class': 'form-control'}
 

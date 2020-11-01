@@ -161,26 +161,29 @@ $('#id_comment').atwho({
 </div>
 
 <div id="signinfo" class="panel panel-default" style="margin-top: 10px;">
-<div class="panel-body" style="padding-top: 0; padding-bottom: 0;">
-    <div id="datasetname" class="pull-left">
-        <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
-    </div>
-    {% if perms.dictionary.change_gloss %}
-        {% if not gloss.published %}{# Don't allow recording webcam videos for published Glosses. #}
-        <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
-                data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
-            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style="color:black;"></span>
-            {% blocktrans %}Record a video{% endblocktrans %}</button>
+    <div class="panel-body" style="padding-top: 0; padding-bottom: 0;">
+        <div id="datasetname" class="pull-left">
+            <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
+        </div>
+        {% if perms.dictionary.change_gloss %}
+            {% if not gloss.published %}{# Don't allow recording webcam videos for published Glosses. #}
+            <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
+                    data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
+                <span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style="color:black;"></span>
+                {% blocktrans %}Record a video{% endblocktrans %}</button>
+            {% endif %}
+        <div class='pull-right'>
+            {# Translators: Text that appears when editing is on #}
+            <span id='edit_message'
+                style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
+            {# Translators: Button #}
+            <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
+        </div>
         {% endif %}
-    <div class='pull-right'>
-        {# Translators: Text that appears when editing is on #}
-        <span id='edit_message'
-              style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
-        {# Translators: Button #}
-        <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
     </div>
-    {% endif %}
-</div>
+    <div class="panel-footer">
+        {% include "dictionary/glosstags.html" %}
+    </div>
 </div>
 
 <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
