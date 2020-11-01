@@ -4,12 +4,14 @@ from __future__ import unicode_literals
 
 import os
 import datetime
+import logging
 
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
+log = logging.getLogger("video")
 
 class GlossVideoStorage(FileSystemStorage):
     """Video storage, handles saving to directories based on filenames first two characters."""
@@ -137,6 +139,10 @@ class GlossVideo(models.Model):
         if hasattr(self, 'gloss') and self.gloss is not None:
             # Store the old file path, needed for removal later.
             old_file_path = self.videofile.path
+            if not os.path.isfile(old_file_path):
+                # If the original video file does not exist, do not rename file
+                log.warn(f"File for video.pk {self.pk} is missing in path: {old_file_path}")
+                return
             # Create the base filename.
             new_filename = self.create_filename()
             # Get the relative path in media folder.
@@ -146,7 +152,7 @@ class GlossVideo(models.Model):
                 # Save the file into the new path.
                 saved_file_path = storage.save(full_new_path, self.videofile)
                 # Set the actual file path to videofile.
-                self.videofile =  saved_file_path
+                self.videofile = saved_file_path
                 if os.path.isfile(old_file_path):
                     # Remove the file from the old path.
                     os.remove(old_file_path)
