@@ -2,9 +2,9 @@
 {% load bootstrap3 %}
 {% load tagging_tags %}
 {% tags_for_object gloss as tag_list %}
-{% if tag_list %}
-<div id="tags">
+<div id="tags" style="clear:both;">
   <h4>{% blocktrans %}Tags{% endblocktrans %}:</h4>
+  {% if tag_list %}
   <ul class="taglist tag-list">
   {% for tag in tag_list %}
   <li class="tagli">
