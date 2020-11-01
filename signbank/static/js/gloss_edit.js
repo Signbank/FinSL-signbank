@@ -348,11 +348,11 @@ function delete_glossurl() {
         var element = $(this).parent();
 
         // This determines the post action: jQuery.post( url [, data ] [, success ] [, dataType ] )
-        $.post(action,
-              {'glossurl': glossurl_id})
-              .success(function () {
+        $.post(action, {'glossurl': glossurl_id},
+            function () {
                 element.remove();
-              });
+            }
+        );
 
         return false;
     });
