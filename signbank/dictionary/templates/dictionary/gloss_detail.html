@@ -289,33 +289,30 @@ $('#id_comment').atwho({
                 {% endif %}
 
             </div>
+            {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
+            <div id="upload-glossvideo" class="editform panel panel-default" style="display:none; margin-bottom: 10px;">
+                <div class="panel-heading">
+                    {# Translators: Upload/Add new video to Signbank #}
+                    <strong>{% blocktrans %}Upload Video{% endblocktrans %}</strong>
+                </div>
+                <div class="panel-body">
+                    <fieldset>
+                        <form action="{% url 'video:upload_glossvideo_gloss' %}" method="post"
+                                enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type='hidden' name='redirect' value='{{request.path}}?edit'>
+                            <input type='hidden' name='gloss' value='{{gloss.pk}}'>
+                            {% bootstrap_field glossvideoform.videofile show_help=False %}
+                            {% bootstrap_field glossvideoform.title %}
 
-            <div>
-                <div id="editvideodata" class="panel panel-default">
-                    {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
-                    <div class='editform' style="display:none;">
-                        <div class="uploadvid">
-                            <fieldset>
-                                {# Translators: Upload/Add new video to Signbank #}
-                                <legend>{% blocktrans %}Upload Video{% endblocktrans %}</legend>
-                                <form action="{% url 'video:upload_glossvideo_gloss' %}" method="post"
-                                      enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <input type='hidden' name='redirect' value='{{request.path}}?edit'>
-                                    <input type='hidden' name='gloss' value='{{gloss.pk}}'>
-                                    {% bootstrap_field glossvideoform.videofile show_help=False %}
-                                    {% bootstrap_field glossvideoform.title %}
-
-                                    {# Translators: Submit button #}
-                                    <input class='btn btn-primary' type='submit'
-                                           value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
-                                </form>
-                            </fieldset>
-                        </div>
-                    </div>
-                    {% endif %}
+                            {# Translators: Submit button #}
+                            <input class='btn btn-primary' type='submit'
+                                    value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
+                        </form>
+                    </fieldset>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <div class='panel-group col-lg-7 col-md-6 col-sm-12 col-xs-12' id='definition'>
