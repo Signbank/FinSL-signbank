@@ -17,3 +17,5 @@ debug.log
 /signbank.db
 /codecov.sh
 /signbank/settings/settings_secret.py
+
+/media
