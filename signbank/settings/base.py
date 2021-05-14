@@ -30,11 +30,11 @@ except NameError:
     MANAGERS = ()
 
 #: A string representing the time zone for this installation.
-TIME_ZONE = 'Europe/Helsinki'
+TIME_ZONE = 'Pacific/Auckland'
 
 #: A string representing the language code for this installation. This should be in standard language ID format.
 #: For example, U.S. English is "en-us".
-LANGUAGE_CODE = 'fi'
+LANGUAGE_CODE = 'en-nz'
 
 # The ID, as an integer, of the current site in the django_site database table.
 SITE_ID = 1
@@ -106,7 +106,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # A list of IP addresses, as strings: Allow the debug() context processor to add some variables to the template context.
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1','203.118.153.146')
 
 # A string representing the full Python import path to your root URLconf. For example: "mydjangoapps.urls".
 ROOT_URLCONF = 'signbank.urls'
