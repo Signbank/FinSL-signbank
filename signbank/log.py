@@ -7,7 +7,7 @@ from django.conf import settings
 
 def init_logging():
     if settings.DO_LOGGING:
-        logging.basicConfig(filename=settings.LOG_FILENAME, level=logging.DEBUG,
+        logging.basicConfig(stream=sys.stderr, level=logging.DEBUG,
                             format="%(asctime)s - %(levelname)s - %(message)s"
                             )
 
