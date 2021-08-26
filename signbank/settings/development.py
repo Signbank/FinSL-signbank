@@ -9,7 +9,7 @@ from signbank.settings.base import *
 
 #: Debug should be True in development but not in production!
 DEBUG = True
-ALLOWED_HOSTS = ['thinktank.co.nz','southern.thinktank.co.nz','nzslsb.thinktank.co.nz','127.0.0.1']
+ALLOWED_HOSTS = ['thinktank.co.nz','southern.thinktank.co.nz','nzslsb.thinktank.co.nz','127.0.0.1', 'localhost', 'signbank.nz', '202.49.243.139']
 
 #: A list of directories where Django looks for translation files.
 LOCALE_PATHS = (
