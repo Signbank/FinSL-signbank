@@ -18,4 +18,4 @@ debug.log
 /codecov.sh
 /signbank/settings/settings_secret.py
 
-/media/
+media
