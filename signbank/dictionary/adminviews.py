@@ -23,6 +23,8 @@ from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
 from reversion.models import Version
 
+from djqscsv import render_to_csv_response
+
 from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, \
     GlossRelationSearchForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
@@ -543,6 +545,20 @@ def serialize_glosses(dataset, queryset):
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 
+def gloss_list_csv(self, dataset_id):
+    """Returns glosses and associated data as a CSV file"""
+    dataset = get_object_or_404(Dataset, id=dataset_id)
+    return serialize_glosses_csv(dataset,
+                             Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)
+                             .prefetch_related(
+                                 Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
+                                          .select_related('keyword', 'language')),
+                                 Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.
+                                          filter(gloss__dataset=dataset).select_related('language'))))
+
+
+def serialize_glosses_csv(dataset, queryset):
+    return render_to_csv_response(queryset)
 
 class GlossRelationListView(ListView):
     model = GlossRelation

@@ -87,6 +87,9 @@ urlpatterns = [
     path('public-ecv/<int:dataset_id>',
         publicviews.public_gloss_list_xml, name='public_gloss_list_xml'),
 
+    path('csv/<int:dataset_id>', 
+        permission_required('dictionary.search_gloss')(adminviews.gloss_list_csv), name='gloss_list_csv'),
+
     # Network Graph of GlossRelations
     path('network-graph/',login_required(views.network_graph), name='network_graph'),
 ]
