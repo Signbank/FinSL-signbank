@@ -89,7 +89,7 @@ class GlossListView(ListView):
             .prefetch_related('translation_set', 'glosstranslations_set')
 
         # We want to manually set which fields to export here
-        fieldnames = ['idgloss', 'idgloss_en', 'notes', ]
+        fieldnames = ['idgloss', 'idgloss_mi', 'notes', ]
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         # Defines the headings for the file. Signbank ID and Dataset are set first.
@@ -157,7 +157,7 @@ class GlossListView(ListView):
         if 'search' in get and get['search'] != '':
             val = get['search']
             # Searches for multiple fields at the same time. Looking if any of the fields match.
-            query = (Q(idgloss__icontains=val) | Q(idgloss_en__icontains=val) | Q(notes__icontains=val) |
+            query = (Q(idgloss__icontains=val) | Q(idgloss_mi__icontains=val) | Q(notes__icontains=val) |
                      Q(translation__keyword__text__icontains=val))
             qs = qs.filter(query)
 
@@ -167,9 +167,9 @@ class GlossListView(ListView):
             query = Q(idgloss__istartswith=val)
             qs = qs.filter(query)
 
-        if 'idgloss_en' in get and get['idgloss_en'] != '':
-            val = get['idgloss_en']
-            qs = qs.filter(idgloss_en__istartswith=val)
+        if 'idgloss_mi' in get and get['idgloss_mi'] != '':
+            val = get['idgloss_mi']
+            qs = qs.filter(idgloss_mi__istartswith=val)
         if 'keyword' in get and get['keyword'] != '':
             if 'trans_lang' in get and get['trans_lang'] != '':
                 val = get['keyword']
@@ -205,7 +205,7 @@ class GlossListView(ListView):
                       'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', ]
 
         """These were removed from fieldnames because they are not needed there:
-        'idgloss', 'idgloss_en', 'notes',
+        'idgloss', 'idgloss_mi', 'notes',
         """
 
 

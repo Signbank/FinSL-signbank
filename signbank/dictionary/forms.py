@@ -39,7 +39,7 @@ class GlossCreateForm(forms.ModelForm):
 
     class Meta:
         model = Gloss
-        fields = ['dataset', 'idgloss', 'idgloss_en', ]
+        fields = ['dataset', 'idgloss', 'idgloss_mi', ]
 
 
 class TagUpdateForm(forms.Form):
@@ -81,7 +81,7 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     gloss = forms.CharField(label=_("Gloss"))
     # Translators: GlossSearchForm label
-    idgloss_en = forms.CharField(label=_("Gloss in English"))
+    idgloss_mi = forms.CharField(label=_("Gloss in Māori"))
     # Translators: GlossSearchForm label
     keyword = forms.CharField(label=_('Translations'))
     # Translators: GlossSearchForm label
@@ -141,7 +141,7 @@ class GlossSearchForm(forms.ModelForm):
         ATTRS_FOR_FORMS = {'class': 'form-control'}
 
         model = Gloss
-        fields = ('idgloss', 'idgloss_en', 'dialect', 'strong_handshape', 'weak_handshape', 'location',
+        fields = ('idgloss', 'idgloss_mi', 'dialect', 'strong_handshape', 'weak_handshape', 'location',
                   'handedness', 'notes', 'relation_between_articulators', 'absolute_orientation_palm',
                   'absolute_orientation_fingers', 'relative_orientation_movement', 'relative_orientation_location',
                   'orientation_change', 'handshape_change', 'repeated_movement', 'alternating_movement',

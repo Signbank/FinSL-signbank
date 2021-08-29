@@ -323,12 +323,13 @@ class Gloss(models.Model):
     idgloss = models.CharField(_("Gloss"), max_length=60,
                                # Translators: Help text for Gloss field: idgloss
                                help_text=_("""This is the unique identifying name of a Gloss."""))
-    # Translators: Gloss field: idgloss_en (english), verbose name
-    #: Gloss in English. This is the English name of the Gloss.
-    idgloss_en = models.CharField(_("Gloss in English"), blank=True, max_length=60,
-                                  # Translators: Help text for Gloss field: idgloss_en (english)
-                                  help_text=_("""This is the English name for the Gloss"""))
-    # Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
+    # Translators: Gloss field: idgloss_mi (english), verbose name
+    #: Gloss in Māori. This is the Māori name of the Gloss.
+    idgloss_mi = models.CharField(_("Gloss in Māori"), blank=True, max_length=60,
+                                  # Translators: Help text for Gloss field: idgloss_mi (maori)
+                                  help_text=_("""This is the Māori name for the Gloss"""))
+                                      # Translators: Gloss field: idgloss_mi (maori), verbose name
+   # Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
     #: Notes about the Gloss.
     notes = models.TextField(_("Notes"), blank=True)
 

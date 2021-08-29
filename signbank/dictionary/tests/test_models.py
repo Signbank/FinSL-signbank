@@ -92,11 +92,11 @@ class GlossTestCase(TestCase):
         with self.assertRaises(IntegrityError):
             Gloss.objects.create(idgloss="testgloss7", created_by=self.user, updated_by=self.user)
 
-    def test_idgloss_en(self):
-        """Tests the field idgloss_en."""
+    def test_idgloss_mi(self):
+        """Tests the field idgloss_mi."""
         # Check that the max_length can't be exceeded.
         with self.assertRaises(DataError):
-            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_en="äöå1@r" * 10 + "1", dataset=self.dataset,
+            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_mi="äöå1@r" * 10 + "1", dataset=self.dataset,
                                       created_by=self.user, updated_by=self.user)
 
     def test_created_by(self):

@@ -622,15 +622,15 @@ def confirm_import_gloss_csv(request):
                     # If the Gloss does not already exist, continue adding.
                     if not Gloss.objects.filter(dataset=dataset, idgloss=gloss[0]).exists():
                         try:
-                            new_gloss = Gloss(dataset=dataset, idgloss=gloss[0], idgloss_en=gloss[1],
+                            new_gloss = Gloss(dataset=dataset, idgloss=gloss[0], idgloss_mi=gloss[1],
                                           created_by=request.user, updated_by=request.user)
                         except IndexError:
-                            # If we get IndexError, idgloss_en was probably not provided
+                            # If we get IndexError, idgloss_mi was probably not provided
                             new_gloss = Gloss(dataset=dataset, idgloss=gloss[0],
                                               created_by=request.user, updated_by=request.user)
 
                         new_gloss.save()
-                        glosses_added.append((new_gloss.idgloss, new_gloss.idgloss_en))
+                        glosses_added.append((new_gloss.idgloss, new_gloss.idgloss_mi))
 
                 # Flush request.session['glosses_new'] and request.session['dataset']
                 del request.session['glosses_new']

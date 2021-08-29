@@ -15,7 +15,7 @@
     {% for gloss in glosses_new %}
         <tr>
             <td>{{gloss.0}}</td>{# gloss.idgloss #}
-            <td>{{gloss.1}}</td>{# gloss.idgloss_en #}
+            <td>{{gloss.1}}</td>{# gloss.idgloss_mi #}
         </tr>
     {% endfor %}
     </table>
@@ -48,10 +48,10 @@
         <table class="table">
         <th>Gloss</th>
         <th>Gloss in English</th>
-        {% for idgloss, idgloss_en in glosses_added %}
+        {% for idgloss, idgloss_mi in glosses_added %}
             <tr>
                 <td>{{idgloss}}</td>
-                <td>{{idgloss_en}}</td>
+                <td>{{idgloss_mi}}</td>
             </tr>
         {% endfor %}
     </table>
