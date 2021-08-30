@@ -30,6 +30,8 @@
                 {% endif %}
                     <p>{% blocktrans %}Advanced ECV{% endblocktrans %}: <a href="http://{{ request.get_host }}{% url 'dictionary:gloss_list_xml' obj.id %}">
                     http://{{ request.get_host }}{% url 'dictionary:gloss_list_xml' obj.id %}</a></p>
+                    <p>{% blocktrans %}CSV Export{% endblocktrans %}: <a href="//{{ request.get_host }}{% url 'dictionary:gloss_list_csv' obj.id %}">
+                        //{{ request.get_host }}{% url 'dictionary:gloss_list_csv' obj.id %}</a></p>
                 {% if user.is_superuser %}
                 <h3>{% blocktrans %}Users with permissions{% endblocktrans %}</h3>
                 <ul>{% for user in obj.users_with_perms.all %}
