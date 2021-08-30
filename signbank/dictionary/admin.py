@@ -174,7 +174,7 @@ class GlossAdmin(VersionAdmin):
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'idgloss', 'idgloss_en', 'notes',)},),
+    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'idgloss', 'idgloss_mi', 'notes',)},),
                  (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
@@ -190,7 +190,7 @@ class GlossAdmin(VersionAdmin):
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'dataset', 'published', 'exclude_from_ecv', 'idgloss_en']
+    list_display = ['idgloss', 'dataset', 'published', 'exclude_from_ecv', 'idgloss_mi']
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'published', 'exclude_from_ecv', TagListFilter, )
     inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline, GlossRelationInline, GlossURLInline, GlossTagInline, ]

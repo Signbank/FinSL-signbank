@@ -23,6 +23,8 @@ from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
 from reversion.models import Version
 
+from djqscsv import render_to_csv_response
+
 from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, \
     GlossRelationSearchForm
 from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
@@ -89,7 +91,7 @@ class GlossListView(ListView):
             .prefetch_related('translation_set', 'glosstranslations_set')
 
         # We want to manually set which fields to export here
-        fieldnames = ['idgloss', 'idgloss_en', 'notes', ]
+        fieldnames = ['idgloss', 'idgloss_mi', 'notes', ]
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         # Defines the headings for the file. Signbank ID and Dataset are set first.
@@ -157,7 +159,7 @@ class GlossListView(ListView):
         if 'search' in get and get['search'] != '':
             val = get['search']
             # Searches for multiple fields at the same time. Looking if any of the fields match.
-            query = (Q(idgloss__icontains=val) | Q(idgloss_en__icontains=val) | Q(notes__icontains=val) |
+            query = (Q(idgloss__icontains=val) | Q(idgloss_mi__icontains=val) | Q(notes__icontains=val) |
                      Q(translation__keyword__text__icontains=val))
             qs = qs.filter(query)
 
@@ -167,9 +169,9 @@ class GlossListView(ListView):
             query = Q(idgloss__istartswith=val)
             qs = qs.filter(query)
 
-        if 'idgloss_en' in get and get['idgloss_en'] != '':
-            val = get['idgloss_en']
-            qs = qs.filter(idgloss_en__istartswith=val)
+        if 'idgloss_mi' in get and get['idgloss_mi'] != '':
+            val = get['idgloss_mi']
+            qs = qs.filter(idgloss_mi__istartswith=val)
         if 'keyword' in get and get['keyword'] != '':
             if 'trans_lang' in get and get['trans_lang'] != '':
                 val = get['keyword']
@@ -205,7 +207,7 @@ class GlossListView(ListView):
                       'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', ]
 
         """These were removed from fieldnames because they are not needed there:
-        'idgloss', 'idgloss_en', 'notes',
+        'idgloss', 'idgloss_mi', 'notes',
         """
 
 
@@ -543,6 +545,20 @@ def serialize_glosses(dataset, queryset):
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 
+def gloss_list_csv(self, dataset_id):
+    """Returns glosses and associated data as a CSV file"""
+    dataset = get_object_or_404(Dataset, id=dataset_id)
+    return serialize_glosses_csv(dataset,
+                             Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)
+                             .prefetch_related(
+                                 Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
+                                          .select_related('keyword', 'language')),
+                                 Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.
+                                          filter(gloss__dataset=dataset).select_related('language'))))
+
+
+def serialize_glosses_csv(dataset, queryset):
+    return render_to_csv_response(queryset)
 
 class GlossRelationListView(ListView):
     model = GlossRelation

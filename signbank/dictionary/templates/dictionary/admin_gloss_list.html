@@ -97,9 +97,9 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-5 col-sm-6 searchinput">
                     <div class='input-group'>
-                        <label class='input-group-addon' for='id_idgloss_en'>{{searchform.idgloss_en.label}}</label>
-                        <input id="id_idgloss_en" name='idgloss_en' class='form-control'
-                               {% if searchform.idgloss_en.value %}value='{{searchform.idgloss_en.value}}' {% endif %}
+                        <label class='input-group-addon' for='id_idgloss_mi'>{{searchform.idgloss_mi.label}}</label>
+                        <input id="id_idgloss_mi" name='idgloss_mi' class='form-control'
+                               {% if searchform.idgloss_mi.value %}value='{{searchform.idgloss_mi.value}}' {% endif %}
                                placeholder='{% blocktrans %}Begins with string{% endblocktrans %}'>
                     </div>
                 </div>
@@ -181,7 +181,7 @@ function clearForm(myFormElement) {
             <th>{% blocktrans %}Dataset{% endblocktrans %}</th>
             <th>{% blocktrans %}Gloss{% endblocktrans %} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'idgloss' or request.GET.order == 'idgloss' %}&order=-idgloss{% else %}&order=idgloss{% endif %}">
                 <span class="{% if request.GET.order|slice:":1" == "-" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
-            <th>{% blocktrans %}Gloss in English{% endblocktrans %} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'idgloss_en' or request.GET.order == 'idgloss_en' %}&order=-idgloss_en{% else %}&order=idgloss_en{% endif %}">
+            <th>{% blocktrans %}Gloss in English{% endblocktrans %} <a href="?search={{request.GET.search}}{% for key,value in request.GET.items %}{% if not key  == 'search' and not key == 'order' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% if order == 'idgloss_mi' or request.GET.order == 'idgloss_mi' %}&order=-idgloss_mi{% else %}&order=idgloss_mi{% endif %}">
                 <span class="{% if request.GET.order|slice:":1" == "-" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}" aria-hidden="true"></span></a></th>
             <th>{% blocktrans %}Translation equivalents{% endblocktrans %}</th>
             <th>{% blocktrans %}Notes{% endblocktrans %}</th>
@@ -201,7 +201,7 @@ function clearForm(myFormElement) {
                 {% if gloss.glossvideo_set.count > 1 %}<span class="glyphicon glyphicon-film" aria-hidden="true"
                                                              title="{% blocktrans %}Videos{% endblocktrans %}" style="margin-left:5px;"></span>
                 <span class="sr-only">{% blocktrans context "sr-videos" %}Videos{% endblocktrans %}:</span> {{gloss.glossvideo_set.count}}{% endif %}</td>
-            <td>{{ gloss.idgloss_en }}</td>
+            <td>{{ gloss.idgloss_mi }}</td>
             <td> {# Prefetched translations of 'language_code_2char==get_language()' for glosses #}
                 {% for translation in gloss.translation_set.all %}{# Set a comma after all items except the last one #}
                     {% if forloop.last %}{{ translation.keyword }}

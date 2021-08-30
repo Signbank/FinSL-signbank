@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# DAM - need to configure this
 """Production environment specific settings for FinSL-signbank."""
 from __future__ import unicode_literals
 
