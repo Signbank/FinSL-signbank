@@ -7,8 +7,8 @@
 {% block ogimage %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ogimage}}">{% endblock %}
 {% block ogdesc %}<meta property="og:description" content="{{metadesc}}">{% endblock %}
 {% block metatitles %}
-    <meta property="og:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
-    <meta name="twitter:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+    <meta property="og:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}">
+    <meta name="twitter:title" content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}">
 {% endblock %}
 {% block structureddata %}
     {% if first_video %}

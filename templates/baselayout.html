@@ -6,17 +6,17 @@
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{LANGUAGE_CODE|default:'en'}}">
   <head>
-    <title>{% block bootstrap3_title %}{% endblock %}{% blocktrans %}Finnish Signbank{% endblocktrans %}</title>
+    <title>{% block bootstrap3_title %}{% endblock %}{% blocktrans %}NZSL Signbank{% endblocktrans %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
-    {% block metadesc %}<meta name="description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">{% endblock %}
+    {% block metadesc %}<meta name="description" content="{% blocktrans context 'meta' %}NZSL Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">{% endblock %}
 
     {% block ogimage %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}">{% endblock %}
-    {% block ogdesc %}<meta property="og:description" content="{% blocktrans context 'meta' %}Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">{% endblock %}
+    {% block ogdesc %}<meta property="og:description" content="{% blocktrans context 'meta' %}NZSL Signbank is a lexical database of Finnish Sign Language (FinSL) and Finland-Swedish Sign Language (FinSSL).{% endblocktrans %}">{% endblock %}
     {% block metatitles %}
-    <meta property="og:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
-    <meta name="twitter:title" content="{% blocktrans context 'meta' %}Finnish Signbank{% endblocktrans %}">
+    <meta property="og:title" content="{% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}">
+    <meta name="twitter:title" content="{% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}">
     {% endblock %}
 <script type="application/ld+json">
 // Structured data for Google
@@ -76,10 +76,10 @@
             <header id="header">{# Translators: Site title #}
                 <div class="headerlogo">
                     <h1>
-                        <a href="{% url 'root_page' %}" title="{% blocktrans %}Finnish Signbank{% endblocktrans %}">
+                        <a href="{% url 'root_page' %}" title="{% blocktrans %}NZSL Signbank{% endblocktrans %}">
                             <img id="logoheadersignbank"
                                  src="{% static 'img/signbank_logo_laatikko_valkoinen_crop-compressor.png' %}"
-                                 alt="{% blocktrans %}Finnish Signbank{% endblocktrans %}">
+                                 alt="{% blocktrans %}NZSL Signbank{% endblocktrans %}">
                         </a>
                     </h1>
                 </div>
