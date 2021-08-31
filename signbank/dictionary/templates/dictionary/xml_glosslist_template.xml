@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CV_RESOURCE AUTHOR="" DATE="{% now "c" %}" VERSION="0.2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
-    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138509-001" LANG_ID="eng" LANG_LABEL="English (eng)"/>
-    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138502-001" LANG_ID="mri" LANG_LABEL="Māori (mri)"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138502-001" LANG_ID="eng" LANG_LABEL="English (eng)"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138567-001" LANG_ID="mri" LANG_LABEL="Maori (mri)"/>
     <CONTROLLED_VOCABULARY CV_ID="signbank-dataset-{{dataset.id}}">
         <DESCRIPTION LANG_REF="eng"/>
         <DESCRIPTION LANG_REF="mri"/>
