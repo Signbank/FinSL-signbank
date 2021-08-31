@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CV_RESOURCE AUTHOR="" DATE="{% now "c" %}" VERSION="0.2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
-    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138509-001" LANG_ID="fin" LANG_LABEL="Finnish (fin)"/>
-    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138502-001" LANG_ID="eng" LANG_LABEL="English (eng)"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138509-001" LANG_ID="eng" LANG_LABEL="English (eng)"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00138502-001" LANG_ID="mri" LANG_LABEL="Māori (mri)"/>
     <CONTROLLED_VOCABULARY CV_ID="signbank-dataset-{{dataset.id}}">
-        <DESCRIPTION LANG_REF="fin"/>
         <DESCRIPTION LANG_REF="eng"/>
+        <DESCRIPTION LANG_REF="mri"/>
         {% for gloss in queryset %}
             <CV_ENTRY_ML CVE_ID="glossid{{gloss.pk}}">
-                <CVE_VALUE DESCRIPTION="{% for g in gloss.trans_fin %}{% if forloop.first %}{{g}}{% else %}, {{g}}{% endif %}{% endfor %}" LANG_REF="fin">{{gloss.idgloss}}</CVE_VALUE>
-                <CVE_VALUE DESCRIPTION="{% for g in gloss.trans_eng %}{% if forloop.first %}{{g}}{% else %}, {{g}}{% endif %}{% endfor %}" LANG_REF="eng">{{gloss.idgloss_mi}}</CVE_VALUE>
+                <CVE_VALUE DESCRIPTION="" LANG_REF="eng">{{gloss.idgloss}}</CVE_VALUE>
+                <CVE_VALUE DESCRIPTION="" LANG_REF="mri">{{gloss.idgloss_mi}}</CVE_VALUE>
             </CV_ENTRY_ML>
          {% endfor %}
     </CONTROLLED_VOCABULARY>
