@@ -27,7 +27,7 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 try:
     MANAGERS = ADMINS
 except NameError:
-    MANAGERS = ()
+    MANAGERS = (("", ""),)
 
 #: A string representing the time zone for this installation.
 TIME_ZONE = 'Europe/Helsinki'
