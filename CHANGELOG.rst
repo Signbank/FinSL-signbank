@@ -3,6 +3,19 @@
 Changelog
 =========
 
+1.1.3 - 22/09/2021
+
+**Migration required**
+
+Allows setting the language for dataset glosses names
+- Determines the language used to write the `idgloss` in
+- This allows ELAN externally controlled vocabulary to have other than Finnish as the language
+
+Makes it possible to add gloss relations across datasets
+- New ajax endpoint for autocomplete
+- Use idgloss field instead of gloss.id for target gloss in the form
+- Show dataset/lexicon label in public and admin views
+
 1.1.2 - 21/03/2020
 ------------------
 
