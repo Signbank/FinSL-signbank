@@ -524,21 +524,23 @@ def gloss_list_xml(self, dataset_id):
 
 def serialize_glosses(dataset, queryset):
     for gloss in queryset:
-        # Get Finnish translation equivalents from glosstranslations or from translation_set
-        if gloss.glosstranslations_set.exists() and "fin" in [x.language.language_code_3char for x in
-                                                              gloss.glosstranslations_set.all()]:
-            gloss.trans_fin = [x for x in gloss.glosstranslations_set.all() if x.language.language_code_3char == "fin"]
+        # Get Glosses languages translation equivalents from glosstranslations or from translation_set
+        trans_x = gloss.glosstranslations_set.filter(language=dataset.glosslanguage)
+        if trans_x.exists():
+            gloss.trans_x = trans_x
+
         else:
-            gloss.trans_fin = [x.keyword.text for x in gloss.translation_set.all() if
-                               x.language.language_code_3char == "fin"]
+            gloss.trans_x = [x.keyword.text for x in gloss.translation_set.filter(language=dataset.glosslanguage)]
+        
+        # Do not add English glosses if gloss name not set for English
+        if not gloss.idgloss_en:
+            continue
         # Get English translation equivalents from glosstranslations or from translation_set
-        if gloss.glosstranslations_set.exists() and "eng" in [x.language.language_code_3char for x in
-                                                              gloss.glosstranslations_set.all()]:
-            gloss.trans_eng = [x for x in gloss.glosstranslations_set.all() if
-                               x.language.language_code_3char == "eng"]
+        trans_eng = gloss.glosstranslations_set.filter(language__language_code_3char="eng")
+        if trans_eng.exists():
+            gloss.trans_eng = trans_eng
         else:
-            gloss.trans_eng = [x.keyword.text for x in gloss.translation_set.all() if
-                               x.language.language_code_3char == "eng"]
+            gloss.trans_eng = [x.keyword.text for x in gloss.translation_set.filter(language__language_code_3char="eng")]
 
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")

@@ -29,6 +29,9 @@ class Dataset(models.Model):
     public_name = models.CharField(_("Public name"), max_length=60)
     #: Boolean defining whether to show this Dataset in the public interface.
     is_public = models.BooleanField(_("Is public"), default=False, help_text=_("Is this dataset is public or private?"))
+    #: Gloss language, which spoken language is used for the gloss name, used in ELAN external controlled vocabulary
+    glosslanguage = models.ForeignKey("Language", verbose_name=_("Gloss language"), related_name="glosslanguage",
+        on_delete=models.PROTECT, help_text=_("Language that is used for gloss names"))
     #: The Sign Language of the Glosses in this Dataset.
     signlanguage = models.ForeignKey("SignLanguage", verbose_name=_("Sign language"), on_delete=models.PROTECT)
     #: The translation equivalent languages that should be available to the Glosses of this Dataset.

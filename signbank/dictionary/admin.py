@@ -38,7 +38,7 @@ class TagListFilter(admin.SimpleListFilter):
 
 class DatasetAdmin(GuardedModelAdmin, ModelTranslationAdmin):
     model = Dataset
-    list_display = ('name', 'is_public', 'signlanguage',)
+    list_display = ('name', 'is_public', 'signlanguage', 'glosslanguage',)
 
 
 class TranslationAdmin(admin.ModelAdmin):
