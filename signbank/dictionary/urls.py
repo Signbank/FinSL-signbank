@@ -79,6 +79,8 @@ urlpatterns = [
         adminviews.gloss_ajax_complete, name='gloss_complete'),
     path('ajax/searchresults/',
         adminviews.gloss_ajax_search_results, name='ajax_search_results'),
+    path('ajax/glossrelation-autocomplete/<int:dataset>',
+        adminviews.glossrelation_autocomplete, name='glossrelation_autocomplete'),
 
     # XML ecv (externally controlled vocabulary) export for ELAN
     path('ecv/<int:dataset_id>',

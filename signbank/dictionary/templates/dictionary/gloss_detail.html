@@ -127,9 +127,16 @@ $(document).ready(function () {
     <script src="{% static "js/jquery-ui.min.js" %}"></script>
     <script>
       $( function() {
-        var availableTags = {{dataset_glosses|safe}};
         $( ".glossrelation-autocomplete" ).autocomplete({
-          source: availableTags
+          source: async function (request, response) {
+              const { term } = request
+              const selectedDataset = $( "select#id_dataset option:checked" ).val() || null;
+              if (selectedDataset === null) return []
+              const data = await $.get(`/dictionary/ajax/glossrelation-autocomplete/${selectedDataset}?q=${term}`)
+              return response(data)
+          },
+          minLength: 2,
+          delay: 300
         });
       });
     </script>

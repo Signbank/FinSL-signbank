@@ -119,6 +119,7 @@
                                 {% for tag in tag_list %}
                                 <span class="badge" style="float:inherit;">{{tag}}</span>
                                 {% endfor %}
+                                <span class="dataset-{{gr.target.dataset.id}}-color label label-default">{{gr.target.dataset}}</span>
                             </li>
                             {% empty %}
                             <li class="list-group-item">{% blocktrans %}No relations.{% endblocktrans %}</li>
@@ -144,6 +145,7 @@
                                 {% for tag in tag_list %}
                                 <span class="badge" style="float:inherit;">{{tag}}</span>
                                 {% endfor %}
+                                <span class="dataset-{{gr.source.dataset.id}}-color label label-default">{{gr.source.dataset}}</span>
                             </li>
                             {% empty %}
                             <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>

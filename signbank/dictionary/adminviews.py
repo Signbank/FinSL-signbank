@@ -417,11 +417,14 @@ class GlossDetailView(DetailView):
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['glossvideoform'] = GlossVideoForGlossForm()
-        context['relationform'] = RelationForm()
-        context['morphologyform'] = MorphologyForm()
-        context['glossrelationform'] = GlossRelationForm(initial={'source': gloss.id, })
-        # Choices for GlossRelationForm
-        context['dataset_glosses'] = json.dumps(list(Gloss.objects.filter(dataset=dataset).values(label=F('idgloss'), value=F('id'))))
+        # TODO: Remove as not in use
+        # context['relationform'] = RelationForm()
+        # context['morphologyform'] = MorphologyForm()
+        gloss_relation_form = GlossRelationForm(initial={'source': gloss.id, 'dataset': dataset.id})
+        # Get allowed datasets for user (django-guardian)
+        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        gloss_relation_form["dataset"].queryset = allowed_datasets
+        context['glossrelationform'] = gloss_relation_form
         # GlossRelations for this gloss
         context['glossrelations'] = GlossRelation.objects.filter(source=gloss)
         context['glossrelations_reverse'] = GlossRelation.objects.filter(target=gloss)
@@ -507,6 +510,20 @@ def gloss_ajax_complete(request, prefix):
         result.append({'idgloss': g.idgloss, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
+
+
+def glossrelation_autocomplete(request, dataset):
+    """Returns JSON for jquery-ui autocomplete based on dataset"""
+    # Get allowed datasets for user (django-guardian)
+    allowed_datasets = get_objects_for_user(request.user, 'dictionary.view_dataset')
+    dataset_obj = Dataset.objects.get(id=dataset)
+    if dataset_obj not in allowed_datasets:
+        return JsonResponse(list(), safe=False)
+    query = request.GET.get("q", None)
+    if query:
+        return JsonResponse(list(Gloss.objects.filter(dataset_id=dataset, idgloss__icontains=query).values(label=F('idgloss'), value=F('idgloss'))), safe=False)
+    else:
+        return JsonResponse(list(Gloss.objects.filter(dataset_id=dataset).values(label=F('idgloss'), value=F('idgloss'))), safe=False)
 
 
 def gloss_list_xml(self, dataset_id):
