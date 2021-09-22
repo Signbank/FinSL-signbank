@@ -170,6 +170,7 @@ class GlossRelationSearchForm(forms.Form):
 
 
 class GlossRelationForm(forms.Form):
+    dataset = forms.ModelChoiceField(label=_("Lexicon"), queryset=Dataset.objects.all(), empty_label=None)
     source = forms.CharField(widget=forms.HiddenInput())
     target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(attrs={'class': 'glossrelation-autocomplete'}))
     try:

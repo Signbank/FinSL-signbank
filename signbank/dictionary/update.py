@@ -26,6 +26,7 @@ from .forms import TagsAddForm, TagUpdateForm, TagDeleteForm, GlossRelationForm,
 from ..video.models import GlossVideo
 
 
+@login_required
 @permission_required('dictionary.change_gloss')
 def update_gloss(request, glossid):
     """View to update a gloss model from the jeditable jquery form
@@ -170,6 +171,8 @@ def update_gloss(request, glossid):
         return HttpResponseNotAllowed(['POST'])
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def update_keywords(gloss, field, value, language_code_2char):
     """Update the keyword field for the selected language"""
 
@@ -195,6 +198,8 @@ def update_keywords(gloss, field, value, language_code_2char):
     return HttpResponse(value, content_type='text/plain')
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def update_relation(gloss, field, value):
     """Update one of the relations for this gloss"""
 
@@ -242,6 +247,8 @@ def update_relation(gloss, field, value):
     return HttpResponse(newvalue, content_type='text/plain')
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def update_relationtoforeignsign(gloss, field, value):
     """Update one of the relations for this gloss"""
 
@@ -282,6 +289,8 @@ def update_relationtoforeignsign(gloss, field, value):
     return HttpResponse(value, content_type='text/plain')
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def gloss_from_identifier(value):
     """Given an id of the form idgloss (pk) return the
     relevant gloss or None if none is found"""
@@ -332,6 +341,8 @@ def gloss_from_identifier(value):
         return None
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def add_relation(request):
     """Add a new relation instance"""
 
@@ -369,6 +380,8 @@ def add_relation(request):
     return HttpResponseRedirect('/')
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def add_relationtoforeignsign(request):
     """Add a new relationtoforeignsign instance"""
 
@@ -405,6 +418,8 @@ def add_relationtoforeignsign(request):
     return HttpResponseRedirect('/')
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def add_morphology_definition(request):
     if request.method == "POST":
         form = MorphologyForm(request.POST)
@@ -428,6 +443,8 @@ def add_morphology_definition(request):
     raise Http404(_('Incorrect request'))
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def update_morphology_definition(gloss, field, value):
     """Update one of the relations for this gloss"""
 
@@ -473,6 +490,7 @@ def update_morphology_definition(gloss, field, value):
     return HttpResponse(newvalue, content_type='text/plain')
 
 
+@login_required
 @permission_required('dictionary.change_gloss')
 def add_tag(request, glossid):
     """View to add a tag to a gloss"""
@@ -646,6 +664,8 @@ def confirm_import_gloss_csv(request):
         return HttpResponseRedirect(reverse('dictionary:import_gloss_csv'))
 
 
+@login_required
+@permission_required('dictionary.change_gloss')
 def gloss_relation(request):
     """Processes Gloss Relations"""
     if request.method == "POST":
@@ -673,7 +693,8 @@ def gloss_relation(request):
                 msg = _("You do not have permissions to add relations to glosses of this lexicon.")
                 messages.error(request, msg)
                 raise PermissionDenied(msg)
-            target = get_object_or_404(Gloss, id=form.cleaned_data["target"])
+            dataset = form.cleaned_data["dataset"]
+            target = get_object_or_404(Gloss, dataset=dataset, idgloss=form.cleaned_data["target"])
             glossrelation = GlossRelation.objects.create(source=source, target=target)
             if form.cleaned_data["tag"]:
                 Tag.objects.add_tag(glossrelation, form.cleaned_data["tag"].name)

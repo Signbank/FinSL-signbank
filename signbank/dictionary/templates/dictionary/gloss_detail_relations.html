@@ -17,6 +17,7 @@
             {% for tag in tag_list %}
             <span class="badge" style="float:inherit;">{{tag}}</span>
             {% endfor %}
+            <span class="dataset-{{gr.target.dataset.id}}-color label label-default">{{gr.target.dataset}}</span>
             <form class="update_glossrelation" method="POST" action="{% url 'dictionary:add_glossrelation' %}" style="display:none;float:right;" >{% csrf_token %}
                 <input type="hidden" name="delete" value="{{gr.id}}">
                 <button type="submit" class="btn btn-link" >
@@ -30,6 +31,7 @@
     <div class="update_glossrelation" style="display: none;">
         <form class="form-inline" method="POST" action="{% url 'dictionary:add_glossrelation' %}">{% csrf_token %}
             <input type="hidden" name="source" value="{{gloss.id}}">
+            {% bootstrap_field glossrelationform.dataset required=True %}
             {% bootstrap_field glossrelationform.target show_label=False %}
             {% bootstrap_field glossrelationform.tag %}
             <button class="btn btn-primary btn-sm" type="submit">{% blocktrans %}Add relation{% endblocktrans %}</button>
@@ -47,6 +49,7 @@
             {% for tag in tag_list %}
             <span class="badge" style="float:inherit;">{{tag}}</span>
             {% endfor %}
+            <span class="dataset-{{gr.source.dataset.id}}-color label label-default">{{gr.source.dataset}}</span>
         </li>
         {% empty %}
         <li class="list-group-item">{% blocktrans %}No reverse relations.{% endblocktrans %}</li>
