@@ -58,17 +58,17 @@ def update_gloss(request, glossid):
 
         if field.startswith('keywords_'):
             language_code_2char = field.split('_')[1]
-            return update_keywords(gloss, field, value, language_code_2char=language_code_2char)
+            return _update_keywords(gloss, field, value, language_code_2char=language_code_2char)
 
         elif field.startswith('relationforeign'):
-            return update_relationtoforeignsign(gloss, field, value)
+            return _update_relationtoforeignsign(gloss, field, value)
 
         # Had to add field != 'relation_between_articulators' because I changed its field name, and it conflicted here.
         elif field.startswith('relation') and field != 'relation_between_articulators':
-            return update_relation(gloss, field, value)
+            return _update_relation(gloss, field, value)
 
         elif field.startswith('morphology-definition'):
-            return update_morphology_definition(gloss, field, value)
+            return _update_morphology_definition(gloss, field, value)
 
         elif field == 'dialect':
             # expecting possibly multiple values
@@ -171,9 +171,7 @@ def update_gloss(request, glossid):
         return HttpResponseNotAllowed(['POST'])
 
 
-@login_required
-@permission_required('dictionary.change_gloss')
-def update_keywords(gloss, field, value, language_code_2char):
+def _update_keywords(gloss, field, value, language_code_2char):
     """Update the keyword field for the selected language"""
 
     # Try to get the language object based on the language_code.
@@ -198,9 +196,7 @@ def update_keywords(gloss, field, value, language_code_2char):
     return HttpResponse(value, content_type='text/plain')
 
 
-@login_required
-@permission_required('dictionary.change_gloss')
-def update_relation(gloss, field, value):
+def _update_relation(gloss, field, value):
     """Update one of the relations for this gloss"""
 
     (what, relid) = field.split('_')
@@ -247,9 +243,7 @@ def update_relation(gloss, field, value):
     return HttpResponse(newvalue, content_type='text/plain')
 
 
-@login_required
-@permission_required('dictionary.change_gloss')
-def update_relationtoforeignsign(gloss, field, value):
+def _update_relationtoforeignsign(gloss, field, value):
     """Update one of the relations for this gloss"""
 
     (what, relid) = field.split('_')
@@ -289,8 +283,6 @@ def update_relationtoforeignsign(gloss, field, value):
     return HttpResponse(value, content_type='text/plain')
 
 
-@login_required
-@permission_required('dictionary.change_gloss')
 def gloss_from_identifier(value):
     """Given an id of the form idgloss (pk) return the
     relevant gloss or None if none is found"""
@@ -443,9 +435,7 @@ def add_morphology_definition(request):
     raise Http404(_('Incorrect request'))
 
 
-@login_required
-@permission_required('dictionary.change_gloss')
-def update_morphology_definition(gloss, field, value):
+def _update_morphology_definition(gloss, field, value):
     """Update one of the relations for this gloss"""
 
     (what, morph_def_id) = field.split('_')
