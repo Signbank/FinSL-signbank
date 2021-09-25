@@ -13,7 +13,7 @@ from django.shortcuts import get_object_or_404
 from .models import Gloss, Dataset, SignLanguage, GlossRelation, Translation, GlossTranslations
 from ..video.models import GlossVideo
 from .forms import GlossPublicSearchForm
-from .adminviews import serialize_glosses
+from .adminviews import serialize_glosses, get_language_concept
 
 
 class GlossListPublicView(ListView):
@@ -129,11 +129,13 @@ def public_gloss_list_xml(self, dataset_id):
     """Return ELAN schema valid XML of public glosses and their translations."""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = get_object_or_404(Dataset, id=dataset_id, is_public=True)
+    dataset.glosslanguage_concept = get_language_concept(dataset.glosslanguage.language_code_3char)
+    qs = Gloss.objects.filter(dataset=dataset, published=True, exclude_from_ecv=False)\
+        .prefetch_related('glosstranslations_set')\
+        .prefetch_related('glosstranslations_set__language')\
+        .prefetch_related('translation_set')\
+        .prefetch_related('translation_set__keyword')\
+        .prefetch_related('translation_set__language')
 
-    return serialize_glosses(dataset, Gloss.objects.filter(
-        dataset=dataset, published=True, exclude_from_ecv=False).prefetch_related(
-        Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
-                 .select_related('keyword', 'language')),
-        Prefetch('glosstranslations_set', queryset=GlossTranslations.objects
-                 .filter(gloss__dataset=dataset).select_related('language')))
-                             )
+    response = serialize_glosses(dataset, qs)
+    return response

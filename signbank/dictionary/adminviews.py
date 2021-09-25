@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import json
 import csv
+from os import path as os_path
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Count
@@ -530,38 +531,43 @@ def gloss_list_xml(self, dataset_id):
     """Returns all entries in dictionarys idgloss fields in XML form that is supported by ELAN"""
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = get_object_or_404(Dataset, id=dataset_id)
-    return serialize_glosses(dataset,
-                             Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)
-                             .prefetch_related(
-                                 Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
-                                          .select_related('keyword', 'language')),
-                                 Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.
-                                          filter(gloss__dataset=dataset).select_related('language'))))
+    dataset.glosslanguage_concept = get_language_concept(dataset.glosslanguage.language_code_3char)
+    qs = Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)\
+        .prefetch_related('glosstranslations_set')\
+        .prefetch_related('glosstranslations_set__language')\
+        .prefetch_related('translation_set')\
+        .prefetch_related('translation_set__keyword')\
+        .prefetch_related('translation_set__language')
+
+    response = serialize_glosses(dataset, qs)
+    return response
 
 
 def serialize_glosses(dataset, queryset):
     for gloss in queryset:
-        # Get Glosses languages translation equivalents from glosstranslations or from translation_set
-        trans_x = gloss.glosstranslations_set.filter(language=dataset.glosslanguage)
-        if trans_x.exists():
-            gloss.trans_x = trans_x
-
+        # Get translations for Lexicons glosslanguage from glosstranslations or from translation_set
+        # GlossTranslations holds the written format of translations, and translation_set contains the parsed keywords
+        if gloss.glosstranslations_set.exists() and dataset.glosslanguage in [x.language for x in gloss.glosstranslations_set.all()]:
+            gloss.trans_x = ", ".join([x.translations for x in gloss.glosstranslations_set.all() if x.language == dataset.glosslanguage])
         else:
-            gloss.trans_x = [x.keyword.text for x in gloss.translation_set.filter(language=dataset.glosslanguage)]
-        
-        # Do not add English glosses if gloss name not set for English
-        if not gloss.idgloss_en:
-            continue
+            gloss.trans_x = ", ".join([x.keyword.text for x in gloss.translation_set.all() if x.language == dataset.glosslanguage])
         # Get English translation equivalents from glosstranslations or from translation_set
-        trans_eng = gloss.glosstranslations_set.filter(language__language_code_3char="eng")
-        if trans_eng.exists():
-            gloss.trans_eng = trans_eng
+        if gloss.glosstranslations_set.exists() and "eng" in [x.language.language_code_3char for x in gloss.glosstranslations_set.all()]:
+            gloss.trans_eng = ", ".join([x.translations for x in gloss.glosstranslations_set.all() if x.language.language_code_3char == "eng"])
         else:
-            gloss.trans_eng = [x.keyword.text for x in gloss.translation_set.filter(language__language_code_3char="eng")]
+            gloss.trans_eng = ", ".join([x.keyword.text for x in gloss.translation_set.all() if x.language.language_code_3char == "eng"])
 
     xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
 
+def get_language_concept(iso3char):
+    """Returns a ISO language concept url for given ISO-639-3 language code of 3 characters long."""
+    with open(os_path.join(os_path.dirname(__file__),'languageConcepts.json'), 'r') as f:
+        languages = json.load(f)
+    try:
+        return languages[iso3char]["concept"]
+    except KeyError:
+        return None
 
 class GlossRelationListView(ListView):
     model = GlossRelation
