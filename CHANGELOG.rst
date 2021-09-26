@@ -3,7 +3,20 @@
 Changelog
 =========
 
+1.1.4 - 26/09/2021
+------------------
+
+Fixes ELAN issue with setting glosslanguage and reverts ECV generation back to less db intensive
+
+- Introduce a language list gathered from the same source as ELAN
+- Transformed the language list to JSON
+- Language list includes the ISO concept URLs that ELAN requires for controlled vocabulary languages
+- Revert ECV generation back to the previous less database intensive way (less queries)
+- Fixes tests by introducing glosslanguage
+
+
 1.1.3 - 22/09/2021
+------------------
 
 **Migration required**
 
