@@ -17,4 +17,7 @@ if __name__ == "__main__":
     apps_for_testing = [app[applen:] for app in settings.INSTALLED_APPS
                         if app.startswith("signbank.apps")]
 
+    # depending on settings flatpages wants to migrate languages
+    call_command("makemigrations", "flatpages")
+    call_command("migrate", "flatpages")
     call_command("test", *apps_for_testing)
