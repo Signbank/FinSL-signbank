@@ -45,9 +45,10 @@ class UpdateGlossTestCase(TestCase):
         # Create a gloss
         # Migrations have id=1 already
         self.signlanguage = SignLanguage.objects.create(pk=2, name="testsignlanguage", language_code_3char="tst")
-        self.dataset = Dataset.objects.create(name="testdataset", signlanguage=self.signlanguage)
+        self.language_en = Language.objects.create(name="English", language_code_2char="en", language_code_3char="eng")
+        self.dataset = Dataset.objects.create(name="testdataset", signlanguage=self.signlanguage, glosslanguage=self.language_en)
         self.testgloss = Gloss.objects.create(idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
-        self.language_en = Language.objects.create(name='English', language_code_2char='en', language_code_3char='eng')
+        
 
         # Assign view permissions to dataset for user
         assign_perm('view_dataset', self.user, self.dataset)
