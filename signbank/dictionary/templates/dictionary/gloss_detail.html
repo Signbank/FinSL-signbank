@@ -2,7 +2,7 @@
 {% load stylesheet %}
 {% load bootstrap3 %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% block bootstrap3_title %}{{gloss}} [{{gloss.dataset}}] | {% endblock %}
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/tagmanager.css' %}">
@@ -414,7 +414,7 @@ $('#id_comment').atwho({
                                         {{version.revision.date_created|date:'Y-m-d H:i'}}
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                         {{version.revision.user.username }}
-                                        {{version.revision.comment}} |
+                                        {{version.revision.get_comment}} |
                                         {% if version.data_added or version.data_removed %}{% blocktrans %}Gloss fields:{% endblocktrans %}{% endif %}
                                         {% if version.data_added %}<span style="color:green;">+{{version.data_added}}</span>{% endif %}
                                         {% if version.data_removed %}<span style="color:red;">-{{version.data_removed}}</span>{% endif %}

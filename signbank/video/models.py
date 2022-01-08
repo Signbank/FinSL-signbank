@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 import os
 import datetime
 
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.conf import settings
@@ -30,7 +29,6 @@ class GlossVideoStorage(FileSystemStorage):
         return os.path.join(self.base_url, name)
 
 
-@python_2_unicode_compatible
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
     #: Descriptive title of the GlossVideo.

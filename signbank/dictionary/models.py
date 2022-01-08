@@ -8,7 +8,6 @@ import reversion
 from itertools import groupby
 from collections import OrderedDict
 
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.db import models, OperationalError
 from django.urls import reverse
@@ -20,7 +19,6 @@ from tagging.registry import AlreadyRegistered
 from tagging.models import Tag
 
 
-@python_2_unicode_compatible
 class Dataset(models.Model):
     """Dataset/Lexicon of which Glosses are part of."""
     #: A private name for the Dataset. Can include abbrevations not recognizable by the general users.
@@ -56,7 +54,6 @@ class Dataset(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class GlossTranslations(models.Model):
     """Store a string representation of translation equivalents of certain Language for a Gloss."""
     #: The Gloss to translate
@@ -125,7 +122,6 @@ class GlossTranslations(models.Model):
         return self.translations
 
 
-@python_2_unicode_compatible
 @reversion.register()
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
@@ -148,7 +144,6 @@ class Translation(models.Model):
         return self.keyword.text
 
 
-@python_2_unicode_compatible
 @reversion.register()
 class Keyword(models.Model):
     """A keyword that stores the text for translation(s)"""
@@ -167,7 +162,6 @@ class Keyword(models.Model):
         return self.text
 
 
-@python_2_unicode_compatible
 class Language(models.Model):
     """A written language, used for translations in written languages."""
     #: The name of a spoken/written Language.
@@ -190,7 +184,6 @@ class Language(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class SignLanguage(models.Model):
     """A sign language."""
     #: The name of the Sign Language
@@ -208,7 +201,6 @@ class SignLanguage(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class Dialect(models.Model):
     """A dialect name - a regional dialect of a given Language"""
     #: The Language of the Dialect.
@@ -227,7 +219,6 @@ class Dialect(models.Model):
         return str(self.language.name) + "/" + str(self.name)
 
 
-@python_2_unicode_compatible
 class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
     #: The source Gloss of the relation.
@@ -257,7 +248,6 @@ class RelationToForeignSign(models.Model):
         return str(self.gloss) + "/" + str(self.other_lang) + ',' + str(self.other_lang_gloss)
 
 
-@python_2_unicode_compatible
 class FieldChoice(models.Model):
     #: The name of the FieldChoice.
     field = models.CharField(max_length=50)
@@ -291,7 +281,6 @@ def build_choice_list(field):
         return choice_list
 
 
-@python_2_unicode_compatible
 class Gloss(models.Model):
     class Meta:
         unique_together = (("idgloss", "dataset"),)
@@ -414,9 +403,9 @@ class Gloss(models.Model):
                                          related_name="handshape_change", blank=True, null=True, on_delete=models.SET_NULL)
 
     # Translators: Gloss models field: repeated_movement, verbose name
-    repeated_movement = models.NullBooleanField(_("Repeated Movement"), null=True, default=False)
+    repeated_movement = models.BooleanField(_("Repeated Movement"), null=True, default=False)
     # Translators: Gloss models field: alternating_movement, verbose name
-    alternating_movement = models.NullBooleanField(_("Alternating Movement"), null=True, default=False)
+    alternating_movement = models.BooleanField(_("Alternating Movement"), null=True, default=False)
 
     # Translators: Gloss models field: movement_shape, verbose name
     movement_shape = models.ForeignKey('FieldChoice', verbose_name=_("Movement Shape"), to_field='machine_value',
@@ -537,7 +526,6 @@ class Gloss(models.Model):
         return json.dumps(field_choices)
 
 
-@python_2_unicode_compatible
 class GlossURL(models.Model):
     """URL's for gloss"""
     #: The Gloss the URL belongs to.
@@ -553,7 +541,6 @@ class GlossURL(models.Model):
         return self.gloss.idgloss + " - " + self.url
 
 
-@python_2_unicode_compatible
 class AllowedTags(models.Model):
     """Tags a model is allowed to use."""
     #: The tags that are shown in tag lists.
@@ -569,7 +556,6 @@ class AllowedTags(models.Model):
         return str(self.content_type)
 
 
-@python_2_unicode_compatible
 class GlossRelation(models.Model):
     """Relation between two glosses"""
     #: The source Gloss of the Relation.
@@ -591,7 +577,6 @@ class GlossRelation(models.Model):
         return str(self.target)
 
 
-@python_2_unicode_compatible
 class Relation(models.Model):  # TODO: Remove
     """A relation between two glosses"""
     source = models.ForeignKey(Gloss, related_name="relation_sources", on_delete=models.CASCADE)
@@ -615,7 +600,6 @@ class Relation(models.Model):  # TODO: Remove
         return str(self.source)+' -> ' + str(self.target)
 
 
-@python_2_unicode_compatible
 class MorphologyDefinition(models.Model):
     """Tells something about morphology of a gloss"""
     parent_gloss = models.ForeignKey(Gloss, related_name="parent_glosses", on_delete=models.CASCADE)
