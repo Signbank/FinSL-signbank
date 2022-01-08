@@ -7,7 +7,7 @@ from os import path as os_path
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Q, Count
-from django.db.models.fields import NullBooleanField
+from django.db.models.fields import BooleanField
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import PermissionDenied
 from django.template.loader import render_to_string
@@ -235,7 +235,7 @@ class GlossListView(ListView):
                 key = fieldname + '__exact'
                 val = get[fieldname]
 
-                if isinstance(Gloss._meta.get_field(fieldname), NullBooleanField):
+                if isinstance(Gloss._meta.get_field(fieldname), BooleanField):
                     val = {'0': '', '1': None, '2': True, '3': False}[val]
 
                 if val != '':

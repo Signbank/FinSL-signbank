@@ -11,7 +11,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import permission_required, login_required
-from django.db.models.fields import NullBooleanField
+from django.db.models.fields import BooleanField
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
@@ -122,7 +122,7 @@ def update_gloss(request, glossid):
                 return HttpResponseBadRequest(_("Unknown field"), content_type='text/plain')
 
             # Translate the value if a boolean
-            if isinstance(Gloss._meta.get_field(field), NullBooleanField):
+            if isinstance(Gloss._meta.get_field(field), BooleanField):
                 newvalue = value
                 value = (value == 'Yes')
 
