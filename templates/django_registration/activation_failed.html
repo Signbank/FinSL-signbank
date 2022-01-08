@@ -1,0 +1,11 @@
+{% extends "django_registration/registration_base.html" %}
+{% load i18n %}
+
+{% block bootstrap3_title %}{% blocktrans %}Account activation failed{% endblocktrans %} | {% endblock %}
+
+{% block content %}
+<div class="alert alert-danger" role="alert">
+    <h3>{% trans "Account activation failed." %}</h3>
+    <p>{% trans "Did you remember to consume the activation link within 7 days?" %}</p>
+</div>
+{% endblock %}

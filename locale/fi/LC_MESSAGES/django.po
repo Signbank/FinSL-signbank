@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-08 15:48+0200\n"
+"POT-Creation-Date: 2022-01-08 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2350,6 +2350,7 @@ msgid "Activation Failure"
 msgstr "Aktivointi epäonnistui"
 
 #: templates/django_registration/activate.html:8
+#: templates/django_registration/activation_failed.html:8
 msgid "Account activation failed."
 msgstr "Tunnuksen aktivointi epäonnistui."
 
@@ -2400,6 +2401,15 @@ msgstr ""
 #: templates/django_registration/activation_email_subject.txt:1
 msgid "Account activation on"
 msgstr "Tunnuksen aktivointi"
+
+#: templates/django_registration/activation_failed.html:4
+msgid "Account activation failed"
+msgstr "Tunnuksen aktivointi epäonnistui"
+
+#: templates/django_registration/activation_failed.html:9
+msgid "Did you remember to consume the activation link within 7 days?"
+msgstr ""
+"Muistitko käyttää aktivointilinkin 7 päivän kuluessa tunnuksen luomisesta?"
 
 #: templates/django_registration/password_reset_email.txt:2
 #, python-format
@@ -2899,6 +2909,11 @@ msgstr "Vailla käyttäjätunnusta?"
 #: templates/setlang.html:9
 msgid "Language selection"
 msgstr "Kielen valinta"
+
+#, fuzzy
+#~| msgid "Activation Failure"
+#~ msgid "Activation Failed"
+#~ msgstr "Aktivointi epäonnistui"
 
 #~ msgid "Gloss Update Not Allowed"
 #~ msgstr "Glossin päivittäminen ei ole sallittua"
