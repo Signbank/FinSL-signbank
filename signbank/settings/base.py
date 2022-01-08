@@ -21,6 +21,8 @@ except ImportError:
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 # Path to the project directory.
 PROJECT_DIR = os.path.dirname(BASE_DIR)
+# Sets the field to automatically use for model primary key
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # A list in the same format as ADMINS that specifies who should get broken link notifications
 # when BrokenLinkEmailsMiddleware is enabled. ADMINS are set in secret_settings.
