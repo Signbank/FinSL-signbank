@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-,
 """Django settings for FinSL-signbank, base settings shared by all settings files."""
-from __future__ import unicode_literals
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
+import mimetypes
 import os
 import sys
 
+import dj_database_url
 from django.utils.translation import ugettext_lazy as _
 
 try:
@@ -63,7 +64,7 @@ STATICFILES_FINDERS = (
 #: A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE = [
     # If want to use some of the HTTPS settings in secret_settings, enable SecurityMiddleware
-    #'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,7 +107,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # A list of IP addresses, as strings: Allow the debug() context processor to add some variables to the template context.
-INTERNAL_IPS = ('127.0.0.1','203.118.153.146')
+INTERNAL_IPS = ('127.0.0.1', '203.118.153.146')
 
 # A string representing the full Python import path to your root URLconf. For example: "mydjangoapps.urls".
 ROOT_URLCONF = 'signbank.urls'
@@ -161,6 +162,12 @@ LOGIN_REDIRECT_URL = '/'
 # For django-tagging: force tags to be lowercase.
 FORCE_LOWERCASE_TAGS = True
 
-import mimetypes
+
+# Use DATABASE_URL if present. This is done first since
+# settings_secret uses it
+if os.getenv("DATABASE_URL"):
+    DATABASES['default'] = dj_database_url.config()
+
+
 mimetypes.add_type("video/mp4", ".mov", True)
 mimetypes.add_type("video/webm", ".webm", True)
