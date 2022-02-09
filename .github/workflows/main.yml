@@ -5,6 +5,7 @@ env:
 jobs:
   deploy:
       name: Deploy app
+      environment: Main
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
