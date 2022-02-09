@@ -13,9 +13,11 @@ RUN npm install &&\
 FROM python:3.7
 
 CMD pip install -r requirements.txt && \
-    ./bin/develop.py migrate --noinput && \
-    ./bin/develop.py createcachetable && \
-    ./bin/develop.py runserver 0.0.0.0:8000
+    python bin/develop.py migrate --noinput && \
+    python bin/develop.py createcachetable && \
+    python bin/develop.py runserver 0.0.0.0:8000
+
+EXPOSE 8000
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONIOENCODING=UTF-8 \
