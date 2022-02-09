@@ -15,7 +15,8 @@ try:
 except ImportError:
     print('Unable to import settings_secret.py. Create one from settings_secret.py.template.', file=sys.stderr)
     # Unable to import SECRET_KEY from settings_secret.
-    SECRET_KEY = 'INSERT_$$$$_YOUR_%%%%_SECRET_@@@@_KEY_%%%%%%_HERE'
+    SECRET_KEY = os.getenv(
+        "SECRET_KEY", 'INSERT_$$$$_YOUR_%%%%_SECRET_@@@@_KEY_%%%%%%_HERE')
 
 
 # Absolute path to the base directory of the application.
@@ -166,7 +167,9 @@ FORCE_LOWERCASE_TAGS = True
 # Use DATABASE_URL if present. This is done first since
 # settings_secret uses it
 if os.getenv("DATABASE_URL"):
-    DATABASES['default'] = dj_database_url.config()
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
 
 
 mimetypes.add_type("video/mp4", ".mov", True)
