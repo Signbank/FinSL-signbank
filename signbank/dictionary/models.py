@@ -62,6 +62,10 @@ class GlossTranslations(models.Model):
     language = models.ForeignKey("Language", verbose_name=_("Language"), on_delete=models.CASCADE)
     #: The fields that contains the translations, a text field.
     translations = models.TextField(blank=True)
+    #: The fields that contains the secondary translations, a text field.
+    translations_secondary = models.TextField(blank=True)
+    #: The fields that contains the minor translations, a text field.
+    translations_minor = models.TextField(blank=True)
 
     class Meta:
         unique_together = (("gloss", "language"),)
@@ -106,8 +110,13 @@ class GlossTranslations(models.Model):
         """Returns keywords parsed from self.translations."""
         # Remove number(s) that end with a dot (e.g. '1.') from the 'value'.
         translations_cleaned = re.sub('\d\.', '', str(self.translations))
+        translations_cleaned_secondary = re.sub('\d\.', '', str(self.translations_secondary))
+        translations_cleaned_minor = re.sub('\d\.', '', str(self.translations_minor))
+
+        all_translations_cleaned = translations_cleaned + ',' + translations_cleaned_secondary + ',' + translations_cleaned_minor
+
         # Splitting the remaining string on comma, dot or semicolon. Then strip spaces around the keyword(s).
-        keywords = [k.strip() for k in re.split('[,.;]', translations_cleaned)]
+        keywords = [k.strip() for k in re.split('[,.;]', all_translations_cleaned)]
         return keywords
 
     def get_keywords_unique(self):
@@ -117,9 +126,6 @@ class GlossTranslations(models.Model):
     def has_duplicates(self):
         keywords_str = self.get_keywords()
         return len(keywords_str) != (len(set(keywords_str)))
-
-    def __str__(self):
-        return self.translations
 
 
 @python_2_unicode_compatible
@@ -325,7 +331,7 @@ class Gloss(models.Model):
                                help_text=_("""This is the unique identifying name of a Gloss."""))
     # Translators: Gloss field: idgloss_mi (english), verbose name
     #: Gloss in Māori. This is the Māori name of the Gloss.
-    idgloss_mi = models.CharField(_("Gloss in Māori"), blank=True, max_length=60,
+    idgloss_mi = models.CharField(_("Gloss in Māori"), blank=True, null=True, max_length=150,
                                   # Translators: Help text for Gloss field: idgloss_mi (maori)
                                   help_text=_("""This is the Māori name for the Gloss"""))
                                       # Translators: Gloss field: idgloss_mi (maori), verbose name
@@ -463,6 +469,13 @@ class Gloss(models.Model):
         # Translators: Help text for Gloss models field: number_of_occurences
         help_text=_("Number of occurences in annotation materials"))
 
+    #: Hints are aids for hearing learners of NZSL to help them to produce or remember the Gloss.
+    hint = models.TextField(_("Hint"), null=True, blank=True)
+
+    #: The signer of this Gloss.
+    signer = models.ForeignKey("Signer", null=True, verbose_name=_("Signer"),
+            help_text=_("Signer for the Gloss"), on_delete=models.PROTECT)
+    
     def __str__(self):
         return self.idgloss
 
@@ -496,7 +509,8 @@ class Gloss(models.Model):
                 # Get translations from GlossTranslation object, if it exists for gloss+language.
                 translation_list.append(GlossTranslations.objects.get(gloss=self, language=language))
             except GlossTranslations.DoesNotExist:
-                # If it doesn't exist, try to get translations from Translation objects.
+                translation_list.append(GlossTranslations.objects.filter(gloss=self, language=language))
+                """# If it doesn't exist, try to get translations from Translation objects.
                 translations = Translation.objects.filter(gloss=self, language=language)
                 kwd_str = ""
                 first = True
@@ -506,7 +520,7 @@ class Gloss(models.Model):
                         first = False
                     else:
                         kwd_str += ", " + trans.keyword.text
-                translation_list.append(kwd_str)
+                translation_list.append(kwd_str)"""
 
         return list(zip(translation_languages, translation_list))
 
@@ -628,6 +642,21 @@ class MorphologyDefinition(models.Model):
 
     def __str__(self):
         return str(self.morpheme.idgloss) + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss)
+
+
+@python_2_unicode_compatible
+class Signer(models.Model):
+    """The list of signers"""
+    #: Signer name.
+    name = models.CharField(max_length=150, unique=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _('Signer')
+        verbose_name_plural = _('Signers')
+
+    def __str__(self):
+        return self.name
 
 
 # Register Models for django-tagging to add wrappers around django-tagging API.
