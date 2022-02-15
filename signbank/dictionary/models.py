@@ -63,9 +63,9 @@ class GlossTranslations(models.Model):
     #: The fields that contains the translations, a text field.
     translations = models.TextField(blank=True)
     #: The fields that contains the secondary translations, a text field.
-    translations_secondary = models.TextField(blank=True)
+    translations_secondary = models.TextField(blank=True, null=True)
     #: The fields that contains the minor translations, a text field.
-    translations_minor = models.TextField(blank=True)
+    translations_minor = models.TextField(blank=True, null=True)
 
     class Meta:
         unique_together = (("gloss", "language"),)
@@ -74,6 +74,15 @@ class GlossTranslations(models.Model):
         ordering = ['language']
 
     def save(self, *args, **kwargs):
+        if self.translations == ' ':
+            self.translations = None
+
+        if self.translations_secondary == ' ':
+            self.translations_secondary = None
+
+        if self.translations_minor == ' ':
+            self.translations_minor = None
+
         # Is the object being created
         creating = self._state.adding
         # Remove duplicates and keep the order.
@@ -86,7 +95,7 @@ class GlossTranslations(models.Model):
         # Delete translations that no longer exist in field GlossTranslations.translations.
         translations.exclude(pk__in=translations_to_keep).delete()
 
-        if len(keywords) < 2 and keywords[0].strip() == "":
+        if not keywords or (len(keywords) < 2 and keywords[0].strip() == ""):
             # If the to be saved object has no 'translations'
             if not creating:
                 # If the object is being updated
@@ -108,15 +117,29 @@ class GlossTranslations(models.Model):
 
     def get_keywords(self):
         """Returns keywords parsed from self.translations."""
-        # Remove number(s) that end with a dot (e.g. '1.') from the 'value'.
-        translations_cleaned = re.sub('\d\.', '', str(self.translations))
-        translations_cleaned_secondary = re.sub('\d\.', '', str(self.translations_secondary))
-        translations_cleaned_minor = re.sub('\d\.', '', str(self.translations_minor))
+        all_translations_cleaned = ''
 
-        all_translations_cleaned = translations_cleaned + ',' + translations_cleaned_secondary + ',' + translations_cleaned_minor
+        # Remove number(s) that end with a dot (e.g. '1.') from the 'value'.
+        if self.translations:
+            translations_cleaned = re.sub('\d\.', '', str(self.translations))
+            all_translations_cleaned += translations_cleaned
+
+        if self.translations_secondary:
+            translations_cleaned_secondary = re.sub('\d\.', '', str(self.translations_secondary))
+            all_translations_cleaned += ','
+            all_translations_cleaned += translations_cleaned_secondary
+
+        if self.translations_minor:    
+            translations_cleaned_minor = re.sub('\d\.', '', str(self.translations_minor))
+            all_translations_cleaned += ','
+            all_translations_cleaned += translations_cleaned_minor
 
         # Splitting the remaining string on comma, dot or semicolon. Then strip spaces around the keyword(s).
         keywords = [k.strip() for k in re.split('[,.;]', all_translations_cleaned)]
+
+        if '' in keywords:
+            keywords.remove('')
+
         return keywords
 
     def get_keywords_unique(self):
@@ -473,7 +496,7 @@ class Gloss(models.Model):
     hint = models.TextField(_("Hint"), null=True, blank=True)
 
     #: The signer of this Gloss.
-    signer = models.ForeignKey("Signer", null=True, verbose_name=_("Signer"),
+    signer = models.ForeignKey("Signer", null=True, blank=True, verbose_name=_("Signer"),
             help_text=_("Signer for the Gloss"), on_delete=models.PROTECT)
     
     def __str__(self):

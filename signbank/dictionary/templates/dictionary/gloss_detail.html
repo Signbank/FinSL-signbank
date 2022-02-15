@@ -334,17 +334,29 @@ $('#id_comment').atwho({
                             <tr>
                                 <td>{% blocktrans %}Major {% endblocktrans %}</td>
                                 <td>&nbsp;</td>
-                                <td class='edit edit_area_translations' id='keywords_{{ translation_language.language_code_2char }}'>{{ translations.translations }}</td>
+                                {% if translations.translations %}
+                                    <td class='edit edit_area_translations' id='keywords_{{ translation_language.language_code_2char }}'>{{ translations.translations }}</td>
+                                {% else %}
+                                    <td class='edit edit_area_translations' id='keywords_{{ translation_language.language_code_2char }}'></td>
+                                {% endif %}
                             </tr>
                             <tr>
                                 <td>{% blocktrans %}Secondary {% endblocktrans %}</td>
                                 <td>&nbsp;</td>
-                                <td class='edit edit_area_translations' id='keywords_secondary_{{ translation_language.language_code_2char }}'>{{ translations.translations_secondary }}</td>
+                                {% if translations.translations_secondary %}
+                                    <td class='edit edit_area_translations' id='keywords_secondary_{{ translation_language.language_code_2char }}'>{{ translations.translations_secondary }}</td>
+                                {% else %}
+                                    <td class='edit edit_area_translations' id='keywords_secondary_{{ translation_language.language_code_2char }}'></td>
+                                {% endif %}
                             </tr>
                             <tr>
                                 <td>{% blocktrans %}Minor {% endblocktrans %}</td>
                                 <td>&nbsp;</td>
-                                <td class='edit edit_area_translations' id='keywords_minor_gloss_{{ translation_language.language_code_2char }}'>{{ translations.translations_minor }}</td>
+                                {% if translations.translations_minor %}
+                                    <td class='edit edit_area_translations' id='keywords_minor_gloss_{{ translation_language.language_code_2char }}'>{{ translations.translations_minor }}</td>
+                                {% else %}
+                                    <td class='edit edit_area_translations' id='keywords_minor_gloss_{{ translation_language.language_code_2char }}'></td>
+                                {% endif %}
                             </tr>       
                         </table>    
                     </td>
