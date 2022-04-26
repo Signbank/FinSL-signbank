@@ -6,7 +6,7 @@ ADD package.json /app
 
 ADD package-lock.json /app
 
-RUN npm install &&\
+RUN npm ci &&\
     npm run collectjs &&\
     npm run collectcss
 
