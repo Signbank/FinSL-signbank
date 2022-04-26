@@ -4,16 +4,20 @@ on:
     branches:
       - feature/run-locally
       - main
-env:
-  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
-  deploy:
-      name: Deploy app
-      environment: Main
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - run: cp signbank/settings/settings_secret.py.template signbank/settings/settings_secret.py
-        - uses: superfly/flyctl-actions@1.1
-          with:
-            args: "deploy"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the docker-compose stack
+      run: docker-compose up -d
+    - name: Check running containers
+      run: docker ps -a
+    - name: Check logs
+      run: docker logs backend
+    - name: Run migrations
+      run: |
+        docker-compose run backend python3 bin/develop.py migrate --noinput
+        docker-compose run backend python3 bin/develop.py sync_translation_fields --noinput
+    - name: Run test suite
+      run: docker-compose run backend python3 bin/develop.py test
