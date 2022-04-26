@@ -163,6 +163,12 @@ LOGIN_REDIRECT_URL = '/'
 # For django-tagging: force tags to be lowercase.
 FORCE_LOWERCASE_TAGS = True
 
+# Use our own migrations for flatpages
+MIGRATION_MODULES = {
+    'flatpages': 'signbank.contentpages.migrations',
+    'contentpages': None
+}
+
 
 # Use DATABASE_URL if present. This is done first since
 # settings_secret uses it
