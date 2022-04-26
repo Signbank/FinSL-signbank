@@ -15,9 +15,5 @@ jobs:
       run: docker ps -a
     - name: Check logs
       run: docker-compose logs backend
-    - name: Run migrations
-      run: |
-        docker-compose run backend python3 bin/develop.py migrate --noinput
-        docker-compose run backend python3 bin/develop.py sync_translation_fields --noinput
     - name: Run test suite
       run: docker-compose run backend python3 bin/develop.py test
