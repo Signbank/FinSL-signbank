@@ -3,13 +3,15 @@
 from __future__ import unicode_literals
 
 from signbank.settings.base import *
+
 # settings.base imports settings_secret
 # The following settings are defined in settings_secret:
 # SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
 
 #: Debug should be True in development but not in production!
 DEBUG = True
-ALLOWED_HOSTS = ['thinktank.co.nz','southern.thinktank.co.nz','nzslsb.thinktank.co.nz','127.0.0.1', 'localhost', 'signbank.nz', '202.49.243.139']
+ALLOWED_HOSTS = ['thinktank.co.nz', 'southern.thinktank.co.nz', 'nzslsb.thinktank.co.nz',
+                 '127.0.0.1', 'localhost', 'signbank.nz', '202.49.243.139', 'nzsl-signbank.fly.dev']
 
 #: A list of directories where Django looks for translation files.
 LOCALE_PATHS = (
@@ -71,6 +73,7 @@ LOG_FILENAME = 'debug.log'
 if DEBUG:
     try:
         import debug_toolbar
+
         # Setting up debug toolbar.
         MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
         INSTALLED_APPS += ('debug_toolbar',)
