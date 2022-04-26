@@ -15,6 +15,8 @@ FROM python:3.7
 CMD pip install -r requirements.txt && \
     python bin/develop.py migrate --noinput && \
     python bin/develop.py createcachetable && \
+    python bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json &&\
+    python bin/develop.py createcachetable && \
     python bin/develop.py runserver 0.0.0.0:8000
 
 EXPOSE 8000
