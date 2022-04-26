@@ -56,7 +56,16 @@ def update_gloss(request, glossid):
         values = request.POST.getlist('value[]')
 
         if field.startswith('keywords_'):
-            language_code_2char = field.split('_')[1]
+            if len(field.split('_')) == 2:
+                # Gloss major
+                language_code_2char = field.split('_')[1]
+            elif len(field.split('_')) == 3:
+                # Gloss secondary
+                language_code_2char = field.split('_')[2]
+            elif len(field.split('_')) == 4:
+                # Gloss minor
+                language_code_2char = field.split('_')[3]
+
             return update_keywords(gloss, field, value, language_code_2char=language_code_2char)
 
         elif field.startswith('relationforeign'):
@@ -187,7 +196,14 @@ def update_keywords(gloss, field, value, language_code_2char):
                                       content_type='text/plain')
 
     (glosstranslations, created) = GlossTranslations.objects.get_or_create(gloss=gloss, language=language)
-    glosstranslations.translations = value
+
+    if len(field.split('_')) == 2:
+        glosstranslations.translations = value
+    elif len(field.split('_')) == 3:
+        glosstranslations.translations_secondary = value
+    elif len(field.split('_')) == 4:
+        glosstranslations.translations_minor = value
+
     glosstranslations.save()
     # Save updated_by and updated_at field for Gloss
     gloss.save()

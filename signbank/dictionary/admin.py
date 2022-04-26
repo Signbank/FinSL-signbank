@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.forms import Textarea
+from django.db import models
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as _lazy
@@ -16,7 +18,7 @@ from guardian.admin import GuardedModelAdmin
 
 from tagging.models import TaggedItem, Tag
 
-from .models import Dataset, Gloss, Translation, GlossURL, Language, SignLanguage, Dialect, FieldChoice, GlossRelation,\
+from .models import Dataset, Gloss, Signer, Translation, GlossURL, Language, SignLanguage, Dialect, FieldChoice, GlossRelation,\
     AllowedTags, GlossTranslations
 from ..video.admin import GlossVideoInline
 
@@ -134,7 +136,10 @@ class GlossTagInline(TagAdminInline):
 
 class GlossTranslationsInline(admin.TabularInline):
     model = GlossTranslations
-    fields = ('language', 'translations', )
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':50})},
+    }
+    fields = ('language', 'translations', 'translations_secondary', 'translations_minor')
     extra = 0
 
     def has_add_permission(self, request):
@@ -174,7 +179,7 @@ class GlossAdmin(VersionAdmin):
     readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'idgloss', 'idgloss_mi', 'notes',)},),
+    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'idgloss', 'idgloss_mi', 'notes', 'hint', 'signer')},),
                  (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
@@ -244,6 +249,9 @@ class FieldChoiceAdmin(admin.ModelAdmin):
     model = FieldChoice
     list_display = ('field', 'english_name', 'machine_value',)
 
+class SignerAdmin(VersionAdmin):
+    model = Signer
+    list_display = ('name',)
 
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
@@ -252,6 +260,7 @@ admin.site.register(Translation, TranslationAdmin)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
 admin.site.register(AllowedTags, AllowedTagsAdmin)
+admin.site.register(Signer, SignerAdmin)
 
 # The following models have been removed from the admin because they are not used at the moment.
 # admin.site.register(FieldChoice, FieldChoiceAdmin)

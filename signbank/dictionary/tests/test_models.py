@@ -102,7 +102,7 @@ class GlossTestCase(TestCase):
         """Tests the field idgloss_mi."""
         # Check that the max_length can't be exceeded.
         with self.assertRaises(DataError):
-            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_mi="äöå1@r" * 10 + "1", dataset=self.dataset,
+            en = Gloss.objects.create(idgloss="testgloss_en", idgloss_mi="äöå1@räöå1räöå1" * 10 + "1", dataset=self.dataset,
                                       created_by=self.user, updated_by=self.user)
 
     def test_created_by(self):
@@ -113,6 +113,7 @@ class GlossTestCase(TestCase):
 
     def test_get_translation_languages(self):
         """Tests function get_translation_languages()"""
+
         self.dataset.translation_languages.set([self.language])
         self.dataset.save()
         self.assertIn(
@@ -126,7 +127,7 @@ class GlossTestCase(TestCase):
                                                  order=2)
         translation2 = Translation.objects.create(
             gloss=self.gloss, language=self.language, keyword=keyword2, order=3)
-        self.dataset.translation_languages.set([self.language])
+        self.dataset.translation_languages.add(self.language)
         self.dataset.save()
         unzipped = zip(
             *Gloss.get_translations_for_translation_languages(self.gloss))
@@ -134,6 +135,7 @@ class GlossTestCase(TestCase):
 
         self.assertIn(self.language, languages)
         keywords = [str(translation.keyword), str(translation2.keyword)]
+
         # Check that all the keywords are in the 'translations' string.
         self.assertTrue(all(x in str(*translations) for x in keywords))
 

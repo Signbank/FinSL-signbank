@@ -50,8 +50,21 @@
                 </header>
                 {% for translation_language, translations in translation_languages_and_translations %}
                     <p><strong>{{ translation_language.name }}:</strong></p>
-                    <p id='keywords_{{ translation_language.language_code_2char }}'>
-                        {{ translations|default:_("<em>No translations.</em>") }}</p>
+                    {% if translations.translations or translations.translations_secondary or translations.translations_minor %}
+                        {% if translations.translations %}
+                            <p id='keywords_{{ translation_language.language_code_2char }}'>
+                                {% blocktrans %}Major: {% endblocktrans %} {{ translations.translations }}</p>
+                        {% endif %}
+                        {% if translations.translations_secondary %}
+                        <p id='keywords_secondary{{ translation_language.language_code_2char }}'>
+                            {% blocktrans %}Secondary: {% endblocktrans %} {{ translations.translations_secondary }}</p>
+                        {% endif %}
+                        {% if translations.translations_minor %}
+                        <p id='keywords_minor_gloss{{ translation_language.language_code_2char }}'>
+                            {% blocktrans %}Minor: {% endblocktrans %} {{ translations.translations_minor }}</p>
+                        {% endif %}
+                    {% else %}<em>{% blocktrans %}No translations.{% endblocktrans %}</em>
+                    {% endif %}
                 {% endfor %}
             </section>
         </div>

@@ -184,7 +184,7 @@ $( document ).ready(function() {
             {% for glosstranslations in obj.glosstranslations_set.all %}
                 <h5><strong>{% blocktrans context "publicglosslist" %}Translation equivalents{% endblocktrans %} ({{ glosstranslations.language }}):</strong></h5>
                 <span class="gloss-keywords">
-                    {{glosstranslations}}
+                    {{glosstranslations.translations}}
                 </span>
             {% empty %}
                 <em>{% blocktrans %}No translation equivalents yet{% endblocktrans %}.</em>
