@@ -14,7 +14,6 @@ FROM python:3.7
 
 CMD pip install -r requirements.txt && \
     python bin/develop.py migrate --noinput && \
-    python bin/develop.py sync_translation_fields --noinput && \
     python bin/develop.py createcachetable && \
     python bin/develop.py runserver 0.0.0.0:8000
 
