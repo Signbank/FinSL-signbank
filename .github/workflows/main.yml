@@ -1,9 +1,9 @@
 name: Deployment
 on:
+  pull_request:
   push:
     branches:
-      - feature/run-locally
-      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
