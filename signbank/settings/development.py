@@ -44,9 +44,6 @@ MEDIA_URL = '/media/'
 UPLOAD_ROOT = MEDIA_ROOT + 'upload/'
 UPLOAD_URL = MEDIA_URL + 'upload/'
 
-#: To test emailing, use this to show emails in the console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

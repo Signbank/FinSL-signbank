@@ -178,5 +178,15 @@ if os.getenv("DATABASE_URL"):
     }
 
 
+# Set up SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+#: The host to use for sending email.
+EMAIL_HOST = os.getenv("SMTP_HOST", "mail")
+
+#: Port to use for the SMTP server defined in EMAIL_HOST.
+EMAIL_PORT = os.getenv("SMTP_PORT", 25)
+
+
 mimetypes.add_type("video/mp4", ".mov", True)
 mimetypes.add_type("video/webm", ".webm", True)
