@@ -10,7 +10,7 @@ RUN npm ci &&\
     npm run collectjs &&\
     npm run collectcss
 
-FROM python:3.7
+FROM python:3.9
 
 CMD pip install -r requirements.txt && \
     python bin/develop.py migrate --noinput && \
