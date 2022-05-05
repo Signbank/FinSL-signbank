@@ -6,7 +6,8 @@ services:
         tty: true
         build: .
         environment:
-          - DATABASE_URL=${DATABASE_URL}
+          - DEBUG=true
+          - DATABASE_URL=postgres://postgres:postgres@database/postgres
         ports:
           - 8000:8000
         volumes:
