@@ -19,8 +19,6 @@ services:
         image: postgres:14
         environment:
           - "POSTGRES_PASSWORD=postgres"
-        ports:
-          - 5432:5432
     mail:
         image: djfarrelly/maildev
         ports:
