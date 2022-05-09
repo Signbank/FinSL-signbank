@@ -187,6 +187,16 @@ EMAIL_HOST = os.getenv("SMTP_HOST", "mail")
 #: Port to use for the SMTP server defined in EMAIL_HOST.
 EMAIL_PORT = os.getenv("SMTP_PORT", 25)
 
+# If AWS S3 is configured, then store all uploaded files there
+# We set GLOSS_VIDEO_FILE_STORAGE separately since it is configured in the model
+# to use it's own storage engine
+if os.getenv('AWS_STORAGE_BUCKET_NAME'):
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    GLOSS_VIDEO_FILE_STORAGE = DEFAULT_FILE_STORAGE
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+else:
+    GLOSS_VIDEO_FILE_STORAGE = 'signbank.video.models.GlossVideoStorage'
+
 
 mimetypes.add_type("video/mp4", ".mov", True)
 mimetypes.add_type("video/webm", ".webm", True)

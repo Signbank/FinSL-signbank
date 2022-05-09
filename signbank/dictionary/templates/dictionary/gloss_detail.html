@@ -191,9 +191,9 @@ $('#id_comment').atwho({
                                 <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" controls muted
                                        {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
                                     {% if glossvideo.get_extension == '.mp4' %}
-                                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
+                                    <source src="{{glossvideo.videofile.url}}" type="video/mp4">
                                     {% elif glossvideo.get_extension == '.webm' %}
-                                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">
+                                    <source src="{{glossvideo.videofile.url}}" type="video/webm">
                                     {% endif %}
                                     {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                                 </video>
@@ -357,8 +357,8 @@ $('#id_comment').atwho({
                                 {% else %}
                                     <td class='edit edit_area_translations' id='keywords_minor_gloss_{{ translation_language.language_code_2char }}'></td>
                                 {% endif %}
-                            </tr>       
-                        </table>    
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 {% endfor %}

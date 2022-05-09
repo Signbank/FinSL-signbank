@@ -19,3 +19,4 @@ debug.log
 /signbank/settings/settings_secret.py
 
 media
+.env

@@ -9,12 +9,12 @@ if __name__ == "__main__":
     os.environ.setdefault(
         "DJANGO_SETTINGS_MODULE", "signbank.settings.testing")
 
-    from django.core.management import call_command
+    from django import setup
     from django.conf import settings
+    from django.core.management import call_command
 
-    applen = len('signbank.apps.')
+    apps_for_testing = [app for app in settings.INSTALLED_APPS
+                        if app.startswith("signbank.")]
 
-    apps_for_testing = [app[applen:] for app in settings.INSTALLED_APPS
-                        if app.startswith("signbank.apps")]
-
+    setup()
     call_command("test", *apps_for_testing)

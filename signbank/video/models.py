@@ -2,14 +2,15 @@
 """ Models for the video application keep track of uploaded videos and converted versions"""
 from __future__ import unicode_literals
 
-import os
 import datetime
+import os
 
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext_lazy as _
-from django.db import models
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.module_loading import import_string
+from django.utils.translation import ugettext_lazy as _
 
 
 class GlossVideoStorage(FileSystemStorage):
@@ -30,6 +31,10 @@ class GlossVideoStorage(FileSystemStorage):
         return os.path.join(self.base_url, name)
 
 
+class GlossVideoDynamicStorage(import_string(settings.GLOSS_VIDEO_FILE_STORAGE)):
+    pass
+
+
 @python_2_unicode_compatible
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
@@ -37,14 +42,15 @@ class GlossVideo(models.Model):
     title = models.CharField(_("Title"), blank=True, unique=False, max_length=100,
                              help_text=_("Descriptive name of the video."))
     #: Video file of the GlossVideo.
-    videofile = models.FileField(_("Video file"), storage=GlossVideoStorage(),
+    videofile = models.FileField(_("Video file"), storage=GlossVideoDynamicStorage(),
                                  help_text=_("Video file."))
     #: Poster image of the GlossVideo.
     posterfile = models.FileField(_("Poster file"), upload_to=os.path.join("posters"),
-                                  storage=GlossVideoStorage(), blank=True,
+                                  storage=GlossVideoDynamicStorage(), blank=True,
                                   help_text=_("Still image representation of the video."), default="")
     #: Boolean: Is this GlossVideo public? Do you want to show it in the public interface, for a published Gloss?
-    is_public = models.BooleanField(_("Public"), default=True, help_text="Is this video is public or private?")
+    is_public = models.BooleanField(
+        _("Public"), default=True, help_text="Is this video is public or private?")
     #: The Gloss this GlossVideo belongs to.
     gloss = models.ForeignKey('dictionary.Gloss', verbose_name=_("Gloss"), null=True,
                               help_text=_("The gloss this GlossVideo is related to."), on_delete=models.CASCADE)
@@ -119,12 +125,14 @@ class GlossVideo(models.Model):
         glosses_videos = qs.exclude(pk=self.pk)
         if direction == "up" and self.version > 0:
             # Move video "up", make its version lower by swapping with video before it.
-            swap_video = glosses_videos.filter(version__lte=self.version).last()
+            swap_video = glosses_videos.filter(
+                version__lte=self.version).last()
             self.version, swap_video.version = swap_video.version, self.version
             self.save(), swap_video.save()
         if direction == "down" and self.version < glosses_videos.last().version:
             # Move video "down", make its version higher by swapping with video after it.
-            swap_video = glosses_videos.filter(version__gte=self.version).first()
+            swap_video = glosses_videos.filter(
+                version__gte=self.version).first()
             self.version, swap_video.version = swap_video.version, self.version
             self.save(), swap_video.save()
         return
@@ -138,20 +146,18 @@ class GlossVideo(models.Model):
         # Do not rename the file if glossvideo doesn't have a gloss.
         if hasattr(self, 'gloss') and self.gloss is not None:
             # Store the old file path, needed for removal later.
-            old_file_path = self.videofile.path
+            old_file = self.videofile
             # Create the base filename.
             new_filename = self.create_filename()
             # Get the relative path in media folder.
             full_new_path = storage.get_valid_name(new_filename)
             # Proceed to change the file path if the new path is not equal to old path.
-            if not old_file_path == os.path.join(storage.base_location, full_new_path):
+            if not old_file.name == full_new_path:
                 # Save the file into the new path.
                 saved_file_path = storage.save(full_new_path, self.videofile)
                 # Set the actual file path to videofile.
-                self.videofile =  saved_file_path
-                if os.path.isfile(old_file_path):
-                    # Remove the file from the old path.
-                    os.remove(old_file_path)
+                self.videofile = saved_file_path
+                old_file.storage.delete(old_file.name)
 
     def create_filename(self):
         """Returns a correctly named filename"""
@@ -176,7 +182,7 @@ class GlossVideo(models.Model):
 
     def get_extension(self):
         """Returns videofiles extension."""
-        return os.path.splitext(self.videofile.path)[1]
+        return os.path.splitext(self.videofile.name)[1]
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""
@@ -187,8 +193,8 @@ class GlossVideo(models.Model):
     def get_videofile_modified_date(self):
         """Return a Datetime object from filesystems last modified time of path."""
         try:
-            return datetime.datetime.fromtimestamp(os.path.getmtime(self.videofile.path))
-        except FileNotFoundError:
+            return self.videofile.storage.get_modified_time(self.videofile.name)
+        except:
             return None
 
     def __str__(self):

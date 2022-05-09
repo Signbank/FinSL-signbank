@@ -5,6 +5,7 @@ services:
         stdin_open: true
         tty: true
         build: .
+        env_file: .env
         environment:
           - DEBUG=true
           - DATABASE_URL=postgres://postgres:postgres@database/postgres
