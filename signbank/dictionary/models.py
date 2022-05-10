@@ -531,6 +531,9 @@ class Gloss(models.Model):
     signer = models.ForeignKey("Signer", null=True, blank=True, verbose_name=_("Signer"),
                                help_text=_("Signer for the Gloss"), on_delete=models.PROTECT)
 
+    #: Adding filmbatch which holds records of which 'batch' of recordings the video is from.
+    filmbatch = models.CharField(max_length=150, null=True, blank=True, help_text="Which batch of recordings the video is from")
+
     def __str__(self):
         return self.idgloss
 
