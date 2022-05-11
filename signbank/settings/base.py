@@ -49,7 +49,6 @@ USE_TZ = True
 #: A list of all available languages.
 #: The list is a list of two-tuples in the format (language code, language name) - for example, ('ja', 'Japanese').
 LANGUAGES = (
-    ('fi', _('Finnish')),
     ('en', _('English')),
 )
 
