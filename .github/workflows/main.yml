@@ -18,3 +18,13 @@ jobs:
       run: docker-compose logs backend
     - name: Run test suite
       run: docker-compose run backend python3 bin/runtests.py
+    - name: Deploy app to Heroku
+      if: github.ref == 'refs/heads/master'
+      env:
+        HEROKU_API_KEY: ${{secrets.HEROKU_UAT_API_KEY}}
+        HEROKU_APP_NAME: ${{secrets.HEROKU_UAT_APP_NAME}}
+      run: |
+        echo $HEROKU_API_KEY | docker login --username=_ --password-stdin registry.heroku.com
+        docker tag $(docker-compose images -q backend) registry.heroku.com/$HEROKU_APP_NAME/web
+        docker push registry.heroku.com/$HEROKU_APP_NAME/web
+        heroku container:release web -a $HEROKU_APP_NAME
