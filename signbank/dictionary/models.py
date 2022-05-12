@@ -355,6 +355,8 @@ class Gloss(models.Model):
             ('publish_gloss', _('Can publish and unpublish Glosses')),
         )
     # ### Fields ###
+    id = models.AutoField(auto_created=True, primary_key=True,
+                          serialize=False, verbose_name='Sign number')
     #: Boolean: Is this Gloss published in the public interface?
     published = models.BooleanField(_("Published"), default=False,
                                     help_text=_("Publish this gloss in the public gloss list"))
@@ -532,7 +534,8 @@ class Gloss(models.Model):
                                help_text=_("Signer for the Gloss"), on_delete=models.PROTECT)
 
     #: Adding filmbatch which holds records of which 'batch' of recordings the video is from.
-    filmbatch = models.CharField(max_length=150, null=True, blank=True, help_text="Which batch of recordings the video is from")
+    filmbatch = models.CharField(max_length=150, null=True, blank=True,
+                                 help_text="Which batch of recordings the video is from")
 
     def __str__(self):
         return self.idgloss

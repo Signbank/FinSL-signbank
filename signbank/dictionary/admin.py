@@ -1,26 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.forms import Textarea
-from django.db import models
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import models
+from django.forms import ModelForm, Textarea
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as _lazy
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.admin import GenericTabularInline
-from django.forms import ModelForm
-from django.core.exceptions import ObjectDoesNotExist
-
-
-from reversion.admin import VersionAdmin
-from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
 from guardian.admin import GuardedModelAdmin
+from modeltranslation.admin import TranslationAdmin as ModelTranslationAdmin
+from reversion.admin import VersionAdmin
+from tagging.models import Tag, TaggedItem
 
-from tagging.models import TaggedItem, Tag
-
-from .models import Dataset, Gloss, Signer, Translation, GlossURL, Language, SignLanguage, Dialect, FieldChoice, GlossRelation,\
-    AllowedTags, GlossTranslations
 from ..video.admin import GlossVideoInline
+from .models import (AllowedTags, Dataset, Dialect, FieldChoice, Gloss,
+                     GlossRelation, GlossTranslations, GlossURL, Language,
+                     Signer, SignLanguage, Translation)
 
 
 class TagListFilter(admin.SimpleListFilter):
@@ -83,7 +80,8 @@ class GlossRelationTagAdminInlineForm(ModelForm):
         ct = ContentType.objects.get_for_model(GlossRelation)
         try:
             # Limit choices, try to get allowed tags based on ContentType from AllowedTags.
-            self.fields['tag'].queryset = AllowedTags.objects.get(content_type=ct).allowed_tags.all()
+            self.fields['tag'].queryset = AllowedTags.objects.get(
+                content_type=ct).allowed_tags.all()
         except (AttributeError, ObjectDoesNotExist):
             # Get all tags.
             self.fields['tag'].queryset = Tag.objects.all()
@@ -124,7 +122,8 @@ class GlossTagInlineForm(ModelForm):
         ct = ContentType.objects.get_for_model(Gloss)
         try:
             # Limit choices, try to get allowed tags based on ContentType from AllowedTags.
-            self.fields['tag'].queryset = AllowedTags.objects.get(content_type=ct).allowed_tags.all()
+            self.fields['tag'].queryset = AllowedTags.objects.get(
+                content_type=ct).allowed_tags.all()
         except (AttributeError, ObjectDoesNotExist):
             # Get all tags.
             self.fields['tag'].queryset = Tag.objects.all()
@@ -137,13 +136,14 @@ class GlossTagInline(TagAdminInline):
 class GlossTranslationsInline(admin.TabularInline):
     model = GlossTranslations
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':50})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 50})},
     }
-    fields = ('language', 'translations', 'translations_secondary', 'translations_minor')
+    fields = ('language', 'translations',
+              'translations_secondary', 'translations_minor')
     extra = 0
 
     def has_add_permission(self, request):
-        #return False
+        # return False
         return True
 
     def has_delete_permission(self, request, obj=None):
@@ -176,11 +176,13 @@ include_in_ecv.short_description = _("Include glosses in ECV")
 
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
-    readonly_fields = ('created_at', 'created_by', 'updated_at', 'updated_by',)
+    readonly_fields = ('id', 'created_at', 'created_by',
+                       'updated_at', 'updated_by',)
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'idgloss', 'idgloss_mi', 'notes', 'hint', 'signer')},),
-                 (_('Created/Updated'), {'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')},),
+    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'notes', 'hint', 'signer')},),
+                 (_('Created/Updated'), {'fields': ('created_at',
+                  'created_by', 'updated_at', 'updated_by')},),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
                                               'absolute_orientation_fingers', 'relative_orientation_movement',
@@ -191,14 +193,17 @@ class GlossAdmin(VersionAdmin):
                                    'classes': ('collapse',)},),
                  (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
                                    'classes': ('collapse',)}),
-                 (_('Frequency'), {'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
+                 (_('Frequency'), {
+                  'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
     save_on_top = True
     save_as = True
-    list_display = ['idgloss', 'dataset', 'published', 'exclude_from_ecv', 'idgloss_mi']
+    list_display = ['idgloss', 'dataset',
+                    'published', 'exclude_from_ecv', 'idgloss_mi']
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'published', 'exclude_from_ecv', TagListFilter, )
-    inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline, GlossRelationInline, GlossURLInline, GlossTagInline, ]
+    inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline,
+               GlossRelationInline, GlossURLInline, GlossTagInline, ]
 
     def get_readonly_fields(self, request, obj=None):
         """
@@ -249,9 +254,11 @@ class FieldChoiceAdmin(admin.ModelAdmin):
     model = FieldChoice
     list_display = ('field', 'english_name', 'machine_value',)
 
+
 class SignerAdmin(VersionAdmin):
     model = Signer
     list_display = ('name',)
+
 
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
