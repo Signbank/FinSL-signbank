@@ -167,12 +167,12 @@ $( document ).ready(function() {
                  {% if obj.glossvideo_set.all.count > 0 %}style="background-color:rgb(33,33,33);"{% endif %}>
             {% if obj.glossvideo_set.all.0 %}
                 <video id="glossvideo-{{obj.glossvideo_set.all.0.pk}}" class="video-public" preload="metadata" muted
-{% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url|urlencode}}"{% endif %}
+{% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url}}"{% endif %}
                 onclick="this.paused?this.play():this.pause();" playsinline>
                 {% if obj.glossvideo_set.all.0.get_extension == '.mp4' %}
-                    <source src="{{obj.glossvideo_set.all.0.videofile.url|urlencode}}" type="video/mp4">
+                    <source src="{{obj.glossvideo_set.all.0.videofile.url}}" type="video/mp4">
                 {% elif obj.glossvideo_set.all.0.get_extension == '.webm' %}
-                    <source src="{{obj.glossvideo_set.all.0.videofile.url|urlencode}}" type="video/webm">
+                    <source src="{{obj.glossvideo_set.all.0.videofile.url}}" type="video/webm">
                 {% endif %}
                     {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                 </video>
