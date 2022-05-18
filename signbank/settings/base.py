@@ -186,6 +186,21 @@ EMAIL_HOST = os.getenv("SMTP_HOST", "mail")
 #: Port to use for the SMTP server defined in EMAIL_HOST.
 EMAIL_PORT = os.getenv("SMTP_PORT", 25)
 
+#: Username to use to authenticate to the SMTP server
+# https://docs.djangoproject.com/en/4.0/ref/settings/#email-host-user
+EMAIL_HOST_USER = os.getenv("SMTP_USER", "")
+
+# Paired with EMAIL_HOST_USER to authenticate to the SMTP server
+# https://docs.djangoproject.com/en/4.0/ref/settings/#email-host-password
+EMAIL_HOST_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+
+# Configure the address from which email should be sent if a From address
+# is not specified. This address usually has to be verified in some way with
+# the SMTP provider
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-from-email
+DEFAULT_FROM_EMAIL = os.getenv("MAIL_FROM", "root@localhost")
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
 # If AWS S3 is configured, then store all uploaded files there
 # We set GLOSS_VIDEO_FILE_STORAGE separately since it is configured in the model
 # to use it's own storage engine
