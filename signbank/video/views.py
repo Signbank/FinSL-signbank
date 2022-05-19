@@ -4,23 +4,23 @@ from __future__ import unicode_literals
 import json
 from base64 import b64decode
 
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import permission_required
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.files.base import ContentFile
-from django.views.generic.edit import FormView
-from django.views.generic.list import ListView
 from django.http import HttpResponse, HttpResponseNotAllowed
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
-from django.core.exceptions import ValidationError
-
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 from guardian.shortcuts import get_objects_for_user, get_perms
+
+from ..dictionary.models import Dataset, FieldChoice, Gloss
+from .forms import (GlossVideoForGlossForm, GlossVideoForm,
+                    GlossVideoPosterForm, GlossVideoUpdateForm,
+                    MultipleVideoUploadForm)
 from .models import GlossVideo
-from .forms import GlossVideoForGlossForm, GlossVideoForm, MultipleVideoUploadForm
-from ..dictionary.models import Gloss, Dataset
-from .forms import GlossVideoUpdateForm, GlossVideoPosterForm
 
 
 def upload_glossvideo(request):
@@ -66,7 +66,9 @@ def upload_glossvideo_gloss(request):
                 raise PermissionDenied(msg)
 
             videofile = form.cleaned_data['videofile']
-            video = GlossVideo(gloss=gloss, videofile=videofile)
+            video_type = form.cleaned_data['video_type']
+            video = GlossVideo(
+                gloss=gloss, videofile=videofile, video_type=video_type)
 
             video_title = form.cleaned_data['title']
             if video_title:  # if video_title was provided in the form, use it
@@ -76,7 +78,8 @@ def upload_glossvideo_gloss(request):
             video.save()
 
             redirect_url = form.cleaned_data['redirect']
-            return redirect(redirect_url)
+            if redirect_url:
+                return redirect(redirect_url)
 
     if 'HTTP_REFERER' in request.META:
         url = request.META['HTTP_REFERER']
@@ -275,9 +278,13 @@ def update_glossvideo(request):
                     if 'gloss' in item and 'glossvideo' in item:
                         glossvideo = GlossVideo.objects.get(pk=item['glossvideo'])
                         glossvideo.gloss = Gloss.objects.get(pk=item['gloss'])
+                        glossvideo.video_type = FieldChoice.objects.get(
+                            machine_value=item['video_type'])
                         if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
-                            # Set version number.
-                            glossvideo.version = glossvideo.next_version()
+                            # Set version number if there is not already one
+                            if glossvideo.version is None:
+                                glossvideo.version = glossvideo.next_version()
+
                             # Save if user has permission to add videos to the selected dataset.
                             glossvideo.save()
                         else:
@@ -303,10 +310,15 @@ def update_glossvideo(request):
                     gloss_id = None
                 if gloss_id:
                     glossvideo.gloss = Gloss.objects.get(pk=gloss_id)
+                    glossvideo.video_type = FieldChoice.objects.get(
+                        machine_value=post['video_type'])
                     # Make sure that the user has rights to edit this datasets glosses.
                     if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
                         # Set version number.
-                        glossvideo.version = glossvideo.next_version()
+                        # Set version number if there is not already one
+                        if glossvideo.version is None:
+                            glossvideo.version = glossvideo.next_version()
+
                         # Save if user has permission to add videos to the selected dataset.
                         glossvideo.save()
                     else:

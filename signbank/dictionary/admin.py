@@ -270,5 +270,5 @@ admin.site.register(AllowedTags, AllowedTagsAdmin)
 admin.site.register(Signer, SignerAdmin)
 
 # The following models have been removed from the admin because they are not used at the moment.
-# admin.site.register(FieldChoice, FieldChoiceAdmin)
+admin.site.register(FieldChoice, FieldChoiceAdmin)
 # admin.site.register(MorphologyDefinition)

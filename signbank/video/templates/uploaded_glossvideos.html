@@ -57,8 +57,11 @@
                     </div>
                 </div>
                 <div class="ui-widget">
-                    <label for="id_gloss"><strong>{% blocktrans %}Gloss{% endblocktrans %}:</strong></label>
-                    <input name="gloss" required="" id="id_gloss" class="gloss-autocomplete" type="text">
+                    {{ form.gloss.label_tag }}
+                    {{ form.gloss }}
+
+                    {{form.video_type.label_tag}}
+                    {{form.video_type}}
 
                     <input class="btn btn-primary" type="submit" value="{% blocktrans %}Save{% endblocktrans %}">
                 </div>
@@ -119,12 +122,19 @@ function updateVideos(){
     var updatelist = [];
     var formlist = [];
     for (var i=0; i<forms.length; i++){
-        var selected = forms[i].getElementsByClassName("gloss-autocomplete")[0];
+        var gloss = forms[i].gloss;
         // Only update the ones that don't have empty value.
-        if (selected.value != "") {
-            var glossvideo = forms[i].getElementsByClassName("glossvideo-pk")[0];
+        if (gloss.value != "") {
+            var glossvideo = forms[i].glossvideo;
+            var gloss = forms[i].gloss;
+            var video_type = forms[i].video_type;
+
             // These will be saved, as they have a value set.
-            updatelist.push({"glossvideo": glossvideo.value, "gloss": selected.value});
+            updatelist.push({
+                "glossvideo": glossvideo.value,
+                "gloss": gloss.value,
+                "video_type": video_type.value
+            });
             // Add the current form to be "removed" from the page.
             formlist.push(forms[i]);
         }

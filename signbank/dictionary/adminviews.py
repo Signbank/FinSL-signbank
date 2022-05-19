@@ -419,6 +419,7 @@ class GlossDetailView(DetailView):
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['glossvideoform'] = GlossVideoForGlossForm()
+        context['field_choices'] = Gloss.get_choice_lists()
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
         context['glossrelationform'] = GlossRelationForm(initial={'source': gloss.id, })

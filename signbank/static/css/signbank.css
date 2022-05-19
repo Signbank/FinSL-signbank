@@ -34,7 +34,7 @@ section p {
 .poster-edit {
    display: inline-block;
 }
-.change-video-publicity {
+.change-video-publicity, .change-video-type {
     display: inline-block;
 }
 .color-flatblue {

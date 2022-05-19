@@ -89,15 +89,18 @@ set_hidden.short_description = _lazy("Set selected videos hidden")
 
 class GlossVideoAdmin(admin.ModelAdmin):
     raw_id_fields = ('gloss',)
-    fields = ('is_public', 'title', 'videofile', 'posterfile', 'dataset', 'gloss', 'version')
+    fields = ('is_public', 'title', 'videofile', 'posterfile',
+              'dataset', 'gloss', 'video_type', 'version')
     search_fields = ('^gloss__idgloss', 'videofile', 'title')
-    list_display = ('gloss', 'is_public', 'dataset', 'title', 'videofile', 'posterfile', 'id', 'version')
-    list_filter = ('is_public', 'gloss__dataset', HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
+    list_display = ('gloss', 'is_public', 'dataset', 'title',
+                    'videofile', 'video_type', 'posterfile', 'id', 'version')
+    list_filter = ('is_public', 'video_type', 'gloss__dataset',
+                   HasGlossFilter, 'dataset', HasPosterFilter, GlossesVideoCountFilter)
     actions = [set_public, set_hidden]
 
     def get_queryset(self, request):
         qs = super(GlossVideoAdmin, self).get_queryset(request)
-        return qs.select_related("gloss", "dataset")
+        return qs.select_related("gloss", "video_type", "dataset")
 
 
 class GlossVideoInline(admin.TabularInline):

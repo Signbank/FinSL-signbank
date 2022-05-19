@@ -64,6 +64,17 @@ class GlossVideo(models.Model):
                                   help_text=_("A number that represents the order of the Glossvideo's in "
                                               "a gloss page. Smaller number means higher priority."))
 
+    #: The type of the video.
+    #: When multiple videos are uploaded, we use the type to differentiate
+    # which video should be presented in different contexts
+    video_type = models.ForeignKey(
+        'dictionary.FieldChoice',
+        verbose_name=_("Video type"),
+        to_field='machine_value',
+        help_text=_("The type of video this is for on the gloss"),
+        limit_choices_to={'field': 'video_type'},
+        null=True, on_delete=models.SET_NULL)
+
     class Meta:
         ordering = ['version']
         verbose_name = _('Gloss video')
