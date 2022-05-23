@@ -48,7 +48,8 @@
                 <header>
                     <h4>{% blocktrans %}Translation equivalents{% endblocktrans %}</h4>
                 </header>
-                {% for translation_language, translations in translation_languages_and_translations %}
+                {# Translation languages are reversed so that English appears first #}
+                {% for translation_language, translations in translation_languages_and_translations reversed %}
                     <p><strong>{{ translation_language.name }}:</strong></p>
                     {% if translations.translations or translations.translations_secondary or translations.translations_minor %}
                         {% if translations.translations %}
