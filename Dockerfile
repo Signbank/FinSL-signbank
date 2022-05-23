@@ -13,11 +13,11 @@ RUN npm ci &&\
 FROM python:3.9
 
 CMD pip install -r requirements.txt && \
-    python bin/develop.py migrate --noinput && \
-    python bin/develop.py createcachetable && \
-    python bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json &&\
-    python bin/develop.py createcachetable && \
-    python bin/develop.py runserver 0.0.0.0:${PORT:=8000}
+    bin/develop.py migrate --noinput && \
+    bin/develop.py createcachetable && \
+    bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json &&\
+    bin/develop.py createcachetable && \
+    bin/develop.py runserver 0.0.0.0:${PORT:=8000}
 
 EXPOSE 8000
 

@@ -17,7 +17,7 @@ jobs:
     - name: Check logs
       run: docker-compose logs backend
     - name: Run test suite
-      run: docker-compose run backend python3 bin/runtests.py
+      run: docker-compose run backend bin/runtests.py
     - name: Deploy app to Heroku
       if: github.ref == 'refs/heads/master'
       env:
