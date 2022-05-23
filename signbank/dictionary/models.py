@@ -222,7 +222,7 @@ class Language(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ['-name']
+        ordering = ['name']
         verbose_name = _('Written language')
         verbose_name_plural = _('Written languages')
 
