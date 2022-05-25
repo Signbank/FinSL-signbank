@@ -76,6 +76,36 @@
             <p>{% if gloss.notes %}{{gloss.notes}}
                 {% else %}<em>{% blocktrans %}No notes.{% endblocktrans %}</em>{% endif %}</p>
             </section>
+
+            <section>
+                <header><h4>{%blocktrans %}Examples{%endblocktrans %}</h4></header>
+                <ol>
+                    {% if gloss.videoexample1 or gloss.videoexample1_translation %}
+                    <li>
+                        {% if gloss.videoexample1 %}{{gloss.videoexample1}}{% endif %}
+                        {% if gloss.videoexample1_translation %}<br><em>{{gloss.videoexample1_translation}}</em>{% endif %}
+                    </li>
+                    {% endif %}
+                    {% if gloss.videoexample2 or gloss.videoexample2_translation %}
+                    <li>
+                        {% if gloss.videoexample2 %}{{gloss.videoexample2}}{% endif %}
+                        {% if gloss.videoexample2_translation %}<br><em>{{gloss.videoexample2_translation}}</em>{% endif %}
+                    </li>
+                    {% endif %}
+                    {% if gloss.videoexample3 or gloss.videoexample3_translation %}
+                    <li>
+                        {% if gloss.videoexample3 %}{{gloss.videoexample3}}{% endif %}
+                        {% if gloss.videoexample3_translation %}<br><em>{{gloss.videoexample3_translation}}</em>{% endif %}
+                    </li>
+                    {% endif %}
+                    {% if gloss.videoexample4 or gloss.videoexample4_translation %}
+                    <li>
+                        {% if gloss.videoexample4 %}{{gloss.videoexample4}}{% endif %}
+                        {% if gloss.videoexample4_translation %}<br><em>{{gloss.videoexample4_translation}}</em>{% endif %}
+                    </li>
+                    {% endif %}
+                </ol>
+            </section>
         </div>
     </div>
 </div>

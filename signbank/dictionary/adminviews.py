@@ -463,11 +463,14 @@ class GlossDetailView(DetailView):
                                'movement_direction', 'movement_manner', 'repeated_movement', 'alternating_movement',
                                'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', ]
 
-        fields['semantics'] = ['iconic_image', 'named_entity', 'semantic_field']
+        fields['semantics'] = ['iconic_image',
+                               'named_entity', 'semantic_field']
+        fields['examples'] = ['videoexample1', 'videoexample1_translation', 'videoexample2', 'videoexample2_translation',
+                              'videoexample3', 'videoexample3_translation', 'videoexample4', 'videoexample4_translation']
 
         fields['frequency'] = ['number_of_occurences']
 
-        for topic in ['phonology', 'semantics', 'frequency']:
+        for topic in ['phonology', 'semantics', 'frequency', 'examples']:
             context[topic + '_fields'] = []
 
             for field in fields[topic]:

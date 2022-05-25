@@ -319,6 +319,26 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
+                <a data-toggle='collapse' data-parent='#definition' href='#examples'>
+                    {% blocktrans %}Examples{% endblocktrans %}</a>
+            </div>
+        </div>
+        <div id='examples' class='panel-collapse collapse'>
+            <table class='table table-condensed'>
+                {% for value,name,label,kind in examples_fields %}
+                <tr>
+                    <th>{{label}}</th>
+                    <td class="edit edit_text" id='{{name}}'>{% value value %}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class='panel-heading'>
+            <div class='panel-title'>
                 {# Translators: #}
                 <a data-toggle='collapse' data-parent='#definition' href='#frequency'>
                     {% blocktrans %}Frequency{% endblocktrans %}</a>

@@ -193,6 +193,11 @@ class GlossAdmin(VersionAdmin):
                                    'classes': ('collapse',)},),
                  (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
                                    'classes': ('collapse',)}),
+                 (_('Examples'), {'fields': (
+                     ('videoexample1', 'videoexample1_translation'),
+                     ('videoexample2', 'videoexample2_translation'),
+                     ('videoexample3', 'videoexample3_translation'),
+                     ('videoexample4', 'videoexample4_translation'))}),
                  (_('Frequency'), {
                   'fields': ('number_of_occurences',), 'classes': ('collapse',)}),
                  )
