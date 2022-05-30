@@ -183,6 +183,8 @@ class GlossAdmin(VersionAdmin):
     fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'notes', 'hint', 'signer', 'filmbatch')},),
                  (_('Created/Updated'), {'fields': ('created_at',
                   'created_by', 'updated_at', 'updated_by')},),
+                 (_('Morphology'), {'fields': ('inflection1', 'inflection2', 'inflection3'),
+                                    'classes': ('collapse',)} ),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
                                               'absolute_orientation_fingers', 'relative_orientation_movement',

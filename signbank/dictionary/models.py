@@ -562,6 +562,14 @@ class Gloss(models.Model):
     videoexample4_translation = models.CharField(_("Example video 4 English translation"),
                                                  max_length=255, null=True, blank=True, help_text="English translation for video example 4")
 
+    # inflections - booleans labelled (1)"temporal", (2)"manner and degree", (3)"pluralisation"
+    inflection1 = models.BooleanField(_("Inflection: Temporal"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+                                    help_text=_("Can the sign have a temporal inflection?’"))
+    inflection2 = models.BooleanField(_("Inflection: Manner and Degree"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+                                    help_text=_("Can the sign be inflected for manner and degree?"))
+    inflection3 = models.BooleanField(_("Inflection: Pluralisation"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+                                    help_text=_("Can the sign have a plural inflection?"))
+
     def __str__(self):
         return self.idgloss
 
