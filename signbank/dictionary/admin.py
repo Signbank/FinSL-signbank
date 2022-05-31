@@ -177,7 +177,7 @@ include_in_ecv.short_description = _("Include glosses in ECV")
 class GlossAdmin(VersionAdmin):
     # Making sure these fields are not edited in admin
     readonly_fields = ('id', 'created_at', 'created_by',
-                       'updated_at', 'updated_by', 'filmbatch')
+                       'updated_at', 'updated_by')
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
     fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'notes', 'hint', 'signer', 'filmbatch')},),

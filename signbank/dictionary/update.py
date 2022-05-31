@@ -122,6 +122,10 @@ def update_gloss(request, glossid):
                         glossurl.save()
                     except GlossURL.DoesNotExist:
                         pass
+        elif field == 'sign-number':
+            newvalue = value
+            gloss.filmbatch = value
+            gloss.save()
 
         else:
             # Find if field is not in Gloss classes fields.
