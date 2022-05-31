@@ -563,11 +563,11 @@ class Gloss(models.Model):
                                                  max_length=255, null=True, blank=True, help_text="English translation for video example 4")
 
     # inflections - booleans labelled (1)"temporal", (2)"manner and degree", (3)"pluralisation"
-    inflection1 = models.BooleanField(_("Inflection: Temporal"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+    inflection_temporal = models.BooleanField(_("Inflection: Temporal"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign have a temporal inflection?’"))
-    inflection2 = models.BooleanField(_("Inflection: Manner and Degree"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+    inflection_manner_degree = models.BooleanField(_("Inflection: Manner and Degree"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign be inflected for manner and degree?"))
-    inflection3 = models.BooleanField(_("Inflection: Pluralisation"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+    inflection_plural = models.BooleanField(_("Inflection: Pluralisation"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign have a plural inflection?"))
 
     def __str__(self):
