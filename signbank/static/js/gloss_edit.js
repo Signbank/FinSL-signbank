@@ -3,27 +3,27 @@
  */
  $(document).ready(function() {
      configure_edit();
-     
+
      disable_edit();
-    
+
 
      if (window.location.search.match('edit')) {
          toggle_edit();
 
          if (window.location.search.match('editrelforeign')) {
              $('#relationsforeign').addClass('in');
-         }         
+         }
          else if (window.location.search.match('editrel')) {
              $('#relations').addClass('in');
          }
          if (window.location.search.match('editmorphdef')) {
              $('#morphology').addClass('in');
-         }      
-         
-     }  
-          
+         }
+
+     }
+
      $('#enable_edit').on('click', toggle_edit);
-     
+
      glosstypeahead($('.glosstypeahead'));
 
 
@@ -32,19 +32,19 @@
         // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
-    
+
     $.ajaxSetup({
         crossDomain: false, // obviates need for sameOrigin test
         beforeSend: function(xhr, settings) {
             if (!csrfSafeMethod(settings.type)) {
                 xhr.setRequestHeader("X-CSRFToken", csrf_token);
-            } 
+            }
         }
     });
 
     ajaxifyTagForm();
     delete_glossurl();
-     
+
  });
 
 function disable_edit() {
@@ -126,7 +126,7 @@ $.editable.addInputType('positiveinteger', {
 
 
 function configure_edit() {
-    
+
     $.fn.editable.defaults['indicator'] = 'Saving...';
     $.fn.editable.defaults['tooltip'] = 'Click to edit...';
     $.fn.editable.defaults['placeholder'] = '-';
@@ -140,9 +140,9 @@ function configure_edit() {
                           alert("There was an error processing this change: " + xhr.responseText );
                           original.reset();
                         };
-     
-    
-     $('.edit_text').editable(edit_post_url);    
+
+
+     $('.edit_text').editable(edit_post_url);
      $('.edit_int').editable(edit_post_url, {
          type      : 'positiveinteger',
          onerror : function(settings, original, xhr){
@@ -150,7 +150,7 @@ function configure_edit() {
                           original.reset();
                     },
      });
-     $('.edit_area').editable(edit_post_url, { 
+     $('.edit_area').editable(edit_post_url, {
          type      : 'textarea'
      });
      $('.edit_area_translations').editable(edit_post_url, {
@@ -172,14 +172,20 @@ function configure_edit() {
          type      : 'checkbox',
          checkbox: { trueValue: 'Yes', falseValue: 'No' }
      });
+     $('.edit_list_multiple').on('click', function() {
+        $(this).editable(edit_post_url, {
+            type      : 'select',
+            multiple: true,
+            data    : choice_lists[$(this).attr('id')]
+        });
+     });
      $('.edit_list').on('click', function()
 	 {
 		 $(this).editable(edit_post_url, {
 		     type      : 'select',
+             multiple: true,
 		     data    : choice_lists[$(this).attr('id')]
 		 });
-
-
      });
 
 }
@@ -193,7 +199,7 @@ var gloss_bloodhound = new Bloodhound({
         wildcard: '%QUERY'
       },
     });
-     
+
 gloss_bloodhound.initialize();
 
 function glosstypeahead(target) {
@@ -212,18 +218,18 @@ function glosstypeahead(target) {
 
 
 $.editable.addInputType('glosstypeahead', {
-    
+
    element: function(settings, original) {
       var input = $('<input type="text" class="glosstypeahead">');
       $(this).append(input);
-     
-      glosstypeahead(input); 
+
+      glosstypeahead(input);
 
       return (input);
-   }, 
+   },
 });
 
-/* 
+/*
  * http://stackoverflow.com/questions/1597756/is-there-a-jquery-jeditable-multi-select-plugin
  */
 
@@ -279,7 +285,7 @@ $.editable.addInputType("multiselect", {
 });
 
 
-     
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -296,7 +302,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-    
+
 function ajaxifyTagForm() {
     // ajax form submission for tag addition and deletion
     $('.tagdelete').on('click', function() {
@@ -305,22 +311,22 @@ function ajaxifyTagForm() {
         var tagelement = $(this).parents('.tagli');
 
         // This determines the post action: jQuery.post( url [, data ] [, success ] [, dataType ] )
-        $.post(action, 
+        $.post(action,
               {'tag': tagid, 'delete': "True" },
                function(data) {
                     if (data == 'deleted') {
-                        // remove the tag from the page 
+                        // remove the tag from the page
                        tagelement.remove();
                     }
                });
-        
+
         return false;
     });
-    
+
     $('#tagaddform').on('submit', function(){
-        
+
         var newtag = $('#tagaddform select').val();
-        
+
         if (newtag != "") {
             $.post($(this).attr('action'), $(this).serialize(),
                     function(data) {
@@ -332,11 +338,11 @@ function ajaxifyTagForm() {
         } else {
             alert("Please select a tag value.");
         }
-        
+
         return false;
     });
 }
-    
+
 function delete_glossurl() {
     $('.glossurl-delete').on('click', function() {
         var action = $(this).attr('href');
@@ -355,5 +361,5 @@ function delete_glossurl() {
 
 }
 
-      
-      
+
+

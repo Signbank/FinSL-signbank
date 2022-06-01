@@ -91,7 +91,18 @@ def update_gloss(request, glossid):
             except:
                 # Translators: HttpResponseBadRequest
                 return HttpResponseBadRequest("%s %s" % _("Unknown Dialect"), values, content_type='text/plain')
-
+        elif field == 'wordclass':
+            # expecting possibly multiple values
+            try:
+                wordclasses = FieldChoice.objects.filter(
+                    machine_value__in=values)
+                gloss.wordclasses.set(wordclasses)
+                gloss.save()
+                newvalue = ", ".join([str(wc.english_name)
+                                      for wc in gloss.wordclasses.all()])
+            except:
+                # Translators: HttpResponseBadRequest
+                return HttpResponseBadRequest("%s %s" % _("Unknown Wordclass"), values, content_type='text/plain')
         elif field.startswith('video_title'):
             # If editing video title, update the GlossVideo's title
             if request.user.has_perm('video.change_glossvideo'):

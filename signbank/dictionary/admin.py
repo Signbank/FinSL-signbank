@@ -6,7 +6,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from django.forms import ModelForm, Textarea
+from django.forms import CheckboxSelectMultiple, ModelForm, Textarea
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as _lazy
 from guardian.admin import GuardedModelAdmin
@@ -180,7 +180,7 @@ class GlossAdmin(VersionAdmin):
                        'updated_at', 'updated_by')
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'notes', 'hint', 'signer', 'filmbatch')},),
+    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'wordclasses', 'notes', 'hint', 'signer', 'filmbatch')},),
                  (_('Created/Updated'), {'fields': ('created_at',
                   'created_by', 'updated_at', 'updated_by')},),
                  (_('Morphology'), {'fields': ('inflection_temporal', 'inflection_manner_degree', 'inflection_plural'),
@@ -210,7 +210,7 @@ class GlossAdmin(VersionAdmin):
     search_fields = ['^idgloss']
     list_filter = ('dataset', 'published', 'exclude_from_ecv', TagListFilter, )
     inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline,
-               GlossRelationInline, GlossURLInline, GlossTagInline, ]
+               GlossRelationInline, GlossURLInline, GlossTagInline]
 
     def get_readonly_fields(self, request, obj=None):
         """
@@ -230,6 +230,11 @@ class GlossAdmin(VersionAdmin):
         obj.created_by = request.user
         obj.updated_by = request.user
         obj.save()
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields['wordclasses'].widget = CheckboxSelectMultiple()
+        return form
 
     def save_formset(self, request, form, formset, change):
         """Saves the formsets created_by and updated_by with request.user"""

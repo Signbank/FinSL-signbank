@@ -13,7 +13,7 @@
 <script src="{% static 'js/jquery.caret.min.js' %}"></script>
 <script src="{% static 'js/jquery.atwho.min.js' %}"></script>
 {% if perms.dictionary.change_gloss %}
-<script type="text/javascript" src="{% static "js/jquery.jeditable.mini.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.jeditable.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.jeditable.checkbox.js" %}"></script>
 <script type="text/javascript" src="{% static "js/typeahead.bundle.min.js" %}"></script>
 <script src="{% static "js/RecordRTC.min.js" %}"></script>
@@ -391,6 +391,12 @@ $('#id_comment').atwho({
                     <th>{% blocktrans %}Hint:{% endblocktrans %}</th>
                     <td class='edit edit_area_notes' id='hint'>{% value gloss.hint %}</td>
                 </tr>
+
+                <tr>
+                    <th>{% blocktrans %}Wordclasses:{% endblocktrans %}</th>
+                    <td class="edit edit_list_multiple" id="wordclass">{{gloss.wordclasses.all|join:", "}}</td>
+                </tr>
+
                 {# Translators: Information about a Gloss #}
                 <tr>
                     <th>{% blocktrans %}Sign language:{% endblocktrans %}</th>
