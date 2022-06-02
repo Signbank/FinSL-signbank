@@ -121,8 +121,45 @@ $.editable.addInputType('positiveinteger', {
         var input = $('<input type="number" min="0">');
         $(this).append(input);
         return(input);
-    }
+    },
+
 });
+
+$.editable.addInputType('multicheckbox', {
+    element: function(settings) {
+        var $el = $(this);
+
+        settings.submitdata = function(_revert, settings, submitdata) {
+            submitdata[settings.name] = $.map($el.find(":checked"), function(input) { return input.value });
+
+            return submitdata;
+        };
+
+        $.each(settings.data || [], function(value, label) {
+            if (value === "selected") {
+                return;
+            }
+
+            $el.append($("<label><input type='checkbox' value='" + value + "' /></label><br />"));
+        });
+
+        return $el.find("input[type='checkbox']");
+    },
+    content : function(_string, settings, original) {
+        var selected = settings.data.selected || [];
+        var $el = $(this);
+        $.each(settings.data || [], function(value, label) {
+            if (value === "selected") {
+                return;
+            }
+
+            var $radio = $el.find("[value='" + value + "']");
+            selected.indexOf(value) >= 0 && $radio.attr("checked", "checked");
+
+            $radio.after("&nbsp;" + label);
+        });
+    },
+})
 
 
 function configure_edit() {
@@ -179,12 +216,30 @@ function configure_edit() {
             data    : choice_lists[$(this).attr('id')]
         });
      });
-     $('.edit_list').on('click', function()
-	 {
+     $('.edit_list_check').on('click', function() {
+        var choices = choice_lists[$(this).attr('id')];
+        var selected = [];
+        for (var key in choices ) {
+            this.textContent.split(/,\s*/).indexOf(choices[key]) >= 0 && (selected.push(key));
+        }
+
+         $(this).editable(edit_post_url, {
+             type: 'multicheckbox',
+             onblur: 'ignore',
+		     data: $.extend(choice_lists[$(this).attr('id')], { selected: selected })
+         })
+     });
+
+     $('.edit_list').on('click', function() {
+         var choices = choice_lists[$(this).attr('id')];
+         var selected;
+         for (var key in choices ) {
+             choices[key] == this.textContent && (selected = key);
+         }
+
 		 $(this).editable(edit_post_url, {
 		     type      : 'select',
-             multiple: true,
-		     data    : choice_lists[$(this).attr('id')]
+		     data    : $.extend(choice_lists[$(this).attr('id')], { selected: selected })
 		 });
      });
 
