@@ -564,6 +564,11 @@ class Gloss(models.Model):
                                                  max_length=255, null=True, blank=True, help_text="English translation for video example 3")
     videoexample4_translation = models.CharField(_("Example video 4 English translation"),
                                                  max_length=255, null=True, blank=True, help_text="English translation for video example 4")
+
+    # concise - boolean indicating gloss is included in print 2002 Concise Dictionary of NZSL.
+    concise = models.BooleanField(_("Concise"), default=False, choices=[(True, 'Yes'), (False, 'No')],
+                                     help_text=_("Was this gloss included in print 2002 Concise Dictionary of NZSL?"))
+
     fingerspelling = models.BooleanField(_("Fingerspelling"), default=False, help_text=_("Does the sign contain fingerspelling?"),
                                          null=False, blank= False)
     # inflections - booleans labelled (1)"temporal", (2)"manner and degree", (3)"pluralisation"
