@@ -191,7 +191,7 @@ class GlossAdmin(VersionAdmin):
                                               'relative_orientation_location', 'orientation_change',
                                               'handshape_change', 'repeated_movement', 'alternating_movement',
                                               'movement_shape', 'movement_direction', 'movement_manner', 'contact_type',
-                                              'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation'),
+                                              'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'fingerspelling'),
                                    'classes': ('collapse',)},),
                  (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
                                    'classes': ('collapse',)}),

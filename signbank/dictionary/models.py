@@ -564,7 +564,8 @@ class Gloss(models.Model):
                                                  max_length=255, null=True, blank=True, help_text="English translation for video example 3")
     videoexample4_translation = models.CharField(_("Example video 4 English translation"),
                                                  max_length=255, null=True, blank=True, help_text="English translation for video example 4")
-
+    fingerspelling = models.BooleanField(_("Fingerspelling"), default=False, help_text=_("Does the sign contain fingerspelling?"),
+                                         null=False, blank= False)
     # inflections - booleans labelled (1)"temporal", (2)"manner and degree", (3)"pluralisation"
     inflection_temporal = models.BooleanField(_("Inflection: Temporal"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign have a temporal inflection?’"))
@@ -633,7 +634,7 @@ class Gloss(models.Model):
                   'relation_between_articulators', 'absolute_orientation_palm', 'absolute_orientation_fingers',
                   'relative_orientation_movement', 'relative_orientation_location', 'handshape_change',
                   'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
-                  'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field', 'video_type', 'wordclass']
+                  'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field', 'video_type', 'wordclass', 'fingerspelling']
 
         qs = FieldChoice.objects.filter(field__in=fields).values(
             'field', 'machine_value', 'english_name')
