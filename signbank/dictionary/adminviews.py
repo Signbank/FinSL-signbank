@@ -204,7 +204,8 @@ class GlossListView(ListView):
                       'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
                       'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
-                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'fingerspelling',]
+                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'fingerspelling',
+                      'one_or_two_hand']
 
         """These were removed from fieldnames because they are not needed there:
         'idgloss', 'idgloss_mi', 'notes',
@@ -461,7 +462,8 @@ class GlossDetailView(DetailView):
                                'absolute_orientation_fingers', 'relative_orientation_movement',
                                'relative_orientation_location', 'orientation_change', 'contact_type', 'movement_shape',
                                'movement_direction', 'movement_manner', 'repeated_movement', 'alternating_movement',
-                               'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'fingerspelling', ]
+                               'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'fingerspelling',
+                               'one_or_two_hand']
 
         fields['semantics'] = ['iconic_image',
                                'named_entity', 'semantic_field']
@@ -482,7 +484,7 @@ class GlossDetailView(DetailView):
 
                 if field in ['phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'iconic_image']:
                     kind = 'text'
-                elif field in ['repeated_movement', 'alternating_movement', 'fingerspelling']:
+                elif field in ['repeated_movement', 'alternating_movement', 'fingerspelling', 'one_or_two_hand']:
                     kind = 'check'
                 else:
                     kind = 'list'

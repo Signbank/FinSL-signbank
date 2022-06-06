@@ -570,7 +570,7 @@ class Gloss(models.Model):
                                      help_text=_("Was this gloss included in print 2002 Concise Dictionary of NZSL?"))
 
     fingerspelling = models.BooleanField(_("Fingerspelling"), default=False, help_text=_("Does the sign contain fingerspelling?"),
-                                         null=False, blank= False)
+                                         null=False, blank=False)
     # inflections - booleans labelled (1)"temporal", (2)"manner and degree", (3)"pluralisation"
     inflection_temporal = models.BooleanField(_("Inflection: Temporal"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign have a temporal inflection?’"))
@@ -578,6 +578,7 @@ class Gloss(models.Model):
                                     help_text=_("Can the sign be inflected for manner and degree?"))
     inflection_plural = models.BooleanField(_("Inflection: Pluralisation"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign have a plural inflection?"))
+    one_or_two_hand = models.BooleanField(_("One or two hands"), default=False, null=False, blank=False)
 
     def __str__(self):
         return self.idgloss
