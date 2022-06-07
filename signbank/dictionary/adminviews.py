@@ -457,7 +457,7 @@ class GlossDetailView(DetailView):
 
         fields = dict()
 
-        fields['morphology'] = ['number_incorporated', 'locatable', 'directional', 'fingerspelling'
+        fields['morphology'] = ['number_incorporated', 'locatable', 'directional', 'fingerspelling',
                                 'inflection_temporal', 'inflection_manner_degree', 'inflection_plural']
         fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handshape_change',
                                'relation_between_articulators', 'location', 'absolute_orientation_palm',
