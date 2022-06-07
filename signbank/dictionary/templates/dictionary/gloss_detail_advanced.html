@@ -75,24 +75,31 @@
             </table>
 
             {% if perms.dictionary.change_gloss %}
-            <form id='add_morphologydefinition_form' method='post' action='{% url 'dictionary:add_morphologydefinition' %}'>
-                {% csrf_token %}
-                <input type='hidden' name='parent_gloss_id' value='{{gloss.pk}}'>
+                 <form id='add_morphologydefinition_form' method='post' action='{% url 'dictionary:add_morphologydefinition' %}'>
+                    {% csrf_token %}
+                    <table class='table table-condensed'>
+                        <tr>
+                            <td style="width:2em;"></td>
+                            <td style="width:12em;">{{morphologyform.role}}</td>
+                            {# Translators: Placeholder #}
+                            <td><input class='form-control glosstypeahead'
+                                       placeholder='{% blocktrans %}Gloss{% endblocktrans %}'
+                                       name='morpheme_id'></td>
+                            {# Translators: Submit button #}
+                            <td><input class='btn btn-primary'
+                                       value='{% blocktrans %}Add Morphology Definition{% endblocktrans %}' type='submit'>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
                 <table class='table table-condensed'>
-                    <tr>
-                        <td style="width:2em;"></td>
-                        <td style="width:12em;">{{morphologyform.role}}</td>
-                        {# Translators: Placeholder #}
-                        <td><input class='form-control glosstypeahead'
-                                   placeholder='{% blocktrans %}Gloss{% endblocktrans %}'
-                                   name='morpheme_id'></td>
-                        {# Translators: Submit button #}
-                        <td><input class='btn btn-primary'
-                                   value='{% blocktrans %}Add Morphology Definition{% endblocktrans %}' type='submit'>
-                        </td>
-                    </tr>
+                            {% for value,name,label,kind in morphology_fields %}
+                            <tr>
+                                <th>{{label}}</th>
+            <td class="edit edit_{{kind}}" id='{{name}}'>{% if kind == "check" and value %}Yes{% elif kind == "check" %}No{% else %}{% value value %}{% endif %}</td>
+                            </tr>
+                            {% endfor %}
                 </table>
-            </form>
             {% endif %}
         </div>
     </div>
