@@ -457,7 +457,8 @@ class GlossDetailView(DetailView):
 
         fields = dict()
 
-        fields['morphology'] = ['number_incorporated', 'locatable', 'directional']
+        fields['morphology'] = ['number_incorporated', 'locatable', 'directional',
+                                'inflection_temporal', 'inflection_manner_degree', 'inflection_plural']
         fields['phonology'] = ['handedness', 'strong_handshape', 'weak_handshape', 'handshape_change',
                                'relation_between_articulators', 'location', 'absolute_orientation_palm',
                                'absolute_orientation_fingers', 'relative_orientation_movement',
@@ -485,7 +486,7 @@ class GlossDetailView(DetailView):
 
                 if field in ['phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'iconic_image']:
                     kind = 'text'
-                elif field in ['repeated_movement', 'alternating_movement', 'fingerspelling', 'one_or_two_hand', 'number_incorporated', 'locatable', 'directional']:
+                elif field in ['repeated_movement', 'alternating_movement', 'fingerspelling', 'one_or_two_hand', 'number_incorporated', 'locatable', 'directional', 'inflection_temporal', 'inflection_manner_degree', 'inflection_plural']:
                     kind = 'check'
                 else:
                     kind = 'list'

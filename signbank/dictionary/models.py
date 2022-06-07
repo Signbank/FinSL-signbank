@@ -578,10 +578,14 @@ class Gloss(models.Model):
                                     help_text=_("Can the sign be inflected for manner and degree?"))
     inflection_plural = models.BooleanField(_("Inflection: Pluralisation"), default=False, choices=[(True, 'Yes'), (False, 'No')],
                                     help_text=_("Can the sign have a plural inflection?"))
-    one_or_two_hand = models.BooleanField(_("One or two hands"), default=False, null=False, blank=False)
-    number_incorporated = models.BooleanField(_("Number incorporated"), default=False, blank=False, null=False)
-    locatable = models.BooleanField(default=False, null=False, blank=False)
-    directional = models.BooleanField(default=False, null=False, blank=False)
+    one_or_two_hand = models.BooleanField(
+        _("One or two hands"), default=False, null=False, blank=False, choices=[(True, 'Yes'), (False, 'No')])
+    number_incorporated = models.BooleanField(
+        _("Number incorporated"), default=False, blank=False, null=False, choices=[(True, 'Yes'), (False, 'No')])
+    locatable = models.BooleanField(_("Locatable"), default=False, null=False, blank=False, choices=[
+                                    (True, 'Yes'), (False, 'No')])
+    directional = models.BooleanField(_("Directional"),
+                                      default=False, null=False, blank=False, choices=[(True, 'Yes'), (False, 'No')])
 
     def __str__(self):
         return self.idgloss

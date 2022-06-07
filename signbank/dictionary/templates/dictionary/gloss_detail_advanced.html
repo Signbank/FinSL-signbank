@@ -96,7 +96,7 @@
                             {% for value,name,label,kind in morphology_fields %}
                             <tr>
                                 <th>{{label}}</th>
-            <td class="edit edit_{{kind}}" id='{{name}}'>{% if kind == "check" and value %}Yes{% elif kind == "check" %}No{% else %}{% value value %}{% endif %}</td>
+                                <td class="edit edit_{{kind}}" id='{{name}}'>{% value value %}</td>
                             </tr>
                             {% endfor %}
                 </table>
