@@ -197,6 +197,8 @@ class GlossAdmin(VersionAdmin):
                                    'classes': ('collapse',)},),
                  (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
                                    'classes': ('collapse',)}),
+                 (_('Usage and Variation'), {
+                  'fields': ('usage',), 'classes': ('collapse',)},),
                  (_('Examples'), {'fields': (
                      ('videoexample1', 'videoexample1_translation'),
                      ('videoexample2', 'videoexample2_translation'),
@@ -236,6 +238,7 @@ class GlossAdmin(VersionAdmin):
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
         form.base_fields['wordclasses'].widget = CheckboxSelectMultiple()
+        form.base_fields['usage'].widget = CheckboxSelectMultiple()
         return form
 
     def save_formset(self, request, form, formset, change):

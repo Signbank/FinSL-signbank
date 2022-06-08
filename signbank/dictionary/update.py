@@ -105,7 +105,20 @@ def update_gloss(request, glossid):
                                       for wc in gloss.wordclasses.all()])
             except:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest("%s %s" % _("Unknown Wordclass"), values, content_type='text/plain')
+                return HttpResponseBadRequest("%s %s" % _("Unknown wordclass"), values, content_type='text/plain')
+        elif field == 'usage':
+            try:
+                # Find fieldchoices that meet the usage association's limit choices
+                # that match the provided machine values
+                usages = FieldChoice.objects.complex_filter(Gloss._meta.get_field(
+                    "usage").get_limit_choices_to()).filter(machine_value__in=values)
+                gloss.usage.set(usages)
+                gloss.save()
+                newvalue = ", ".join([str(usage.english_name)
+                                      for usage in gloss.usage.all()])
+            except:
+                # Translators: HttpResponseBadRequest
+                return HttpResponseBadRequest("%s %s" % _("Unknown usage"), values, content_type='text/plain')
         elif field.startswith('video_title'):
             # If editing video title, update the GlossVideo's title
             if request.user.has_perm('video.change_glossvideo'):

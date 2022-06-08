@@ -326,6 +326,23 @@
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
+                <a data-toggle='collapse' data-parent='#definition' href='#usage_variation'>
+                    {% blocktrans %}Usage and Variation{% endblocktrans %}</a>
+            </div>
+        </div>
+        <div id='usage_variation' class='panel-collapse collapse'>
+            <table class='table table-condensed'>
+                <tr>
+                    <th>Usage</th>
+                    <td class="edit edit_list_check" id="usage">{{gloss.usage.all|join:", "}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class='panel-heading'>
+            <div class='panel-title'>
                 <a data-toggle='collapse' data-parent='#definition' href='#examples'>
                     {% blocktrans %}Examples{% endblocktrans %}</a>
             </div>
