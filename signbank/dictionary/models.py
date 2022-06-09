@@ -590,6 +590,11 @@ class Gloss(models.Model):
     directional = models.BooleanField(_("Directional"),
                                       default=False, null=False, blank=False, choices=[(True, 'Yes'), (False, 'No')])
 
+    # age_variation: 'none', 'older', or 'younger'
+    age_variation = models.ForeignKey('FieldChoice', verbose_name=_("Age variation"), to_field='machine_value',
+                                       db_column='age_variation', limit_choices_to={'field': 'age_variation'},
+                                       related_name="age_variation", blank=True, null=True, on_delete=models.SET_NULL)
+
     def __str__(self):
         return self.idgloss
 
@@ -651,7 +656,8 @@ class Gloss(models.Model):
                   'relative_orientation_movement', 'relative_orientation_location', 'handshape_change',
                   'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
                   'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field',
-                  'video_type', 'wordclass', 'fingerspelling', 'usage']
+                  'video_type', 'wordclass', 'fingerspelling', 'usage',
+                  'age_variation']
 
         qs = FieldChoice.objects.filter(field__in=fields).values(
             'field', 'machine_value', 'english_name')
