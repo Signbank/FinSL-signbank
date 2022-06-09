@@ -205,7 +205,7 @@ class GlossListView(ListView):
                       'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
                       'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'fingerspelling',
-                      'one_or_two_hand', 'number_incorporated', 'locatable', 'directional']
+                      'one_or_two_hand', 'number_incorporated', 'locatable', 'directional', 'variant_no']
 
         """These were removed from fieldnames because they are not needed there:
         'idgloss', 'idgloss_mi', 'notes',
@@ -468,12 +468,13 @@ class GlossDetailView(DetailView):
 
         fields['semantics'] = ['iconic_image',
                                'named_entity', 'semantic_field']
+        fields['usage'] = ['variant_no']
         fields['examples'] = ['videoexample1', 'videoexample1_translation', 'videoexample2', 'videoexample2_translation',
                               'videoexample3', 'videoexample3_translation', 'videoexample4', 'videoexample4_translation']
 
         fields['frequency'] = ['number_of_occurences']
 
-        for topic in ['morphology', 'phonology', 'semantics', 'frequency', 'examples']:
+        for topic in ['morphology', 'phonology', 'semantics', 'frequency', 'examples', 'usage']:
             context[topic + '_fields'] = []
 
             for field in fields[topic]:

@@ -335,6 +335,12 @@
                 <tr>
                     <th>Usage</th>
                     <td class="edit edit_list_check" id="usage">{{gloss.usage.all|join:", "}}</td>
+                    {% for value, name, label, kind in usage_fields %}
+                        <tr>
+                            <th>{{ label }}</th>
+                            <td class="edit edit_text" id="{{ name }}">{% value value %}</td>
+                        </tr>
+                    {% endfor %}
                 </tr>
             </table>
         </div>

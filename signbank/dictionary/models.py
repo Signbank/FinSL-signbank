@@ -589,6 +589,7 @@ class Gloss(models.Model):
                                     (True, 'Yes'), (False, 'No')])
     directional = models.BooleanField(_("Directional"),
                                       default=False, null=False, blank=False, choices=[(True, 'Yes'), (False, 'No')])
+    variant_no = models.TextField(_("Variant Number"), blank=True, null=True)
 
     def __str__(self):
         return self.idgloss
