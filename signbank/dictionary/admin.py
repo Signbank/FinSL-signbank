@@ -198,7 +198,7 @@ class GlossAdmin(VersionAdmin):
                  (_('Semantics'), {'fields': ('iconic_image', 'named_entity', 'semantic_field'),
                                    'classes': ('collapse',)}),
                  (_('Usage and Variation'), {
-                  'fields': ('usage', 'age_variation',), 'classes': ('collapse',)},),
+                  'fields': ('usage', 'variant_no', 'age_variation',), 'classes': ('collapse',)},),
                  (_('Examples'), {'fields': (
                      ('videoexample1', 'videoexample1_translation'),
                      ('videoexample2', 'videoexample2_translation'),

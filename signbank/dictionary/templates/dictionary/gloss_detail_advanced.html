@@ -117,7 +117,7 @@
                 {% for value,name,label,kind in phonology_fields %}
                 <tr>
                     <th>{{label}}</th>
-<td class="edit edit_{{kind}}" id='{{name}}'>{% if kind == "check" and value %}Yes{% elif kind == "check" %}No{% else %}{% value value %}{% endif %}</td>
+                    <td class="edit edit_{{kind}}" id='{{name}}'>{% if kind == "check" and value is None%}No{% elif kind == "check" and value != 'No' %}Yes{% else %}{% value value %}{% endif %}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -335,6 +335,12 @@
                 <tr>
                     <th>Usage</th>
                     <td class="edit edit_list_check" id="usage">{{gloss.usage.all|join:", "}}</td>
+                    {% for value, name, label, kind in usage_fields %}
+                        <tr>
+                            <th>{{ label }}</th>
+                            <td class="edit edit_text" id="{{ name }}">{% value value %}</td>
+                        </tr>
+                    {% endfor %}
                 </tr>
             </table>
             <table class='table table-condensed'>
