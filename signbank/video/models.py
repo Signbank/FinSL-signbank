@@ -23,7 +23,7 @@ class GlossVideoStorage(FileSystemStorage):
         """Generate a valid name, save videos to a 'base_directory', and under it use directories
         named for the first two characters in the filename to partition the videos"""
         base_directory = "glossvideo"
-        file_path = os.path.join(name[:2].upper(), name)
+        file_path = os.path.join(name.split("-")[0], name)
         result = os.path.join(base_directory, file_path)
         return result
 
@@ -163,24 +163,33 @@ class GlossVideo(models.Model):
             # Get the relative path in media folder.
             full_new_path = storage.get_valid_name(new_filename)
             # Proceed to change the file path if the new path is not equal to old path.
-            if not old_file.name == full_new_path:
+            if not self.videofile.storage.exists(full_new_path):
                 # Save the file into the new path.
-                saved_file_path = storage.save(full_new_path, self.videofile)
+                saved_file_path = storage.save(full_new_path, old_file)
                 # Set the actual file path to videofile.
                 self.videofile = saved_file_path
-                old_file.storage.delete(old_file.name)
+
+                old_file.storage.delete(old_file.path)
 
     def create_filename(self):
         """Returns a correctly named filename"""
-        return "{idgloss}-{glosspk}_vid{videopk}{ext}".format(
-            idgloss=self.gloss.idgloss, glosspk=self.gloss.pk, videopk=self.pk, ext=self.get_extension()
+        return "{glosspk}-{idgloss}_{videotype}_{pk}{ext}".format(
+            idgloss=self.gloss.idgloss,
+            glosspk=self.gloss.pk,
+            videotype=self.video_type.english_name if self.video_type else "unknown",
+            ext=self.get_extension(),
+            pk=self.pk
         )
 
     def create_poster_filename(self, ext):
         """Returns a preferred filename of posterfile. Ext is the file extension without the dot."""
         if self.gloss:
-            return "{idgloss}-{glosspk}_vid{videopk}_poster.{ext}".format(
-                idgloss=self.gloss.idgloss, glosspk=self.gloss.pk, videopk=self.pk, ext=ext
+            return "{idgloss}-{glosspk}_{videotype}_{pk}.{ext}".format(
+                idgloss=self.gloss.idgloss,
+                glosspk=self.gloss.pk,
+                videotype=self.video_type.english_name if self.video_type else "unknown",
+                pk=self.pk,
+                ext=ext
             )
         return "{videofilename}.{ext}".format(videofilename=self.videofile.name, ext=ext)
 
