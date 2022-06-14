@@ -35,29 +35,29 @@ function clearForm(myFormElement) {
   for(i=0; i<elements.length; i++) {
 
       field_type = elements[i].type.toLowerCase();
-    
+
       switch(field_type) {
-    
+
         case "text":
         case "password":
         case "textarea":
         case "hidden":
-    
+
           elements[i].value = "";
           break;
-    
+
         case "radio":
         case "checkbox":
             if (elements[i].checked) {
               elements[i].checked = false;
           }
           break;
-    
+
         case "select-one":
         case "select-multiple":
                     elements[i].selectedIndex = -1;
           break;
-    
+
         default:
           break;
       }
@@ -197,7 +197,7 @@ function clearForm(myFormElement) {
             <td><a href="{% url 'dictionary:admin_gloss_view' pk=gloss.pk %}"
                    data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}"
                    data-video-src="{% if gloss.glossvideo_set.all.0.videofile %}{{ gloss.glossvideo_set.all.0.videofile.url }}"
-                   data-video-ext="{{ gloss.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">{{ gloss.idgloss }}</a>
+                   data-content-type="{{ gloss.glossvideo_set.all.0.get_content_type }}{% endif %}">{{ gloss.idgloss }}</a>
                 {% if gloss.glossvideo_set.count > 1 %}<span class="glyphicon glyphicon-film" aria-hidden="true"
                                                              title="{% blocktrans %}Videos{% endblocktrans %}" style="margin-left:5px;"></span>
                 <span class="sr-only">{% blocktrans context "sr-videos" %}Videos{% endblocktrans %}:</span> {{gloss.glossvideo_set.count}}{% endif %}</td>

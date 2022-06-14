@@ -187,17 +187,17 @@ $('#id_comment').atwho({
                             <div class="video-title">
                                 <h4 class="edit edit_text" id="video_title{{glossvideo.pk}}">{{glossvideo.title}} - {{glossvideo.video_type}}</h4>
                             </div>
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" controls muted
-                                       {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url}}"{% endif %}>
-                                    {% if glossvideo.get_extension == '.mp4' %}
-                                    <source src="{{glossvideo.videofile.url}}" type="video/mp4">
-                                    {% elif glossvideo.get_extension == '.webm' %}
-                                    <source src="{{glossvideo.videofile.url}}" type="video/webm">
-                                    {% endif %}
-                                    {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                                </video>
-                            </div>
+                            {% if glossvideo.is_video %}
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" controls muted
+                                            {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url}}"{% endif %}>
+                                        <source src="{{glossvideo.get_absolute_url}}" type="{{glossvideo.content_type}}">
+                                        {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
+                                    </video>
+                                </div>
+                            {% elif glossvideo.is_image %}
+                                <img src="{{glossvideo.get_absolute_url}}" alt="{{glossvideo.title}} - {{glossvideo.video_type}}" class="img-responsive center-block" />
+                            {% endif %}
                             <div class="video_edit" style="display:none;">
                                 <div class="video-ordering">
                                     <form action="{% url 'video:change_glossvideo_order' %}" method="post">{% csrf_token %}
@@ -211,7 +211,16 @@ $('#id_comment').atwho({
                                     </form>
                                 </div>
                                 <div class="poster-edit">
-                                    <button type="button" class="btn btn-success" id="vidbtn-{{glossvideo.pk}}" onclick="grabScreenshot({{glossvideo.pk}})" data-toggle="modal" data-target="#glossvideo{{glossvideo.pk}}-Modal">{% blocktrans %}Capture new poster image{% endblocktrans %}</button>
+                                    {% if glossvideo.is_video %}
+                                        <button type="button"
+                                                class="btn btn-success"
+                                                id="vidbtn-{{glossvideo.pk}}"
+                                                onclick="grabScreenshot({{glossvideo.pk}})"
+                                                data-toggle="modal"
+                                                data-target="#glossvideo{{glossvideo.pk}}-Modal">
+                                                    {% blocktrans %}Capture new poster image{% endblocktrans %}
+                                        </button>
+                                    {% endif %}
                                 </div>
                                 <form class="change-video-type" action="{% url 'video:glossvideo_update' %}" method="post">{% csrf_token %}
                                     <input type="hidden" name="glossvideo" value="{{glossvideo.pk}}">

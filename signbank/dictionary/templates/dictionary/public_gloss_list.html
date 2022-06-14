@@ -165,20 +165,21 @@ $( document ).ready(function() {
             </div>
             <div class="panel-body embed-responsive embed-responsive-16by9"
                  {% if obj.glossvideo_set.all.count > 0 %}style="background-color:rgb(33,33,33);"{% endif %}>
-            {% if obj.glossvideo_set.all.0 %}
-                <video id="glossvideo-{{obj.glossvideo_set.all.0.pk}}" class="video-public" preload="metadata" muted
-{% if obj.glossvideo_set.all.0.posterfile %} poster="{{obj.glossvideo_set.all.0.posterfile.url}}"{% endif %}
-                onclick="this.paused?this.play():this.pause();" playsinline>
-                {% if obj.glossvideo_set.all.0.get_extension == '.mp4' %}
-                    <source src="{{obj.glossvideo_set.all.0.videofile.url}}" type="video/mp4">
-                {% elif obj.glossvideo_set.all.0.get_extension == '.webm' %}
-                    <source src="{{obj.glossvideo_set.all.0.videofile.url}}" type="video/webm">
+            {% with glossvideo=obj.glossvideo_set.all.0 %}
+                {% if glossvideo %}
+                    {% if glossvideo.is_video %}
+                        <video id="glossvideo-{{glossvideo.pk}}" class="video-public" preload="metadata" muted
+        {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url}}"{% endif %}
+                        onclick="this.paused?this.play():this.pause();" playsinline>
+                            <source src="{{glossvideo.get_absolute_url}}" type="{{glossvideo.get_content_type}}">
+                        </video>
+                    {% elif glossvideo.is_image %}
+                        <img src="{{glossvideo.get_absolute_url}}" alt="{{glossvideo.gloss.idgloss}" class="img-responsive" />
+                    {% endif %}
+                {% else %}
+                    <p><em>{% blocktrans %}No video.{% endblocktrans %}</em></p>
                 {% endif %}
-                    {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
-                </video>
-            {% else %}
-                <p><em>{% blocktrans %}No video.{% endblocktrans %}</em></p>
-            {% endif %}
+            {% endwith %}
             </div>
             <div class="panel-footer">
             {% for glosstranslations in obj.glosstranslations_set.all %}

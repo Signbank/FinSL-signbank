@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 import datetime
+import mimetypes
 import os
 
 from django.conf import settings
@@ -203,6 +204,18 @@ class GlossVideo(models.Model):
     def get_extension(self):
         """Returns videofiles extension."""
         return os.path.splitext(self.videofile.name)[1]
+
+    def get_content_type(self):
+        """ Returns the (guessed) mimetype of the videofile"""
+        content_type, encoding = mimetypes.guess_type(self.videofile.name)
+
+        return content_type
+
+    def is_image(self):
+        return self.get_content_type().startswith("image/")
+
+    def is_video(self):
+        return self.get_content_type().startswith("video/")
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""

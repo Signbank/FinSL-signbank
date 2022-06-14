@@ -12,7 +12,7 @@
             <a href="{% url 'dictionary:admin_gloss_view' gr.target.id %}"
                data-thumbnail-src="{% if gr.target.glossvideo_set.all.0.posterfile %}{{gr.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
                data-video-src="{% if gr.target.glossvideo_set.all.0.videofile %}{{ gr.target.glossvideo_set.all.0.videofile.url }}"
-               data-video-ext="{{ gr.target.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
+               data-content-type="{{ gr.target.glossvideo_set.all.0.get_content_type}}{% endif %}">
                 <span class="glyphicon glyphicon-circle-arrow-right"></span> {{gr}}</a>
             {% for tag in tag_list %}
             <span class="badge" style="float:inherit;">{{tag}}</span>
@@ -42,7 +42,7 @@
             <a href="{% url 'dictionary:admin_gloss_view' gr.source.id %}"
                data-thumbnail-src="{% if gr.source.glossvideo_set.all.0.posterfile %}{{gr.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
                data-video-src="{% if gr.source.glossvideo_set.all.0.videofile %}{{ gr.source.glossvideo_set.all.0.videofile.url }}"
-               data-video-ext="{{ gr.source.glossvideo_set.all.0.get_extension|slice:"1:" }}{% endif %}">
+               data-content-type="{{ gr.source.glossvideo_set.all.0.get_content_type}}{% endif %}">
                 <span class="glyphicon glyphicon-circle-arrow-left"></span> {{gr.source}}</a>
             {% for tag in tag_list %}
             <span class="badge" style="float:inherit;">{{tag}}</span>
