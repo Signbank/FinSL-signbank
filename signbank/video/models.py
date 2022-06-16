@@ -9,7 +9,6 @@ import os
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -36,7 +35,6 @@ class GlossVideoDynamicStorage(import_string(settings.GLOSS_VIDEO_FILE_STORAGE))
     pass
 
 
-@python_2_unicode_compatible
 class GlossVideo(models.Model):
     """A video that represents a particular idgloss"""
     #: Descriptive title of the GlossVideo.

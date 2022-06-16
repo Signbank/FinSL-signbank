@@ -12,14 +12,12 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db import OperationalError, models
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from tagging.models import Tag
 from tagging.registry import AlreadyRegistered
 from tagging.registry import register as tagging_register
 
 
-@python_2_unicode_compatible
 class Dataset(models.Model):
     """Dataset/Lexicon of which Glosses are part of."""
     #: A private name for the Dataset. Can include abbrevations not recognizable by the general users.
@@ -55,7 +53,6 @@ class Dataset(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class GlossTranslations(models.Model):
     """Store a string representation of translation equivalents of certain Language for a Gloss."""
     #: The Gloss to translate
@@ -162,7 +159,6 @@ class GlossTranslations(models.Model):
         return len(keywords_str) != (len(set(keywords_str)))
 
 
-@python_2_unicode_compatible
 @reversion.register()
 class Translation(models.Model):
     """A translation equivalent of a sign in selected language."""
@@ -188,7 +184,6 @@ class Translation(models.Model):
         return self.keyword.text
 
 
-@python_2_unicode_compatible
 @reversion.register()
 class Keyword(models.Model):
     """A keyword that stores the text for translation(s)"""
@@ -207,7 +202,6 @@ class Keyword(models.Model):
         return self.text
 
 
-@python_2_unicode_compatible
 class Language(models.Model):
     """A written language, used for translations in written languages."""
     #: The name of a spoken/written Language.
@@ -230,7 +224,6 @@ class Language(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class SignLanguage(models.Model):
     """A sign language."""
     #: The name of the Sign Language
@@ -248,7 +241,6 @@ class SignLanguage(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class Dialect(models.Model):
     """A dialect name - a regional dialect of a given Language"""
     #: The Language of the Dialect.
@@ -268,7 +260,6 @@ class Dialect(models.Model):
         return str(self.language.name) + "/" + str(self.name)
 
 
-@python_2_unicode_compatible
 class RelationToForeignSign(models.Model):
     """Defines a relationship to another sign in another language (often a loan)"""
     #: The source Gloss of the relation.
@@ -298,7 +289,6 @@ class RelationToForeignSign(models.Model):
         return str(self.gloss) + "/" + str(self.other_lang) + ',' + str(self.other_lang_gloss)
 
 
-@python_2_unicode_compatible
 class FieldChoice(models.Model):
     #: The name of the FieldChoice.
     field = models.CharField(max_length=50)
@@ -333,7 +323,6 @@ def build_choice_list(field):
         return choice_list
 
 
-@python_2_unicode_compatible
 class Gloss(models.Model):
     class Meta:
         unique_together = (("idgloss", "dataset"),)
@@ -675,7 +664,6 @@ class Gloss(models.Model):
         return field_choices
 
 
-@python_2_unicode_compatible
 class GlossURL(models.Model):
     """URL's for gloss"""
     #: The Gloss the URL belongs to.
@@ -692,7 +680,6 @@ class GlossURL(models.Model):
         return self.gloss.idgloss + " - " + self.url
 
 
-@python_2_unicode_compatible
 class AllowedTags(models.Model):
     """Tags a model is allowed to use."""
     #: The tags that are shown in tag lists.
@@ -708,7 +695,6 @@ class AllowedTags(models.Model):
         return str(self.content_type)
 
 
-@python_2_unicode_compatible
 class GlossRelation(models.Model):
     """Relation between two glosses"""
     #: The source Gloss of the Relation.
@@ -732,7 +718,6 @@ class GlossRelation(models.Model):
         return str(self.target)
 
 
-@python_2_unicode_compatible
 class Relation(models.Model):  # TODO: Remove
     """A relation between two glosses"""
     source = models.ForeignKey(
@@ -758,7 +743,6 @@ class Relation(models.Model):  # TODO: Remove
         return str(self.source)+' -> ' + str(self.target)
 
 
-@python_2_unicode_compatible
 class MorphologyDefinition(models.Model):
     """Tells something about morphology of a gloss"""
     parent_gloss = models.ForeignKey(
@@ -777,7 +761,6 @@ class MorphologyDefinition(models.Model):
         return str(self.morpheme.idgloss) + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss)
 
 
-@python_2_unicode_compatible
 class Signer(models.Model):
     """The list of signers"""
     #: Signer name.

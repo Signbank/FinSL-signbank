@@ -57,7 +57,7 @@ class TranslationInline(admin.TabularInline):
             [field.name for field in self.opts.local_many_to_many]
         ))
 
-    def has_add_permission(self, request):
+    def has_add_permission(self, request, args):
         return False
 
     def has_delete_permission(self, request, obj=None):
@@ -142,7 +142,7 @@ class GlossTranslationsInline(admin.TabularInline):
               'translations_secondary', 'translations_minor')
     extra = 0
 
-    def has_add_permission(self, request):
+    def has_add_permission(self, request, args):
         # return False
         return True
 
