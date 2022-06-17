@@ -204,7 +204,7 @@ class GlossListView(ListView):
                       'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
                       'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
-                      'iconic_image', 'named_entity', 'semantic_field', 'number_of_occurences', 'fingerspelling',
+                      'iconic_image', 'named_entity', 'number_of_occurences', 'fingerspelling',
                       'one_or_two_hand', 'number_incorporated', 'locatable', 'directional', 'variant_no']
 
         """These were removed from fieldnames because they are not needed there:
@@ -467,7 +467,7 @@ class GlossDetailView(DetailView):
                                'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation', 'one_or_two_hand']
 
         fields['semantics'] = ['iconic_image',
-                               'named_entity', 'semantic_field']
+                               'named_entity']
         fields['usage'] = ['variant_no']
         fields['examples'] = ['videoexample1', 'videoexample1_translation', 'videoexample2', 'videoexample2_translation',
                               'videoexample3', 'videoexample3_translation', 'videoexample4', 'videoexample4_translation']
@@ -491,8 +491,7 @@ class GlossDetailView(DetailView):
                 else:
                     kind = 'list'
 
-                context[
-                    topic + '_fields'].append([value, field, labels[field], kind])
+                context[topic + '_fields'].append([value, field, labels[field], kind])
 
         return context
 

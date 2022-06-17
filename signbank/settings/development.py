@@ -11,7 +11,7 @@ from signbank.settings.base import *
 #: Debug should be True in development but not in production!
 DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
 
-DEFAULT_ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'signbank.nz']
+DEFAULT_ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', 'signbank.nz']
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(
     ",") if os.getenv("ALLOWED_HOSTS") else DEFAULT_ALLOWED_HOSTS
 

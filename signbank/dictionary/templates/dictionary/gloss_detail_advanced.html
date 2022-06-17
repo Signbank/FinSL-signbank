@@ -134,6 +134,12 @@
         </div>
         <div id='semantics' class='panel-collapse collapse'>
             <table class='table table-condensed'>
+                <tr>
+                    <th>Semantic Fields</th>
+                    <td class="edit edit_list_check" id="semantic_field">{{gloss.semantic_field.all|join:"&#10;<br>"}}</td>
+                </tr>
+            </table>
+            <table class='table table-condensed'>
                 {% for value,name,label,kind in semantics_fields %}
                 <tr>
                     <th>{{label}}</th>
@@ -334,7 +340,7 @@
             <table class='table table-condensed'>
                 <tr>
                     <th>Usage</th>
-                    <td class="edit edit_list_check" id="usage">{{gloss.usage.all|join:", "}}</td>
+                    <td class="edit edit_list_check" id="usage">{{gloss.usage.all|join:"&#10;<br>"}}</td>
                     {% for value, name, label, kind in usage_fields %}
                         <tr>
                             <th>{{ label }}</th>
