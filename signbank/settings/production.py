@@ -2,6 +2,8 @@
 # DAM - need to configure this
 """Production environment specific settings for FinSL-signbank."""
 from __future__ import unicode_literals
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 from signbank.settings.base import *
 # settings.base imports settings_secret
@@ -10,6 +12,13 @@ from signbank.settings.base import *
 
 #: IMPORTANT: Debug should always be False in production
 DEBUG = True
+
+sentry_sdk.init(
+    dsn=os.environ.get('SENTRY_DSN'),
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
 
 #: IMPORTANT: The hostname that this signbank runs on, this prevents HTTP Host header attacks
 ALLOWED_HOSTS = ['signbank.nz']
