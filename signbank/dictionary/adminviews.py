@@ -1,37 +1,36 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import json
 import csv
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.db.models import Q, Count
+import json
+from collections import defaultdict
+
+from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import PermissionDenied
+from django.db.models import Count, F, Prefetch, Q
 from django.db.models.fields import NullBooleanField
 from django.http import HttpResponse, JsonResponse
-from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.translation import get_language
-from django.db.models import Prefetch
-from django.db.models import F
-from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
-from django.shortcuts import get_object_or_404
-
-from collections import defaultdict
-from django.contrib import messages
-from tagging.models import Tag, TaggedItem
-from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
-from reversion.models import Version
-
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from djqscsv import render_to_csv_response
+from guardian.shortcuts import (get_objects_for_user, get_perms,
+                                get_users_with_perms)
+from reversion.models import Version
+from tagging.models import Tag, TaggedItem
 
-from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, \
-    GlossRelationSearchForm
-from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
-    Relation, MorphologyDefinition
+from ..comments import CommentTagForm
 from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
-from ..comments import CommentTagForm
+from .forms import (GlossRelationForm, GlossRelationSearchForm,
+                    GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
+from .models import (Dataset, Gloss, GlossRelation, GlossTranslations,
+                     GlossURL, MorphologyDefinition, Relation,
+                     RelationToForeignSign, Translation)
 
 
 class GlossListView(ListView):
@@ -111,7 +110,7 @@ class GlossListView(ListView):
             for f in fields:
                 value = getattr(gloss, f.name)
                 # If the value contains ';', put it in quotes.
-                if ";" in value:
+                if value and ";" in value:
                     row.append('"{}"'.format(value))
                 else:
                     row.append(value)
