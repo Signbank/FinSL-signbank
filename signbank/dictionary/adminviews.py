@@ -6,10 +6,12 @@ import json
 from collections import defaultdict
 
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
-from django.db.models import Count, F, Prefetch, Q
-from django.db.models.fields import NullBooleanField
+from django.db.models import Count, F, Prefetch, Q, Value
+from django.db.models.fields import CharField, NullBooleanField
+from django.db.models.functions import Concat
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
@@ -420,29 +422,44 @@ class GlossDetailView(DetailView):
         context['commenttagform'] = CommentTagForm()
         context['glossvideoform'] = GlossVideoForGlossForm()
         context['field_choices'] = Gloss.get_choice_lists()
+
+        context['assignable_users'] = list(
+            User.objects
+                .filter(is_staff=True, is_active=True)
+                .annotate(full_name=Concat(F('first_name'), Value(' '), F('last_name'), output_field=CharField()))
+                .values(label=F('full_name'), value=F('id')))
+
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
-        context['glossrelationform'] = GlossRelationForm(initial={'source': gloss.id, })
+        context['glossrelationform'] = GlossRelationForm(
+            initial={'source': gloss.id, })
         # Choices for GlossRelationForm
-        context['dataset_glosses'] = json.dumps(list(Gloss.objects.filter(dataset=dataset).values(label=F('idgloss'), value=F('id'))))
+        context['dataset_glosses'] = json.dumps(list(Gloss.objects.filter(
+            dataset=dataset).values(label=F('idgloss'), value=F('id'))))
         # GlossRelations for this gloss
         context['glossrelations'] = GlossRelation.objects.filter(source=gloss)
-        context['glossrelations_reverse'] = GlossRelation.objects.filter(target=gloss)
+        context['glossrelations_reverse'] = GlossRelation.objects.filter(
+            target=gloss)
         context['glossurls'] = GlossURL.objects.filter(gloss=gloss)
         context['translation_languages_and_translations'] = gloss.get_translations_for_translation_languages()
 
         if self.request.user.is_staff:
             # Get some version history data
-            version_history = Version.objects.get_for_object(context['gloss']).prefetch_related('revision__user')[:20]
+            version_history = Version.objects.get_for_object(
+                context['gloss']).prefetch_related('revision__user')[:20]
             translation_ct = ContentType.objects.get_for_model(Translation)
             for i, version in enumerate(version_history):
                 if not i+1 >= len(version_history):
                     ver1 = version.field_dict
                     ver2 = version_history[i+1].field_dict
-                    t1 = list(version_history[i].revision.version_set.filter(content_type=translation_ct).values_list('object_repr', flat=True))
-                    t2 = list(version_history[i+1].revision.version_set.filter(content_type=translation_ct).values_list('object_repr', flat=True))
-                    version.translations_added = ", ".join(["+"+x for x in t1 if x not in set(t2)])
-                    version.translations_removed = ", ".join(["-"+x for x in t2 if x not in set(t1)])
+                    t1 = list(version_history[i].revision.version_set.filter(
+                        content_type=translation_ct).values_list('object_repr', flat=True))
+                    t2 = list(version_history[i+1].revision.version_set.filter(
+                        content_type=translation_ct).values_list('object_repr', flat=True))
+                    version.translations_added = ", ".join(
+                        ["+"+x for x in t1 if x not in set(t2)])
+                    version.translations_removed = ", ".join(
+                        ["-"+x for x in t2 if x not in set(t1)])
                     version.data_removed = dict([(key, value) for key, value in ver1.items() if value != ver2[key] and
                                                  key != 'updated_at' and key != 'updated_by_id'])
                     version.data_added = dict([(key, value) for key, value in ver2.items() if value != ver1[key] and
@@ -513,7 +530,8 @@ def gloss_ajax_complete(request, prefix):
     result = []
 
     for g in qs:
-        result.append({'idgloss': g.idgloss, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
+        result.append(
+            {'idgloss': g.idgloss, 'pk': "%s (%s)" % (g.idgloss, g.pk)})
 
     return HttpResponse(json.dumps(result), {'content-type': 'application/json'})
 
@@ -523,7 +541,8 @@ def gloss_list_xml(self, dataset_id):
     # http://www.mpi.nl/tools/elan/EAFv2.8.xsd
     dataset = get_object_or_404(Dataset, id=dataset_id)
     return serialize_glosses(dataset,
-                             Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)
+                             Gloss.objects.filter(
+                                 dataset=dataset, exclude_from_ecv=False)
                              .prefetch_related(
                                  Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
                                           .select_related('keyword', 'language')),
@@ -536,7 +555,8 @@ def serialize_glosses(dataset, queryset):
         # Get Finnish translation equivalents from glosstranslations or from translation_set
         if gloss.glosstranslations_set.exists() and "fin" in [x.language.language_code_3char for x in
                                                               gloss.glosstranslations_set.all()]:
-            gloss.trans_fin = [x for x in gloss.glosstranslations_set.all() if x.language.language_code_3char == "fin"]
+            gloss.trans_fin = [x for x in gloss.glosstranslations_set.all(
+            ) if x.language.language_code_3char == "fin"]
         else:
             gloss.trans_fin = [x.keyword.text for x in gloss.translation_set.all() if
                                x.language.language_code_3char == "fin"]
@@ -549,23 +569,27 @@ def serialize_glosses(dataset, queryset):
             gloss.trans_eng = [x.keyword.text for x in gloss.translation_set.all() if
                                x.language.language_code_3char == "eng"]
 
-    xml = render_to_string('dictionary/xml_glosslist_template.xml', {'queryset': queryset, 'dataset': dataset})
+    xml = render_to_string('dictionary/xml_glosslist_template.xml',
+                           {'queryset': queryset, 'dataset': dataset})
     return HttpResponse(xml, content_type="text/xml")
+
 
 def gloss_list_csv(self, dataset_id):
     """Returns glosses and associated data as a CSV file"""
     dataset = get_object_or_404(Dataset, id=dataset_id)
     return serialize_glosses_csv(dataset,
-                             Gloss.objects.filter(dataset=dataset, exclude_from_ecv=False)
-                             .prefetch_related(
-                                 Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
-                                          .select_related('keyword', 'language')),
-                                 Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.
-                                          filter(gloss__dataset=dataset).select_related('language'))))
+                                 Gloss.objects.filter(
+                                     dataset=dataset, exclude_from_ecv=False)
+                                 .prefetch_related(
+                                     Prefetch('translation_set', queryset=Translation.objects.filter(gloss__dataset=dataset)
+                                              .select_related('keyword', 'language')),
+                                     Prefetch('glosstranslations_set', queryset=GlossTranslations.objects.
+                                              filter(gloss__dataset=dataset).select_related('language'))))
 
 
 def serialize_glosses_csv(dataset, queryset):
     return render_to_csv_response(queryset)
+
 
 class GlossRelationListView(ListView):
     model = GlossRelation
@@ -577,11 +601,14 @@ class GlossRelationListView(ListView):
         context = super(GlossRelationListView, self).get_context_data(**kwargs)
         context['searchform'] = GlossRelationSearchForm(self.request.GET)
         # Get allowed datasets for user (django-guardian)
-        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        allowed_datasets = get_objects_for_user(
+            self.request.user, 'dictionary.view_dataset')
         # Filter the forms dataset field for the datasets user has permission to.
-        context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+        context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(
+            id__in=[x.id for x in allowed_datasets])
 
-        populate_tags_for_object_list(context['object_list'], model=self.object_list.model)
+        populate_tags_for_object_list(
+            context['object_list'], model=self.object_list.model)
 
         if 'order' not in self.request.GET:
             context['order'] = 'source'
@@ -601,20 +628,24 @@ class GlossRelationListView(ListView):
         qs = GlossRelation.objects.all()
 
         # Filter in only objects in the datasets the user has permissions to.
-        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
-        qs = qs.filter(source__dataset__in=allowed_datasets).filter(target__dataset__in=allowed_datasets)
+        allowed_datasets = get_objects_for_user(
+            self.request.user, 'dictionary.view_dataset')
+        qs = qs.filter(source__dataset__in=allowed_datasets).filter(
+            target__dataset__in=allowed_datasets)
 
         get = self.request.GET
 
         # Search for multiple datasets (if provided)
         vals = get.getlist('dataset', [])
         if vals != []:
-            qs = qs.filter(source__dataset__in=vals).filter(target__dataset__in=vals)
+            qs = qs.filter(source__dataset__in=vals).filter(
+                target__dataset__in=vals)
 
         if 'search' in get and get['search'] != '':
             val = get['search']
             # Searches for multiple fields at the same time. Looking if any of the fields match.
-            query = (Q(source__idgloss__icontains=val) | Q(target__idgloss__icontains=val))
+            query = (Q(source__idgloss__icontains=val) |
+                     Q(target__idgloss__icontains=val))
             qs = qs.filter(query)
 
         if 'source' in get and get['source'] != '':
@@ -631,8 +662,10 @@ class GlossRelationListView(ListView):
 
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('source__dataset'), Prefetch('target__dataset'),
-                                 Prefetch('source__glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')),
-                                 Prefetch('target__glossvideo_set', queryset=GlossVideo.objects.all().order_by('version'))
+                                 Prefetch('source__glossvideo_set', queryset=GlossVideo.objects.all().order_by(
+                                     'version')),
+                                 Prefetch(
+                                     'target__glossvideo_set', queryset=GlossVideo.objects.all().order_by('version'))
                                  )
 
         # Set order according to GET field 'order'

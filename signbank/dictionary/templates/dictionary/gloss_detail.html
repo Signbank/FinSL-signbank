@@ -91,6 +91,8 @@ $(document).ready(function () {
     <script type='text/javascript'>
          var edit_post_url = '{% url 'dictionary:update_gloss' gloss.id %}';
          var choice_lists = {{gloss.get_choice_lists|safe}};
+         var dataset_users = {{dataset_users|safe}};
+         var assignable_users = {{assignable_users|safe}};
          var csrf_token = '{{csrf_token}}';
     </script>
     <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
@@ -137,7 +139,7 @@ $(document).ready(function () {
     // Returns a list to be used for mentions
 $('#id_comment').atwho({
     at: '@',
-    data: {{dataset_users|safe}},
+    data: dataset_users,
 });
     </script>
 
@@ -452,6 +454,10 @@ $('#id_comment').atwho({
                 <tr>
                     <th>{% blocktrans %}Signer:{% endblocktrans %}</th>
                     <td id='signer'>{{gloss.signer}}</td>
+                </tr>
+                <tr>
+                    <th>{% blocktrans %}Assigned user:{% endblocktrans %}</th>
+                    <td id="assigned_user" class="edit edit_assignable_user">{{gloss.assigned_user.get_full_name}}</td>
                 </tr>
                 <tr>
                     <th>{% blocktrans %}Created:{% endblocktrans %}</th>

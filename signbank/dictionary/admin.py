@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
+from django.contrib.auth.models import User
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
@@ -57,7 +59,7 @@ class TranslationInline(admin.TabularInline):
             [field.name for field in self.opts.local_many_to_many]
         ))
 
-    def has_add_permission(self, request, args):
+    def has_add_permission(self, request, obj=None):
         return False
 
     def has_delete_permission(self, request, obj=None):
@@ -142,7 +144,7 @@ class GlossTranslationsInline(admin.TabularInline):
               'translations_secondary', 'translations_minor')
     extra = 0
 
-    def has_add_permission(self, request, args):
+    def has_add_permission(self, request, obj=None):
         # return False
         return True
 
@@ -180,12 +182,12 @@ class GlossAdmin(VersionAdmin):
                        'updated_at', 'updated_by', 'concise')
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'wordclasses', 'notes', 'hint', 'signer', 'filmbatch', 'concise')},),
+    fieldsets = ((None, {'fields': ('dataset', 'assigned_user', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'wordclasses', 'notes', 'hint', 'signer', 'filmbatch', 'concise')},),
                  (_('Created/Updated'), {'fields': ('created_at',
                   'created_by', 'updated_at', 'updated_by')},),
                  (_('Morphology'), {'fields': ('inflection_temporal', 'inflection_manner_degree', 'inflection_plural', 'number_incorporated', 'locatable', 'directional',
-                                              'fingerspelling'),
-                                    'classes': ('collapse',)} ),
+                                               'fingerspelling'),
+                                    'classes': ('collapse',)}),
                  (_('Phonology'), {'fields': ('handedness', 'location', 'strong_handshape', 'weak_handshape',
                                               'relation_between_articulators', 'absolute_orientation_palm',
                                               'absolute_orientation_fingers', 'relative_orientation_movement',
@@ -212,7 +214,8 @@ class GlossAdmin(VersionAdmin):
     list_display = ['idgloss', 'dataset',
                     'published', 'exclude_from_ecv', 'idgloss_mi']
     search_fields = ['^idgloss']
-    list_filter = ('dataset', 'published', 'exclude_from_ecv', 'concise', TagListFilter, )
+    list_filter = ('dataset', 'published', 'exclude_from_ecv',
+                   'concise', TagListFilter, )
     inlines = [GlossVideoInline, GlossTranslationsInline, TranslationInline,
                GlossRelationInline, GlossURLInline, GlossTagInline]
 
@@ -277,6 +280,23 @@ class SignerAdmin(VersionAdmin):
     list_display = ('name',)
 
 
+class AssignedGlossInline(admin.StackedInline):
+    model = Gloss
+    fk_name = 'assigned_user'
+    extra = 0
+    readonly_fields = ('idgloss',)
+    can_delete = False
+    verbose_name_plural = "Assigned glosses"
+    fieldsets = ((None, {'fields': ('idgloss',)}),)
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+class UserAdmin(AuthUserAdmin):
+    inlines = [AssignedGlossInline]
+
+
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
@@ -285,6 +305,9 @@ admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
 admin.site.register(AllowedTags, AllowedTagsAdmin)
 admin.site.register(Signer, SignerAdmin)
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 
 # The following models have been removed from the admin because they are not used at the moment.
 admin.site.register(FieldChoice, FieldChoiceAdmin)

@@ -355,6 +355,13 @@ class Gloss(models.Model):
     #: The Dataset (Lexicon) this Gloss is part of.
     dataset = models.ForeignKey("Dataset", verbose_name=_("Glosses dataset"),
                                 help_text=_("Dataset a gloss is part of"), on_delete=models.PROTECT)
+
+    # The user who currently is assigned to this gloss.
+    # Assignment can be for anything, but typically they have some editorial task to complete.
+    assigned_user = models.ForeignKey(
+        User, null=True, limit_choices_to={'is_staff': True, 'is_active': True}, related_name='assigned_glosses',
+        on_delete=models.SET_NULL)
+
     # Translators: Gloss field: idgloss, verbose name
     #: Gloss in Finnish. This is the unique identifying name of the Gloss.
     idgloss = models.CharField(_("Gloss"), max_length=60,
@@ -499,7 +506,7 @@ class Gloss(models.Model):
         "Wordclasses"), limit_choices_to={'field': 'wordclass'}, related_name='wordclass_glosses')
 
     usage = models.ManyToManyField('FieldChoice', verbose_name=_(
-        "Usage"), limit_choices_to={'field': 'usage'}, related_name='usage_glosses')
+        "Usage"), limit_choices_to={'field': 'usage'}, blank=True, related_name='usage_glosses')
 
     # ### Semantic fields
     # Translators: Gloss models field: iconic_image, verbose name

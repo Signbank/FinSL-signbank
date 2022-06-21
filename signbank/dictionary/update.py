@@ -72,13 +72,16 @@ def update_gloss(request, glossid):
 
         elif field.startswith('relationforeign'):
             return update_relationtoforeignsign(gloss, field, value)
-
         # Had to add field != 'relation_between_articulators' because I changed its field name, and it conflicted here.
         elif field.startswith('relation') and field != 'relation_between_articulators':
             return update_relation(gloss, field, value)
 
         elif field.startswith('morphology-definition'):
             return update_morphology_definition(gloss, field, value)
+        elif field == 'assigned_user':
+            gloss.assigned_user_id = value if value and value.strip() != '' else None
+            gloss.save()
+            newvalue = gloss.assigned_user.get_full_name() if gloss.assigned_user else "None"
 
         elif field == 'dialect':
             # expecting possibly multiple values
