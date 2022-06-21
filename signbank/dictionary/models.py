@@ -513,7 +513,7 @@ class Gloss(models.Model):
     # Translators: Gloss models field: semantic_field, verbose name
     # Semantic Fields, also referred to as 'Topics', serve the purpose that (non-editorial) Tags used to serve in Freelex.
     semantic_field = models.ManyToManyField('FieldChoice', verbose_name=_("Semantic Fields"),
-                                            limit_choices_to={'field': 'semantic_field'}, related_name='semantic_field')
+                                            limit_choices_to={'field': 'semantic_field'}, related_name='semantic_field', blank=True)
 
     # ### Frequency fields
     # Translators: Gloss models field_ number_of_occurences, verbose name
