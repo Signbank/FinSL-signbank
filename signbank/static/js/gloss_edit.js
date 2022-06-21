@@ -222,6 +222,10 @@ function configure_edit() {
      $('.edit_list_check').on('click', function() {
         var choices = choice_lists[$(this).attr('id')];
         var selected = [];
+	// In the template, edit_list_check contents are split on HTML entity New Lines - ie. "&#10;"
+	// The New Lines may appear in the template with other code such as breaks - eg. "&#10;<br>" - since
+	// only the New Line itself makes it through to this point here in the JavaScript.
+	// The New Line appears in its normal JavaScript escaped form - '\n'
         for (var key in choices ) {
 	     this.textContent.split(/\n\s*/).indexOf(choices[key]) >= 0 && (selected.push(key));
         }
