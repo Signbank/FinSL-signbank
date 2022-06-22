@@ -533,8 +533,8 @@ class Gloss(models.Model):
     hint = models.TextField(_("Hint"), null=True, blank=True)
 
     #: The signer of this Gloss.
-    signer = models.ForeignKey("Signer", null=True, blank=True, verbose_name=_("Signer"),
-                               help_text=_("Signer for the Gloss"), on_delete=models.PROTECT)
+    signer = models.ForeignKey('FieldChoice', null=True, blank=True, verbose_name=_("Signer"), to_field='machine_value',
+                               help_text=_("Signer for the Gloss"), on_delete=models.PROTECT, limit_choices_to={'field': 'signer'})
 
     #: Adding filmbatch which holds records of which 'batch' of recordings the video is from.
     filmbatch = models.CharField(max_length=150, null=True, blank=True,
@@ -653,7 +653,7 @@ class Gloss(models.Model):
                   'relative_orientation_movement', 'relative_orientation_location', 'handshape_change',
                   'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
                   'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field',
-                  'video_type', 'wordclass', 'fingerspelling', 'usage',
+                  'video_type', 'wordclass', 'fingerspelling', 'usage', 'signer',
                   'age_variation']
 
         qs = FieldChoice.objects.filter(field__in=fields).values(
@@ -766,20 +766,6 @@ class MorphologyDefinition(models.Model):
 
     def __str__(self):
         return str(self.morpheme.idgloss) + ' is ' + str(self.role) + ' of ' + str(self.parent_gloss.idgloss)
-
-
-class Signer(models.Model):
-    """The list of signers"""
-    #: Signer name.
-    name = models.CharField(max_length=150, unique=True)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = _('Signer')
-        verbose_name_plural = _('Signers')
-
-    def __str__(self):
-        return self.name
 
 
 # Register Models for django-tagging to add wrappers around django-tagging API.
