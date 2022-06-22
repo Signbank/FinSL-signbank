@@ -177,6 +177,9 @@ function configure_edit() {
                           alert("There was an error processing this change: " + xhr.responseText );
                           original.reset();
                         };
+    $.fn.editable.defaults['onreset']  = function(settings, original, xhr){
+                          original.reset();
+                        };
 
 
      $('.edit_text').editable(edit_post_url);
@@ -219,8 +222,14 @@ function configure_edit() {
      $('.edit_list_check').on('click', function() {
         var choices = choice_lists[$(this).attr('id')];
         var selected = [];
+	// In the template, edit_list_check contents are split on HTML entity New Lines - ie. "&#10;"
+	// The New Lines may appear in the template with other code such as breaks - eg. "&#10;<br>" - since
+	// only the New Line itself makes it through to this point here in the JavaScript.
+	// The New Line appears in its normal JavaScript escaped form - '\n'
+	// New Lines are a safe entity to split edit_list_check contents on, because they cannot be split on
+	// any character they may potentially contain -eg. commas.
         for (var key in choices ) {
-            this.textContent.split(/,\s*/).indexOf(choices[key]) >= 0 && (selected.push(key));
+	     this.textContent.split(/\n\s*/).indexOf(choices[key]) >= 0 && (selected.push(key));
         }
 
          $(this).editable(edit_post_url, {

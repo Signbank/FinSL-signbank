@@ -516,10 +516,11 @@ class Gloss(models.Model):
     named_entity = models.ForeignKey('FieldChoice', verbose_name=_("Named Entity"), to_field='machine_value',
                                      db_column='named_entity', limit_choices_to={'field': 'named_entity'},
                                      related_name="named_entity", blank=True, null=True, on_delete=models.SET_NULL)
+
     # Translators: Gloss models field: semantic_field, verbose name
-    semantic_field = models.ForeignKey('FieldChoice', verbose_name=_("Semantic Field"), to_field='machine_value',
-                                       db_column='semantic_field', limit_choices_to={'field': 'semantic_field'},
-                                       related_name="semantic_field", blank=True, null=True, on_delete=models.SET_NULL)
+    # Semantic Fields, also referred to as 'Topics', serve the purpose that (non-editorial) Tags used to serve in Freelex.
+    semantic_field = models.ManyToManyField('FieldChoice', verbose_name=_("Semantic Fields"),
+                                            limit_choices_to={'field': 'semantic_field'}, related_name='semantic_field', blank=True)
 
     # ### Frequency fields
     # Translators: Gloss models field_ number_of_occurences, verbose name
@@ -609,7 +610,6 @@ class Gloss(models.Model):
         d = dict()
         for f in self._meta.fields:
             d[f.name] = self._meta.get_field(f.name).verbose_name
-
         return d
 
     def get_translation_languages(self):
