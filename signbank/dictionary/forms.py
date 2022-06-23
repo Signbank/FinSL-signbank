@@ -173,16 +173,18 @@ class GlossRelationForm(forms.Form):
     source = forms.CharField(widget=forms.HiddenInput())
     target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(
         attrs={'class': 'glossrelation-autocomplete'}))
-    allowed_tag = AllowedTags.objects.filter(
-        content_type=ContentType.objects.get_for_model(GlossRelation)).first()
-    qs = AllowedTags.objects.none()
-    if allowed_tag:
-        qs = allowed_tag.allowed_tags.all()
     tag = forms.ModelChoiceField(label=_("Relation type:"),
-                                 queryset=qs,
+                                 queryset=AllowedTags.objects.none(),
                                  required=True, to_field_name='name',
                                  widget=forms.Select(attrs={'class': 'form-control'}))
     delete = forms.IntegerField(required=False, widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        allowed_tag = AllowedTags.objects.filter(
+            content_type=ContentType.objects.get_for_model(GlossRelation)).first()
+        if allowed_tag:
+            self.fields['tag'].queryset = allowed_tag.allowed_tags.all()
 
 
 class GlossURLForm(forms.ModelForm):
