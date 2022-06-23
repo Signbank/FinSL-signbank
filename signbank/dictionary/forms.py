@@ -2,15 +2,15 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import OperationalError, ProgrammingError
-
+from django.utils.translation import ugettext_lazy as _
 from tagging.models import Tag
 
-from .models import Dataset, Language, SignLanguage, AllowedTags, GlossRelation, Gloss, Relation, \
-    RelationToForeignSign, MorphologyDefinition,  FieldChoice, GlossURL
+from .models import (AllowedTags, Dataset, FieldChoice, Gloss, GlossRelation,
+                     GlossURL, Language, MorphologyDefinition, Relation,
+                     RelationToForeignSign, SignLanguage)
 
 
 class GlossCreateForm(forms.ModelForm):
@@ -171,11 +171,13 @@ class GlossRelationSearchForm(forms.Form):
 
 class GlossRelationForm(forms.Form):
     source = forms.CharField(widget=forms.HiddenInput())
-    target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(attrs={'class': 'glossrelation-autocomplete'}))
-    try:
-        qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(GlossRelation)).allowed_tags.all()
-    except (ObjectDoesNotExist, OperationalError, ProgrammingError):
-        qs = Tag.objects.all()
+    target = forms.CharField(label=_("Gloss"), widget=forms.TextInput(
+        attrs={'class': 'glossrelation-autocomplete'}))
+    allowed_tag = AllowedTags.objects.filter(
+        content_type=ContentType.objects.get_for_model(GlossRelation)).first()
+    qs = AllowedTags.objects.none()
+    if allowed_tag:
+        qs = allowed_tag.allowed_tags.all()
     tag = forms.ModelChoiceField(label=_("Relation type:"),
                                  queryset=qs,
                                  required=True, to_field_name='name',

@@ -735,7 +735,8 @@ def gloss_relation(request):
             target = get_object_or_404(Gloss, id=form.cleaned_data["target"])
             glossrelation = GlossRelation.objects.create(source=source, target=target)
             if form.cleaned_data["tag"]:
-                Tag.objects.add_tag(glossrelation, form.cleaned_data["tag"].name)
+                TaggedItem.objects.create(
+                    object=glossrelation, tag=form.cleaned_data["tag"])
             if "HTTP_REFERER" in request.META:
                 return redirect(request.META["HTTP_REFERER"])
             return redirect("/")
