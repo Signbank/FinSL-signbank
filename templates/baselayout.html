@@ -97,30 +97,8 @@
     <footer id="footer">
        <div id="footercontainer" class="container">
             <div class="footerbg">
-                <div class="logoholder">
-                   <a href="https://www.jyu.fi" rel="external">
-                     <img id="logojy" src="{% static 'img/jyu-logo_100-compressor.png' %}" class="logofooter" alt="{% blocktrans %}University of Jyväskylä{% endblocktrans %}">
-                   </a>
-                   <a href="http://www.kuurojenliitto.fi/" rel="external">
-                     <img id="logokl"
-                       {% if LANGUAGE_CODE == 'fi' %}src="{% static 'img/kl-logo_fin_100-compressor.png' %}"
-                       {% elif LANGUAGE_CODE == 'sv' %}src="{% static 'img/kl-logo_sve_100-compressor.png' %}"
-                       {% else %}src="{% static 'img/kl-logo_eng_100-compressor.png' %}"
-                       {% endif %}
-                       class="logofooter" alt="{% blocktrans %}Finnish Association of the Deaf{% endblocktrans %}">
-                   </a>
-                   <a href="https://www.kielipankki.fi/" rel="external">
-                     <img id="logokielipankki" src="{% static 'img/kielipankki_logo_cropped-compressor.png' %}" class="logofooter" alt="{% blocktrans %}The Language Bank of Finland{% endblocktrans %}">
-                   </a>
-                   <a href="https://www.csc.fi" rel="external">
-                     <img id="logocsc" src="{% static 'img/csc_2012_logo-compressor.png' %}" class="logofooter" alt="{% blocktrans %}CSC - IT center for science{% endblocktrans %}">
-                   </a>
-                </div>
-                <div id="license">
-
-                </div>
             </div>
-        </div>
+       </div>
     </footer>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
@@ -154,6 +132,5 @@ $('a#notifications_mark_all_read').on('click', function(event){
     {% block extrajs %}{% endblock %}
   </body>
 </html>
-    
 
-  
+
