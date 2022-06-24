@@ -177,9 +177,6 @@ function configure_edit() {
                           alert("There was an error processing this change: " + xhr.responseText );
                           original.reset();
                         };
-    $.fn.editable.defaults['onreset']  = function(settings, original, xhr){
-                          original.reset();
-                        };
 
 
      $('.edit_text').editable(edit_post_url);
@@ -232,11 +229,12 @@ function configure_edit() {
 	     this.textContent.split(/\n\s*/).indexOf(choices[key]) >= 0 && (selected.push(key));
         }
 
-         $(this).editable(edit_post_url, {
-             type: 'multicheckbox',
-             onblur: 'ignore',
-		     data: $.extend(choice_lists[$(this).attr('id')], { selected: selected })
-         })
+        $(this).editable(edit_post_url, {
+            type: 'multicheckbox',
+            onblur: 'ignore',
+            data: $.extend(choice_lists[$(this).attr('id')], { selected: selected }),
+            onreset: function(settings, original, xhr){original.reset()}
+        })
      });
 
      $('.edit_assignable_user').on('click', function() {
