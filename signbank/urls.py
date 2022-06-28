@@ -15,6 +15,7 @@ from django.contrib.flatpages import views as flatpages_views
 from .comments import edit_comment, latest_comments, latest_comments_page, CommentListView, remove_tag
 import notifications.urls
 from .sitemaps import GlossSitemap, SignbankFlatPageSiteMap, StaticViewSitemap
+from .editorial_queue import get_queue_items
 # Forms
 from .customregistration.forms import CustomUserForm
 
@@ -75,6 +76,10 @@ urlpatterns = [
 
     # Infopage, where we store some links and statistics
     path('info/', infopage, name='infopage'),
+
+    # Editorial queue
+    path('queue/', get_queue_items, name='queue'),
+    path('queue/details/', get_queue_items, name='details'),
 ]
 if settings.DEBUG:
     import debug_toolbar

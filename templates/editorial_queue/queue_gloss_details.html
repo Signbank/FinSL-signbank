@@ -1,0 +1,32 @@
+{% load i18n %}
+<div class="latest_comments">
+    <h2><a href="{% url 'queue' %}">{% blocktrans %}Editorial Queue{% endblocktrans %}</a></h2>
+{% for gloss in glosses %}
+    {% load tagging_tags %}
+    {% tags_for_object gloss.gloss as tag_list %}
+    <article class="gloss">
+        <header>
+            <h4 class="gloss-header"><a href="{{gloss.gloss.get_absolute_url}}"><strong>{{gloss.gloss.idgloss}}</strong>
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{gloss.gloss.updated_at}}</em> -
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{gloss.gloss.assigned_user}}</a>
+                {% if tag_list %}
+                    {% for tag in tag_list %}
+                <div class="comment-tags" style="display:inline;">
+                    <span class="label label-info" style="font-size:60%;">{{tag}}</span>
+                </div>
+                    {% endfor %}
+                {% endif %}
+            </h4>
+        </header>
+        {% if gloss.comments %}
+            <div class="panel panel-default">
+                {% for comment in gloss.comments %}
+                        <div class="panel-body">
+                            <p><b>{{comment.comment}}</b>  <em>{{ comment.submit_date }}</em>, <em>{{ comment.user }}</em></p>
+                        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </article>
+{% endfor %}
+</div>

@@ -1,0 +1,6 @@
+{% extends "baselayout.html" %}
+{% load i18n %}
+{% block bootstrap3_title %}{% blocktrans %}Editorial Queue{% endblocktrans %} | {% endblock %}
+{% block content %}
+{% include "editorial_queue/queue_gloss_details.html" %}
+{% endblock %}
