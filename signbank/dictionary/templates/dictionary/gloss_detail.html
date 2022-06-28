@@ -156,6 +156,19 @@ $('#id_comment').atwho({
     {% endif %}
 </div>
 
+{# Tabs nav bar #}
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#gloss_main_edit_tab" role="tab" data-toggle="tab">Edit</a></li>
+    <li><a href="#gloss_public_view_tab" role="tab" data-toggle="tab">Public View</a></li>
+    <li><a href="#gloss_revision_history_tab" role="tab" data-toggle="tab">Revision History</a></li>
+  </ul>
+
+{# Tabs wrapper #}
+<div class="tab-content">
+
+{# Tab: main gloss editing pane #}
+<div class="tab-pane active" id="gloss_main_edit_tab">
+
 <div id="signinfo" class='navbar navbar-default navbar-collapse'>
     <div id="datasetname" class="pull-left">
         <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
@@ -539,5 +552,20 @@ $('#id_comment').atwho({
     </div>
 
 </div>
+
+
+</div>
+
+{# Tab: Signbank Dictionary public view pane #}
+<div class="tab-pane" id="gloss_public_view_tab">
+</div>
+
+{# Tab: gloss editing Revision History pane #}
+<div class="tab-pane" id="gloss_revision_history_tab">
+</div>
+
+
+</div>
+{# Tabs wrapper #}}
 
 {% endblock %}
