@@ -200,13 +200,13 @@ class GlossListView(ListView):
 
 
         # A list of phonology fieldnames
-        fieldnames = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
+        """  fieldnames = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
                       'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
                       'relative_orientation_location', 'orientation_change', 'handshape_change', 'repeated_movement',
                       'alternating_movement', 'movement_shape', 'movement_direction', 'movement_manner',
                       'contact_type', 'phonology_other', 'mouth_gesture', 'mouthing', 'phonetic_variation',
                       'iconic_image', 'named_entity', 'number_of_occurences', 'fingerspelling',
-                      'one_or_two_hand', 'number_incorporated', 'locatable', 'directional', 'variant_no']
+                      'one_or_two_hand', 'number_incorporated', 'locatable', 'directional', 'variant_no'] """
 
         """These were removed from fieldnames because they are not needed there:
         'idgloss', 'idgloss_mi', 'notes',
@@ -232,7 +232,7 @@ class GlossListView(ListView):
             qs = qs.filter(notes__icontains=get['notes'])
 
         # phonology and semantics field filters
-        for fieldname in fieldnames:
+        """  for fieldname in fieldnames:
 
             if fieldname in get:
                 key = fieldname + '__exact'
@@ -243,7 +243,7 @@ class GlossListView(ListView):
 
                 if val != '':
                     kwargs = {key: val}
-                    qs = qs.filter(**kwargs)
+                    qs = qs.filter(**kwargs) """
 
         if 'tags' in get and get['tags'] != '':
             vals = get.getlist('tags')
@@ -280,13 +280,13 @@ class GlossListView(ListView):
 
             # print "K :", len(qs)
 
-        if 'relationToForeignSign' in get and get['relationToForeignSign'] != '':
+        """ if 'relationToForeignSign' in get and get['relationToForeignSign'] != '':
             relations = RelationToForeignSign.objects.filter(
                 other_lang_gloss__icontains=get['relationToForeignSign'])
             potential_pks = [relation.gloss.pk for relation in relations]
-            qs = qs.filter(pk__in=potential_pks)
+            qs = qs.filter(pk__in=potential_pks) """
 
-        if 'hasRelationToForeignSign' in get and get['hasRelationToForeignSign'] != '0':
+        """ if 'hasRelationToForeignSign' in get and get['hasRelationToForeignSign'] != '0':
 
             pks_for_glosses_with_relations = [
                 relation.gloss.pk for relation in RelationToForeignSign.objects.all()]
@@ -297,7 +297,7 @@ class GlossListView(ListView):
                 qs = qs.filter(pk__in=pks_for_glosses_with_relations)
             # We only want glosses without a relation to a foreign sign
             elif get['hasRelationToForeignSign'] == '2':
-                qs = qs.exclude(pk__in=pks_for_glosses_with_relations)
+                qs = qs.exclude(pk__in=pks_for_glosses_with_relations) """
 
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
