@@ -359,7 +359,7 @@ class Gloss(models.Model):
     # The user who currently is assigned to this gloss.
     # Assignment can be for anything, but typically they have some editorial task to complete.
     assigned_user = models.ForeignKey(
-        User, null=True, limit_choices_to={'is_staff': True, 'is_active': True}, related_name='assigned_glosses',
+        User, null=True, blank=True, limit_choices_to={'is_staff': True, 'is_active': True}, related_name='assigned_glosses',
         on_delete=models.SET_NULL)
 
     # Translators: Gloss field: idgloss, verbose name
