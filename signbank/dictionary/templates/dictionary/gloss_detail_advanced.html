@@ -108,26 +108,6 @@
         <div class='panel-heading'>
             <div class='panel-title'>
                 {# Translators: #}
-                <a data-toggle='collapse' data-parent='#definition' href='#phonology'>
-                    {% blocktrans %}Phonology{% endblocktrans %}</a>
-            </div>
-        </div>
-        <div id='phonology' class='panel-collapse collapse'>
-            <table class='table table-condensed'>
-                {% for value,name,label,kind in phonology_fields %}
-                <tr>
-                    <th>{{label}}</th>
-                    <td class="edit edit_{{kind}}" id='{{name}}'>{% if kind == "check" and value is None%}No{% elif kind == "check" and value != 'No' %}Yes{% else %}{% value value %}{% endif %}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class='panel-heading'>
-            <div class='panel-title'>
-                {# Translators: #}
                 <a data-toggle='collapse' data-parent='#definition' href='#semantics'>
                     {% blocktrans %}Semantics{% endblocktrans %}</a>
             </div>
@@ -233,103 +213,7 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class='panel-heading'>
-            <div class='panel-title'>
-                {# Translators: #}
-                <a data-toggle='collapse' data-parent='#definition' href='#relationsforeign'>
-                    {% blocktrans %}Relations to Foreign Signs{% endblocktrans %}</a>
-            </div>
-        </div>
-        <div id='relationsforeign' class='collapse'>
-            <table class='table table-condensed'>
-                <tr>
-                    <th style='width:1em'></th>
-                    {# Translators: Loan from another language(?) #}
-                    <th style='width:3em'>{% blocktrans %}Loan{% endblocktrans %}</th>
-                    {# Translators: #}
-                    <th style='width:6em'>{% blocktrans %}Related Language{% endblocktrans %}</th>
-                    {# Translators: Equivalent Gloss in related language #}
-                    <th style='width:10em'>{% blocktrans %}Gloss in related language{% endblocktrans %}</th>
-                </tr>
-
-                {% for rel in gloss.relationtoforeignsign_set.all %}
-                <tr>
-                    <td>
-                        <span class='glyphicon glyphicon-trash relation_delete' data-toggle='modal'
-                              data-target='#delete_relation_modal_{{rel.id}}'></span>
-
-                        <div class="modal fade" id="delete_relation_modal_{{rel.id}}" role="dialog"
-                             aria-labelledby="#modalTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class='modal-header'>
-                                        {# Translators: Header2 #}
-                                        <h2 id='modalTitle'>
-                                            {% blocktrans %}Delete This Relation{% endblocktrans %}</h2>
-                                    </div>
-                                    <div class='modal-body'>
-                                        {# Translators: Question #}
-                                        <p>{% blocktrans %}Are you sure you want to delete this? This cannot be
-                                            undone.{% endblocktrans %}</p>
-                                    </div>
-                                    <form action='{% url "dictionary:update_gloss" gloss.id %}' method='post'>
-                                        {% csrf_token %}
-                                        <input type='hidden' name='id' value='relationforeigndelete_{{rel.id}}'>
-                                        <input type='hidden' name='value' value='confirmed'>
-
-                                        <div class="modal-footer">
-                                            {# Translators: Button #}
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                {% blocktrans %}Cancel{% endblocktrans %}
-                                            </button>
-                                            {# Translators: Submit button #}
-                                            <input type="submit" class="btn btn-primary"
-                                                   value='{% blocktrans %}Confirm Delete{% endblocktrans %}'>
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </td>
-
-                    <td class='edit edit_check' id='relationforeign-loan_{{rel.id}}'>{{rel.loan}}</td>
-                    <td class='edit edit_text' id='relationforeign-other-lang_{{rel.id}}'>{{rel.other_lang}}</td>
-                    <td class='edit edit_text' id='relationforeign-other-lang-gloss_{{rel.id}}'>
-                        {{rel.other_lang_gloss}}
-                    </td>
-                    {% endfor %}
-            </table>
-
-            {% if perms.dictionary.change_gloss %}
-            <form id='add_relationtoforeignsign_form' method='post' action='{% url 'dictionary:add_relationtoforeignsign' %}'>
-            {% csrf_token %}
-            <input type='hidden' name='sourceid' value='{{gloss.pk}}'>
-            <table class='table table-condensed'>
-                <tr>
-                    <td><input class='checkbox' name='loan' type='checkbox'></td>
-                    {# Translators: #}
-                    <td><input class='form-control'
-                               placeholder='{% blocktrans %}Related language{% endblocktrans %}' name='other_lang'
-                               type='text'></td>
-                    {# Translators: #}
-                    <td><input class='form-control'
-                               placeholder='{% blocktrans %}Gloss in related language{% endblocktrans %}'
-                               name='other_lang_gloss' type='text'></td>
-                    {# Translators: #}
-                    <td><input class='btn btn-primary'
-                               value='{% blocktrans %}Add Relation to Foreign Sign{% endblocktrans %}'
-                               type='submit'></td>
-                </tr>
-            </table>
-            </form>
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="panel panel-default">
+     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
                 <a data-toggle='collapse' data-parent='#definition' href='#usage_variation'>
