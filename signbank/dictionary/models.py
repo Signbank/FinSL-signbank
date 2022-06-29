@@ -503,7 +503,7 @@ class Gloss(models.Model):
         _("Phonetic Variation"), max_length=50, blank=True, )
 
     wordclasses = models.ManyToManyField('FieldChoice', verbose_name=_(
-        "Wordclasses"), limit_choices_to={'field': 'wordclass'}, related_name='wordclass_glosses')
+        "Wordclasses"), limit_choices_to={'field': 'wordclass'}, related_name='wordclass_glosses', blank=True)
 
     usage = models.ManyToManyField('FieldChoice', verbose_name=_(
         "Usage"), limit_choices_to={'field': 'usage'}, blank=True, related_name='usage_glosses')
