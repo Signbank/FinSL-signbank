@@ -84,6 +84,10 @@ class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     trans_lang = forms.ModelChoiceField(required=False, empty_label=_('Choose language'), queryset=Language.objects.all())
 
+    # Adding topics
+    semantic_field = forms.ModelMultipleChoiceField(label=_('Topic'), queryset=FieldChoice.objects.filter(field='semantic_field'),
+                                            required=False)
+
     try:
         qs = AllowedTags.objects.get(content_type=ContentType.objects.get_for_model(Gloss)).allowed_tags.all()
     except (ObjectDoesNotExist, OperationalError, ProgrammingError):
