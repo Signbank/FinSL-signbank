@@ -231,20 +231,6 @@ class GlossListView(ListView):
         if 'notes' in get and get['notes'] != '':
             qs = qs.filter(notes__icontains=get['notes'])
 
-        # phonology and semantics field filters
-        """  for fieldname in fieldnames:
-
-            if fieldname in get:
-                key = fieldname + '__exact'
-                val = get[fieldname]
-
-                if isinstance(Gloss._meta.get_field(fieldname), NullBooleanField):
-                    val = {'0': '', '1': None, '2': True, '3': False}[val]
-
-                if val != '':
-                    kwargs = {key: val}
-                    qs = qs.filter(**kwargs) """
-
         if 'tags' in get and get['tags'] != '':
             vals = get.getlist('tags')
 
@@ -279,25 +265,6 @@ class GlossListView(ListView):
             qs = [q for q in qs if q not in tqs]
 
             # print "K :", len(qs)
-
-        """ if 'relationToForeignSign' in get and get['relationToForeignSign'] != '':
-            relations = RelationToForeignSign.objects.filter(
-                other_lang_gloss__icontains=get['relationToForeignSign'])
-            potential_pks = [relation.gloss.pk for relation in relations]
-            qs = qs.filter(pk__in=potential_pks) """
-
-        """ if 'hasRelationToForeignSign' in get and get['hasRelationToForeignSign'] != '0':
-
-            pks_for_glosses_with_relations = [
-                relation.gloss.pk for relation in RelationToForeignSign.objects.all()]
-            print(('pks_for_glosses', pks_for_glosses_with_relations))
-
-            # We only want glosses with a relation to a foreign sign
-            if get['hasRelationToForeignSign'] == '1':
-                qs = qs.filter(pk__in=pks_for_glosses_with_relations)
-            # We only want glosses without a relation to a foreign sign
-            elif get['hasRelationToForeignSign'] == '2':
-                qs = qs.exclude(pk__in=pks_for_glosses_with_relations) """
 
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
