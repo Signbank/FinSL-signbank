@@ -510,13 +510,30 @@ $('#id_comment').atwho({
                     </td>
                 </tr>
             </table>
-            <!-- Gloss Relations -->
-            {% include "dictionary/gloss_detail_relations.html" %}
             <!-- Gloss Comments -->
             {% include "dictionary/gloss_detail_comments.html" %}
             <!-- Advanced properties start -->
             {% include "dictionary/gloss_detail_advanced.html" %}
             <!-- Advanced properties end -->
+
+            <br>
+
+            <table class='table table-condensed'>
+                {# Translators: Information about a Gloss #}
+                <tr>
+                    <th>{% blocktrans %}Sign number:{% endblocktrans %}</th>
+                    <td id='sign-number'>{{gloss.id}}</td>
+                </tr>
+                <tr>
+                    <th>{% blocktrans %}Film batch:{% endblocktrans %}</th>
+                    <td class="edit edit_text" id='filmbatch'>{{gloss.filmbatch}}</td>
+                </tr>
+                <tr>
+                    <th>{% blocktrans %}Concise:{% endblocktrans %}</th>
+                    <td id="concise">{{ gloss.concise }}</td>
+                </tr>
+            </table>
+
         </div>
 
     </div>
