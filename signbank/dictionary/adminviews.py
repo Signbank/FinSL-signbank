@@ -223,11 +223,6 @@ class GlossListView(ListView):
             # Get languages from dataset
             qs = qs.filter(dataset__language__in=vals)
 
-        vals = get.getlist('signlanguage', [])
-        if vals != []:
-            # Get sign languages from dataset
-            qs = qs.filter(dataset__signlanguage__in=vals)
-
         if 'notes' in get and get['notes'] != '':
             qs = qs.filter(notes__icontains=get['notes'])
 

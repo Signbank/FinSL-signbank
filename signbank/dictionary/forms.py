@@ -73,9 +73,6 @@ ATTRS_FOR_FORMS = {'class': 'form-control'}
 class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     dataset = forms.ModelMultipleChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), required=False)
-    # Translators: GlossSearchForm label
-    signlanguage = forms.ModelMultipleChoiceField(label=_('Sign language'), queryset=SignLanguage.objects.all(),
-                                                  required=False)
 
     search = forms.CharField(label=_("Search"))
     # Translators: GlossSearchForm label
