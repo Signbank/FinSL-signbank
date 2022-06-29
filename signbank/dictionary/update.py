@@ -82,7 +82,6 @@ def update_gloss(request, glossid):
             gloss.assigned_user_id = value if value and value.strip() != '' else None
             gloss.save()
             newvalue = gloss.assigned_user.get_full_name() if gloss.assigned_user else "None"
-
         elif field == 'dialect':
             # expecting possibly multiple values
             try:
@@ -177,35 +176,34 @@ def update_gloss(request, glossid):
                 newvalue = value
                 value = (value == 'Yes')
 
-            if value != ' ' or value != '':
-                # See if the field is a ForeignKey
-                if gloss._meta.get_field(field).get_internal_type() == "ForeignKey":
-                    gloss.__setattr__(
-                        field, FieldChoice.objects.get(machine_value=value))
-                else:
-                    gloss.__setattr__(field, value)
-                gloss.save()
+            # See if the field is a ForeignKey
+            if gloss._meta.get_field(field).get_internal_type() == "ForeignKey":
+                gloss.__setattr__(
+                    field, FieldChoice.objects.get(
+                        machine_value=value) if value and value.strip() != '' else None)
+            else:
+                gloss.__setattr__(field, value)
+            gloss.save()
 
-                # If the value is not a Boolean, return the new value
-                if not isinstance(value, bool):
-                    f = Gloss._meta.get_field(field)
-                    # for choice fields we want to return the 'display' version of the value
-                    # Try to use get_choices to get correct choice names for FieldChoices
-                    # If it doesn't work, go to exception and get flatchoices
-                    try:
-                        # valdict = dict(f.get_choices(include_blank=False))
-                        valdict = dict(build_choice_list(field))
-                    except:
-                        valdict = dict(f.flatchoices)
+            # If the value is not a Boolean, return the new value
+            if not isinstance(value, bool):
+                f = Gloss._meta.get_field(field)
+                # for choice fields we want to return the 'display' version of the value
+                # Try to use get_choices to get correct choice names for FieldChoices
+                # If it doesn't work, go to exception and get flatchoices
+                try:
+                    # valdict = dict(f.get_choices(include_blank=False))
+                    valdict = dict(build_choice_list(field))
+                except:
+                    valdict = dict(f.flatchoices)
 
-                    # Some fields take ints
-                    # if valdict.keys() != [] and type(valdict.keys()[0]) == int:
-                    try:
-                        newvalue = valdict.get(
-                            int(value)) or valdict.get(value) or value
-                    except ValueError:  # Not an int
-                        newvalue = valdict.get(value) or value
-
+                # Some fields take ints
+                # if valdict.keys() != [] and type(valdict.keys()[0]) == int:
+                try:
+                    newvalue = valdict.get(
+                        int(value)) or valdict.get(value) or value
+                except ValueError:  # Not an int
+                    newvalue = valdict.get(value) or value
 
             # If field is idgloss and if the value has changed
             # Then change the filename on system and in glossvideo.videofile

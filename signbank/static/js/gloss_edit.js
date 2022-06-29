@@ -255,13 +255,19 @@ function configure_edit() {
 
      $('.edit_list').on('click', function() {
          var choices = choice_lists[$(this).attr('id')];
+         if ($(this).hasClass("edit_list_optional")) {
+            choices[''] = '--None--';
+         }
+
          var selected;
          for (var key in choices ) {
              choices[key] == this.textContent && (selected = key);
          }
 
+
 		 $(this).editable(edit_post_url, {
 		     type      : 'select',
+             sortselectoptions: true,
 		     data    : $.extend(choices, { selected: selected })
 		 });
      });
