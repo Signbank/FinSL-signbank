@@ -52,9 +52,23 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
-# URL to use when referring to static files located in STATIC_ROOT.
-# Example: "/static/" or "http://static.example.com/"
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+# Example: "/var/www/example.com/static/"
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+#: A list of directories where Django looks for translation files.
+LOCALE_PATHS = (
+    os.path.join(PROJECT_DIR, 'locale'),
+)
+
 STATIC_URL = '/static/'
+
+# This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
+# is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'signbank', 'static'),
+)
+
 #: The list of finder backends that know how to find static files in various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -64,7 +78,8 @@ STATICFILES_FINDERS = (
 #: A list of middleware classes to use. The order of middleware classes is critical!
 MIDDLEWARE = [
     # If want to use some of the HTTPS settings in secret_settings, enable SecurityMiddleware
-    # 'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,7 +130,9 @@ ROOT_URLCONF = 'signbank.urls'
 # The full Python path of the WSGI application object that Django's built-in servers (e.g. runserver) will use.
 WSGI_APPLICATION = 'signbank.wsgi.application'
 
-#: A list of strings designating all applications that are enabled in this Django installation.
+# Use 'django.db.models.AutoField' when generating AutoFields on models
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 #: Dotted Python path to: an application configuration class (preferred), or a package containing an application.
 #: The order of the apps matter!
 INSTALLED_APPS = (
@@ -214,3 +231,11 @@ else:
 
 mimetypes.add_type("video/mp4", ".mov", True)
 mimetypes.add_type("video/webm", ".webm", True)
+
+# Allow DEBUG to be set using an environment variable
+DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
+
+# Set ALLOWED_HOSTS from an environment variable, with defaults
+DEFAULT_ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(
+    ",") if os.getenv("ALLOWED_HOSTS") else DEFAULT_ALLOWED_HOSTS

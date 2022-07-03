@@ -8,26 +8,11 @@ from signbank.settings.base import *
 # The following settings are defined in settings_secret:
 # SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
 
-#: Debug should be True in development but not in production!
-DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
-
-DEFAULT_ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'signbank.nz']
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(
-    ",") if os.getenv("ALLOWED_HOSTS") else DEFAULT_ALLOWED_HOSTS
-
 #: A list of directories where Django looks for translation files.
 LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, 'locale'),
 )
 
-# The absolute path to the directory where collectstatic will collect static files for deployment.
-# Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-# This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
-# is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'signbank', 'static'),
-)
 
 # Set up a dummy cache for development, it doesn't actually cache anything.
 CACHES = {

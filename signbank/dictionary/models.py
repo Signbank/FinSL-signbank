@@ -464,10 +464,10 @@ class Gloss(models.Model):
                                          related_name="handshape_change", blank=True, null=True, on_delete=models.SET_NULL)
 
     # Translators: Gloss models field: repeated_movement, verbose name
-    repeated_movement = models.NullBooleanField(
+    repeated_movement = models.BooleanField(
         _("Repeated Movement"), null=True, default=False)
     # Translators: Gloss models field: alternating_movement, verbose name
-    alternating_movement = models.NullBooleanField(
+    alternating_movement = models.BooleanField(
         _("Alternating Movement"), null=True, default=False)
 
     # Translators: Gloss models field: movement_shape, verbose name
