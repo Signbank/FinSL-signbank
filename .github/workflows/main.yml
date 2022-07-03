@@ -36,6 +36,7 @@ jobs:
         docker push registry.heroku.com/$HEROKU_APP_NAME/web
         heroku container:release web -a $HEROKU_APP_NAME
     - name: Deploy app to Production
+      if: github.ref == 'refs/heads/production'
       env:
         HEROKU_API_KEY: ${{secrets.HEROKU_PRODUCTION_API_KEY}}
         HEROKU_APP_NAME: ${{secrets.HEROKU_PRODUCTION_APP_NAME}}
