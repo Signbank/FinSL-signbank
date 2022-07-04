@@ -12,12 +12,14 @@ RUN npm ci &&\
 
 FROM python:3.9
 
+ENV DJANGO_SETTINGS_MODULE=signbank.settings.development
+
 CMD pip install -r requirements.txt && \
     bin/develop.py migrate --noinput && \
     bin/develop.py createcachetable && \
+    bin/develop.py collectstatic && \
     bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json &&\
-    bin/develop.py createcachetable && \
-    bin/develop.py runserver 0.0.0.0:${PORT:=8000}
+    gunicorn signbank.wsgi --bind=0.0.0.0:${PORT:=8000}
 
 EXPOSE 8000
 
@@ -42,8 +44,8 @@ ADD requirements.txt /app
 RUN pip --no-cache-dir install --src=/opt pyinotify -r requirements.txt
 
 # Copy frontend assets
-COPY --from=node /app/signbank/static/js ./
-COPY --from=node /app/signbank/static/css ./
+COPY --from=node /app/signbank/static/js ./signbank/static/js
+COPY --from=node /app/signbank/static/css ./signbank/static/css
 
 # Install application
 ADD . /app
