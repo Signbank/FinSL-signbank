@@ -32,7 +32,7 @@ from .forms import (GlossRelationForm, GlossRelationSearchForm,
                     GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
 from .models import (Dataset, Gloss, GlossRelation, GlossTranslations,
                      GlossURL, MorphologyDefinition, Relation,
-                     RelationToForeignSign, Translation)
+                     RelationToForeignSign, Translation, FieldChoice)
 
 
 class GlossListView(ListView):
@@ -265,6 +265,10 @@ class GlossListView(ListView):
 
             # print "K :", len(qs)
 
+        if 'location' in get and get['location'] != '':
+            val = get['location']
+            qs = qs.filter(location=val)
+
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
                 idgloss__icontains=get['relation'])
@@ -304,6 +308,11 @@ class GlossListView(ListView):
             qs = qs.filter(
                 pk__in=pks_for_glosses_with_morphdefs_with_correct_role)
 
+        # Filter by usage
+        if 'usage' in get and get['usage'] != '':
+            vals = get.getlist('usage')
+            qs = qs.filter(usage__id__in=vals)
+            
         # Set order according to GET field 'order'
         if 'order' in get:
             qs = qs.order_by(get['order'])
