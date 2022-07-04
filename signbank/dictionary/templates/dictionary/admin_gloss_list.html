@@ -140,6 +140,12 @@ function clearForm(myFormElement) {
                            {% bootstrap_field searchform.semantic_field show_label=False bound_css_class="not-bound" %}
                        </div>
                 </div>
+                <div class="col-md-6 col-sm-6 searchinput">
+                       <div class="input-group">
+                           <label class="input-group-addon" for="id_location">{{searchform.location.label}}</label>
+                           {% bootstrap_field searchform.location show_label=False bound_css_class="not-bound" %}
+                       </div>
+                </div>
             </div>
         </div>
         <hr class="searchform-separator">

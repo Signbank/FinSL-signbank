@@ -32,7 +32,7 @@ from .forms import (GlossRelationForm, GlossRelationSearchForm,
                     GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
 from .models import (Dataset, Gloss, GlossRelation, GlossTranslations,
                      GlossURL, MorphologyDefinition, Relation,
-                     RelationToForeignSign, Translation)
+                     RelationToForeignSign, Translation, FieldChoice)
 
 
 class GlossListView(ListView):
@@ -264,6 +264,10 @@ class GlossListView(ListView):
             qs = [q for q in qs if q not in tqs]
 
             # print "K :", len(qs)
+
+        if 'location' in get and get['location'] != '':
+            val = get['location']
+            qs = qs.filter(location=val)
 
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
