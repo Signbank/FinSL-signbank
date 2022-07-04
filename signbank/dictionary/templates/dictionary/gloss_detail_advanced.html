@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load static %}
 {% load tagging_tags %}
+{% load comments %}
 
 {# This file is meant to be included in gloss_detail.html #}
 {# The purpose of this file is to make gloss_detail easier to handle #}
@@ -345,5 +346,34 @@
             </table>
         </div>
     </div>
+
+    <div>
+        <hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
+
+        {% if user.is_authenticated %}
+            {% get_comment_form for gloss as formcomment %}
+            <form action="{% comment_form_target %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="control-label" for="id_comment">{% blocktrans %}Add comment{% endblocktrans %}</label>
+                <textarea name="comment" rows="3" title="" required="" cols="40" id="id_comment"
+                        maxlength="3000" placeholder="{% blocktrans %}Add comment{% endblocktrans %}"
+                        class="form-control"></textarea>
+            </div>
+            <input name="honeypot" id="id_honeypot" type="text" style="display:none;">
+            {{ formcomment.content_type }}
+            {{ formcomment.object_pk }}
+            {{ formcomment.timestamp }}
+            {{ formcomment.security_hash }}
+            {% bootstrap_field commenttagform.tag %}
+            <input type="hidden" name="next" value="{% url 'dictionary:admin_gloss_view' gloss.id %}">
+            <button type="submit" class="btn btn-default" id="id_submit_comm">
+                {% blocktrans %}Add comment{% endblocktrans %}</button>
+            </form>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
+        {% endif %}
+    </div>
+
 </div>
 {% endif %}

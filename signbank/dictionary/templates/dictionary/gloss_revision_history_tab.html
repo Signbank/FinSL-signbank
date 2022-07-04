@@ -62,34 +62,13 @@
     </tr>
 </table>
 
+<hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
+
 {% get_comment_count for gloss as comment_count %}
 <div id="gloss-comments">
     <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
     <div class="well well-md">
     {% render_comment_list for gloss %}
-    <hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
-    {% if user.is_authenticated %}
-        {% get_comment_form for gloss as formcomment %}
-        <form action="{% comment_form_target %}" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label class="control-label" for="id_comment">{% blocktrans %}Comment{% endblocktrans %}</label>
-            <textarea name="comment" rows="3" title="" required="" cols="40" id="id_comment"
-                      maxlength="3000" placeholder="{% blocktrans %}Comment{% endblocktrans %}"
-                      class="form-control"></textarea>
-        </div>
-        <input name="honeypot" id="id_honeypot" type="text" style="display:none;">
-        {{ formcomment.content_type }}
-        {{ formcomment.object_pk }}
-        {{ formcomment.timestamp }}
-        {{ formcomment.security_hash }}
-        {% bootstrap_field commenttagform.tag %}
-        <input type="hidden" name="next" value="{% url 'dictionary:admin_gloss_view' gloss.id %}">
-        <button type="submit" class="btn btn-default" id="id_submit_comm">
-            {% blocktrans %}Add comment{% endblocktrans %}</button>
-        </form>
-    {% else %}
-        <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
-    {% endif %}
+
     </div>
 </div>
