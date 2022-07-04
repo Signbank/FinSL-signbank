@@ -274,6 +274,10 @@ class GlossListView(ListView):
             val = get['location']
             qs = qs.filter(location=val)
 
+        if 'age_variation' in get and get['age_variation'] != '':
+            val = get['age_variation']
+            qs = qs.filter(age_variation=val)
+
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
                 idgloss__icontains=get['relation'])
