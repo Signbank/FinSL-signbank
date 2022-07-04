@@ -136,6 +136,12 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-6 col-sm-6 searchinput">
                        <div class="input-group">
+                           <label class="input-group-addon" for="id_usage">{{searchform.usage.label}}</label>
+                           {% bootstrap_field searchform.usage show_label=False bound_css_class="not-bound" %}
+                        </div>
+                 </div>
+                 <div class="col-md-6 col-sm-6 searchinput">
+                       <div class="input-group">
                            <label class="input-group-addon" for="id_semantic_field">{{searchform.semantic_field.label}}</label>
                            {% bootstrap_field searchform.semantic_field show_label=False bound_css_class="not-bound" %}
                        </div>

@@ -308,6 +308,11 @@ class GlossListView(ListView):
             qs = qs.filter(
                 pk__in=pks_for_glosses_with_morphdefs_with_correct_role)
 
+        # Filter by usage
+        if 'usage' in get and get['usage'] != '':
+            vals = get.getlist('usage')
+            qs = qs.filter(usage__id__in=vals)
+            
         # Set order according to GET field 'order'
         if 'order' in get:
             qs = qs.order_by(get['order'])
