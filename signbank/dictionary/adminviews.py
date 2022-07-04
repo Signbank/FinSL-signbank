@@ -228,7 +228,7 @@ class GlossListView(ListView):
 
         if 'semantic_field' in get and get['semantic_field'] != '':
             vals = get.getlist('semantic_field')
-            qs = Gloss.objects.filter(semantic_field__id__in=vals)
+            qs = qs.filter(semantic_field__id__in=vals)
 
         if 'tags' in get and get['tags'] != '':
             vals = get.getlist('tags')
