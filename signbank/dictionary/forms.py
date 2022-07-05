@@ -126,6 +126,9 @@ class GlossSearchForm(forms.ModelForm):
     strong_handshape = forms.ModelChoiceField(label=_('Strong handshape'), queryset=FieldChoice.objects.filter(field='strong_handshape'),
                                               to_field_name='machine_value', required=False)
     one_or_two_handed = forms.BooleanField(label=_('One or two handed'), required=False)
+    word_classes = forms.ModelMultipleChoiceField(label=_('Word classes'),
+                                                  queryset=FieldChoice.objects.filter(field='wordclass'),
+                                                  required=False)
 
     # These have been disabled until they are later needed
     # TODO: To enable these, uncomment them.

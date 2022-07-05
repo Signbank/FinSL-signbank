@@ -302,6 +302,10 @@ class GlossListView(ListView):
             val = get['strong_handshape']
             qs = qs.filter(strong_handshape=val)
 
+        if 'word_classes' in get and get['word_classes'] != '':
+            vals = get.getlist('word_classes')
+            qs = qs.filter(wordclasses__id__in=vals)
+
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
                 idgloss__icontains=get['relation'])
