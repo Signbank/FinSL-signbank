@@ -118,9 +118,10 @@ class GlossSearchForm(forms.ModelForm):
                                       to_field_name='machine_value', required=False)
 
     age_variation = forms.ModelChoiceField(label=_('Age Variation'), queryset=FieldChoice.objects.filter(field='age_variation'),
-                                           to_field_name='machine_value', required=False)
-                                           
+                                           to_field_name='machine_value', required=False)                                        
     example_search = forms.CharField(label=_('Example Field search'), required=False)
+    strong_handshape = forms.ModelChoiceField(label=_('Strong handshape'), queryset=FieldChoice.objects.filter(field='strong_handshape'),
+                                              to_field_name='machine_value', required=False)
 
     # These have been disabled until they are later needed
     # TODO: To enable these, uncomment them.

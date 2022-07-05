@@ -154,7 +154,7 @@ function clearForm(myFormElement) {
                 </div>
                 <div class="col-md-6 col-sm-6 searchinput">
                        <div class="input-group">
-                           <label class="input-group-addon" for="id_relation_to_foreign_signs">{{searchform.relation_to_foreign_signs.label}}</label>
+                       <label class="input-group-addon" for="id_relation_to_foreign_signs">{{searchform.relation_to_foreign_signs.label}}</label>
                            {% bootstrap_field searchform.relation_to_foreign_signs show_label=False bound_css_class="not-bound" %}
                        </div>
                 </div>
@@ -171,6 +171,12 @@ function clearForm(myFormElement) {
                                {% if searchform.example_search.value %}value='{{searchform.example_search.value}}' {% endif %}
                                placeholder='{% blocktrans %}Contains Gloss ID{% endblocktrans %}'>
                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 searchinput">
+                      <div class="input-group">
+                           <label class="input-group-addon" for="id_relation_to_foreign_signs">{{searchform.relation_to_foreign_signs.label}}</label>
+                           {% bootstrap_field searchform.relation_to_foreign_signs show_label=False bound_css_class="not-bound" %}
+                       </div>
                 </div>
             </div>
         </div>
