@@ -191,6 +191,17 @@ function clearForm(myFormElement) {
                          {% bootstrap_field searchform.word_classes show_label=False bound_css_class="not-bound" %}
                      </div>
                 </div>
+                <div class="col-md-12 searchinput searchcolor">
+                        <ul class="list-group list-inline">
+                          <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.number_incorporated show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-warning">{% bootstrap_field searchform.locatable show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item">{% bootstrap_field searchform.directional show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item list-group-item-danger">{% bootstrap_field searchform.fingerspelling show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item">{% bootstrap_field searchform.inflection_temporal show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item">{% bootstrap_field searchform.inflection_manner_degree show_label=False bound_css_class="not-bound" %}</li>
+                          <li class="list-group-item">{% bootstrap_field searchform.inflection_plural show_label=False bound_css_class="not-bound" %}</li>
+                        </ul>
+                </div>
             </div>
         </div>
         <hr class="searchform-separator">

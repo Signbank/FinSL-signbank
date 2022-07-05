@@ -301,10 +301,38 @@ class GlossListView(ListView):
         if 'strong_handshape' in get and get['strong_handshape'] != '':
             val = get['strong_handshape']
             qs = qs.filter(strong_handshape=val)
-
+            
         if 'word_classes' in get and get['word_classes'] != '':
             vals = get.getlist('word_classes')
             qs = qs.filter(wordclasses__id__in=vals)
+
+        if 'number_incorporated' in get and get['number_incorporated'] != '':
+            val = get['number_incorporated'] == 'on'
+            qs = qs.filter(one_or_two_hand=val)
+
+        if 'locatable' in get and get['locatable'] != '':
+            val = get['locatable'] == 'on'
+            qs = qs.filter(locatable=val)
+
+        if 'directional' in get and get['directional'] != '':
+            val = get['directional'] == 'on'
+            qs = qs.filter(directional=val)
+
+        if 'fingerspelling' in get and get['fingerspelling'] != '':
+            val = get['fingerspelling'] == 'on'
+            qs = qs.filter(fingerspelling=val)
+
+        if 'inflection_temporal' in get and get['inflection_temporal'] != '':
+            val = get['inflection_temporal'] == 'on'
+            qs = qs.filter(inflection_temporal=val)
+
+        if 'inflection_manner_degree' in get and get['inflection_manner_degree'] != '':
+            val = get['inflection_manner_degree'] == 'on'
+            qs = qs.filter(inflection_manner_degree=val)
+
+        if 'inflection_plural' in get and get['inflection_plural'] != '':
+            val = get['inflection_plural'] == 'on'
+            qs = qs.filter(inflection_plural=val)
 
         if 'relation' in get and get['relation'] != '':
             potential_targets = Gloss.objects.filter(
