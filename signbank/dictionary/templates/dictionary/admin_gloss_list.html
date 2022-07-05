@@ -164,6 +164,14 @@ function clearForm(myFormElement) {
                            {% bootstrap_field searchform.age_variation show_label=False bound_css_class="not-bound" %}
                        </div>
                 </div>
+                <div class="col-md-6 col-sm-6 searchinput">
+                   <div class='input-group'>
+                        <label class='input-group-addon' for='id_example_search'>{{searchform.example_search.label}}</label>
+                        <input id="id_example_search" name='example_search' class='form-control'
+                               {% if searchform.example_search.value %}value='{{searchform.example_search.value}}' {% endif %}
+                               placeholder='{% blocktrans %}Contains Gloss ID{% endblocktrans %}'>
+                   </div>
+                </div>
             </div>
         </div>
         <hr class="searchform-separator">

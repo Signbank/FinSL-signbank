@@ -119,6 +119,9 @@ class GlossSearchForm(forms.ModelForm):
 
     age_variation = forms.ModelChoiceField(label=_('Age Variation'), queryset=FieldChoice.objects.filter(field='age_variation'),
                                            to_field_name='machine_value', required=False)
+                                           
+    example_search = forms.CharField(label=_('Example Field search'), required=False)
+
     # These have been disabled until they are later needed
     # TODO: To enable these, uncomment them.
     """
