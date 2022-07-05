@@ -9,6 +9,27 @@
 
 {% if perms.dictionary.view_advanced_properties %}
 <div id="advanced-properties">
+
+    <div class="panel panel-default">
+        <div class='panel-heading'>
+            <div class='panel-title'>
+                {# Translators: #}
+                <a data-toggle='collapse' data-parent='#definition' href='#phonology'>
+                    {% blocktrans %}Phonology{% endblocktrans %}</a>
+            </div>
+        </div>
+        <div id='phonology' class='panel-collapse collapse'>
+            <table class='table table-condensed'>
+                {% for value,name,label,kind in phonology_fields %}
+                <tr>
+                    <th>{{label}}</th>
+                    <td class="edit edit_{{kind}}" id='{{name}}'>{% if kind == "check" and value is None%}No{% elif kind == "check" and value != 'No' %}Yes{% else %}{% value value %}{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
