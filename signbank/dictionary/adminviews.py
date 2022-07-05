@@ -274,6 +274,10 @@ class GlossListView(ListView):
             val = get['location']
             qs = qs.filter(location=val)
 
+        if 'one_or_two_handed' in get and get['one_or_two_handed'] != '':
+            val = get['one_or_two_handed'] == 'on'
+            qs = qs.filter(one_or_two_hand=val)
+
         if 'example_search' in get and get['example_search'] != '':
             """
                 This search is intended to search for gloss IDs in fields videoexample1 to videoexample4. In these 
