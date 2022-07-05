@@ -70,6 +70,16 @@ class TagsAddForm(forms.Form):
 ATTRS_FOR_FORMS = {'class': 'form-control'}
 
 
+def build_related_to_choices():
+    related_to = [(None, '---------')]
+    qs = RelationToForeignSign.objects.order_by().distinct().values_list('other_lang', flat=True)
+    for i in range(len(qs)):
+        val = (qs[i], qs[i])
+        related_to.append(val)
+
+    return related_to
+
+
 class GlossSearchForm(forms.ModelForm):
     # Translators: GlossSearchForm label
     dataset = forms.ModelMultipleChoiceField(label=_('Dataset'), queryset=Dataset.objects.all(), required=False)
@@ -102,14 +112,7 @@ class GlossSearchForm(forms.ModelForm):
     hasnovideo = forms.BooleanField(label=_('No videos'), required=False)
     multiplevideos = forms.BooleanField(label=_('Multiple videos'), required=False)
 
-    # Creating choices for related to foreign sign list
-    related_to = [(None, '---------')]
-    qs = RelationToForeignSign.objects.order_by().distinct().values_list('other_lang', flat=True)
-    for i in range(len(qs)):
-        val = (qs[i], qs[i])
-        related_to.append(val)
-
-    relation_to_foreign_signs = forms.ChoiceField(label=_('Relation to foreign signs'), choices=related_to,
+    relation_to_foreign_signs = forms.ChoiceField(label=_('Relation to foreign signs'), choices=build_related_to_choices,
                                                   required=False, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
     # Adding usage
     usage = forms.ModelMultipleChoiceField(label=_('Usage'), queryset=FieldChoice.objects.filter(field='usage'),
