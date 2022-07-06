@@ -313,7 +313,7 @@ class GlossListView(ListView):
 
         if 'number_incorporated' in get and get['number_incorporated'] != '':
             val = get['number_incorporated'] == 'on'
-            qs = qs.filter(one_or_two_hand=val)
+            qs = qs.filter(number_incorporated=val)
 
         if 'locatable' in get and get['locatable'] != '':
             val = get['locatable'] == 'on'
