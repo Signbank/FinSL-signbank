@@ -239,3 +239,7 @@ DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
 DEFAULT_ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(
     ",") if os.getenv("ALLOWED_HOSTS") else DEFAULT_ALLOWED_HOSTS
+
+# We need to specify this because django-summernote, the rich text editor used for flatpage editing, embeds itself into
+# the page using an iframe
+X_FRAME_OPTIONS = 'SAMEORIGIN'
