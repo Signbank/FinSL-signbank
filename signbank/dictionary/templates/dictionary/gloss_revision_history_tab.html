@@ -2,5 +2,73 @@
 {% load bootstrap3 %}
 {% load i18n %}
 {% load static %}
+{% load comments %}
 
-REVISION HISTORY TAB
+<table class='table table-condensed'>
+    <tr>
+        <th>{% blocktrans %}Created:{% endblocktrans %}</th>
+        <td id='created'>{% if gloss.created_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.created_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.created_by.username }}{% endif %}</td>
+    </tr>
+    <tr>
+        <th>{% blocktrans %}Updated:{% endblocktrans %}</th>
+        <td id='updated'>{% if gloss.updated_at %}
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.username }}
+            {% if request.user.is_staff %}
+            <!-- Modal trigger -->
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalChangeHistory">
+              <span class="glyphicon glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                {% blocktrans %}Show complete history{% endblocktrans %}
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalChangeHistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{% blocktrans %}Change history for{% endblocktrans %} {{gloss}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                        {% blocktrans %}This is a list of some historical changes made to this Gloss.
+                        By clicking the link, you will be taken to the admin site and shown the state of
+                        this gloss at the chosen time.{% endblocktrans %}
+                        <strong>{% blocktrans %}Do not save the changes,
+                        unless you want to restore the older version of this Gloss!{% endblocktrans %}
+                        </strong>
+                    </p>
+                    <ul class="">
+                    {% for version in revisions %}
+                        <li><a href="{% url 'admin:dictionary_gloss_revision' gloss.pk version.pk %}">
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                            {{version.revision.date_created|date:'Y-m-d H:i'}}
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            {{version.revision.user.username }}
+                            {{version.revision.comment}} |
+                            {% if version.data_added or version.data_removed %}{% blocktrans %}Gloss fields:{% endblocktrans %}{% endif %}
+                            {% if version.data_added %}<span style="color:green;">+{{version.data_added}}</span>{% endif %}
+                            {% if version.data_removed %}<span style="color:red;">-{{version.data_removed}}</span>{% endif %}
+                            {% if version.translations_added or version.translations_removed %}{% blocktrans %}Translations:{% endblocktrans %}{% endif %}
+                            {% if version.translations_added %}<span style="color:green;">{{version.translations_added}}</span>{% endif %}
+                            {% if version.translations_removed %}<span style="color:red;">{{version.translations_removed}}</span>{% endif %}
+                        </a></li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>{% endif %}{% endif %}
+        </td>
+    </tr>
+</table>
+
+<hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
+
+{% get_comment_count for gloss as comment_count %}
+<div id="gloss-comments">
+    <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
+    <div class="well well-md">
+    {% render_comment_list for gloss %}
+
+    </div>
+</div>
