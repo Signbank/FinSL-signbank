@@ -231,9 +231,6 @@ class GlossListView(ListView):
                 val = get[fieldname]
                 if isinstance(Gloss._meta.get_field(fieldname), NullBooleanField):
                     val = {'0': '', '1': None, '2': True, '3': False}[val]
-                if val != '':
-                    kwargs = {key: val}
-                    qs = qs.filter(**kwargs)
 
         if 'tags' in get and get['tags'] != '':
             vals = get.getlist('tags')
