@@ -70,10 +70,10 @@ Support ticket related changes or fixes should happen in support branches. Branc
 
 ### Environments
 
-| **Environment** | **URL**                     | **Hosting Platform** | **Git Branch** | **Exception monitoring URL** | **Logs available at**              | **Asset storage**                                             |
-| --------------- | --------------------------- | -------------------- | -------------- | ---------------------------- | ---------------------------------- | ------------------------------------------------------------- |
-| UAT             | https://app-uat.signbank.nz | Heroku (free tier)   | master         | Sentry                       | `heroku logs -a nzsl-signbank-uat` | S3 (nzsl-signbank-media-uat) owned by NZSL AWS account        |
-| Production      | https://app.signbank.nz     | Heroku (paid tier)   | production     | Sentry                       | `heroku logs -a nzsl-signbank`     | S3 (nzsl-signbank-media-production) owned by NZSL AWS account |
+| **Environment** | **URL**                      | **Hosting Platform** | **Git Branch** | **Exception monitoring URL** | **Logs available at**              | **Asset storage**                                             |
+| --------------- | ---------------------------- | -------------------- | -------------- | ---------------------------- | ---------------------------------- | ------------------------------------------------------------- |
+| UAT             | https://signbank-uat.nzsl.nz | Heroku (free tier)   | master         | Sentry                       | `heroku logs -a nzsl-signbank-uat` | S3 (nzsl-signbank-media-uat) owned by NZSL AWS account        |
+| Production      | https://signbank.nzsl.nz     | Heroku (paid tier)   | production     | Sentry                       | `heroku logs -a nzsl-signbank`     | S3 (nzsl-signbank-media-production) owned by NZSL AWS account |
 
 Both environments are managed by Terraform. The Terraform configurations are also open-sourced and [available on Github](https://github.com/ODNZSL/nzsl-infrastructure).
 
