@@ -34,7 +34,6 @@ from .models import (Dataset, Gloss, GlossRelation, GlossTranslations,
                      GlossURL, MorphologyDefinition, Relation,
                      RelationToForeignSign, Translation, FieldChoice)
 
-
 class GlossListView(ListView):
     model = Gloss
     template_name = 'dictionary/admin_gloss_list.html'
@@ -303,7 +302,7 @@ class GlossListView(ListView):
         if 'strong_handshape' in get and get['strong_handshape'] != '':
             val = get['strong_handshape']
             qs = qs.filter(strong_handshape=val)
-            
+
         if 'word_classes' in get and get['word_classes'] != '':
             vals = get.getlist('word_classes')
             qs = qs.filter(wordclasses__id__in=vals)
@@ -486,28 +485,92 @@ class GlossDetailView(DetailView):
         context['translation_languages_and_translations'] = gloss.get_translations_for_translation_languages()
 
         if self.request.user.is_staff:
-            # Get some version history data
-            version_history = Version.objects.get_for_object(
-                context['gloss']).prefetch_related('revision__user')[:20]
-            translation_ct = ContentType.objects.get_for_model(Translation)
-            for i, version in enumerate(version_history):
-                if not i+1 >= len(version_history):
-                    ver1 = version.field_dict
-                    ver2 = version_history[i+1].field_dict
-                    t1 = list(version_history[i].revision.version_set.filter(
-                        content_type=translation_ct).values_list('object_repr', flat=True))
-                    t2 = list(version_history[i+1].revision.version_set.filter(
-                        content_type=translation_ct).values_list('object_repr', flat=True))
-                    version.translations_added = ", ".join(
-                        ["+"+x for x in t1 if x not in set(t2)])
-                    version.translations_removed = ", ".join(
-                        ["-"+x for x in t2 if x not in set(t1)])
-                    version.data_removed = dict([(key, value) for key, value in ver1.items() if value != ver2[key] and
-                                                 key != 'updated_at' and key != 'updated_by_id'])
-                    version.data_added = dict([(key, value) for key, value in ver2.items() if value != ver1[key] and
-                                              key != 'updated_at' and key != 'updated_by_id'])
 
-            context['revisions'] = version_history
+            # Using the Reversion middleware, get version history data:
+            # This is an iterable of Version instance, each of which contains data including:
+            #   * A dict of fieldname => field for this model (in this case Gloss)
+            #   * A Revision instance with:
+            #       Metadata stored when the Version was created
+            #       References to the state of all other model instances under Reversion control at the time the Version was saved
+            #           (eg. Translation instances)
+            version_history = Version.objects.get_for_object(gloss).prefetch_related('revision__user')
+
+            # Get ContentType for Translation model so we can retrieve Translation instance states from Reversion
+            translation_contenttype = ContentType.objects.get_for_model(Translation)
+
+            revisions = []
+            revisions_ignore = ('updated_at')
+            gloss_fieldchoice_fields=['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
+                                      'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
+                                      'relative_orientation_location', 'orientation_change', 'handshape_change', 'movement_shape',
+                                      'movement_direction', 'movement_manner', 'contact_type', 'wordclasses', 'usage', 'named_entity',
+                                      'semantic_field', 'signer', 'age_variation']
+
+            # Determine which fields have changed
+            for i, version_hist_entry in enumerate(version_history):
+                if i+1 >= len(version_history):
+                    continue
+
+                # Regular fields
+                for key, value in version_hist_entry.field_dict.items():
+                    if key in revisions_ignore:
+                        continue
+
+                    changed_new = value
+                    changed_old = version_history[i+1].field_dict[key]
+
+                    if changed_new != changed_old:
+
+                        # Reversion gives us the field name, which for a ForeignKey is sometimes the db column name with '_id'
+                        # NOTE removesuffix() is new in Python 3.9
+                        keycut=key.removesuffix('_id')
+
+                        # Use the raw field name (key) to retrieve the field verbose name
+                        # This works in Django regardless of whether the key is a field name or db column name
+                        changed_field_verbosename=Gloss._meta.get_field(key).verbose_name
+
+                        if keycut in gloss_fieldchoice_fields:
+
+                            # If we were given a straight FieldChoice field name, then the values contained in the revision
+                            # are primary keys of FieldChoice records.
+                            # But if we were given a dictionary_fieldchoice db column name - ie. if it had '_id' on the end - then
+                            # the value in the revision is a (single, unique) machine_value number instead.
+                            # We have to adjust our QuerySet filters accordingly.
+                            if key != keycut:
+                                changed_old_qs = FieldChoice.objects.filter(machine_value=changed_old).values_list('english_name', flat=True)
+                                changed_new_qs = FieldChoice.objects.filter(machine_value=changed_new).values_list('english_name', flat=True)
+                            else:
+                                changed_old_qs = FieldChoice.objects.filter(pk__in=changed_old).values_list('english_name', flat=True)
+                                changed_new_qs = FieldChoice.objects.filter(pk__in=changed_new).values_list('english_name', flat=True)
+                            changed_old = ', '.join(list(changed_old_qs))
+                            changed_new = ', '.join(list(changed_new_qs))
+
+                        if changed_old in ('', None):
+                            changed_old = '-'
+                        if changed_new in ('', None):
+                            changed_new = '-'
+
+                        revisions.append((version_hist_entry.revision.user.username, version_hist_entry.revision.date_created,
+                                            changed_field_verbosename, changed_old, changed_new))
+
+                # Translations
+                translations_new = list(version_history[i].revision.version_set.filter(
+                    content_type=translation_contenttype).values_list('object_repr', flat=True))
+                translations_old = list(version_history[i+1].revision.version_set.filter(
+                    content_type=translation_contenttype).values_list('object_repr', flat=True))
+
+                # Ignore pairs of empty lists
+                if not (translations_new or translations_old):
+                    continue
+
+                # This will catch re-orderings as well
+                translations_new_str = ", ".join(translations_new)
+                translations_old_str = ", ".join(translations_old)
+                if (translations_new_str != translations_old_str):
+                    revisions.append((version_hist_entry.revision.user.username, version_hist_entry.revision.date_created,
+                                      'Translations', translations_old_str, translations_new_str))
+
+            context['revisions'] = revisions
 
         # Pass info about which fields we want to see
         gl = context['gloss']
