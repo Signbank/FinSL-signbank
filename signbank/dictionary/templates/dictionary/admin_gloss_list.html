@@ -185,6 +185,12 @@ function clearForm(myFormElement) {
                          {% bootstrap_field searchform.word_classes show_label=False bound_css_class="not-bound" %}
                      </div>
                 </div>
+                 <div class="col-md-6 col-sm-6 searchinput">
+                     <div class="input-group">
+                         <label class="input-group-addon" for="id_handedness">{{searchform.handedness.label}}</label>
+                         {% bootstrap_field searchform.handedness show_label=False bound_css_class="not-bound" %}
+                     </div>
+                </div>
                 <div class="col-md-12 searchinput searchcolor">
                         <ul class="list-group list-inline">
                           <li class="list-group-item list-group-item-success">{% bootstrap_field searchform.number_incorporated show_label=False bound_css_class="not-bound" %}</li>

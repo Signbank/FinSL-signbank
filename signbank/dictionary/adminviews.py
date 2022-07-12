@@ -299,6 +299,10 @@ class GlossListView(ListView):
             val = get['age_variation']
             qs = qs.filter(age_variation=val)
 
+        if 'handedness' in get and get['handedness'] != '':
+            val = get['handedness']
+            qs = qs.filter(handedness=val)
+
         if 'strong_handshape' in get and get['strong_handshape'] != '':
             val = get['strong_handshape']
             qs = qs.filter(strong_handshape=val)

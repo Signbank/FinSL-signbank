@@ -129,6 +129,8 @@ class GlossSearchForm(forms.ModelForm):
     word_classes = forms.ModelMultipleChoiceField(label=_('Word classes'),
                                                   queryset=FieldChoice.objects.filter(field='wordclass'),
                                                   required=False)
+    handedness = forms.ModelChoiceField(label=_('Handedness'), queryset=FieldChoice.objects.filter(field='handedness'),
+                                        to_field_name='machine_value', required=False)
 
     # Adding morphology fields
     number_incorporated = forms.BooleanField(label=_('Number incorporated'), required=False)
