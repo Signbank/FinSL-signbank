@@ -18,6 +18,7 @@ CMD pip install -r requirements.txt && \
     bin/develop.py migrate --noinput && \
     bin/develop.py createcachetable && \
     bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json &&\
+    bin/develop.py createinitialrevisions &&\
     gunicorn signbank.wsgi --bind=0.0.0.0:${PORT:=8000}
 
 EXPOSE 8000

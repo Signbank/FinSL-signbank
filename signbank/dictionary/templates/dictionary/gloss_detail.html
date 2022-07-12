@@ -425,18 +425,6 @@ $('#id_comment').atwho({
                     <td class="edit edit_list_check" id="wordclass">{{gloss.wordclasses.all|join:", "}}</td>
                 </tr>
 
-                <tr>
-                    <th>{% blocktrans %}Sign number:{% endblocktrans %}</th>
-                    <td id='sign-number'>{{gloss.id}}</td>
-                </tr>
-                <tr>
-                    <th>{% blocktrans %}Film batch:{% endblocktrans %}</th>
-                    <td class="edit edit_text" id='filmbatch'>{{gloss.filmbatch}}</td>
-                </tr>
-                <tr>
-                    <th>{% blocktrans %}Concise:{% endblocktrans %}</th>
-                    <td id="concise">{{ gloss.concise }}</td>
-                </tr>
                 {# Translators: Information about a Gloss #}
                 <!-- {# Removed Dialect for now, uncomment these lines if you want to show dialect #}
                 <tr>

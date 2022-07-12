@@ -4,71 +4,84 @@
 {% load static %}
 {% load comments %}
 
-<table class='table table-condensed'>
-    <tr>
-        <th>{% blocktrans %}Created:{% endblocktrans %}</th>
-        <td id='created'>{% if gloss.created_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.created_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.created_by.username }}{% endif %}</td>
-    </tr>
-    <tr>
-        <th>{% blocktrans %}Updated:{% endblocktrans %}</th>
-        <td id='updated'>{% if gloss.updated_at %}
-            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.username }}
-            {% if request.user.is_staff %}
-            <!-- Modal trigger -->
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalChangeHistory">
-              <span class="glyphicon glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                {% blocktrans %}Show complete history{% endblocktrans %}
-            </button>
+{# Tabs nav bar #}
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#revision_history_history_tab" role="tab" data-toggle="tab">Changes</a></li>
+    <li><a href="#revision_history_comments_tab" role="tab" data-toggle="tab">Comments</a></li>
+</ul>
 
-            <!-- Modal -->
-            <div class="modal fade" id="modalChangeHistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">{% blocktrans %}Change history for{% endblocktrans %} {{gloss}}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                        {% blocktrans %}This is a list of some historical changes made to this Gloss.
-                        By clicking the link, you will be taken to the admin site and shown the state of
-                        this gloss at the chosen time.{% endblocktrans %}
-                        <strong>{% blocktrans %}Do not save the changes,
-                        unless you want to restore the older version of this Gloss!{% endblocktrans %}
-                        </strong>
-                    </p>
-                    <ul class="">
-                    {% for version in revisions %}
-                        <li><a href="{% url 'admin:dictionary_gloss_revision' gloss.pk version.pk %}">
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                            {{version.revision.date_created|date:'Y-m-d H:i'}}
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                            {{version.revision.user.username }}
-                            {{version.revision.comment}} |
-                            {% if version.data_added or version.data_removed %}{% blocktrans %}Gloss fields:{% endblocktrans %}{% endif %}
-                            {% if version.data_added %}<span style="color:green;">+{{version.data_added}}</span>{% endif %}
-                            {% if version.data_removed %}<span style="color:red;">-{{version.data_removed}}</span>{% endif %}
-                            {% if version.translations_added or version.translations_removed %}{% blocktrans %}Translations:{% endblocktrans %}{% endif %}
-                            {% if version.translations_added %}<span style="color:green;">{{version.translations_added}}</span>{% endif %}
-                            {% if version.translations_removed %}<span style="color:red;">{{version.translations_removed}}</span>{% endif %}
-                        </a></li>
+{# Tabs wrapper #}
+<div class="tab-content">
+
+    {# Tab: Revision History #}
+    <div class="tab-pane active" id="revision_history_history_tab">
+        <table class='table table-condensed'>
+            <tr>
+                <th>{% blocktrans %}Created:{% endblocktrans %}</th>
+                <td id='created'>{% if gloss.created_at %}<span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.created_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.created_by.username }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{% blocktrans %}Updated:{% endblocktrans %}</th>
+                <td id='updated'>{% if gloss.updated_at %}
+                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <em>{{ gloss.updated_at|date:'Y-m-d H:i' }}</em> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ gloss.updated_by.username }}
+                    {% if request.user.is_staff %}
+
+                    <hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
+
+                    <div>
+                    <h4>{% blocktrans %}Change history for{% endblocktrans %} <strong>{{gloss}}</strong></h4>
+                    </div>
+                    <div>
+                    <table class='table table-condensed'>
+                        <tr>
+                            <th>{% blocktrans %}User{% endblocktrans %}</th>
+                            <th>{% blocktrans %}Time{% endblocktrans %}</th>
+                            <th>{% blocktrans %}Field{% endblocktrans %}</th>
+                            <th>{% blocktrans %}Old value{% endblocktrans %}</th>
+                            <th>{% blocktrans %}New value{% endblocktrans %}</th>
+                        </tr>
+                        {% for revision_username,revision_time,revision_field_verbosename,revision_old,revision_new in revisions %}
+                        <tr>
+                            {# User #}
+                            <td>
+                                {{ revision_username }}
+                            </td>
+                            {# Time - format: June 22, 2022, 4:06 p.m. #}
+                            <td>
+                                {{ revision_time|date:'F j, Y, g:i a' }}
+                            </td>
+                            {# Field (verbose name) #}
+                            <td>
+                                {{ revision_field_verbosename }}
+                            </td>
+                            {# Old value #}
+                            <td>
+                                {{ revision_old }}
+                            </td>
+                            {# New value #}
+                            <td>
+                                {{ revision_new }}
+                            </td>
+                        </tr>
                         {% endfor %}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>{% endif %}{% endif %}
-        </td>
-    </tr>
-</table>
+                    </table>
+                    </div>
+                    {% endif %} {# if request.user.is_staff #}
+                    {% endif %} {# if gloss.updated_at #}
+                </td>
+            </tr>
+        </table>
+    </div> {# Tab: Revision History #}
 
-<hr style="border-top-color:#C0C0C0;margin-bottom:10px;">
+    {# Tab: Comments #}
+    <div class="tab-pane" id="revision_history_comments_tab">
+        {% get_comment_count for gloss as comment_count %}
+        <div id="gloss-comments">
+            <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
+            <div class="well well-md">
+            {% render_comment_list for gloss %}
+            </div>
+        </div>
+    </div> {# Tab: Comments #}
 
-{% get_comment_count for gloss as comment_count %}
-<div id="gloss-comments">
-    <h4>{% blocktrans %}Comments{% endblocktrans %} ({{comment_count}})</h4>
-    <div class="well well-md">
-    {% render_comment_list for gloss %}
-
-    </div>
-</div>
+</div> {# Tabs wrapper #}

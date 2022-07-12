@@ -288,7 +288,7 @@ class RelationToForeignSign(models.Model):
     def __str__(self):
         return str(self.gloss) + "/" + str(self.other_lang) + ',' + str(self.other_lang_gloss)
 
-
+@reversion.register()
 class FieldChoice(models.Model):
     #: The name of the FieldChoice.
     field = models.CharField(max_length=50)
@@ -669,6 +669,9 @@ class Gloss(models.Model):
                 x['machine_value']: str(x['english_name']) for x in v}
 
         return field_choices
+
+# We do this here so we can pass the model in along with the follow arguments
+reversion.register(Gloss,follow=['wordclasses','strong_handshape'])
 
 
 class GlossURL(models.Model):
