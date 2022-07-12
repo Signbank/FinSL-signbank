@@ -16,7 +16,9 @@ from django.http import (Http404, HttpResponse, HttpResponseBadRequest,
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils.translation import ugettext as _
 from guardian.shortcuts import get_objects_for_user, get_perms
+
 from tagging.models import Tag, TaggedItem
+
 
 from ..video.models import GlossVideo
 from .forms import (CSVUploadForm, GlossRelationForm, MorphologyForm,
@@ -573,11 +575,22 @@ def add_tag(request, glossid):
             form = TagsAddForm(request.POST)
             if form.is_valid():
                 tags = form.cleaned_data['tags']
-                [Tag.objects.add_tag(gloss, str(x)) for x in tags]
+                for tag in tags:
+                    add_tags_to_gloss(gloss, tag)
+
                 response = render(request, 'dictionary/glosstags.html',
                                   {'gloss': gloss, 'tagsaddform': TagsAddForm()})
 
     return response
+
+
+# We are using this custom-made function instead of the in-built due to the incorrect handling of tags which contains
+# spaces.
+def add_tags_to_gloss(gloss, tag):
+    tag = Tag.objects.filter(name=tag.name).first()
+    c_type = ContentType.objects.get_for_model(gloss)
+    TaggedItem._default_manager.get_or_create(
+        tag=tag, content_type=c_type, object_id=gloss.pk)
 
 
 @login_required
