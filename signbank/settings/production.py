@@ -3,21 +3,11 @@
 """Production environment specific settings for FinSL-signbank."""
 from __future__ import unicode_literals
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 from signbank.settings.base import *
 
 # settings.base imports settings_secret
 # The following settings are defined in settings_secret:
 # SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
-
-
-sentry_sdk.init(
-    dsn=os.environ.get('SENTRY_DSN'),
-    integrations=[DjangoIntegration()],
-    traces_sample_rate=1.0,
-    send_default_pii=True
-)
 
 # This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
 # is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.

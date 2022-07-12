@@ -9,6 +9,21 @@ import sys
 import dj_database_url
 from django.utils.translation import ugettext_lazy as _
 
+
+sentry_dsn = os.environ.get('SENTRY_DSN', '')
+
+if sentry_dsn != '':
+
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn=os.environ.get('SENTRY_DSN'),
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=True
+    )
+
 try:
     # settings_secret.py is imported in this settings file, you should put the sensitive information in that file.
     from signbank.settings.settings_secret import *
