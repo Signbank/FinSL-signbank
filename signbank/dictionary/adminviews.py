@@ -30,7 +30,7 @@ from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
 from .forms import (GlossRelationForm, GlossRelationSearchForm,
                     GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
-from .models import (Dataset, Gloss, GlossRelation, GlossTranslations,
+from .models import (Dataset, Gloss, Lemma, GlossRelation, GlossTranslations,
                      GlossURL, MorphologyDefinition, Relation,
                      RelationToForeignSign, Translation, FieldChoice)
 

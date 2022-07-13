@@ -593,6 +593,9 @@ class Gloss(models.Model):
                                        db_column='age_variation', limit_choices_to={'field': 'age_variation'},
                                        related_name="age_variation", blank=True, null=True, on_delete=models.SET_NULL)
 
+    # lemma
+    lemma = models.ForeignKey('Lemma', verbose_name=_("Lemma"), null=True, on_delete=models.SET_NULL)
+
     def __str__(self):
         return self.idgloss
 
@@ -654,7 +657,7 @@ class Gloss(models.Model):
                   'repeated_movement', 'alternating_movement', 'movement_shape', 'movement_direction',
                   'movement_manner', 'contact_type', 'named_entity', 'orientation_change', 'semantic_field',
                   'video_type', 'wordclass', 'fingerspelling', 'usage', 'signer',
-                  'age_variation']
+                  'age_variation', 'lemma']
 
         qs = FieldChoice.objects.filter(field__in=fields).values(
             'field', 'machine_value', 'english_name')
@@ -668,10 +671,32 @@ class Gloss(models.Model):
             field_choices[k] = {
                 x['machine_value']: str(x['english_name']) for x in v}
 
+        # Add Lemmas
+        # This has to be done here rather than in AdminView, or else the template can't see it
+        field_choices['lemma']= dict()
+        lemmas = Lemma.objects.filter().values('name')
+        if lemmas:
+            for lemma in lemmas:
+                name = lemma['name']
+                field_choices['lemma'][name] = name
+
         return field_choices
 
 # We do this here so we can pass the model in along with the follow arguments
 reversion.register(Gloss,follow=['wordclasses','strong_handshape'])
+
+
+class Lemma(models.Model):
+    """Lemma - a grouping of Glosses"""
+    name = models.CharField(max_length=60, unique=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _('Lemma')
+        verbose_name_plural = _('Lemmas')
+
+    def __str__(self):
+        return str(self.name)
 
 
 class GlossURL(models.Model):

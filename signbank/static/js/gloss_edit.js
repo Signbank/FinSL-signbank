@@ -70,6 +70,7 @@ function disable_edit() {
     $('.remove_comment_tag').hide();
     $('.glossurlform').hide();
     $('.glossurl-delete').hide();
+    $('.lemmaform').hide();
 };
 
 function enable_edit() {
@@ -95,6 +96,7 @@ function enable_edit() {
     $('.remove_comment_tag').show();
     $('.glossurlform').show();
     $('.glossurl-delete').show();
+    $('.lemmaform').show();
 };
 
 function toggle_edit() {

@@ -17,7 +17,7 @@ from reversion.admin import VersionAdmin
 from tagging.models import Tag, TaggedItem
 
 from ..video.admin import GlossVideoInline
-from .models import (AllowedTags, Dataset, Dialect, FieldChoice, Gloss,
+from .models import (AllowedTags, Dataset, Dialect, FieldChoice, Gloss, Lemma,
                      GlossRelation, GlossTranslations, GlossURL, Language,
                      SignLanguage, Translation)
 
@@ -182,7 +182,8 @@ class GlossAdmin(VersionAdmin):
                        'updated_at', 'updated_by', 'concise')
     actions = [publish, unpublish, exclude_from_ecv, include_in_ecv]
 
-    fieldsets = ((None, {'fields': ('dataset', 'assigned_user', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'wordclasses', 'notes', 'hint', 'signer', 'filmbatch', 'concise')},),
+    fieldsets = ((None, {'fields': ('dataset', 'assigned_user', 'published', 'exclude_from_ecv', 'id', 'idgloss', 'idgloss_mi', 'wordclasses', 'notes', 'hint', 'signer', 'filmbatch', 'concise',
+                                    'lemma')},),
                  (_('Created/Updated'), {'fields': ('created_at',
                   'created_by', 'updated_at', 'updated_by')},),
                  (_('Morphology'), {'fields': ('inflection_temporal', 'inflection_manner_degree', 'inflection_plural', 'number_incorporated', 'locatable', 'directional',
@@ -300,6 +301,7 @@ admin.site.register(Translation, TranslationAdmin)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
 admin.site.register(AllowedTags, AllowedTagsAdmin)
+admin.site.register(Lemma)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
