@@ -474,6 +474,7 @@ class GlossDetailView(DetailView):
                 .annotate(full_name=Concat(F('first_name'), Value(' '), F('last_name'), output_field=CharField()))
                 .values(label=F('full_name'), value=F('id')))
 
+        context['lemmas'] = list(Lemma.objects.values('name'))
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
         context['glossrelationform'] = GlossRelationForm(

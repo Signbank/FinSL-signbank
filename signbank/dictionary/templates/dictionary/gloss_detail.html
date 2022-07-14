@@ -93,6 +93,7 @@ $(document).ready(function () {
          var choice_lists = {{gloss.get_choice_lists|safe}};
          var dataset_users = {{dataset_users|safe}};
          var assignable_users = {{assignable_users|safe}};
+         var lemmas = {{lemmas|safe}};
          var csrf_token = '{{csrf_token}}';
     </script>
     <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
@@ -474,7 +475,7 @@ $('#id_comment').atwho({
                 </tr>
                 <tr>
                     <th>{% blocktrans %}Lemma:{% endblocktrans %}</th>
-                    <td class="edit edit_list edit_list_optional" id="lemma">{% value gloss.lemma %}</td>
+                    <td class="edit edit_lemma" id="lemma">{% value gloss.lemma %}</td>
                     <td>
                         <form method="POST" action="{% url 'dictionary:add_lemma' glossid=gloss.id  %}" class="lemmaform" style="display:none;">{% csrf_token %}
                             <input type="hidden" name="id" value="lemma-create">

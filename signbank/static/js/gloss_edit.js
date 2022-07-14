@@ -255,6 +255,22 @@ function configure_edit() {
         });
      });
 
+     $('.edit_lemma').on('click', function() {
+        var choices = { "": "--None--" }
+        var selected = ""
+
+        lemmas.forEach(lemma => {
+            lemma.name === this.textContent && (selected = lemma.name.toString());
+            choices[lemma.name] = lemma.name;
+        });
+
+        $(this).editable(edit_post_url, {
+            type      : 'select',
+            sortselectoptions: true,
+            data    : $.extend(choices, { selected: selected })
+        });
+     });
+
      $('.edit_list').on('click', function() {
          var choices = choice_lists[$(this).attr('id')];
          if ($(this).hasClass("edit_list_optional")) {
