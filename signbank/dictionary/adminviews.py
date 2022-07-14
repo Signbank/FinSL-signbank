@@ -30,7 +30,7 @@ from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
 from .forms import (GlossRelationForm, GlossRelationSearchForm,
                     GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
-from .models import (Dataset, Gloss, GlossRelation, GlossTranslations,
+from .models import (Dataset, Gloss, Lemma, GlossRelation, GlossTranslations,
                      GlossURL, MorphologyDefinition, Relation,
                      RelationToForeignSign, Translation, FieldChoice)
 
@@ -474,6 +474,7 @@ class GlossDetailView(DetailView):
                 .annotate(full_name=Concat(F('first_name'), Value(' '), F('last_name'), output_field=CharField()))
                 .values(label=F('full_name'), value=F('id')))
 
+        context['lemmas'] = list(Lemma.objects.values('name'))
         context['relationform'] = RelationForm()
         context['morphologyform'] = MorphologyForm()
         context['glossrelationform'] = GlossRelationForm(

@@ -70,6 +70,7 @@ function disable_edit() {
     $('.remove_comment_tag').hide();
     $('.glossurlform').hide();
     $('.glossurl-delete').hide();
+    $('.lemmaform').hide();
 };
 
 function enable_edit() {
@@ -95,6 +96,7 @@ function enable_edit() {
     $('.remove_comment_tag').show();
     $('.glossurlform').show();
     $('.glossurl-delete').show();
+    $('.lemmaform').show();
 };
 
 function toggle_edit() {
@@ -244,6 +246,22 @@ function configure_edit() {
         assignable_users.forEach(user => {
             user.label === this.textContent && (selected = user.value.toString());
             choices[user.value] = user.label;
+        });
+
+        $(this).editable(edit_post_url, {
+            type      : 'select',
+            sortselectoptions: true,
+            data    : $.extend(choices, { selected: selected })
+        });
+     });
+
+     $('.edit_lemma').on('click', function() {
+        var choices = { "": "--None--" }
+        var selected = ""
+
+        lemmas.forEach(lemma => {
+            lemma.name === this.textContent && (selected = lemma.name.toString());
+            choices[lemma.name] = lemma.name;
         });
 
         $(this).editable(edit_post_url, {

@@ -593,6 +593,9 @@ class Gloss(models.Model):
                                        db_column='age_variation', limit_choices_to={'field': 'age_variation'},
                                        related_name="age_variation", blank=True, null=True, on_delete=models.SET_NULL)
 
+    # lemma
+    lemma = models.ForeignKey('Lemma', verbose_name=_("Lemma"), null=True, on_delete=models.SET_NULL)
+
     def __str__(self):
         return self.idgloss
 
@@ -670,8 +673,22 @@ class Gloss(models.Model):
 
         return field_choices
 
+
 # We do this here so we can pass the model in along with the follow arguments
 reversion.register(Gloss,follow=['wordclasses','strong_handshape'])
+
+
+class Lemma(models.Model):
+    """Lemma - a grouping of Glosses"""
+    name = models.CharField(max_length=60, unique=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _('Lemma')
+        verbose_name_plural = _('Lemmas')
+
+    def __str__(self):
+        return str(self.name)
 
 
 class GlossURL(models.Model):
