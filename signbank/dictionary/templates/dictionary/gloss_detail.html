@@ -93,6 +93,7 @@ $(document).ready(function () {
          var choice_lists = {{gloss.get_choice_lists|safe}};
          var dataset_users = {{dataset_users|safe}};
          var assignable_users = {{assignable_users|safe}};
+         var lemmas = {{lemmas|safe}};
          var csrf_token = '{{csrf_token}}';
     </script>
     <script type='text/javascript' src="{% static "js/gloss_edit.js" %}"></script>
@@ -424,14 +425,6 @@ $('#id_comment').atwho({
                     <th>{% blocktrans %}Wordclasses:{% endblocktrans %}</th>
                     <td class="edit edit_list_check" id="wordclass">{{gloss.wordclasses.all|join:", "}}</td>
                 </tr>
-
-                {# Translators: Information about a Gloss #}
-                <!-- {# Removed Dialect for now, uncomment these lines if you want to show dialect #}
-                <tr>
-                    <th>{% blocktrans %}Dialect:{% endblocktrans %}</th>
-                    <td class='edit edit_dialect' id='dialect'>{% for dia in gloss.dialect.all %}{{dia.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
-                </tr>
-                -->
                 <tr>
                     <th>{% blocktrans %}URL:{% endblocktrans %}</th>
                     <td id='url_field'>
@@ -479,6 +472,17 @@ $('#id_comment').atwho({
                 <tr>
                     <th>{% blocktrans %}Concise:{% endblocktrans %}</th>
                     <td id="concise">{{ gloss.concise }}</td>
+                </tr>
+                <tr>
+                    <th>{% blocktrans %}Lemma:{% endblocktrans %}</th>
+                    <td class="edit edit_lemma" id="lemma">{% value gloss.lemma %}</td>
+                    <td>
+                        <form method="POST" action="{% url 'dictionary:add_lemma' glossid=gloss.id  %}" class="lemmaform" style="display:none;">{% csrf_token %}
+                            <input type="hidden" name="id" value="lemma-create">
+                            <input type="text" name="value">
+                            <input type="submit" value="{% blocktrans %}Add new Lemma{% endblocktrans %}">
+                        </form>
+                    </td>
                 </tr>
             </table>
 

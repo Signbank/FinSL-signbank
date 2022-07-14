@@ -24,11 +24,10 @@ from ..video.models import GlossVideo
 from .forms import (CSVUploadForm, GlossRelationForm, MorphologyForm,
                     RelationForm, RelationToForeignSignForm, TagDeleteForm,
                     TagsAddForm, TagUpdateForm)
-from .models import (Dataset, Dialect, FieldChoice, Gloss, GlossRelation,
+from .models import (Dataset, Dialect, FieldChoice, Gloss, Lemma, GlossRelation,
                      GlossTranslations, GlossURL, Keyword, Language,
                      MorphologyDefinition, Relation, RelationToForeignSign,
                      Translation, build_choice_list)
-
 
 @permission_required('dictionary.change_gloss')
 def update_gloss(request, glossid):
@@ -135,7 +134,27 @@ def update_gloss(request, glossid):
                                       for semantic_field in gloss.semantic_field.all())
             except:
                 # Translators: HttpResponseBadRequest
-                return HttpResponseBadRequest("%s %s" % _("Unknown semantic_field"), values, content_type='text/plain')
+                return HttpResponseBadRequest("%s '%s'" % (_("Unknown semantic_field"), str(values)), content_type='text/plain')
+        elif field == 'lemma':
+            value=str(value)
+            value=value.strip()
+            if value in ('',None):
+                # Remove gloss's lemma
+                try:
+                    gloss.lemma = None
+                    gloss.save()
+                    newvalue = ''
+                except:
+                    return HttpResponseBadRequest("%s '%s'" % (_("Unknown Exception removing lemma"), str(value)), content_type='text/plain')
+            else:
+                # Change gloss's lemma
+                try:
+                    lemma = Lemma.objects.get(name=str(value))
+                    gloss.lemma = lemma
+                    gloss.save()
+                    newvalue = str(lemma.name)
+                except:
+                    return HttpResponseBadRequest("%s %s" % (_("Unknown lemma"), str(value)), content_type='text/plain')
         elif field.startswith('video_title'):
             # If editing video title, update the GlossVideo's title
             if request.user.has_perm('video.change_glossvideo'):
@@ -530,6 +549,35 @@ def update_morphology_definition(gloss, field, value):
         return HttpResponseBadRequest("%s '%s'" % _("Unknown form field"), field, content_type='text/plain')
 
     return HttpResponse(newvalue, content_type='text/plain')
+
+
+def add_lemma(request, glossid):
+    value = str(request.POST.get('value', ''))
+    value=value.strip()
+
+    # Default response is return to page
+    default_response = HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': glossid}))
+    response = default_response
+
+    if (not value) or value in (None, ''):
+        # Tried to add a blank/empty lemma
+        return default_response
+
+    if request.method == "POST":
+        lemma = Lemma.objects.filter(name=value)
+        if lemma:
+            # Lemma already exists
+            return default_response
+
+        # Add the new lemma to the system
+        try:
+            lemma=Lemma(name=value)
+            lemma.save()
+            response = HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': glossid}))
+        except:
+            response = HttpResponseBadRequest("%s '%s'" % (_("Invalid Lemma name"), value),
+                                                content_type='text/plain')
+    return response
 
 
 @permission_required('dictionary.change_gloss')

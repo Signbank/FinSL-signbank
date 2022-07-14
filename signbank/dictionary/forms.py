@@ -8,7 +8,7 @@ from django.db.utils import OperationalError, ProgrammingError
 from django.utils.translation import ugettext_lazy as _
 from tagging.models import Tag
 
-from .models import (AllowedTags, Dataset, FieldChoice, Gloss, GlossRelation,
+from .models import (AllowedTags, Dataset, FieldChoice, Gloss, Lemma, GlossRelation,
                      GlossURL, Language, MorphologyDefinition, Relation,
                      RelationToForeignSign, SignLanguage)
 
@@ -119,9 +119,9 @@ class GlossSearchForm(forms.ModelForm):
                                            required=False)
     location = forms.ModelChoiceField(label=_('Location'), queryset=FieldChoice.objects.filter(field='location'),
                                       to_field_name='machine_value', required=False)
-                                      
+
     age_variation = forms.ModelChoiceField(label=_('Age Variation'), queryset=FieldChoice.objects.filter(field='age_variation'),
-                                           to_field_name='machine_value', required=False)                                        
+                                           to_field_name='machine_value', required=False)
     example_search = forms.CharField(label=_('Example Field search'), required=False)
     strong_handshape = forms.ModelChoiceField(label=_('Strong handshape'), queryset=FieldChoice.objects.filter(field='strong_handshape'),
                                               to_field_name='machine_value', required=False)
@@ -231,6 +231,12 @@ class GlossURLForm(forms.ModelForm):
     class Meta:
         model = GlossURL
         fields = ["gloss", "url"]
+
+
+class LemmaForm(forms.ModelForm):
+    class Meta:
+        model = Lemma
+        fields = ["name"]
 
 
 class RelationForm(forms.ModelForm):
