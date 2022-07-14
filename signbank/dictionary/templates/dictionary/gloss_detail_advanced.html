@@ -215,18 +215,27 @@
         </div>
     </div>
 
-
     <div class="panel panel-default">
         <div class='panel-heading'>
             <div class='panel-title'>
                 {# Translators: #}
-                <a data-toggle='collapse' data-parent='#definition' href='#relations'>
-                    {% blocktrans %}Relations to Other Signs{% endblocktrans %}</a>
+                <a data-toggle='collapse' data-parent='#definition' href='#relationsforeign'>
+                    {% blocktrans %}Relations to Foreign Signs{% endblocktrans %}</a>
             </div>
         </div>
-        <div id='relations' class='collapse'>
+        <div id='relationsforeign' class='collapse'>
             <table class='table table-condensed'>
-                {% for rel in gloss.relation_sources.all %}
+                <tr>
+                    <th style='width:1em'></th>
+                    {# Translators: Loan from another language(?) #}
+                    <th style='width:3em'>{% blocktrans %}Loan{% endblocktrans %}</th>
+                    {# Translators: #}
+                    <th style='width:6em'>{% blocktrans %}Related Language{% endblocktrans %}</th>
+                    {# Translators: Equivalent Gloss in related language #}
+                    <th style='width:10em'>{% blocktrans %}Gloss in related language{% endblocktrans %}</th>
+                </tr>
+
+                {% for rel in gloss.relationtoforeignsign_set.all %}
                 <tr>
                     <td>
                         <span class='glyphicon glyphicon-trash relation_delete' data-toggle='modal'
@@ -242,14 +251,13 @@
                                             {% blocktrans %}Delete This Relation{% endblocktrans %}</h2>
                                     </div>
                                     <div class='modal-body'>
-                                        {# Translators: #}
-                                        <p>{% blocktrans trimmed %}This action will delete the <strong>{{rel.get_role_display}}</strong>
-                                            relation between {{rel.source}} and {{rel.target}}. It cannot be
+                                        {# Translators: Question #}
+                                        <p>{% blocktrans %}Are you sure you want to delete this? This cannot be
                                             undone.{% endblocktrans %}</p>
                                     </div>
                                     <form action='{% url "dictionary:update_gloss" gloss.id %}' method='post'>
                                         {% csrf_token %}
-                                        <input type='hidden' name='id' value='relationdelete_{{rel.id}}'>
+                                        <input type='hidden' name='id' value='relationforeigndelete_{{rel.id}}'>
                                         <input type='hidden' name='value' value='confirmed'>
 
                                         <div class="modal-footer">
@@ -269,27 +277,32 @@
 
                     </td>
 
-
-                    <td class='edit edit_relation_role' id='relationrole_{{rel.id}}'>{{rel.role}}</td>
-                    <td class='edit edit_relation_target' id='relationtarget_{{rel.id}}'>{{rel.target}}</td>
-                    <td>(<a href='{% url "dictionary:admin_gloss_view" pk=rel.target.pk %}'>view</a>)</td>
-                </tr>
-                {% endfor %}
+                    <td class='edit edit_check' id='relationforeign-loan_{{rel.id}}'>{{rel.loan}}</td>
+                    <td class='edit edit_text' id='relationforeign-other-lang_{{rel.id}}'>{{rel.other_lang}}</td>
+                    <td class='edit edit_text' id='relationforeign-other-lang-gloss_{{rel.id}}'>
+                        {{rel.other_lang_gloss}}
+                    </td>
+                    {% endfor %}
             </table>
 
             {% if perms.dictionary.change_gloss %}
-            <form id='add_relation_form' method='post' action='{% url 'dictionary:add_relation' %}'>
+            <form id='add_relationtoforeignsign_form' method='post' action='{% url 'dictionary:add_relationtoforeignsign' %}'>
             {% csrf_token %}
             <input type='hidden' name='sourceid' value='{{gloss.pk}}'>
             <table class='table table-condensed'>
                 <tr>
-                    <td>{{relationform.role}}</td>
+                    <td><input class='checkbox' name='loan' type='checkbox'></td>
                     {# Translators: #}
-                    <td><input class='form-control glosstypeahead'
-                               placeholder='{% blocktrans %}ID Gloss/Annotation ID Gloss{% endblocktrans %}'
-                               name='targetid'></td>
-                    {# Translators: Submit button #}
-                    <td><input class='btn btn-primary' value='{% blocktrans %}Add Relation{% endblocktrans %}'
+                    <td><input class='form-control'
+                               placeholder='{% blocktrans %}Related language{% endblocktrans %}' name='other_lang'
+                               type='text'></td>
+                    {# Translators: #}
+                    <td><input class='form-control'
+                               placeholder='{% blocktrans %}Gloss in related language{% endblocktrans %}'
+                               name='other_lang_gloss' type='text'></td>
+                    {# Translators: #}
+                    <td><input class='btn btn-primary'
+                               value='{% blocktrans %}Add Relation to Foreign Sign{% endblocktrans %}'
                                type='submit'></td>
                 </tr>
             </table>
