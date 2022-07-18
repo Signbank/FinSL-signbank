@@ -93,9 +93,14 @@ upload_glossvideo_gloss_view = permission_required('video.add_glossvideo')(uploa
 
 def add_recorded_video_view(request):
     """Add video that is recorder in the interface."""
+
     if request.method == 'POST':
         # Load the data into the form
-        form = GlossVideoForGlossForm(request.POST, request.FILES)
+        video_type = FieldChoice.objects.filter(field='video_type', english_name='main').values_list('machine_value').\
+                                                first()
+        post_values = request.POST.copy()
+        post_values['video_type'] = video_type[0]
+        form = GlossVideoForGlossForm(post_values, request.FILES)
         if form.is_valid():
             gloss = form.cleaned_data['gloss']
             if 'view_dataset' not in get_perms(request.user, gloss.dataset):

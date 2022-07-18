@@ -22,6 +22,7 @@ from notifications.signals import notify
 from .models import Dataset, Keyword, FieldChoice, Gloss, GlossRelation
 from .forms import GlossCreateForm, LexiconForm
 from ..video.forms import GlossVideoForm
+from .update import add_tags_to_gloss
 
 
 @permission_required('dictionary.add_gloss')
@@ -43,7 +44,8 @@ def create_gloss(request):
             new_gloss.updated_by = request.user
             new_gloss.save()
             if form.cleaned_data["tag"]:
-                Tag.objects.add_tag(new_gloss, form.cleaned_data["tag"].name)
+                tag = Tag.objects.filter(name=form.cleaned_data["tag"].name).first()
+                add_tags_to_gloss(new_gloss, tag)
             if glossvideoform.cleaned_data['videofile']:
                 glossvideo = glossvideoform.save(commit=False)
                 glossvideo.gloss = new_gloss
