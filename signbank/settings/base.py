@@ -186,7 +186,7 @@ VIDEO_UPLOAD_LOCATION = "upload"
 #: How many days a user has until activation time expires. Django-registration related setting.
 ACCOUNT_ACTIVATION_DAYS = 7
 #: A boolean indicating whether registration of new accounts is currently permitted.
-REGISTRATION_OPEN = True
+REGISTRATION_OPEN = False
 
 #: The URL where requests are redirected after login when the contrib.auth.login view gets no next parameter.
 LOGIN_REDIRECT_URL = '/'
