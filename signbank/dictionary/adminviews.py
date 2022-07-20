@@ -767,6 +767,18 @@ class GlossRelationListView(ListView):
             query = Q(target__idgloss__istartswith=val)
             qs = qs.filter(query)
 
+        if 'tags' in get and get['tags'] != '':
+            vals = get.getlist('tags', [])
+            tags = []
+            for t in vals:
+                tags.extend(Tag.objects.filter(pk=t))
+
+            # search is an implicit AND so intersection
+            tqs = TaggedItem.objects.get_intersection_by_model(GlossRelation, tags)
+
+            # intersection
+            qs = qs & tqs
+
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('source__dataset'), Prefetch('target__dataset'),
                                  Prefetch('source__glossvideo_set', queryset=GlossVideo.objects.all().order_by(
@@ -779,5 +791,5 @@ class GlossRelationListView(ListView):
         if 'order' in get:
             qs = qs.order_by(get['order'])
         else:
-            qs = qs.order_by('source')
+            qs = qs.order_by('id')
         return qs
