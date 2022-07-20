@@ -398,7 +398,6 @@
         {{ formcomment.object_pk }}
         {{ formcomment.timestamp }}
         {{ formcomment.security_hash }}
-        {% bootstrap_field commenttagform.tag %}
         <input type="hidden" name="next" value="{% url 'dictionary:admin_gloss_view' gloss.id %}">
         <button type="submit" class="btn btn-default" id="id_submit_comm">
             {% blocktrans %}Add comment{% endblocktrans %}</button>
