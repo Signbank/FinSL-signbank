@@ -302,7 +302,7 @@ class FieldChoice(models.Model):
         return self.english_name
 
     class Meta:
-        ordering = ['field', 'machine_value']
+        ordering = ['field', 'english_name']
         verbose_name = _('Field choice')
         verbose_name_plural = _('Field choices')
 

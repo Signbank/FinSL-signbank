@@ -95,7 +95,7 @@ class GlossSearchForm(forms.ModelForm):
     trans_lang = forms.ModelChoiceField(required=False, empty_label=_('Choose language'), queryset=Language.objects.all())
 
     # Adding topics
-    semantic_field = forms.ModelMultipleChoiceField(label=_('Topic'), queryset=FieldChoice.objects.filter(field='semantic_field'),
+    semantic_field = forms.ModelMultipleChoiceField(label=_('Topic'), queryset=FieldChoice.objects.filter(field='semantic_field').order_by('english_name'),
                                             required=False)
 
     try:
@@ -115,15 +115,15 @@ class GlossSearchForm(forms.ModelForm):
     relation_to_foreign_signs = forms.ChoiceField(label=_('Relation to foreign signs'), choices=build_related_to_choices,
                                                   required=False, widget=forms.Select(attrs=ATTRS_FOR_FORMS))
     # Adding usage
-    usage = forms.ModelMultipleChoiceField(label=_('Usage'), queryset=FieldChoice.objects.filter(field='usage'),
+    usage = forms.ModelMultipleChoiceField(label=_('Usage'), queryset=FieldChoice.objects.filter(field='usage').order_by('english_name'),
                                            required=False)
-    location = forms.ModelChoiceField(label=_('Location'), queryset=FieldChoice.objects.filter(field='location'),
+    location = forms.ModelChoiceField(label=_('Location'), queryset=FieldChoice.objects.filter(field='location').order_by('english_name'),
                                       to_field_name='machine_value', required=False)
 
     age_variation = forms.ModelChoiceField(label=_('Age Variation'), queryset=FieldChoice.objects.filter(field='age_variation'),
                                            to_field_name='machine_value', required=False)
     example_search = forms.CharField(label=_('Example Field search'), required=False)
-    strong_handshape = forms.ModelChoiceField(label=_('Strong handshape'), queryset=FieldChoice.objects.filter(field='strong_handshape'),
+    strong_handshape = forms.ModelChoiceField(label=_('Strong handshape'), queryset=FieldChoice.objects.filter(field='strong_handshape').order_by('english_name'),
                                               to_field_name='machine_value', required=False)
     one_or_two_handed = forms.BooleanField(label=_('One or two handed'), required=False)
     word_classes = forms.ModelMultipleChoiceField(label=_('Word classes'),
