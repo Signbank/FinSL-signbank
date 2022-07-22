@@ -19,7 +19,8 @@ from django.utils.translation import get_language
 from django.utils.translation import ugettext as _
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from djqscsv import render_to_csv_response
+#from djqscsv import render_to_csv_response
+import djqscsv
 from guardian.shortcuts import (get_objects_for_user, get_perms,
                                 get_users_with_perms)
 from reversion.models import Version
@@ -33,6 +34,7 @@ from .forms import (GlossRelationForm, GlossRelationSearchForm,
 from .models import (Dataset, Gloss, Lemma, GlossRelation, GlossTranslations,
                      GlossURL, MorphologyDefinition, Relation,
                      RelationToForeignSign, Translation, FieldChoice)
+from pprint import pprint
 
 class GlossListView(ListView):
     model = Gloss
@@ -68,12 +70,136 @@ class GlossListView(ListView):
 
         # Look for a 'format=json' GET argument
         if self.request.GET.get('format') == 'CSV':
-            return self.render_to_csv_response(context)
+
+            # fast
+            #return self.djqscsv_render_to_csv_response(context)
+
+            # slow
+            return self.pythonic_render_to_csv_response(context)
         else:
             return super(GlossListView, self).render_to_response(context)
 
-    # noinspection PyInterpreter,PyInterpreter
-    def render_to_csv_response(self, context):
+
+    # DJQSCSV version
+    # Field in Signbank -> Field in NZSL Dictionary
+    # These are in the order that Mickey Vale specified NZSL want them in.
+    # Please keep any redundant entries (eg. 'id' -> 'id'), as a reminder of that field ordering.
+    # If using the pythonic (slow) render_to_csv_response() the left side need to just be field names (eg. 'strong_handshape')
+    # If using the djqscsv (fast) render_to_csv_response(), they need to use filter syntax (eg. 'strong_handshape__english_name')
+    # Some of these are more complex fields that need special treatment (eg. 'gloss_secondary')
+    djqscsv_signbank_field_to_dictionary_field = {
+        'id':                               'ID',                           # Signbank ID
+        #'dataset__name':                    'Dataset',                      # Dataset
+        'variant_no':                       'variant_number',
+        'idgloss':                          'gloss_main',                   # Gloss
+        #'gloss_secondary':                 'gloss_secondary',
+        #'gloss_minor':                     'gloss_minor',
+        'idgloss_mi':                       'gloss_maori',                  # Gloss Māori
+        'strong_handshape__english_name':   'handshape',
+        'location__english_name':           'location_name',
+        'one_or_two_hand':                  'one_or_two_handed',
+        'inflection_manner_degree':         'inflection_manner_and_degree',
+        'inflection_temporal':              'inflection_temporal',
+        'inflection_plural':                'inflection_plural',
+        #'wordclasses':                     'word_classes',
+        'directional':                      'is_directional',
+        'locatable':                        'is_locatable',
+        'number_incorporated':              'contains_numbers',
+        'fingerspelling':                   'is_fingerspelling',
+        #'examples':                        'examples',
+        'hint':                             'hint',
+        'notes':                            'usage_notes',                  # Notes
+        'age_variation__english_name':      'age_groups',
+        'relationtoforeignsign__other_lang':'related_to',
+        'usage':                            'usage',
+        'semantic_field__english_name':     'semantic_field',
+
+        # These fields are not necessary but Mickey is happy for them to remain
+        #'signlanguage':                    'signlanguage',
+        #'keywords'                         'keywords'
+        'created_at':                       'created_at',
+        'created_by__username':             'created_by',
+        'updated_at':                       'updated_at',
+        'updated_by__username':             'updated_by',
+        }
+
+    # This version is very fast, but manytomany fields are tricky to deal with
+    def djqscsv_render_to_csv_response(self, context):
+
+        if not self.request.user.has_perm('dictionary.export_csv'):
+            msg = _("You do not have permissions to export to CSV.")
+            messages.error(self.request, msg)
+            raise PermissionDenied(msg)
+
+        csv_queryset = self.get_queryset()\
+            .select_related('dataset', 'created_by', 'updated_by', 'strong_handshape', 'location', 'age_variation')\
+            .prefetch_related('translation_set', 'glosstranslations_set', 'relationtoforeignsign_set',\
+                              'usage', 'wordclasses', 'semantic_field')\
+            .values(*self.djqscsv_signbank_field_to_dictionary_field.keys())
+
+        return djqscsv.render_to_csv_response(
+            csv_queryset,
+            filename="dictionary-export.csv",
+            use_verbose_names=False,
+            field_header_map=self.djqscsv_signbank_field_to_dictionary_field,
+        )
+
+
+    # PYTHONIC version
+    # Field in Signbank -> Field in NZSL Dictionary
+    # These are in the order that Mickey Vale specified NZSL want them in.
+    # Please keep any redundant entries (eg. 'id' -> 'id'), as a reminder of that field ordering.
+    # If using the pythonic (slow) render_to_csv_response() the left side need to just be field names (eg. 'strong_handshape')
+    # If using the djqscsv (fast) render_to_csv_response(), they need to use filter syntax (eg. 'strong_handshape__english_name')
+    # Some of these are more complex fields that need special treatment (eg. 'gloss_secondary')
+    pythonic_signbank_field_to_dictionary_field = {
+        'id':                               'id',                           # Signbank ID
+        'dataset':                          'dataset',                      # Dataset
+        'variant_no':                       'variant_number',
+        'idgloss':                          'gloss_main',                   # Gloss
+        'gloss_secondary':                  'gloss_secondary',
+        'gloss_minor':                      'gloss_minor',
+        'idgloss_mi':                       'gloss_maori',                  # Gloss Māori
+        'strong_handshape':                 'handshape',
+        'location':                         'location_name',
+        'one_or_two_hand':                  'one_or_two_handed',
+        'inflection_manner_degree':         'inflection_manner_and_degree',
+        'inflection_temporal':              'inflection_temporal',
+        'inflection_plural':                'inflection_plural',
+        'wordclasses':                      'word_classes',
+        'directional':                      'is_directional',
+        'locatable':                        'is_locatable',
+        'number_incorporated':              'contains_numbers',
+        'fingerspelling':                   'is_fingerspelling',
+        'examples':                         'examples',
+        'hint':                             'hint',
+        'notes':                            'usage_notes',                  # Notes
+        'age_variation':                    'age_groups',
+        'relationtoforeignsign':            'related_to',
+        'usage':                            'usage',
+
+        # These fields are not necessary but Mickey is happy for them to remain
+        'semantic_field':                   'semantic_field',
+        'keywords':                         'keywords',
+        'signlanguage':                     'signlanguage',
+        'created_at':                       'created_at',
+        'created_by':                       'created_by',
+        'updated_at':                       'updated_at',
+        'updated_by':                       'updated_by',
+        }
+
+    # For the pythonic (slow) render_to_csv_response()
+    # Try to translate a Signbank column name to an NZSL Dictionary column name.
+    # If we can't find it, just return the Signbank column name.
+    def csv_heading(self, signbank_key):
+        if signbank_key in self.pythonic_signbank_field_to_dictionary_field:
+            return (self.pythonic_signbank_field_to_dictionary_field[signbank_key])
+        return signbank_key
+
+    # This version is slow (can cause server timeouts as a result), but it does everything we want
+    # TODO gloss_main is drawing from wrong source, should be main text from translation
+    # TODO Still does not process 'examples'
+    def pythonic_render_to_csv_response(self, context):
 
         if not self.request.user.has_perm('dictionary.export_csv'):
             msg = _("You do not have permissions to export to CSV.")
@@ -86,60 +212,150 @@ class GlossListView(ListView):
 
         writer = csv.writer(response)
 
+        # TODO Some optimizations are already performed by get_queryset() - remove the duplicates or integrate all opt'ns.
         csv_queryset = self.get_queryset()\
-            .select_related('created_by', 'updated_by')\
-            .prefetch_related('translation_set', 'glosstranslations_set')
+            .select_related('dataset', 'created_by', 'updated_by', 'strong_handshape', 'location', 'age_variation')\
+            .prefetch_related('translation_set', 'glosstranslations_set', 'relationtoforeignsign_set',
+                              'usage', 'wordclasses', 'semantic_field')
 
-        # We want to manually set which fields to export here
-        fieldnames = ['idgloss', 'idgloss_mi', 'notes', ]
-        fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
+        # the keys are split up as follows because the first and last need special treatment in some cases,
+        # but the middle are all just straight attribute grabs.
+        first_keys  = ['id', 'dataset', 'idgloss','idgloss_mi', 'gloss_minor', 'gloss_secondary'
+                      ]
+        middle_keys = ['notes', 'age_variation', 'number_incorporated', 'strong_handshape',
+                       'inflection_temporal', 'inflection_manner_degree', 'inflection_plural',
+                       'one_or_two_hand', 'directional', 'locatable', 'location', 'fingerspelling',
+                       'hint', 'variant_no'
+                      ]
+        last_keys   = ['related_to', 'usage', 'wordclasses', 'semantic_field', 'signlanguage', 'keywords',
+                       'created_at', 'created_by', 'updated_at', 'updated_by'
+                      ]
 
-        # Defines the headings for the file. Signbank ID and Dataset are set first.
-        header = ['Signbank ID'] + ['Dataset'] + [f.verbose_name for f in fields]
-
-        for extra_column in ['SignLanguage', 'Keywords', 'Created', 'Updated']:
-            header.append(extra_column)
+        header =  []
+        for h in first_keys + middle_keys + last_keys:
+            header.append(self.csv_heading(h))
 
         writer.writerow(header)
 
         for gloss in csv_queryset:
+
             row = list()
+
+            #
+            # first_keys:
+            #   id, dataset, idgloss, idgloss_mi, gloss_minor, gloss_secondary
+            #
             row.append(str(gloss.pk))
-            # Adding Dataset information for the gloss
             row.append(str(gloss.dataset))
-            # Add data from each field.
-            for f in fields:
-                value = getattr(gloss, f.name)
+            row.append(str(gloss.idgloss))
+            row.append(str(gloss.idgloss_mi))
+
+            # NOTE possible slowdown
+            glosstranslations_set = gloss.glosstranslations_set.all()
+
+            gloss_minor = ''
+            delim = ""
+            for gt in glosstranslations_set:
+                if not gt.translations_minor:
+                    continue
+                gloss_minor += delim + gt.translations_minor
+                delim = "; "
+            row.append(gloss_minor)
+
+            gloss_secondary = ''
+            delim = ""
+            for gt in glosstranslations_set:
+                if not gt.translations_secondary:
+                    continue
+                gloss_secondary += delim + gt.translations_secondary
+                delim = "; "
+            row.append(gloss_secondary)
+
+            #
+            # middle_keys:
+            #
+            for name in middle_keys:
+                value = getattr(gloss, name)
+                if (value == None):
+                    value = ''
+                else:
+                    value=str(value)
                 # If the value contains ';', put it in quotes.
                 if value and ";" in value:
                     row.append('"{}"'.format(value))
                 else:
                     row.append(value)
 
-            # Get SignLanguage of Gloss
+            #
+            # last_keys:
+            #   usage, wordclasses, signlanguage, keywords, created_at, created_by, updated_at, updated_by
+            #
+
+            # related_to
+            related_to = ''
+            delim = ""
+
+            # NOTE possible slowdown
+            relationtoforeignsign_set = gloss.relationtoforeignsign_set.all()
+            if relationtoforeignsign_set:
+                for r in relationtoforeignsign_set:
+                    related_to += delim + r.other_lang
+                    delim="; "
+            row.append(related_to)
+
+            # usage
+            usage = ''
+            # NOTE possible slowdown
+            usage_list = list(gloss.usage.all().values_list('english_name', flat=True))
+            if usage_list:
+                usage = "; ".join(usage_list)
+            row.append(usage)
+
+            # wordclasses
+            wordclasses = ''
+            # NOTE possible slowdown
+            wordclasses_list = list(gloss.wordclasses.all().values_list('english_name', flat=True))
+            if wordclasses_list:
+                wordclasses = "; ".join(wordclasses_list)
+            row.append(wordclasses)
+
+            # semantic_field
+            semantic_field = ''
+            # NOTE possible slowdown
+            semantic_field_list = list(gloss.semantic_field.all().values_list('english_name', flat=True))
+            if semantic_field_list:
+                semantic_field = "; ".join(semantic_field_list)
+            row.append(semantic_field)
+
+            # signlanguage
             signlanguage = gloss.dataset.signlanguage
             row.append(signlanguage)
 
+            # keywords
             # Get Translation equivalents. If GlossTranslations don't exist, get Translations.
-            if gloss.glosstranslations_set.all():
-                trans = [t.translations for t in gloss.glosstranslations_set.all()]
+            translations = ""
+            if glosstranslations_set:
+                delim = ""
+                for t in glosstranslations_set:
+                    translations += delim + t.translations
+                    delim = "; "
             else:
                 # Translations are shown per user selected interface language, related objects don't work in this case.
-                trans = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
-            translations = ", ".join(trans)
-            # Put translations inside quotes, because GlossTranslations might have ';'.
-            row.append('"{}"'.format(translations))
+                transa = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
+                translations = "; ".join(transa)
 
-            # Created at and by
-            created = str(gloss.created_at)+' by: '+str(gloss.created_by)
-            row.append(created)
-            # Updated at and by
-            updated = str(gloss.updated_at)+' by: '+str(gloss.updated_by)
-            row.append(updated)
+            row.append(translations)
+
+            # created_at, created_by, updated_at, updated_by
+            row.append(str(gloss.created_at))
+            row.append(str(gloss.created_by))
+            row.append(str(gloss.updated_at))
+            row.append(str(gloss.updated_by))
 
             writer.writerow(row)
 
         return response
+
 
     def get_queryset(self):
         # get query terms from self.request
@@ -695,7 +911,7 @@ def gloss_list_csv(self, dataset_id):
 
 
 def serialize_glosses_csv(dataset, queryset):
-    return render_to_csv_response(queryset)
+    return djqscsv.render_to_csv_response(queryset)
 
 
 class GlossRelationListView(ListView):
