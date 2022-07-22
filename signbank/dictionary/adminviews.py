@@ -105,7 +105,14 @@ class GlossListView(ListView):
         'locatable':                        'is_locatable',
         'number_incorporated':              'contains_numbers',
         'fingerspelling':                   'is_fingerspelling',
-        #'examples':                        'examples',
+        #'videoexample1':                   'videoexample1',
+        #'videoexample1_translation':       'videoexample1_translation',
+        #'videoexample2':                   'videoexample2',
+        #'videoexample2_translation':       'videoexample2_translation',
+        #'videoexample3':                   'videoexample3',
+        #'videoexample3_translation':       'videoexample3_translation',
+        #'videoexample4':                   'videoexample4',
+        #'videoexample4_translation':       'videoexample4_translation',
         'hint':                             'hint',
         'notes':                            'usage_notes',                  # Notes
         'age_variation__english_name':      'age_groups',
@@ -130,6 +137,7 @@ class GlossListView(ListView):
             messages.error(self.request, msg)
             raise PermissionDenied(msg)
 
+        # TODO Some optimizations are already performed by get_queryset() - remove the duplicates or integrate all opt'ns.
         csv_queryset = self.get_queryset()\
             .select_related('dataset', 'created_by', 'updated_by', 'strong_handshape', 'location', 'age_variation')\
             .prefetch_related('translation_set', 'glosstranslations_set', 'relationtoforeignsign_set',\
@@ -170,7 +178,14 @@ class GlossListView(ListView):
         'locatable':                        'is_locatable',
         'number_incorporated':              'contains_numbers',
         'fingerspelling':                   'is_fingerspelling',
-        'examples':                         'examples',
+        'videoexample1':                    'videoexample1',
+        'videoexample1_translation':        'videoexample1_translation',
+        'videoexample2':                    'videoexample2',
+        'videoexample2_translation':        'videoexample2_translation',
+        'videoexample3':                    'videoexample3',
+        'videoexample3_translation':        'videoexample3_translation',
+        'videoexample4':                    'videoexample4',
+        'videoexample4_translation':        'videoexample4_translation',
         'hint':                             'hint',
         'notes':                            'usage_notes',                  # Notes
         'age_variation':                    'age_groups',
@@ -196,7 +211,6 @@ class GlossListView(ListView):
         return signbank_key
 
     # This version is slow (can cause server timeouts as a result), but it does everything we want
-    # TODO Still does not process 'examples'
     def pythonic_render_to_csv_response(self, context):
 
         if not self.request.user.has_perm('dictionary.export_csv'):
@@ -208,6 +222,7 @@ class GlossListView(ListView):
         response = HttpResponse(content_type='text/csv; charset=utf-8')
         response['Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
 
+        # response is a python file-like object
         writer = csv.writer(response)
 
         # TODO Some optimizations are already performed by get_queryset() - remove the duplicates or integrate all opt'ns.
@@ -292,7 +307,14 @@ class GlossListView(ListView):
                     row.append(value)
 
             # examples
-            row.append('TODO')
+            row.append(gloss.videoexample1)
+            row.append(gloss.videoexample1_translation)
+            row.append(gloss.videoexample2)
+            row.append(gloss.videoexample2_translation)
+            row.append(gloss.videoexample3)
+            row.append(gloss.videoexample3_translation)
+            row.append(gloss.videoexample4)
+            row.append(gloss.videoexample4_translation)
 
             for name in ['hint', 'notes', 'age_variation']:
                 value = getattr(gloss, name)
