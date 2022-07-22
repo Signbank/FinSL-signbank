@@ -19,7 +19,6 @@ from django.utils.translation import get_language
 from django.utils.translation import ugettext as _
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-#from djqscsv import render_to_csv_response
 import djqscsv
 from guardian.shortcuts import (get_objects_for_user, get_perms,
                                 get_users_with_perms)
@@ -156,17 +155,17 @@ class GlossListView(ListView):
         'id':                               'id',                           # Signbank ID
         'dataset':                          'dataset',                      # Dataset
         'variant_no':                       'variant_number',
-        'idgloss':                          'gloss_main',                   # Gloss
+        'gloss_main':                       'gloss_main',                   # Gloss
         'gloss_secondary':                  'gloss_secondary',
         'gloss_minor':                      'gloss_minor',
         'idgloss_mi':                       'gloss_maori',                  # Gloss Māori
         'strong_handshape':                 'handshape',
         'location':                         'location_name',
         'one_or_two_hand':                  'one_or_two_handed',
+        'wordclasses':                      'word_classes',
         'inflection_manner_degree':         'inflection_manner_and_degree',
         'inflection_temporal':              'inflection_temporal',
         'inflection_plural':                'inflection_plural',
-        'wordclasses':                      'word_classes',
         'directional':                      'is_directional',
         'locatable':                        'is_locatable',
         'number_incorporated':              'contains_numbers',
@@ -177,11 +176,11 @@ class GlossListView(ListView):
         'age_variation':                    'age_groups',
         'relationtoforeignsign':            'related_to',
         'usage':                            'usage',
+        'semantic_field':                   'semantic_field',
 
         # These fields are not necessary but Mickey is happy for them to remain
-        'semantic_field':                   'semantic_field',
-        'keywords':                         'keywords',
         'signlanguage':                     'signlanguage',
+        'keywords':                         'keywords',
         'created_at':                       'created_at',
         'created_by':                       'created_by',
         'updated_at':                       'updated_at',
@@ -197,8 +196,6 @@ class GlossListView(ListView):
         return signbank_key
 
     # This version is slow (can cause server timeouts as a result), but it does everything we want
-    # TODO field ordering needs updating to Mickey Vale's specifications
-    # TODO gloss_main is drawing from wrong source, should be main text from translation
     # TODO Still does not process 'examples'
     def pythonic_render_to_csv_response(self, context):
 
@@ -219,49 +216,26 @@ class GlossListView(ListView):
             .prefetch_related('translation_set', 'glosstranslations_set', 'relationtoforeignsign_set',
                               'usage', 'wordclasses', 'semantic_field')
 
-        # the keys are split up as follows because the first and last need special treatment in some cases,
-        # but the middle are all just straight attribute grabs.
-        first_keys  = ['id', 'dataset', 'idgloss','idgloss_mi', 'gloss_minor', 'gloss_secondary'
-                      ]
-        middle_keys = ['notes', 'age_variation', 'number_incorporated', 'strong_handshape',
-                       'inflection_temporal', 'inflection_manner_degree', 'inflection_plural',
-                       'one_or_two_hand', 'directional', 'locatable', 'location', 'fingerspelling',
-                       'hint', 'variant_no'
-                      ]
-        last_keys   = ['related_to', 'usage', 'wordclasses', 'semantic_field', 'signlanguage', 'keywords',
-                       'created_at', 'created_by', 'updated_at', 'updated_by'
-                      ]
-
-        header =  []
-        for h in first_keys + middle_keys + last_keys:
-            header.append(self.csv_heading(h))
-
-        writer.writerow(header)
+        # column headers
+        writer.writerow(self.pythonic_signbank_field_to_dictionary_field.values())
 
         for gloss in csv_queryset:
 
             row = list()
 
-            #
-            # first_keys:
-            #   id, dataset, idgloss, idgloss_mi, gloss_minor, gloss_secondary
-            #
-            row.append(str(gloss.pk))
-            row.append(str(gloss.dataset))
-            row.append(str(gloss.idgloss))
-            row.append(str(gloss.idgloss_mi))
-
             # NOTE possible slowdown
             glosstranslations_set = gloss.glosstranslations_set.all()
 
-            gloss_minor = ''
-            delim = ""
-            for gt in glosstranslations_set:
-                if not gt.translations_minor:
-                    continue
-                gloss_minor += delim + gt.translations_minor
-                delim = "; "
-            row.append(gloss_minor)
+            # id
+            row.append(str(gloss.pk))
+            row.append(str(gloss.dataset))
+            variant_no = ''
+            if gloss.variant_no:
+                variant_no = str(gloss.variant_no)
+            row.append(variant_no)
+
+            # gloss_main
+            row.append(glosstranslations_set[0].translations)
 
             gloss_secondary = ''
             delim = ""
@@ -272,10 +246,19 @@ class GlossListView(ListView):
                 delim = "; "
             row.append(gloss_secondary)
 
-            #
-            # middle_keys:
-            #
-            for name in middle_keys:
+            gloss_minor = ''
+            delim = ""
+            for gt in glosstranslations_set:
+                if not gt.translations_minor:
+                    continue
+                gloss_minor += delim + gt.translations_minor
+                delim = "; "
+            row.append(gloss_minor)
+
+            # gloss_maori
+            row.append(str(gloss.idgloss_mi))
+
+            for name in ['strong_handshape', 'location', 'one_or_two_hand']:
                 value = getattr(gloss, name)
                 if (value == None):
                     value = ''
@@ -287,15 +270,45 @@ class GlossListView(ListView):
                 else:
                     row.append(value)
 
-            #
-            # last_keys:
-            #   usage, wordclasses, signlanguage, keywords, created_at, created_by, updated_at, updated_by
-            #
+            # wordclasses
+            wordclasses = ''
+            # NOTE possible slowdown
+            wordclasses_list = list(gloss.wordclasses.all().values_list('english_name', flat=True))
+            if wordclasses_list:
+                wordclasses = "; ".join(wordclasses_list)
+            row.append(wordclasses)
+
+            for name in ['inflection_manner_degree', 'inflection_temporal', 'inflection_plural', 'directional',\
+                         'locatable', 'number_incorporated', 'fingerspelling']:
+                value = getattr(gloss, name)
+                if (value == None):
+                    value = ''
+                else:
+                    value=str(value)
+                # If the value contains ';', put it in quotes.
+                if value and ";" in value:
+                    row.append('"{}"'.format(value))
+                else:
+                    row.append(value)
+
+            # examples
+            row.append('TODO')
+
+            for name in ['hint', 'notes', 'age_variation']:
+                value = getattr(gloss, name)
+                if (value == None):
+                    value = ''
+                else:
+                    value=str(value)
+                # If the value contains ';', put it in quotes.
+                if value and ";" in value:
+                    row.append('"{}"'.format(value))
+                else:
+                    row.append(value)
 
             # related_to
             related_to = ''
             delim = ""
-
             # NOTE possible slowdown
             relationtoforeignsign_set = gloss.relationtoforeignsign_set.all()
             if relationtoforeignsign_set:
@@ -312,14 +325,6 @@ class GlossListView(ListView):
                 usage = "; ".join(usage_list)
             row.append(usage)
 
-            # wordclasses
-            wordclasses = ''
-            # NOTE possible slowdown
-            wordclasses_list = list(gloss.wordclasses.all().values_list('english_name', flat=True))
-            if wordclasses_list:
-                wordclasses = "; ".join(wordclasses_list)
-            row.append(wordclasses)
-
             # semantic_field
             semantic_field = ''
             # NOTE possible slowdown
@@ -327,6 +332,11 @@ class GlossListView(ListView):
             if semantic_field_list:
                 semantic_field = "; ".join(semantic_field_list)
             row.append(semantic_field)
+
+
+            #
+            # extra fields:
+            #
 
             # signlanguage
             signlanguage = gloss.dataset.signlanguage
@@ -344,14 +354,13 @@ class GlossListView(ListView):
                 # Translations are shown per user selected interface language, related objects don't work in this case.
                 transa = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
                 translations = "; ".join(transa)
-
             row.append(translations)
 
-            # created_at, created_by, updated_at, updated_by
             row.append(str(gloss.created_at))
             row.append(str(gloss.created_by))
             row.append(str(gloss.updated_at))
             row.append(str(gloss.updated_by))
+
 
             writer.writerow(row)
 
