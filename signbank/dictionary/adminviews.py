@@ -197,6 +197,7 @@ class GlossListView(ListView):
         return signbank_key
 
     # This version is slow (can cause server timeouts as a result), but it does everything we want
+    # TODO field ordering needs updating to Mickey Vale's specifications
     # TODO gloss_main is drawing from wrong source, should be main text from translation
     # TODO Still does not process 'examples'
     def pythonic_render_to_csv_response(self, context):
