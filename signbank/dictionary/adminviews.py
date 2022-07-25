@@ -88,11 +88,13 @@ class GlossListView(ListView):
     # ForeignKeys such as FieldChoice were able to be handled using Django filter syntax for the field
     # name in the initial query.  Eg. 'strong_handshape__english_name'
     #
-    # The previous experimental code is to be found in the github history for this file.
+    # The previous experimental code is to be found in the github history for this file, specifically
+    # commit https://github.com/ODNZSL/NZSL-signbank/commit/955c885f28ce16e5c6e97074686eb0f87c227c48 where
+    # it was removed in favour of this version.
 
     # PYTHONIC version
     # Field in Signbank -> Field in NZSL Dictionary
-    # These are in the order that Mickey Vale specified NZSL want them in.
+    # These are in the order that Micky Vale specified NZSL want them in.
     # Please keep any redundant entries (eg. 'id' -> 'id'), as a reminder of that field ordering.
     pythonic_signbank_field_to_dictionary_field = {
         'id':                               'id',                           # Signbank ID
