@@ -69,96 +69,31 @@ class GlossListView(ListView):
 
         # Look for a 'format=json' GET argument
         if self.request.GET.get('format') == 'CSV':
-
-            # fast
-            #return self.djqscsv_render_to_csv_response(context)
-
-            # slow
             return self.pythonic_render_to_csv_response(context)
         else:
             return super(GlossListView, self).render_to_response(context)
 
-
-    # DJQSCSV version
-    # Field in Signbank -> Field in NZSL Dictionary
-    # These are in the order that Mickey Vale specified NZSL want them in.
-    # Please keep any redundant entries (eg. 'id' -> 'id'), as a reminder of that field ordering.
-    # If using the pythonic (slow) render_to_csv_response() the left side need to just be field names (eg. 'strong_handshape')
-    # If using the djqscsv (fast) render_to_csv_response(), they need to use filter syntax (eg. 'strong_handshape__english_name')
-    # Some of these are more complex fields that need special treatment (eg. 'gloss_secondary')
-    djqscsv_signbank_field_to_dictionary_field = {
-        'id':                               'ID',                           # Signbank ID
-        #'dataset__name':                    'Dataset',                      # Dataset
-        'variant_no':                       'variant_number',
-        'idgloss':                          'gloss_main',                   # Gloss
-        #'gloss_secondary':                 'gloss_secondary',
-        #'gloss_minor':                     'gloss_minor',
-        'idgloss_mi':                       'gloss_maori',                  # Gloss Māori
-        'strong_handshape__english_name':   'handshape',
-        'location__english_name':           'location_name',
-        'one_or_two_hand':                  'one_or_two_handed',
-        'inflection_manner_degree':         'inflection_manner_and_degree',
-        'inflection_temporal':              'inflection_temporal',
-        'inflection_plural':                'inflection_plural',
-        #'wordclasses':                     'word_classes',
-        'directional':                      'is_directional',
-        'locatable':                        'is_locatable',
-        'number_incorporated':              'contains_numbers',
-        'fingerspelling':                   'is_fingerspelling',
-        #'videoexample1':                   'videoexample1',
-        #'videoexample1_translation':       'videoexample1_translation',
-        #'videoexample2':                   'videoexample2',
-        #'videoexample2_translation':       'videoexample2_translation',
-        #'videoexample3':                   'videoexample3',
-        #'videoexample3_translation':       'videoexample3_translation',
-        #'videoexample4':                   'videoexample4',
-        #'videoexample4_translation':       'videoexample4_translation',
-        'hint':                             'hint',
-        'notes':                            'usage_notes',                  # Notes
-        'age_variation__english_name':      'age_groups',
-        'relationtoforeignsign__other_lang':'related_to',
-        'usage':                            'usage',
-        'semantic_field__english_name':     'semantic_field',
-
-        # These fields are not necessary but Mickey is happy for them to remain
-        #'signlanguage':                    'signlanguage',
-        #'keywords'                         'keywords'
-        'created_at':                       'created_at',
-        'created_by__username':             'created_by',
-        'updated_at':                       'updated_at',
-        'updated_by__username':             'updated_by',
-        }
-
-    # This version is very fast, but manytomany fields are tricky to deal with
-    def djqscsv_render_to_csv_response(self, context):
-
-        if not self.request.user.has_perm('dictionary.export_csv'):
-            msg = _("You do not have permissions to export to CSV.")
-            messages.error(self.request, msg)
-            raise PermissionDenied(msg)
-
-        # TODO Some optimizations are already performed by get_queryset() - remove the duplicates or integrate all opt'ns.
-        csv_queryset = self.get_queryset()\
-            .select_related('dataset', 'created_by', 'updated_by', 'strong_handshape', 'location', 'age_variation')\
-            .prefetch_related('translation_set', 'glosstranslations_set', 'relationtoforeignsign_set',\
-                              'usage', 'wordclasses', 'semantic_field')\
-            .values(*self.djqscsv_signbank_field_to_dictionary_field.keys())
-
-        return djqscsv.render_to_csv_response(
-            csv_queryset,
-            filename="dictionary-export.csv",
-            use_verbose_names=False,
-            field_header_map=self.djqscsv_signbank_field_to_dictionary_field,
-        )
-
+    # NOTE to future devs.
+    # The reason the code below is prefixed 'pythonic' is that it works by analysing the returned results
+    # in python code, using nested loops.
+    # This is slow, even after optimisation, and on a fast system takes over 20 seconds to complete.
+    # At writing our Heroku timeout limit is 30 seconds, so this is a little close for comfort.
+    #
+    # There was a much faster version, that we prefixed 'djqscsv', that used the djqscsv module's CSV writer.
+    # However, though the djqscsv version could handle ForeignKeys, we did not find a way to make it handle
+    # ManyToMany fields properly. We need a way to aggregate those fields so they are collected on one line
+    # per gloss, instead of across multiple lines. This is a function of how SQL works, but there may
+    # be a way to assemble the final QuerySet passed to the djqscsv function so that it does aggregate.
+    #
+    # ForeignKeys such as FieldChoice were able to be handled using Django filter syntax for the field
+    # name in the initial query.  Eg. 'strong_handshape__english_name'
+    #
+    # The previous experimental code is to be found in the github history for this file.
 
     # PYTHONIC version
     # Field in Signbank -> Field in NZSL Dictionary
     # These are in the order that Mickey Vale specified NZSL want them in.
     # Please keep any redundant entries (eg. 'id' -> 'id'), as a reminder of that field ordering.
-    # If using the pythonic (slow) render_to_csv_response() the left side need to just be field names (eg. 'strong_handshape')
-    # If using the djqscsv (fast) render_to_csv_response(), they need to use filter syntax (eg. 'strong_handshape__english_name')
-    # Some of these are more complex fields that need special treatment (eg. 'gloss_secondary')
     pythonic_signbank_field_to_dictionary_field = {
         'id':                               'id',                           # Signbank ID
         'dataset':                          'dataset',                      # Dataset
@@ -193,7 +128,7 @@ class GlossListView(ListView):
         'usage':                            'usage',
         'semantic_field':                   'semantic_field',
 
-        # These fields are not necessary but Mickey is happy for them to remain
+        # These fields are not necessary but Mickey Vale was happy for them to remain
         'signlanguage':                     'signlanguage',
         'keywords':                         'keywords',
         'created_at':                       'created_at',
@@ -202,7 +137,6 @@ class GlossListView(ListView):
         'updated_by':                       'updated_by',
         }
 
-    # For the pythonic (slow) render_to_csv_response()
     # Try to translate a Signbank column name to an NZSL Dictionary column name.
     # If we can't find it, just return the Signbank column name.
     def csv_heading(self, signbank_key):
@@ -210,7 +144,7 @@ class GlossListView(ListView):
             return (self.pythonic_signbank_field_to_dictionary_field[signbank_key])
         return signbank_key
 
-    # This version is slow (can cause server timeouts as a result), but it does everything we want
+    # See NOTE above. This version is slow (can cause server timeouts as a result), but it does everything we want.
     def pythonic_render_to_csv_response(self, context):
 
         if not self.request.user.has_perm('dictionary.export_csv'):
