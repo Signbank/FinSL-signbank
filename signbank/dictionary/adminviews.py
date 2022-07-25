@@ -30,9 +30,10 @@ from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
 from .forms import (GlossRelationForm, GlossRelationSearchForm,
                     GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
-from .models import (Dataset, Gloss, Lemma, GlossRelation, GlossTranslations,
-                     GlossURL, MorphologyDefinition, Relation,
-                     RelationToForeignSign, Translation, FieldChoice)
+from .models import (Dataset, FieldChoice, Gloss, GlossRelation,
+                     GlossTranslations, GlossURL, Lemma, MorphologyDefinition,
+                     Relation, RelationToForeignSign, Translation)
+
 
 class GlossListView(ListView):
     model = Gloss
@@ -45,11 +46,14 @@ class GlossListView(ListView):
         # Add in a QuerySet
         context['searchform'] = GlossSearchForm(self.request.GET)
         # Get allowed datasets for user (django-guardian)
-        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        allowed_datasets = get_objects_for_user(
+            self.request.user, 'dictionary.view_dataset')
         # Filter the forms dataset field for the datasets user has permission to.
-        context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(id__in=[x.id for x in allowed_datasets])
+        context['searchform'].fields["dataset"].queryset = Dataset.objects.filter(
+            id__in=[x.id for x in allowed_datasets])
 
-        populate_tags_for_object_list(context['object_list'], model=self.object_list.model)
+        populate_tags_for_object_list(
+            context['object_list'], model=self.object_list.model)
 
         if 'order' not in self.request.GET:
             context['order'] = 'idgloss'
@@ -95,7 +99,8 @@ class GlossListView(ListView):
         fields = [Gloss._meta.get_field(fieldname) for fieldname in fieldnames]
 
         # Defines the headings for the file. Signbank ID and Dataset are set first.
-        header = ['Signbank ID'] + ['Dataset'] + [f.verbose_name for f in fields]
+        header = ['Signbank ID'] + ['Dataset'] + \
+            [f.verbose_name for f in fields]
 
         for extra_column in ['SignLanguage', 'Keywords', 'Created', 'Updated']:
             header.append(extra_column)
@@ -125,7 +130,8 @@ class GlossListView(ListView):
                 trans = [t.translations for t in gloss.glosstranslations_set.all()]
             else:
                 # Translations are shown per user selected interface language, related objects don't work in this case.
-                trans = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
+                trans = [
+                    t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
             translations = ", ".join(trans)
             # Put translations inside quotes, because GlossTranslations might have ';'.
             row.append('"{}"'.format(translations))
@@ -146,7 +152,8 @@ class GlossListView(ListView):
         qs = Gloss.objects.all()
 
         # Filter in only objects in the datasets the user has permissions to.
-        allowed_datasets = get_objects_for_user(self.request.user, 'dictionary.view_dataset')
+        allowed_datasets = get_objects_for_user(
+            self.request.user, 'dictionary.view_dataset')
         qs = qs.filter(dataset__in=allowed_datasets)
 
         get = self.request.GET
@@ -176,7 +183,8 @@ class GlossListView(ListView):
             if 'trans_lang' in get and get['trans_lang'] != '':
                 val = get['keyword']
                 lang = get['trans_lang']
-                qs = qs.filter(translation__keyword__text__icontains=val, translation__language__in=lang)
+                qs = qs.filter(
+                    translation__keyword__text__icontains=val, translation__language__in=lang)
 
         if 'published' in get and get['published'] != '':
             val = get['published'] == 'on'
@@ -195,7 +203,8 @@ class GlossListView(ListView):
         # If gloss has multiple GlossVideos
         if 'multiplevideos' in get and get['multiplevideos'] != '' and get['multiplevideos'] == 'on':
             # Include glosses that have more than one GlossVideo
-            qs = qs.annotate(videocount=Count('glossvideo')).filter(videocount__gt=1)
+            qs = qs.annotate(videocount=Count('glossvideo')
+                             ).filter(videocount__gt=1)
 
         # A list of phonology fieldnames
         fieldnames = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
@@ -268,7 +277,8 @@ class GlossListView(ListView):
 
         if 'relation_to_foreign_signs' in get and get['relation_to_foreign_signs'] != '':
             val = get['relation_to_foreign_signs']
-            gloss_ids = RelationToForeignSign.objects.filter(other_lang=val).values_list('gloss_id', flat=True)
+            gloss_ids = RelationToForeignSign.objects.filter(
+                other_lang=val).values_list('gloss_id', flat=True)
             qs = qs.filter(id__in=gloss_ids)
 
         if 'location' in get and get['location'] != '':
@@ -392,9 +402,9 @@ class GlossListView(ListView):
         # Prefetching translation and dataset objects for glosses to minimize the amount of database queries.
         qs = qs.prefetch_related(Prefetch('translation_set', queryset=Translation.objects.filter(
             language__language_code_2char__iexact=get_language()).select_related('keyword')),
-                                 Prefetch('dataset'),
-                                 # Ordering by version to get the first versions posterfile.
-                                 Prefetch('glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')))
+            Prefetch('dataset'),
+            # Ordering by version to get the first versions posterfile.
+            Prefetch('glossvideo_set', queryset=GlossVideo.objects.all().order_by('version')))
 
         # Saving querysets results to sessions, these results can then be used elsewhere (like in gloss_detail)
         # Flush the previous queryset (just in case)
@@ -462,7 +472,8 @@ class GlossDetailView(DetailView):
         gloss = context['gloss']
         dataset = gloss.dataset
         context['dataset'] = dataset
-        context['dataset_users'] = list(get_users_with_perms(dataset).values_list('username', flat=True))
+        context['dataset_users'] = list(get_users_with_perms(
+            dataset).values_list('username', flat=True))
         context['tagsaddform'] = TagsAddForm()
         context['commenttagform'] = CommentTagForm()
         context['glossvideoform'] = GlossVideoForGlossForm()
@@ -498,18 +509,20 @@ class GlossDetailView(DetailView):
             #       Metadata stored when the Version was created
             #       References to the state of all other model instances under Reversion control at the time the Version was saved
             #           (eg. Translation instances)
-            version_history = Version.objects.get_for_object(gloss).prefetch_related('revision__user')
+            version_history = Version.objects.get_for_object(
+                gloss).prefetch_related('revision__user')
 
             # Get ContentType for Translation model so we can retrieve Translation instance states from Reversion
-            translation_contenttype = ContentType.objects.get_for_model(Translation)
+            translation_contenttype = ContentType.objects.get_for_model(
+                Translation)
 
             revisions = []
             revisions_ignore = ('updated_at')
-            gloss_fieldchoice_fields=['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
-                                      'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
-                                      'relative_orientation_location', 'orientation_change', 'handshape_change', 'movement_shape',
-                                      'movement_direction', 'movement_manner', 'contact_type', 'wordclasses', 'usage', 'named_entity',
-                                      'semantic_field', 'signer', 'age_variation']
+            gloss_fieldchoice_fields = ['handedness', 'strong_handshape', 'weak_handshape', 'location', 'relation_between_articulators',
+                                        'absolute_orientation_palm', 'absolute_orientation_fingers', 'relative_orientation_movement',
+                                        'relative_orientation_location', 'orientation_change', 'handshape_change', 'movement_shape',
+                                        'movement_direction', 'movement_manner', 'contact_type', 'wordclasses', 'usage', 'named_entity',
+                                        'semantic_field', 'signer', 'age_variation']
 
             # Determine which fields have changed
             for i, version_hist_entry in enumerate(version_history):
@@ -528,11 +541,12 @@ class GlossDetailView(DetailView):
 
                         # Reversion gives us the field name, which for a ForeignKey is sometimes the db column name with '_id'
                         # NOTE removesuffix() is new in Python 3.9
-                        keycut=key.removesuffix('_id')
+                        keycut = key.removesuffix('_id')
 
                         # Use the raw field name (key) to retrieve the field verbose name
                         # This works in Django regardless of whether the key is a field name or db column name
-                        changed_field_verbosename=Gloss._meta.get_field(key).verbose_name
+                        changed_field_verbosename = Gloss._meta.get_field(
+                            key).verbose_name
 
                         if keycut in gloss_fieldchoice_fields:
 
@@ -542,11 +556,15 @@ class GlossDetailView(DetailView):
                             # the value in the revision is a (single, unique) machine_value number instead.
                             # We have to adjust our QuerySet filters accordingly.
                             if key != keycut:
-                                changed_old_qs = FieldChoice.objects.filter(machine_value=changed_old).values_list('english_name', flat=True)
-                                changed_new_qs = FieldChoice.objects.filter(machine_value=changed_new).values_list('english_name', flat=True)
+                                changed_old_qs = FieldChoice.objects.filter(
+                                    machine_value=changed_old).values_list('english_name', flat=True)
+                                changed_new_qs = FieldChoice.objects.filter(
+                                    machine_value=changed_new).values_list('english_name', flat=True)
                             else:
-                                changed_old_qs = FieldChoice.objects.filter(pk__in=changed_old).values_list('english_name', flat=True)
-                                changed_new_qs = FieldChoice.objects.filter(pk__in=changed_new).values_list('english_name', flat=True)
+                                changed_old_qs = FieldChoice.objects.filter(
+                                    pk__in=changed_old).values_list('english_name', flat=True)
+                                changed_new_qs = FieldChoice.objects.filter(
+                                    pk__in=changed_new).values_list('english_name', flat=True)
                             changed_old = ', '.join(list(changed_old_qs))
                             changed_new = ', '.join(list(changed_new_qs))
 
@@ -556,7 +574,7 @@ class GlossDetailView(DetailView):
                             changed_new = '-'
 
                         revisions.append((version_hist_entry.revision.user.username, version_hist_entry.revision.date_created,
-                                            changed_field_verbosename, changed_old, changed_new))
+                                          changed_field_verbosename, changed_old, changed_new))
 
                 # Translations
                 translations_new = list(version_history[i].revision.version_set.filter(
@@ -615,7 +633,8 @@ class GlossDetailView(DetailView):
                 else:
                     kind = 'list'
 
-                context[topic + '_fields'].append([value, field, labels[field], kind])
+                context[topic +
+                        '_fields'].append([value, field, labels[field], kind])
 
         return context
 

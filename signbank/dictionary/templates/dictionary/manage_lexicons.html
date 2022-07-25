@@ -32,6 +32,8 @@
                     https://{{ request.get_host }}{% url 'dictionary:gloss_list_xml' obj.id %}</a></p>
                     <p>{% blocktrans %}CSV Export{% endblocktrans %}: <a href="//{{ request.get_host }}{% url 'dictionary:gloss_list_csv' obj.id %}">
                         //{{ request.get_host }}{% url 'dictionary:gloss_list_csv' obj.id %}</a></p>
+                    <p>{% blocktrans %}CSV Export (Video){% endblocktrans %}: <a href="//{{ request.get_host }}{% url 'video:export_glossvideos_csv' %}">
+                        //{{ request.get_host }}{% url 'video:export_glossvideos_csv' %}</a></p>
                 {% if user.is_superuser %}
                 <h3>{% blocktrans %}Users with permissions{% endblocktrans %}</h3>
                 <ul>{% for user in obj.users_with_perms.all %}
