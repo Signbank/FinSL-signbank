@@ -76,11 +76,13 @@ class GlossesVideoCountFilter(admin.SimpleListFilter):
 
 
 def set_public(modeladmin, request, queryset):
-    queryset.update(is_public=True)
+    for glossvideo in queryset.all():
+        glossvideo.set_public(True)
 
 
 def set_hidden(modeladmin, request, queryset):
-    queryset.update(is_public=False)
+    for glossvideo in queryset.all():
+        glossvideo.set_public(False)
 
 
 set_public.short_description = _lazy("Set selected videos public")

@@ -11,6 +11,7 @@ from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
+from storages.backends.s3boto3 import S3Boto3Storage
 
 
 class GlossVideoStorage(FileSystemStorage):
@@ -32,7 +33,34 @@ class GlossVideoStorage(FileSystemStorage):
 
 
 class GlossVideoDynamicStorage(import_string(settings.GLOSS_VIDEO_FILE_STORAGE)):
-    pass
+    def public_url(self, name):
+        """ Return the public URL to the object in S3 or local storage.
+        This is NOT a presigned URL, use #url for that.
+        """
+        if isinstance(self, S3Boto3Storage):
+            bucket_name = self.bucket.name
+            return f'https://{bucket_name}.s3.amazonaws.com/{name}'
+        else:
+            from django.contrib.sites.models import Site
+            domain = Site.objects.get_current().domain
+            path = super(GlossVideoDynamicStorage, self).url(name)
+
+            return f'{domain}{path}'
+
+    def set_public(self, name, is_public):
+        """ Set the object ACL on the object. This is only supported
+        for S3 storage, and is a no-op for local file storage
+        """
+        if not isinstance(self, S3Boto3Storage):
+            return
+
+        self.bucket.meta.client.put_object_acl(
+            ACL='public-read' if is_public else 'private',
+            Bucket=self.bucket.name,
+            Key=name
+        )
+
+
 
 
 class GlossVideo(models.Model):
@@ -214,6 +242,13 @@ class GlossVideo(models.Model):
 
     def is_video(self):
         return self.get_content_type().startswith("video/")
+
+    def set_public(self, is_public):
+        self.is_public = is_public
+        self.save()
+        self.videofile.storage.set_public(self.videofile.name, is_public)
+
+        True
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""

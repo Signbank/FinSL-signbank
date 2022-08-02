@@ -14,13 +14,14 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
+from djqscsv import render_to_csv_response
 from guardian.shortcuts import get_objects_for_user, get_perms
 
 from ..dictionary.models import Dataset, FieldChoice, Gloss
 from .forms import (GlossVideoForGlossForm, GlossVideoForm,
                     GlossVideoPosterForm, GlossVideoUpdateForm,
                     MultipleVideoUploadForm)
-from .models import GlossVideo
+from .models import GlossVideo, GlossVideoDynamicStorage
 
 
 def upload_glossvideo(request):
@@ -405,8 +406,7 @@ def change_glossvideo_publicity(request):
             messages.error(request, msg)
             raise PermissionDenied(msg)
 
-        video.is_public = is_public
-        video.save()
+        video.set_public(is_public)
 
         if request.is_ajax():
             return HttpResponse(status=200)
@@ -422,3 +422,31 @@ def change_glossvideo_publicity(request):
 
 
 change_glossvideo_publicity_view = permission_required('video.change_glossvideo')(change_glossvideo_publicity)
+
+
+def export_glossvideos_csv(request):
+    """ This function will return a csv with details of published videos. No filtering the page would affect here. """
+    csv_queryset = GlossVideo.objects.filter(is_public=True).values('id', 'videofile', 'version', 'gloss__idgloss',
+                                                                    'dataset__name', 'title', 'video_type_id__english_name')
+    fieldnames = {
+        'id': 'ID',
+        'videofile': 'Videofile',
+        'version': 'Version',
+        'gloss__idgloss': 'Gloss',
+        'dataset__name': 'Dataset',
+        'title': 'Title',
+        'video_type_id__english_name': 'Video_type'
+    }
+
+    storage = GlossVideoDynamicStorage()
+
+    field_serializers = {
+        'videofile': (lambda asset_filename: storage.public_url(asset_filename))
+    }
+
+    # header_map = map(lambda field: GlossVideo._meta.get_field(field), fieldnames)
+    return render_to_csv_response(queryset=csv_queryset, field_header_map=fieldnames, field_serializer_map=field_serializers)
+
+
+export_glossvideos_csv = permission_required(
+    'dictionary.export_csv')(export_glossvideos_csv)
