@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
-from django.db.models import Count, F, Prefetch, Q, Value
+from django.db.models import Count, F, Prefetch, Q, Value, OuterRef
 from django.db.models.fields import CharField, NullBooleanField
 from django.db.models.functions import Concat
 from django.http import HttpResponse, JsonResponse
@@ -34,6 +34,8 @@ from .forms import (GlossRelationForm, GlossRelationSearchForm,
 from .models import (Dataset, FieldChoice, Gloss, GlossRelation,
                      GlossTranslations, GlossURL, Lemma, MorphologyDefinition,
                      Relation, RelationToForeignSign, Translation)
+
+from django.contrib.postgres.aggregates import StringAgg
 
 class GlossListView(ListView):
     model = Gloss
@@ -72,45 +74,55 @@ class GlossListView(ListView):
 
         # Look for a 'format=json' GET argument
         if self.request.GET.get('format') == 'CSV':
-            return self.pythonic_render_to_csv_response(context)
+            return self.subquery_render_to_csv_response(context)
         else:
             return super(GlossListView, self).render_to_response(context)
 
+    #
     # NOTE to future devs.
-    # The reason the code below is prefixed 'pythonic' is that it works by analysing the returned results
+    # The reason the code below is prefixed 'subquery' is that, for speed, we use Django
+    # annotated subqueries here to push as much of the work onto Postgres as we can.
+    #
+    # The old code was prefixed 'pythonic', because it worked by analysing the returned results
     # in python code, using nested loops.
-    # This is slow, even after optimisation, and on a fast system takes over 20 seconds to complete.
-    # At writing our Heroku timeout limit is 30 seconds, so this is a little close for comfort.
+    # This was slow, even after optimisation, and on a fast system a full query took over 20 seconds
+    # to complete. At writing our Heroku timeout limit is 30 seconds, and the client did in fact get
+    # timeouts sometimes, which made us develop this Postgres low-level version.
     #
-    # There was a much faster version, that we prefixed 'djqscsv', that used the djqscsv module's CSV writer.
-    # However, though the djqscsv version could handle ForeignKeys, we did not find a way to make it handle
-    # ManyToMany fields properly. We need a way to aggregate those fields so they are collected on one line
-    # per gloss, instead of across multiple lines. This is a function of how SQL works, but there may
-    # be a way to assemble the final QuerySet passed to the djqscsv function so that it does aggregate.
+    # The old 'pythonic' code may be found at this commit:
+    # https://github.com/ODNZSL/NZSL-signbank/commit/3ec77f1694350801ce29a21e8e6cfd61cc21523e
     #
-    # ForeignKeys such as FieldChoice were able to be handled using Django filter syntax for the field
-    # name in the initial query.  Eg. 'strong_handshape__english_name'
+    # Some fields were too hard to retrieve via subquery, eg. 'keywords', a deprecated field, which was
+    # an amalgamation of all translations. If devs strike a situation in future where they need to
+    # retrieve an especially complex field, this will probably have to be implemented 'pythonically'.
+    # It is presumed that the speedup provided by the Postgres subquery approach will sufficiently
+    # offset any slowdown that results.
     #
-    # The previous experimental code is to be found in the github history for this file, specifically
-    # commit https://github.com/ODNZSL/NZSL-signbank/commit/955c885f28ce16e5c6e97074686eb0f87c227c48 where
-    # it was removed in favour of this version.
 
-    # PYTHONIC version
     # Field in Signbank -> Field in NZSL Dictionary
     # These are in the order that Micky Vale specified NZSL want them in.
     # Please keep any redundant entries (eg. 'id' -> 'id'), as a reminder of that field ordering.
-    pythonic_signbank_field_to_dictionary_field = {
+    # ForeignKey fields on the left need to use double-underscore filter syntax -
+    #  eg. strong_handshape__english_name for accessing FieldChoices.
+    # The left fields that end in _aggregate are aliases used in annotated subqueries, see below.
+    subquery_signbank_field_to_dictionary_field = {
         'id':                               'id',                           # Signbank ID
-        'dataset':                          'dataset',                      # Dataset
+        'dataset__name':                    'dataset',                      # Dataset
         'variant_no':                       'variant_number',
-        'gloss_main':                       'gloss_main',                   # Gloss
-        'gloss_secondary':                  'gloss_secondary',
-        'gloss_minor':                      'gloss_minor',
+
+        # aggregated multi-value fields
+        'gloss_main_aggregate':             'gloss_main',                   # Gloss
+        'gloss_secondary_aggregate':        'gloss_secondary',
+        'gloss_minor_aggregate':            'gloss_minor',
+
         'idgloss_mi':                       'gloss_maori',                  # Gloss Māori
-        'strong_handshape':                 'handshape',
-        'location':                         'location_name',
+        'strong_handshape__english_name':   'handshape',
+        'location__english_name':           'location_name',
         'one_or_two_hand':                  'one_or_two_handed',
-        'wordclasses':                      'word_classes',
+
+        # aggregated multi-value field
+        'wordclasses_aggregate':            'word_classes',
+
         'inflection_manner_degree':         'inflection_manner_and_degree',
         'inflection_temporal':              'inflection_temporal',
         'inflection_plural':                'inflection_plural',
@@ -118,214 +130,98 @@ class GlossListView(ListView):
         'locatable':                        'is_locatable',
         'number_incorporated':              'contains_numbers',
         'fingerspelling':                   'is_fingerspelling',
-        'videoexample1':                    'videoexample1',
-        'videoexample1_translation':        'videoexample1_translation',
-        'videoexample2':                    'videoexample2',
-        'videoexample2_translation':        'videoexample2_translation',
-        'videoexample3':                    'videoexample3',
-        'videoexample3_translation':        'videoexample3_translation',
-        'videoexample4':                    'videoexample4',
-        'videoexample4_translation':        'videoexample4_translation',
+        'videoexample1':                   'videoexample1',
+        'videoexample1_translation':       'videoexample1_translation',
+        'videoexample2':                   'videoexample2',
+        'videoexample2_translation':       'videoexample2_translation',
+        'videoexample3':                   'videoexample3',
+        'videoexample3_translation':       'videoexample3_translation',
+        'videoexample4':                   'videoexample4',
+        'videoexample4_translation':       'videoexample4_translation',
         'hint':                             'hint',
         'notes':                            'usage_notes',                  # Notes
-        'age_variation':                    'age_groups',
-        'relationtoforeignsign':            'related_to',
-        'usage':                            'usage',
-        'semantic_field':                   'semantic_field',
+        'age_variation__english_name':      'age_groups',
+        'relationtoforeignsign__other_lang':'related_to',
+        'usage__english_name':              'usage',
 
-        # These fields are not necessary but Micky Vale was happy for them to remain
-        'signlanguage':                     'signlanguage',
-        'keywords':                         'keywords',
+        # aggregated multi-value field
+        'semantic_field_aggregate':         'semantic_field',
+
+        # The fields below are not necessary but Micky Vale is happy for them to remain
+        'dataset__signlanguage__name':      'signlanguage',
+        # keywords - in the old system this was an aggregation of all translations.
+        # It proved too difficult to reproduce using annotated subqueries.
+        #'keywords'                         'keywords'
         'created_at':                       'created_at',
-        'created_by':                       'created_by',
+        'created_by__username':             'created_by',
         'updated_at':                       'updated_at',
-        'updated_by':                       'updated_by',
+        'updated_by__username':             'updated_by',
         }
 
-    # Try to translate a Signbank column name to an NZSL Dictionary column name.
-    # If we can't find it, just return the Signbank column name.
-    def csv_heading(self, signbank_key):
-        if signbank_key in self.pythonic_signbank_field_to_dictionary_field:
-            return (self.pythonic_signbank_field_to_dictionary_field[signbank_key])
-        return signbank_key
+    # string delimeter for aggregated multi-value fields
+    CSV_AGG_DELIM = "; "
 
-    # See NOTE above. This version is slow (can cause server timeouts as a result), but it does everything we want.
-    def pythonic_render_to_csv_response(self, context):
-
+    def subquery_render_to_csv_response(self, context):
         if not self.request.user.has_perm('dictionary.export_csv'):
             msg = _("You do not have permissions to export to CSV.")
             messages.error(self.request, msg)
             raise PermissionDenied(msg)
 
         # Create the HttpResponse object with the appropriate CSV header.
+        # It is a Python file-like object.
         response = HttpResponse(content_type='text/csv; charset=utf-8')
         response['Content-Disposition'] = 'attachment; filename="dictionary-export.csv"'
 
-        # response is a python file-like object
+        # Set up for outputting CSV.
         writer = csv.writer(response)
 
-        # TODO Some optimizations are already performed by get_queryset() - remove the duplicates or integrate all opt'ns.
+        # For speed, we use Django annotated subqueries here to push as much of the work onto Postgres as we can.
+        # StringAgg() is a Postgres-specific function exposed in Django.
+        # Refs used:
+        # https://docs.djangoproject.com/en/4.0/ref/contrib/postgres/aggregates/#stringagg
+        # https://docs.djangoproject.com/en/4.0/ref/models/expressions/
+        # Some pre-fetching optimizations are already performed by get_queryset().
         csv_queryset = self.get_queryset()\
             .select_related('dataset', 'created_by', 'updated_by', 'strong_handshape', 'location', 'age_variation')\
-            .prefetch_related('translation_set', 'glosstranslations_set', 'relationtoforeignsign_set',
-                              'usage', 'wordclasses', 'semantic_field')
+            .prefetch_related('glosstranslations_set', 'relationtoforeignsign_set',\
+                              'usage', 'wordclasses', 'semantic_field')\
+            .annotate(\
+                gloss_main_aggregate=StringAgg(\
+                    GlossTranslations.objects.filter(gloss=OuterRef('pk')).values('translations')[:1], self.CSV_AGG_DELIM, distinct=True, output_field=CharField()
+                    ),\
+                gloss_secondary_aggregate=StringAgg(\
+                    GlossTranslations.objects.filter(gloss=OuterRef('pk')).values('translations_secondary')[:1], self.CSV_AGG_DELIM, distinct=True, output_field=CharField()\
+                    ),\
+                gloss_minor_aggregate=StringAgg(\
+                    GlossTranslations.objects.filter(gloss=OuterRef('pk')).values('translations_minor')[:1], self.CSV_AGG_DELIM, distinct=True, output_field=CharField()\
+                    ),\
+                semantic_field_aggregate=StringAgg('semantic_field__english_name', self.CSV_AGG_DELIM, distinct=True),\
+                wordclasses_aggregate=StringAgg('wordclasses__english_name', self.CSV_AGG_DELIM, distinct=True)
+            )\
+            .values(*self.subquery_signbank_field_to_dictionary_field.keys())
 
-        # column headers
-        writer.writerow(self.pythonic_signbank_field_to_dictionary_field.values())
+        # Column headers.
+        writer.writerow(self.subquery_signbank_field_to_dictionary_field.values())
 
-        for gloss in csv_queryset:
-
-            row = list()
-
-            # NOTE possible slowdown
-            glosstranslations_set = gloss.glosstranslations_set.all()
-
-            # id
-            row.append(str(gloss.pk))
-            row.append(str(gloss.dataset))
-            variant_no = ''
-            if gloss.variant_no:
-                variant_no = str(gloss.variant_no)
-            row.append(variant_no)
-
-            # gloss_main
-            row.append(glosstranslations_set[0].translations)
-
-            gloss_secondary = ''
-            delim = ""
-            for gt in glosstranslations_set:
-                if not gt.translations_secondary:
-                    continue
-                gloss_secondary += delim + gt.translations_secondary
-                delim = "; "
-            row.append(gloss_secondary)
-
-            gloss_minor = ''
-            delim = ""
-            for gt in glosstranslations_set:
-                if not gt.translations_minor:
-                    continue
-                gloss_minor += delim + gt.translations_minor
-                delim = "; "
-            row.append(gloss_minor)
-
-            # gloss_maori
-            row.append(str(gloss.idgloss_mi))
-
-            for name in ['strong_handshape', 'location', 'one_or_two_hand']:
-                value = getattr(gloss, name)
-                if (value == None):
-                    value = ''
-                else:
-                    value=str(value)
-                # If the value contains ';', put it in quotes.
-                if value and ";" in value:
-                    row.append('"{}"'.format(value))
-                else:
-                    row.append(value)
-
-            # wordclasses
-            wordclasses = ''
-            # NOTE possible slowdown
-            wordclasses_list = list(gloss.wordclasses.all().values_list('english_name', flat=True))
-            if wordclasses_list:
-                wordclasses = "; ".join(wordclasses_list)
-            row.append(wordclasses)
-
-            for name in ['inflection_manner_degree', 'inflection_temporal', 'inflection_plural', 'directional',\
-                         'locatable', 'number_incorporated', 'fingerspelling']:
-                value = getattr(gloss, name)
-                if (value == None):
-                    value = ''
-                else:
-                    value=str(value)
-                # If the value contains ';', put it in quotes.
-                if value and ";" in value:
-                    row.append('"{}"'.format(value))
-                else:
-                    row.append(value)
-
-            # examples
-            row.append(gloss.videoexample1)
-            row.append(gloss.videoexample1_translation)
-            row.append(gloss.videoexample2)
-            row.append(gloss.videoexample2_translation)
-            row.append(gloss.videoexample3)
-            row.append(gloss.videoexample3_translation)
-            row.append(gloss.videoexample4)
-            row.append(gloss.videoexample4_translation)
-
-            for name in ['hint', 'notes', 'age_variation']:
-                value = getattr(gloss, name)
-                if (value == None):
-                    value = ''
-                else:
-                    value=str(value)
-                # If the value contains ';', put it in quotes.
-                if value and ";" in value:
-                    row.append('"{}"'.format(value))
-                else:
-                    row.append(value)
-
-            # related_to
-            related_to = ''
-            delim = ""
-            # NOTE possible slowdown
-            relationtoforeignsign_set = gloss.relationtoforeignsign_set.all()
-            if relationtoforeignsign_set:
-                for r in relationtoforeignsign_set:
-                    related_to += delim + r.other_lang
-                    delim="; "
-            row.append(related_to)
-
-            # usage
-            usage = ''
-            # NOTE possible slowdown
-            usage_list = list(gloss.usage.all().values_list('english_name', flat=True))
-            if usage_list:
-                usage = "; ".join(usage_list)
-            row.append(usage)
-
-            # semantic_field
-            semantic_field = ''
-            # NOTE possible slowdown
-            semantic_field_list = list(gloss.semantic_field.all().values_list('english_name', flat=True))
-            if semantic_field_list:
-                semantic_field = "; ".join(semantic_field_list)
-            row.append(semantic_field)
-
-
-            #
-            # extra fields:
-            #
-
-            # signlanguage
-            signlanguage = gloss.dataset.signlanguage
-            row.append(signlanguage)
-
-            # keywords
-            # Get Translation equivalents. If GlossTranslations don't exist, get Translations.
-            translations = ""
-            if glosstranslations_set:
-                delim = ""
-                for t in glosstranslations_set:
-                    translations += delim + t.translations
-                    delim = "; "
-            else:
-                # Translations are shown per user selected interface language, related objects don't work in this case.
-                transa = [t.keyword.text for t in Translation.objects.filter(gloss=gloss)]
-                translations = "; ".join(transa)
-            row.append(translations)
-
-            row.append(str(gloss.created_at))
-            row.append(str(gloss.created_by))
-            row.append(str(gloss.updated_at))
-            row.append(str(gloss.updated_by))
-
-            writer.writerow(row)
+        # NOTE The following loop is almost exactly what the djqscsv module does internally.
+        # We tried using the djqscsv module, with similar annotated subqueries to the above,
+        # but discovered we needed more control. Hence we have fallen back on a semi-manual system here.
+        # It is still extremely fast.
+        for queryset_values_record in csv_queryset:
+            arr = []
+            items_dict = dict(queryset_values_record.items())
+            # force ordering
+            for field_name in self.subquery_signbank_field_to_dictionary_field.keys():
+                try:
+                    items_field = items_dict[field_name]
+                    if items_field == None:
+                        items_field = ''
+                    arr.append(str(items_field))
+                except:
+                    arr.append('')
+            writer.writerow(arr)
 
         return response
-
 
     def get_queryset(self):
         # get query terms from self.request
