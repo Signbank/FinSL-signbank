@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - production
 jobs:
   check-dependencies:
     runs-on: ubuntu-latest
