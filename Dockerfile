@@ -17,7 +17,11 @@ ENV DJANGO_SETTINGS_MODULE=signbank.settings.development
 CMD pip install -r requirements.txt && \
     bin/develop.py migrate --noinput && \
     bin/develop.py createcachetable && \
-    bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json &&\
+    (\
+        (test $DJANGO_SETTINGS_MODULE = 'signbank.settings.development' && \
+        echo "Loading initial content pages..." && \
+        bin/develop.py loaddata signbank/contentpages/fixtures/flatpages_initial_data.json) \
+    || echo "Skipping loading initial content pages") &&\
     bin/develop.py createinitialrevisions &&\
     gunicorn signbank.wsgi --bind=0.0.0.0:${PORT:=8000}
 
