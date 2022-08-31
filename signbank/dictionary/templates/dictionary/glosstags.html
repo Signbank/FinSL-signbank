@@ -1,41 +1,38 @@
 {% load i18n %}
 {% load bootstrap3 %}
-    <div id='tags' class="uploadvid">
-      <fieldset>
-      <legend>{% blocktrans %}Tags{% endblocktrans %}</legend>
-      {% load tagging_tags %}
-      {% tags_for_object gloss as tag_list %}
-      {% if tag_list %}
-          <ul class='taglist'>
-          {% for tag in tag_list %}
-            <li class='tagli'>
-               <div class='tag'>
-                 <span class='tagname'>{{tag}}</span>
-                 {% if perms.dictionary.change_gloss %}
-                 <span class='tagcount'>
-                     <a class='tagdelete editform'
-                        id='{{tag.name}}'
-                        href='{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}' 
-                        title='delete this tag'>x</a>
-                 </span>
-                 {% endif %}
-                </div>
-            </li>
-          {% endfor %}
-          </ul>
-      {% endif %}
-      {% if perms.dictionary.change_gloss %}
-      <div id="tagcontainer"></div>
-      <div class='editform' style="display:none;">
-          <form id='tagaddform' 
-                action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}"
-                method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {# Translators: Submit button #}
-          {% bootstrap_field tagsaddform.tags show_label=False field_class='tagsaddgloss' %}
-          <input class='btn btn-primary' type='submit' value='{% blocktrans %}Add Tags{% endblocktrans %}'>
-          </form>
+{% load tagging_tags %}
+{% tags_for_object gloss as tag_list %}
+<div id="tags" style="clear:both;">
+  <h4>{% blocktrans %}Tags{% endblocktrans %}:</h4>
+  {% if tag_list %}
+  <ul class="taglist tag-list">
+  {% for tag in tag_list %}
+  <li class="tagli">
+      <div class="tag label label-primary">
+          <span>{{tag}}</span>
+          {% if perms.dictionary.change_gloss %}
+          <span>
+              <a class="tagdelete editform"
+              id="{{tag.name}}" style="display: none;"
+              href="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}"
+              title="{% blocktrans %}Remove tag{% endblocktrans %}">x</a>
+          </span>
+          {% endif %}
       </div>
-      {% endif %}
-      </fieldset>
-    </div>
+  </li>
+  {% endfor %}
+  </ul>
+  {% else %}
+  <em>{% blocktrans %}No tags{% endblocktrans %}</em>
+  {% endif %}
+  <div class="editform" style="display:none;">
+      <form id="tagaddform"
+            action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}"
+            method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {# Translators: Submit button #}
+      {% bootstrap_field tagsaddform.tags show_label=False layout='horizontal' %}
+      <input class="btn btn-primary" type="submit" value="{% blocktrans %}Add Tag{% endblocktrans %}">
+      </form>
+  </div>
+</div>

@@ -155,34 +155,38 @@ $('#id_comment').atwho({
 {% block content %}
 <div id="searchresults" style="overflow-y:hidden;">
     {% if request.session.search_results %}{# See if search_results in sessions is empty #}
-    <strong>{% blocktrans %}Search results:{% endblocktrans %}</strong>
-    <div id="results-inline" class="btn-group" role="group" aria-label="search results" style="white-space:nowrap;">
+    <div id="results-inline" class="btn-group" role="group" aria-label="search results" style="white-space:nowrap;  padding-top: 10px;">
     </div>
     {% endif %}
 </div>
 
-<div id="signinfo" class='navbar navbar-default navbar-collapse'>
-    <div id="datasetname" class="pull-left">
-        <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
-    </div>
-    {% if perms.dictionary.change_gloss %}
-        {% if not gloss.published %}{# Don't allow recording webcam videos for published Glosses. #}
-        <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
-                data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
-            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style="color:black;"></span>
-            {% blocktrans %}Record a video{% endblocktrans %}</button>
+<div id="signinfo" class="panel panel-default" style="margin-top: 10px;">
+    <div class="panel-body" style="padding-top: 0; padding-bottom: 0;">
+        <div id="datasetname" class="pull-left">
+            <h4>{% blocktrans%}Dataset{% endblocktrans %}: <span class="dataset-{{gloss.dataset.id}}-color label label-default">{{dataset}}</span></h4>
+        </div>
+        {% if perms.dictionary.change_gloss %}
+            {% if not gloss.published %}{# Don't allow recording webcam videos for published Glosses. #}
+            <button type="button" class="btn btn-info navbar-btn" id="btn-record-video" data-toggle="modal"
+                    data-target="#record-video-Modal" style="float:left; margin-left:20px; display:none;">
+                <span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style="color:black;"></span>
+                {% blocktrans %}Record a video{% endblocktrans %}</button>
+            {% endif %}
+        <div class='pull-right'>
+            {# Translators: Text that appears when editing is on #}
+            <span id='edit_message'
+                style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
+            {# Translators: Button #}
+            <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
+        </div>
         {% endif %}
-    <div class='pull-right'>
-        {# Translators: Text that appears when editing is on #}
-        <span id='edit_message'
-              style="display:none">{% blocktrans %}Click on red text to edit{% endblocktrans %}&nbsp;</span>
-        {# Translators: Button #}
-        <button id='enable_edit' class='btn btn-default navbar-btn'>{% blocktrans %}Enable Edit{% endblocktrans %}</button>
     </div>
-    {% endif %}
+    <div class="panel-footer">
+        {% include "dictionary/glosstags.html" %}
+    </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
     <div id="definitionblock" class="row">
         <div id="leftblock" class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 
@@ -285,34 +289,30 @@ $('#id_comment').atwho({
                 {% endif %}
 
             </div>
+            {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
+            <div id="upload-glossvideo" class="editform panel panel-default" style="display:none; margin-bottom: 10px;">
+                <div class="panel-heading">
+                    {# Translators: Upload/Add new video to Signbank #}
+                    <strong>{% blocktrans %}Upload Video{% endblocktrans %}</strong>
+                </div>
+                <div class="panel-body">
+                    <fieldset>
+                        <form action="{% url 'video:upload_glossvideo_gloss' %}" method="post"
+                                enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type='hidden' name='redirect' value='{{request.path}}?edit'>
+                            <input type='hidden' name='gloss' value='{{gloss.pk}}'>
+                            {% bootstrap_field glossvideoform.videofile show_help=False %}
+                            {% bootstrap_field glossvideoform.title %}
 
-            <div>
-                <div id="editvideodata" class="panel panel-default">
-                    {% if perms.dictionary.change_gloss and perms.dictionary.update_video %}
-                    <div class='editform' style="display:none;">
-                        <div class="uploadvid">
-                            <fieldset>
-                                {# Translators: Upload/Add new video to Signbank #}
-                                <legend>{% blocktrans %}Upload Video{% endblocktrans %}</legend>
-                                <form action="{% url 'video:upload_glossvideo_gloss' %}" method="post"
-                                      enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <input type='hidden' name='redirect' value='{{request.path}}?edit'>
-                                    <input type='hidden' name='gloss' value='{{gloss.pk}}'>
-                                    {% bootstrap_field glossvideoform.videofile show_help=False %}
-                                    {% bootstrap_field glossvideoform.title %}
-
-                                    {# Translators: Submit button #}
-                                    <input class='btn btn-primary' type='submit'
-                                           value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
-                                </form>
-                            </fieldset>
-                        </div>
-                    </div>
-                    {% endif %}
-                {% include "dictionary/glosstags.html" %}
+                            {# Translators: Submit button #}
+                            <input class='btn btn-primary' type='submit'
+                                    value='{% blocktrans %}Upload Video{% endblocktrans %}' style="margin-top:5px"/>
+                        </form>
+                    </fieldset>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <div class='panel-group col-lg-7 col-md-6 col-sm-12 col-xs-12' id='definition'>

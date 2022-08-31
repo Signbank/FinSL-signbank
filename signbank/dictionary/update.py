@@ -524,7 +524,9 @@ def add_tag(request, glossid):
             form = TagsAddForm(request.POST)
             if form.is_valid():
                 tags = form.cleaned_data['tags']
-                [Tag.objects.add_tag(gloss, str(x)) for x in tags]
+                #tags_list = [tags] if isinstance(tags, Tag) else tags
+
+                Tag.objects.add_tag(gloss, str(tags))
                 response = render(request, 'dictionary/glosstags.html',
                                   {'gloss': gloss, 'tagsaddform': TagsAddForm()})
 
