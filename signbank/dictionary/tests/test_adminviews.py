@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.test import TestCase
-from django.test import Client
+from django.contrib.auth.models import AnonymousUser, Permission, User
+from django.test import Client, TestCase
 from django.urls import reverse
-from django.contrib.auth.models import AnonymousUser, User, Permission
 
 
 class GlossListViewTestCase(TestCase):
@@ -43,6 +42,16 @@ class GlossListViewTestCase(TestCase):
         self.assertFalse(response.status_code == 200)
         # 302 Found
         self.assertTrue(response.status_code == 302)
+
+    def test_get_csv(self):
+        """Tests that a CSV file can be successfully downloaded without filters applied"""
+        permission = Permission.objects.get(codename='export_csv')
+        self.user.user_permissions.add(permission)
+        self.user.save()
+        response = self.client.get(reverse('dictionary:admin_gloss_list'), { 'format': 'CSV' })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers['Content-Type'], 'text/csv; charset=utf-8')
+        self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename="dictionary-export.csv"')
 
     def test_post(self):
         """Testing that the search page can't be accessed with POST."""

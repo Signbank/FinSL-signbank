@@ -5,11 +5,13 @@ import csv
 import json
 from collections import defaultdict
 
+import djqscsv
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.postgres.aggregates import StringAgg
 from django.core.exceptions import PermissionDenied
-from django.db.models import Count, F, Prefetch, Q, Value, OuterRef
+from django.db.models import Count, F, OuterRef, Prefetch, Q, Value
 from django.db.models.fields import CharField, NullBooleanField
 from django.db.models.functions import Concat
 from django.http import HttpResponse, JsonResponse
@@ -19,7 +21,6 @@ from django.utils.translation import get_language
 from django.utils.translation import ugettext as _
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-import djqscsv
 from guardian.shortcuts import (get_objects_for_user, get_perms,
                                 get_users_with_perms)
 from reversion.models import Version
@@ -30,12 +31,10 @@ from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
 from .forms import (GlossRelationForm, GlossRelationSearchForm,
                     GlossSearchForm, MorphologyForm, RelationForm, TagsAddForm)
-
 from .models import (Dataset, FieldChoice, Gloss, GlossRelation,
                      GlossTranslations, GlossURL, Lemma, MorphologyDefinition,
                      Relation, RelationToForeignSign, Translation)
 
-from django.contrib.postgres.aggregates import StringAgg
 
 class GlossListView(ListView):
     model = Gloss
@@ -115,7 +114,7 @@ class GlossListView(ListView):
         'gloss_secondary_aggregate':        'gloss_secondary',
         'gloss_minor_aggregate':            'gloss_minor',
 
-        'idgloss_mi':                       'gloss_maori',                  # Gloss Māori
+        'gloss_maori_aggregate':            'gloss_maori',                  # Gloss Māori
         'strong_handshape__english_name':   'handshape',
         'location__english_name':           'location_name',
         'one_or_two_hand':                  'one_or_two_handed',
@@ -185,17 +184,44 @@ class GlossListView(ListView):
             .select_related('dataset', 'created_by', 'updated_by', 'strong_handshape', 'location', 'age_variation')\
             .prefetch_related('glosstranslations_set', 'relationtoforeignsign_set',\
                               'usage', 'wordclasses', 'semantic_field')\
-            .annotate(\
-                gloss_main_aggregate=StringAgg(\
-                    GlossTranslations.objects.filter(gloss=OuterRef('pk')).values('translations')[:1], self.CSV_AGG_DELIM, distinct=True, output_field=CharField()
-                    ),\
-                gloss_secondary_aggregate=StringAgg(\
-                    GlossTranslations.objects.filter(gloss=OuterRef('pk')).values('translations_secondary')[:1], self.CSV_AGG_DELIM, distinct=True, output_field=CharField()\
-                    ),\
-                gloss_minor_aggregate=StringAgg(\
-                    GlossTranslations.objects.filter(gloss=OuterRef('pk')).values('translations_minor')[:1], self.CSV_AGG_DELIM, distinct=True, output_field=CharField()\
-                    ),\
-                semantic_field_aggregate=StringAgg('semantic_field__english_name', self.CSV_AGG_DELIM, distinct=True),\
+            .annotate(
+                gloss_main_aggregate=StringAgg(
+                    GlossTranslations.objects.filter(
+                        gloss=OuterRef('pk'),
+                        language__language_code_2char='EN').
+                        values('translations')[:1],
+                    self.CSV_AGG_DELIM,
+                    distinct=True,
+                    output_field=CharField()
+                ),
+                gloss_secondary_aggregate=StringAgg(
+                    GlossTranslations.objects.filter(
+                        gloss=OuterRef('pk'),
+                        language__language_code_2char='EN'
+                    ).values('translations_secondary')[:1],
+                    self.CSV_AGG_DELIM,
+                    distinct=True,
+                    output_field=CharField()
+                ),
+                gloss_minor_aggregate=StringAgg(
+                    GlossTranslations.objects.filter(
+                        gloss=OuterRef('pk'),
+                        language__language_code_2char='EN'
+                    ).values('translations_minor')[:1],
+                    self.CSV_AGG_DELIM,
+                    distinct=True,
+                    output_field=CharField()
+                ),
+                gloss_maori_aggregate=StringAgg(
+                    GlossTranslations.objects.filter(
+                        gloss=OuterRef('pk'),
+                        language__language_code_2char='MI'
+                    ).values('translations')[:1],
+                    self.CSV_AGG_DELIM,
+                    distinct=True,
+                    output_field=CharField()
+                ),
+                semantic_field_aggregate=StringAgg('semantic_field__english_name', self.CSV_AGG_DELIM, distinct=True),
                 wordclasses_aggregate=StringAgg('wordclasses__english_name', self.CSV_AGG_DELIM, distinct=True)
             )\
             .values(*self.subquery_signbank_field_to_dictionary_field.keys())
