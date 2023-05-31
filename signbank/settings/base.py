@@ -50,6 +50,7 @@ USE_TZ = True
 #: The list is a list of two-tuples in the format (language code, language name) - for example, ('ja', 'Japanese').
 LANGUAGES = (
     ('fi', _('Finnish')),
+    ('sv', _('Swedish')),
     ('en', _('English')),
 )
 
