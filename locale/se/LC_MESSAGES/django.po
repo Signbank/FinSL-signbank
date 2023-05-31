@@ -1,0 +1,2793 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-07 14:54+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: build/lib/signbank/comments.py:48 signbank/comments.py:48
+msgid ""
+"You are not allowed to edit this comment, because you are not the author of "
+"the comment."
+msgstr ""
+
+#: build/lib/signbank/comments.py:159 signbank/comments.py:159
+msgid ""
+"You are not allowed to edit tags of this comment, because you are not the "
+"author of the comment."
+msgstr ""
+
+#: build/lib/signbank/comments.py:219 signbank/comments.py:219
+msgid "mentioned you in a comment"
+msgstr ""
+
+#: build/lib/signbank/customregistration/forms.py:19
+#: signbank/customregistration/forms.py:19
+msgid "I have read and agree to the Terms of Service"
+msgstr ""
+
+#: build/lib/signbank/customregistration/signals.py:14
+#: signbank/customregistration/signals.py:14
+msgid "created an account."
+msgstr ""
+
+#: build/lib/signbank/customregistration/signals.py:16
+#: signbank/customregistration/signals.py:16
+msgid "created an account"
+msgstr ""
+
+#: build/lib/signbank/customregistration/signals.py:16
+#: signbank/customregistration/signals.py:16
+msgid "Email"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:25 signbank/dictionary/admin.py:25
+msgid "Tag"
+msgstr "Tagg"
+
+#: build/lib/signbank/dictionary/admin.py:91
+#: build/lib/signbank/dictionary/forms.py:166
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:138
+#: signbank/dictionary/admin.py:91 signbank/dictionary/forms.py:166
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:138
+msgid "Relation type"
+msgstr "Relationstyp"
+
+#: build/lib/signbank/dictionary/admin.py:92 signbank/dictionary/admin.py:92
+msgid "Relation types"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:110
+#: build/lib/signbank/dictionary/models.py:587 signbank/dictionary/admin.py:110
+#: signbank/dictionary/models.py:573
+msgid "Gloss relation"
+msgstr "Relationer till glossan"
+
+#: build/lib/signbank/dictionary/admin.py:111
+#: build/lib/signbank/dictionary/models.py:588
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
+#: signbank/dictionary/admin.py:111 signbank/dictionary/models.py:574
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
+msgid "Gloss relations"
+msgstr "Relationer till glossan"
+
+#: build/lib/signbank/dictionary/admin.py:156 signbank/dictionary/admin.py:156
+msgid "Publish selected glosses"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:157 signbank/dictionary/admin.py:157
+msgid "Unpublish selected glosses"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:168 signbank/dictionary/admin.py:168
+msgid "Exclude glosses from ECV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:169 signbank/dictionary/admin.py:169
+msgid "Include glosses in ECV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:178 signbank/dictionary/admin.py:178
+msgid "Created/Updated"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:179
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
+#: signbank/dictionary/admin.py:179
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:105
+msgid "Phonology"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:187
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:125
+#: signbank/dictionary/admin.py:187
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:125
+msgid "Semantics"
+msgstr ""
+
+#: build/lib/signbank/dictionary/admin.py:189
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:324
+#: signbank/dictionary/admin.py:189
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:324
+msgid "Frequency"
+msgstr ""
+
+#: build/lib/signbank/dictionary/adminviews.py:78
+#: signbank/dictionary/adminviews.py:78
+msgid "You do not have permissions to export to CSV."
+msgstr ""
+
+#: build/lib/signbank/dictionary/adminviews.py:406
+#: signbank/dictionary/adminviews.py:406
+msgid "You do not have permissions to view glosses of this dataset."
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:529
+#: signbank/dictionary/choicelists.py:529
+msgid "Homonym"
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:531
+#: signbank/dictionary/choicelists.py:531
+msgid "Synonym"
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:533
+#: signbank/dictionary/choicelists.py:533
+msgid "Variant"
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:535
+#: signbank/dictionary/choicelists.py:535
+msgid "Antonym"
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:537
+#: signbank/dictionary/choicelists.py:537
+msgid "Hyponym"
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:539
+#: signbank/dictionary/choicelists.py:539
+msgid "Hypernym"
+msgstr ""
+
+#. Translators: RELATION_ROLE_CHOICES
+#: build/lib/signbank/dictionary/choicelists.py:541
+#: signbank/dictionary/choicelists.py:541
+msgid "See Also"
+msgstr ""
+
+#: build/lib/signbank/dictionary/delete.py:19
+#: build/lib/signbank/dictionary/update.py:495 signbank/dictionary/delete.py:19
+#: signbank/dictionary/update.py:495
+msgid "You do not have permissions to add tags to glosses of this lexicon."
+msgstr ""
+
+#. Translators: GlossSearchForm label
+#: build/lib/signbank/dictionary/forms.py:21
+#: build/lib/signbank/dictionary/forms.py:75
+#: build/lib/signbank/dictionary/forms.py:155
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:181
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:166
+#: build/lib/signbank/video/templates/addvideos.html:32
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:16
+#: signbank/dictionary/forms.py:21 signbank/dictionary/forms.py:75
+#: signbank/dictionary/forms.py:155
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:181
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:166
+#: signbank/video/templates/addvideos.html:32
+#: signbank/video/templates/uploaded_glossvideos.html:16
+msgid "Dataset"
+msgstr "Lexikon"
+
+#. Translators: exception ValidationError
+#: build/lib/signbank/dictionary/forms.py:37 signbank/dictionary/forms.py:37
+msgid ""
+"This Gloss value already exists in the chosen Dataset. Please choose another "
+"value for Gloss."
+msgstr ""
+
+#: build/lib/signbank/dictionary/forms.py:67
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:188
+#: build/lib/signbank/dictionary/templates/dictionary/glosstags.html:5
+#: signbank/dictionary/forms.py:67
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:188
+#: signbank/dictionary/templates/dictionary/glosstags.html:5
+msgid "Tags"
+msgstr "Taggar"
+
+#. Translators: GlossSearchForm label
+#: build/lib/signbank/dictionary/forms.py:77
+#: build/lib/signbank/dictionary/forms.py:277
+#: build/lib/signbank/dictionary/models.py:36
+#: build/lib/signbank/dictionary/models.py:204
+#: build/lib/signbank/dictionary/models.py:215
+#: build/lib/signbank/dictionary/publicviews.py:106
+#: signbank/dictionary/forms.py:77 signbank/dictionary/forms.py:277
+#: signbank/dictionary/models.py:34 signbank/dictionary/models.py:197
+#: signbank/dictionary/models.py:207 signbank/dictionary/publicviews.py:106
+msgid "Sign language"
+msgstr "Teckenspråk"
+
+#: build/lib/signbank/dictionary/forms.py:80
+#: build/lib/signbank/dictionary/forms.py:156 signbank/dictionary/forms.py:80
+#: signbank/dictionary/forms.py:156 templates/comments/search_comments.html:13
+msgid "Search"
+msgstr "Sök"
+
+#. Translators: GlossSearchForm label
+#. Translators: Gloss field: idgloss, verbose name
+#. : Gloss in Finnish. This is the unique identifying name of the Gloss.
+#. Translators: GlossSearchForm label
+#. Translators: Gloss field: idgloss, verbose name
+#. : Gloss in Finnish. This is the unique identifying name of the Gloss.
+#: build/lib/signbank/dictionary/forms.py:82
+#: build/lib/signbank/dictionary/forms.py:175
+#: build/lib/signbank/dictionary/models.py:63
+#: build/lib/signbank/dictionary/models.py:133
+#: build/lib/signbank/dictionary/models.py:298
+#: build/lib/signbank/dictionary/models.py:326
+#: build/lib/signbank/dictionary/models.py:544
+#: build/lib/signbank/dictionary/publicviews.py:101
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
+#: build/lib/signbank/dictionary/templates/dictionary/network_graph.html:37
+#: build/lib/signbank/video/models.py:49
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:60
+#: signbank/dictionary/forms.py:82 signbank/dictionary/forms.py:175
+#: signbank/dictionary/models.py:60 signbank/dictionary/models.py:129
+#: signbank/dictionary/models.py:287 signbank/dictionary/models.py:315
+#: signbank/dictionary/models.py:532 signbank/dictionary/publicviews.py:101
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
+#: signbank/dictionary/templates/dictionary/network_graph.html:37
+#: signbank/video/models.py:47
+#: signbank/video/templates/uploaded_glossvideos.html:60
+msgid "Gloss"
+msgstr "Glossa"
+
+#. Translators: GlossSearchForm label
+#. Translators: Gloss field: idgloss_en (english), verbose name
+#. : Gloss in English. This is the English name of the Gloss.
+#. Translators: GlossSearchForm label
+#. Translators: Gloss field: idgloss_en (english), verbose name
+#. : Gloss in English. This is the English name of the Gloss.
+#: build/lib/signbank/dictionary/forms.py:84
+#: build/lib/signbank/dictionary/models.py:331
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:184
+#: signbank/dictionary/forms.py:84 signbank/dictionary/models.py:320
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:184
+msgid "Gloss in English"
+msgstr "Engelsk glossa"
+
+#. Translators: GlossSearchForm label
+#: build/lib/signbank/dictionary/forms.py:86 signbank/dictionary/forms.py:86
+msgid "Translations"
+msgstr "Översättningsmotsvarigheter"
+
+#. Translators: GlossSearchForm label
+#: build/lib/signbank/dictionary/forms.py:88 signbank/dictionary/forms.py:88
+msgid "Choose language"
+msgstr "Välj språk"
+
+#: build/lib/signbank/dictionary/forms.py:97 signbank/dictionary/forms.py:97
+msgid "Is published"
+msgstr "Är publicerad"
+
+#. Translators: GlossSearchForm label
+#: build/lib/signbank/dictionary/forms.py:100 signbank/dictionary/forms.py:100
+msgid "Has videos"
+msgstr "Har videor"
+
+#: build/lib/signbank/dictionary/forms.py:101 signbank/dictionary/forms.py:101
+msgid "No videos"
+msgstr "Har ingen video"
+
+#: build/lib/signbank/dictionary/forms.py:102 signbank/dictionary/forms.py:102
+msgid "Multiple videos"
+msgstr "Har flera videor"
+
+#. Translators: GlossSearchForm label
+#. Translators: RelationForm label
+#. Translators: RelationToForeignSignForm label
+#. Translators: GlossSearchForm label
+#. Translators: RelationForm label
+#. Translators: RelationToForeignSignForm label
+#: build/lib/signbank/dictionary/forms.py:158
+#: build/lib/signbank/dictionary/forms.py:195
+#: build/lib/signbank/dictionary/forms.py:213
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:134
+#: signbank/dictionary/forms.py:158 signbank/dictionary/forms.py:195
+#: signbank/dictionary/forms.py:213
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:134
+msgid "Source Gloss"
+msgstr "Källglossa"
+
+#. Translators: GlossSearchForm label
+#. Translators: RelationForm label
+#. Translators: GlossSearchForm label
+#. Translators: RelationForm label
+#: build/lib/signbank/dictionary/forms.py:160
+#: build/lib/signbank/dictionary/forms.py:197
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:136
+#: signbank/dictionary/forms.py:160 signbank/dictionary/forms.py:197
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:136
+msgid "Target Gloss"
+msgstr "Målglossa"
+
+#: build/lib/signbank/dictionary/forms.py:173
+#: build/lib/signbank/dictionary/models.py:51 signbank/dictionary/forms.py:173
+#: signbank/dictionary/models.py:49 templates/infopage.html:110
+msgid "Lexicon"
+msgstr "Lexikon"
+
+#: build/lib/signbank/dictionary/forms.py:180 signbank/dictionary/forms.py:180
+msgid "Relation type:"
+msgstr "Relationstyp:"
+
+#. Translators:
+#: build/lib/signbank/dictionary/forms.py:199
+#: build/lib/signbank/dictionary/forms.py:233
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:22
+#: signbank/dictionary/forms.py:199 signbank/dictionary/forms.py:233
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:22
+msgid "Type"
+msgstr ""
+
+#. Translators: RelationToForeignSignForm label
+#. Translators: RelationToForeignSign field verbose name
+#. : The language of the related sign.
+#. Translators:
+#. Translators: RelationToForeignSignForm label
+#. Translators: RelationToForeignSign field verbose name
+#. : The language of the related sign.
+#. Translators:
+#: build/lib/signbank/dictionary/forms.py:216
+#: build/lib/signbank/dictionary/models.py:240
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:238
+#: signbank/dictionary/forms.py:216 signbank/dictionary/models.py:231
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:238
+msgid "Related Language"
+msgstr ""
+
+#. Translators: RelationToForeignSignForm label
+#: build/lib/signbank/dictionary/forms.py:218 signbank/dictionary/forms.py:218
+msgid "Gloss in Related Language"
+msgstr ""
+
+#. Translators: MorphologyForm label
+#: build/lib/signbank/dictionary/forms.py:228 signbank/dictionary/forms.py:228
+msgid "Parent Gloss"
+msgstr ""
+
+#. Translators: MorphologyForm label
+#. Translators:
+#. Translators: MorphologyForm label
+#. Translators:
+#: build/lib/signbank/dictionary/forms.py:239
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:24
+#: signbank/dictionary/forms.py:239
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:24
+msgid "Morpheme"
+msgstr ""
+
+#: build/lib/signbank/dictionary/forms.py:253 signbank/dictionary/forms.py:253
+msgid "Must be a CSV file with .csv extension."
+msgstr ""
+
+#. Translators: Placeholder text in a search textfield
+#: build/lib/signbank/dictionary/forms.py:265
+#: build/lib/signbank/dictionary/forms.py:266 signbank/dictionary/forms.py:265
+#: signbank/dictionary/forms.py:266 templates/menu.html:68
+msgid "Search gloss"
+msgstr "Sök glossa"
+
+#: build/lib/signbank/dictionary/forms.py:267
+#: build/lib/signbank/dictionary/forms.py:268 signbank/dictionary/forms.py:267
+#: signbank/dictionary/forms.py:268
+msgid "Search translation equivalent"
+msgstr "Sök översättningsmotsvarighet"
+
+#: build/lib/signbank/dictionary/forms.py:276
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:81
+#: signbank/dictionary/forms.py:276
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:81
+msgid "All sign languages"
+msgstr ""
+
+#: build/lib/signbank/dictionary/forms.py:279 signbank/dictionary/forms.py:279
+msgid "You can restrict your search to these lexicons"
+msgstr "Du kan avgränsa sökningen till de här lexikonen"
+
+#: build/lib/signbank/dictionary/models.py:27 signbank/dictionary/models.py:25
+msgid "Name"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:29 signbank/dictionary/models.py:27
+msgid "Public name"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:31 signbank/dictionary/models.py:29
+msgid "Is public"
+msgstr "Är publicerad"
+
+#: build/lib/signbank/dictionary/models.py:31 signbank/dictionary/models.py:29
+msgid "Is this dataset is public or private?"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:33 signbank/dictionary/models.py:31
+msgid "Gloss language"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:34 signbank/dictionary/models.py:32
+msgid "Language that is used for gloss names"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:38 signbank/dictionary/models.py:36
+msgid "Translation equivalent languages"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:39 signbank/dictionary/models.py:37
+msgid "These languages are options for translation equivalents."
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:41
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:23
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:61
+#: signbank/dictionary/models.py:39
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:23
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:61
+msgid "Description"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:43
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:25
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:63
+#: signbank/dictionary/models.py:41
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:25
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:63
+msgid "Copyright"
+msgstr "Upphovsrätt"
+
+#: build/lib/signbank/dictionary/models.py:45 signbank/dictionary/models.py:43
+msgid "Admins"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:49 signbank/dictionary/models.py:47
+msgid "Access dataset"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:52
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:109
+#: signbank/dictionary/models.py:50
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:109
+#: templates/menu.html:58
+msgid "Lexicons"
+msgstr "Lexikon"
+
+#: build/lib/signbank/dictionary/models.py:65
+#: build/lib/signbank/dictionary/models.py:135 signbank/dictionary/models.py:62
+#: signbank/dictionary/models.py:131
+msgid "Language"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:71 signbank/dictionary/models.py:68
+msgid "Gloss translation field"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:72 signbank/dictionary/models.py:69
+msgid "Gloss translation fields"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:137
+#: build/lib/signbank/dictionary/models.py:160
+#: signbank/dictionary/models.py:133 signbank/dictionary/models.py:155
+msgid "Keyword"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:144
+#: signbank/dictionary/models.py:140
+msgid "Translation equivalent"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:145
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:186
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:49
+#: signbank/dictionary/models.py:141
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:186
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:49
+#: templates/infopage.html:50 templates/infopage.html:140
+msgid "Translation equivalents"
+msgstr "Översättningsmotsvarigheter"
+
+#: build/lib/signbank/dictionary/models.py:161
+#: signbank/dictionary/models.py:156
+msgid "Keywords"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:177
+#: signbank/dictionary/models.py:171
+msgid "ISO 639-1 language code (2 characters long) of a written language."
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:180
+#: signbank/dictionary/models.py:174
+msgid "ISO 639-3 language code (3 characters long) of a written language."
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:186
+#: signbank/dictionary/models.py:180
+msgid "Written language"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:187
+#: signbank/dictionary/models.py:181
+msgid "Written languages"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:200
+#: signbank/dictionary/models.py:193
+msgid "ISO 639-3 language code (3 characters long) of a sign language."
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:205
+#: signbank/dictionary/models.py:198
+msgid "Sign languages"
+msgstr "Teckenspråk"
+
+#: build/lib/signbank/dictionary/models.py:223
+#: signbank/dictionary/models.py:215
+msgid "Dialect"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:224
+#: signbank/dictionary/models.py:216
+msgid "Dialects"
+msgstr ""
+
+#. Translators: RelationToForeignSign field verbose name
+#. : Boolean: Is this a loan sign?
+#: build/lib/signbank/dictionary/models.py:237
+#: signbank/dictionary/models.py:228
+msgid "Loan Sign"
+msgstr ""
+
+#. Translators: Equivalent Gloss in related language
+#: build/lib/signbank/dictionary/models.py:244
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:240
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:306
+#: signbank/dictionary/models.py:235
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:240
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:306
+msgid "Gloss in related language"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:248
+#: signbank/dictionary/models.py:239
+msgid "Relation to Foreign Sign"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:249
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:228
+#: signbank/dictionary/models.py:240
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:228
+msgid "Relations to Foreign Signs"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:275
+#: signbank/dictionary/models.py:265
+msgid "Field choice"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:276
+#: signbank/dictionary/models.py:266
+msgid "Field choices"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:299
+#: signbank/dictionary/models.py:288
+msgid "Glosses"
+msgstr ""
+
+#. Translators: Gloss permissions
+#: build/lib/signbank/dictionary/models.py:303
+#: signbank/dictionary/models.py:292
+msgid "Can Update Video"
+msgstr ""
+
+#. Translators: Gloss permissions
+#: build/lib/signbank/dictionary/models.py:305
+#: signbank/dictionary/models.py:294
+msgid "Can Search/View Full Gloss Details"
+msgstr ""
+
+#. Translators: Gloss permissions
+#: build/lib/signbank/dictionary/models.py:307
+#: signbank/dictionary/models.py:296
+msgid "Can export sign details as CSV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:308
+#: signbank/dictionary/models.py:297
+msgid "Can import glosses from a CSV file"
+msgstr ""
+
+#. Translators: Gloss permissions
+#: build/lib/signbank/dictionary/models.py:310
+#: signbank/dictionary/models.py:299
+msgid "Include all properties in sign detail view"
+msgstr ""
+
+#. Translators: Gloss permissions
+#: build/lib/signbank/dictionary/models.py:312
+#: signbank/dictionary/models.py:301
+msgid "Can publish and unpublish Glosses"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:316
+#: signbank/dictionary/models.py:305
+msgid "Published"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:317
+#: signbank/dictionary/models.py:306
+msgid "Publish this gloss in the public gloss list"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:319
+#: signbank/dictionary/models.py:308
+msgid "Exclude from ECV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:320
+#: signbank/dictionary/models.py:309
+msgid "Exclude from ELAN externally controlled vocabularies (ECV)"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:322
+#: signbank/dictionary/models.py:311
+msgid "Glosses dataset"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:323
+#: signbank/dictionary/models.py:312
+msgid "Dataset a gloss is part of"
+msgstr ""
+
+#. Translators: Help text for Gloss field: idgloss
+#: build/lib/signbank/dictionary/models.py:328
+#: signbank/dictionary/models.py:317
+msgid "This is the unique identifying name of a Gloss."
+msgstr ""
+
+#. Translators: Help text for Gloss field: idgloss_en (english)
+#: build/lib/signbank/dictionary/models.py:333
+#: signbank/dictionary/models.py:322
+msgid "This is the English name for the Gloss"
+msgstr ""
+
+#. Translators: Gloss models field: notes, verbose name. Notes/Further information about a Gloss.
+#. : Notes about the Gloss.
+#: build/lib/signbank/dictionary/models.py:336
+#: build/lib/signbank/dictionary/publicviews.py:107
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:187
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:61
+#: signbank/dictionary/models.py:325 signbank/dictionary/publicviews.py:107
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:187
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:61
+msgid "Notes"
+msgstr "Mer information"
+
+#. Translators: Gloss models field: handedness, verbose name
+#: build/lib/signbank/dictionary/models.py:352
+#: signbank/dictionary/models.py:341
+msgid "Handedness"
+msgstr ""
+
+#. Translators: Gloss models field: strong_handshape, verbose name
+#: build/lib/signbank/dictionary/models.py:356
+#: signbank/dictionary/models.py:345
+msgid "Strong Hand"
+msgstr ""
+
+#. Translators: Gloss models field: weak_handshape, verbose name
+#: build/lib/signbank/dictionary/models.py:361
+#: signbank/dictionary/models.py:350
+msgid "Weak Hand"
+msgstr ""
+
+#. Translators: Gloss models field: location, verbose name
+#: build/lib/signbank/dictionary/models.py:366
+#: signbank/dictionary/models.py:355
+msgid "Location"
+msgstr ""
+
+#. Translators: Gloss models field: relation_between_articulators, verbose name
+#: build/lib/signbank/dictionary/models.py:371
+#: signbank/dictionary/models.py:360
+msgid "Relation Between Articulators"
+msgstr ""
+
+#. Translators: Gloss models field: absolute_orientation_palm, verbose name
+#: build/lib/signbank/dictionary/models.py:379
+#: signbank/dictionary/models.py:368
+msgid "Absolute Orientation: Palm"
+msgstr ""
+
+#. Translators: Gloss models field: absolute_orientation_fingers, verbose name
+#: build/lib/signbank/dictionary/models.py:385
+#: signbank/dictionary/models.py:374
+msgid "Absolute Orientation: Fingers"
+msgstr ""
+
+#. Translators: Gloss models field: relative_orientation_movement, verbose name
+#: build/lib/signbank/dictionary/models.py:392
+#: signbank/dictionary/models.py:381
+msgid "Relative Orientation: Movement"
+msgstr ""
+
+#. Translators: Gloss models field: relative_orientation_location, verbose name
+#: build/lib/signbank/dictionary/models.py:399
+#: signbank/dictionary/models.py:388
+msgid "Relative Orientation: Location"
+msgstr ""
+
+#. Translators: Gloss models field: orientation_change, verbose name
+#: build/lib/signbank/dictionary/models.py:406
+#: signbank/dictionary/models.py:395
+msgid "Orientation Change"
+msgstr ""
+
+#. Translators: Gloss models field: handshape_change, verbose name
+#: build/lib/signbank/dictionary/models.py:412
+#: signbank/dictionary/models.py:401
+msgid "Handshape Change"
+msgstr ""
+
+#. Translators: Gloss models field: repeated_movement, verbose name
+#: build/lib/signbank/dictionary/models.py:417
+#: signbank/dictionary/models.py:406
+msgid "Repeated Movement"
+msgstr ""
+
+#. Translators: Gloss models field: alternating_movement, verbose name
+#: build/lib/signbank/dictionary/models.py:419
+#: signbank/dictionary/models.py:408
+msgid "Alternating Movement"
+msgstr ""
+
+#. Translators: Gloss models field: movement_shape, verbose name
+#: build/lib/signbank/dictionary/models.py:422
+#: signbank/dictionary/models.py:411
+msgid "Movement Shape"
+msgstr ""
+
+#. Translators: Gloss models field: movement_direction, verbose name
+#: build/lib/signbank/dictionary/models.py:426
+#: signbank/dictionary/models.py:415
+msgid "Movement Direction"
+msgstr ""
+
+#. Translators: Gloss models field: movement_manner, verbose name
+#: build/lib/signbank/dictionary/models.py:431
+#: signbank/dictionary/models.py:420
+msgid "Movement Manner"
+msgstr ""
+
+#. Translators: Gloss models field: contact_type, verbose name
+#: build/lib/signbank/dictionary/models.py:435
+#: signbank/dictionary/models.py:424
+msgid "Contact Type"
+msgstr ""
+
+#. Translators: Gloss models field: phonology_other verbose name
+#: build/lib/signbank/dictionary/models.py:440
+#: signbank/dictionary/models.py:429
+msgid "Phonology Other"
+msgstr ""
+
+#. Translators: Gloss models field: mouth_gesture, verbose name
+#: build/lib/signbank/dictionary/models.py:443
+#: signbank/dictionary/models.py:432
+msgid "Mouth Gesture"
+msgstr ""
+
+#. Translators: Gloss models field: mouthing, verbose name
+#: build/lib/signbank/dictionary/models.py:445
+#: signbank/dictionary/models.py:434
+msgid "Mouthing"
+msgstr ""
+
+#. Translators: Gloss models field: phonetic_variation, verbose name
+#: build/lib/signbank/dictionary/models.py:447
+#: signbank/dictionary/models.py:436
+msgid "Phonetic Variation"
+msgstr ""
+
+#. Translators: Gloss models field: iconic_image, verbose name
+#: build/lib/signbank/dictionary/models.py:451
+#: signbank/dictionary/models.py:440
+msgid "Iconic Image"
+msgstr ""
+
+#. Translators: Gloss models field: named_entity, verbose name
+#: build/lib/signbank/dictionary/models.py:453
+#: signbank/dictionary/models.py:442
+msgid "Named Entity"
+msgstr ""
+
+#. Translators: Gloss models field: semantic_field, verbose name
+#: build/lib/signbank/dictionary/models.py:457
+#: signbank/dictionary/models.py:446
+msgid "Semantic Field"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:464
+#: signbank/dictionary/models.py:453
+msgid "Number of Occurrences"
+msgstr ""
+
+#. Translators: Help text for Gloss models field: number_of_occurences
+#: build/lib/signbank/dictionary/models.py:466
+#: signbank/dictionary/models.py:455
+msgid "Number of occurences in annotation materials"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:549
+#: signbank/dictionary/models.py:537
+msgid "Gloss URL"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:550
+#: signbank/dictionary/models.py:538
+msgid "Gloss URLs"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:560
+#: build/lib/signbank/dictionary/models.py:565
+#: build/lib/signbank/dictionary/models.py:566
+#: signbank/dictionary/models.py:547 signbank/dictionary/models.py:552
+#: signbank/dictionary/models.py:553
+msgid "Allowed tags"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:611
+#: signbank/dictionary/models.py:596
+msgid "Relation"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:612
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
+#: signbank/dictionary/models.py:597
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
+msgid "Relations"
+msgstr "Relationer"
+
+#: build/lib/signbank/dictionary/models.py:628
+#: signbank/dictionary/models.py:612
+msgid "Morphology definition"
+msgstr ""
+
+#: build/lib/signbank/dictionary/models.py:629
+#: signbank/dictionary/models.py:613
+msgid "Morphology definitions"
+msgstr ""
+
+#: build/lib/signbank/dictionary/publicviews.py:106
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:202
+#: signbank/dictionary/publicviews.py:106
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:202
+msgid "Videos"
+msgstr ""
+
+#. Translators: Title for sign search page
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:6
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:6
+msgid "Advanced Search"
+msgstr "Avancerad sökning"
+
+#. Translators: admin_gloss_list header
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:73
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:73
+msgid "Search Glosses"
+msgstr "Sök glossor"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:87
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:87
+msgid "Gloss, Note, Translation, contains string"
+msgstr "Glossa, mer information, översättning, innehåller sträng"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:95
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:103
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:85
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:93
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:95
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:103
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:85
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:93
+msgid "Begins with string"
+msgstr "Börjar med sträng"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:111
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:120
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:111
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:120
+msgid "Contains string"
+msgstr "Innehåller sträng"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:147
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:109
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:147
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:109
+#: templates/menu.html:72
+msgctxt "search-button"
+msgid "Search"
+msgstr "Sök"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:149
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:149
+msgid "CSV"
+msgstr "CSV"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:151
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:110
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:151
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:110
+msgid "Reset"
+msgstr "Rensa"
+
+#. Translators: How many results to fit per page
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:156
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:115
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:156
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:115
+msgid "Results per page"
+msgstr "Resultat per sida"
+
+#. Translators: How many matches out of possible
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:172
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:172
+msgid "Number of matches:"
+msgstr "Antal sökträffar"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:175
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:128
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:175
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:128
+msgid "Page navigation top"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:203
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:203
+msgctxt "sr-videos"
+msgid "Videos"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:217
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:161
+#: signbank/dictionary/templates/dictionary/admin_gloss_list.html:217
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:161
+msgid "Page navigation bottom"
+msgstr ""
+
+#. Translators: Title for GlossRelation search page
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:6
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:6
+msgid "Search Gloss Relations"
+msgstr "Sök relationer"
+
+#. Translators: admin_gloss_list header
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:60
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:60
+msgid "Search Relations of Glosses"
+msgstr "Sök relationer till glossorna"
+
+#: build/lib/signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:76
+#: signbank/dictionary/templates/dictionary/admin_glossrelation_list.html:76
+msgid "Source or target gloss contains string"
+msgstr "Käll- eller målglossan innehåller sträng"
+
+#: build/lib/signbank/dictionary/templates/dictionary/create_gloss.html:5
+#: build/lib/signbank/dictionary/templates/dictionary/create_gloss.html:25
+#: signbank/dictionary/templates/dictionary/create_gloss.html:5
+#: signbank/dictionary/templates/dictionary/create_gloss.html:25
+msgid "Create Gloss"
+msgstr "Skapa glossa"
+
+#. Translators:
+#: build/lib/signbank/dictionary/templates/dictionary/create_gloss.html:11
+#: signbank/dictionary/templates/dictionary/create_gloss.html:11
+msgid "Create a Gloss"
+msgstr "Skapa glossa"
+
+#. Translators: Message that appears if user doesn't have proper user rights to view this page.
+#: build/lib/signbank/dictionary/templates/dictionary/create_gloss.html:30
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:35
+#: signbank/dictionary/templates/dictionary/create_gloss.html:30
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:35
+#: templates/infopage.html:157
+msgid "You do not have sufficient user rights to view this page."
+msgstr ""
+
+#. Translators: Button
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:39
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:180
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:39
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:180
+msgid "Enable Edit"
+msgstr "Redigera"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:40
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:40
+msgid "Disable Edit"
+msgstr "Sluta redigera"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:41
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:63
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:41
+#: signbank/video/templates/uploaded_glossvideos.html:63
+#: templates/comments/edit_comment.html:10
+msgid "Save"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:42
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:54
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:180
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:271
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:42
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:42
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:54
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:180
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:271
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:42
+msgid "Cancel"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:104
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:228
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:104
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:228
+msgid "Set private"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:105
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:231
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:105
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:231
+msgid "Set public"
+msgstr "Gör offentlig"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:158
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:158
+msgid "Search results:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:173
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:6
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:173
+#: signbank/dictionary/templates/dictionary/record_video.html:6
+msgid "Record a video"
+msgstr "Spela in video"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:178
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:178
+msgid "Click on red text to edit"
+msgstr "Klicka på röd text för att redigera"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:205
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:86
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:177
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:55
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:205
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:86
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:177
+#: signbank/video/templates/uploaded_glossvideos.html:55
+msgid "Your browser does not support the video tag."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:221
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:221
+msgid "Capture new poster image"
+msgstr "Skapa ny titelbild"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:243
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:243
+msgid "Update poster image for video"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:254
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:35
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:254
+#: signbank/dictionary/templates/dictionary/record_video.html:35
+msgid "Close"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:255
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:255
+msgid "Save changes"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:283
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:283
+msgid "No videos available for this gloss."
+msgstr ""
+
+#. Translators: Upload/Add new video to Signbank
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:296
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:307
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:296
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:307
+msgid "Upload Video"
+msgstr "Ladda upp video"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:322
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:322
+msgid "Gloss:"
+msgstr "Glossa:"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:327
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:327
+msgid "Gloss in English:"
+msgstr "Engelsk glossa"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:333
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:333
+msgid "Translations in "
+msgstr "Översättningar till"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:336
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:336
+msgid ""
+"After each translation enter a comma (,) or a semicolon (;).\n"
+"                               Usage of numbers that end with a dot (.) is "
+"allowed (e.g. 11.) and they will not be part\n"
+"                               of translations."
+msgstr ""
+"Sätt ut kommatecken (,) eller semikolon (;) efter de olika översättningarna. Du kan också skriva siffror med punkt (.) efter (t.ex. 11.). Dessa siffor kommer inte att inkluderas i översättningen."
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:345
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:345
+msgid "Notes:"
+msgstr "Mer information:"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:350
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:350
+msgid "Sign language:"
+msgstr "Teckenspråk:"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:356
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:356
+msgid "Dialect:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:361
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:361
+msgid "URL:"
+msgstr "FSTS webbadress"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:374
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:374
+msgid "Add new URL"
+msgstr "Lägg till FSTS webbadress"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:379
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:379
+msgid "Created:"
+msgstr "Skapad:"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:383
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:383
+msgid "Updated:"
+msgstr "Uppdaterad:"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:390
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:390
+msgid "Show complete history"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:399
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:399
+msgid "Change history for"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:403
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:403
+msgid ""
+"This is a list of some historical changes made to this Gloss.\n"
+"                                    By clicking the link, you will be taken "
+"to the admin site and shown the state of\n"
+"                                    this gloss at the chosen time."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:406
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:406
+msgid ""
+"Do not save the changes,\n"
+"                                    unless you want to restore the older "
+"version of this Gloss!"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:418
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:418
+msgid "Gloss fields:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:421
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:421
+msgid "Translations:"
+msgstr "Översättningsmotsvarigheter"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:14
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:14
+msgid "Morphology"
+msgstr ""
+
+#. Translators: Header2
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:38
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:38
+msgid "Delete This Morphology"
+msgstr ""
+
+#. Translators: Question
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:42
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:260
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:42
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:260
+msgid ""
+"Are you sure you want to delete this? This cannot be\n"
+"                                            undone."
+msgstr ""
+
+#. Translators: Confirm delete button for deleting a comment.
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:58
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:184
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:275
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:58
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:184
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:275
+#: templates/comments/list.html:63
+msgid "Confirm Delete"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:91
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:91
+msgid "Add Morphology Definition"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:146
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:146
+msgid "Relations to Other Signs"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:164
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:256
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:164
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:256
+msgid "Delete This Relation"
+msgstr ""
+
+#. Translators:
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:168
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:168
+#, python-format
+msgid ""
+"This action will delete the <strong>%(rel.get_role_display)s</strong> "
+"relation between %(rel.source)s and %(rel.target)s. It cannot be undone."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:211
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:211
+msgid "ID Gloss/Annotation ID Gloss"
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:214
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:214
+msgid "Add Relation"
+msgstr ""
+
+#. Translators: Loan from another language(?)
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:236
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:236
+msgid "Loan"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:302
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:302
+msgid "Related language"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:310
+#: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:310
+msgid "Add Relation to Foreign Sign"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_comments.html:6
+#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:6
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_comments.html:15
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_comments.html:17
+#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:15
+#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:17
+msgid "Comment"
+msgstr "Kommentar"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_comments.html:28
+#: signbank/dictionary/templates/dictionary/gloss_detail_comments.html:28
+msgid "Add comment"
+msgstr "Lägg till kommentar"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:28
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:125
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:28
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:125
+msgid "No relations."
+msgstr "Inga relationer."
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:37
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:37
+msgid "Add relation"
+msgstr "Lägg till relation"
+
+#: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:55
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:151
+#: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:55
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:151
+msgid "No reverse relations."
+msgstr "Inga omvända relationer."
+
+#: build/lib/signbank/dictionary/templates/dictionary/glosstags.html:36
+#: signbank/dictionary/templates/dictionary/glosstags.html:36
+msgid "Add Tags"
+msgstr "Lägg till taggar"
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:5
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:5
+#: signbank/dictionary/templates/dictionary/import_csv.html:5
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:5
+msgid "Import CSV"
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:11
+#: signbank/dictionary/templates/dictionary/import_csv.html:11
+msgid "Upload your changed CSV here:"
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:17
+#: signbank/dictionary/templates/dictionary/import_csv.html:17
+msgid "Submit"
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:25
+#: signbank/dictionary/templates/dictionary/import_csv.html:25
+msgid "The following changes were detected:"
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:30
+#: signbank/dictionary/templates/dictionary/import_csv.html:30
+#, python-format
+msgid ""
+"For %(change.idgloss)s, <em>%(change.human_key)s</em> changes from "
+"%(change.original_human_value)s (%(change.original_machine_value)s) to "
+"%(change.new_human_value)s (%(change.new_machine_value)s)."
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:36
+#: signbank/dictionary/templates/dictionary/import_csv.html:36
+msgid "Make changes"
+msgstr ""
+
+#. Translators: Submit button
+#: build/lib/signbank/dictionary/templates/dictionary/import_csv.html:42
+#: signbank/dictionary/templates/dictionary/import_csv.html:42
+msgid "Changes are live."
+msgstr ""
+
+#. Translators:
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:11
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:11
+msgid "Import Glosses from a CSV file"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:14
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:14
+msgid ""
+"CSV-file should be constructed so that the first column is gloss and\n"
+"                optionally the second column is gloss in english"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:16
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:16
+msgid ""
+"The first row of the file will not be added because it is expected to be the "
+"column\n"
+"                headers."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:18
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:18
+msgid ""
+"The CSV-file's character set needs to be UTF-8. When exporting the CSV-"
+"file,\n"
+"                make sure that you select UTF-8 charset."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:27
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:27
+msgid ""
+"Make sure that you selected the correct\n"
+"                Dataset before submitting!"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv.html:30
+#: signbank/dictionary/templates/dictionary/import_gloss_csv.html:30
+msgid "Import glosses from CSV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:5
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:5
+msgid "Confirm Import CSV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:10
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:10
+msgid "Glosses to be added to"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:11
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:11
+msgid "Total number of glosses to be added:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:25
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:25
+msgid "Glosses that will not be added because they already exist in"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:32
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:32
+msgid "No glosses can be added!"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:33
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:58
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:33
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:58
+msgid "Return to the form"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:41
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:41
+msgid "Confirm"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:47
+#: signbank/dictionary/templates/dictionary/import_gloss_csv_confirmation.html:47
+msgid "The following glosses were added to"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:5
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:9
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:5
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:9
+msgid "Manage lexicons"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:10
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:10
+msgid ""
+"On this page you can see all the lexicons available on this Signbank. You "
+"can view the Lexicons and apply for access to Lexicons."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:11
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:11
+msgid "You have access to the following Lexicons"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:20
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:54
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:20
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:54
+msgid "Permissions?"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:21
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:55
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:21
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:55
+msgid "Public?"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:27
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:66
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:27
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:66
+msgid "ECV (externally controlled vocabulary)"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:27
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:66
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:27
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:66
+msgid "A vocabulary for ELAN"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:28
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:67
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:28
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:67
+msgid "Public ECV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:31
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:31
+msgid "Advanced ECV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:34
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:34
+msgid "Users with permissions"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:43
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:43
+msgid "You don't seem to have access to any Lexicons."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:45
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:45
+msgid "You do NOT have access to the following Lexicons"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:58
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:58
+msgid "Apply for permissions"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:73
+#: signbank/dictionary/templates/dictionary/manage_lexicons.html:73
+msgid "You seem to have access to all existing Lexicons."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/network_graph.html:8
+#: signbank/dictionary/templates/dictionary/network_graph.html:8
+msgid "Gloss relations (Network Graph) "
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/network_graph.html:8
+#: signbank/dictionary/templates/dictionary/network_graph.html:8
+#: templates/baselayout.html:9 templates/baselayout.html:79
+#: templates/baselayout.html:82
+msgid "Finnish Signbank"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/network_graph.html:31
+#: signbank/dictionary/templates/dictionary/network_graph.html:31
+msgid "Choose"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/network_graph.html:35
+#: signbank/dictionary/templates/dictionary/network_graph.html:35
+msgid "Start rendering"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/network_graph.html:36
+#: signbank/dictionary/templates/dictionary/network_graph.html:36
+msgid "Stop rendering"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:10
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:11
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:10
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:11
+#: templates/baselayout.html:18 templates/baselayout.html:19
+msgctxt "meta"
+msgid "Finnish Signbank"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:54
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:54
+msgid "<em>No translations.</em>"
+msgstr "Inga översättningsmotsvarigheter"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:64
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:64
+msgid "No notes."
+msgstr "Ingen mer information"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:102
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:102
+msgid "Relations to glosses"
+msgstr "Relationer till andra glossor"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:110
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:110
+msgid "Relations from this gloss"
+msgstr "Relationer från denna glossa"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:136
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:136
+msgid "Relations to this gloss"
+msgstr "Relationer till denna glossa"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:169
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:169
+msgid "Show comments"
+msgstr "Visa kommentarer"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:190
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:190
+#: templates/comments/list.html:47
+msgid "No comments."
+msgstr "Inga kommentarer."
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:5
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:5
+msgid "Search Signs"
+msgstr "Sök tecken"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:44
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:44
+msgid "Search signs"
+msgstr "Sök tecken"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:46
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:46
+msgid "Help"
+msgstr "Hjälp"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:53
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:53
+msgid "How to use the search page?"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:61
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:61
+msgid "Instructions for how to use the search page."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:68
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:68
+msgid "Browse glosses:"
+msgstr "Visa glossor:"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:116
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:116
+msgid "Description of the lexicons"
+msgstr "Beskrivning av lexikon"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:122
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:122
+msgid "Copyright and license:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:125
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:125
+msgid "ELAN ECV"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:136
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:136
+msgctxt "public_search"
+msgid "Search"
+msgstr "Sök"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:159
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:159
+msgctxt "videocount"
+msgid "Videos"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:180
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:180
+msgid "No video."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:185
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:185
+msgctxt "publicglosslist"
+msgid "Translation equivalents"
+msgstr "Översättningsmotsvarigheter"
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:190
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:190
+msgid "No translation equivalents yet"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:200
+#: signbank/dictionary/templates/dictionary/public_gloss_list.html:200
+msgid "No results."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:14
+#: signbank/dictionary/templates/dictionary/record_video.html:14
+msgid "Record a video for"
+msgstr "Spela in video"
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:21
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:92
+#: signbank/dictionary/templates/dictionary/record_video.html:21
+#: signbank/dictionary/templates/dictionary/record_video.html:92
+msgid "Start Recording"
+msgstr "Spela in"
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:25
+#: signbank/dictionary/templates/dictionary/record_video.html:25
+msgid "Upload"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:93
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:98
+#: signbank/dictionary/templates/dictionary/record_video.html:93
+#: signbank/dictionary/templates/dictionary/record_video.html:98
+msgid "Stop Recording"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:94
+#: signbank/dictionary/templates/dictionary/record_video.html:94
+msgid ""
+"Your camera or browser does NOT supports selected resolutions or frame-"
+"rates. \\n\\nPlease select 'default' resolutions."
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:95
+#: signbank/dictionary/templates/dictionary/record_video.html:95
+msgid "No recording found"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:96
+#: signbank/dictionary/templates/dictionary/record_video.html:96
+msgid "Click to download from server"
+msgstr ""
+
+#: build/lib/signbank/dictionary/templates/dictionary/record_video.html:97
+#: signbank/dictionary/templates/dictionary/record_video.html:97
+msgid "Upload completed."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:40 signbank/dictionary/update.py:40
+msgid "You do not have permissions to edit Glosses of this dataset/lexicon."
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:85 signbank/dictionary/update.py:85
+msgid "Unknown Dialect"
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:98 signbank/dictionary/update.py:98
+msgid "GlossVideo does not exist"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:122
+#: signbank/dictionary/update.py:122
+msgid "Unknown field"
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:166
+#: signbank/dictionary/update.py:166
+msgid "Error: Unable to change videofiles names."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:182
+#: signbank/dictionary/update.py:182
+msgid "A Language does not exist with language_code: "
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:186
+#: signbank/dictionary/update.py:186
+msgid ""
+"Multiple Languages with the same language_code exist, cannot edit because it "
+"is unclear which languages translations to edit."
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:209
+#: signbank/dictionary/update.py:209
+msgid "Bad Relation ID"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:213
+#: build/lib/signbank/dictionary/update.py:261
+#: signbank/dictionary/update.py:213 signbank/dictionary/update.py:261
+msgid "Relation doesn't match gloss"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:237
+#: build/lib/signbank/dictionary/update.py:474
+#: signbank/dictionary/update.py:237 signbank/dictionary/update.py:474
+msgid "Badly formed gloss identifier"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:241
+#: build/lib/signbank/dictionary/update.py:281
+#: build/lib/signbank/dictionary/update.py:478
+#: signbank/dictionary/update.py:241 signbank/dictionary/update.py:281
+#: signbank/dictionary/update.py:478
+msgid "Unknown form field"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:256
+#: signbank/dictionary/update.py:256
+msgid "Bad RelationToForeignSign ID"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:355
+#: build/lib/signbank/dictionary/update.py:395
+#: signbank/dictionary/update.py:355 signbank/dictionary/update.py:395
+msgid "Source gloss not found."
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:367
+#: signbank/dictionary/update.py:367
+msgid "Target gloss not found."
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:407
+#: signbank/dictionary/update.py:407
+msgid "Form not valid"
+msgstr ""
+
+#. Translators: Htt404
+#: build/lib/signbank/dictionary/update.py:435
+#: signbank/dictionary/update.py:435
+msgid "Incorrect request"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:448
+#: signbank/dictionary/update.py:448
+msgid "Bad Morphology Definition ID"
+msgstr ""
+
+#. Translators: HttpResponseBadRequest
+#: build/lib/signbank/dictionary/update.py:453
+#: signbank/dictionary/update.py:453
+msgid "Morphology Definition doesn't match gloss"
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:553
+#: signbank/dictionary/update.py:553
+msgid "You do not have permissions to import glosses to this lexicon."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:563
+#: signbank/dictionary/update.py:563
+msgid "Cannot open the file:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:567
+#: signbank/dictionary/update.py:567
+msgid "File must be UTF-8 encoded!"
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:596
+#: signbank/dictionary/update.py:596
+msgid ""
+"The provided CSV-file does not meet the requirements or there is some other "
+"problem."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:620
+#: signbank/dictionary/update.py:620
+msgid "Cancelled adding CSV data."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:647
+#: signbank/dictionary/update.py:647
+msgid "Glosses were added succesfully."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:667
+#: signbank/dictionary/update.py:667
+msgid ""
+"You do not have permissions to delete relations from glosses of this lexicon."
+msgstr ""
+
+#: build/lib/signbank/dictionary/update.py:683
+#: signbank/dictionary/update.py:683
+msgid ""
+"You do not have permissions to add relations to glosses of this lexicon."
+msgstr ""
+
+#: build/lib/signbank/dictionary/views.py:37 signbank/dictionary/views.py:37
+msgid "You do not have permissions to create glosses for this lexicon."
+msgstr ""
+
+#: build/lib/signbank/dictionary/views.py:124 signbank/dictionary/views.py:124
+msgid "applied for permissions to:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/views.py:127 signbank/dictionary/views.py:127
+msgid "applied for permissions to lexicon:"
+msgstr ""
+
+#: build/lib/signbank/dictionary/views.py:131 signbank/dictionary/views.py:131
+msgid "Successfully applied permissions for"
+msgstr ""
+
+#: build/lib/signbank/settings/base.py:50 signbank/settings/base.py:52
+msgid "Finnish"
+msgstr "finska"
+
+#: build/lib/signbank/settings/base.py:51 signbank/settings/base.py:53
+msgid "English"
+msgstr "engelska"
+
+#: build/lib/signbank/tools.py:83 signbank/tools.py:81
+msgid ""
+"Database storage space usage is high, be prepared increase database quota. "
+"If the database gets over the quota maximum, data will be lost!"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:13 signbank/video/admin.py:13
+msgid "Has gloss"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:18 build/lib/signbank/video/admin.py:35
+#: signbank/video/admin.py:18 signbank/video/admin.py:35
+msgid "Yes"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:19 build/lib/signbank/video/admin.py:36
+#: signbank/video/admin.py:19 signbank/video/admin.py:36
+msgid "No"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:30 signbank/video/admin.py:30
+msgid "Has poster"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:49 signbank/video/admin.py:49
+msgid "Gloss has video count of"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:54 signbank/video/admin.py:54
+msgid "More than 1"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:55 signbank/video/admin.py:55
+msgid "More than 2"
+msgstr ""
+
+#: build/lib/signbank/video/admin.py:56 signbank/video/admin.py:56
+msgid "Less than 2"
+msgstr ""
+
+#: build/lib/signbank/video/models.py:37 signbank/video/models.py:35
+msgid "Title"
+msgstr "Titel"
+
+#: build/lib/signbank/video/models.py:38 signbank/video/models.py:36
+msgid "Descriptive name of the video."
+msgstr "Ett beskrivande namn på video"
+
+#: build/lib/signbank/video/models.py:40 signbank/video/models.py:38
+msgid "Video file"
+msgstr "Videofil"
+
+#: build/lib/signbank/video/models.py:41 signbank/video/models.py:39
+msgid "Video file."
+msgstr "Videofil."
+
+#: build/lib/signbank/video/models.py:43 signbank/video/models.py:41
+msgid "Poster file"
+msgstr ""
+
+#: build/lib/signbank/video/models.py:45 signbank/video/models.py:43
+msgid "Still image representation of the video."
+msgstr ""
+
+#: build/lib/signbank/video/models.py:47 signbank/video/models.py:45
+msgid "Public"
+msgstr ""
+
+#: build/lib/signbank/video/models.py:50 signbank/video/models.py:48
+msgid "The gloss this GlossVideo is related to."
+msgstr ""
+
+#: build/lib/signbank/video/models.py:52 signbank/video/models.py:50
+msgid "Glossvideo dataset"
+msgstr ""
+
+#: build/lib/signbank/video/models.py:53 signbank/video/models.py:51
+msgid ""
+"Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
+"was uploaded."
+msgstr ""
+
+#. Translators: GlossVideo: version
+#. : Version number of the GlossVideo within Glosses videos.
+#: build/lib/signbank/video/models.py:57 signbank/video/models.py:55
+msgid "Version"
+msgstr ""
+
+#: build/lib/signbank/video/models.py:58 signbank/video/models.py:56
+msgid ""
+"A number that represents the order of the Glossvideo's in a gloss page. "
+"Smaller number means higher priority."
+msgstr ""
+
+#: build/lib/signbank/video/models.py:63 signbank/video/models.py:61
+msgid "Gloss video"
+msgstr ""
+
+#: build/lib/signbank/video/models.py:64 signbank/video/models.py:62
+msgid "Gloss videos"
+msgstr ""
+
+#: build/lib/signbank/video/templates/addvideos.html:3
+#: signbank/video/templates/addvideos.html:3
+msgid "Upload Videos"
+msgstr "Ladda upp videor"
+
+#: build/lib/signbank/video/templates/addvideos.html:27
+#: signbank/video/templates/addvideos.html:27 templates/menu.html:46
+msgid "Upload videos"
+msgstr "Ladda upp videor"
+
+#: build/lib/signbank/video/templates/addvideos.html:27
+#: signbank/video/templates/addvideos.html:27
+msgid "You can select multiple videos to be uploaded at once"
+msgstr ""
+
+#: build/lib/signbank/video/templates/addvideos.html:34
+#: signbank/video/templates/addvideos.html:34
+msgid "File"
+msgstr ""
+
+#: build/lib/signbank/video/templates/addvideos.html:35
+#: signbank/video/templates/addvideos.html:35
+msgid "selected files"
+msgstr ""
+
+#: build/lib/signbank/video/templates/addvideos.html:35
+#: signbank/video/templates/addvideos.html:35
+msgid "total size"
+msgstr ""
+
+#: build/lib/signbank/video/templates/addvideos.html:36
+#: signbank/video/templates/addvideos.html:36
+msgid "Send file(s)"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:4
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:10
+#: signbank/video/templates/uploaded_glossvideos.html:4
+#: signbank/video/templates/uploaded_glossvideos.html:10
+msgid "Manage Uploaded Videos"
+msgstr "Hantera uppladdade videor"
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:10
+#: signbank/video/templates/uploaded_glossvideos.html:10
+msgid "Connect Glossvideos to Glosses"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:15
+#: signbank/video/templates/uploaded_glossvideos.html:15
+msgid "Select the dataset you want to work with!"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:18
+#: signbank/video/templates/uploaded_glossvideos.html:18
+msgid "Ok"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:26
+#: signbank/video/templates/uploaded_glossvideos.html:26
+#: templates/comments/search_comments.html:49
+msgid "previous"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:32
+#: signbank/video/templates/uploaded_glossvideos.html:32
+#: templates/comments/search_comments.html:55
+msgid "next"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:35
+#: signbank/video/templates/uploaded_glossvideos.html:35
+#: templates/comments/search_comments.html:58
+msgid "Total of"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:35
+#: signbank/video/templates/uploaded_glossvideos.html:35
+msgid "videos"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:73
+#: signbank/video/templates/uploaded_glossvideos.html:73
+msgid "Save all"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:146
+#: signbank/video/templates/uploaded_glossvideos.html:146
+msgid "GlossVideo successfully updated!"
+msgstr ""
+
+#: build/lib/signbank/video/templates/uploaded_glossvideos.html:153
+#: signbank/video/templates/uploaded_glossvideos.html:153
+msgid "Did you provide all values as id numbers?"
+msgstr ""
+
+#: build/lib/signbank/video/views.py:64 build/lib/signbank/video/views.py:179
+#: signbank/video/views.py:64 signbank/video/views.py:179
+msgid "You do not have permissions to upload videos for this lexicon."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:100 signbank/video/views.py:100
+msgid "You do not have permissions to change order for videos of this lexicon."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:137 signbank/video/views.py:137
+msgid ""
+"You do not have permissions to add/change poster images for glosses videos "
+"of this lexicon."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:190 signbank/video/views.py:190
+msgid "You don't have permissions to upload videos."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:195 signbank/video/views.py:195
+msgid "videos were successfully uploaded."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:198 signbank/video/views.py:198
+msgid "Could not upload the following file(s)"
+msgstr ""
+
+#: build/lib/signbank/video/views.py:256 signbank/video/views.py:256
+msgid "You do not have permissions to view the selected lexicon."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:301 signbank/video/views.py:299
+#, python-format
+msgid "You did not provide the value as a number for: %s "
+msgstr ""
+
+#: build/lib/signbank/video/views.py:314 signbank/video/views.py:312
+msgid ""
+"You do not have permissions to add videos to the lexicon of selected gloss."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:333 signbank/video/views.py:331
+msgid ""
+"You do not have permissions to add/change poster images for this lexicon."
+msgstr ""
+
+#: build/lib/signbank/video/views.py:361 build/lib/signbank/video/views.py:387
+#: signbank/video/views.py:359 signbank/video/views.py:385
+msgid "You do not have permissions to change order of videos for this lexicon."
+msgstr ""
+
+#. Translators: Title for error page 403
+#: templates/403.html:7
+msgid "Permission Denied"
+msgstr ""
+
+#. Translators: Text for error page 403
+#: templates/403.html:9
+msgid "You do not have permission to view the requested page."
+msgstr ""
+
+#: templates/403.html:11
+msgid "Exception:"
+msgstr ""
+
+#. Translators: Error 404 page
+#: templates/404.html:7
+msgid ""
+"The requested page was not found on the server. Please use\n"
+"the menu above to navigate to another part of the site. \n"
+"If you continue to experience problems, please contact\n"
+"the webmaster at "
+msgstr ""
+
+#. Translators: Title of page - error 500
+#: templates/500.html:10
+msgid "Server Error"
+msgstr ""
+
+#. Translators: Information about error 500
+#: templates/500.html:12
+msgid ""
+"There's been an error. It's been reported to the site administrators\n"
+"via e-mail and should be fixed shortly. Thanks for your patience. "
+msgstr ""
+
+#: templates/baselayout.html:13 templates/baselayout.html:16
+msgctxt "meta"
+msgid ""
+"Finnish Signbank is a lexical database of Finnish Sign Language (FinSL) and "
+"Finland-Swedish Sign Language (FinSSL)."
+msgstr ""
+
+#: templates/baselayout.html:93
+msgid "(No content)"
+msgstr ""
+
+#: templates/baselayout.html:102
+msgid "University of Jyväskylä"
+msgstr ""
+
+#: templates/baselayout.html:110
+msgid "Finnish Association of the Deaf"
+msgstr ""
+
+#: templates/baselayout.html:113
+msgid "The Language Bank of Finland"
+msgstr ""
+
+#: templates/baselayout.html:116
+msgid "CSC - IT center for science"
+msgstr ""
+
+#: templates/comments/latest_comments.html:3 templates/menu.html:54
+msgid "Latest comments"
+msgstr "Nyaste kommentarerna"
+
+#: templates/comments/latest_comments_page.html:3
+msgid "Latest Comments"
+msgstr "Nyaste kommentarerna"
+
+#: templates/comments/list.html:21
+msgid "Edit"
+msgstr ""
+
+#: templates/comments/list.html:28
+msgid "Delete"
+msgstr ""
+
+#: templates/comments/list.html:55
+msgid "Delete comment?"
+msgstr ""
+
+#: templates/comments/list.html:75
+msgid "Edit comment"
+msgstr ""
+
+#. Translators: Title for comments search page
+#: templates/comments/search_comments.html:6
+msgid "Search Comments"
+msgstr ""
+
+#: templates/comments/search_comments.html:9 templates/menu.html:55
+msgid "Search comments"
+msgstr ""
+
+#: templates/comments/search_comments.html:58
+msgctxt "count"
+msgid "comments"
+msgstr ""
+
+#: templates/django_registration/activate.html:4
+msgid "Activation Failure"
+msgstr ""
+
+#: templates/django_registration/activate.html:8
+#: templates/django_registration/activation_failed.html:8
+msgid "Account activation failed."
+msgstr ""
+
+#: templates/django_registration/activation_complete.html:4
+msgid "Activation Complete"
+msgstr ""
+
+#: templates/django_registration/activation_complete.html:8
+msgid "Account activation completed successfully."
+msgstr ""
+
+#: templates/django_registration/activation_email_body.txt:2
+#, python-format
+msgid ""
+"\n"
+"You (or someone pretending to be you) have asked to register an account at\n"
+"%(site_name)s.  If this wasn't you, please ignore this email\n"
+"and your address will be removed from our records.\n"
+msgstr ""
+
+#: templates/django_registration/activation_email_body.txt:7
+#, python-format
+msgid ""
+"\n"
+"To activate this account, please click the following link within the next\n"
+"%(expiration_days)s days:\n"
+msgstr ""
+
+#: templates/django_registration/activation_email_body.txt:14
+#, python-format
+msgid ""
+"\n"
+"Sincerely,\n"
+"The %(site_name)s Team\n"
+msgstr ""
+
+#: templates/django_registration/activation_email_subject.txt:1
+msgid "Account activation on"
+msgstr ""
+
+#: templates/django_registration/activation_failed.html:4
+msgid "Account activation failed"
+msgstr ""
+
+#: templates/django_registration/activation_failed.html:9
+msgid "Did you remember to consume the activation link within 7 days?"
+msgstr ""
+
+#: templates/django_registration/password_reset_email.txt:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: templates/django_registration/password_reset_email.txt:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/django_registration/password_reset_email.txt:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: templates/django_registration/password_reset_email.txt:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: templates/django_registration/password_reset_email.txt:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: templates/django_registration/registration_closed.html:5
+msgid "Registration closed"
+msgstr ""
+
+#. Translators: Registration closed text
+#: templates/django_registration/registration_closed.html:7
+msgid ""
+"Creating new user accounts is not possible at the moment, this feature is "
+"currently disabled.\n"
+"       "
+msgstr ""
+
+#: templates/django_registration/registration_closed.html:9
+msgid "For more information, contact the administrators of this site."
+msgstr ""
+
+#. Translators: Registration completion text
+#: templates/django_registration/registration_complete.html:7
+msgid ""
+"Thank you for your registration details. An email has\n"
+"   been sent to your nominated address. Please check your\n"
+"   email for details of how to complete the registration\n"
+"   process."
+msgstr ""
+
+#: templates/django_registration/registration_form.html:5
+msgid "Create an Account"
+msgstr "Skapa användarnamn"
+
+#. Translators: Title for create account
+#: templates/django_registration/registration_form.html:10
+#: templates/django_registration/registration_form.html:34
+#: templates/langbar.html:28 templates/registration/login.html:24
+msgid "Create account"
+msgstr "Skapa användarnamn"
+
+#: templates/django_registration/registration_form.html:18
+msgid "Create an account by filling in the information"
+msgstr ""
+
+#: templates/django_registration/registration_form.html:26
+msgid "Terms of service"
+msgstr "Användarvillkor"
+
+#: templates/django_registration/registration_form.html:29
+msgid ""
+"By creating an account on this site you (the \"user\") agree to the "
+"following conditions:"
+msgstr ""
+
+#: templates/django_registration/registration_form.html:39
+msgid "Error"
+msgstr ""
+
+#: templates/django_registration/registration_form.html:41
+msgid "Creating new accounts not permitted for users that are Signed in!"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:2
+msgid "Frequently asked questions about account creation"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:8
+msgid "Who can create an account?"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:14
+msgid ""
+"Only create an account if you have been in contact with the staff beforehand."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:15
+msgid ""
+"Even though anyone can create an account, one needs to get additional user "
+"permissions to be able to do anything.\n"
+"                  These permissions can only be set by the staff, and "
+"therefore you should contact the staff before creating an account."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:17
+msgid ""
+"Permissions are typically granted to persons doing sign language research or "
+"corpus annotation."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:25
+msgid "What can you do with an account?"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:31
+msgid ""
+"Depending on the level of user permissions, you can see more detailed data "
+"about glosses, add data, and edit data."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:32
+msgid ""
+"Please note that you can use the lexicons even without creating an account."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:33
+msgid ""
+"It is possible to use the lexicons for example in teaching and studyig of "
+"sign languages,\n"
+"                and you can also download the videos according to the "
+"Creative Commons BY-NC-SA license."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:42
+msgid "How to gain user permissions?"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:49
+msgid ""
+"You can apply for permissions to view more detailed information about "
+"specific lexicons on"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:50
+msgid "the Lexicons page"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:51
+msgid ""
+"which you can access once you have created an account (from the menu: Manage-"
+">Lexicons)"
+msgstr ""
+
+#: templates/django_registration/registration_info.html:52
+msgid "Contact the site maintainer or the site staff."
+msgstr ""
+
+#: templates/django_registration/registration_info.html:53
+msgid "Check the About page for contact information:"
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:3
+msgid "Last updated:"
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:5
+msgid "You have read and agree to the"
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:5
+msgid "privacy policy"
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:7
+msgid "You are over 16 years old."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:7
+msgid ""
+"In case you are under 16 years old, you must hand us an approval from your "
+"parents."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:8
+msgid ""
+"The user will not abuse the service, any malicious activity is strictly "
+"prohibited."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:9
+msgid ""
+"Any data on the site is confidential unless stated otherwise, and should be "
+"handled as such."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:10
+msgid ""
+"The user agrees to not copy or spread any data or information found on the "
+"site, unless given permission or if the license allows it."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:11
+msgid ""
+"The user is responsible for making sure that laws and copyrights are "
+"followed when submitting data."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:12
+msgid ""
+"The users account can be terminated or access limited without a notice, if "
+"the user fails to comply with the rules."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:13
+msgid ""
+"When requestion account termination, the user name will not be deleted, but "
+"other personal information attached to the account will be removed. If the "
+"user wishes to have anonymity, a pseudonym should be used as the user name."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:14
+msgid ""
+"When submitting data to a lexicon, it will be licensed according to the "
+"license used by the lexicon, and the user agrees to hand over any remaining "
+"copyrights to the maintainer of the lexicon."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:15
+msgid ""
+"Removal of data (videos, pictures, text) is only possible if the maintainer "
+"of the lexicon agrees to it. The user should keep this in mind before "
+"submitting any data."
+msgstr ""
+
+#: templates/django_registration/terms_of_service.html:16
+msgid "Any data submitted by the user can be made publicly available."
+msgstr ""
+
+#. Translators: Edit page button in baselayout
+#: templates/flatpages/default.html:20
+msgid "Edit Page"
+msgstr ""
+
+#: templates/flatpages/tos.html:9
+msgid "Terms of Service"
+msgstr ""
+
+#: templates/infopage.html:5
+msgid "Links and Statistics"
+msgstr ""
+
+#: templates/infopage.html:12 templates/menu.html:52
+msgid "Links and statistics"
+msgstr ""
+
+#: templates/infopage.html:13
+msgid ""
+"On this page you can find numerical data about the database, and links to "
+"externally controlled vocabularies to be used in ELAN."
+msgstr ""
+
+#: templates/infopage.html:21
+msgid "All lexicons"
+msgstr ""
+
+#: templates/infopage.html:26 templates/infopage.html:116
+msgid "Gloss count"
+msgstr ""
+
+#: templates/infopage.html:30 templates/infopage.html:120
+msgid "Glosses with video"
+msgstr ""
+
+#: templates/infopage.html:34 templates/infopage.html:124
+msgid "Video count"
+msgstr ""
+
+#: templates/infopage.html:38 templates/infopage.html:128
+msgid "Videos not connected to a Gloss"
+msgstr ""
+
+#: templates/infopage.html:42 templates/infopage.html:132
+msgid "Videos with poster image"
+msgstr ""
+
+#: templates/infopage.html:46 templates/infopage.html:136
+msgid "Videos without poster image"
+msgstr ""
+
+#: templates/infopage.html:64
+msgid "ELAN externally controlled vocabulary links"
+msgstr ""
+
+#: templates/infopage.html:76
+msgid "Signbank Wiki"
+msgstr ""
+
+#: templates/infopage.html:77
+msgid "Help and tutorials"
+msgstr ""
+
+#: templates/infopage.html:85
+msgid "Database storage space usage"
+msgstr ""
+
+#: templates/infopage.html:91
+msgid "Space used"
+msgstr ""
+
+#: templates/infopage.html:96
+msgid "Files that do not exist"
+msgstr ""
+
+#: templates/langbar.html:14
+msgid "Django admin"
+msgstr ""
+
+#: templates/langbar.html:17
+msgid "Change password"
+msgstr "Byt lösenord"
+
+#: templates/langbar.html:20
+msgid "Sign out"
+msgstr "Logga ut"
+
+#. Translators: Text sign in - Log in form
+#. Translators: Sign in button in login form
+#: templates/langbar.html:26 templates/registration/login.html:9
+#: templates/registration/login.html:16
+msgid "Sign in"
+msgstr "Logga in"
+
+#. Translators: Button to toggle navigation
+#: templates/menu.html:8
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/menu.html:17
+msgid "Home"
+msgstr "Startsida"
+
+#: templates/menu.html:21
+msgid "About"
+msgstr "Om"
+
+#: templates/menu.html:28
+msgid "Wiki"
+msgstr "Wiki"
+
+#: templates/menu.html:32
+msgid "Signs"
+msgstr "Tecken"
+
+#: templates/menu.html:36
+msgctxt "menu-link"
+msgid "Advanced search"
+msgstr "Avancerad sökning"
+
+#: templates/menu.html:37
+msgid "Search relations"
+msgstr "Sök relationer"
+
+#: templates/menu.html:41
+msgid "Manage"
+msgstr "Hantera"
+
+#: templates/menu.html:44
+msgid "Create gloss"
+msgstr "Skapa glossa"
+
+#: templates/menu.html:47
+msgid "Manage uploaded videos"
+msgstr "Hantera uppladdade videor"
+
+#: templates/menu.html:50
+msgid "CSV import"
+msgstr "Importera CSV"
+
+#: templates/menu.html:59
+msgid "Network Graphs"
+msgstr ""
+
+#: templates/notifications/list.html:13
+msgid "Notifications"
+msgstr ""
+
+#: templates/notifications/list.html:14
+msgid "Mark all as read"
+msgstr ""
+
+#: templates/notifications/notice.html:14
+msgid "ago"
+msgstr ""
+
+#. Translators: Privacy policy consent text.
+#: templates/policyconsent.html:19
+msgctxt "consent"
+msgid ""
+"This site tracks you for analytics purposes, and uses cookies to ensure you "
+"get the best experience on our website. By using the site you agree to this, "
+"to our Privacy Policy, and to our Terms of Service."
+msgstr ""
+
+#. Translators: Privacy policy consent: I understand button.
+#: templates/policyconsent.html:21
+msgctxt "consent"
+msgid "Got it!"
+msgstr ""
+
+#. Translators: Privacy policy consent: Privacy policy link name.
+#: templates/policyconsent.html:23
+msgctxt "consent"
+msgid "Learn more"
+msgstr ""
+
+#: templates/registration/logged_out.html:4
+msgid "Logged Out"
+msgstr ""
+
+#: templates/registration/logged_out.html:8
+msgid "Successfully logged out"
+msgstr ""
+
+#: templates/registration/login.html:5
+msgid "Sign In"
+msgstr "Logga in"
+
+#: templates/registration/login.html:21
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/registration/login.html:22
+msgid "Reset password"
+msgstr ""
+
+#: templates/registration/login.html:23
+msgid "Not a member?"
+msgstr ""
+
+#: templates/setlang.html:9
+msgid "Language selection"
+msgstr ""
