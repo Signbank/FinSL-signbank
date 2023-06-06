@@ -1152,7 +1152,7 @@ msgstr "Engelsk glossa"
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:333
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:333
 msgid "Translations in "
-msgstr "Översättningar till"
+msgstr "Översättningar till "
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:336
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:336
@@ -1994,7 +1994,7 @@ msgstr "Titel"
 
 #: build/lib/signbank/video/models.py:38 signbank/video/models.py:36
 msgid "Descriptive name of the video."
-msgstr "Ett beskrivande namn på video"
+msgstr "Ett beskrivande namn på videon"
 
 #: build/lib/signbank/video/models.py:40 signbank/video/models.py:38
 msgid "Video file"
