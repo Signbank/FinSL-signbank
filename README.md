@@ -192,8 +192,7 @@ To run the application locally you will need:
 
 ### Running the app
 
-1. Clone the project: `git clone git@bitbucket.org:rabidtech/THIS_REPO.git`
-2. Create `.env` file by copying data from 1Password.
+1. Run `cp example.env .env`
 
 To start the application using docker-compose, simply run:
 
@@ -202,7 +201,14 @@ To start the application using docker-compose, simply run:
 And the service will start bound to port 8000 on your host, with a companion Postgres database
 running in its own container, and an SMTP mailcatcher that will receive outbound mail from the application bound to port 1025 on your host.
 
-You may wish to run `docker-compose run backend ./bin/develop.py createsuperuser` to set up an admin user.
+#### Local data
+
+To populate the database locally, download the latest database dump from UAT using the 
+[heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), following these 
+[instructions](https://devcenter.heroku.com/articles/heroku-postgres-import-export) and restore 
+the dump in your local database.
+
+You may wish to run `docker-compose run backend ./bin/develop.py createsuperuser` to set up an admin user afterwards.
 
 If Docker is not being used, you can run `./bin/develop.py createsuperuser` to set up an admin user and an initial dataset. You can start a server using `./bin/develop.py runserver '127.0.0.1:8000'` that is bound to localhost, port 8000. It's up to you to ensure that an SMTP and Postgres server are available to the application if not using docker.
 
