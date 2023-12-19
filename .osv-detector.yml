@@ -3,3 +3,4 @@ ignore:
   - GHSA-gxr4-xjj5-5px2
   - GHSA-jpcq-cgw6-v4j6
   - GHSA-rmxg-73gg-4p98
+  - GHSA-257q-pv89-v3xv # GHSA says affected versions are jQuery v.2.2.0 until v.3.5.0

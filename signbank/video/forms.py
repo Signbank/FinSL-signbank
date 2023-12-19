@@ -58,12 +58,31 @@ class GlossVideoUpdateForm(forms.ModelForm):
         fields = ['dataset', 'videofile', 'gloss', 'video_type']
 
 
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        single_file_clean = super().clean
+        if isinstance(data, (list, tuple)):
+            result = [single_file_clean(d, initial) for d in data]
+        else:
+            result = single_file_clean(data, initial)
+        return result
+
+
 class MultipleVideoUploadForm(forms.Form):
     """Form for uploading multiple videos."""
-    file_field = forms.FileField(widget=forms.ClearableFileInput(
-        attrs={'multiple': True, 'onchange': 'updateSize();'}))
+    file_field = MultipleFileField()
     dataset = forms.ModelChoiceField(
         queryset=Dataset.objects.all(), required=True, empty_label=None)
+
+    file_field.widget.attrs.update({'onchange': 'updateSize();'})
 
     def clean_file_field(self):
         data = self.cleaned_data['file_field']
