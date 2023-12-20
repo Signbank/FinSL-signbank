@@ -258,3 +258,12 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(
 # We need to specify this because django-summernote, the rich text editor used for flatpage editing, embeds itself into
 # the page using an iframe
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+# There is the need to use some specific tags in the code, so their names are settings and they
+# have been added through migrations to facilitate that.
+TAG_READY_FOR_VALIDATION = "ready-for-validation"
+TAG_VALIDATION_CHECK_RESULTS = "validation:check-results"
+TAG_VALIDATION_PASS = "validation:pass"
+TAG_VALIDATION_FAIL = "validation:fail"
+TAG_VALIDATION_HOLD = "validation:hold"
