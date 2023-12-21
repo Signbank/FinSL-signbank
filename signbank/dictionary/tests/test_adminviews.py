@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import csv
+import io
+
 from django.contrib.auth.models import AnonymousUser, Permission, User
 from django.test import Client, TestCase
 from django.urls import reverse
@@ -15,14 +18,14 @@ class GlossListViewTestCase(TestCase):
         self.user.save()
         # Create client for user with permission
         self.client = Client()
-        self.client.login(username="test", password="test")
+        self.client.force_login(self.user)
 
         # Create user with no permission
         self.user_noperm = User.objects.create_user(username="noperm", email=None, password="noperm")
-        self.user_noperm.save()
+
         # Create client for user with no permission
         self.client_noperm = Client()
-        self.client_noperm.login(username="noperm", password="noperm")
+        self.client_noperm.force_login(self.user_noperm)
 
     def test_get_user_not_authenticated(self):
         """Test that non-authenticated user can't access the search page via GET."""
@@ -48,10 +51,36 @@ class GlossListViewTestCase(TestCase):
         permission = Permission.objects.get(codename='export_csv')
         self.user.user_permissions.add(permission)
         self.user.save()
-        response = self.client.get(reverse('dictionary:admin_gloss_list'), { 'format': 'CSV' })
+        response = self.client.get(reverse('dictionary:admin_gloss_list'), { 'format': 'CSV-standard' })
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers['Content-Type'], 'text/csv; charset=utf-8')
         self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename="dictionary-export.csv"')
+
+    def test_get_ready_for_validation_csv(self):
+        """
+        Tests that a CSV file can be successfully downloaded containing glosses that are
+        tagged ready for validation
+        """
+        permission = Permission.objects.get(codename="export_csv")
+        self.user.user_permissions.add(permission)
+        self.user.save()
+
+        response = self.client.get(
+            reverse("dictionary:admin_gloss_list"),
+            {"format": "CSV-ready-for-validation"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Content-Type"], "text/csv; charset=utf-8")
+        self.assertEqual(
+            response.headers["Content-Disposition"],
+            'attachment; filename="ready-for-validation-export.csv"',
+        )
+
+        content = response.content.decode('utf-8')
+        cvs_reader = csv.reader(io.StringIO(content))
+        # this file is empty, so only the headers are present
+        headers = list(cvs_reader)[0]
+        self.assertEqual(['idgloss', 'gloss_main', 'video_url'], headers)
 
     def test_post(self):
         """Testing that the search page can't be accessed with POST."""

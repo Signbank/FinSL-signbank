@@ -6,6 +6,7 @@ import json
 from collections import defaultdict
 
 import djqscsv
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
@@ -72,8 +73,10 @@ class GlossListView(ListView):
     def render_to_response(self, context, **kwargs):
 
         # Look for a 'format=json' GET argument
-        if self.request.GET.get('format') == 'CSV':
+        if self.request.GET.get("format") == "CSV-standard":
             return self.subquery_render_to_csv_response(context)
+        elif self.request.GET.get("format") == "CSV-ready-for-validation":
+            return self.ready_for_validation_render_to_csv_response(context)
         else:
             return super(GlossListView, self).render_to_response(context)
 
@@ -246,6 +249,69 @@ class GlossListView(ListView):
                 except:
                     arr.append('')
             writer.writerow(arr)
+
+        return response
+
+    def ready_for_validation_render_to_csv_response(self, context):
+        if not self.request.user.has_perm("dictionary.export_csv"):
+            msg = _("You do not have permissions to export to CSV.")
+            messages.error(self.request, msg)
+            raise PermissionDenied(msg)
+
+        # Create the HttpResponse object with the appropriate CSV header.
+        # It is a Python file-like object.
+        response = HttpResponse(content_type="text/csv; charset=utf-8")
+        response[
+            "Content-Disposition"
+        ] = 'attachment; filename="ready-for-validation-export.csv"'
+
+        # Set up for outputting CSV.
+        writer = csv.writer(response)
+
+        # The queryset may or may not already be filtered for the ready for validation tag.
+        # We have to make sure it is filtered by the tag, so we are filtering again
+        ready_for_validation_qs = TaggedItem.objects.get_union_by_model(
+            self.get_queryset(),
+            Tag.objects.filter(name=settings.TAG_READY_FOR_VALIDATION)
+        )
+
+        csv_queryset = (
+            ready_for_validation_qs
+            .prefetch_related("glossvideo_set", "glosstranslations_set")
+            .annotate(
+                gloss_main_aggregate=StringAgg(
+                    GlossTranslations.objects.filter(
+                        gloss=OuterRef("pk"),
+                        language__language_code_2char="EN"
+                    ).values("translations")[:1],
+                    self.CSV_AGG_DELIM,
+                    distinct=True,
+                    output_field=CharField()
+                ),
+            )
+        )
+
+        headers = [
+            "idgloss",
+            "gloss_main",
+            "video_url"
+        ]
+        writer.writerow(headers)
+
+        for gloss_record in csv_queryset:
+            row = [gloss_record.idgloss, gloss_record.gloss_main_aggregate]
+            validation_video = gloss_record.glossvideo_set.filter(
+                video_type__isnull=False,
+                video_type__field="video_type",
+                video_type__english_name="validation",
+                videofile__isnull=False,
+                is_public=True,
+            ).first()
+            if validation_video:
+                row.append(validation_video.videofile.storage.public_url(validation_video.videofile.name))
+            else:
+                row.append("")
+            writer.writerow(row)
 
         return response
 
