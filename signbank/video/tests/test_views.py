@@ -7,6 +7,7 @@ from guardian.shortcuts import assign_perm
 from signbank.dictionary.models import (Dataset, FieldChoice, Gloss, Language,
                                         SignLanguage)
 from signbank.video.models import GlossVideo
+import csv
 
 
 class UpdateGlossVideoTestCase(TestCase):
@@ -68,14 +69,14 @@ class UpdateGlossVideoTestCase(TestCase):
         self.assertFalse(response.wsgi_request.user.has_perm(
             'video.manage_videos'))
         # Should return 302 Found, or 403 Forbidden
-        self.assertTrue(response.status_code == 403 or 302)
+        self.assertIn(response.status_code, [403, 302])
 
     def test_post_nologin(self):
         """Testing POST with anonymous user."""
         response = self.client_nologin.post(reverse('video:glossvideo_update'), {
             'glossvideo': self.glossvid.pk, 'gloss': self.testgloss.pk, 'video_type': self.video_type.machine_value})
         # Should return 302 Found, or 403 Forbidden
-        self.assertTrue(response.status_code == 302 or 403)
+        self.assertIn(response.status_code, [403, 302])
 
     def test_no_dataset_permission(self):
         """Test that the user can't update glosses if he doesn't have permissions to view the dataset of the gloss."""
@@ -157,14 +158,14 @@ class UpploadGlossVideoTestCase(TestCase):
         self.assertFalse(response.wsgi_request.user.has_perm(
             'video.add_glossvideo'))
         # Should return 302 Found, or 403 Forbidden
-        self.assertTrue(response.status_code == 403 or 302)
+        self.assertIn(response.status_code, [403, 302])
 
     def test_post_nologin(self):
         """Testing POST with anonymous user."""
         response = self.client_nologin.post(reverse('video:upload_glossvideo_gloss'), {
             'videofile': self.testfile, 'gloss': self.testgloss.pk, 'video_type': self.video_type.machine_value})
         # Should return 302 Found, or 403 Forbidden
-        self.assertTrue(response.status_code == 302 or 403)
+        self.assertIn(response.status_code, [403, 302])
 
     def test_no_dataset_permission(self):
         """Test that the user can't update glosses if he doesn't have permissions to view the dataset of the gloss."""
@@ -196,3 +197,121 @@ class UpploadGlossVideoTestCase(TestCase):
         response = self.client.post(reverse('video:upload_glossvideo_gloss'), {
             'videofile': self.testfile, 'gloss': self.testgloss.pk, 'video_type': self.video_type.machine_value, 'redirect': reverse('video:manage_videos')})
         self.assertEqual(response.url, reverse('video:manage_videos'))
+
+class ExportGlossvideoCsvTestCase(TestCase):
+    def setUp(self):
+        # Create user and add permissions
+        self.user = User.objects.create_user(username="test")
+        self.user.user_permissions.add(Permission.objects.get(codename='export_csv'))
+        self.user.save()
+        # Create client with export permission.
+        self.client = Client()
+        self.client.force_login(self.user)
+
+        # Create user with no permissions
+        self.user_noperm = User.objects.create_user(username="noperm")
+        self.client_noperm = Client()
+        self.client_noperm.force_login(self.user_noperm)
+
+        # Create client not logged in
+        self.client_nologin = Client()
+
+        # Create a gloss
+        # Migrations have id=1 already
+        self.signlanguage = SignLanguage.objects.create(
+            pk=2, name="testsignlanguage", language_code_3char="tst")
+        self.dataset = Dataset.objects.create(
+            name="testdataset", signlanguage=self.signlanguage)
+        self.testgloss = Gloss.objects.create(
+            idgloss="testgloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        self.language_en = Language.objects.create(
+            name='English', language_code_2char='en', language_code_3char='eng')
+
+        testfile = SimpleUploadedFile(
+            'testvid.mp4', b'data \x00\x01', content_type='video/mp4')
+        self.glossvid = GlossVideo.objects.create(gloss=self.testgloss,
+                                            is_public=False,
+                                            dataset=self.testgloss.dataset,
+                                            videofile=testfile)
+
+    def test_export_csv_with_no_permission(self):
+        response = self.client_noperm.get(reverse('video:export_glossvideos_csv'))
+          # Make sure user does not have change_gloss permission.
+        self.assertFalse(response.wsgi_request.user.has_perm(
+            'dictionary.export_dictionary'))
+        # Should return 302 Found, or 403 Forbidden
+        self.assertIn(response.status_code, [403, 302])
+
+    def test_export_csv_with_public(self):
+        self.glossvid.is_public = True
+        self.glossvid.save()
+
+        response = self.client.get(reverse('video:export_glossvideos_csv'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
+        csv_data = b''.join(response.streaming_content).decode('utf-8')
+        reader = csv.reader(csv_data.splitlines())
+        csv_rows = list(reader)
+
+        expected_glossvid_id = str(self.glossvid.pk)
+        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
+
+
+    def test_export_csv_with_not_public_no_filter(self):
+        response = self.client.get(reverse('video:export_glossvideos_csv'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
+        csv_data = b''.join(response.streaming_content).decode('utf-8')
+        reader = csv.reader(csv_data.splitlines())
+        csv_rows = list(reader)
+
+        self.assertEqual(len(csv_rows), 1) # Header only
+
+
+    def test_export_csv_with_gloss_ids(self):
+        self.glossvid.is_public = True
+        self.glossvid.save()
+
+        othergloss = Gloss.objects.create(
+            idgloss="othergloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
+        testfile = ContentFile(b'data \x00\x01')
+        testfile.name = 'othervid.mp4'
+        otherglossvid = GlossVideo.objects.create(gloss=othergloss, dataset=self.testgloss.dataset,
+                                                  videofile=testfile)
+
+        response = self.client.get(reverse('video:export_glossvideos_csv'), { 'gloss': [str(self.testgloss.pk)] })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
+        csv_data = b''.join(response.streaming_content).decode('utf-8')
+        reader = csv.reader(csv_data.splitlines())
+        csv_rows = list(reader)
+        expected_glossvid_id = str(self.glossvid.pk)
+        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
+
+        response = self.client.get(reverse('video:export_glossvideos_csv'), { 'gloss': [str(othergloss.pk)] })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
+        csv_data = b''.join(response.streaming_content).decode('utf-8')
+        reader = csv.reader(csv_data.splitlines())
+        csv_rows = list(reader)
+        expected_glossvid_id = str(otherglossvid.pk)
+        self.assertEqual(len(csv_rows), 2)
+        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
+
+    def test_export_csv_with_not_public_with_filter(self):
+        response = self.client.get(reverse('video:export_glossvideos_csv'), { "include_private": True })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
+        csv_data = b''.join(response.streaming_content).decode('utf-8')
+        reader = csv.reader(csv_data.splitlines())
+        csv_rows = list(reader)
+
+        expected_glossvid_id = str(self.glossvid.pk)
+        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
+
+
