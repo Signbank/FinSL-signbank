@@ -2,26 +2,31 @@
 import random
 
 from django.db import migrations
-from django.conf import settings
 
 
-def get_or_create_tags(apps, schema_validation):
+def get_or_create_video_type_field_choice(apps, schema_validation):
     FieldChoiceModel = apps.get_model("dictionary", "FieldChoice")
     machine_values = FieldChoiceModel.objects.all().values_list("machine_value", flat=True)
     random_value = random.randint(0, 99999999)
     while random_value in machine_values:
         random_value = random.randint(0, 99999999)
-    FieldChoiceModel.objects.get_or_create(field='video_type', english_name='validation', machine_value=random_value)
+    if not FieldChoiceModel.objects.filter(field="video_type", english_name="validation").exists():
+        FieldChoiceModel.objects.create(field="video_type", english_name="validation", machine_value=random_value)
+
+
+def remove_video_type_field_choice(apps, schema_validation):
+    FieldChoiceModel = apps.get_model("dictionary", "FieldChoice")
+    FieldChoiceModel.objects.filter(field="video_type", english_name="validation").delete()
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dictionary', '0041_named_tags'),
-        ('video', '0004_glossvideo_video_type')
+        ("dictionary", "0041_named_tags"),
+        ("video", "0004_glossvideo_video_type")
     ]
 
     operations = [
-        migrations.RunPython(get_or_create_tags, reverse_code=migrations.RunPython.noop)
+        migrations.RunPython(get_or_create_video_type_field_choice, reverse_code=remove_video_type_field_choice)
     ]
 
