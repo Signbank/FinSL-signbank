@@ -2,6 +2,7 @@
 {% load bootstrap3 %}
 {% load i18n %}
 {% load static %}
+{% load helpers %}
 {# Translators: Title for sign search page #}
 {% block bootstrap3_title %}{% blocktrans %}Advanced Search{% endblocktrans %} | {% endblock %}
 {% block extrahead %}
@@ -208,7 +209,14 @@ function clearForm(myFormElement) {
         <div class='btn-group'>
             <input class='btn btn-primary' type='submit' name='submit' value='{% blocktrans context "search-button" %}Search{% endblocktrans %}'>
             {% if perms.dictionary.export_csv %}
-            <input class='btn btn-default' type='submit' name='format' value='{% blocktrans %}CSV{% endblocktrans %}'>
+              <div class="dropdown btn btn-default">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {% blocktrans %}CSV{% endblocktrans %} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ request.get_path }}?{% url_parameter_extend request format='CSV-standard' %}">Standard CSV</a></li>
+                  <li><a href="{{ request.get_path }}?{% url_parameter_extend request format='CSV-ready-for-validation' %}">Ready for Validation CSV</a></li>
+               </ul>
+              </div>
             {% endif %}
             <input class='btn btn-default' type='submit' onclick="clearForm(document.adminsearch);" value='{% blocktrans %}Reset{% endblocktrans %}'>
         </div>

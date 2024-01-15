@@ -366,3 +366,10 @@ h3.gloss-idgloss mark {
 span.gloss-keywords mark {
     background-color: #efcccc;
 }
+
+div.btn-default > a.dropdown-toggle {
+    color: #333;
+}
+div.btn-default > a.dropdown-toggle:hover {
+    text-decoration: none;
+}
