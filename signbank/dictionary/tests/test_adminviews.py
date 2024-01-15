@@ -78,7 +78,6 @@ class GlossListViewTestCase(TestCase):
         """
         csv_permission = Permission.objects.get(codename="export_csv")
         self.user.user_permissions.add(csv_permission)
-        self.user.save()
 
         signlanguage = SignLanguage.objects.create(
             pk=2, name="testsignlanguage", language_code_3char="tst"

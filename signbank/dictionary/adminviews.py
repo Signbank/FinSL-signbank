@@ -270,14 +270,27 @@ class GlossListView(ListView):
 
         # The queryset may or may not already be filtered for the ready for validation tag.
         # We have to make sure it is filtered by the tag, so we are filtering again
-        ready_for_validation_qs = TaggedItem.objects.get_union_by_model(
+        ready_for_validation_qs = TaggedItem.objects.get_by_model(
             self.get_queryset(),
-            Tag.objects.filter(name=settings.TAG_READY_FOR_VALIDATION)
+            settings.TAG_READY_FOR_VALIDATION
+        )
+
+        gloss_video_qs = GlossVideo.objects.select_related("video_type").filter(
+            video_type__isnull=False,
+            video_type__field="video_type",
+            video_type__english_name="validation",
+            videofile__isnull=False,
+            is_public=True,
         )
 
         csv_queryset = (
             ready_for_validation_qs
-            .prefetch_related("glossvideo_set", "glosstranslations_set")
+            .prefetch_related(
+                "glosstranslations_set",
+                Prefetch(
+                    "glossvideo_set", queryset=gloss_video_qs, to_attr="validation_videos"
+                )
+            )
             .annotate(
                 gloss_main_aggregate=StringAgg(
                     GlossTranslations.objects.filter(
@@ -300,16 +313,10 @@ class GlossListView(ListView):
 
         for gloss_record in csv_queryset:
             row = [gloss_record.idgloss, gloss_record.gloss_main_aggregate]
-            validation_video = gloss_record.glossvideo_set.filter(
-                video_type__isnull=False,
-                video_type__field="video_type",
-                video_type__english_name="validation",
-                videofile__isnull=False,
-                is_public=True,
-            ).first()
-            if validation_video:
+            try:
+                validation_video = gloss_record.validation_videos[0]
                 row.append(validation_video.videofile.storage.public_url(validation_video.videofile.name))
-            else:
+            except IndexError:
                 row.append("")
             writer.writerow(row)
 
