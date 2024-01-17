@@ -242,7 +242,7 @@ class ExportGlossvideoCsvTestCase(TestCase):
         # Should return 302 Found, or 403 Forbidden
         self.assertIn(response.status_code, [403, 302])
 
-    def test_export_csv_with_public(self):
+    def test_export_csv(self):
         self.glossvid.is_public = True
         self.glossvid.save()
 
@@ -258,7 +258,7 @@ class ExportGlossvideoCsvTestCase(TestCase):
         self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
 
 
-    def test_export_csv_with_not_public_no_filter(self):
+    def test_export_csv_with_not_public(self):
         response = self.client.get(reverse('video:export_glossvideos_csv'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'text/csv')
@@ -268,50 +268,3 @@ class ExportGlossvideoCsvTestCase(TestCase):
         csv_rows = list(reader)
 
         self.assertEqual(len(csv_rows), 1) # Header only
-
-
-    def test_export_csv_with_gloss_ids(self):
-        self.glossvid.is_public = True
-        self.glossvid.save()
-
-        othergloss = Gloss.objects.create(
-            idgloss="othergloss", dataset=self.dataset, created_by=self.user, updated_by=self.user)
-        testfile = ContentFile(b'data \x00\x01')
-        testfile.name = 'othervid.mp4'
-        otherglossvid = GlossVideo.objects.create(gloss=othergloss, dataset=self.testgloss.dataset,
-                                                  videofile=testfile)
-
-        response = self.client.get(reverse('video:export_glossvideos_csv'), { 'gloss': [str(self.testgloss.pk)] })
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'text/csv')
-
-        csv_data = b''.join(response.streaming_content).decode('utf-8')
-        reader = csv.reader(csv_data.splitlines())
-        csv_rows = list(reader)
-        expected_glossvid_id = str(self.glossvid.pk)
-        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
-
-        response = self.client.get(reverse('video:export_glossvideos_csv'), { 'gloss': [str(othergloss.pk)] })
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'text/csv')
-
-        csv_data = b''.join(response.streaming_content).decode('utf-8')
-        reader = csv.reader(csv_data.splitlines())
-        csv_rows = list(reader)
-        expected_glossvid_id = str(otherglossvid.pk)
-        self.assertEqual(len(csv_rows), 2)
-        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
-
-    def test_export_csv_with_not_public_with_filter(self):
-        response = self.client.get(reverse('video:export_glossvideos_csv'), { "include_private": True })
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'text/csv')
-
-        csv_data = b''.join(response.streaming_content).decode('utf-8')
-        reader = csv.reader(csv_data.splitlines())
-        csv_rows = list(reader)
-
-        expected_glossvid_id = str(self.glossvid.pk)
-        self.assertIn(expected_glossvid_id, [row[0] for row in csv_rows])
-
-
