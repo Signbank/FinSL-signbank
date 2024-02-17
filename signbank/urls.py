@@ -77,14 +77,17 @@ urlpatterns = [
     path('info/', infopage, name='infopage'),
 ]
 if settings.DEBUG:
-    import debug_toolbar
-    from django.conf.urls.static import static
-    # Add debug_toolbar when DEBUG=True, also add static+media folders when in development.
-    # DEBUG should be False when in production!
-    urlpatterns += [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
-        + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    try:
+        import debug_toolbar
+        from django.conf.urls.static import static
+        # Add debug_toolbar when DEBUG=True, also add static+media folders when in development.
+        # DEBUG should be False when in production!
+        urlpatterns += [
+            path('__debug__/', include(debug_toolbar.urls)),
+        ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
+            + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    except (ImportError, ModuleNotFoundError):
+        pass
 
 # This is a catchall pattern, will try to match the rest of the urls with flatpages.
 urlpatterns += [re_path('(?P<url>.*/)', flatpages_views.flatpage), ]  # Keep this as the last URL in the file!
