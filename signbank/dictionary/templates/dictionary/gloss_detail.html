@@ -363,14 +363,19 @@ $('#id_comment').atwho({
                         {% for url in glossurls %}
                         <p><a href="{{url.url}}" id="glossurl-{{url.id}}" class="edit edit_url" target="_blank"
                         data-glossurl-id="{{url.id}}">{{url.url}}</a>
+                            {% if url.sign_language %}<span class="label label-default">{{url.sign_language.language_code_3char}}</span>{% endif %}
                             <a href="{% url 'dictionary:delete_glossurl' glossurl=url.id %}"
                             class="glossurl-delete" style="display:none;">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" title="{% blocktrans %}Remove URL{% endblocktrans %}"></span>
                             </a></p>
                         {% endfor %}
                         <form method="POST" action="{% url 'dictionary:update_gloss' glossid=gloss.id %}" class="glossurlform" style="display:none;">{% csrf_token %}
                             <input type="hidden" name="id" value="glossurl-create">
-                            <input type="text" name="value">
+                            <input type="text" name="value" title="{% blocktrans %}URL{% endblocktrans %}">
+                            <select name="sign-language" id="sign-language-dropdown" title="{% blocktrans %}Sign language{% endblocktrans %}">
+                                <option value="">--</option>
+                                {% for sign_language in sign_languages %}<option value="{{sign_language.id}}">{{sign_language.language_code_3char}}</option>{% endfor %}
+                              </select>
                             <input type="submit" value="{% blocktrans %}Add new URL{% endblocktrans %}">
                         </form>
                     </td>
