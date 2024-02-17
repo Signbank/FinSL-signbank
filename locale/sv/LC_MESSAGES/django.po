@@ -1147,7 +1147,7 @@ msgstr "Glossa:"
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:327
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:327
 msgid "Gloss in English:"
-msgstr "Engelsk glossa"
+msgstr "Engelsk glossa:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:333
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:333
@@ -1182,7 +1182,7 @@ msgstr ""
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:361
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:361
 msgid "URL:"
-msgstr "FSTS webbadress"
+msgstr "FSTS webbadress:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:374
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:374
