@@ -1182,12 +1182,12 @@ msgstr ""
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:361
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:361
 msgid "URL:"
-msgstr "FSTS webbadress:"
+msgstr "Webbadress:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:374
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:374
 msgid "Add new URL"
-msgstr "Lägg till FSTS webbadress"
+msgstr "Lägg till webbadress"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:379
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:379
