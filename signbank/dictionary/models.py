@@ -532,6 +532,7 @@ class GlossURL(models.Model):
     gloss = models.ForeignKey("Gloss", verbose_name=_("Gloss"), on_delete=models.CASCADE)
     #: The URL, a websites address.
     url = models.URLField(max_length=200)
+    sign_language = models.ForeignKey("SignLanguage", verbose_name=_("Sign language"), on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Gloss URL')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-08 16:26+0200\n"
+"POT-Creation-Date: 2024-02-17 15:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,14 +73,14 @@ msgstr "Suhteet:"
 
 #: build/lib/signbank/dictionary/admin.py:110
 #: build/lib/signbank/dictionary/models.py:587 signbank/dictionary/admin.py:110
-#: signbank/dictionary/models.py:573
+#: signbank/dictionary/models.py:574
 msgid "Gloss relation"
 msgstr "Glossin relaatiot"
 
 #: build/lib/signbank/dictionary/admin.py:111
 #: build/lib/signbank/dictionary/models.py:588
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
-#: signbank/dictionary/admin.py:111 signbank/dictionary/models.py:574
+#: signbank/dictionary/admin.py:111 signbank/dictionary/models.py:575
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
 msgid "Gloss relations"
 msgstr "Glossin relaatiot"
@@ -180,7 +180,7 @@ msgstr "Katso myös"
 
 #: build/lib/signbank/dictionary/delete.py:19
 #: build/lib/signbank/dictionary/update.py:495 signbank/dictionary/delete.py:19
-#: signbank/dictionary/update.py:495
+#: signbank/dictionary/update.py:496
 msgid "You do not have permissions to add tags to glosses of this lexicon."
 msgstr "Sinulla ei ole oikeuksia lisätä tageja valitun leksikon glosseille."
 
@@ -228,7 +228,9 @@ msgstr "Tagit"
 #: build/lib/signbank/dictionary/publicviews.py:106
 #: signbank/dictionary/forms.py:77 signbank/dictionary/forms.py:277
 #: signbank/dictionary/models.py:34 signbank/dictionary/models.py:197
-#: signbank/dictionary/models.py:207 signbank/dictionary/publicviews.py:106
+#: signbank/dictionary/models.py:207 signbank/dictionary/models.py:535
+#: signbank/dictionary/publicviews.py:106
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:375
 msgid "Sign language"
 msgstr "Viittomakieli"
 
@@ -863,42 +865,42 @@ msgid "Number of occurences in annotation materials"
 msgstr "Havaintojen määrä annotaatiomateriaaleissa"
 
 #: build/lib/signbank/dictionary/models.py:549
-#: signbank/dictionary/models.py:537
+#: signbank/dictionary/models.py:538
 msgid "Gloss URL"
 msgstr "Glossin URL"
 
 #: build/lib/signbank/dictionary/models.py:550
-#: signbank/dictionary/models.py:538
+#: signbank/dictionary/models.py:539
 msgid "Gloss URLs"
 msgstr "Glossien URL:t"
 
 #: build/lib/signbank/dictionary/models.py:560
 #: build/lib/signbank/dictionary/models.py:565
 #: build/lib/signbank/dictionary/models.py:566
-#: signbank/dictionary/models.py:547 signbank/dictionary/models.py:552
-#: signbank/dictionary/models.py:553
+#: signbank/dictionary/models.py:548 signbank/dictionary/models.py:553
+#: signbank/dictionary/models.py:554
 msgid "Allowed tags"
 msgstr "Sallitut tagit"
 
 #: build/lib/signbank/dictionary/models.py:611
-#: signbank/dictionary/models.py:596
+#: signbank/dictionary/models.py:597
 msgid "Relation"
 msgstr "Relaatio"
 
 #: build/lib/signbank/dictionary/models.py:612
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
-#: signbank/dictionary/models.py:597
+#: signbank/dictionary/models.py:598
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
 msgid "Relations"
 msgstr "Relaatiot"
 
 #: build/lib/signbank/dictionary/models.py:628
-#: signbank/dictionary/models.py:612
+#: signbank/dictionary/models.py:613
 msgid "Morphology definition"
 msgstr "Morfologinen määritelmä"
 
 #: build/lib/signbank/dictionary/models.py:629
-#: signbank/dictionary/models.py:613
+#: signbank/dictionary/models.py:614
 msgid "Morphology definitions"
 msgstr "Morfologiset määritelmät"
 
@@ -1197,32 +1199,32 @@ msgid "URL:"
 msgstr "URL:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:374
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:374
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:379
 msgid "Add new URL"
 msgstr "Lisää URL"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:379
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:379
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:384
 msgid "Created:"
 msgstr "Luotu:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:383
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:383
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:388
 msgid "Updated:"
 msgstr "Päivitetty:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:390
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:390
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:395
 msgid "Show complete history"
 msgstr "Näytä koko historia"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:399
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:399
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:404
 msgid "Change history for"
 msgstr "Muutoshistoria glossille"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:403
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:403
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:408
 msgid ""
 "This is a list of some historical changes made to this Gloss.\n"
 "                                    By clicking the link, you will be taken "
@@ -1233,7 +1235,7 @@ msgstr ""
 "pääset ylläpitosivulle, jossa näkyy glossin tila valittuna hetkenä."
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:406
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:406
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:411
 msgid ""
 "Do not save the changes,\n"
 "                                    unless you want to restore the older "
@@ -1242,12 +1244,12 @@ msgstr ""
 "Älä tallenna muutoksia, ellet halua palauttaa tämän Glossin vanhaa versiota!"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:418
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:418
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:423
 msgid "Gloss fields:"
 msgstr "Glossin kentät:"
 
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail.html:421
-#: signbank/dictionary/templates/dictionary/gloss_detail.html:421
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:426
 msgid "Translations:"
 msgstr "Käännösvastineet:"
 
@@ -1813,22 +1815,22 @@ msgstr "GlossiVideoa ei ole olemassa"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:122
-#: signbank/dictionary/update.py:122
+#: signbank/dictionary/update.py:123
 msgid "Unknown field"
 msgstr "Tuntematon kenttä"
 
 #: build/lib/signbank/dictionary/update.py:166
-#: signbank/dictionary/update.py:166
+#: signbank/dictionary/update.py:167
 msgid "Error: Unable to change videofiles names."
 msgstr "Virhe: Videotiedostojen nimien vaihtaminen ei onnistu."
 
 #: build/lib/signbank/dictionary/update.py:182
-#: signbank/dictionary/update.py:182
+#: signbank/dictionary/update.py:183
 msgid "A Language does not exist with language_code: "
 msgstr "Kieltä (Language) ei löydy seuraavalla kielikoodilla: "
 
 #: build/lib/signbank/dictionary/update.py:186
-#: signbank/dictionary/update.py:186
+#: signbank/dictionary/update.py:187
 msgid ""
 "Multiple Languages with the same language_code exist, cannot edit because it "
 "is unclear which languages translations to edit."
@@ -1838,21 +1840,21 @@ msgstr ""
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:209
-#: signbank/dictionary/update.py:209
+#: signbank/dictionary/update.py:210
 msgid "Bad Relation ID"
 msgstr "Epäkelpo ID suhteelle"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:213
 #: build/lib/signbank/dictionary/update.py:261
-#: signbank/dictionary/update.py:213 signbank/dictionary/update.py:261
+#: signbank/dictionary/update.py:214 signbank/dictionary/update.py:262
 msgid "Relation doesn't match gloss"
 msgstr "Suhde ei vastaa glossia"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:237
 #: build/lib/signbank/dictionary/update.py:474
-#: signbank/dictionary/update.py:237 signbank/dictionary/update.py:474
+#: signbank/dictionary/update.py:238 signbank/dictionary/update.py:475
 msgid "Badly formed gloss identifier"
 msgstr "Huonosti muodostetti glossin tunnistin"
 
@@ -1860,71 +1862,71 @@ msgstr "Huonosti muodostetti glossin tunnistin"
 #: build/lib/signbank/dictionary/update.py:241
 #: build/lib/signbank/dictionary/update.py:281
 #: build/lib/signbank/dictionary/update.py:478
-#: signbank/dictionary/update.py:241 signbank/dictionary/update.py:281
-#: signbank/dictionary/update.py:478
+#: signbank/dictionary/update.py:242 signbank/dictionary/update.py:282
+#: signbank/dictionary/update.py:479
 msgid "Unknown form field"
 msgstr "Tuntematon lomakekenttä"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:256
-#: signbank/dictionary/update.py:256
+#: signbank/dictionary/update.py:257
 msgid "Bad RelationToForeignSign ID"
 msgstr "Epäkelpo ID Suhteelle ulkomaisiin viittomiin"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:355
 #: build/lib/signbank/dictionary/update.py:395
-#: signbank/dictionary/update.py:355 signbank/dictionary/update.py:395
+#: signbank/dictionary/update.py:356 signbank/dictionary/update.py:396
 msgid "Source gloss not found."
 msgstr "Lähdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:367
-#: signbank/dictionary/update.py:367
+#: signbank/dictionary/update.py:368
 msgid "Target gloss not found."
 msgstr "Kohdeglossia ei löytynyt."
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:407
-#: signbank/dictionary/update.py:407
+#: signbank/dictionary/update.py:408
 msgid "Form not valid"
 msgstr "Lomake ei ole kelvollinen"
 
 #. Translators: Htt404
 #: build/lib/signbank/dictionary/update.py:435
-#: signbank/dictionary/update.py:435
+#: signbank/dictionary/update.py:436
 msgid "Incorrect request"
 msgstr "Virheellinen pyyntö"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:448
-#: signbank/dictionary/update.py:448
+#: signbank/dictionary/update.py:449
 msgid "Bad Morphology Definition ID"
 msgstr "Epäkelpo ID morfologialle"
 
 #. Translators: HttpResponseBadRequest
 #: build/lib/signbank/dictionary/update.py:453
-#: signbank/dictionary/update.py:453
+#: signbank/dictionary/update.py:454
 msgid "Morphology Definition doesn't match gloss"
 msgstr "Morfologia ei vastaa glossia"
 
 #: build/lib/signbank/dictionary/update.py:553
-#: signbank/dictionary/update.py:553
+#: signbank/dictionary/update.py:554
 msgid "You do not have permissions to import glosses to this lexicon."
 msgstr "Sinulla ei ole oikeuksia tuoda glosseja valittuun leksikkoon."
 
 #: build/lib/signbank/dictionary/update.py:563
-#: signbank/dictionary/update.py:563
+#: signbank/dictionary/update.py:564
 msgid "Cannot open the file:"
 msgstr "Ei voida avata tiedostoa:"
 
 #: build/lib/signbank/dictionary/update.py:567
-#: signbank/dictionary/update.py:567
+#: signbank/dictionary/update.py:568
 msgid "File must be UTF-8 encoded!"
 msgstr "Tiedoston pitää olla koodattu UTF-8 merkistöllä!"
 
 #: build/lib/signbank/dictionary/update.py:596
-#: signbank/dictionary/update.py:596
+#: signbank/dictionary/update.py:597
 msgid ""
 "The provided CSV-file does not meet the requirements or there is some other "
 "problem."
@@ -1933,24 +1935,24 @@ msgstr ""
 "ongelma."
 
 #: build/lib/signbank/dictionary/update.py:620
-#: signbank/dictionary/update.py:620
+#: signbank/dictionary/update.py:621
 msgid "Cancelled adding CSV data."
 msgstr "Tietojen lisääminen CSV-tiedostosta peruutettiin."
 
 #: build/lib/signbank/dictionary/update.py:647
-#: signbank/dictionary/update.py:647
+#: signbank/dictionary/update.py:648
 msgid "Glosses were added succesfully."
 msgstr "Glossit lisättiin onnistuneesti."
 
 #: build/lib/signbank/dictionary/update.py:667
-#: signbank/dictionary/update.py:667
+#: signbank/dictionary/update.py:668
 msgid ""
 "You do not have permissions to delete relations from glosses of this lexicon."
 msgstr ""
 "Sinulla ei ole oikeuksia poistaa valitun leksikon glossien relaatioita."
 
 #: build/lib/signbank/dictionary/update.py:683
-#: signbank/dictionary/update.py:683
+#: signbank/dictionary/update.py:684
 msgid ""
 "You do not have permissions to add relations to glosses of this lexicon."
 msgstr ""
@@ -1976,7 +1978,7 @@ msgstr "Käyttöoikeuksia anottu onnistuneesti"
 msgid "Finnish"
 msgstr "Suomi"
 
-#: build/lib/signbank/settings/base.py:51 signbank/settings/base.py:53
+#: build/lib/signbank/settings/base.py:51 signbank/settings/base.py:54
 msgid "English"
 msgstr "Englanti"
 
@@ -2237,6 +2239,18 @@ msgstr "Sinulla ei ole oikeuksia lisätä/muuttaa aloituskuvia tälle leksikolle
 #: signbank/video/views.py:359 signbank/video/views.py:385
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr "Sinulla ei ole oikeuksia nähdä tätä sivua"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:369
+msgid "Remove URL"
+msgstr "Poista URL"
+
+#: signbank/dictionary/templates/dictionary/gloss_detail.html:374
+msgid "URL"
+msgstr "URL"
+
+#: signbank/settings/base.py:53
+msgid "Swedish"
+msgstr "ruotsi"
 
 #. Translators: Title for error page 403
 #: templates/403.html:7

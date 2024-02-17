@@ -245,6 +245,17 @@ class FieldChoiceAdmin(admin.ModelAdmin):
     list_display = ('field', 'english_name', 'machine_value',)
 
 
+class GlossURLAdmin(admin.ModelAdmin):
+    model = GlossURL
+    list_display = ('__str__', 'dataset', 'sign_language')
+    list_filter = ['sign_language', 'gloss__dataset']
+    search_fields = ['url']
+
+    def dataset(self, obj):
+        return obj.gloss.dataset
+    dataset.short_description = _lazy('Dataset')
+
+
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(SignLanguage, SignLanguageAdmin)
 admin.site.register(Gloss, GlossAdmin)
@@ -252,6 +263,7 @@ admin.site.register(Translation, TranslationAdmin)
 admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(GlossRelation, GlossRelationAdmin)
 admin.site.register(AllowedTags, AllowedTagsAdmin)
+admin.site.register(GlossURL, GlossURLAdmin)
 
 # The following models have been removed from the admin because they are not used at the moment.
 # admin.site.register(FieldChoice, FieldChoiceAdmin)
