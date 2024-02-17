@@ -102,7 +102,8 @@ def update_gloss(request, glossid):
 
         elif field.startswith('glossurl-'):
             if field == 'glossurl-create':
-                GlossURL.objects.create(url=value, gloss_id=glossid)
+                sign_language_id = request.POST.get('sign-language', None)
+                GlossURL.objects.create(url=value, sign_language_id=sign_language_id, gloss_id=glossid)
                 return HttpResponseRedirect(reverse('dictionary:admin_gloss_view', kwargs={'pk': gloss.id}))
             else:
                 if request.user.has_perm('dictionary.change_gloss'):

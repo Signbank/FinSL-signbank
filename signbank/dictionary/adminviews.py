@@ -24,10 +24,9 @@ from tagging.models import Tag, TaggedItem
 from guardian.shortcuts import get_perms, get_objects_for_user, get_users_with_perms
 from reversion.models import Version
 
-from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, RelationForm, MorphologyForm, \
-    GlossRelationSearchForm
-from .models import Gloss, Dataset, Translation, GlossTranslations, GlossURL, GlossRelation, RelationToForeignSign, \
-    Relation, MorphologyDefinition
+from .forms import GlossSearchForm, TagsAddForm, GlossRelationForm, GlossRelationSearchForm
+from .models import Gloss, Dataset, Translation, GlossURL, GlossRelation, RelationToForeignSign, \
+    Relation, MorphologyDefinition, SignLanguage
 from ..video.forms import GlossVideoForGlossForm
 from ..video.models import GlossVideo
 from ..comments import CommentTagForm
@@ -431,6 +430,7 @@ class GlossDetailView(DetailView):
         context['glossrelations_reverse'] = GlossRelation.objects.filter(target=gloss)
         context['glossurls'] = GlossURL.objects.filter(gloss=gloss)
         context['translation_languages_and_translations'] = gloss.get_translations_for_translation_languages()
+        context['sign_languages'] = SignLanguage.objects.all()
 
         if self.request.user.is_staff:
             # Get some version history data
