@@ -74,5 +74,5 @@ if DEBUG:
         MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
         INSTALLED_APPS += ('debug_toolbar',)
         DEBUG_TOOLBAR_CONFIG = {'RESULTS_CACHE_SIZE': 100}
-    except ImportError:
+    except (ImportError, ModuleNotFoundError):
         pass
