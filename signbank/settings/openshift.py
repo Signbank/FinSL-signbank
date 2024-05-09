@@ -186,7 +186,7 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
 STATICFILES_STORAGE = "storages.backends.s3.S3Storage"
 
 bucket_name = os.environ.get("BUCKET_NAME")
-endpoint_url = os.environment.get("BUCKET_ENDPOINT_URL")
+endpoint_url = os.environ.get("BUCKET_ENDPOINT_URL")
 custom_domain = os.environ.get("BUCKET_DOMAIN")
 
 #: The absolute path to the directory where collectstatic will collect static files for deployment.
