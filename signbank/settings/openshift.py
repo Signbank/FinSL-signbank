@@ -149,9 +149,9 @@ INSTALLED_APPS = (
 )
 
 # TODO: Evaluate how to handle flatpages migrations
-# MIGRATION_MODULES = {
-#     'flatpages': 'custom_migrations.flatpages',
-# }
+MIGRATION_MODULES = {
+    'flatpages': 'custom_migrations.flatpages',
+}
 
 ABSOLUTE_URL_OVERRIDES = {
     #: Allow using admin change url for notifications.
