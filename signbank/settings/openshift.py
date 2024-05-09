@@ -62,7 +62,7 @@ LANGUAGES = (
 
 # URL to use when referring to static files located in STATIC_ROOT.
 # Example: "/static/" or "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = os.environ.get('STATIC_URL')
 #: The list of finder backends that know how to find static files in various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -182,9 +182,16 @@ LOCALE_PATHS = (
     './locale',
 )
 
+DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+STATICFILES_STORAGE = "storages.backends.s3.S3Storage"
+
+bucket_name = os.environ.get("BUCKET_NAME")
+endpoint_url = os.environment.get("BUCKET_ENDPOINT_URL")
+custom_domain = os.environ.get("BUCKET_DOMAIN")
+
 #: The absolute path to the directory where collectstatic will collect static files for deployment.
 #: Example: "/var/www/example.com/static/"
-STATIC_ROOT = '/var/www/signbank/static/'
+STATIC_ROOT = '/static/'
 # This setting defines the additional locations the staticfiles app will traverse if the FileSystemFinder finder
 # is enabled, e.g. if you use the collectstatic or findstatic management command or use the static file serving view.
 STATICFILES_DIRS = (
@@ -200,10 +207,10 @@ CACHES = {
 }
 
 #: Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_ROOT = '/var/www/signbank/media/'
+MEDIA_ROOT = '/media/'
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # It must end in a slash if set to a non-empty value.
-MEDIA_URL = '/media/'
+MEDIA_URL = os.environ.get('MEDIA_URL')
 
 #: Location and URL for uploaded files.
 UPLOAD_ROOT = MEDIA_ROOT + "upload/"
