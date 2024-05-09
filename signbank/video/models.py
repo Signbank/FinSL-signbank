@@ -8,14 +8,14 @@ import datetime
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
+from storages.backends.s3 import S3Storage
 
 
-class GlossVideoStorage(FileSystemStorage):
+class GlossVideoStorage(S3Storage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
-    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
-        super(GlossVideoStorage, self).__init__(location, base_url)
+    def __init__(self):
+        super(GlossVideoStorage, self).__init__()
 
     def get_valid_name(self, name):
         """Generate a valid name, save videos to a 'base_directory', and under it use directories
