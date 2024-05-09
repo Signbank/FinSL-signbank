@@ -190,6 +190,7 @@ AWS_S3_ENDPOINT_URL = os.environ.get("BUCKET_ENDPOINT_URL", "")
 AWS_S3_REGION_NAME = os.environ.get("BUCKET_REGION_NAME", "")
 # custom_domain = os.environ.get("BUCKET_DOMAIN")
 AWS_QUERYSTRING_AUTH = False
+AWS_DEFAULT_ACL = "public-read"
 
 #: The absolute path to the directory where collectstatic will collect static files for deployment.
 #: Example: "/var/www/example.com/static/"
