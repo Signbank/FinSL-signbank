@@ -62,7 +62,7 @@ LANGUAGES = (
 
 # URL to use when referring to static files located in STATIC_ROOT.
 # Example: "/static/" or "http://static.example.com/"
-STATIC_URL = os.environ.get('STATIC_URL')
+STATIC_URL = os.environ.get('STATIC_URL', '/static/')
 #: The list of finder backends that know how to find static files in various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -210,7 +210,7 @@ CACHES = {
 MEDIA_ROOT = '/media/'
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # It must end in a slash if set to a non-empty value.
-MEDIA_URL = os.environ.get('MEDIA_URL')
+MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')
 
 #: Location and URL for uploaded files.
 UPLOAD_ROOT = MEDIA_ROOT + "upload/"
