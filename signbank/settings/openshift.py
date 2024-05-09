@@ -187,7 +187,9 @@ STATICFILES_STORAGE = "storages.backends.s3.S3Storage"
 
 bucket_name = os.environ.get("BUCKET_NAME")
 endpoint_url = os.environ.get("BUCKET_ENDPOINT_URL")
-custom_domain = os.environ.get("BUCKET_DOMAIN")
+region_name = os.environ.get("BUCKET_REGION_NAME")
+# custom_domain = os.environ.get("BUCKET_DOMAIN")
+querystring_auth = False
 
 #: The absolute path to the directory where collectstatic will collect static files for deployment.
 #: Example: "/var/www/example.com/static/"
