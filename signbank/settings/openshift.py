@@ -11,7 +11,16 @@ DEBUG = False
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'default-secret-key')
 #: IMPORTANT: The hostname that this signbank runs on, this prevents HTTP Host header attacks
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
-DATABASE_URL = os.environ.get('DJANGO_DATABASE_URL')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
+    }
+}
 ADMINS = os.environ.get('DJANGO_ADMINS')
 
 # Absolute path to the base directory of the application.
