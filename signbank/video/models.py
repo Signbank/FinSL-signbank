@@ -25,8 +25,8 @@ class GlossVideoStorage(S3Storage):
         result = os.path.join(base_directory, file_path)
         return result
 
-    def url(self, name):
-        return f"{settings.MEDIA_URL}{self.get_valid_name(name)}"
+    # def url(self, name):
+    #     return f"{settings.MEDIA_URL}{self.get_valid_name(name)}"
 
 
 class GlossVideo(models.Model):
