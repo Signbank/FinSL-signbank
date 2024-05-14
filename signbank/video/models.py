@@ -26,7 +26,7 @@ class GlossVideoStorage(S3Storage):
         return result
 
     def url(self, name):
-        return self.get_valid_name(name)
+        return f"{settings.MEDIA_URL}{self.get_valid_name(name)}"
 
 
 class GlossVideo(models.Model):
