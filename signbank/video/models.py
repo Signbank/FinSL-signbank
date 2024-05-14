@@ -15,13 +15,14 @@ class GlossVideoStorage(S3Storage):
 
     def __init__(self, *args, **kwargs):
         super(GlossVideoStorage, self).__init__(*args, **kwargs)
+        self.base_path = "media/"
 
     def get_valid_name(self, name):
         """Generate a valid name, save videos to a 'base_directory', and under it use directories
         named for the first two characters in the filename to partition the videos"""
         base_directory = "glossvideo"
         file_path = os.path.join(name[:2].upper(), name)
-        result = os.path.join(base_directory, file_path)
+        result = os.path.join(self.base_path, base_directory, file_path)
         return result
 
 
