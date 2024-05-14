@@ -264,17 +264,22 @@ $('#id_comment').atwho({
 
                     <script type="text/javascript">
                     function grabScreenshot(glossvideo_pk) {
-                      /* This function grabs a screenshot from a desired frame in a video and adds it into a form field. */
-                      var canvas = document.getElementById("vidcanvas-"+glossvideo_pk);
-                      var video = document.getElementById("glossvideo-"+glossvideo_pk);
-                      canvas.width = video.videoWidth;
-                      canvas.height = video.videoHeight;
-                      var ctx=canvas.getContext("2d");
-                      // Draw the image into the canvas
-                      ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-                      var posterfileinput = document.getElementById("posterfile-"+glossvideo_pk);
-                      // Set the captured image data as base64 encoded into the posterfile form field.
-                      posterfileinput.value = canvas.toDataURL('image/jpeg');
+                        /* This function grabs a screenshot from a desired frame in a video and adds it into a form field. */
+                        var canvas = document.getElementById("vidcanvas-"+glossvideo_pk);
+                        var video = document.getElementById("glossvideo-"+glossvideo_pk);
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        var ctx = canvas.getContext("2d");
+                        // Draw the image into the canvas
+                        ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+                        
+                        // Convert canvas content to a Blob
+                        canvas.toBlob(function(blob) {
+                            var blobUrl = URL.createObjectURL(blob);
+                            // Use the Blob URL to set as the value of the posterfile form field
+                            var posterfileinput = document.getElementById("posterfile-"+glossvideo_pk);
+                            posterfileinput.value = blobUrl;
+                        }, 'image/jpeg');
                     }
                     </script>
 
