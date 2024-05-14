@@ -143,13 +143,12 @@ class GlossVideo(models.Model):
             full_new_path = storage.get_valid_name(new_filename)
             # Proceed to change the file path if the new path is not equal to old path.
             if not old_file_path == full_new_path:
-                # Save the file into the new path.
-                saved_file_path = storage.save(full_new_path, self.videofile)
+                # Move the file to the new path.
+                storage.move(old_file_path, full_new_path)
                 # Set the actual file path to videofile.
-                self.videofile = saved_file_path
-                if os.path.isfile(old_file_path):
-                    # Remove the file from the old path.
-                    os.remove(old_file_path)
+                self.videofile.name = full_new_path
+                self.save()
+
 
     def create_filename(self):
         """Returns a correctly named filename"""
