@@ -136,17 +136,17 @@ class GlossVideo(models.Model):
         # Do not rename the file if glossvideo doesn't have a gloss.
         if hasattr(self, 'gloss') and self.gloss is not None:
             # Store the old file path, needed for removal later.
-            old_file_path = self.videofile.path
+            old_file_path = self.videofile.name
             # Create the base filename.
             new_filename = self.create_filename()
             # Get the relative path in media folder.
             full_new_path = storage.get_valid_name(new_filename)
             # Proceed to change the file path if the new path is not equal to old path.
-            if not old_file_path == os.path.join(storage.base_location, full_new_path):
+            if not old_file_path == full_new_path:
                 # Save the file into the new path.
                 saved_file_path = storage.save(full_new_path, self.videofile)
                 # Set the actual file path to videofile.
-                self.videofile =  saved_file_path
+                self.videofile = saved_file_path
                 if os.path.isfile(old_file_path):
                     # Remove the file from the old path.
                     os.remove(old_file_path)
