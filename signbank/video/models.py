@@ -20,13 +20,13 @@ class GlossVideoStorage(S3Storage):
     def get_valid_name(self, name):
         """Generate a valid name, save videos to a 'base_directory', and under it use directories
         named for the first two characters in the filename to partition the videos"""
-        base_directory = "glossvideo"
+        base_directory = os.path.join(settings.MEDIA_ROOT, "glossvideo")
         file_path = os.path.join(name[:2].upper(), name)
         result = os.path.join(base_directory, file_path)
         return result
 
     def url(self, name):
-        return os.path.join(self.base_url, name)
+        return os.path.join(self.base_url, self.get_valid_name(name))
 
 
 class GlossVideo(models.Model):
