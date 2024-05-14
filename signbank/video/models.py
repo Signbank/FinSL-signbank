@@ -3,11 +3,10 @@
 from __future__ import unicode_literals
 
 import os
-import datetime
 
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from django.conf import settings
+from django.core.files.base import ContentFile
 from storages.backends.s3 import S3Storage
 
 
@@ -142,9 +141,14 @@ class GlossVideo(models.Model):
             # Get the relative path in media folder.
             full_new_path = storage.get_valid_name(new_filename)
             # Proceed to change the file path if the new path is not equal to old path.
-            if not old_file_path == full_new_path:
+            if old_file_path != full_new_path:
                 # Move the file to the new path.
-                storage.move(old_file_path, full_new_path)
+                with storage.open(old_file_path) as old_file:
+                    file_content = old_file.read()
+                    # Save the file into the new path.
+                    storage.save(full_new_path, ContentFile(file_content))
+                    # Delete the old file.
+                    storage.delete(old_file_path)
                 # Set the actual file path to videofile.
                 self.videofile.name = full_new_path
                 self.save()
