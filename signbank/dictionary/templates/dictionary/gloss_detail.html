@@ -196,11 +196,11 @@ $('#id_comment').atwho({
                             </div>
                             <div class="embed-responsive embed-responsive-16by9">
                                 <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" controls muted
-                                       {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url|urlencode}}"{% endif %}>
+                                       {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url}}"{% endif %}>
                                     {% if glossvideo.get_extension == '.mp4' %}
-                                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/mp4">
+                                    <source src="{{glossvideo.videofile.url}}" type="video/mp4">
                                     {% elif glossvideo.get_extension == '.webm' %}
-                                    <source src="{{glossvideo.videofile.url|urlencode}}" type="video/webm">
+                                    <source src="{{glossvideo.videofile.url}}" type="video/webm">
                                     {% endif %}
                                     {% blocktrans %}Your browser does not support the video tag.{% endblocktrans %}
                                 </video>
