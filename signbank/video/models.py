@@ -14,13 +14,13 @@ from storages.backends.s3 import S3Storage
 class GlossVideoStorage(S3Storage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
-    def __init__(self):
-        super(GlossVideoStorage, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(GlossVideoStorage, self).__init__(*args, **kwargs)
 
     def get_valid_name(self, name):
         """Generate a valid name, save videos to a 'base_directory', and under it use directories
         named for the first two characters in the filename to partition the videos"""
-        base_directory = os.path.join(settings.MEDIA_ROOT, "glossvideo")
+        base_directory = "glossvideo"
         file_path = os.path.join(name[:2].upper(), name)
         result = os.path.join(base_directory, file_path)
         return result
@@ -174,7 +174,7 @@ class GlossVideo(models.Model):
 
     def get_extension(self):
         """Returns videofiles extension."""
-        return os.path.splitext(self.videofile.path)[1]
+        return os.path.splitext(self.videofile.name)[1]
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""
