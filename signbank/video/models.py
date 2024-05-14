@@ -26,7 +26,7 @@ class GlossVideoStorage(S3Storage):
         return result
 
     def url(self, name):
-        return os.path.join(self.base_url, self.get_valid_name(name))
+        return self.get_valid_name(name)
 
 
 class GlossVideo(models.Model):
