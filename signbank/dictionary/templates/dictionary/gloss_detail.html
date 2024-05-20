@@ -195,7 +195,7 @@ $('#id_comment').atwho({
                                 <h4 class="edit edit_text" id="video_title{{glossvideo.pk}}">{{glossvideo.title}}</h4>
                             </div>
                             <div class="embed-responsive embed-responsive-16by9">
-                                <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" controls muted
+                                <video id="glossvideo-{{glossvideo.pk}}" class="embed-responsive-item" width="450" preload="metadata" crossorigin="anonymous" controls muted
                                        {% if glossvideo.posterfile %} poster="{{glossvideo.posterfile.url}}"{% endif %}>
                                     {% if glossvideo.get_extension == '.mp4' %}
                                     <source src="{{glossvideo.videofile.url}}" type="video/mp4">
