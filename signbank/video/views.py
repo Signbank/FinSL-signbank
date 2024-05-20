@@ -265,29 +265,30 @@ uploaded_glossvideos_listview = permission_required('video.change_glossvideo')(U
 def update_glossvideo(request):
     """Process the post request for updating a glossvideo."""
     if request.method == 'POST':
-        data = json.loads(request.body.decode('utf-8'))
-        if "ajax" in data and data["ajax"] == "true":
-            # If the param 'ajax' is included, we received what we were supposed to, continue.
-            # Expect multiple forms to be passed in body['updatelist']
-            errors = []
-            for item in data['updatelist']:
-                if 'gloss' in item and 'glossvideo' in item:
-                    glossvideo = GlossVideo.objects.get(pk=item['glossvideo'])
-                    glossvideo.gloss = Gloss.objects.get(pk=item['gloss'])
-                    if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
-                        # Set version number.
-                        glossvideo.version = glossvideo.next_version()
-                        # Save if user has permission to add videos to the selected dataset.
-                        glossvideo.save()
-                    else:
-                        errors.append("{ *Video: " + str(glossvideo)+" *Dataset: "+str(glossvideo.gloss.dataset) +
-                                    " *Gloss: "+str(glossvideo.gloss)+"}, ")
-            if len(errors) < 1:
-                return HttpResponse("OK", status=200)
-            # If there are errors, add them to messages and raise PermissionDenied to show 403 template.
-            msg = "You do not have permissions to add videos to the lexicon of these glosses:" + " " + str(errors)
-            messages.error(request, msg)
-            raise PermissionDenied(msg)
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            data = json.loads(request.body.decode('utf-8'))
+            if "ajax" in data and data["ajax"] == "true":
+                # If the param 'ajax' is included, we received what we were supposed to, continue.
+                # Expect multiple forms to be passed in body['updatelist']
+                errors = []
+                for item in data['updatelist']:
+                    if 'gloss' in item and 'glossvideo' in item:
+                        glossvideo = GlossVideo.objects.get(pk=item['glossvideo'])
+                        glossvideo.gloss = Gloss.objects.get(pk=item['gloss'])
+                        if 'view_dataset' in get_perms(request.user, glossvideo.gloss.dataset):
+                            # Set version number.
+                            glossvideo.version = glossvideo.next_version()
+                            # Save if user has permission to add videos to the selected dataset.
+                            glossvideo.save()
+                        else:
+                            errors.append("{ *Video: " + str(glossvideo)+" *Dataset: "+str(glossvideo.gloss.dataset) +
+                                        " *Gloss: "+str(glossvideo.gloss)+"}, ")
+                if len(errors) < 1:
+                    return HttpResponse("OK", status=200)
+                # If there are errors, add them to messages and raise PermissionDenied to show 403 template.
+                msg = "You do not have permissions to add videos to the lexicon of these glosses:" + " " + str(errors)
+                messages.error(request, msg)
+                raise PermissionDenied(msg)
         else:
             # If not AJAX, we expect one form to be submitted.
             post = request.POST
