@@ -187,7 +187,7 @@ class GlossVideo(models.Model):
         """Return a Datetime object from filesystems last modified time of path."""
         try:
             storage = self.videofile.storage
-            return storage.modified_time(self.videofile)
+            return storage.modified_time(self.videofile.name)
         except FileNotFoundError:
             return None
 
