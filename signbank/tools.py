@@ -65,7 +65,7 @@ def infopage(request):
         context["problems"] = problems
 
         # Only do this if the database is postgresql.
-        if settings.DB_IS_PSQL:
+        if getattr(settings, "DB_IS_PSQL", False):
             # Get postgresql database size and calculate usage percentage.
             with connection.cursor() as cursor:
                 cursor.execute("SELECT pg_database_size(%s)", [settings.PSQL_DB_NAME])
