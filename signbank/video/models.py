@@ -3,30 +3,27 @@
 from __future__ import unicode_literals
 
 import os
-import datetime
 
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
+from django.core.files.base import ContentFile
+from storages.backends.s3 import S3Storage
 
 
-class GlossVideoStorage(FileSystemStorage):
+class GlossVideoStorage(S3Storage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
-    def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
-        super(GlossVideoStorage, self).__init__(location, base_url)
+    def __init__(self, *args, **kwargs):
+        super(GlossVideoStorage, self).__init__(*args, **kwargs)
+        self.base_path = "media/"
 
     def get_valid_name(self, name):
         """Generate a valid name, save videos to a 'base_directory', and under it use directories
         named for the first two characters in the filename to partition the videos"""
         base_directory = "glossvideo"
         file_path = os.path.join(name[:2].upper(), name)
-        result = os.path.join(base_directory, file_path)
+        result = os.path.join(self.base_path, base_directory, file_path)
         return result
-
-    def url(self, name):
-        return os.path.join(self.base_url, name)
 
 
 class GlossVideo(models.Model):
@@ -136,20 +133,24 @@ class GlossVideo(models.Model):
         # Do not rename the file if glossvideo doesn't have a gloss.
         if hasattr(self, 'gloss') and self.gloss is not None:
             # Store the old file path, needed for removal later.
-            old_file_path = self.videofile.path
+            old_file_path = self.videofile.name
             # Create the base filename.
             new_filename = self.create_filename()
             # Get the relative path in media folder.
             full_new_path = storage.get_valid_name(new_filename)
             # Proceed to change the file path if the new path is not equal to old path.
-            if not old_file_path == os.path.join(storage.base_location, full_new_path):
-                # Save the file into the new path.
-                saved_file_path = storage.save(full_new_path, self.videofile)
+            if old_file_path != full_new_path:
+                # Move the file to the new path.
+                with storage.open(old_file_path) as old_file:
+                    file_content = old_file.read()
+                    # Save the file into the new path.
+                    storage.save(full_new_path, ContentFile(file_content))
+                    # Delete the old file.
+                    storage.delete(old_file_path)
                 # Set the actual file path to videofile.
-                self.videofile =  saved_file_path
-                if os.path.isfile(old_file_path):
-                    # Remove the file from the old path.
-                    os.remove(old_file_path)
+                self.videofile.name = full_new_path
+                self.save()
+
 
     def create_filename(self):
         """Returns a correctly named filename"""
@@ -174,7 +175,7 @@ class GlossVideo(models.Model):
 
     def get_extension(self):
         """Returns videofiles extension."""
-        return os.path.splitext(self.videofile.path)[1]
+        return os.path.splitext(self.videofile.name)[1]
 
     def has_poster(self):
         """Returns true if the glossvideo has a poster file."""
@@ -185,7 +186,8 @@ class GlossVideo(models.Model):
     def get_videofile_modified_date(self):
         """Return a Datetime object from filesystems last modified time of path."""
         try:
-            return datetime.datetime.fromtimestamp(os.path.getmtime(self.videofile.path))
+            storage = self.videofile.storage
+            return storage.get_modified_time(self.videofile.name)
         except FileNotFoundError:
             return None
 

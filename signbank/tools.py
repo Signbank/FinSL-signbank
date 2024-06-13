@@ -12,8 +12,8 @@ from django.core.mail import mail_admins
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
-from signbank.dictionary.models import Gloss, Language, Translation, Keyword, Dataset, GlossRelation
-from signbank.video.models import GlossVideo
+from signbank.dictionary.models import Gloss, Language, Translation, Keyword, Dataset
+from signbank.video.models import GlossVideo, GlossVideoStorage
 
 
 @permission_required("dictionary.search_gloss")
@@ -55,16 +55,17 @@ def infopage(request):
     if request.user.is_staff:
         # Find missing files
         problems = list()
+        storage = GlossVideoStorage()
         for vid in GlossVideo.objects.all():
-            if vid.videofile and not os.path.isfile(vid.videofile.path):
+            if vid.videofile and not storage.exists(vid.videofile.name):
                 problems.append({"id": vid.id, "file": vid.videofile, "type": "video", "url": vid.get_absolute_url()})
-            if vid.posterfile and not os.path.isfile(vid.posterfile.path):
+            if vid.posterfile and not storage.exists(vid.posterfile.name):
                 problems.append({"id": vid.id, "file": vid.posterfile, "type": "poster",
                                  "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
         context["problems"] = problems
 
         # Only do this if the database is postgresql.
-        if settings.DB_IS_PSQL:
+        if getattr(settings, "DB_IS_PSQL", False):
             # Get postgresql database size and calculate usage percentage.
             with connection.cursor() as cursor:
                 cursor.execute("SELECT pg_database_size(%s)", [settings.PSQL_DB_NAME])
