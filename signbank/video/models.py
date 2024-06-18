@@ -18,6 +18,8 @@ except ImportError:
 class GlossVideoStorage(SignbankStorage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
+    location = "media"
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.base_path = "media/"
