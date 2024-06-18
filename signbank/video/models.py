@@ -13,6 +13,8 @@ from storages.backends.s3 import S3Storage
 class GlossVideoStorage(S3Storage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
+    location = "media"
+
     def __init__(self, *args, **kwargs):
         super(GlossVideoStorage, self).__init__(*args, **kwargs)
         self.base_path = "media/"
