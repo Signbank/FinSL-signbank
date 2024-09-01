@@ -4,7 +4,7 @@ import os
 from django.utils.translation import ugettext_lazy as _
 
 #: IMPORTANT: Debug should always be False in production
-DEBUG = True  # TODO: Switch back
+DEBUG = False
 
 # The following settings are defined in environment variables:
 # SECRET_KEY, ADMINS, DATABASES, EMAIL_HOST, EMAIL_PORT, DEFAULT_FROM_EMAIL
