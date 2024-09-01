@@ -3,18 +3,23 @@
 from __future__ import unicode_literals
 
 import os
+from datetime import datetime
 
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.core.files.base import ContentFile
-from storages.backends.s3 import S3Storage
+from django.core.files.storage import FileSystemStorage
+# Determine storage based on whether package django-storage is installed
+try:
+    from storages.backends.s3 import S3Storage as SignbankStorage
+except ImportError:
+    from django.core.files.storage import FileSystemStorage as SignbankStorage
 
-
-class GlossVideoStorage(S3Storage):
+class GlossVideoStorage(SignbankStorage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
     def __init__(self, *args, **kwargs):
-        super(GlossVideoStorage, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.base_path = "media/"
 
     def get_valid_name(self, name):
@@ -187,6 +192,10 @@ class GlossVideo(models.Model):
         """Return a Datetime object from filesystems last modified time of path."""
         try:
             storage = self.videofile.storage
+            # If you have django-storages installed, storage should not be FileSystemStorage
+            if isinstance(storage, FileSystemStorage):
+                return datetime.fromtimestamp(os.path.getmtime(self.videofile.path))
+
             return storage.get_modified_time(self.videofile.name)
         except FileNotFoundError:
             return None
