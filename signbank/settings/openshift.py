@@ -183,7 +183,7 @@ LOCALE_PATHS = (
 )
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
-STATICFILES_STORAGE = "storages.backends.s3.S3Storage"
+STATICFILES_STORAGE = "signbank.utils.StaticFilesStorage"
 
 AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME", "")
 AWS_S3_ENDPOINT_URL = os.environ.get("BUCKET_ENDPOINT_URL", "")
