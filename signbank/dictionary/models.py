@@ -29,6 +29,8 @@ class Dataset(models.Model):
     is_public = models.BooleanField(_("Is public"), default=False, help_text=_("Is this dataset is public or private?"))
     #: Boolean defining whether to show Gloss comments in public interface.
     show_comments_in_public = models.BooleanField(_("Show Gloss comments in public interface"), default=True, help_text=_("Show comments in public interface?"))
+    #: Boolean defining whether to show GlossUrls in public interface.
+    show_urls_in_public = models.BooleanField(_("Show Gloss URLs in public interface"), default=False, help_text=_("Show URLs in public interface?"))
     #: Gloss language, which spoken language is used for the gloss name, used in ELAN external controlled vocabulary
     glosslanguage = models.ForeignKey("Language", verbose_name=_("Gloss language"), related_name="glosslanguage",
         on_delete=models.PROTECT, help_text=_("Language that is used for gloss names"))
@@ -190,6 +192,8 @@ class SignLanguage(models.Model):
     """A sign language."""
     #: The name of the Sign Language
     name = models.CharField(max_length=50)
+    #: Name of the Sign Language to use for public interface, perhaps less strict naming convention
+    public_name = models.CharField(help_text=_("Name to use in public interface"), max_length=100, default="")
     #: The ISO 639-3 code of the Sign Language (3 characters long).
     language_code_3char = models.CharField(unique=False, blank=False, null=False, max_length=3, help_text=_(
         """ISO 639-3 language code (3 characters long) of a sign language."""))
