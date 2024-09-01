@@ -60,7 +60,7 @@
             <header>
                 <h4>{% blocktrans %}Notes{% endblocktrans %}</h4>
             </header>
-            <p>{% if gloss.notes %}{{gloss.notes}}
+            <p>{% if gloss.notes %}{{gloss.notes|linebreaks}}
                 {% else %}<em>{% blocktrans %}No notes.{% endblocktrans %}</em>{% endif %}</p>
             </section>
         </div>
