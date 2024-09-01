@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-17 15:02+0200\n"
+"POT-Creation-Date: 2024-09-01 14:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,14 +71,14 @@ msgstr ""
 
 #: build/lib/signbank/dictionary/admin.py:110
 #: build/lib/signbank/dictionary/models.py:587 signbank/dictionary/admin.py:110
-#: signbank/dictionary/models.py:574
+#: signbank/dictionary/models.py:580
 msgid "Gloss relation"
 msgstr "Relationer till glossan"
 
 #: build/lib/signbank/dictionary/admin.py:111
 #: build/lib/signbank/dictionary/models.py:588
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
-#: signbank/dictionary/admin.py:111 signbank/dictionary/models.py:575
+#: signbank/dictionary/admin.py:111 signbank/dictionary/models.py:581
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:5
 msgid "Gloss relations"
 msgstr "Relationer till glossan"
@@ -125,12 +125,12 @@ msgid "Frequency"
 msgstr ""
 
 #: build/lib/signbank/dictionary/adminviews.py:78
-#: signbank/dictionary/adminviews.py:78
+#: signbank/dictionary/adminviews.py:77
 msgid "You do not have permissions to export to CSV."
 msgstr ""
 
 #: build/lib/signbank/dictionary/adminviews.py:406
-#: signbank/dictionary/adminviews.py:406
+#: signbank/dictionary/adminviews.py:405
 msgid "You do not have permissions to view glosses of this dataset."
 msgstr ""
 
@@ -223,10 +223,11 @@ msgstr "Taggar"
 #: build/lib/signbank/dictionary/models.py:215
 #: build/lib/signbank/dictionary/publicviews.py:106
 #: signbank/dictionary/forms.py:77 signbank/dictionary/forms.py:277
-#: signbank/dictionary/models.py:34 signbank/dictionary/models.py:197
-#: signbank/dictionary/models.py:207 signbank/dictionary/models.py:535
+#: signbank/dictionary/models.py:38 signbank/dictionary/models.py:203
+#: signbank/dictionary/models.py:213 signbank/dictionary/models.py:541
 #: signbank/dictionary/publicviews.py:106
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:375
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:176
 msgid "Sign language"
 msgstr "Teckenspråk"
 
@@ -256,13 +257,13 @@ msgstr "Sök"
 #: build/lib/signbank/video/models.py:49
 #: build/lib/signbank/video/templates/uploaded_glossvideos.html:60
 #: signbank/dictionary/forms.py:82 signbank/dictionary/forms.py:175
-#: signbank/dictionary/models.py:60 signbank/dictionary/models.py:129
-#: signbank/dictionary/models.py:287 signbank/dictionary/models.py:315
-#: signbank/dictionary/models.py:532 signbank/dictionary/publicviews.py:101
+#: signbank/dictionary/models.py:64 signbank/dictionary/models.py:133
+#: signbank/dictionary/models.py:293 signbank/dictionary/models.py:321
+#: signbank/dictionary/models.py:538 signbank/dictionary/publicviews.py:101
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:182
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:87
 #: signbank/dictionary/templates/dictionary/network_graph.html:37
-#: signbank/video/models.py:47
+#: signbank/video/models.py:46
 #: signbank/video/templates/uploaded_glossvideos.html:60
 msgid "Gloss"
 msgstr "Glossa"
@@ -276,7 +277,7 @@ msgstr "Glossa"
 #: build/lib/signbank/dictionary/forms.py:84
 #: build/lib/signbank/dictionary/models.py:331
 #: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:184
-#: signbank/dictionary/forms.py:84 signbank/dictionary/models.py:320
+#: signbank/dictionary/forms.py:84 signbank/dictionary/models.py:326
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:184
 msgid "Gloss in English"
 msgstr "Engelsk glossa"
@@ -338,7 +339,7 @@ msgstr "Målglossa"
 
 #: build/lib/signbank/dictionary/forms.py:173
 #: build/lib/signbank/dictionary/models.py:51 signbank/dictionary/forms.py:173
-#: signbank/dictionary/models.py:49 templates/infopage.html:110
+#: signbank/dictionary/models.py:53 templates/infopage.html:110
 msgid "Lexicon"
 msgstr "Lexikon"
 
@@ -366,7 +367,7 @@ msgstr ""
 #: build/lib/signbank/dictionary/forms.py:216
 #: build/lib/signbank/dictionary/models.py:240
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:238
-#: signbank/dictionary/forms.py:216 signbank/dictionary/models.py:231
+#: signbank/dictionary/forms.py:216 signbank/dictionary/models.py:237
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:238
 msgid "Related Language"
 msgstr ""
@@ -414,7 +415,7 @@ msgstr "Sök översättningsmotsvarighet"
 #: signbank/dictionary/forms.py:276
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:81
 msgid "All sign languages"
-msgstr ""
+msgstr "Alla teckenspråk"
 
 #: build/lib/signbank/dictionary/forms.py:279 signbank/dictionary/forms.py:279
 msgid "You can restrict your search to these lexicons"
@@ -422,11 +423,11 @@ msgstr "Du kan avgränsa sökningen till de här lexikonen"
 
 #: build/lib/signbank/dictionary/models.py:27 signbank/dictionary/models.py:25
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: build/lib/signbank/dictionary/models.py:29 signbank/dictionary/models.py:27
 msgid "Public name"
-msgstr ""
+msgstr "Offentligt namn"
 
 #: build/lib/signbank/dictionary/models.py:31 signbank/dictionary/models.py:29
 msgid "Is public"
@@ -434,87 +435,87 @@ msgstr "Är publicerad"
 
 #: build/lib/signbank/dictionary/models.py:31 signbank/dictionary/models.py:29
 msgid "Is this dataset is public or private?"
-msgstr ""
+msgstr "Är denna datauppsättning offentlig eller privat?"
 
-#: build/lib/signbank/dictionary/models.py:33 signbank/dictionary/models.py:31
+#: build/lib/signbank/dictionary/models.py:33 signbank/dictionary/models.py:35
 msgid "Gloss language"
-msgstr ""
+msgstr "Gloss språk"
 
-#: build/lib/signbank/dictionary/models.py:34 signbank/dictionary/models.py:32
+#: build/lib/signbank/dictionary/models.py:34 signbank/dictionary/models.py:36
 msgid "Language that is used for gloss names"
-msgstr ""
+msgstr "Språk som används för glansnamn"
 
-#: build/lib/signbank/dictionary/models.py:38 signbank/dictionary/models.py:36
+#: build/lib/signbank/dictionary/models.py:38 signbank/dictionary/models.py:40
 msgid "Translation equivalent languages"
-msgstr ""
+msgstr "Översättning motsvarande språk"
 
-#: build/lib/signbank/dictionary/models.py:39 signbank/dictionary/models.py:37
+#: build/lib/signbank/dictionary/models.py:39 signbank/dictionary/models.py:41
 msgid "These languages are options for translation equivalents."
-msgstr ""
+msgstr "Dessa språk är alternativ för översättningsekvivalenter."
 
 #: build/lib/signbank/dictionary/models.py:41
 #: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:23
 #: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:61
-#: signbank/dictionary/models.py:39
+#: signbank/dictionary/models.py:43
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:23
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:61
 msgid "Description"
-msgstr ""
+msgstr "Beskrivning"
 
 #: build/lib/signbank/dictionary/models.py:43
 #: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:25
 #: build/lib/signbank/dictionary/templates/dictionary/manage_lexicons.html:63
-#: signbank/dictionary/models.py:41
+#: signbank/dictionary/models.py:45
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:25
 #: signbank/dictionary/templates/dictionary/manage_lexicons.html:63
 msgid "Copyright"
 msgstr "Upphovsrätt"
 
-#: build/lib/signbank/dictionary/models.py:45 signbank/dictionary/models.py:43
+#: build/lib/signbank/dictionary/models.py:45 signbank/dictionary/models.py:47
 msgid "Admins"
-msgstr ""
+msgstr "Administratörer"
 
-#: build/lib/signbank/dictionary/models.py:49 signbank/dictionary/models.py:47
+#: build/lib/signbank/dictionary/models.py:49 signbank/dictionary/models.py:51
 msgid "Access dataset"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:52
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_list.html:109
-#: signbank/dictionary/models.py:50
+#: signbank/dictionary/models.py:54
 #: signbank/dictionary/templates/dictionary/public_gloss_list.html:109
 #: templates/menu.html:58
 msgid "Lexicons"
 msgstr "Lexikon"
 
 #: build/lib/signbank/dictionary/models.py:65
-#: build/lib/signbank/dictionary/models.py:135 signbank/dictionary/models.py:62
-#: signbank/dictionary/models.py:131
+#: build/lib/signbank/dictionary/models.py:135 signbank/dictionary/models.py:66
+#: signbank/dictionary/models.py:135
 msgid "Language"
 msgstr ""
 
-#: build/lib/signbank/dictionary/models.py:71 signbank/dictionary/models.py:68
+#: build/lib/signbank/dictionary/models.py:71 signbank/dictionary/models.py:72
 msgid "Gloss translation field"
 msgstr ""
 
-#: build/lib/signbank/dictionary/models.py:72 signbank/dictionary/models.py:69
+#: build/lib/signbank/dictionary/models.py:72 signbank/dictionary/models.py:73
 msgid "Gloss translation fields"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:137
 #: build/lib/signbank/dictionary/models.py:160
-#: signbank/dictionary/models.py:133 signbank/dictionary/models.py:155
+#: signbank/dictionary/models.py:137 signbank/dictionary/models.py:159
 msgid "Keyword"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:144
-#: signbank/dictionary/models.py:140
+#: signbank/dictionary/models.py:144
 msgid "Translation equivalent"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:145
 #: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:186
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:49
-#: signbank/dictionary/models.py:141
+#: signbank/dictionary/models.py:145
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:186
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:49
 #: templates/infopage.html:50 templates/infopage.html:140
@@ -522,54 +523,54 @@ msgid "Translation equivalents"
 msgstr "Översättningsmotsvarigheter"
 
 #: build/lib/signbank/dictionary/models.py:161
-#: signbank/dictionary/models.py:156
+#: signbank/dictionary/models.py:160
 msgid "Keywords"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:177
-#: signbank/dictionary/models.py:171
+#: signbank/dictionary/models.py:175
 msgid "ISO 639-1 language code (2 characters long) of a written language."
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:180
-#: signbank/dictionary/models.py:174
+#: signbank/dictionary/models.py:178
 msgid "ISO 639-3 language code (3 characters long) of a written language."
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:186
-#: signbank/dictionary/models.py:180
+#: signbank/dictionary/models.py:184
 msgid "Written language"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:187
-#: signbank/dictionary/models.py:181
+#: signbank/dictionary/models.py:185
 msgid "Written languages"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:200
-#: signbank/dictionary/models.py:193
+#: signbank/dictionary/models.py:199
 msgid "ISO 639-3 language code (3 characters long) of a sign language."
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:205
-#: signbank/dictionary/models.py:198
+#: signbank/dictionary/models.py:204
 msgid "Sign languages"
 msgstr "Teckenspråk"
 
 #: build/lib/signbank/dictionary/models.py:223
-#: signbank/dictionary/models.py:215
+#: signbank/dictionary/models.py:221
 msgid "Dialect"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:224
-#: signbank/dictionary/models.py:216
+#: signbank/dictionary/models.py:222
 msgid "Dialects"
 msgstr ""
 
 #. Translators: RelationToForeignSign field verbose name
 #. : Boolean: Is this a loan sign?
 #: build/lib/signbank/dictionary/models.py:237
-#: signbank/dictionary/models.py:228
+#: signbank/dictionary/models.py:234
 msgid "Loan Sign"
 msgstr ""
 
@@ -577,113 +578,113 @@ msgstr ""
 #: build/lib/signbank/dictionary/models.py:244
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:240
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:306
-#: signbank/dictionary/models.py:235
+#: signbank/dictionary/models.py:241
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:240
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:306
 msgid "Gloss in related language"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:248
-#: signbank/dictionary/models.py:239
+#: signbank/dictionary/models.py:245
 msgid "Relation to Foreign Sign"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:249
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:228
-#: signbank/dictionary/models.py:240
+#: signbank/dictionary/models.py:246
 #: signbank/dictionary/templates/dictionary/gloss_detail_advanced.html:228
 msgid "Relations to Foreign Signs"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:275
-#: signbank/dictionary/models.py:265
+#: signbank/dictionary/models.py:271
 msgid "Field choice"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:276
-#: signbank/dictionary/models.py:266
+#: signbank/dictionary/models.py:272
 msgid "Field choices"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:299
-#: signbank/dictionary/models.py:288
+#: signbank/dictionary/models.py:294
 msgid "Glosses"
 msgstr ""
 
 #. Translators: Gloss permissions
 #: build/lib/signbank/dictionary/models.py:303
-#: signbank/dictionary/models.py:292
+#: signbank/dictionary/models.py:298
 msgid "Can Update Video"
 msgstr ""
 
 #. Translators: Gloss permissions
 #: build/lib/signbank/dictionary/models.py:305
-#: signbank/dictionary/models.py:294
+#: signbank/dictionary/models.py:300
 msgid "Can Search/View Full Gloss Details"
 msgstr ""
 
 #. Translators: Gloss permissions
 #: build/lib/signbank/dictionary/models.py:307
-#: signbank/dictionary/models.py:296
+#: signbank/dictionary/models.py:302
 msgid "Can export sign details as CSV"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:308
-#: signbank/dictionary/models.py:297
+#: signbank/dictionary/models.py:303
 msgid "Can import glosses from a CSV file"
 msgstr ""
 
 #. Translators: Gloss permissions
 #: build/lib/signbank/dictionary/models.py:310
-#: signbank/dictionary/models.py:299
+#: signbank/dictionary/models.py:305
 msgid "Include all properties in sign detail view"
 msgstr ""
 
 #. Translators: Gloss permissions
 #: build/lib/signbank/dictionary/models.py:312
-#: signbank/dictionary/models.py:301
+#: signbank/dictionary/models.py:307
 msgid "Can publish and unpublish Glosses"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:316
-#: signbank/dictionary/models.py:305
+#: signbank/dictionary/models.py:311
 msgid "Published"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:317
-#: signbank/dictionary/models.py:306
+#: signbank/dictionary/models.py:312
 msgid "Publish this gloss in the public gloss list"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:319
-#: signbank/dictionary/models.py:308
+#: signbank/dictionary/models.py:314
 msgid "Exclude from ECV"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:320
-#: signbank/dictionary/models.py:309
+#: signbank/dictionary/models.py:315
 msgid "Exclude from ELAN externally controlled vocabularies (ECV)"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:322
-#: signbank/dictionary/models.py:311
+#: signbank/dictionary/models.py:317
 msgid "Glosses dataset"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:323
-#: signbank/dictionary/models.py:312
+#: signbank/dictionary/models.py:318
 msgid "Dataset a gloss is part of"
 msgstr ""
 
 #. Translators: Help text for Gloss field: idgloss
 #: build/lib/signbank/dictionary/models.py:328
-#: signbank/dictionary/models.py:317
+#: signbank/dictionary/models.py:323
 msgid "This is the unique identifying name of a Gloss."
 msgstr ""
 
 #. Translators: Help text for Gloss field: idgloss_en (english)
 #: build/lib/signbank/dictionary/models.py:333
-#: signbank/dictionary/models.py:322
+#: signbank/dictionary/models.py:328
 msgid "This is the English name for the Gloss"
 msgstr ""
 
@@ -693,7 +694,7 @@ msgstr ""
 #: build/lib/signbank/dictionary/publicviews.py:107
 #: build/lib/signbank/dictionary/templates/dictionary/admin_gloss_list.html:187
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:61
-#: signbank/dictionary/models.py:325 signbank/dictionary/publicviews.py:107
+#: signbank/dictionary/models.py:331 signbank/dictionary/publicviews.py:107
 #: signbank/dictionary/templates/dictionary/admin_gloss_list.html:187
 #: signbank/dictionary/templates/dictionary/public_gloss_detail.html:61
 msgid "Notes"
@@ -701,196 +702,196 @@ msgstr "Mer information"
 
 #. Translators: Gloss models field: handedness, verbose name
 #: build/lib/signbank/dictionary/models.py:352
-#: signbank/dictionary/models.py:341
+#: signbank/dictionary/models.py:347
 msgid "Handedness"
 msgstr ""
 
 #. Translators: Gloss models field: strong_handshape, verbose name
 #: build/lib/signbank/dictionary/models.py:356
-#: signbank/dictionary/models.py:345
+#: signbank/dictionary/models.py:351
 msgid "Strong Hand"
 msgstr ""
 
 #. Translators: Gloss models field: weak_handshape, verbose name
 #: build/lib/signbank/dictionary/models.py:361
-#: signbank/dictionary/models.py:350
+#: signbank/dictionary/models.py:356
 msgid "Weak Hand"
 msgstr ""
 
 #. Translators: Gloss models field: location, verbose name
 #: build/lib/signbank/dictionary/models.py:366
-#: signbank/dictionary/models.py:355
+#: signbank/dictionary/models.py:361
 msgid "Location"
 msgstr ""
 
 #. Translators: Gloss models field: relation_between_articulators, verbose name
 #: build/lib/signbank/dictionary/models.py:371
-#: signbank/dictionary/models.py:360
+#: signbank/dictionary/models.py:366
 msgid "Relation Between Articulators"
 msgstr ""
 
 #. Translators: Gloss models field: absolute_orientation_palm, verbose name
 #: build/lib/signbank/dictionary/models.py:379
-#: signbank/dictionary/models.py:368
+#: signbank/dictionary/models.py:374
 msgid "Absolute Orientation: Palm"
 msgstr ""
 
 #. Translators: Gloss models field: absolute_orientation_fingers, verbose name
 #: build/lib/signbank/dictionary/models.py:385
-#: signbank/dictionary/models.py:374
+#: signbank/dictionary/models.py:380
 msgid "Absolute Orientation: Fingers"
 msgstr ""
 
 #. Translators: Gloss models field: relative_orientation_movement, verbose name
 #: build/lib/signbank/dictionary/models.py:392
-#: signbank/dictionary/models.py:381
+#: signbank/dictionary/models.py:387
 msgid "Relative Orientation: Movement"
 msgstr ""
 
 #. Translators: Gloss models field: relative_orientation_location, verbose name
 #: build/lib/signbank/dictionary/models.py:399
-#: signbank/dictionary/models.py:388
+#: signbank/dictionary/models.py:394
 msgid "Relative Orientation: Location"
 msgstr ""
 
 #. Translators: Gloss models field: orientation_change, verbose name
 #: build/lib/signbank/dictionary/models.py:406
-#: signbank/dictionary/models.py:395
+#: signbank/dictionary/models.py:401
 msgid "Orientation Change"
 msgstr ""
 
 #. Translators: Gloss models field: handshape_change, verbose name
 #: build/lib/signbank/dictionary/models.py:412
-#: signbank/dictionary/models.py:401
+#: signbank/dictionary/models.py:407
 msgid "Handshape Change"
 msgstr ""
 
 #. Translators: Gloss models field: repeated_movement, verbose name
 #: build/lib/signbank/dictionary/models.py:417
-#: signbank/dictionary/models.py:406
+#: signbank/dictionary/models.py:412
 msgid "Repeated Movement"
 msgstr ""
 
 #. Translators: Gloss models field: alternating_movement, verbose name
 #: build/lib/signbank/dictionary/models.py:419
-#: signbank/dictionary/models.py:408
+#: signbank/dictionary/models.py:414
 msgid "Alternating Movement"
 msgstr ""
 
 #. Translators: Gloss models field: movement_shape, verbose name
 #: build/lib/signbank/dictionary/models.py:422
-#: signbank/dictionary/models.py:411
+#: signbank/dictionary/models.py:417
 msgid "Movement Shape"
 msgstr ""
 
 #. Translators: Gloss models field: movement_direction, verbose name
 #: build/lib/signbank/dictionary/models.py:426
-#: signbank/dictionary/models.py:415
+#: signbank/dictionary/models.py:421
 msgid "Movement Direction"
 msgstr ""
 
 #. Translators: Gloss models field: movement_manner, verbose name
 #: build/lib/signbank/dictionary/models.py:431
-#: signbank/dictionary/models.py:420
+#: signbank/dictionary/models.py:426
 msgid "Movement Manner"
 msgstr ""
 
 #. Translators: Gloss models field: contact_type, verbose name
 #: build/lib/signbank/dictionary/models.py:435
-#: signbank/dictionary/models.py:424
+#: signbank/dictionary/models.py:430
 msgid "Contact Type"
 msgstr ""
 
 #. Translators: Gloss models field: phonology_other verbose name
 #: build/lib/signbank/dictionary/models.py:440
-#: signbank/dictionary/models.py:429
+#: signbank/dictionary/models.py:435
 msgid "Phonology Other"
 msgstr ""
 
 #. Translators: Gloss models field: mouth_gesture, verbose name
 #: build/lib/signbank/dictionary/models.py:443
-#: signbank/dictionary/models.py:432
+#: signbank/dictionary/models.py:438
 msgid "Mouth Gesture"
 msgstr ""
 
 #. Translators: Gloss models field: mouthing, verbose name
 #: build/lib/signbank/dictionary/models.py:445
-#: signbank/dictionary/models.py:434
+#: signbank/dictionary/models.py:440
 msgid "Mouthing"
 msgstr ""
 
 #. Translators: Gloss models field: phonetic_variation, verbose name
 #: build/lib/signbank/dictionary/models.py:447
-#: signbank/dictionary/models.py:436
+#: signbank/dictionary/models.py:442
 msgid "Phonetic Variation"
 msgstr ""
 
 #. Translators: Gloss models field: iconic_image, verbose name
 #: build/lib/signbank/dictionary/models.py:451
-#: signbank/dictionary/models.py:440
+#: signbank/dictionary/models.py:446
 msgid "Iconic Image"
 msgstr ""
 
 #. Translators: Gloss models field: named_entity, verbose name
 #: build/lib/signbank/dictionary/models.py:453
-#: signbank/dictionary/models.py:442
+#: signbank/dictionary/models.py:448
 msgid "Named Entity"
 msgstr ""
 
 #. Translators: Gloss models field: semantic_field, verbose name
 #: build/lib/signbank/dictionary/models.py:457
-#: signbank/dictionary/models.py:446
+#: signbank/dictionary/models.py:452
 msgid "Semantic Field"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:464
-#: signbank/dictionary/models.py:453
+#: signbank/dictionary/models.py:459
 msgid "Number of Occurrences"
 msgstr ""
 
 #. Translators: Help text for Gloss models field: number_of_occurences
 #: build/lib/signbank/dictionary/models.py:466
-#: signbank/dictionary/models.py:455
+#: signbank/dictionary/models.py:461
 msgid "Number of occurences in annotation materials"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:549
-#: signbank/dictionary/models.py:538
+#: signbank/dictionary/models.py:544
 msgid "Gloss URL"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:550
-#: signbank/dictionary/models.py:539
+#: signbank/dictionary/models.py:545
 msgid "Gloss URLs"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:560
 #: build/lib/signbank/dictionary/models.py:565
 #: build/lib/signbank/dictionary/models.py:566
-#: signbank/dictionary/models.py:548 signbank/dictionary/models.py:553
-#: signbank/dictionary/models.py:554
+#: signbank/dictionary/models.py:554 signbank/dictionary/models.py:559
+#: signbank/dictionary/models.py:560
 msgid "Allowed tags"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:611
-#: signbank/dictionary/models.py:597
+#: signbank/dictionary/models.py:603
 msgid "Relation"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:612
 #: build/lib/signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
-#: signbank/dictionary/models.py:598
+#: signbank/dictionary/models.py:604
 #: signbank/dictionary/templates/dictionary/gloss_detail_relations.html:7
 msgid "Relations"
 msgstr "Relationer"
 
 #: build/lib/signbank/dictionary/models.py:628
-#: signbank/dictionary/models.py:613
+#: signbank/dictionary/models.py:619
 msgid "Morphology definition"
 msgstr ""
 
 #: build/lib/signbank/dictionary/models.py:629
-#: signbank/dictionary/models.py:614
+#: signbank/dictionary/models.py:620
 msgid "Morphology definitions"
 msgstr ""
 
@@ -1642,12 +1643,12 @@ msgid "Relations to this gloss"
 msgstr "Relationer till denna glossa"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:169
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:169
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:209
 msgid "Show comments"
 msgstr "Visa kommentarer"
 
 #: build/lib/signbank/dictionary/templates/dictionary/public_gloss_detail.html:190
-#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:190
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:230
 #: templates/comments/list.html:47
 msgid "No comments."
 msgstr "Inga kommentarer."
@@ -1945,14 +1946,16 @@ msgid "Successfully applied permissions for"
 msgstr ""
 
 #: build/lib/signbank/settings/base.py:50 signbank/settings/base.py:52
+#: signbank/settings/openshift.py:58
 msgid "Finnish"
 msgstr "finska"
 
 #: build/lib/signbank/settings/base.py:51 signbank/settings/base.py:54
+#: signbank/settings/openshift.py:60
 msgid "English"
 msgstr "engelska"
 
-#: build/lib/signbank/tools.py:83 signbank/tools.py:81
+#: build/lib/signbank/tools.py:83 signbank/tools.py:82
 msgid ""
 "Database storage space usage is high, be prepared increase database quota. "
 "If the database gets over the quota maximum, data will be lost!"
@@ -1992,43 +1995,43 @@ msgstr ""
 msgid "Less than 2"
 msgstr ""
 
-#: build/lib/signbank/video/models.py:37 signbank/video/models.py:35
+#: build/lib/signbank/video/models.py:37 signbank/video/models.py:34
 msgid "Title"
 msgstr "Titel"
 
-#: build/lib/signbank/video/models.py:38 signbank/video/models.py:36
+#: build/lib/signbank/video/models.py:38 signbank/video/models.py:35
 msgid "Descriptive name of the video."
 msgstr "Ett beskrivande namn på videon"
 
-#: build/lib/signbank/video/models.py:40 signbank/video/models.py:38
+#: build/lib/signbank/video/models.py:40 signbank/video/models.py:37
 msgid "Video file"
 msgstr "Videofil"
 
-#: build/lib/signbank/video/models.py:41 signbank/video/models.py:39
+#: build/lib/signbank/video/models.py:41 signbank/video/models.py:38
 msgid "Video file."
 msgstr "Videofil."
 
-#: build/lib/signbank/video/models.py:43 signbank/video/models.py:41
+#: build/lib/signbank/video/models.py:43 signbank/video/models.py:40
 msgid "Poster file"
 msgstr ""
 
-#: build/lib/signbank/video/models.py:45 signbank/video/models.py:43
+#: build/lib/signbank/video/models.py:45 signbank/video/models.py:42
 msgid "Still image representation of the video."
 msgstr ""
 
-#: build/lib/signbank/video/models.py:47 signbank/video/models.py:45
+#: build/lib/signbank/video/models.py:47 signbank/video/models.py:44
 msgid "Public"
 msgstr ""
 
-#: build/lib/signbank/video/models.py:50 signbank/video/models.py:48
+#: build/lib/signbank/video/models.py:50 signbank/video/models.py:47
 msgid "The gloss this GlossVideo is related to."
 msgstr ""
 
-#: build/lib/signbank/video/models.py:52 signbank/video/models.py:50
+#: build/lib/signbank/video/models.py:52 signbank/video/models.py:49
 msgid "Glossvideo dataset"
 msgstr ""
 
-#: build/lib/signbank/video/models.py:53 signbank/video/models.py:51
+#: build/lib/signbank/video/models.py:53 signbank/video/models.py:50
 msgid ""
 "Dataset of a GlossVideo, derived from gloss (if any) or chosen when video "
 "was uploaded."
@@ -2036,21 +2039,21 @@ msgstr ""
 
 #. Translators: GlossVideo: version
 #. : Version number of the GlossVideo within Glosses videos.
-#: build/lib/signbank/video/models.py:57 signbank/video/models.py:55
+#: build/lib/signbank/video/models.py:57 signbank/video/models.py:54
 msgid "Version"
 msgstr ""
 
-#: build/lib/signbank/video/models.py:58 signbank/video/models.py:56
+#: build/lib/signbank/video/models.py:58 signbank/video/models.py:55
 msgid ""
 "A number that represents the order of the Glossvideo's in a gloss page. "
 "Smaller number means higher priority."
 msgstr ""
 
-#: build/lib/signbank/video/models.py:63 signbank/video/models.py:61
+#: build/lib/signbank/video/models.py:63 signbank/video/models.py:60
 msgid "Gloss video"
 msgstr ""
 
-#: build/lib/signbank/video/models.py:64 signbank/video/models.py:62
+#: build/lib/signbank/video/models.py:64 signbank/video/models.py:61
 msgid "Gloss videos"
 msgstr ""
 
@@ -2180,35 +2183,60 @@ msgstr ""
 msgid "You do not have permissions to view the selected lexicon."
 msgstr ""
 
-#: build/lib/signbank/video/views.py:301 signbank/video/views.py:299
+#: build/lib/signbank/video/views.py:301 signbank/video/views.py:300
 #, python-format
 msgid "You did not provide the value as a number for: %s "
 msgstr ""
 
-#: build/lib/signbank/video/views.py:314 signbank/video/views.py:312
+#: build/lib/signbank/video/views.py:314 signbank/video/views.py:313
 msgid ""
 "You do not have permissions to add videos to the lexicon of selected gloss."
 msgstr ""
 
-#: build/lib/signbank/video/views.py:333 signbank/video/views.py:331
+#: build/lib/signbank/video/views.py:333 signbank/video/views.py:332
 msgid ""
 "You do not have permissions to add/change poster images for this lexicon."
 msgstr ""
 
 #: build/lib/signbank/video/views.py:361 build/lib/signbank/video/views.py:387
-#: signbank/video/views.py:359 signbank/video/views.py:385
+#: signbank/video/views.py:360 signbank/video/views.py:386
 msgid "You do not have permissions to change order of videos for this lexicon."
 msgstr ""
+
+#: signbank/dictionary/models.py:31
+msgid "Show Gloss comments in public interface"
+msgstr "Visa Gloss-kommentarer i det offentliga gränssnittet"
+
+#: signbank/dictionary/models.py:31
+msgid "Show comments in public interface?"
+msgstr "Visa kommentarer i det offentliga gränssnittet?"
+
+#: signbank/dictionary/models.py:33
+msgid "Show Gloss URLs in public interface"
+msgstr "Visa Gloss webbadresser i det offentliga gränssnittet"
+
+#: signbank/dictionary/models.py:33
+msgid "Show URLs in public interface?"
+msgstr "Visa webbadresser i det offentliga gränssnittet?"
+
+#: signbank/dictionary/models.py:196
+msgid "Name to use in public interface"
+msgstr "Namn som ska användas i det offentliga gränssnittet"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:369
 msgid "Remove URL"
 msgstr "Radera webbadress"
 
 #: signbank/dictionary/templates/dictionary/gloss_detail.html:374
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:175
 msgid "URL"
 msgstr "Webbadress"
 
-#: signbank/settings/base.py:53
+#: signbank/dictionary/templates/dictionary/public_gloss_detail.html:167
+msgid "URLs"
+msgstr "Webbadresser"
+
+#: signbank/settings/base.py:53 signbank/settings/openshift.py:59
 msgid "Swedish"
 msgstr "svenska"
 
