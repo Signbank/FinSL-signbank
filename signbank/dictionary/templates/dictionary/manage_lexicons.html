@@ -25,11 +25,11 @@
                 <h3>{% blocktrans %}Copyright{% endblocktrans %}</h3>
                     <p>{{obj.copyright}}</p>
                 <h3>{% blocktrans %}ECV (externally controlled vocabulary){% endblocktrans %} <small>{% blocktrans %}A vocabulary for ELAN{% endblocktrans %}</small></h3>
-                {% if obj.is_public %}<p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="http://{{ request.get_host }}{% url 'dictionary:public_gloss_list_xml' obj.id %}">
-                    http://{{ request.get_host }}{% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
+                {% if obj.is_public %}<p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="https://{{ current_site_domain }}{% url 'dictionary:public_gloss_list_xml' obj.id %}">
+                    https://{{ current_site_domain }}{% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
                 {% endif %}
-                    <p>{% blocktrans %}Advanced ECV{% endblocktrans %}: <a href="http://{{ request.get_host }}{% url 'dictionary:gloss_list_xml' obj.id %}">
-                    http://{{ request.get_host }}{% url 'dictionary:gloss_list_xml' obj.id %}</a></p>
+                    <p>{% blocktrans %}Advanced ECV{% endblocktrans %}: <a href="https://{{ current_site_domain }}{% url 'dictionary:gloss_list_xml' obj.id %}">
+                    https://{{ current_site_domain }}{% url 'dictionary:gloss_list_xml' obj.id %}</a></p>
                 {% if user.is_superuser %}
                 <h3>{% blocktrans %}Users with permissions{% endblocktrans %}</h3>
                 <ul>{% for user in obj.users_with_perms.all %}
@@ -64,8 +64,8 @@
                     <p>{{obj.copyright}}</p>
                 {% if obj.is_public %}
                 <h3>{% blocktrans %}ECV (externally controlled vocabulary){% endblocktrans %} <small>{% blocktrans %}A vocabulary for ELAN{% endblocktrans %}</small></h3>
-                    <p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="http://{{ request.get_host }}{% url 'dictionary:public_gloss_list_xml' obj.id %}">
-                    http://{{ request.get_host }}{% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
+                    <p>{% blocktrans %}Public ECV{% endblocktrans %}: <a href="https://{{ current_site_domain }}{% url 'dictionary:public_gloss_list_xml' obj.id %}">
+                    https://{{ current_site_domain }}{% url 'dictionary:public_gloss_list_xml' obj.id %}</a></p>
                 {% endif %}
             </div>
         </div>

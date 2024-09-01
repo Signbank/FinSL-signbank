@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 from django.contrib.admin.views.decorators import user_passes_test
+from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
@@ -91,6 +92,8 @@ class ManageLexiconsListView(ListView):
         qs = self.get_queryset()
         context['has_permissions'] = qs.filter(has_view_perm=True)
         context['no_permissions'] = qs.filter(has_view_perm=False)
+        current_site = get_current_site(self.request)
+        context['current_site_domain'] = getattr(current_site, 'domain', self.request.get_host())
         # Show users with permissions to lexicons to SuperUsers
         if self.request.user.is_superuser:
             for lexicon in context['has_permissions']:
