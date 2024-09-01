@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
+from django.views.static import serve
 
 # Views
 from django_registration.backends.activation.views import RegistrationView
@@ -77,15 +78,18 @@ urlpatterns = [
     path('info/', infopage, name='infopage'),
 ]
 if settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
     try:
         import debug_toolbar
-        from django.conf.urls.static import static
         # Add debug_toolbar when DEBUG=True, also add static+media folders when in development.
         # DEBUG should be False when in production!
         urlpatterns += [
             path('__debug__/', include(debug_toolbar.urls)),
-        ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
-            + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        ]
     except (ImportError, ModuleNotFoundError):
         pass
 
