@@ -157,6 +157,45 @@
         </section>
     </div>
 </div>
+{% if gloss.dataset.show_urls_in_public %}
+<div class="row">
+    <hr>
+    <div class="col-md-10 col-md-offset-1">
+        <section>
+            <header>
+                <div class="col-md-12">
+                    <h4>{% blocktrans %}URLs{% endblocktrans %}</h4>
+                </div>
+            </header>
+            <div class="col-md-12">
+                <section>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{% blocktrans %}URL{% endblocktrans %}</th>
+                                <th>{% blocktrans %}Sign language{% endblocktrans %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for url in gloss.glossurl_set.all %}
+                            <tr>
+                                <td><a href="{{url.url}}">{{url.url}}</a></td>
+                                <td>{{url.sign_language.public_name|default:"-"}}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>
+{% endif %}
 {% if gloss.dataset.show_comments_in_public %}
 <div class="row">
     <div class="col-md-10 col-md-offset-1">

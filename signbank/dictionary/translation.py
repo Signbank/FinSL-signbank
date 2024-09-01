@@ -16,7 +16,7 @@ class LanguageTranslationOptions(TranslationOptions):
 
 
 class SignLanguageTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'public_name', )
     required_languages = ('en',)
 
 
