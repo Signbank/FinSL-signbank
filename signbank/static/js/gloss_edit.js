@@ -163,7 +163,19 @@ function configure_edit() {
          type      : 'textarea',
          width     : 400,
          rows      : 3,
-         onblur    : 'ignore',
+         // onedit & callback & onreset: handle newlines and html conversions in jeditable.
+         onedit    : function(_settings, original) {
+            // Use innerText which contains newlines `\n`
+            original.innerHTML = original.innerText;
+         },
+         onreset   : function(_settings, original) {
+            // Replace newlines with `<br>` for returned value
+            original.replace(/\n/g, '<br>');
+         },
+         callback  : function(value, _settings) {
+            // Replace newlines with `<br>` for returned value
+            this.innerHTML = value.replace(/\n/g, '<br>');
+         },
      });
      $('.edit_url').editable(edit_post_url, {
          type      : 'text',
