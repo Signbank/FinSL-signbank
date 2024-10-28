@@ -56,8 +56,9 @@ $( document ).ready(function() {
             {% static 'img/instructions/searchpage_instructions_fi-compressor.png' as ins_full_fi %}
             {% static 'img/instructions/searchpage_instructions_fi_1140px-compressor.png' as ins_small_fi %}
             {% static 'img/instructions/searchpage_instructions_en-compressor.png' as ins_en %}
-              <a href="{% if LANGUAGE_CODE == 'fi' %}{{ins_full_fi}}{% else %}{{ins_en}}{% endif %}" target="_blank">
-              <img src="{% if LANGUAGE_CODE == 'fi' %}{{ins_small_fi}}{% else %}{{ins_en}}{% endif %}"
+            {% static 'img/instructions/searchpage_instructions_sv.jpg' as ins_sv %}
+              <a href="{% if LANGUAGE_CODE == 'fi' %}{{ins_full_fi}}{% elif LANGUAGE_CODE == 'sv'%}{{ins_sv}}{% else %}{{ins_en}}{% endif %}" target="_blank">
+              <img src="{% if LANGUAGE_CODE == 'fi' %}{{ins_small_fi}}{% elif LANGUAGE_CODE == 'sv'%}{{ins_sv}}{% else %}{{ins_en}}{% endif %}"
                    alt="{% blocktrans %}Instructions for how to use the search page.{% endblocktrans %}"
                    class="img-responsive img-thumbnail">
               </a>
