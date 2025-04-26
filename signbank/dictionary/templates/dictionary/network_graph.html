@@ -50,20 +50,21 @@ var nodes_json = {{context.nodes|safe|default:"[]"}};
 var edges_json = {{context.edges|safe|default:"[]"}};
 
 var g = { nodes: [], edges: [] };
-for (var i = 0; i < nodes_json.length; i++){
+for (node of nodes_json){
     g.nodes.push({
-      id: 'n' + nodes_json[i].id,
-      label: nodes_json[i].label,
-      size: nodes_json[i].size,
+      id: 'n' + node.id,
+      label: node.label,
+      size: node.size,
       x: 0,
       y: 0
     });
 }
-for (var i = 0; i < edges_json.length; i++){
+for (edge of edges_json){
+    if (edge.target)
     g.edges.push({
-      id: 'e' + edges_json[i].id,
-      source: 'n' + edges_json[i].source,
-      target: 'n' + edges_json[i].target,
+      id: 'e' + edge.id,
+      source: 'n' + edge.source,
+      target: 'n' + edge.target,
     });
 }
 

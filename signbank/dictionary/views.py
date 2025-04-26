@@ -151,11 +151,12 @@ def network_graph(request):
 
     if dataset:
         context["dataset"] = dataset
-        nodeqs = Gloss.objects.filter(Q(dataset=dataset),
-                                      Q(glossrelation_target__isnull=False) | Q(glossrelation_source__isnull=False))\
+        nodeqs = Gloss.objects.filter(
+            Q(dataset=dataset),
+            Q(glossrelation_target__isnull=False) | Q(glossrelation_source__isnull=False))\
             .distinct().values("id").annotate(label=F("idgloss"), size=Count("glossrelation_source")+Count("glossrelation_target"))
         context["nodes"] = json.dumps(list(nodeqs))
-        edgeqs = GlossRelation.objects.filter(Q(source__dataset=dataset) | Q(target__dataset=dataset)).values("id", "source", "target")
+        edgeqs = GlossRelation.objects.filter(source__dataset=dataset, target__dataset=dataset).values("id", "source", "target")
         context["edges"] = json.dumps(list(edgeqs))
     return render(request, "dictionary/network_graph.html",
                   {'context': context,
