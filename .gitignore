@@ -18,3 +18,7 @@ debug.log
 /codecov.sh
 /signbank/settings/settings_secret.py
 build/
+node_modules
+docs/_build
+media/
+django.mo
