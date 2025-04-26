@@ -1,7 +1,7 @@
 """OpenShift production environment specific settings for FinSL-signbank."""
 import os
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 #: IMPORTANT: Debug should always be False in production
 DEBUG = False

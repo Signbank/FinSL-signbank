@@ -1,6 +1,6 @@
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from django_registration.signals import user_registered
 from notifications.signals import notify

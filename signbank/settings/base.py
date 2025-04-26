@@ -6,7 +6,7 @@ from __future__ import print_function
 import os
 import sys
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 try:
     # settings_secret.py is imported in this settings file, you should put the sensitive information in that file.
