@@ -13,7 +13,7 @@ from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.urls import reverse, reverse_lazy
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.core.exceptions import ValidationError
 
 from guardian.shortcuts import get_objects_for_user, get_perms

@@ -11,7 +11,7 @@ from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse, reverse_lazy
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.views.generic.list import ListView
 from django.views.generic import FormView
 from django.db.models import Q, F, Count, Case, Value, When, BooleanField

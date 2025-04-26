@@ -9,7 +9,7 @@ from django.db.models import Prefetch, Q
 from django.db import connection
 from django.urls import reverse
 from django.core.mail import mail_admins
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.conf import settings
 
 from signbank.dictionary.models import Gloss, Language, Translation, Keyword, Dataset

@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models.fields import BooleanField
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
 from tagging.models import TaggedItem, Tag

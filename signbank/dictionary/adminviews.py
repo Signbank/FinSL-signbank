@@ -15,7 +15,7 @@ from django.utils.translation import get_language
 from django.db.models import Prefetch
 from django.db.models import F
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.shortcuts import get_object_or_404
 
 from collections import defaultdict

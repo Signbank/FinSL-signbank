@@ -8,8 +8,8 @@ from django.views.generic.list import ListView
 from django.forms import ModelForm
 from django.forms.models import model_to_dict
 from django.http import HttpResponseForbidden
-from django.utils.translation import ugettext as _
-from django.utils.translation import ugettext_lazy as _lazy
+from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _lazy
 from django.contrib.sites.shortcuts import get_current_site
 from django.dispatch import receiver
 from django.contrib.contenttypes.models import ContentType
