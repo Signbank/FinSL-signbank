@@ -7,7 +7,7 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.migrations.operations.special
 import django.db.models.deletion
-from django.utils.timezone import utc
+from datetime import timezone
 
 # signbank.dictionary.migrations.0020_auto_20160913_1404
 def generate_signlanguage(apps, schema_editor):
@@ -328,7 +328,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gloss',
             name='created_at',
-            field=models.DateTimeField(auto_now_add=True, default=datetime.datetime(2015, 10, 16, 10, 42, 32, 21149, tzinfo=utc)),
+            field=models.DateTimeField(auto_now_add=True, default=datetime.datetime(2015, 10, 16, 10, 42, 32, 21149, tzinfo=timezone.utc)),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -340,7 +340,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gloss',
             name='updated_at',
-            field=models.DateTimeField(auto_now=True, default=datetime.datetime(2015, 10, 16, 10, 45, 56, 193255, tzinfo=utc)),
+            field=models.DateTimeField(auto_now=True, default=datetime.datetime(2015, 10, 16, 10, 45, 56, 193255, tzinfo=timezone.utc)),
             preserve_default=False,
         ),
         migrations.AddField(
