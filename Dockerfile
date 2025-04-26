@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 
-RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt upgrade -y && apt install -y gettext
+RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt upgrade -y && apt install -y gettext git
 
 WORKDIR /usr/src/app
 
