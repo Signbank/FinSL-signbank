@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.db.models import Subquery
 from django.utils.translation import gettext as _
 from django.utils.translation import gettext_lazy as _lazy
 from django.contrib.contenttypes.models import ContentType
@@ -26,14 +27,16 @@ class TagListFilter(admin.SimpleListFilter):
     parameter_name = 'tag'
 
     def lookups(self, request, model_admin):
-        tags = Tag.objects.usage_for_model(model_admin.model)
-        return [(tag.name, _(tag.name)) for tag in tags]
+        ct = ContentType.objects.get_for_model(model_admin.model)
+        tags = Tag.objects.filter(items__content_type=ct).distinct().values_list("name", flat=True)
+        tag_names = [(tag_name, _(tag_name)) for tag_name in tags]
+        return tag_names
 
     def queryset(self, request, queryset):
         if self.value():
             ct = ContentType.objects.get_for_model(queryset.model)
-            return queryset.filter(id__in=[x.object_id for x in TaggedItem.objects.filter(tag__name=self.value(),
-                                                                                          content_type=ct)])
+            tagged_items = TaggedItem.objects.filter(tag__name=self.value(), content_type=ct).values("object_id")
+            return queryset.filter(id__in=Subquery(tagged_items))
 
 
 class DatasetAdmin(GuardedModelAdmin, ModelTranslationAdmin):
