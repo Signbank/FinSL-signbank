@@ -16,8 +16,14 @@
             {% endif %}
             <li><a href="{% url 'password_change' %}">{% blocktrans %}Change password{% endblocktrans %}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                {% blocktrans %}Sign out{% endblocktrans %}</a></li>
+            <form id="logout-form" method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <li>
+                    <button type="submit" style="background:none;border:none;cursor:pointer;display:block;padding: 3px 20px;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap;">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% blocktrans %}Sign out{% endblocktrans %}
+                    </button>
+                </li>
+            </form>
         </ul>
     </div>
     {% else %}
