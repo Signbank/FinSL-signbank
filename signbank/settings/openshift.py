@@ -31,6 +31,7 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 CSRF_COOKIE_SECURE = os.environ.get('DJANGO_CSRF_COOKIE_SECURE', 'True').lower() in ('true',)
+CSRF_TRUSTED_ORIGINS = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',')
 
 # A list in the same format as ADMINS that specifies who should get broken link notifications
 # when BrokenLinkEmailsMiddleware is enabled. ADMINS are set in secret_settings.
