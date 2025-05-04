@@ -7,15 +7,11 @@ from datetime import datetime
 
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from django.core.files.storage import DefaultStorage, FileSystemStorage
 from django.core.files.base import ContentFile
-from django.core.files.storage import FileSystemStorage
-# Determine storage based on whether package django-storage is installed
-try:
-    from storages.backends.s3 import S3Storage as SignbankStorage
-except ImportError:
-    from django.core.files.storage import FileSystemStorage as SignbankStorage
 
-class GlossVideoStorage(SignbankStorage):
+
+class GlossVideoStorage(DefaultStorage):
     """Video storage, handles saving to directories based on filenames first two characters."""
 
     # Used for S3Storage
