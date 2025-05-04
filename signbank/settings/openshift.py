@@ -185,30 +185,39 @@ LOCALE_PATHS = (
     './locale',
 )
 
+AWS_S3_ACCESS_KEY_ID = os.environ.get("AWS_S3_ACCESS_KEY_ID", "")
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get("AWS_S3_SECRET_ACCESS_KEY", "")
+AWS_S3_ENDPOINT_URL = os.environ.get("BUCKET_ENDPOINT_URL", "")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME", "")
+
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
-          "bucket_name": os.environ.get("BUCKET_NAME", ""),
-          "endpoint_url": os.environ.get("BUCKET_ENDPOINT_URL", ""),
-          "region_name": os.environ.get("BUCKET_REGION_NAME", ""),
-
+            "access_key": os.environ.get("AWS_S3_ACCESS_KEY_ID", ""),
+            "secret_key": os.environ.get("AWS_S3_SECRET_ACCESS_KEY", ""),
+            "bucket_name": os.environ.get("BUCKET_NAME", ""),
+            "endpoint_url": os.environ.get("BUCKET_ENDPOINT_URL", ""),
+            "region_name": os.environ.get("BUCKET_REGION_NAME", ""),
+            "default_acl": "public-read",
+            "querystring_auth": False,
+            "location": "media",
         },
     },
     "staticfiles": {
         "BACKEND": "signbank.utils.StaticFilesStorage",
         "OPTIONS": {
-          "bucket_name": os.environ.get("BUCKET_NAME", ""),
-          "endpoint_url": os.environ.get("BUCKET_ENDPOINT_URL", ""),
-          "region_name": os.environ.get("BUCKET_REGION_NAME", ""),
-
+            "access_key": os.environ.get("AWS_S3_ACCESS_KEY_ID", ""),
+            "secret_key": os.environ.get("AWS_S3_SECRET_ACCESS_KEY", ""),
+            "bucket_name": os.environ.get("BUCKET_NAME", ""),
+            "endpoint_url": os.environ.get("BUCKET_ENDPOINT_URL", ""),
+            "region_name": os.environ.get("BUCKET_REGION_NAME", ""),
+            "default_acl": "public-read",
+            "querystring_auth": False,
+            "location": "static",
         },
     }
 }
-
-
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = "public-read"
 
 #: The absolute path to the directory where collectstatic will collect static files for deployment.
 #: Example: "/var/www/example.com/static/"
