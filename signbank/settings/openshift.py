@@ -2,6 +2,7 @@
 import os
 
 from django.utils.translation import gettext_lazy as _
+from botocore.client import Config as BotoConfig
 
 #: IMPORTANT: Debug should always be False in production
 DEBUG = False
@@ -183,6 +184,12 @@ mimetypes.add_type("video/webm", ".webm", True)
 # A list of directories where Django looks for translation files.
 LOCALE_PATHS = (
     './locale',
+)
+
+# https://github.com/jschneier/django-storages/issues/1482#issuecomment-2648033009
+AWS_S3_CLIENT_CONFIG = BotoConfig(
+    request_checksum_calculation='when_required',
+    response_checksum_validation='when_required',
 )
 
 AWS_S3_ACCESS_KEY_ID = os.environ.get("AWS_S3_ACCESS_KEY_ID", "")
