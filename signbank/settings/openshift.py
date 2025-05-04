@@ -185,13 +185,28 @@ LOCALE_PATHS = (
     './locale',
 )
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
-STATICFILES_STORAGE = "signbank.utils.StaticFilesStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+          "bucket_name": os.environ.get("BUCKET_NAME", ""),
+          "endpoint_url": os.environ.get("BUCKET_ENDPOINT_URL", ""),
+          "region_name": os.environ.get("BUCKET_REGION_NAME", ""),
 
-AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME", "")
-AWS_S3_ENDPOINT_URL = os.environ.get("BUCKET_ENDPOINT_URL", "")
-AWS_S3_REGION_NAME = os.environ.get("BUCKET_REGION_NAME", "")
-# custom_domain = os.environ.get("BUCKET_DOMAIN")
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "signbank.utils.StaticFilesStorage",
+        "OPTIONS": {
+          "bucket_name": os.environ.get("BUCKET_NAME", ""),
+          "endpoint_url": os.environ.get("BUCKET_ENDPOINT_URL", ""),
+          "region_name": os.environ.get("BUCKET_REGION_NAME", ""),
+
+        },
+    }
+}
+
+
 AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = "public-read"
 
