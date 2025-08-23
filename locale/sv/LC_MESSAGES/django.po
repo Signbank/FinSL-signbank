@@ -2658,19 +2658,19 @@ msgstr "Data som användaren har lagt till kan göras tillgängligt för allmän
 #. Translators: Edit page button in baselayout
 #: templates/flatpages/default.html:20
 msgid "Edit Page"
-msgstr ""
+msgstr "Redigera sida"
 
 #: templates/flatpages/tos.html:9
 msgid "Terms of Service"
-msgstr ""
+msgstr "Användarvillkor"
 
 #: templates/infopage.html:5
 msgid "Links and Statistics"
-msgstr ""
+msgstr "Länkar och statistik"
 
 #: templates/infopage.html:12 templates/menu.html:52
 msgid "Links and statistics"
-msgstr ""
+msgstr "Länkar och statistik"
 
 #: templates/infopage.html:13
 msgid ""
@@ -2752,7 +2752,7 @@ msgstr "Logga in"
 #. Translators: Button to toggle navigation
 #: templates/menu.html:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Växla navigering"
 
 #: templates/menu.html:17
 msgid "Home"
@@ -2797,7 +2797,7 @@ msgstr "Importera CSV"
 
 #: templates/menu.html:59
 msgid "Network Graphs"
-msgstr ""
+msgstr "Nätverksgrafer"
 
 #: templates/notifications/list.html:13
 msgid "Notifications"
@@ -2824,21 +2824,21 @@ msgstr ""
 #: templates/policyconsent.html:21
 msgctxt "consent"
 msgid "Got it!"
-msgstr ""
+msgstr "Förstod!"
 
 #. Translators: Privacy policy consent: Privacy policy link name.
 #: templates/policyconsent.html:23
 msgctxt "consent"
 msgid "Learn more"
-msgstr ""
+msgstr "Läs mer"
 
 #: templates/registration/logged_out.html:4
 msgid "Logged Out"
-msgstr ""
+msgstr "Utloggad"
 
 #: templates/registration/logged_out.html:8
 msgid "Successfully logged out"
-msgstr ""
+msgstr "Utloggad"
 
 #: templates/registration/login.html:5
 msgid "Sign In"
@@ -2858,4 +2858,4 @@ msgstr ""
 
 #: templates/setlang.html:9
 msgid "Language selection"
-msgstr ""
+msgstr "Språkval"
