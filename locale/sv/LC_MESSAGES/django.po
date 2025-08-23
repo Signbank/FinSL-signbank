@@ -2556,55 +2556,68 @@ msgstr ""
 
 #: templates/django_registration/terms_of_service.html:3
 msgid "Last updated:"
-msgstr ""
+msgstr "Senast uppdaterad:"
 
 #: templates/django_registration/terms_of_service.html:5
 msgid "You have read and agree to the"
-msgstr ""
+msgstr "Du har läst och godkänt"
 
 #: templates/django_registration/terms_of_service.html:5
 msgid "privacy policy"
-msgstr ""
+msgstr "dataskyddsmeddelandet"
 
 #: templates/django_registration/terms_of_service.html:7
 msgid "You are over 16 years old."
-msgstr ""
+msgstr "Du är över 16 år gammal."
 
 #: templates/django_registration/terms_of_service.html:7
 msgid ""
 "In case you are under 16 years old, you must hand us an approval from your "
 "parents."
 msgstr ""
+"Personer under 16 år ska lämna in ett samtycke av föräldrarna till "
+"oss innan de skapar ett användarnamn."
 
 #: templates/django_registration/terms_of_service.html:8
 msgid ""
 "The user will not abuse the service, any malicious activity is strictly "
 "prohibited."
 msgstr ""
+"Användaren lovar att inte missbruka webbplatsen. Alla avsiktliga "
+"och skadliga handlingar är strängt förbjudna."
 
 #: templates/django_registration/terms_of_service.html:9
 msgid ""
 "Any data on the site is confidential unless stated otherwise, and should be "
 "handled as such."
 msgstr ""
+"All information på webbplatsen är konfidentiell om inte annat anges, "
+"och denna information ska behandlas konfidentiellt."
 
 #: templates/django_registration/terms_of_service.html:10
 msgid ""
 "The user agrees to not copy or spread any data or information found on the "
 "site, unless given permission or if the license allows it."
 msgstr ""
+"Användaren lovar att inte kopiera eller distribuera information som "
+"finns på webbplatsen om användaren inte har fått lov att göra så eller om "
+"licensen inte tillåter det."
 
 #: templates/django_registration/terms_of_service.html:11
 msgid ""
 "The user is responsible for making sure that laws and copyrights are "
 "followed when submitting data."
 msgstr ""
+"Användaren är skyldig att säkerställa att lagar och upphovsrätter respekteras "
+"då användaren lägger till data på webbplatsen."
 
 #: templates/django_registration/terms_of_service.html:12
 msgid ""
 "The users account can be terminated or access limited without a notice, if "
 "the user fails to comply with the rules."
 msgstr ""
+"Om användaren bryter mot reglerna kan användarnamnet upphävas och "
+"rättigheterna kopplade till användarnamnet begränsas utan meddelande om detta."
 
 #: templates/django_registration/terms_of_service.html:13
 msgid ""
@@ -2612,6 +2625,11 @@ msgid ""
 "other personal information attached to the account will be removed. If the "
 "user wishes to have anonymity, a pseudonym should be used as the user name."
 msgstr ""
+"När användaren ber om att få sitt användarnamn raderat förstörs själva "
+"användarnamnet inte, men övriga personuppgifter kopplade till användarnamnet "
+"raderas. Användaren ska använda en pseudonym som sitt användarnamn om denne "
+"vill försäkra sig om att kunna förbli anonym efter att personuppgifterna "
+"kopplade till användarnamnet har raderats."
 
 #: templates/django_registration/terms_of_service.html:14
 msgid ""
@@ -2619,6 +2637,9 @@ msgid ""
 "license used by the lexicon, and the user agrees to hand over any remaining "
 "copyrights to the maintainer of the lexicon."
 msgstr ""
+"Data som läggs till i lexikonet licensieras i enlighet med licensen för det "
+"aktuella lexikonet. Användaren överlåter kvarvarande upphovsrätter till "
+"lexikonets administratör i samband med att användaren lägger till data."
 
 #: templates/django_registration/terms_of_service.html:15
 msgid ""
@@ -2626,10 +2647,13 @@ msgid ""
 "of the lexicon agrees to it. The user should keep this in mind before "
 "submitting any data."
 msgstr ""
+"Det är möjligt att radera data (videor, bilder, text) endast om lexikonets "
+"administratör anser det vara möjligt och tillåter det. Användaren ska ha "
+"detta i åtanke när denne lägger till data i systemet."
 
 #: templates/django_registration/terms_of_service.html:16
 msgid "Any data submitted by the user can be made publicly available."
-msgstr ""
+msgstr "Data som användaren har lagt till kan göras tillgängligt för allmänheten."
 
 #. Translators: Edit page button in baselayout
 #: templates/flatpages/default.html:20
