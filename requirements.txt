@@ -1,10 +1,10 @@
-django==5.2.5
+django==5.2.8
 django-tagging @ git+https://github.com/jazzband/django-tagging@0.5.1
-django-reversion==5.1.0
-django-bootstrap3==25.1
+django-reversion==6.0.0
+django-bootstrap3==25.3
 django-summernote==0.8.20.0
-django-modeltranslation==0.19.4
+django-modeltranslation==0.19.17
 django-registration==5.2.1
 django-contrib-comments==2.2.0
-django-guardian==3.0.0rc1 
-django-notifications-hq @ git+https://github.com/django-notifications/django-notifications.git@f4918c2409a734ec1aa9798d86c3a729b505f753
+django-guardian==3.2.0
+django-notifications-hq @ git+https://github.com/django-notifications/django-notifications.git@1.9.0
