@@ -64,30 +64,6 @@ def infopage(request):
                                  "admin_url": reverse("admin:video_glossvideo_change", args=(vid.id,))})
         context["problems"] = problems
 
-        # Only do this if the database is postgresql.
-        if getattr(settings, "DB_IS_PSQL", False):
-            # Get postgresql database size and calculate usage percentage.
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT pg_database_size(%s)", [settings.PSQL_DB_NAME])
-                psql_db_size = cursor.fetchone()[0]
-                cursor.execute("SELECT pg_size_pretty(pg_database_size(%s))", [settings.PSQL_DB_NAME])
-                psql_db_size_pretty = cursor.fetchone()[0]
-            context["psql_db_size"] = psql_db_size
-            context["psql_db_size_pretty"] = psql_db_size_pretty
-            # Calculate the usage percentage.
-            usage_percentage = round((psql_db_size / settings.PSQL_DB_QUOTA)*100, 2)
-            # Convert to str, so django localization doesn't change dot delimiter to comma in different languages.
-            context["psql_db_usage"] = str(usage_percentage)
-            if usage_percentage >= 80.0:
-                messages.error(request, _("Database storage space usage is high, be prepared increase database quota. "
-                                          "If the database gets over the quota maximum, data will be lost!"))
-            if usage_percentage >= 95.0:
-                mail_admins(subject="Database is reaching maximum quota!",
-                            message="Dear admin, you are receiving this message because the database "
-                                    "is reaching its maximum quota. "
-                                    "Current size of the database is %s and the usage percentage is %s%%." %
-                                    (str(psql_db_size_pretty), str(usage_percentage)))
-
     return render(request, "../templates/infopage.html",
                   {'context': context,
                    'datasets': datasets_context,

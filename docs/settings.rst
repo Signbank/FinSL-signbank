@@ -107,10 +107,6 @@ settings_secret.py
 
     A dictionary containing the settings for all databases to be used with Django.
 
-.. py:data:: DB_IS_PSQL
-
-    Is the database engine used is postgresql?
-
 .. py:data::  PSQL_DB_QUOTA
 
     Maximum size of database in bytes, controlled outside of this application. Fill it in if you have a quota.
