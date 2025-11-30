@@ -52,7 +52,7 @@ def infopage(request):
         datasets_context.append(dset)
 
     # For users that are 'staff'.
-    if request.user.is_staff:
+    if getattr(settings, "FEAT_INFO_MISSING_FILES", False) is True and request.user.is_staff:
         # Find missing files
         problems = list()
         storage = GlossVideoStorage()
