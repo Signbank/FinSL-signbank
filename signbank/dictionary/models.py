@@ -109,7 +109,7 @@ class GlossTranslations(models.Model):
     def get_keywords(self):
         """Returns keywords parsed from self.translations."""
         # Remove number(s) that end with a dot (e.g. '1.') from the 'value'.
-        translations_cleaned = re.sub('\d\.', '', str(self.translations))
+        translations_cleaned = re.sub(r'\d\.', '', str(self.translations))
         # Splitting the remaining string on comma, dot or semicolon. Then strip spaces around the keyword(s).
         keywords = [k.strip() for k in re.split('[,.;]', translations_cleaned)]
         return keywords

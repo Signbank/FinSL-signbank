@@ -315,7 +315,7 @@ def gloss_from_identifier(value):
 
     # This regex looks from the Beginning of a string for IDGLOSS and then the id
     # For example: "CAMEL (10)", idgloss="CAMEL" and pk=10
-    match = re.match('(.*) \((\d+)\)', value)
+    match = re.match(r'(.*) \((\d+)\)', value)
 
     if match:
         # print "MATCH: ", match
