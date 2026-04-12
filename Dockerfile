@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bookworm
+FROM python:3.12-slim-bookworm
 
 RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt upgrade -y && apt install -y gettext git
 
