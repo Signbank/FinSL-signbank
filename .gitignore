@@ -5,6 +5,9 @@ build/django
 .DS_Store
 *.pyc
 *.idea*
+.vscode
+*.db
+*.sql
 
 static/css/.DS_Store
 
