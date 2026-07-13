@@ -1,4 +1,4 @@
-django==5.2.13
+django==5.2.15
 django-tagging @ git+https://github.com/jazzband/django-tagging@0.5.1
 django-reversion==6.1.0
 django-bootstrap3==26.1
