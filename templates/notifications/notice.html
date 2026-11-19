@@ -8,12 +8,12 @@
   </a>
 
   <h4>
-    <a href="{{notice.action_object.get_absolute_url}}">
+    <a href="{{ notice.action_object.get_absolute_url }}">
       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
       {{ notice.actor }}
       {{ notice.verb }}
     </a><span
-      class="dataset-{{notice.action_object.content_object.dataset.id}}-color label label-default"
+      class="dataset-{{ notice.action_object.content_object.dataset.id }}-color label label-default"
       style="font-size: 0.6em"
     >{{ notice.action_object.content_object.dataset }}</span>
   </h4>

@@ -189,7 +189,7 @@
     <div id="datasetname" class="pull-left">
       <h4>
         {% blocktrans %}Dataset{% endblocktrans %}: <span
-          class="dataset-{{gloss.dataset.id}}-color label label-default"
+          class="dataset-{{ gloss.dataset.id }}-color label label-default"
         >{{ dataset }}</span>
       </h4>
     </div>
@@ -257,7 +257,7 @@
                     <div class="video-title">
                       <h4
                         class="edit edit_text"
-                        id="video_title{{glossvideo.pk}}"
+                        id="video_title{{ glossvideo.pk }}"
                       >
                         {{ glossvideo.title }} - {{ glossvideo.video_type }}
                       </h4>
@@ -265,19 +265,19 @@
                     {% if glossvideo.is_video %}
                       <div class="embed-responsive embed-responsive-16by9">
                         <video
-                          id="glossvideo-{{glossvideo.pk}}"
+                          id="glossvideo-{{ glossvideo.pk }}"
                           class="embed-responsive-item"
                           width="450"
                           preload="metadata"
                           controls
                           muted
                           {% if glossvideo.posterfile %}
-                            poster="{{glossvideo.posterfile.url}}"
+                            poster="{{ glossvideo.posterfile.url }}"
                           {% endif %}
                         >
                           <source
-                            src="{{glossvideo.get_absolute_url}}"
-                            type="{{glossvideo.content_type}}"
+                            src="{{ glossvideo.get_absolute_url }}"
+                            type="{{ glossvideo.content_type }}"
                           />
                           {% blocktrans %}Your browser does not support the
                             video tag.{% endblocktrans %}
@@ -285,8 +285,8 @@
                       </div>
                     {% elif glossvideo.is_image %}
                       <img
-                        src="{{glossvideo.get_absolute_url}}"
-                        alt="{{glossvideo.title}} - {{glossvideo.video_type}}"
+                        src="{{ glossvideo.get_absolute_url }}"
+                        alt="{{ glossvideo.title }} - {{ glossvideo.video_type }}"
                         class="img-responsive center-block"
                       />
                     {% endif %}
@@ -322,7 +322,7 @@
                           <input
                             type="hidden"
                             name="videoid"
-                            value="{{glossvideo.pk}}"
+                            value="{{ glossvideo.pk }}"
                           />
                         </form>
                       </div>
@@ -331,10 +331,10 @@
                           <button
                             type="button"
                             class="btn btn-success"
-                            id="vidbtn-{{glossvideo.pk}}"
-                            onclick="grabScreenshot({{glossvideo.pk}})"
+                            id="vidbtn-{{ glossvideo.pk }}"
+                            onclick="grabScreenshot({{ glossvideo.pk }})"
                             data-toggle="modal"
-                            data-target="#glossvideo{{glossvideo.pk}}-Modal"
+                            data-target="#glossvideo{{ glossvideo.pk }}-Modal"
                           >
                             {% blocktrans %}Capture new poster
                               image{% endblocktrans %}
@@ -350,12 +350,12 @@
                         <input
                           type="hidden"
                           name="glossvideo"
-                          value="{{glossvideo.pk}}"
+                          value="{{ glossvideo.pk }}"
                         />
                         <input
                           type="hidden"
                           name="gloss"
-                          value="{{glossvideo.gloss.pk}}"
+                          value="{{ glossvideo.gloss.pk }}"
                         />
 
                         <select name="video_type" onchange="this.form.submit()">
@@ -364,7 +364,7 @@
                               {% if value == glossvideo.video_type.machine_value %}
                                 selected
                               {% endif %}
-                              value="{{value}}"
+                              value="{{ value }}"
                             >
                               {{ name }}
                             </option>
@@ -388,7 +388,7 @@
                           <input
                             type="hidden"
                             name="videoid"
-                            value="{{glossvideo.pk}}"
+                            value="{{ glossvideo.pk }}"
                           />
                           {% if glossvideo.is_public %}
                             <input
@@ -416,10 +416,10 @@
                     <!-- Modal -->
                     <div
                       class="modal fade"
-                      id="glossvideo{{glossvideo.pk}}-Modal"
+                      id="glossvideo{{ glossvideo.pk }}-Modal"
                       tabindex="-1"
                       role="dialog"
-                      aria-labelledby="glossvideo{{glossvideo.pk}}-ModalLabel"
+                      aria-labelledby="glossvideo{{ glossvideo.pk }}-ModalLabel"
                     >
                       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -434,7 +434,7 @@
                             </button>
                             <h4
                               class="modal-title"
-                              id="glossvideo{{glossvideo.pk}}-ModalLabel"
+                              id="glossvideo{{ glossvideo.pk }}-ModalLabel"
                             >
                               {% blocktrans %}Update poster image for
                                 video{% endblocktrans %}
@@ -443,7 +443,7 @@
                           </div>
                           <div class="modal-body">
                             <canvas
-                              id="vidcanvas-{{glossvideo.pk}}"
+                              id="vidcanvas-{{ glossvideo.pk }}"
                               class="img-responsive"
                             >Your browser does not support the HTML5 canvas
                               tag.</canvas>
@@ -459,12 +459,12 @@
                               <input
                                 type="hidden"
                                 name="pk"
-                                value="{{glossvideo.pk}}"
+                                value="{{ glossvideo.pk }}"
                               />
                               <input
                                 type="hidden"
                                 name="posterfile"
-                                id="posterfile-{{glossvideo.pk}}"
+                                id="posterfile-{{ glossvideo.pk }}"
                               />
                               <button
                                 type="button"
@@ -531,12 +531,12 @@
                           <input
                             type="hidden"
                             name="redirect"
-                            value="{{request.path}}?edit"
+                            value="{{ request.path }}?edit"
                           />
                           <input
                             type="hidden"
                             name="gloss"
-                            value="{{gloss.pk}}"
+                            value="{{ gloss.pk }}"
                           />
                           {% bootstrap_field glossvideoform.videofile show_help=False %}
                           {% bootstrap_field glossvideoform.title %}
@@ -682,11 +682,11 @@
                   {% for url in glossurls %}
                     <p>
                       <a
-                        href="{{url.url}}"
-                        id="glossurl-{{url.id}}"
+                        href="{{ url.url }}"
+                        id="glossurl-{{ url.id }}"
                         class="edit edit_url"
                         target="_blank"
-                        data-glossurl-id="{{url.id}}"
+                        data-glossurl-id="{{ url.id }}"
                       >{{ url.url }}</a>
                       <a
                         href="{% url 'dictionary:delete_glossurl' glossurl=url.id %}"

@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load static %}
 {% get_current_language as LANGUAGE_CODE %}
-<html lang="{{LANGUAGE_CODE|default:'en'}}">
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
   <head>
     <title>
       {% block bootstrap3_title %}{% endblock %}
@@ -37,25 +37,25 @@
       />
     {% endblock %}
     <script type="application/ld+json">
-    // Structured data for Google
-    // Logo
-    {
-      "@context": "http://schema.org",
-      "@type": "Organization",
-      "url": "{{ request.scheme }}://{{ request.get_host }}",
-      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}"
-    }
-    // Sitelinks searchbox
-    {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      "url": "{{ request.scheme }}://{{ request.get_host }}",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'dictionary:public_gloss_list' %}?keyword={search_term_string}",
-        "query-input": "required name=search_term_string"
+      // Structured data for Google
+      // Logo
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "{{ request.scheme }}://{{ request.get_host }}",
+        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/signbank_logo_ympyra1_sininen-compressor.png' %}"
       }
-    }
+      // Sitelinks searchbox
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "{{ request.scheme }}://{{ request.get_host }}",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'dictionary:public_gloss_list' %}?keyword={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
     </script>
     {% block structureddata %}{% endblock %}
     <link

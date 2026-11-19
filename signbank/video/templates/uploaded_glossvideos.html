@@ -41,7 +41,7 @@
         {% if page_obj.has_previous %}{# Insert dataset from request #}
           <li>
             <a
-              href="?page={{ page_obj.previous_page_number }}&dataset={{request.GET.dataset}}"
+              href="?page={{ page_obj.previous_page_number }}&dataset={{ request.GET.dataset }}"
             >&laquo;
               {% blocktrans %}previous{% endblocktrans %}</a>
           </li>
@@ -49,14 +49,14 @@
         {% for curpage in page_obj.paginator.page_range %}
           <li {% if curpage == page_obj.number %}class="active"{% endif %}>
             <a
-              href="?page={{ curpage }}&dataset={{request.GET.dataset}}"
+              href="?page={{ curpage }}&dataset={{ request.GET.dataset }}"
             >{{ curpage }}</a>
           </li>
         {% endfor %}
         {% if page_obj.has_next %}
           <li>
             <a
-              href="?page={{ page_obj.next_page_number }}&dataset={{request.GET.dataset}}"
+              href="?page={{ page_obj.next_page_number }}&dataset={{ request.GET.dataset }}"
             >{% blocktrans %}next{% endblocktrans %} &raquo;</a>
           </li>
         {% endif %}
@@ -75,7 +75,7 @@
           <div class="panel-heading">{{ video.videofile }}</div>
           <div class="panel-body">
             <form
-              id="glossvideo{{video.pk}}"
+              id="glossvideo{{ video.pk }}"
               class="video-form"
               method="POST"
               action="{% url 'video:glossvideo_update' %}"
@@ -85,21 +85,27 @@
                 type="hidden"
                 name="glossvideo"
                 class="glossvideo-pk"
-                value="{{video.pk}}"
+                value="{{ video.pk }}"
               />
               <div id="videocontainer">
                 <div class="player">
                   <video
-                    id="{{video.pk}}"
+                    id="{{ video.pk }}"
                     width="450"
                     preload="metadata"
                     controls
                     muted
                   >
                     {% if video.get_extension == '.mp4' %}
-                      <source src="{{video.videofile.url}}" type="video/mp4" />
+                      <source
+                        src="{{ video.videofile.url }}"
+                        type="video/mp4"
+                      />
                     {% elif video.get_extension == '.webm' %}
-                      <source src="{{video.videofile.url}}" type="video/webm" />
+                      <source
+                        src="{{ video.videofile.url }}"
+                        type="video/webm"
+                      />
                     {% endif %}
                     {% blocktrans %}Your browser does not support the video
                       tag.{% endblocktrans %}

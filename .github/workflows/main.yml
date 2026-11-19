@@ -46,13 +46,7 @@ jobs:
           poetry config virtualenvs.create false
           poetry install --no-root
       - name: Check templates with djangofmt
-        run: |
-          poetry run djangofmt .
-          git diff --exit-code -- '*.html' || (
-            echo "HTML templates are not formatted. Run 'djangofmt' to fix."
-            exit 1
-          )
-
+        run: poetry run djangofmt . --check
   deploy_to_uat:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'

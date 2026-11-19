@@ -12,7 +12,7 @@
     {% endif %}
 
     {% for p in page_obj.paginator.page_range %}
-      {% if p < page_obj.number|add:"10" and  p > page_obj.number|add:"-10" %}
+      {% if p < page_obj.number|add:"10" and p > page_obj.number|add:"-10" %}
         <li {% if p == page_obj.number %}class="active"{% endif %}>
           <a
             href="?page={{ p }}{% for key,values in request.GET.lists %}{% if not key == 'page' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}"

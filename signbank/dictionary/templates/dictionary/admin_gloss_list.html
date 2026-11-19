@@ -97,7 +97,7 @@
                 name="search"
                 class="form-control"
                 {% if searchform.search.value %}
-                  value="{{searchform.search.value}}"
+                  value="{{ searchform.search.value }}"
                 {% endif %}
                 placeholder="{% blocktrans %}Gloss, Note, Translation, contains string{% endblocktrans %}"
               />
@@ -114,7 +114,7 @@
                 name="gloss"
                 class="form-control"
                 {% if searchform.gloss.value %}
-                  value="{{searchform.gloss.value}}"
+                  value="{{ searchform.gloss.value }}"
                 {% endif %}
                 placeholder="{% blocktrans %}Begins with string{% endblocktrans %}"
               />
@@ -131,7 +131,7 @@
                 name="idgloss_mi"
                 class="form-control"
                 {% if searchform.idgloss_mi.value %}
-                  value="{{searchform.idgloss_mi.value}}"
+                  value="{{ searchform.idgloss_mi.value }}"
                 {% endif %}
                 placeholder="{% blocktrans %}Begins with string{% endblocktrans %}"
               />
@@ -148,7 +148,7 @@
                 name="notes"
                 class="form-control"
                 {% if searchform.notes.value %}
-                  value="{{searchform.notes.value}}"
+                  value="{{ searchform.notes.value }}"
                 {% endif %}
                 placeholder="{% blocktrans %}Contains string{% endblocktrans %}"
               />
@@ -166,7 +166,7 @@
                 name="keyword"
                 class="form-control"
                 {% if searchform.keyword.value %}
-                  value="{{searchform.keyword.value}}"
+                  value="{{ searchform.keyword.value }}"
                 {% endif %}
                 placeholder="{% blocktrans %}Contains string{% endblocktrans %}"
               />
@@ -256,7 +256,7 @@
                 name="example_search"
                 class="form-control"
                 {% if searchform.example_search.value %}
-                  value="{{searchform.example_search.value}}"
+                  value="{{ searchform.example_search.value }}"
                 {% endif %}
                 placeholder="{% blocktrans %}Contains Gloss ID{% endblocktrans %}"
               />
@@ -407,7 +407,7 @@
           <th>{% blocktrans %}Dataset{% endblocktrans %}</th>
           <th>
             {% blocktrans %}Gloss{% endblocktrans %} <a
-              href="?search={{request.GET.search|urlencode}}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'idgloss' or request.GET.order == 'idgloss' %}&order=-idgloss{% else %}&order=idgloss{% endif %}"
+              href="?search={{ request.GET.search|urlencode }}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'idgloss' or request.GET.order == 'idgloss' %}&order=-idgloss{% else %}&order=idgloss{% endif %}"
             >
               <span
                 class='{% if request.GET.order|slice:":1" == "-" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}'
@@ -416,7 +416,7 @@
           </th>
           <th>
             {% blocktrans %}Gloss in Māori{% endblocktrans %} <a
-              href="?search={{request.GET.search|urlencode}}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'idgloss_mi' or request.GET.order == 'idgloss_mi' %}&order=-idgloss_mi{% else %}&order=idgloss_mi{% endif %}"
+              href="?search={{ request.GET.search|urlencode }}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'idgloss_mi' or request.GET.order == 'idgloss_mi' %}&order=-idgloss_mi{% else %}&order=idgloss_mi{% endif %}"
             >
               <span
                 class='{% if request.GET.order|slice:":1" == "-" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}'
@@ -442,14 +442,14 @@
           >
             <td>
               <span
-                class="dataset-{{gloss.dataset.id}}-color label label-default"
+                class="dataset-{{ gloss.dataset.id }}-color label label-default"
               >{{ gloss.dataset }}</span>
             </td>
             {# Insert glossvideo.posterfile.url into data-thumbnail-src, if the highest priority gloss has one. #}
             <td>
               <a
                 href="{% url 'dictionary:admin_gloss_view' pk=gloss.pk %}"
-                data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{gloss.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-thumbnail-src="{% if gloss.glossvideo_set.all.0.posterfile %}{{ gloss.glossvideo_set.all.0.posterfile.url }}{% endif %}"
                 data-video-src="{% if gloss.glossvideo_set.all.0.videofile %}{{ gloss.glossvideo_set.all.0.videofile.url }}"
                 data-content-type="{{ gloss.glossvideo_set.all.0.get_content_type }}{% endif %}"
               >{{ gloss.idgloss }}</a>

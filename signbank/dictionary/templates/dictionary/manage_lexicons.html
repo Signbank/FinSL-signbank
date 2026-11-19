@@ -22,7 +22,7 @@
           <div class="panel-heading">
             <h3 class="panel-title" style="display: inline">
               <span
-                class="dataset-{{obj.id}}-color label label-default"
+                class="dataset-{{ obj.id }}-color label label-default"
               >{{ obj.public_name }}</span>
             </h3>
             {{ obj.signlanguage }} ({{ obj.signlanguage.language_code_3char }})
@@ -81,7 +81,7 @@
               <ul>
                 {% for user in obj.users_with_perms.all %}
                   <li>
-                    <a href="{{user.get_absolute_url}}">{{ user }}
+                    <a href="{{ user.get_absolute_url }}">{{ user }}
                       ({{ user.first_name }} {{ user.last_name }})</a>
                   </li>
                 {% endfor %}
@@ -104,7 +104,7 @@
           <div class="panel-heading">
             <h3 class="panel-title" style="display: inline">
               <span
-                class="dataset-{{obj.id}}-color label label-default"
+                class="dataset-{{ obj.id }}-color label label-default"
               >{{ obj.public_name }}</span>
             </h3>
             {{ obj.signlanguage }} ({{ obj.signlanguage.language_code_3char }})
@@ -129,7 +129,7 @@
                 style="display: inline"
               >
                 {% csrf_token %}
-                <input type="hidden" name="dataset" value="{{obj.id}}" />
+                <input type="hidden" name="dataset" value="{{ obj.id }}" />
                 <button type="submit" class="btn btn-primary btn-sm">
                   {% blocktrans %}Apply for permissions{% endblocktrans %}
                 </button>

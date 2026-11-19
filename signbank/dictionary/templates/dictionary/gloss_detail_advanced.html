@@ -22,7 +22,7 @@
           {% for value,name,label,kind in phonology_fields %}
             <tr>
               <th>{{ label }}</th>
-              <td class="edit edit_{{kind}}" id="{{name}}">
+              <td class="edit edit_{{ kind }}" id="{{ name }}">
                 {% if kind == "check" and value is None %}No{% elif kind == "check" and value != 'No' %}Yes{% else %}{% value value %}{% endif %}
               </td>
             </tr>
@@ -60,12 +60,12 @@
                 <span
                   class="glyphicon glyphicon-trash morphology-definition-delete"
                   data-toggle="modal"
-                  data-target="#delete_morphology-definition_modal_{{morphdef.id}}"
+                  data-target="#delete_morphology-definition_modal_{{ morphdef.id }}"
                 ></span>
 
                 <div
                   class="modal fade"
-                  id="delete_morphology-definition_modal_{{morphdef.id}}"
+                  id="delete_morphology-definition_modal_{{ morphdef.id }}"
                   role="dialog"
                   aria-labelledby="#modalTitle"
                   aria-hidden="true"
@@ -94,7 +94,7 @@
                         <input
                           type="hidden"
                           name="id"
-                          value="morphology-definition-delete_{{morphdef.id}}"
+                          value="morphology-definition-delete_{{ morphdef.id }}"
                         />
                         <input type="hidden" name="value" value="confirmed" />
 
@@ -121,13 +121,13 @@
               </td>
               <td
                 class="edit edit_morphology_role"
-                id="morphology-definition-role_{{morphdef.id}}"
+                id="morphology-definition-role_{{ morphdef.id }}"
               >
                 {{ morphdef.role }}
               </td>
               <td
                 class="edit edit_morpheme"
-                id="morphology-definition-morpheme_{{morphdef.id}}"
+                id="morphology-definition-morpheme_{{ morphdef.id }}"
               >
                 {{ morphdef.morpheme }}
               </td>
@@ -174,7 +174,7 @@
             {% for value,name,label,kind in morphology_fields %}
               <tr>
                 <th>{{ label }}</th>
-                <td class="edit edit_{{kind}}" id="{{name}}">
+                <td class="edit edit_{{ kind }}" id="{{ name }}">
                   {% value value %}
                 </td>
               </tr>
@@ -205,7 +205,7 @@
           {% for value,name,label,kind in semantics_fields %}
             <tr>
               <th>{{ label }}</th>
-              <td class="edit edit_{{kind}}" id="{{name}}">
+              <td class="edit edit_{{ kind }}" id="{{ name }}">
                 {% value value %}
               </td>
             </tr>
@@ -232,9 +232,9 @@
             <li class="list-group-item list-group-item-relation">
               <a
                 href="{% url 'dictionary:admin_gloss_view' gr.target.id %}"
-                data-thumbnail-src="{% if gr.target.glossvideo_set.all.0.posterfile %}{{gr.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-thumbnail-src="{% if gr.target.glossvideo_set.all.0.posterfile %}{{ gr.target.glossvideo_set.all.0.posterfile.url }}{% endif %}"
                 data-video-src="{% if gr.target.glossvideo_set.all.0.videofile %}{{ gr.target.glossvideo_set.all.0.videofile.url }}"
-                data-content-type="{{ gr.target.glossvideo_set.all.0.get_content_type}}{% endif %}"
+                data-content-type="{{ gr.target.glossvideo_set.all.0.get_content_type }}{% endif %}"
               >
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 {{ gr }}</a>
@@ -248,7 +248,7 @@
                 style="display: none; float: right"
               >
                 {% csrf_token %}
-                <input type="hidden" name="delete" value="{{gr.id}}" />
+                <input type="hidden" name="delete" value="{{ gr.id }}" />
                 <button type="submit" class="btn btn-link">
                   <span
                     class="glyphicon glyphicon-trash"
@@ -270,7 +270,7 @@
             action="{% url 'dictionary:add_glossrelation' %}"
           >
             {% csrf_token %}
-            <input type="hidden" name="source" value="{{gloss.id}}" />
+            <input type="hidden" name="source" value="{{ gloss.id }}" />
             {% bootstrap_field glossrelationform.target show_label=False %}
             {% bootstrap_field glossrelationform.tag %}
             <button class="btn btn-primary btn-sm" type="submit">
@@ -283,9 +283,9 @@
             <li class="list-group-item">
               <a
                 href="{% url 'dictionary:admin_gloss_view' gr.source.id %}"
-                data-thumbnail-src="{% if gr.source.glossvideo_set.all.0.posterfile %}{{gr.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-thumbnail-src="{% if gr.source.glossvideo_set.all.0.posterfile %}{{ gr.source.glossvideo_set.all.0.posterfile.url }}{% endif %}"
                 data-video-src="{% if gr.source.glossvideo_set.all.0.videofile %}{{ gr.source.glossvideo_set.all.0.videofile.url }}"
-                data-content-type="{{ gr.source.glossvideo_set.all.0.get_content_type}}{% endif %}"
+                data-content-type="{{ gr.source.glossvideo_set.all.0.get_content_type }}{% endif %}"
               >
                 <span class="glyphicon glyphicon-circle-arrow-left"></span>
                 {{ gr.source }}</a>
@@ -336,12 +336,12 @@
                 <span
                   class="glyphicon glyphicon-trash relation_delete"
                   data-toggle="modal"
-                  data-target="#delete_relation_modal_{{rel.id}}"
+                  data-target="#delete_relation_modal_{{ rel.id }}"
                 ></span>
 
                 <div
                   class="modal fade"
-                  id="delete_relation_modal_{{rel.id}}"
+                  id="delete_relation_modal_{{ rel.id }}"
                   role="dialog"
                   aria-labelledby="#modalTitle"
                   aria-hidden="true"
@@ -370,7 +370,7 @@
                         <input
                           type="hidden"
                           name="id"
-                          value="relationforeigndelete_{{rel.id}}"
+                          value="relationforeigndelete_{{ rel.id }}"
                         />
                         <input type="hidden" name="value" value="confirmed" />
 
@@ -396,18 +396,21 @@
                 </div>
               </td>
 
-              <td class="edit edit_check" id="relationforeign-loan_{{rel.id}}">
+              <td
+                class="edit edit_check"
+                id="relationforeign-loan_{{ rel.id }}"
+              >
                 {{ rel.loan }}
               </td>
               <td
                 class="edit edit_text"
-                id="relationforeign-other-lang_{{rel.id}}"
+                id="relationforeign-other-lang_{{ rel.id }}"
               >
                 {{ rel.other_lang }}
               </td>
               <td
                 class="edit edit_text"
-                id="relationforeign-other-lang-gloss_{{rel.id}}"
+                id="relationforeign-other-lang-gloss_{{ rel.id }}"
               >
                 {{ rel.other_lang_gloss }}
               </td>
@@ -422,7 +425,7 @@
             action="{% url 'dictionary:add_relationtoforeignsign' %}"
           >
             {% csrf_token %}
-            <input type="hidden" name="sourceid" value="{{gloss.pk}}" />
+            <input type="hidden" name="sourceid" value="{{ gloss.pk }}" />
             <table class="table table-condensed">
               <tr>
                 <td><input class="checkbox" name="loan" type="checkbox" /></td>
@@ -510,7 +513,7 @@
           {% for value,name,label,kind in examples_fields %}
             <tr>
               <th>{{ label }}</th>
-              <td class="edit edit_text" id="{{name}}">{% value value %}</td>
+              <td class="edit edit_text" id="{{ name }}">{% value value %}</td>
             </tr>
           {% endfor %}
         </table>
@@ -530,7 +533,7 @@
           {% for value,name,label,kind in frequency_fields %}
             <tr>
               <th>{{ label }}</th>
-              <td class="edit edit_text" id="{{name}}">{% value value %}</td>
+              <td class="edit edit_text" id="{{ name }}">{% value value %}</td>
             </tr>
           {% endfor %}
         </table>

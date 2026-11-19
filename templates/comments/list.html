@@ -17,26 +17,26 @@
         {% if user.is_authenticated %}
           {% if user == comment.user %}
             <button
-              id="edit_comment_{{comment.id}}"
+              id="edit_comment_{{ comment.id }}"
               class="
                 btn-comment-edit btn btn-primary btn-xs
                 {% if user != comment.user and user.is_staff %} comment_delete_staff{% endif %}
               "
               data-toggle="modal"
               data-target="#edit_comment_modal"
-              onclick="load_comment_edit({{comment.id}})"
+              onclick="load_comment_edit({{ comment.id }})"
             >
               {% blocktrans %}Edit{% endblocktrans %}
             </button>
           {% endif %}
           {% if user == comment.user or user.is_staff %}
             <button
-              id="delete_comment_{{comment.id}}"
+              id="delete_comment_{{ comment.id }}"
               class="
                 btn-comment-delete btn-danger btn btn-xs
                 {% if user != comment.user and user.is_staff %} comment_delete_staff{% endif %}
               "
-              data-comment-id="{{comment.id}}"
+              data-comment-id="{{ comment.id }}"
               data-toggle="modal"
               data-target=".delete_comment_modal"
               style="margin-top:0px;margin-bottom:0px;
@@ -51,8 +51,16 @@
             <div class="comment-tag" style="display: inline-block">
               <form method="POST" action="{% url 'remove-comment-tag' %}">
                 {% csrf_token %}
-                <input type="hidden" name="comment_id" value="{{comment.id}}" />
-                <input type="hidden" name="remove_tag_id" value="{{tag.id}}" />
+                <input
+                  type="hidden"
+                  name="comment_id"
+                  value="{{ comment.id }}"
+                />
+                <input
+                  type="hidden"
+                  name="remove_tag_id"
+                  value="{{ tag.id }}"
+                />
                 <span class="label label-info">{{ tag.name }}
                   <input
                     class="btn-danger remove_comment_tag"
@@ -97,7 +105,7 @@
         <form action="" method="post">
           {% csrf_token %}
           <input type="hidden" name="comment_id" value="" />
-          <input type="hidden" name="next" value="{{request.path}}" />
+          <input type="hidden" name="next" value="{{ request.path }}" />
           {# Translators: Confirm delete button for deleting a comment. #}
           <button type="submit" class="btn btn-primary">
             {% blocktrans %}Confirm Delete{% endblocktrans %}

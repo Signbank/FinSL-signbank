@@ -112,9 +112,7 @@
       <dl class="well well-md">
         {% for record in validation_records %}
           <dt
-            {% if not forloop.first %}
-              class="top-margin"
-            {% endif %}
+            {% if not forloop.first %}class="top-margin"{% endif %}
             id="vr_{{ record.id }}"
           >
             {% if record.sign_seen == "yes" %}
@@ -174,9 +172,7 @@
       <dl class="well well-md">
         {% for aggregate in manual_validations %}
           <dt
-            {% if not forloop.first %}
-              class="top-margin"
-            {% endif %}
+            {% if not forloop.first %}class="top-margin"{% endif %}
             id="vr_{{ aggregate.id }}"
           >
             &nbsp;{{ aggregate.group }}
@@ -234,9 +230,7 @@
       <dl class="well well-md">
         {% for comment in share_comments %}
           <dt
-            {% if not forloop.first %}
-              class="top-margin"
-            {% endif %}
+            {% if not forloop.first %}class="top-margin"{% endif %}
             id="c{{ comment.id }}"
           >
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>

@@ -13,8 +13,8 @@
                 <span class="tagcount">
                   <a
                     class="tagdelete editform"
-                    id="{{tag.name}}"
-                    href="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}"
+                    id="{{ tag.name }}"
+                    href="{% url 'root_page' %}dictionary/update/tag/{{ gloss.id }}"
                     title="delete this tag"
                   >x</a>
                 </span>
@@ -29,7 +29,7 @@
       <div class="editform" style="display: none">
         <form
           id="tagaddform"
-          action="{% url 'root_page' %}dictionary/update/tag/{{gloss.id}}"
+          action="{% url 'root_page' %}dictionary/update/tag/{{ gloss.id }}"
           method="post"
           enctype="multipart/form-data"
         >

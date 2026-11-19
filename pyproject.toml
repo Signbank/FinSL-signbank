@@ -11,7 +11,7 @@ repository = "https://github.com/ODNZSL/NZSL-signbank"
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "~5.2"
-djangofmt = "^0.2.7"
+djangofmt = "^1.0.0"
 django-taggit = "~6.1.0"
 django-reversion = "6.1.0"
 django-bootstrap3 = "21.2"

@@ -81,7 +81,7 @@
                   name="search"
                   class="form-control"
                   {% if searchform.search.value %}
-                    value="{{searchform.search.value}}"
+                    value="{{ searchform.search.value }}"
                   {% endif %}
                   placeholder="{% blocktrans %}Source or target gloss contains string{% endblocktrans %}"
                 />
@@ -99,7 +99,7 @@
                   name="source"
                   class="form-control"
                   {% if searchform.source.value %}
-                    value="{{searchform.source.value}}"
+                    value="{{ searchform.source.value }}"
                   {% endif %}
                   placeholder="{% blocktrans %}Begins with string{% endblocktrans %}"
                 />
@@ -116,7 +116,7 @@
                   name="target"
                   class="form-control"
                   {% if searchform.target.value %}
-                    value="{{searchform.target.value}}"
+                    value="{{ searchform.target.value }}"
                   {% endif %}
                   placeholder="{% blocktrans %}Begins with string{% endblocktrans %}"
                 />
@@ -188,7 +188,7 @@
         <tr>
           <th>
             {% blocktrans %}Source Gloss{% endblocktrans %} <a
-              href="?search={{request.GET.search|urlencode}}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'source' or request.GET.order == 'source' %}&order=-source{% else %}&order=source{% endif %}"
+              href="?search={{ request.GET.search|urlencode }}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'source' or request.GET.order == 'source' %}&order=-source{% else %}&order=source{% endif %}"
             >
               <span
                 class='{% if request.GET.order == "-source" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}'
@@ -197,7 +197,7 @@
           </th>
           <th>
             {% blocktrans %}Target Gloss{% endblocktrans %} <a
-              href="?search={{request.GET.search|urlencode}}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'target' or request.GET.order == 'target' %}&order=-target{% else %}&order=target{% endif %}"
+              href="?search={{ request.GET.search|urlencode }}{% for key,values in request.GET.lists %}{% if not key  == 'search' and not key == 'order' %}{% for value in values %}&{{ key }}={{ value|urlencode }}{% endfor %}{% endif %}{% endfor %}{% if order == 'target' or request.GET.order == 'target' %}&order=-target{% else %}&order=target{% endif %}"
             >
               <span
                 class='{% if request.GET.order == "-target" %}glyphicon glyphicon-sort-by-alphabet{% else %}glyphicon glyphicon-sort-by-alphabet-alt{% endif %}'
@@ -213,24 +213,24 @@
           <tr>
             <td>
               <span
-                class="dataset-{{glossrelation.source.dataset.id}}-color label label-default"
+                class="dataset-{{ glossrelation.source.dataset.id }}-color label label-default"
               >{{ glossrelation.source.dataset }}</span>
               <a
                 href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.source.pk %}"
-                data-thumbnail-src="{% if glossrelation.source.glossvideo_set.all.0.posterfile %}{{glossrelation.source.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-thumbnail-src="{% if glossrelation.source.glossvideo_set.all.0.posterfile %}{{ glossrelation.source.glossvideo_set.all.0.posterfile.url }}{% endif %}"
                 data-video-src="{% if glossrelation.source.glossvideo_set.all.0.videofile %}{{ glossrelation.source.glossvideo_set.all.0.videofile.url }}"
-                data-content-type="{{ glossrelation.source.glossvideo_set.all.0.get_content_type}}{% endif %}"
+                data-content-type="{{ glossrelation.source.glossvideo_set.all.0.get_content_type }}{% endif %}"
               >{{ glossrelation.source }}</a>
             </td>
             <td>
               <span
-                class="dataset-{{glossrelation.target.dataset.id}}-color label label-default"
+                class="dataset-{{ glossrelation.target.dataset.id }}-color label label-default"
               >{{ glossrelation.target.dataset }}</span>
               <a
                 href="{% url 'dictionary:admin_gloss_view' pk=glossrelation.target.pk %}"
-                data-thumbnail-src="{% if glossrelation.target.glossvideo_set.all.0.posterfile %}{{glossrelation.target.glossvideo_set.all.0.posterfile.url}}{% endif %}"
+                data-thumbnail-src="{% if glossrelation.target.glossvideo_set.all.0.posterfile %}{{ glossrelation.target.glossvideo_set.all.0.posterfile.url }}{% endif %}"
                 data-video-src="{% if glossrelation.target.glossvideo_set.all.0.videofile %}{{ glossrelation.target.glossvideo_set.all.0.videofile.url }}"
-                data-content-type="{{ glossrelation.target.glossvideo_set.all.0.get_content_type}}{% endif %}"
+                data-content-type="{{ glossrelation.target.glossvideo_set.all.0.get_content_type }}{% endif %}"
               >{{ glossrelation.target }}</a>
             </td>
             <td>

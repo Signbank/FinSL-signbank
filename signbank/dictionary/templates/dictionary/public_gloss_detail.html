@@ -5,42 +5,42 @@
 {% endblock %}
 {% block metadesc %}<meta
     name="description"
-    content="{{metadesc}}"
+    content="{{ metadesc }}"
   />{% endblock %}
 {% block ogimage %}<meta
     property="og:image"
-    content="{{ request.scheme }}://{{ request.get_host }}{{ogimage}}"
+    content="{{ request.scheme }}://{{ request.get_host }}{{ ogimage }}"
   />{% endblock %}
 {% block ogdesc %}<meta
     property="og:description"
-    content="{{metadesc}}"
+    content="{{ metadesc }}"
   />{% endblock %}
 {% block metatitles %}
   <meta
     property="og:title"
-    content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}"
+    content="{{ gloss }} [{{ gloss.dataset.public_name }}] | {% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}"
   />
   <meta
     name="twitter:title"
-    content="{{gloss}} [{{gloss.dataset.public_name}}] | {% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}"
+    content="{{ gloss }} [{{ gloss.dataset.public_name }}] | {% blocktrans context 'meta' %}NZSL Signbank{% endblocktrans %}"
   />
 {% endblock %}
 {% block structureddata %}
   {% if first_video %}
     <script type="application/ld+json">
-    // VideoObject, Structured data for Google
-    {
-      "@context": "http://schema.org",
-      "@type": "VideoObject",
-      "name": "{{gloss}} [{{gloss.dataset.public_name}}]",
-      "description": "{{metadesc}}",
-      "thumbnailUrl": [
-        "{{ request.scheme }}://{{ request.get_host }}{{ogimage}}"
-       ],
-      "contentUrl": "{{ request.scheme }}://{{ request.get_host }}{{first_video.get_absolute_url}}",
-      "embedUrl": "{{ request.scheme }}://{{ request.get_host }}{{first_video.get_absolute_url}}",
-      "uploadDate": "{{first_video.get_videofile_modified_date|date:"c"}}"
-    }
+      // VideoObject, Structured data for Google
+      {
+        "@context": "http://schema.org",
+        "@type": "VideoObject",
+        "name": "{{gloss}} [{{gloss.dataset.public_name}}]",
+        "description": "{{metadesc}}",
+        "thumbnailUrl": [
+          "{{ request.scheme }}://{{ request.get_host }}{{ogimage}}"
+         ],
+        "contentUrl": "{{ request.scheme }}://{{ request.get_host }}{{first_video.get_absolute_url}}",
+        "embedUrl": "{{ request.scheme }}://{{ request.get_host }}{{first_video.get_absolute_url}}",
+        "uploadDate": "{{first_video.get_videofile_modified_date|date:"c"}}"
+      }
     </script>
   {% endif %}
 {% endblock %}
@@ -52,9 +52,9 @@
           <div class="col-md-12">
             <header>
               <h2>
-                <a href="{{gloss.get_public_absolute_url}}">{{ gloss }}</a>
+                <a href="{{ gloss.get_public_absolute_url }}">{{ gloss }}</a>
                 <span
-                  class="dataset-{{gloss.dataset.id}}-color label label-default"
+                  class="dataset-{{ gloss.dataset.id }}-color label label-default"
                   style="float: right"
                 >{{ gloss.dataset.public_name }}</span>
               </h2>
@@ -158,18 +158,18 @@
                   {% if glossvideo.is_video %}
                     <div class="embed-responsive embed-responsive-16by9">
                       <video
-                        id="glossvideo-{{glossvideo.pk}}"
+                        id="glossvideo-{{ glossvideo.pk }}"
                         class="embed-responsive-item"
                         preload="metadata"
                         controls
                         muted
                         {% if glossvideo.posterfile %}
-                          poster="{{glossvideo.posterfile.url}}"
+                          poster="{{ glossvideo.posterfile.url }}"
                         {% endif %}
                       >
                         <source
-                          src="{{glossvideo.get_absolute_url}}"
-                          type="{{glossvideo.content_type}}"
+                          src="{{ glossvideo.get_absolute_url }}"
+                          type="{{ glossvideo.content_type }}"
                         />
                         {% blocktrans %}Your browser does not support the video
                           tag.{% endblocktrans %}
@@ -177,8 +177,8 @@
                     </div>
                   {% elif glossvideo.is_image %}
                     <img
-                      src="{{glossvideo.get_absolute_url}}"
-                      alt="{{glossvideo.title}} - {{glossvideo.video_type}}"
+                      src="{{ glossvideo.get_absolute_url }}"
+                      alt="{{ glossvideo.title }} - {{ glossvideo.video_type }}"
                       class="img-responsive center-block"
                     />
                   {% endif %}

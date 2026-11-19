@@ -352,30 +352,30 @@ Django = ">=4.1"
 
 [[package]]
 name = "djangofmt"
-version = "0.2.7"
-description = "A fast, HTML aware, Django template formatter, written in Rust."
+version = "1.1.0"
+description = "A fast, HTML aware, Django template formatter and linter, written in Rust."
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "djangofmt-0.2.7-py3-none-linux_armv6l.whl", hash = "sha256:ab162912c80b862587b77a494df54bfeeb92d1335dd99d5c26c3566b8a433b87"},
-    {file = "djangofmt-0.2.7-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:c0382ad1085db1b2ab8e9c5bd8cfefd52cea880415bb2da87819fb306736f84a"},
-    {file = "djangofmt-0.2.7-py3-none-macosx_11_0_arm64.whl", hash = "sha256:26bb664073ba10764b2a445d131496b7f51e5c7e201f0b05b945615a50bb14c5"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:68ed44dba61953a35a60c50ec781a85d82f6d43c186388e91d9942f9912db4eb"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:af83bb4c1d4cc5927e20a9793eb9d06a8793e7f5b175dba1d63b796014c3659a"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7be012f9fc40940a739e22483f604aef9bf519bb1a9b46a6f55c702b5b99447f"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:8c1d2d1cdd998f0092771ad163b06607a5c09412cbd6be396f5317e8fbd2bd7f"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:70d0c9ff31955fdaef9ff4e7790a858d7bf6fc8cd9c72232dd30f171859fdff5"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:67ee9e98a1d49ccb05a417f9d6473d8a33d204ae4ffb7f04c8cd995f1a93944a"},
-    {file = "djangofmt-0.2.7-py3-none-manylinux_2_31_riscv64.whl", hash = "sha256:5e38a22a50f58e89bee5ec0f7f291284cb5049726ef1c10aea3dde03348d7304"},
-    {file = "djangofmt-0.2.7-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:40266cd68066433afd9f8262a4a88667dd0a7aead17dc0bd2995a5ee0c1235de"},
-    {file = "djangofmt-0.2.7-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:600bfbe91345f384ee903bb3e43d66dc2977b34cce7bcd71285a80886467953f"},
-    {file = "djangofmt-0.2.7-py3-none-musllinux_1_2_i686.whl", hash = "sha256:4d9d92461adfff7afd8ab7840b31ba551b2ef7a6c28413bdb0c87143c4eea844"},
-    {file = "djangofmt-0.2.7-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:4afacdb854cb74b50a74e554bdd2fbb543b67300bfa041c55ea3b9f90f79eb7e"},
-    {file = "djangofmt-0.2.7-py3-none-win32.whl", hash = "sha256:c56c49104e91bc0a611a71c0860cf7dafc2c755e44b315851732370a39c25121"},
-    {file = "djangofmt-0.2.7-py3-none-win_amd64.whl", hash = "sha256:dccbc17c77df063fe90a03fc7cd8fcc01f2aa2579d8ae2e0d3347d5d7b40ed2f"},
-    {file = "djangofmt-0.2.7-py3-none-win_arm64.whl", hash = "sha256:a14c39da6ec3b3e78ebe96375d69ee24dbead99e8b2756f4a26aeae5ee512da8"},
-    {file = "djangofmt-0.2.7.tar.gz", hash = "sha256:814db331cfd5c37aca677957ee0155991f08d3ac23731810cf34e00a2d15dcc8"},
+    {file = "djangofmt-1.1.0-py3-none-linux_armv6l.whl", hash = "sha256:b4964014f0ba3b1bd27bccb383aac13e26cc2ea9155ded391930f40a4fa7c2cc"},
+    {file = "djangofmt-1.1.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:f96b4b44d4e98780a9a1c2fb28551a8d551144196e6d0df6a2b78cc59ed676f4"},
+    {file = "djangofmt-1.1.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:5dd4e0b79fa29526af24af2bde71a0394ec9a5169cdcfe6ff0816fda113cf3b1"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b1887e71e9fea931a3c6fddaed513953b05c8d4b5a9d893afafc6ba751b9125d"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:836471f93eec484d68f6b6fc604cc06446e356ab39c0c18fe8d4f74e4ffdab37"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:f0e5b68801e95d5c7dd98d9a622e973aa31dc942c07149506f88e23701b5bd5a"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:312a86e2d77b6bd950185f8ddd99494ec0ac8f168d4d65852153d9be122f949f"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:11693d2f064e030780199e17af5709c70cbe89c92e6c09384e19bef664f832d3"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0b1059890d44343a6466f10de46981ce514e6306e721ef1c1e7e091eb10b6ac7"},
+    {file = "djangofmt-1.1.0-py3-none-manylinux_2_31_riscv64.whl", hash = "sha256:132bf33f05c8f3336c225db34ff639e90d54bb2f1e8bbe6902c61b2b2216e4b8"},
+    {file = "djangofmt-1.1.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:cc16aa2a93589a3ec25b1fcd8b828071dc013f15cd45c24f8c701da68d91ff8c"},
+    {file = "djangofmt-1.1.0-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:30d0a3957a3f2a1820f95435b97bcdf3b1288412813ff338e7686d609dd0f96b"},
+    {file = "djangofmt-1.1.0-py3-none-musllinux_1_2_i686.whl", hash = "sha256:237804bdb440b56ee07317e0ea97580a7eeb20ae470b069b4f2e577a9562f50a"},
+    {file = "djangofmt-1.1.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:9ee9b152fd6347d77cc3548ae4a39e9758cfe1e9c7b2c44735d9276e787dcf46"},
+    {file = "djangofmt-1.1.0-py3-none-win32.whl", hash = "sha256:df0a87b96a744983fa71a3ef2facfbc4da02a50337af28ffa4b555388a1ff4e2"},
+    {file = "djangofmt-1.1.0-py3-none-win_amd64.whl", hash = "sha256:b0d4060de871a9994210dede8345fc25573abbf6c123a20a07e0c96a999d4111"},
+    {file = "djangofmt-1.1.0-py3-none-win_arm64.whl", hash = "sha256:9d0a2c641158fc67ec45da0072154d9cc46bb571879c7ace6e2bc8a38e727701"},
+    {file = "djangofmt-1.1.0.tar.gz", hash = "sha256:7b35e79de6caab659789bb54921f47f5d7a68c8885a9fcce27b00fcb0058aff9"},
 ]
 
 [[package]]
@@ -693,4 +693,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "0b5df8494eaebe5a008d232be3d3d9f94442c63b9c63d54445c6e20b9d9b748e"
+content-hash = "d8788523fc0b197d71af05366a1a50d06812662619fe06aba13dbe6591908572"

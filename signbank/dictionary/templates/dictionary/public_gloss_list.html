@@ -72,11 +72,11 @@
               {% static 'img/instructions/searchpage_instructions_fi_1140px-compressor.png' as ins_small_fi %}
               {% static 'img/instructions/searchpage_instructions_en-compressor.png' as ins_en %}
               <a
-                href="{% if LANGUAGE_CODE == 'fi' %}{{ins_full_fi}}{% else %}{{ins_en}}{% endif %}"
+                href="{% if LANGUAGE_CODE == 'fi' %}{{ ins_full_fi }}{% else %}{{ ins_en }}{% endif %}"
                 target="_blank"
               >
                 <img
-                  src="{% if LANGUAGE_CODE == 'fi' %}{{ins_small_fi}}{% else %}{{ins_en}}{% endif %}"
+                  src="{% if LANGUAGE_CODE == 'fi' %}{{ ins_small_fi }}{% else %}{{ ins_en }}{% endif %}"
                   alt="{% blocktrans %}Instructions for how to use the search page.{% endblocktrans %}"
                   class="img-responsive img-thumbnail"
                 />
@@ -91,7 +91,7 @@
           <a
             role="button"
             class="btn btn-default"
-            href="?gloss={{letter.0|urlencode}}{% if request.GET.lang %}&lang={{request.GET.lang|urlencode}}{% endif %}{% if request.GET.dataset %}{% for ds in datasets %}&dataset={{ds|urlencode}}{% endfor %}{% endif %}"
+            href="?gloss={{ letter.0|urlencode }}{% if request.GET.lang %}&lang={{ request.GET.lang|urlencode }}{% endif %}{% if request.GET.dataset %}{% for ds in datasets %}&dataset={{ ds|urlencode }}{% endfor %}{% endif %}"
           >{{ letter.0 }}</a>
         {% empty %}
           {# Put nothing here if results set is empty #}
@@ -108,7 +108,7 @@
             {% endif %}
           >
             <a
-              href="?lang=&gloss={{request.GET.gloss|urlencode}}&keyword={{request.GET.keyword|urlencode}}"
+              href="?lang=&gloss={{ request.GET.gloss|urlencode }}&keyword={{ request.GET.keyword|urlencode }}"
             >{% blocktrans %}All sign languages{% endblocktrans %}</a>
           </li>
           {% for signlang in signlanguages %}
@@ -119,7 +119,7 @@
               {% endif %}
             >
               <a
-                href="?lang={{signlang.language_code_3char|urlencode}}&gloss={{request.GET.gloss|urlencode}}&keyword={{request.GET.keyword|urlencode}}"
+                href="?lang={{ signlang.language_code_3char|urlencode }}&gloss={{ request.GET.gloss|urlencode }}&keyword={{ request.GET.keyword|urlencode }}"
               >{{ signlang.name }}</a>
             </li>
           {% endfor %}
@@ -138,7 +138,7 @@
               <input
                 type="hidden"
                 name="lang"
-                value="{{request.GET.lang|urlencode}}"
+                value="{{ request.GET.lang|urlencode }}"
               />
             {% endif %}
             {% bootstrap_field searchform.gloss bound_css_class="not-bound" %}
@@ -151,9 +151,9 @@
                     class="checkbox"
                     style="display: inline-block; margin-top: 0px"
                   >
-                    <label for="{{checkbox.id_for_label}}">
+                    <label for="{{ checkbox.id_for_label }}">
                       {{ checkbox.tag }} <span
-                        class="dataset-{{checkbox.data.value}}-color label label-default"
+                        class="dataset-{{ checkbox.data.value }}-color label label-default"
                       >{{ checkbox.choice_label }}</span></label>
                   </div>
                 {% endfor %}
@@ -189,7 +189,7 @@
                           <header>
                             <h5>
                               <strong><span
-                                  class="dataset-{{lexicon.id}}-color label label-default"
+                                  class="dataset-{{ lexicon.id }}-color label label-default"
                                 >{{ lexicon.public_name }}</span></strong>
                             </h5>
                           </header>
@@ -243,7 +243,7 @@
                 <div class="col-md-12">
                   <a
                     class="btn-block"
-                    href="{{obj.get_public_absolute_url}}"
+                    href="{{ obj.get_public_absolute_url }}"
                   ><h3
                       class="panel-title gloss-idgloss"
                       style="text-align: center"
@@ -257,7 +257,7 @@
                       ></span>
                       {{ obj.glossvideo_set.count }}</span>
                     <span
-                      class="dataset-{{obj.dataset.id}}-color label label-default"
+                      class="dataset-{{ obj.dataset.id }}-color label label-default"
                       style="float: right; margin-top: 2px"
                     >{{ obj.dataset.public_name }}</span>
                   </a>
@@ -274,25 +274,25 @@
                 {% if glossvideo %}
                   {% if glossvideo.is_video %}
                     <video
-                      id="glossvideo-{{glossvideo.pk}}"
+                      id="glossvideo-{{ glossvideo.pk }}"
                       class="video-public"
                       preload="metadata"
                       muted
                       {% if glossvideo.posterfile %}
-                        poster="{{glossvideo.posterfile.url}}"
+                        poster="{{ glossvideo.posterfile.url }}"
                       {% endif %}
                       onclick="this.paused?this.play():this.pause()"
                       playsinline
                     >
                       <source
-                        src="{{glossvideo.get_absolute_url}}"
-                        type="{{glossvideo.get_content_type}}"
+                        src="{{ glossvideo.get_absolute_url }}"
+                        type="{{ glossvideo.get_content_type }}"
                       />
                     </video>
                   {% elif glossvideo.is_image %}
                     <img
-                      src="{{glossvideo.get_absolute_url}}"
-                      alt="{{glossvideo.gloss.idgloss}}"
+                      src="{{ glossvideo.get_absolute_url }}"
+                      alt="{{ glossvideo.gloss.idgloss }}"
                       class="img-responsive"
                     />
                   {% endif %}
